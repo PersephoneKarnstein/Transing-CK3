@@ -1,4 +1,4 @@
-# Adelphai Dorleyaiou (Transbian Maximalism) — design lock (v1.2, locked 2026-10-14)
+# Adelphai Dorleyaiou (Transbian Maximalism) — design lock (v1.3, locked 2026-10-14)
 
 One decision per slot, with the belief-list row and the history verdict that backs it. Items marked **[YOUR CALL]** are the ones where I have recommended but the choice is genuinely yours; everything else I propose to lock and build.
 
@@ -113,6 +113,22 @@ Re-embodiment (`tm_reembody_as_woman_effect`) fires on completion when the game 
 5. Dorley chain events; washout; Sister-Making ceremony; New Personal History.
 6. Re-embodiment effect wired to completion behind a game rule.
 7. Loc; icons; CK3 Tiger; in-game test with `-develop`.
+
+## 11. Flavour "achievements" (events, since mods cannot add Steam achievements)
+
+CK3 is known for its joke achievements, and the mod should carry its own as events that fire on completion of the Rite of the Knife (voluntary or Dorley path) against a notable target. Each grants a nickname, a memory, prestige or piety, and a unique event picture or text; a hidden character flag on the player records it so a "Deeds of the House" decision can list them. Working titles:
+
+| Event | Trigger (on rite completion) | Payoff | Period hook |
+|---|---|---|---|
+| **Ioanna Secunda** | Target holds `k_papal_state` or is head of a faith with `special_doctrine_is_christian_faith` and a Roman seat | Nickname "the Unmaker" for the officiant; the new daughter may be adopted into the player's house; Catholic hostility pinned at maximum for a generation; event text invokes the Pope Joan legend (c. 855) and calls her "the second" | Pope Joan; Nicaea canon 1; Byzantine eunuch patriarchs make the Eastern equivalent *less* scandalous |
+| **The Patriarch's Daughter** | Target is Patriarch of Constantinople or any eunuch-eligible Orthodox head | Lower payoff: Byzantium had eunuch patriarchs, so the text is wry rather than apocalyptic; piety bonus for "restoring the old order" | TG: eunuch patriarchs and bishops |
+| **Al-Kunduri's Mercy** | Target is a vizier or councillor of a Muslim ruler, captured and taken through the Dorley path, then returned to office | Precedent event quoting the 1064 case; the realm that takes him back gains a hook on you | Ayalon: al-Kunduri castrated and kept in office |
+| **Gelded Like My Camels** | Target is a steppe ruler or his son | Hostility event from the khan's court; chance of a *yargu* judgment and war; Tengrist faiths treat it as foreign Chinese cruelty | Terbish: Mongols met "castrated and feminine men" only in China |
+| **Six Hundred Daughters** | Player's house reaches 50 adopted daughters by the knife | Reference to Yang Fugong's "six hundred adopted sons"; dynasty prestige | Hoeckelmann: Tang eunuch dynasties |
+| **The Greater Circumcision** | A rite performed on a court musician or poet | Rowson's 715 jokes as the event's option text | Rowson |
+| **Mother of Mothers Unmade a Father of Fathers** | Both the Pope and the Patriarch in one lifetime | Achievement-style summary event; legendary nickname | — |
+
+Design rule: the Pope event must exist in all three knife doctrines but read differently — triumph under Grandmother's House, uneasy rehabilitation under Aunt Bea's, and impossible under the Gift Alone unless he consents (a separate, rarer event).
 
 ## Decisions (locked 2026-10-14)
 
