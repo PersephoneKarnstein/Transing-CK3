@@ -1,4 +1,4 @@
-# Transbian Maximalism — design lock (v1.1, locked 2026-10-14)
+# Adelphai Dorleyaiou (Transbian Maximalism) — design lock (v1.2, locked 2026-10-14)
 
 One decision per slot, with the belief-list row and the history verdict that backs it. Items marked **[YOUR CALL]** are the ones where I have recommended but the choice is genuinely yours; everything else I propose to lock and build.
 
@@ -9,7 +9,8 @@ Working names are placeholders for localisation; in-game key names are final.
 ## 1. Premise and setting
 
 - **What it is.** A heretical rite inside the Eastern Christian world at the 867 start: the sect that kept the eunuch-angel theology the Byzantine court was already drifting away from, fused it with the memory of the Mother's priestesses, and drew one conclusion the orthodox never would: that the cut are women. Secret survival, not revival. (Beliefs F2, H18; G2 consequence 7.)
-- **Homeland.** North-west Anatolia and Galatia, with Constantinople as the eminent site. Counties confirmed in game: `c_byzantion`, `c_kyzikos`, `c_ankyra`, `c_dorylaion`, `c_nikomedeia`, `c_abydos`, `c_antiocheia`. (G2 homeland verdict; AN: every ancient text calling castrates women is Anatolian or Syrian.)
+- **Name.** *Adelphai Dorleyaiou*, "Sisters of Dorleyaion" (user, 2026-10-14): the Greek genitive of Dorylaion would be *Dorylaiou*; the *-ley-* spelling is deliberate and canonical, making the Dorley pun explicit. Adjective/adherent: Dorleyaian, Dorleyaian Sister. `tm_` remains the key prefix.
+- **Homeland.** North-west Anatolia and Galatia; **Dorylaion (`c_dorylaion`) is the faith's seat and eminent holy site**, with Constantinople as the second eminent site. Counties confirmed in game: `c_byzantion`, `c_kyzikos`, `c_ankyra`, `c_dorylaion`, `c_nikomedeia`, `c_abydos`, `c_antiocheia`. (G2 homeland verdict; AN: every ancient text calling castrates women is Anatolian or Syrian.)
 - **Branches.** A Norse rite is optional later content (seiðr, *ergi*, Uppsala bells) arriving by the Varangian route; it shares the faith but not the knife. Britain is out. (NB verdict.)
 - **Era arc.** Legal cover and neighbours' tolerance decay with the culture era: strong at 867, contested by 1066, gone by 1300. (G3 consequence 14.)
 
@@ -122,7 +123,7 @@ Re-embodiment (`tm_reembody_as_woman_effect`) fires on completion when the game 
 | 3 | Head of faith | **`doctrine_spiritual_head`**, elected Mother of Mothers | Recommendation adopted by default. |
 | 4 | Heritage | **`heritage_byzantine`** | Recommendation adopted by default; custom heritage can return with the pagan families. |
 | 5 | Ethos | **`ethos_communal`** | Recommendation adopted by default. |
-| 6 | Culture name | **Kybeline** (`kybeline` culture key); *bæddel* reserved for the Norse branch | Recommendation adopted by default. |
+| 6 | Culture name | **Kybeline**; **mod/faith name: Adelphai Dorleyaiou** (`kybeline` culture key); *bæddel* reserved for the Norse branch | Recommendation adopted by default. |
 
 ## Deferred research (not blocking the build)
 

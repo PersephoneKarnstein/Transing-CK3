@@ -4,5 +4,5 @@ tags={
 	"Culture"
 	"Religion"
 }
-name="Transbian Maximalism"
+name="Adelphai Dorleyaiou"
 supported_version="1.20.*"

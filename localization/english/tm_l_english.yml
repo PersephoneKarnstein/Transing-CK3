@@ -1,31 +1,31 @@
 ﻿l_english:
  ### Culture ###
- transbian_maximalist:0 "Transbian Maximalist"
- transbian_maximalist_prefix:0 "Transbian"
- transbian_maximalist_collective_noun:0 "Transbian Maximalists"
+ transbian_maximalist:0 "Kybeline"
+ transbian_maximalist_prefix:0 "Kybeline"
+ transbian_maximalist_collective_noun:0 "Kybelines"
  heritage_transbian_name:0 "Transbian"
  heritage_transbian_collective_noun:0 "Transbians"
  language_transbian_name:0 "Transbian"
 
  ### Religion ###
- transbian_maximalism_religion:0 "Transbian Maximalism"
- transbian_maximalism_religion_adj:0 "Transbian Maximalist"
- transbian_maximalism_religion_adherent:0 "Transbian Maximalist"
- transbian_maximalism_religion_adherent_plural:0 "Transbian Maximalists"
+ transbian_maximalism_religion:0 "Adelphai Dorleyaiou"
+ transbian_maximalism_religion_adj:0 "Dorleyaian"
+ transbian_maximalism_religion_adherent:0 "Dorleyaian Sister"
+ transbian_maximalism_religion_adherent_plural:0 "Dorleyaian Sisters"
  transbian_maximalism_religion_desc:0 "TODO: religion description."
 
  ### Faith ###
- transbian_maximalism:0 "Transbian Maximalism"
- transbian_maximalism_adj:0 "Transbian Maximalist"
- transbian_maximalism_adherent:0 "Transbian Maximalist"
- transbian_maximalism_adherent_plural:0 "Transbian Maximalists"
+ transbian_maximalism:0 "Adelphai Dorleyaiou"
+ transbian_maximalism_adj:0 "Dorleyaian"
+ transbian_maximalism_adherent:0 "Dorleyaian Sister"
+ transbian_maximalism_adherent_plural:0 "Dorleyaian Sisters"
  transbian_maximalism_desc:0 "TODO: faith description."
 
  ### Rite ###
- transbian_maximalist_rite:0 "Transbian Maximalism"
- transbian_maximalist_rite_adj:0 "Transbian Maximalist"
- transbian_maximalist_rite_adherent:0 "Transbian Maximalist"
- transbian_maximalist_rite_adherent_plural:0 "Transbian Maximalists"
+ transbian_maximalist_rite:0 "Rite of Dorleyaion"
+ transbian_maximalist_rite_adj:0 "Dorleyaian"
+ transbian_maximalist_rite_adherent:0 "Dorleyaian Sister"
+ transbian_maximalist_rite_adherent_plural:0 "Dorleyaian Sisters"
  transbian_maximalist_rite_desc:0 "TODO: rite description."
 
  ### Religion terminology (referenced from the religion localization block) — all TODO placeholders ###

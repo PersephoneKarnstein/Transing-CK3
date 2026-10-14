@@ -1,6 +1,8 @@
-# Transbian Maximalism — CK3 mod
+# Adelphai Dorleyaiou — CK3 mod
 
-Adds **Transbian Maximalism** to Crusader Kings III 1.20 as both a **culture** and a **faith with a scripted main Rite**, so either can be picked in the Ruler Designer. Final tenets, doctrines, pillars and traditions are still TODO; everything here is a loading skeleton with sensible placeholders.
+*Sisters of Dorleyaion.* Working codename in file keys: `tm_` / Transbian Maximalism.
+
+Adds the **Adelphai Dorleyaiou** (working name Transbian Maximalism) to Crusader Kings III 1.20 as both a **culture** and a **faith with a scripted main Rite**, so either can be picked in the Ruler Designer. Final tenets, doctrines, pillars and traditions are still TODO; everything here is a loading skeleton with sensible placeholders.
 
 Game files referenced below live under
 `~/Library/Application Support/Steam/steamapps/common/Crusader Kings III/game/`.
