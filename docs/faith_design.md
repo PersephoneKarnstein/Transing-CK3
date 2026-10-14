@@ -1,4 +1,4 @@
-# Adelphai Dorleyaiou (Transbian Maximalism) — design lock (v1.5, locked 2026-10-14)
+# Adelphai Dorleyaiou (Transbian Maximalism) — design lock (v1.6, locked 2026-10-14)
 
 One decision per slot, with the belief-list row and the history verdict that backs it. Items marked **[YOUR CALL]** are the ones where I have recommended but the choice is genuinely yours; everything else I propose to lock and build.
 
@@ -13,7 +13,7 @@ Working names are placeholders for localisation; in-game key names are final.
 - The belief-list row E7 ("Raymondite heresy as a hostile foil faith") is **dropped**. Grandmother's House survives only as a *doctrine option inside the faith* and as hostile reputation, never as a rival polity.
 - Flavour events against notable targets (section 11) are jokes about the vanilla world, not a war arc.
 - Later pagan or Norse families are *branches of the same faith*, not opponents.
-- AI behaviour toward the faith uses vanilla hostility levels; no custom "crusade against the Sisters" casus belli unless vanilla GHW rules already produce one.
+- AI behaviour toward the faith uses vanilla hostility levels. A custom casus belli *against* the Sisters is **allowed as comedy** (user, 2026-10-14: "that would be very funny"): a vanilla faith's head declaring a one-off holy war to "rescue" the sons of a realm, in the manner of the Roman Senate's ban on citizens joining the galli, is a reaction event, not an antagonist. The rule is about *who* exists on the map, not about *what the existing faiths may do*.
 
 ## 1. Premise and setting
 
