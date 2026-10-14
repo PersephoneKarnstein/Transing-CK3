@@ -1,4 +1,4 @@
-# Transbian Maximalism — belief list (working draft v3.3)
+# Transbian Maximalism — belief list (working draft v3.4)
 
 Running list of beliefs drawn from the research, each mapped to a CK3 slot. Sources are the reports in `docs/research/`:
 
@@ -183,7 +183,7 @@ Sources: **TG** `hist_tougher_eunuch_byzantine.md` (Tougher 2008, 65 entries + 2
 12. **The Medina tomb-eunuchs are the sponsor template.** Novitiate under "elder brethren", then one's own establishment; offices pass to eunuchs by endowment; a celibate non-castrate may be admitted as a "functional eunuch" — a ready rule for cis women in the order.
 13. **715 is the founding trauma.** Sulayman's castration of the Medinan singers, the scribal-dot story and "we have become women in truth" give the faith a datable martyrdom and a six-step event chain (RW §6).
 14. **Grow hostility with the era.** Byzantine tolerance of eunuch-angels and of brother-making both decay after c. 1050–1300; tie rival faiths' hostility level and the medical loophole's validity to the culture era.
-15. **Still second-hand:** al-Jahiz on eunuchs' transfer to the female realm. Ayalon, "On the Eunuchs in Islam" (1979) is the next pull if it matters for flavour text.
+15. **Al-Jahiz corrected (Ayalon read 2026-10-14, `hist_ayalon_eunuchs_caliphs.md`).** The sentence "castration transfers eunuchs from the realm of male characteristics to that of females" is not in Ayalon or al-Jahiz as quoted; it was a paraphrase in Karras. What al-Jahiz says (*Hayawan* I, 116) is that the eunuch acquires skill and patience in domestic service "and that is what comes to women", and in *Jawari wal-Ghilman* that eunuchs are "neither *ghilman* nor *jawari*". **Stronger than the lost line:** al-Mas'udi (*Muruj* VIII, 147–150) records the current 9th–10th-c. belief that eunuchs are "men among women and women among men" and "more similar to women", and refutes it: "He created them men and not women." The faith's doctrine (d) therefore existed as a popular belief that orthodoxy formally condemned — exactly the shape a heresy needs. Ayalon also supplies a real rehabilitative penal castration: al-Kunduri, castrated in 1064 for marrying the Sultan's bride and kept in office as vizier (row n), plus eunuchs taken as "husbands" by Khumarawayh's harem (895) and married eunuchs at Mecca with attributed paternity (rows d, i).
 
 ---
 
