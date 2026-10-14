@@ -1,4 +1,4 @@
-# Adelphai Dorleyaiou (Transbian Maximalism) — design lock (v1.3, locked 2026-10-14)
+# Adelphai Dorleyaiou (Transbian Maximalism) — design lock (v1.4, locked 2026-10-14)
 
 One decision per slot, with the belief-list row and the history verdict that backs it. Items marked **[YOUR CALL]** are the ones where I have recommended but the choice is genuinely yours; everything else I propose to lock and build.
 
@@ -65,12 +65,25 @@ Rejected for core: `tenet_carnal_exaltation` and `tenet_hedonistic` (C6, "libera
 
 | Key | Purpose | Spec |
 |---|---|---|
-| `tm_transgender` (hidden) | The random seed | `random_creation = 1` (1%; tune), `birth = 1`, not inheritable, `shown_in_ruler_designer = yes` so designer rulers can start with it, hidden from AI reasoning except as event weight. Raises weight for seeking the rite and for intake selection. Theology: "Sisters are born of any womb" (H26). |
+| `tm_transgender` | The random seed | `random_creation = 1` (1%; tune), `birth = 1`, not inheritable, `shown_in_ruler_designer = yes`. **Visible trait** (CK3 has no hidden traits; see 5a). Raises weight for seeking the rite and for intake selection; AI otherwise ignores it. Theology: "Sisters are born of any womb" (H26). In-world name: *Marked by the Mother*. |
 | `tm_daughter_of_the_knife` | The result of the rite | `category = health`, `group_equivalence = eunuch` (so vanilla eunuch checks still fire), `can_have_children = no`, `flag = can_not_marry` **removed**, **no** `inheritance_blocker`; `genetic_constraint`-free; portrait modifier (cosmetic route); all faith script treats holders as women; `shown_in_ruler_designer = yes` |
 | `tm_novice` | Dorley chain stage marker | Timed trait/modifier for the three-year programme; carries the sponsor relation |
 | `tm_washout` | Failure marker | For the washout event and the holy-order hand-over |
 
 Re-embodiment (`tm_reembody_as_woman_effect`) fires on completion when the game rule allows; otherwise cosmetic only.
+
+### 5a. Finding daughters to recruit and adopt (user request, 2026-10-14)
+
+Since succession runs through adoption and the Gift Alone cannot compel anyone, players need to *find* marked characters. Facts from the game files:
+
+- `gui/window_character_finder.gui` already exposes `CharacterSelectionList.GetFilter('trait_filter')` alongside culture, religion, gender, sexuality, range and more. Any ordinary trait can be filtered with **no GUI modding**.
+- `common/traits/_traits.info` offers only `shown_in_encyclopedia` and `shown_in_ruler_designer`; there is no per-viewer or hidden trait. A truly hidden state would have to be a character flag, which the finder cannot filter.
+
+**v1 decision: `tm_transgender` is a visible trait**, so the vanilla finder's trait filter finds every marked character in diplomatic range for free. This matches CK3's omniscient UI (sexuality is already a finder filter) and costs nothing. Open the finder, filter by *Marked by the Mother*, invite or adopt.
+
+**Later option (thematic):** keep the seed as a hidden flag and add a visible marker trait granted only when a Sister *recognises* the person (a short "Discern the Mark" scheme or an on-action when a marked character enters your court or a faith holy site). The finder then filters by the marker, so only discovered daughters are findable. Ship behind a game rule if wanted.
+
+To verify in-game: that a custom trait appears in the finder's trait list (expected, since the list is engine-built from trait definitions), and that `range_filter` does not hide too many candidates for a small Anatolian realm.
 
 ## 6. The Rite of the Knife (decision + interaction)
 
