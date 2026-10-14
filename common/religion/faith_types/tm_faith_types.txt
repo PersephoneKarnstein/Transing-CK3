@@ -1,0 +1,27 @@
+# Transbian Maximalism — faith
+# Spec: game/common/religion/faith_types/_faith_types.info
+
+transbian_maximalism = {
+	main_rite = transbian_maximalist_rite
+	faith_details = {
+		religion = transbian_maximalism_religion
+		color = { 0.96 0.66 0.72 }
+		icon = custom_faith_1			# TODO: same icon as the rite, or a distinct one
+		graphical_faith = "orthodox_gfx"	# temple 3D models; TODO pick: catholic_gfx orthodox_gfx islam_gfx pagan_gfx ...
+	}
+
+	# Non-historical by default: a faith with no followers counts as "not yet created" until flagged
+	# in history/faiths (see history/faiths/tm_faith_history.txt), which this mod does.
+	historical = no
+
+	# Holy sites: TODO. Keys live in game/common/religion/holy_site_types/00_holy_site_types.txt.
+	# eminent_holy_sites = { }
+	# holy_sites = { }
+
+	# Core tenets live on the scripted main Rite above; do not duplicate them here.
+	# Doctrines intrinsic to every rite of this faith. Baseline set is on the religion.
+	doctrines = {
+	}
+
+	cultures = { transbian_maximalist }
+}

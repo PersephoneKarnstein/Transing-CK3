@@ -1,0 +1,31 @@
+# Transbian Maximalism — scripted main Rite
+# Spec: game/common/religion/rite_types/_rite_types.info
+# In 1.20 a Rite is the thing a character actually practises; the Ruler Designer faith picker
+# lists rites per faith (gui binds Faith.GetRites). history = no (default) keeps it selectable there.
+
+transbian_maximalist_rite = {
+	name = transbian_maximalist_rite
+	desc = transbian_maximalist_rite_desc
+	faith = transbian_maximalism
+
+	color = { 0.96 0.66 0.72 }
+	icon = custom_faith_1		# TODO: pick/make an icon; path gfx/interface/icons/faith/<icon>.dds (100x100)
+
+	convert = yes
+	create = yes
+	history = no
+
+	# Core tenets of the main Rite (exactly 3). TODO: choose. Full vanilla list is in README.md.
+	tenets = {
+		tenet_polyamory
+		tenet_carnal_exaltation
+		tenet_ritual_celebrations
+	}
+
+	# Rite-specific doctrine overrides go here (they beat faith- and religion-level doctrines
+	# in the same group). Leave empty while the religion file carries the full baseline set.
+	doctrines = {
+	}
+
+	cultures = { transbian_maximalist }
+}

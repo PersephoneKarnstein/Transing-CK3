@@ -1,0 +1,40 @@
+# Transbian Maximalism — culture template
+# Spec: game/common/culture/cultures/_cultures.info
+# Culture templates in this folder appear in the Ruler Designer culture picker
+# (gui/window_ruler_designer.gui binds CultureTemplate.Self), so no county needs to have it on the map.
+
+transbian_maximalist = {
+	color = { 0.96 0.66 0.72 }		# trans-flag pink on the culture map mode
+	created = 500.1.1
+
+	# --- Pillars (one of each is mandatory) ---
+	ethos = ethos_egalitarian					# TODO choose: bellicose stoic bureaucratic spiritual courtly egalitarian communal
+	heritage = heritage_transbian				# defined in common/culture/pillars/tm_pillars.txt
+	language = language_transbian				# defined in common/culture/pillars/tm_pillars.txt
+	martial_custom = martial_custom_female_only	# TODO choose: male_only equal female_only
+	head_determination = head_determination_domain	# domain (settled) or herd (nomadic)
+
+	# --- Traditions (placeholders; vanilla has 173 to choose from) ---
+	traditions = {
+		tradition_equal_inheritance
+		tradition_festivities
+		tradition_xenophilic
+		tradition_poetry
+	}
+
+	# --- Names ---
+	name_list = name_list_english	# TODO: write name_list_transbian in common/culture/name_lists/ and swap
+
+	# --- Graphics (borrowed from the western set) ---
+	coa_gfx = { western_coa_gfx }
+	building_gfx = { western_building_gfx }
+	clothing_gfx = { western_clothing_gfx }
+	unit_gfx = { western_unit_gfx }
+
+	ethnicities = {
+		25 = caucasian_blond
+		15 = caucasian_ginger
+		35 = caucasian_brown_hair
+		25 = caucasian_dark_hair
+	}
+}

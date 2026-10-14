@@ -1,0 +1,216 @@
+# Transbian Maximalism — religion
+# Spec: game/common/religion/religion_types/_religion_types.info
+# One doctrine per group is mandatory; this is the baseline that the faith and rite can override.
+# Modelled on game/common/religion/religion_types/00_akom.txt (a simple reformed-style pagan setup).
+
+transbian_maximalism_religion = {
+	religion_details = {
+		family = rf_pagan			# TODO choose: rf_pagan rf_abrahamic rf_eastern rf_sinitic (drives hostility + GHW rules)
+		graphical_faith = "orthodox_gfx"
+		piety_icon_group = "christian"	# TODO: piety icon set
+	}
+
+	pagan_roots = no				# no unreformed doctrine below, so the faith behaves as reformed
+	doctrine = pagan_hostility_doctrine
+
+	# --- Main group ---
+	doctrine = doctrine_polytheist					# TODO: monotheist / polytheist
+	doctrine = doctrine_no_head						# TODO: no_head / spiritual_head / temporal_head
+	doctrine = doctrine_gender_equal
+	doctrine = doctrine_pluralism_pluralistic
+	doctrine = doctrine_theocracy_temporal
+
+	# --- Marriage ---
+	doctrine = doctrine_monogamy					# TODO: monogamy / polygamy / concubines
+	doctrine = doctrine_divorce_allowed
+	doctrine = doctrine_bastardry_all
+	doctrine = doctrine_consanguinity_cousins
+
+	# --- Crimes ---
+	doctrine = doctrine_homosexuality_accepted
+	doctrine = doctrine_adultery_men_accepted		# tenet_polyamory requires adultery fully accepted
+	doctrine = doctrine_adultery_women_accepted
+	doctrine = doctrine_kinslaying_close_kin_crime
+	doctrine = doctrine_deviancy_accepted
+	doctrine = doctrine_witchcraft_accepted
+
+	# --- Clergy ---
+	doctrine = doctrine_clerical_function_alms_and_pacification
+	doctrine = doctrine_clerical_gender_either
+	doctrine = doctrine_clerical_marriage_allowed
+	doctrine = doctrine_clerical_succession_temporal_appointment
+	doctrine = doctrine_monasticism_absent
+	doctrine = doctrine_sacraments_absent
+
+	# --- Misc ---
+	doctrine = doctrine_pilgrimage_encouraged
+	doctrine = doctrine_funeral_bewailment
+	doctrine = doctrine_no_anointment
+	doctrine = doctrine_mythic_literary
+
+	# TODO: virtues/sins. weight = Spiritual Fulfillment contribution, scale = opinion/modifier multiplier.
+	traits = {
+		virtues = {
+			compassionate = { weight = 30 scale = 1 }
+			brave = { weight = 20 scale = 1 }
+			generous = { weight = 20 scale = 1 }
+		}
+		sins = {
+			callous = { weight = 30 scale = 1 }
+			craven = { weight = 20 scale = 1 }
+			greedy = { weight = 20 scale = 1 }
+		}
+	}
+
+	custom_faith_icons = {
+		custom_faith_1 custom_faith_2 custom_faith_3 custom_faith_4 custom_faith_5
+		custom_faith_6 custom_faith_7 custom_faith_8 custom_faith_9 custom_faith_10
+	}
+
+	# Deity / terminology keys used by event text ([Faith.HighGodName] etc.).
+	# Generic paganism_* keys are vanilla; tm_* keys are defined in localization/english/tm_l_english.yml.
+	localization = {
+		HighGodName = tm_high_god_name
+		HighGodName2 = tm_high_god_name
+		HighGodNamePossessive = tm_high_god_name_possessive
+		HighGodNameSheHe = CHARACTER_SHEHE_SHE
+		HighGodHerselfHimself = CHARACTER_HERSELF
+		HighGodHerHis = CHARACTER_HERHIS_HER
+		HighGodNameAlternate = tm_high_god_name_alternate
+		HighGodNameAlternatePossessive = tm_high_god_name_alternate_possessive
+
+		CreatorName = tm_high_god_name
+		CreatorNamePossessive = tm_high_god_name_possessive
+		CreatorSheHe = CHARACTER_SHEHE_SHE
+		CreatorHerHis = CHARACTER_HERHIS_HER
+		CreatorHerHim = CHARACTER_HERHIM_HER
+
+		HealthGodName = tm_high_god_name
+		HealthGodNamePossessive = tm_high_god_name_possessive
+		HealthGodSheHe = CHARACTER_SHEHE_SHE
+		HealthGodHerHis = CHARACTER_HERHIS_HER
+		HealthGodHerHim = CHARACTER_HERHIM_HER
+
+		FertilityGodName = tm_high_god_name
+		FertilityGodNamePossessive = tm_high_god_name_possessive
+		FertilityGodSheHe = CHARACTER_SHEHE_SHE
+		FertilityGodHerHis = CHARACTER_HERHIS_HER
+		FertilityGodHerHim = CHARACTER_HERHIM_HER
+
+		WealthGodName = tm_high_god_name
+		WealthGodNamePossessive = tm_high_god_name_possessive
+		WealthGodSheHe = CHARACTER_SHEHE_SHE
+		WealthGodHerHis = CHARACTER_HERHIS_HER
+		WealthGodHerHim = CHARACTER_HERHIM_HER
+
+		HouseholdGodName = tm_high_god_name
+		HouseholdGodNamePossessive = tm_high_god_name_possessive
+		HouseholdGodSheHe = CHARACTER_SHEHE_SHE
+		HouseholdGodHerHis = CHARACTER_HERHIS_HER
+		HouseholdGodHerHim = CHARACTER_HERHIM_HER
+
+		FateGodName = tm_high_god_name
+		FateGodNamePossessive = tm_high_god_name_possessive
+		FateGodSheHe = CHARACTER_SHEHE_SHE
+		FateGodHerHis = CHARACTER_HERHIS_HER
+		FateGodHerHim = CHARACTER_HERHIM_HER
+
+		KnowledgeGodName = tm_high_god_name
+		KnowledgeGodNamePossessive = tm_high_god_name_possessive
+		KnowledgeGodSheHe = CHARACTER_SHEHE_SHE
+		KnowledgeGodHerHis = CHARACTER_HERHIS_HER
+		KnowledgeGodHerHim = CHARACTER_HERHIM_HER
+
+		WarGodName = tm_high_god_name
+		WarGodNamePossessive = tm_high_god_name_possessive
+		WarGodSheHe = CHARACTER_SHEHE_SHE
+		WarGodHerHis = CHARACTER_HERHIS_HER
+		WarGodHerHim = CHARACTER_HERHIM_HER
+
+		TricksterGodName = tm_high_god_name
+		TricksterGodNamePossessive = tm_high_god_name_possessive
+		TricksterGodSheHe = CHARACTER_SHEHE_SHE
+		TricksterGodHerHis = CHARACTER_HERHIS_HER
+		TricksterGodHerHim = CHARACTER_HERHIM_HER
+
+		NightGodName = tm_high_god_name
+		NightGodNamePossessive = tm_high_god_name_possessive
+		NightGodSheHe = CHARACTER_SHEHE_SHE
+		NightGodHerHis = CHARACTER_HERHIS_HER
+		NightGodHerHim = CHARACTER_HERHIM_HER
+
+		WaterGodName = tm_high_god_name
+		WaterGodNamePossessive = tm_high_god_name_possessive
+		WaterGodSheHe = CHARACTER_SHEHE_SHE
+		WaterGodHerHis = CHARACTER_HERHIS_HER
+		WaterGodHerHim = CHARACTER_HERHIM_HER
+
+		PantheonTerm = tm_pantheon_term
+		PantheonTerm2 = tm_pantheon_term
+		PantheonTerm3 = tm_pantheon_term
+		PantheonTermHasHave = pantheon_term_have
+		GoodGodNames = { tm_high_god_name tm_high_god_name_alternate }
+		DevilName = paganism_evil_god_decay
+		DevilNamePossessive = paganism_evil_god_decay_possessive
+		DevilSheHe = CHARACTER_SHEHE_IT
+		DevilHerHis = CHARACTER_HERHIS_ITS
+		DevilHerselfHimself = CHARACTER_ITSELF
+		EvilGodNames = { paganism_evil_god_decay paganism_evil_god_drought paganism_devil_name }
+		HouseOfWorship = paganism_house_of_worship
+		HouseOfWorship2 = paganism_house_of_worship_2
+		HouseOfWorship3 = paganism_house_of_worship_3
+		HouseOfWorshipPlural = paganism_house_of_worship_plural
+		ReligiousSymbol = tm_religious_symbol
+		ReligiousSymbol2 = tm_religious_symbol
+		ReligiousSymbol3 = tm_religious_symbol
+		ReligiousText = paganism_religious_text
+		ReligiousText2 = paganism_religious_text_2
+		ReligiousText3 = paganism_religious_text_3
+		ReligiousHeadName = tm_religious_head
+		ReligiousHeadNameFemale = tm_religious_head
+		ReligiousHeadTitleName = paganism_religious_head_title_name
+		DevoteeMale = paganism_devotee
+		DevoteeMalePlural = paganism_devoteeplural
+		DevoteeFemale = paganism_devotee
+		DevoteeFemalePlural = paganism_devoteeplural
+		DevoteeNeuter = paganism_devotee
+		DevoteeNeuterPlural = paganism_devoteeplural
+		PriestMale = paganism_priest
+		PriestMalePlural = paganism_priest_plural
+		PriestFemale = paganism_priest
+		PriestFemalePlural = paganism_priest_plural
+		PriestNeuter = paganism_priest
+		PriestNeuterPlural = paganism_priest_plural
+		AltPriestTermPlural = paganism_priest_alternate_plural
+		BishopMale = tm_high_priest
+		BishopMalePlural = tm_high_priest_plural
+		BishopFemale = tm_high_priest
+		BishopFemalePlural = tm_high_priest_plural
+		BishopNeuter = tm_high_priest
+		BishopNeuterPlural = tm_high_priest_plural
+		DivineRealm = tm_divine_realm
+		DivineRealm2 = tm_divine_realm
+		DivineRealm3 = tm_divine_realm
+		PositiveAfterLife = tm_afterlife
+		PositiveAfterLife2 = tm_afterlife
+		PositiveAfterLife3 = tm_afterlife
+		NegativeAfterLife = tm_afterlife
+		NegativeAfterLife2 = tm_afterlife
+		NegativeAfterLife3 = tm_afterlife
+		DeathDeityName = paganism_death_deity_name
+		DeathDeityNamePossessive = paganism_death_deity_name_possessive
+		DeathDeitySheHe = CHARACTER_SHEHE_IT
+		DeathDeityHerHis = CHARACTER_HERHIS_ITS
+		DeathDeityHerHim = CHARACTER_HERHIM_IT
+		WitchGodName = tm_high_god_name
+		WitchGodNamePossessive = tm_high_god_name_possessive
+		WitchGodHerHis = CHARACTER_HERHIS_HER
+		WitchGodSheHe = CHARACTER_SHEHE_SHE
+		WitchGodHerHim = CHARACTER_HERHIM_HER
+		WitchGodMistressMaster = mistress
+		WitchGodMotherFather = mother
+
+		GHWName = ghw_great_holy_war
+		GHWNamePlural = ghw_great_holy_wars
+	}
+}

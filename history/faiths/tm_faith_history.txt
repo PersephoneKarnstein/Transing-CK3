@@ -1,0 +1,10 @@
+# Transbian Maximalism — faith history
+# Spec: game/history/faiths/_faith_history.info
+# Marks the faith as created at every start date so it can be converted to / chosen even with zero followers.
+
+transbian_maximalism = {
+	867.1.1 = {
+		created = yes
+		main_rite = transbian_maximalist_rite
+	}
+}
