@@ -1,10 +1,19 @@
-# Adelphai Dorleyaiou (Transbian Maximalism) — design lock (v1.4, locked 2026-10-14)
+# Adelphai Dorleyaiou (Transbian Maximalism) — design lock (v1.5, locked 2026-10-14)
 
 One decision per slot, with the belief-list row and the history verdict that backs it. Items marked **[YOUR CALL]** are the ones where I have recommended but the choice is genuinely yours; everything else I propose to lock and build.
 
 Working names are placeholders for localisation; in-game key names are final.
 
 ---
+
+## 0. Scope principle (user, 2026-10-14)
+
+**This mod adds the trans culture, faith and rites. It does not build an antagonist.** There is no constructed "TERF nation", no allegorical rival superpower, and no scripted clash of civilisations. Opposition to the Sisters comes only from the vanilla world as it already is: the hostility doctrines, crimes and opinions of the existing historical faiths, the normal Byzantine, Islamic, steppe and Chinese courts, and the era-based decay of tolerance that the history reports document. "Hostile-faith text" in the research means *how existing faiths would react*, not a new enemy. Consequences:
+
+- The belief-list row E7 ("Raymondite heresy as a hostile foil faith") is **dropped**. Grandmother's House survives only as a *doctrine option inside the faith* and as hostile reputation, never as a rival polity.
+- Flavour events against notable targets (section 11) are jokes about the vanilla world, not a war arc.
+- Later pagan or Norse families are *branches of the same faith*, not opponents.
+- AI behaviour toward the faith uses vanilla hostility levels; no custom "crusade against the Sisters" casus belli unless vanilla GHW rules already produce one.
 
 ## 1. Premise and setting
 
