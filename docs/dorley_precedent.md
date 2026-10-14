@@ -82,6 +82,20 @@ Male, adult, `age <= 25` (or a looser `age < 30`), imprisoned by a faith ruler, 
 - The AGA, the novelty mug, "Dorleypilled" as easter-egg loc strings for the in-group.
 - Aunt Bea's rule that the programme must not be "pointlessly cruel", as the doctrine text that separates B from A.
 
+## Historical anchors for the mapping (third history pass, 2026-10-14)
+
+| Dorley element | Period anchor | Source |
+|---|---|---|
+| Selected violent men castrated | Byzantine punitive castration for rape, bestiality and male–male sex; political neutralisation of rivals | Tougher (Malalas; Ekloga; Sergios) |
+| A regime castrating a whole feminine-male class | Caliph Sulayman's 715 castration of the Medinan *mukhannath* singers; the victims' quips ("the Greater Circumcision"; "we have become women in truth") | Rowson pp. 671–693 |
+| The older, crueller regime (Grandmother's House) | The slave supply chain: Abasgia, Lazica, Armenia, Slavs, Verdun; children castrated for sale; Justinian Novel 142 on 3 of 90 surviving | Tougher ch. 2; Marmon ch. 2 |
+| Sponsor → sister | Patron-to-patron gifting of boy eunuchs (Samonas); Medina novices "given in charge to their elder brethren … then set up their own establishments"; Hit → Tuways → al-Dalal master–pupil chain | Tougher; Marmon p. 105; Rowson |
+| Three-year programme with a novitiate | Medina tomb-eunuch novice house; Ottoman and Ming palace schools | Marmon; Tougher p. 110 |
+| Legal cover for the rite | Leo VI Novel 60 (castration "for health") and Nicaea canon 1's physician exemption | Tougher |
+| "Washouts" | Expulsion from monastic houses; Sulayman's victims who did not recover; Sergios castrated then hanged | Tougher; Rowson |
+| Neighbours' view | Islamic law: castration forbidden, never punitive; eunuch shrines condemned as *bid'a/shirk* | Marmon |
+| What has no precedent | The *rehabilitative* intent itself. Lean on post-castration monastic conversions and present it as the faith's innovation. | Tougher §6(n); Marmon §5(n) |
+
 ## Ethical note for the design doc
 
 The serial frames the programme as coercive and keeps its victims' perspective; the fandom largely reads it as wish-fulfilment. The mod should keep the serial's honesty: option B must still read as a crime to every other faith, carry dread, and produce washouts. If it plays as cost-free, the lampshade stops working.
