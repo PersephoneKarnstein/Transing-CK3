@@ -1,0 +1,109 @@
+# Transbian Maximalism — scripted effects
+# DRAFT. Every effect name below is used by vanilla script (see docs/model_swap.md for the counts),
+# but the whole effect is untested in-game. Run `script_docs` in the console and check effects.log
+# before relying on parameter names marked TODO.
+
+# ---------------------------------------------------------------------------------------------
+# tm_reembody_as_woman_effect
+#
+# Scope: the character completing transition (male-bodied in engine terms).
+# Creates a female-bodied copy with the same face, moves traits, faith, culture, house, resources
+# and titles across, hands player control over if needed, and retires the old body quietly.
+#
+# Losses accepted by design (see docs/model_swap.md): memories, secrets, hooks, schemes, opinions.
+# Children are NOT re-parented here; the faith's adoption mechanic handles that.
+# ---------------------------------------------------------------------------------------------
+tm_reembody_as_woman_effect = {
+	save_scope_as = tm_old_body
+
+	# Remember what we need to carry over as scope values (script values re-evaluate on the new scope otherwise).
+	save_scope_value_as = { name = tm_gold value = gold }
+	save_scope_value_as = { name = tm_prestige value = prestige }
+	save_scope_value_as = { name = tm_piety value = piety }
+	save_scope_value_as = { name = tm_age value = age }
+
+	# 1. New body. gender = female is the only thing the engine will ever use to pick the female mesh.
+	create_character = {
+		gender = female
+		age = scope:tm_age
+		culture = scope:tm_old_body.culture
+		faith = scope:tm_old_body.faith
+		dynasty_house = scope:tm_old_body.house			# TODO: confirm parameter name in effects.log (dynasty_house vs dynasty)
+		location = scope:tm_old_body.location
+		random_traits = no
+		save_scope_as = tm_new_body
+	}
+
+	scope:tm_new_body = {
+		# 2. Same face. Inheritable genes only; hair/clothes regenerate from the female template lists.
+		copy_inheritable_appearance_from = scope:tm_old_body
+
+		# 3. Traits (skip the ones that no longer make sense on the new body).
+		scope:tm_old_body = {
+			every_character_trait = {
+				limit = {
+					NOT = { this = trait:eunuch_1 }
+					NOT = { this = trait:beardless_eunuch }
+				}
+				scope:tm_new_body = { add_trait = prev }
+			}
+		}
+		# The faith's own marker for a woman who came to womanhood by the knife.
+		# add_trait = tm_daughter_of_the_knife		# TODO: define in common/traits/tm_traits.txt (group eunuch, NO inheritance_blocker)
+
+		# 4. Identity.
+		set_sexuality = scope:tm_old_body.sexuality
+		set_house = scope:tm_old_body.house
+
+		# 5. Resources.
+		add_gold = scope:tm_gold
+		add_prestige = scope:tm_prestige
+		add_piety = scope:tm_piety
+		# TODO: lifestyle XP, perks and focus. add_<lifestyle>_lifestyle_xp exist; the getter for current
+		#       XP needs checking in event_targets.log / triggers.log before copying.
+
+		# 6. Court placement (unlanded case). Landed case is handled by the title transfer below.
+		if = {
+			limit = { scope:tm_old_body = { is_landed = no  exists = employer } }
+			set_employer = scope:tm_old_body.employer
+		}
+	}
+
+	# 7. Titles, vassals and capital.
+	if = {
+		limit = { is_landed = yes }
+		create_title_and_vassal_change = {
+			type = granted								# TODO: pick the change type that suppresses opinion hits (granted/usurped/inheritance)
+			save_scope_as = tm_change
+			add_claim_on_loss = no
+		}
+		every_held_title = {
+			change_title_holder_include_vassals = {
+				holder = scope:tm_new_body
+				change = scope:tm_change
+			}
+		}
+		resolve_title_and_vassal_change = scope:tm_change
+		scope:tm_new_body = { set_realm_capital = scope:tm_old_body.capital_county }	# TODO: capital_county vs realm_capital_county
+	}
+
+	# 8. Relations worth keeping (friends/lovers/rivals). Spouses are deliberately NOT carried:
+	#    the faith's marriage doctrine decides what happens to a husband.
+	scope:tm_old_body = {
+		every_relation = {
+			type = friend
+			set_relation_friend = { target = scope:tm_new_body }		# TODO: verify every_relation syntax in effects.log
+		}
+	}
+
+	# 9. Player hand-over.
+	if = {
+		limit = { is_ai = no }
+		set_player_character = scope:tm_new_body
+	}
+
+	# 10. The old register is closed. death_vanished leaves no corpse event; remove_character deletes outright.
+	scope:tm_old_body = {
+		death = { death_reason = death_vanished }
+	}
+}
