@@ -1,4 +1,4 @@
-# Transbian Maximalism — design lock (v1, 2026-10-14)
+# Transbian Maximalism — design lock (v1.1, locked 2026-10-14)
 
 One decision per slot, with the belief-list row and the history verdict that backs it. Items marked **[YOUR CALL]** are the ones where I have recommended but the choice is genuinely yours; everything else I propose to lock and build.
 
@@ -113,11 +113,19 @@ Re-embodiment (`tm_reembody_as_woman_effect`) fires on completion when the game 
 6. Re-embodiment effect wired to completion behind a game rule.
 7. Loc; icons; CK3 Tiger; in-game test with `-develop`.
 
-## Decisions needed from you
+## Decisions (locked 2026-10-14)
 
-1. Religion family: A (Christian heresy), B (pagan revival), or C.
-2. Gender doctrine: female-dominated or equal.
-3. Head of faith: spiritual head or none.
-4. Heritage: Byzantine or custom.
-5. Ethos: communal or egalitarian.
-6. Culture's own name (I propose Kybeline).
+| # | Decision | Locked value | Note |
+|---|---|---|---|
+| 1 | Religion family | **A — Christian heresy** (faith under `christianity_religion`) | User: start with the best-supported family; add an Eastern pagan revival (Cybele) and a Norse pagan family as separate faiths in a later version. |
+| 2 | Gender doctrine | **`doctrine_gender_female_dominated`** | User decision. |
+| 3 | Head of faith | **`doctrine_spiritual_head`**, elected Mother of Mothers | Recommendation adopted by default. |
+| 4 | Heritage | **`heritage_byzantine`** | Recommendation adopted by default; custom heritage can return with the pagan families. |
+| 5 | Ethos | **`ethos_communal`** | Recommendation adopted by default. |
+| 6 | Culture name | **Kybeline** (`kybeline` culture key); *bæddel* reserved for the Norse branch | Recommendation adopted by default. |
+
+## Deferred research (not blocking the build)
+
+- **Ayalon, *Eunuchs, Caliphs and Sultans* (1999)** — PDF received 2026-10-14, converted to `docs/research/sources_pending/ayalon_eunuchs_caliphs_sultans.txt`, not yet read. Target: al-Jahiz's statement on eunuchs' transfer to the female realm, in context, for flavour text.
+- **East and Southeast Asia.** CK3 1.20 includes China, Korea, Japan and Southeast Asia. Needed before the faith is given Asian branches or hostile-faith text there: Chinese court eunuchs (Tang–Yuan; Tsai, *The Eunuchs in the Ming Dynasty* for the later end), Mongol/Khanate attitudes to castration and gender variance, Korean *naesi*, Japanese absence of eunuchs, Southeast Asian *bissu*, *baylan* and *kathoey*-adjacent roles (Wiesner-Hanks touched bissu and baylan only briefly). Also the Mongol *Yassa* on sexual offences.
+- **Kerala Nair matriliny and Tuareg descent** for on-map matrilineal precedents (G verdict g).
