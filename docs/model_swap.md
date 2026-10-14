@@ -50,8 +50,15 @@ Implement both, staged:
 2. **On "completion"** (a follow-up event some months later, or immediately for AI courtiers): run the Route 2 scripted effect `tm_reembody_as_woman_effect` (draft in `common/scripted_effects/tm_scripted_effects.txt`). Gate it behind a game rule so players who prefer the cosmetic-only version can opt out.
 3. Treat children via the faith's own mechanic: the new body adopts them (vanilla `adopt_interaction` path), which is the matrilineal story anyway.
 
-## Open checks before scripting for real
+## Checks against script_docs (done 2026-10-14; logs archived in `docs/script_docs/`)
 
-- Generate the authoritative effect/trigger docs in-game (`script_docs` in the console writes `effects.log`, `triggers.log` and `event_targets.log` to `~/Documents/Paradox Interactive/Crusader Kings III/logs/`) and confirm `create_character` parameters (`gender`, `dynasty_house`, `age`, `random_traits = no`) and whether anything newer than 1.19 added a sex-change effect.
-- Verify `copy_inheritable_appearance_from` copies enough (it copies inheritable genes only; accessories regenerate for the new sex, which is what we want).
-- Decide the trait's `inheritance_blocker` behaviour: vanilla `eunuch_1` blocks all inheritance; our trait must not, or adoptive succession cannot work.
+- **No sex-change effect exists.** The complete list of effects whose names mention sex or gender: `set_sexuality`, `set_pregnancy_gender`, `set_generated_*sexuality_chance`, and the `*_same_sex_/opposite_sex_spouse_candidate` iterators. Route 2 is the only way to a female body.
+- **`create_character`** confirmed to take `gender = male/female/character scope`, `opposite_gender`, `age`, `dynasty_house`, `dynasty = generate/inherit/none`, `location` or `employer`, `random_traits = yes/no`, explicit skills, `template_character`, `rite`, and an `after_creation = { }` block.
+- **`castrate` is not an effect.** Vanilla castration (Roads to Power) is `add_trait = eunuch_1` or `add_trait = beardless_eunuch` inside `07_dlc_ep3_scripted_effects.txt`. Our rite therefore just adds our own trait.
+- **`remove_character`** only removes someone from a travel plan; the old body exits via `death = { death_reason = death_vanished }`.
+- **`set_sexuality`** takes a key, so sexuality is copied by `has_sexuality` branches.
+- **`every_relation`** requires `type = <relation>`; `set_relation_guardian` / `set_relation_ward` exist for the sponsor mechanic.
+- **Perks** have no iterator (`has_perk` trigger only); copy XP via the `*_lifestyle_xp` triggers and `add_*_lifestyle_xp` effects, accept perk loss or re-grant by explicit list.
+- The logs were generated with the Vampire Inquisition mod enabled (its `add_vi_vampire_lifestyle_xp` appears); vanilla entries are unaffected.
+
+Remaining before the effect can be trusted: an in-game run with `-develop`, and a decision on the `create_title_and_vassal_change` type that keeps vassals quiet.
