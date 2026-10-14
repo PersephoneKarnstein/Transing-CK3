@@ -1,4 +1,4 @@
-# Transbian Maximalism — belief list (working draft v3)
+# Transbian Maximalism — belief list (working draft v3.2)
 
 Running list of beliefs drawn from the research, each mapped to a CK3 slot. Sources are the reports in `docs/research/`:
 
@@ -13,6 +13,7 @@ Running list of beliefs drawn from the research, each mapped to a CK3 slot. Sour
 | **W-B / W-3 / W-M** | web reports on baedelism / third-wave transfeminism / transgender Marxism |
 | **T2** | `book_tsr_2.md` (Transgender Studies Reader vol. 2) |
 | **TH / KA / AN / WH** | history reports (Trans Historical, Karras, Surtees & Dyer, Wiesner-Hanks); see section G |
+| **NV / QG / NB** | second history pass: Neville *Byzantine Gender*; Neil & Garland *Questions of Gender in Byzantine Society*; Norse/English articles; see G2 |
 
 Movement column: **BD** baedelism, **3W** third-wave transfeminism, **TMx** transgender Marxism, **GEN** broader trans studies. Plausibility column (history pass, 2026-10-14): **S** strengthened, **M** mixed/needs in-world reinterpretation, **W** weak (the faith's own invention). See section G for the consolidated verdicts.
 
@@ -127,6 +128,33 @@ Four history reports were asked the same thirteen questions. Sources: **TH** `hi
 4. **Adoption is driven by childlessness.** The honest in-world logic: a castrated/celibate clergy cannot breed heirs, so the house chooses them (monastic succession). Matriline is the faith's law layered on that.
 5. **No source bridges c. 250–867.** The faith must claim either secret survival of the Mother's cult or a revival; flavour text should say which.
 6. **Borrow institutions, not identity concepts** (KA). Convent, guild, ocak, godparenthood and adelphopoiia are the shells; modern identity language stays in the design doc.
+
+### G2. Second history pass (2026-10-14): Byzantium and the north-west
+
+Sources: **NV** `hist_neville_byzantine_gender.md` (Neville, *Byzantine Gender*), **QG** `hist_questions_gender_byzantium.md` (Neil & Garland eds., *Questions of Gender in Byzantine Society*), **NB** `hist_norse_british_articles.md` (Jakobsson on Óðinn; Berry on medieval Scandinavia; Birch on Durham 1417; Tommony & Forster; a Cailleach's Herbarium blog, marked popular).
+
+| Belief | Byzantium (NV, QG) | Norse / British (NB) | Change to consolidated verdict |
+|---|---|---|---|
+| (a) distinct sex class | **S.** QG p. 3: Byzantium "recognised not just two but three genders: women, men and eunuchs"; Philotheos (899) splits officials into eunuchs vs "bearded"; Leo VI's Novel calls eunuchs "a strange sex" (NV p. 53). | **M.** *ergi/argr* and *níð* re-sort unmanly men "in one step"; Grágás treats men in women's clothes as a legal category; Suontaka XXY burial dressed as a woman. | Unchanged (**M**), but the third estate is now firmly on-map and in-period. |
+| (b) womanhood by rite | **M.** Rites run woman→"manly" (bishop to St Eugenia: "defeat your nature with your will"); hair-clipping sponsorship creates "artificial kinship" (De cerimoniis 2.23) — a ready rite template. | **M.** Seiðr unmans the male practitioner by definition; Theodora prays to be "a monk of þe hous"; every attested rite runs toward manhood. | Unchanged (**S** for the rite form; the M→F direction is the faith's inversion everywhere). |
+| (c) castration as sacred rebirth | **S for 867–1050.** Court theology: angels look like eunuchs, "that's no eunuch, that's an angel!", eunuchs "beautiful, shining, and pure" (NV p. 54); Daniel read as a eunuch; Theophylact's *In Defence of Eunuchs*; eunuchs in high church office 8th–12th c. The ideology collapses after the 11th c. ("simply mutilated men", NV p. 91). | **Not supportable.** Zero eunuchs or castration in all five sources. | **S in the east at the 867 start, decaying by 1066** — an ideal "preservationist faith" arc. |
+| (d) castrated men regarded as women | **M→S as minority doctrine.** NV p. 31 n. 11: "Aristotelian medical teaching held that castration rendered eunuchs fundamentally female"; a 14th-c. author praises a eunuch bishop as "a eunuch, and hence womanly"; Galen classes eunuchs with women and children. Counter: no Byzantine text calls eunuchs women; Kecharitomene convent "closed even to eunuchs"; Casey: "against nature can slip into beyond nature" but always toward angel, not woman. | **No.** In the north-west, feminisation of men is "always demotion, insult or disguise"; the only sanctified crossing runs toward manhood. | **Confirmed: explicit sectarian doctrine, Aristotelian against Galenic orthodoxy.** The two medical schools give a built-in schism (NV). |
+| (e) women-only / transfem priesthood | **S.** Laodicea 380 banned *presbytides*, so they existed; female deacons ordained in the bema with a near-identical rite; eunuch bishops and patriarchs. | **M.** Seiðr is the goddesses' art; völur with drums; Saxo's woman-dressed bell-ringing Freyr priests at Uppsala (blog paraphrase, needs checking); Óðinn's all-female host. | Unchanged (**S**); Norse gives a northern clergy flavour (seiðr-priestesses, Uppsala bells). |
+| (f) separatism | **M.** Women's convents under typika; Kecharitomene excludes men and eunuchs alike. | **M.** Valkyrie host "with no males", Alvild's all-female crew, Saxo's shield-maidens; monastic form absent. | Unchanged (**M**); Norse adds the *war-band* form of separatism. |
+| (g) adoptive / matrilineal heirship | **M, best anchor so far.** Irene Doukaina's typikon passes the convent with estates, church and bathhouses to daughters, granddaughters and daughters-in-law "in perpetuity" (QG p. 53); Theodora Synadene's daughter "mistress and heir of the ancestral convent"; dowry inalienable and reverting to the woman's line (NV p. 67); hair-clipping sponsorship as artificial kinship. Adelphopoiesis present but Neville/Rapp refuse to read it as marriage: frame as adoption. | **W.** Bergþóra owns the farm; *Silence* re-genders a child to inherit; nothing on adoption. | **Raised W→M.** A convent-style *typikon* line of women is the historical shell for adoptive matrilineal succession. |
+| (h) communal property | **M.** Monastic koinobion, convent estates held corporately. | — | Unchanged. |
+| (i) polyamory / non-marital kinship | **M.** Concubinage, remarriage law; adelphopoiesis as sworn kinship. | **M.** Icelandic magnates with two wives (elite rule-breaking); Vanir sibling marriage; Rykener's plural partners. | Unchanged. |
+| (j) bodily modification as sacrament | **S.** "Changing the body meant changing one's gender" (QG p. 172); hair-cutting and dress as the transition act (Mary/Marinos). | **M.** Óðinn's body "mutable but divisible"; shapeshifting tied to seiðr but "sinister" in humans. | Unchanged (**S**). |
+| (k) intra-queer hostility | **M.** Galenist vs Aristotelian; eunuchs vs "bearded" as formal estates. | **S.** *Lokasenna* is a flyting between two gender-deviant gods each calling the other *argr*; Þórr kills to erase his drag; Guðmundr duels over *ragliga*. | **Raised W→M**, with Norse *níð* culture as the model for in-faith shaming and the Galenist/Aristotelian split for the schism. |
+| (l) heresy / outlaw framing | **S.** Canon 1 of Nicaea; Casey's "against nature". | **S.** Grágás full outlawry and licence to kill for the three words; lesser outlawry for cross-dressing in either direction; Durham 1417 "diabolical influence", major excommunication. | Unchanged (**S**). |
+| (m) female-dominated doctrine | **M.** Eirene and Theodora reign; Constantinian women; but *virtus* remains the norm. | **M.** Seiðr belongs to goddesses; Óðinn "more mother than father"; Bernard's monks as brides and mothers. | Unchanged. |
+
+**Homeland verdict (NB §3, confirmed by NV/QG):** keep the homeland and the knife in the east. Byzantium at 867 is the one place where a castrated man is a priest, an angel and (in a minority medical tradition) a woman, and where a women's house passes by typikon to daughters. Let a **Norse branch** arrive by the Varangian/Rus route and absorb *seiðr*, *ergi/níð* and Uppsala theology; treat **Britain** as the weakest option (late, female-to-male, penal). Flavour consequence: the faith's clergy are the angelic court eunuchs whose ideology the Byzantines themselves abandoned after the 11th century — a preservationist heresy with a live schism between its Aristotelian ("the cut are women") and Galenic ("the cut are a third kind") wings.
+
+**Design consequences added**
+7. **The 867 start is the sweet spot.** Byzantine eunuch-angel theology is at its height and decays by 1066; write the faith as the sect that refused to let it die.
+8. **The convent typikon is the succession law.** Model adoptive matrilines on Irene Doukaina's perpetual female line over a landed house, plus the hair-clipping rite of artificial kinship.
+9. **Two medical schools, two rites.** Aristotelian (castrates are women) vs Galenic (castrates are a third kind, "neither"): the Proclaimer/Abolisher schism now has period names.
 
 ---
 
