@@ -55,3 +55,32 @@ tm_debug_take_the_knife_decision = {
 	}
 	ai_check_interval = 0
 }
+
+# DEBUG (only with -debug_mode): count living Marked and daughters worldwide and name one of each.
+tm_debug_census_decision = {
+	picture = { reference = "gfx/interface/illustrations/decisions/decision_misc.dds" }
+	sort_order = 2
+	is_shown = { debug_only = yes }
+	effect = {
+		set_variable = { name = tm_census_marked value = 0 }
+		set_variable = { name = tm_census_daughters value = 0 }
+		every_living_character = {
+			limit = { has_trait = tm_transgender }
+			root = { change_variable = { name = tm_census_marked add = 1 } }
+		}
+		every_living_character = {
+			limit = { has_trait = tm_daughter_of_the_knife }
+			root = { change_variable = { name = tm_census_daughters add = 1 } }
+		}
+		random_living_character = {
+			limit = { has_trait = tm_transgender }
+			save_scope_as = tm_census_example_marked
+		}
+		random_living_character = {
+			limit = { has_trait = tm_daughter_of_the_knife }
+			save_scope_as = tm_census_example_daughter
+		}
+		trigger_event = tm_knife.0900
+	}
+	ai_check_interval = 0
+}

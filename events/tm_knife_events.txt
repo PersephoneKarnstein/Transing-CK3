@@ -113,3 +113,14 @@ tm_knife.0003 = {
 		name = tm_knife.0003.a
 	}
 }
+
+# DEBUG census readout.
+tm_knife.0900 = {
+	type = character_event
+	title = tm_knife.0900.t
+	desc = tm_knife.0900.desc
+	theme = faith
+	left_portrait = { character = scope:tm_census_example_marked }
+	right_portrait = { character = scope:tm_census_example_daughter }
+	option = { name = tm_knife.0900.a }
+}
