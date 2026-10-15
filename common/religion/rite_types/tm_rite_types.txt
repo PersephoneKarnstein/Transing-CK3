@@ -9,7 +9,7 @@ transbian_maximalist_rite = {
 	faith = transbian_maximalism
 
 	color = { 0.96 0.66 0.72 }
-	icon = christianity_rose_cross_01			# placeholder; TODO custom icon
+	icon = tm_dorleyaian
 
 	convert = yes
 	create = yes

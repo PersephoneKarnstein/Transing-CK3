@@ -7,8 +7,6 @@
 # so the mark is technically genetic (recessive inheritance); at 1% the bloodline effect is negligible.
 # Visible on purpose: the vanilla Character Finder's trait filter can then find marked characters.
 tm_transgender = {
-	icon = beauty_good_1.dds		# placeholder
-
 	genetic = yes
 	birth = 1
 	random_creation = 1
@@ -66,8 +64,6 @@ tm_novice = {
 
 # Dorley chain failure marker.
 tm_washout = {
-	icon = eunuch_1.dds			# placeholder
-
 	category = fame
 	general_opinion = -10
 	dread_baseline_add = 5

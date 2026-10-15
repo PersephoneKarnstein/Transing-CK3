@@ -11,8 +11,8 @@ transbian_maximalism = {
 	faith_details = {
 		religion = christianity_religion
 		color = { 0.96 0.66 0.72 }
-		icon = christianity_rose_cross_01		# placeholder vanilla icon; TODO custom icon
-		reformed_icon = christianity_rose_cross_01
+		icon = tm_dorleyaian
+		reformed_icon = tm_dorleyaian
 		graphical_faith = "orthodox_gfx"
 	}
 
