@@ -1,8 +1,23 @@
-# Adelphai Dorleyaiou — on_action hooks. Event lists merge with vanilla's.
+﻿# Adelphai Dorleyaiou — on_action hooks.
+# Vanilla's on_game_start_after_lobby has its own `effect` (which a second definition would replace) and
+# no character scope. So we only append our own on_action to its `on_actions` list (lists merge) and do
+# the work in tm_on_game_start_after_lobby, iterating players explicitly.
 
 on_game_start_after_lobby = {
-	events = {
-		delay = { days = 5 }
-		tm_knife.0100		# the faith chooses its House of the Knife
+	on_actions = {
+		tm_on_game_start_after_lobby
+	}
+}
+
+tm_on_game_start_after_lobby = {
+	effect = {
+		# The first human player of the faith chooses its House of the Knife.
+		random_player = {
+			limit = { faith = faith:transbian_maximalism }
+			trigger_event = {
+				id = tm_knife.0100
+				days = 5
+			}
+		}
 	}
 }

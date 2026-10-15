@@ -1,4 +1,4 @@
-# Transbian Maximalism — scripted effects
+﻿# Transbian Maximalism — scripted effects
 # DRAFT, untested in-game. Every effect, trigger and event target below was checked against the
 # script_docs output for CK3 1.20.1 (docs/script_docs/*.log, generated 2026-10-14):
 #   - there is NO effect that changes a living character's sex (only set_sexuality / set_pregnancy_gender), hence the re-embodiment route;

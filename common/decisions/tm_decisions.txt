@@ -1,4 +1,4 @@
-# Adelphai Dorleyaiou — decisions. Design: docs/faith_design.md §6 (voluntary path).
+﻿# Adelphai Dorleyaiou — decisions. Design: docs/faith_design.md §6 (voluntary path).
 
 tm_take_the_knife_decision = {
 	picture = {

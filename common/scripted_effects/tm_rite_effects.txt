@@ -1,4 +1,4 @@
-# Adelphai Dorleyaiou — the knife itself. Scope: the character being cut.
+﻿# Adelphai Dorleyaiou — the knife itself. Scope: the character being cut.
 
 tm_take_the_knife_effect = {
 	if = {

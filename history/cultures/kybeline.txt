@@ -1,4 +1,4 @@
-# Kybeline — innovation history (copied from vanilla greek.txt: the Sisters are a Greek-speaking Anatolian sect)
+﻿# Kybeline — innovation history (copied from vanilla greek.txt: the Sisters are a Greek-speaking Anatolian sect)
 
 867.1.1 = {
 	discover_innovation = innovation_motte

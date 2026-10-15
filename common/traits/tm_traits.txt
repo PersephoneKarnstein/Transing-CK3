@@ -1,16 +1,15 @@
-# Adelphai Dorleyaiou — traits
+﻿# Adelphai Dorleyaiou — traits
 # Spec: game/common/traits/_traits.info. Design: docs/faith_design.md §5–5a.
-# Icons: gfx/interface/icons/traits/<key>.dds, 120x120 RGBA. The `icon =` lines below point at vanilla art
+# Icons: gfx/interface/icons/traits/<key>.dds, 120x120 RGBA. The `icon =` lines below name vanilla art
 # as placeholders so the game loads cleanly; delete each line once the custom .dds is in place.
 
-# The seed: "Marked by the Mother". Sisters are born of any womb, so inheritance is nominal (1%).
-# random_creation/birth only work on inheritable or genetic traits, hence inherit_chance.
+# The seed: "Marked by the Mother". Sisters are born of any womb. birth/random_creation require genetic = yes,
+# so the mark is technically genetic (recessive inheritance); at 1% the bloodline effect is negligible.
 # Visible on purpose: the vanilla Character Finder's trait filter can then find marked characters.
 tm_transgender = {
-	icon = "gfx/interface/icons/traits/beauty_good_1.dds"		# placeholder
+	icon = beauty_good_1		# placeholder
 
-	inherit_chance = 1
-	both_parent_has_trait_inherit_chance = 2
+	genetic = yes
 	birth = 1
 	random_creation = 1
 
@@ -25,7 +24,7 @@ tm_transgender = {
 # but unlike eunuch_1 it blocks neither marriage nor inheritance, and it is valid for either sex
 # (a re-embodied daughter is female to the engine).
 tm_daughter_of_the_knife = {
-	icon = "gfx/interface/icons/traits/beardless_eunuch.dds"	# placeholder
+	icon = beardless_eunuch	# placeholder
 
 	category = health
 	group_equivalence = eunuch
@@ -53,7 +52,7 @@ tm_daughter_of_the_knife = {
 
 # Dorley chain stage marker (the three-year programme). Removed at completion or washout.
 tm_novice = {
-	icon = "gfx/interface/icons/traits/eunuch_1.dds"			# placeholder
+	icon = eunuch_1			# placeholder
 
 	category = health
 	valid_sex = male
@@ -67,7 +66,7 @@ tm_novice = {
 
 # Dorley chain failure marker.
 tm_washout = {
-	icon = "gfx/interface/icons/traits/eunuch_1.dds"			# placeholder
+	icon = eunuch_1			# placeholder
 
 	category = fame
 	general_opinion = -10

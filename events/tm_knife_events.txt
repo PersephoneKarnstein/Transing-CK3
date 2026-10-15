@@ -1,4 +1,4 @@
-namespace = tm_knife
+﻿namespace = tm_knife
 
 # The knifer's question (voluntary path). Liturgy from the Beijing knifers' "will you ever repent?"
 # and the guarantor/offering sequence (docs/research/east_dale_qing_eunuchs.md, east_tsai_ming_eunuchs.md),

@@ -1,4 +1,4 @@
-# Adelphai Dorleyaiou — doctrine groups
+﻿# Adelphai Dorleyaiou — doctrine groups
 # Spec: game/common/religion/doctrine_group_types/_doctrine_group_types.info
 # Icons: gfx/interface/icons/faith_doctrine_groups/<key>.dds (TODO; the game logs a missing-icon error until then).
 

@@ -18,3 +18,6 @@
 - [ ] Dorley path: prisoner interaction, intake trigger, sponsor chain, levers, washout.
 - [ ] Sister-Making ceremony; Rescue the Daughters CB; flavour "achievement" events.
 - [ ] In-game load test with `-develop`; CK3 Tiger pass.
+
+## Validation notes
+- CK3 Tiger v1.19.0 (built from source 2026-10-14) lags the 1.20 religion schema. Expected false positives on this mod: unknown `doctrine_group_type`/`index`/`divergence`/`special_parameters`, list-form doctrine parameters, `rite_has_doctrine`, the character→`rite` link, holy-site `county_holder_character_modifier`/`faith_character_modifier`, and faiths "not defined in common/religion/religions" (1.20 uses faith_types). All are documented in the installed 1.20 `.info` files. Remaining real warnings: missing art only.
