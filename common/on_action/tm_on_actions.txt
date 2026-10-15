@@ -80,6 +80,52 @@ tm_on_game_start = {
 				}
 			}
 			resolve_title_and_vassal_change = scope:tm_mother_house_change
+
+			# Theia Beatrike also takes Phrygia, the seat, as a vassal of the same liege; the old count
+			# becomes a daughter of the knife (cosmetic: no re-embodiment at game start). In 867 he also
+			# holds Prusa and stays landed there; if he held nothing else he joins Beatrike's court.
+			title:c_phrygia = {
+				holder ?= {
+					save_scope_as = tm_old_count
+					liege ?= { save_scope_as = tm_old_liege }
+				}
+			}
+			if = {
+				limit = { exists = scope:tm_old_count }
+				create_title_and_vassal_change = {
+					type = granted
+					save_scope_as = tm_phrygia_change
+					add_claim_on_loss = no
+				}
+				title:c_phrygia = {
+					change_title_holder = {
+						holder = scope:tm_beatrike
+						change = scope:tm_phrygia_change
+						government_base = scope:tm_old_count
+					}
+				}
+				if = {
+					limit = {
+						exists = scope:tm_old_liege
+						NOT = { scope:tm_old_liege = scope:tm_old_count }
+					}
+					scope:tm_beatrike = {
+						change_liege = {
+							liege = scope:tm_old_liege
+							change = scope:tm_phrygia_change
+						}
+					}
+				}
+				resolve_title_and_vassal_change = scope:tm_phrygia_change
+
+				scope:tm_old_count = {
+					add_trait = tm_daughter_of_the_knife
+					if = {
+						limit = { is_landed = no }
+						scope:tm_beatrike = { add_courtier = scope:tm_old_count }
+					}
+				}
+			}
 		}
 	}
 }
