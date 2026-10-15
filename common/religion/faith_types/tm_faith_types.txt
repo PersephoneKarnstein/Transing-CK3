@@ -14,6 +14,7 @@ transbian_maximalism = {
 		icon = tm_dorleyaian
 		reformed_icon = tm_dorleyaian
 		graphical_faith = "orthodox_gfx"
+		religious_head = d_tm_mother_house	# filled at game start by Theia Beatrike (tm_on_actions.txt)
 	}
 
 	# Dorylaion is the seat (the Dorley pun); Constantinople for the eunuch-angel court theology.
@@ -61,6 +62,4 @@ transbian_maximalism = {
 		DevoteeNeuterPlural = tm_devotee_plural
 	}
 
-	# TODO religious head: doctrine_spiritual_head needs a head-of-faith title (d_tm_mother_house in
-	# common/landed_titles) or a creation decision; until then the faith has no head.
 }

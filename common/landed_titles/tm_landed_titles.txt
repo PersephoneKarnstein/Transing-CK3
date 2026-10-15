@@ -1,0 +1,20 @@
+﻿# Adelphai Dorleyaiou — head-of-faith title (landless, like d_coptic_papacy / d_yungdrung_bon).
+@always_primary_score = 1000	# file-local in vanilla, so redefined here
+
+d_tm_mother_house = {
+	color = { 245 168 184 }
+
+	landless = yes
+	definite_form = yes
+	ruler_uses_title_name = no
+
+	capital = c_phrygia
+
+	ai_primary_priority = {
+		add = @always_primary_score
+	}
+
+	no_automatic_claims = yes
+	always_follows_primary_heir = yes
+	destroy_if_invalid_heir = yes
+}

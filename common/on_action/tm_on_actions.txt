@@ -21,3 +21,65 @@ tm_on_game_start_after_lobby = {
 		}
 	}
 }
+
+# Starting presence (design lock: open question 1). Done by script rather than by overriding vanilla
+# history files, so it survives game updates and works for every bookmark.
+on_game_start = {
+	on_actions = {
+		tm_on_game_start
+	}
+}
+
+tm_on_game_start = {
+	effect = {
+		if = {
+			limit = { NOT = { has_global_variable = tm_setup_done } }
+			set_global_variable = { name = tm_setup_done value = yes }
+
+			# Phrygia (Dorylaion, Pessinus) keeps the old faith; its count's house converts with it.
+			title:c_phrygia = {
+				set_county_culture = culture:kybeline
+				set_county_faith = faith:transbian_maximalism
+				holder ?= {
+					set_culture = culture:kybeline
+					set_character_faith = faith:transbian_maximalism
+				}
+			}
+
+			# Theia Beatrike, Mother of Mothers: "Aunt Bea", an elder daughter of the knife.
+			create_character = {
+				name = tm_name_theia_beatrike
+				gender = female
+				age = 54
+				culture = culture:kybeline
+				faith = faith:transbian_maximalism
+				dynasty = none
+				location = title:c_phrygia.title_province
+				random_traits = no
+				trait = tm_daughter_of_the_knife
+				trait = education_learning_4
+				trait = compassionate
+				trait = patient
+				trait = just
+				learning = 18
+				diplomacy = 12
+				stewardship = 9
+				intrigue = 11
+				martial = 4
+				save_scope_as = tm_beatrike
+			}
+			create_title_and_vassal_change = {
+				type = created
+				save_scope_as = tm_mother_house_change
+				add_claim_on_loss = no
+			}
+			title:d_tm_mother_house = {
+				change_title_holder = {
+					holder = scope:tm_beatrike
+					change = scope:tm_mother_house_change
+				}
+			}
+			resolve_title_and_vassal_change = scope:tm_mother_house_change
+		}
+	}
+}

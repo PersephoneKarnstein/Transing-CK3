@@ -12,7 +12,7 @@
 - [ ] When art lands: point faith/rite/tenets/doctrines at the new files and delete placeholder `icon =` lines in `common/traits/tm_traits.txt`.
 
 ## Content
-- [ ] Religious head title (Mother of Mothers) or a creation decision.
+- [x] Religious head title: d_tm_mother_house, given to Theia Beatrike at game start (tm_on_game_start). Test: she appears as head of faith; her landless government is sensible.
 - [ ] `name_list_kybeline`.
 - [ ] Rename/New Personal History event (change_first_name) after the rite.
 - [ ] Dorley path: prisoner interaction, intake trigger, sponsor chain, levers, washout.

@@ -114,3 +114,9 @@
  tm_knife.0100.b:0 "Aunt Bea's House. Not pointlessly cruel."
  tm_knife.0100.b.tt:0 "The faith keeps Aunt Bea's House."
  tm_knife.0100.c:0 "The Gift Alone. Only those who ask."
+
+ ### Titles and characters ###
+ d_tm_mother_house:0 "Mother House of Dorylaion"
+ d_tm_mother_house_article:0 "the "
+ d_tm_mother_house_adj:0 "Dorleyaian"
+ tm_name_theia_beatrike:0 "Theia Beatrike"
