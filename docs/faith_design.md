@@ -1,4 +1,4 @@
-# Adelphai Dorleyaiou (Transbian Maximalism) — design lock (v1.8, locked 2026-10-14)
+# Adelphai Dorleyaiou (Transbian Maximalism) — design lock (v1.9, locked 2026-10-14)
 
 One decision per slot, with the belief-list row and the history verdict that backs it. Items marked **[YOUR CALL]** are the ones where I have recommended but the choice is genuinely yours; everything else I propose to lock and build.
 
@@ -155,6 +155,27 @@ CK3 is known for its joke achievements, and the mod should carry its own as even
 | **Mother of Mothers Unmade a Father of Fathers** | Both the Pope and the Patriarch in one lifetime | Achievement-style summary event; legendary nickname | — |
 
 Design rule: the Pope event must exist in all three knife doctrines but read differently — triumph under Grandmother's House, uneasy rehabilitation under Aunt Bea's, and impossible under the Gift Alone unless he consents (a separate, rarer event).
+
+## Open questions resolved (user, 2026-10-14)
+
+| # | Question | Decision |
+|---|---|---|
+| 1 | Starting presence in 867 | **Yes**: a few Phrygian counties around Dorylaion start Kybeline and Dorleyaian under a small landed house. |
+| 2 | Marked women / trans men | **Out of scope.** This mod is about trans women; a trans-masculine mod is someone else's to make. The seed trait is restricted to male-born characters (`valid_sex = male`). |
+| 3 | Head of faith | Mother of Mothers title seated at Dorylaion, filled by clerical appointment. The starting holder leans into the Dorley allusion: **Theia Beatrike** ("Aunt Beatrice"; *theia* is the ordinary Byzantine/modern Greek word for aunt). |
+| 4 | Seed heritability | Either is fine; slight heritability is acceptable ("debated in the real world"). Keep `genetic = yes` for v1. |
+| 5 | Marriage on re-embodiment | **Carry the marriage over.** |
+| 6 | Perks on re-embodiment | Lifestyle XP carries; perks lost. Accepted. |
+| 7 | Dorley intake age | **18 and up, no upper limit.** |
+| 8 | AI knife doctrine | AI-run faiths may pick any of the three Houses. |
+| 9 | Galenic splinter rite | **Deferred.** v1 is the minimum viable product; splinter rites and the Norse/Eastern religions come later. |
+| 10 | Sister-Making | **Custom scripted relation.** |
+| 11 | Casus belli scope | No preference; chosen: *Rescue the Daughters* targets a single county; *Rescue the Sons* may be declared by the head of any Christian or Islamic faith whose hostility toward the Sisters is Hostile or worse. |
+| 12 | Era decay of tolerance | After the core loop works. |
+| 13 | Name list | Draft `name_list_kybeline` from attested names in the research. |
+
+### v1 minimum viable product
+Faith, rite, culture, traits (done); starting presence and head of faith; voluntary rite (done) and House choice (done); Dorley prisoner path with sponsor and washout; re-embodiment carrying marriages; rename event; Sister-Making; Rescue the Daughters CB; name list. Everything else is post-v1.
 
 ## Decisions (locked 2026-10-14)
 

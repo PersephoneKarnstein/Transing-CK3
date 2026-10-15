@@ -17,8 +17,8 @@
 # old body quietly.
 #
 # Losses accepted by design (see docs/model_swap.md): memories, secrets, hooks, schemes, opinions,
-# perks (no perk iterator exists; see TODO). Children are NOT re-parented here; the faith's
-# adoption mechanic handles that. Spouses are not carried; the marriage doctrine decides.
+# perks (no perk iterator exists; accepted loss per design lock). Children are NOT re-parented here; the
+# faith's adoption mechanic handles that. Marriages ARE carried over (step 8).
 # ---------------------------------------------------------------------------------------------
 tm_reembody_as_woman_effect = {
 	save_scope_as = tm_old_body
@@ -88,8 +88,7 @@ tm_reembody_as_woman_effect = {
 		add_stewardship_lifestyle_xp = scope:tm_xp_ste
 		add_intrigue_lifestyle_xp = scope:tm_xp_int
 		add_learning_lifestyle_xp = scope:tm_xp_lea
-		# TODO perks: no perk iterator exists. Either re-grant known perks with has_perk checks per tree,
-		#      or accept the loss and call refund_all_perks on the old body's XP (already copied above).
+		# Perks are not copied (no perk iterator); accepted loss per design lock 2026-10-14.
 
 		# 6. Court placement for the unlanded case; the landed case moves with the titles below.
 		if = {
@@ -116,7 +115,17 @@ tm_reembody_as_woman_effect = {
 		scope:tm_new_body = { set_realm_capital = scope:tm_old_body.capital_county }
 	}
 
-	# 8. Relations worth keeping. Spouses deliberately not carried.
+	# 8. Marriages carry over (design lock, user 2026-10-14). The spouse divorces the old register and
+	#    marries the new body (vanilla idiom: spouse-side `divorce = <old>`). A husband becomes an
+	#    opposite-sex marriage; a wife becomes a same-sex one, which the faith's doctrines accept.
+	#    TODO in-game test: confirm `marry` succeeds for the same-sex case.
+	scope:tm_old_body = {
+		every_spouse = {
+			divorce = scope:tm_old_body
+			scope:tm_new_body = { marry = prev }
+		}
+	}
+	# Other relations worth keeping.
 	scope:tm_old_body = {
 		every_relation = { type = friend	scope:tm_new_body = { set_relation_friend = prev } }
 		every_relation = { type = best_friend	scope:tm_new_body = { set_relation_best_friend = prev } }

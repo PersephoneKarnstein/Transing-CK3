@@ -8,6 +8,7 @@
 # Visible on purpose: the vanilla Character Finder's trait filter can then find marked characters.
 tm_transgender = {
 	genetic = yes
+	valid_sex = male					# trans women only; trans-masculine content is out of scope (design lock §open questions)
 	birth = 1
 	random_creation = 1
 
