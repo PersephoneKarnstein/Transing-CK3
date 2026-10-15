@@ -1,40 +1,36 @@
-# Transbian Maximalism — culture template
-# Spec: game/common/culture/cultures/_cultures.info
-# Culture templates in this folder appear in the Ruler Designer culture picker
-# (gui/window_ruler_designer.gui binds CultureTemplate.Self), so no county needs to have it on the map.
+# Adelphai Dorleyaiou — the Kybeline culture
+# Spec: game/common/culture/cultures/_cultures.info. Design: docs/faith_design.md §7.
+# A Greek-speaking Anatolian offshoot (parent: greek). Appears in the Ruler Designer culture picker.
 
-transbian_maximalist = {
-	color = { 0.96 0.66 0.72 }		# trans-flag pink on the culture map mode
-	created = 500.1.1
+kybeline = {
+	color = { 0.96 0.66 0.72 }
+	created = 800.1.1
+	parents = { greek }
 
-	# --- Pillars (one of each is mandatory) ---
-	ethos = ethos_egalitarian					# TODO choose: bellicose stoic bureaucratic spiritual courtly egalitarian communal
-	heritage = heritage_transbian				# defined in common/culture/pillars/tm_pillars.txt
-	language = language_transbian				# defined in common/culture/pillars/tm_pillars.txt
-	martial_custom = martial_custom_female_only	# TODO choose: male_only equal female_only
-	head_determination = head_determination_domain	# domain (settled) or herd (nomadic)
+	ethos = ethos_communal
+	heritage = heritage_byzantine
+	language = language_greek
+	martial_custom = martial_custom_female_only
+	head_determination = head_determination_domain
 
-	# --- Traditions (placeholders; vanilla has 173 to choose from) ---
 	traditions = {
-		tradition_equal_inheritance
-		tradition_festivities
-		tradition_xenophilic
-		tradition_poetry
+		tradition_court_eunuchs				# can_castrate_prisoners, family_castration, eunuch bonuses
+		tradition_monastic_communities
+		tradition_esteemed_hospitality
+		tradition_female_only_inheritance	# its can_pick accepts a rite with the female-dominated gender law
 	}
 
-	# --- Names ---
-	name_list = name_list_english	# TODO: write name_list_transbian in common/culture/name_lists/ and swap
+	name_list = name_list_greek			# TODO name_list_kybeline (Greek women's names + attested gallae/eunuch names)
 
-	# --- Graphics (borrowed from the western set) ---
-	coa_gfx = { western_coa_gfx }
-	building_gfx = { western_building_gfx }
-	clothing_gfx = { western_clothing_gfx }
-	unit_gfx = { western_unit_gfx }
+	coa_gfx = { byzantine_group_coa_gfx }
+	building_gfx = { byzantine_building_gfx }
+	clothing_gfx = { byzantine_clothing_gfx }
+	unit_gfx = { eastern_unit_gfx }
+	house_coa_frame = house_frame_02
+	house_coa_mask_offset = { 0.0 0.055 }
+	house_coa_mask_scale = { 0.9 0.9 }
 
 	ethnicities = {
-		25 = caucasian_blond
-		15 = caucasian_ginger
-		35 = caucasian_brown_hair
-		25 = caucasian_dark_hair
+		100 = mediterranean_byzantine
 	}
 }

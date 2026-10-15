@@ -1,11 +1,8 @@
 ﻿l_english:
  ### Culture ###
- transbian_maximalist:0 "Kybeline"
- transbian_maximalist_prefix:0 "Kybeline"
- transbian_maximalist_collective_noun:0 "Kybelines"
- heritage_transbian_name:0 "Transbian"
- heritage_transbian_collective_noun:0 "Transbians"
- language_transbian_name:0 "Transbian"
+ kybeline:0 "Kybeline"
+ kybeline_prefix:0 "Kybelo"
+ kybeline_collective_noun:0 "Kybelines"
 
  ### Faith ###
  transbian_maximalism:0 "Adelphai Dorleyaiou"

@@ -52,5 +52,5 @@ transbian_maximalist_rite = {
 		tm_body_aristotelian		# the cut are women; a Galenic splinter rite takes tm_body_galenic
 	}
 
-	cultures = { transbian_maximalist }
+	cultures = { kybeline }
 }

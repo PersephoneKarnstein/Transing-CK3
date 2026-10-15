@@ -114,7 +114,7 @@ To verify in-game: that a custom trait appears in the finder's trait list (expec
 | Ethos | `ethos_communal` **[YOUR CALL: `ethos_egalitarian`]** | D1, D4; Medina quarter; convent |
 | Martial custom | `martial_custom_female_only` | E8; Amazons, Alvild's crew (NB), women orators in crisis (AN) |
 | Head determination | `head_determination_domain` | settled |
-| Traditions | `tradition_court_eunuchs` (grants `can_castrate_prisoners`, `family_castration`, eunuch bonuses), `tradition_monastic_communities`, `tradition_esteemed_hospitality`, `tradition_equal_inheritance` **[YOUR CALL: swap for a new `tradition_tm_daughters_house` with female-only inheritance params]** | B1, D5, C2 |
+| Traditions | `tradition_court_eunuchs` (grants `can_castrate_prisoners`, `family_castration`, eunuch bonuses), `tradition_monastic_communities`, `tradition_esteemed_hospitality`, `tradition_female_only_inheritance` (built; its can-pick rule accepts a female-dominated rite) | B1, D5, C2 |
 | Name list | New `name_list_transbian`: Greek female names + attested gallae/eunuch/mukhannath names from the terminology sections (TG ~200, MM ~50, RW ~35, AN 33); male names = Greek list for pre-rite characters | H28 "Renaming is rebirth" |
 | GFX | Byzantine sets (`byzantine_*_gfx`) | homeland |
 | Culture name | "Baeddel" as the culture's *own* name is a north-west word; use a Greek one and keep *bæddel* for the Norse branch. Working name: **Kybeline** | H23 |
