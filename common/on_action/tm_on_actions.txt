@@ -81,6 +81,35 @@ tm_on_game_start = {
 			}
 			resolve_title_and_vassal_change = scope:tm_mother_house_change
 
+			# Elder Sisters at the Mother House, so the Dorley path has sponsors and the finder has daughters.
+			while = {
+				count = 3
+				create_character = {
+					gender = female
+					age = { 30 55 }
+					culture = culture:kybeline
+					faith = faith:transbian_maximalism
+					employer = scope:tm_beatrike
+					dynasty = none
+					trait = tm_daughter_of_the_knife
+					trait = education_learning_3
+				}
+			}
+
+			# Historical characters are not "randomly created", so the 1% seed never rolls for them.
+			# Mark ~1% of living adult men at the start, as the trait's random_creation does for later ones.
+			every_living_character = {
+				limit = {
+					is_male = yes
+					is_adult = yes
+					NOT = { has_trait = tm_transgender }
+				}
+				random = {
+					chance = 1
+					add_trait = tm_transgender
+				}
+			}
+
 			# Theia Beatrike also takes Phrygia, the seat, as a vassal of the same liege; the old count
 			# becomes a daughter of the knife (cosmetic: no re-embodiment at game start). In 867 he also
 			# holds Prusa and stays landed there; if he held nothing else he joins Beatrike's court.

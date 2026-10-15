@@ -11,7 +11,7 @@ tm_take_into_house_interaction = {
 	is_shown = {
 		scope:actor = {
 			is_adult = yes
-			faith = { has_doctrine_parameter = tm_knife_penal_intake_only }
+			rite ?= { rite_has_parameter = tm_knife_penal_intake_only }
 		}
 		scope:recipient = {
 			is_imprisoned_by = scope:actor
@@ -50,7 +50,7 @@ tm_take_into_house_interaction = {
 	ai_targets = { ai_recipients = prisoners }
 	ai_frequency = 24
 	is_available = {
-		faith = { has_doctrine_parameter = tm_knife_penal_intake_only }
+		rite ?= { rite_has_parameter = tm_knife_penal_intake_only }
 	}
 	ai_will_do = {
 		base = 25
@@ -70,7 +70,7 @@ tm_sister_making_interaction = {
 		NOT = { scope:actor = scope:recipient }
 		scope:actor = {
 			has_trait = tm_daughter_of_the_knife
-			faith = { has_doctrine_parameter = tm_sister_making_allowed }
+			rite ?= { rite_has_parameter = tm_sister_making_allowed }
 		}
 		scope:recipient = {
 			has_trait = tm_daughter_of_the_knife
@@ -117,6 +117,33 @@ tm_sister_making_interaction = {
 		opinion_modifier = {
 			opinion_target = scope:recipient
 			multiplier = 0.5
+		}
+	}
+}
+
+# DEBUG (only with -debug_mode): put any male prisoner through the whole programme at once.
+tm_debug_force_programme_interaction = {
+	interface_priority = 1
+	icon = eunuch
+	category = interaction_category_prison
+	desc = tm_debug_force_programme_interaction_desc
+	is_shown = {
+		debug_only = yes
+		scope:recipient = {
+			is_imprisoned_by = scope:actor
+			is_male = yes
+			NOT = { has_trait = tm_daughter_of_the_knife }
+		}
+	}
+	auto_accept = yes
+	on_accept = {
+		scope:recipient = {
+			release_from_prison = yes
+			if = {
+				limit = { has_trait = tm_novice }
+				remove_trait = tm_novice
+			}
+			tm_take_the_knife_effect = yes
 		}
 	}
 }

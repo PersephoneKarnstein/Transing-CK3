@@ -9,7 +9,7 @@ tm_rescue_daughters_cb = {
 	mutually_exclusive_titles = { always = yes }
 
 	allowed_for_character = {
-		scope:attacker.faith = { has_doctrine_parameter = tm_rescue_daughters_cb }
+		scope:attacker.rite ?= { rite_has_parameter = tm_rescue_daughters_cb }
 		NOR = {
 			government_has_flag = government_is_landless_adventurer
 			government_has_flag = government_is_nomadic
@@ -38,6 +38,12 @@ tm_rescue_daughters_cb = {
 				}
 			}
 		}
+	}
+
+	on_invalidated_desc = { desc = tm_rescue_daughters_cb_invalidated_desc }
+	on_invalidated = { }
+	should_invalidate = {
+		NOT = { scope:defender = { any_prisoner = { tm_captive_daughter_trigger = yes } } }
 	}
 
 	cost = {

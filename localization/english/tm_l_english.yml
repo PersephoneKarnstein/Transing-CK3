@@ -162,3 +162,13 @@
  tm_rescue_daughters_cb_victory_desc:0 "The attacker takes the county, and every captive daughter, novice and marked man held by the defender is freed into the attacker's court."
  tm_rescue_daughters_cb_white_peace_desc:0 "The attacker loses some prestige."
  tm_rescue_daughters_cb_defeat_desc:0 "The attacker loses prestige and piety."
+
+ ### Fixes and debug ###
+ name_list_kybeline:0 "Kybeline"
+ tm_rescue_daughters_cb_invalidated_desc:0 "The captive daughters are free or gone, and the war's cause with them."
+ tm_debug_take_the_knife_decision:0 "DEBUG: Rise a Daughter Now"
+ tm_debug_take_the_knife_decision_desc:0 "Debug mode only. Skip the cost and the knifer's question."
+ tm_debug_take_the_knife_decision_tooltip:0 "Debug mode only."
+ tm_debug_take_the_knife_decision_confirm:0 "Do it"
+ tm_debug_force_programme_interaction:0 "DEBUG: Through the Programme at Once"
+ tm_debug_force_programme_interaction_desc:0 "Debug mode only. Release [recipient.GetShortUIName] and make her a daughter of the knife immediately."

@@ -84,7 +84,7 @@ tm_dorley.0100 = {
 	}
 	option = {	# ...and adopt her
 		name = tm_dorley.0100.b
-		trigger = { faith = { has_doctrine_parameter = tm_adoptive_matriline } }
+		trigger = { rite ?= { rite_has_parameter = tm_adoptive_matriline } }
 		scope:tm_novice = {
 			release_from_prison = yes
 			save_scope_as = tm_adoptee

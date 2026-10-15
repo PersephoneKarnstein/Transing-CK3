@@ -9,7 +9,7 @@ tm_take_the_knife_decision = {
 	is_shown = {
 		is_male = yes
 		is_adult = yes
-		faith = { has_doctrine_parameter = tm_knife_voluntary }
+		rite ?= { rite_has_parameter = tm_knife_voluntary }
 		NOR = {
 			has_trait = tm_daughter_of_the_knife
 			has_trait = eunuch_1
@@ -39,4 +39,19 @@ tm_take_the_knife_decision = {
 		modifier = { add = 25 has_trait = brave }
 		modifier = { add = -40 has_trait = craven }
 	}
+}
+
+# DEBUG (only with -debug_mode): rise a daughter at once, skipping the rite's cost and event.
+tm_debug_take_the_knife_decision = {
+	picture = { reference = "gfx/interface/illustrations/decisions/decision_misc.dds" }
+	sort_order = 1
+	is_shown = {
+		debug_only = yes
+		is_male = yes
+		NOT = { has_trait = tm_daughter_of_the_knife }
+	}
+	effect = {
+		tm_take_the_knife_effect = yes
+	}
+	ai_check_interval = 0
 }

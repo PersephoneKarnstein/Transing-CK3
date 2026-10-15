@@ -9,7 +9,7 @@ tenet_tm_day_of_blood = {
 	icon = tenet_mortification_of_the_flesh
 
 	is_shown = {
-		has_doctrine_parameter = tm_day_of_blood_active
+		this = faith:transbian_maximalism		# 1.20 doctrines live on the rite, so a faith-level parameter check is always false
 	}
 
 	piety_cost = {
@@ -47,7 +47,7 @@ tenet_tm_daughters_chosen = {
 	icon = tenet_adoptionism
 
 	is_shown = {
-		has_doctrine_parameter = tm_day_of_blood_active
+		this = faith:transbian_maximalism		# 1.20 doctrines live on the rite, so a faith-level parameter check is always false
 	}
 
 	piety_cost = {
@@ -85,7 +85,7 @@ tenet_tm_sisterhood = {
 	icon = tenet_communal_identity
 
 	is_shown = {
-		has_doctrine_parameter = tm_day_of_blood_active
+		this = faith:transbian_maximalism		# 1.20 doctrines live on the rite, so a faith-level parameter check is always false
 	}
 
 	piety_cost = {

@@ -21,8 +21,6 @@ tm_begin_programme_effect = {
 	add_trait = tm_novice
 	set_variable = { name = tm_progress value = 0 }
 	set_variable = { name = tm_levers value = 0 }
-	set_variable = { name = tm_sponsor value = scope:tm_sponsor }
-	set_variable = { name = tm_captor value = scope:tm_captor }
 	scope:tm_sponsor = { set_relation_guardian = scope:tm_novice }		# guardian <-> ward, vanilla relation
 
 	scope:tm_captor = {
