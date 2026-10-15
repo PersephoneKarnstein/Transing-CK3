@@ -1,0 +1,8 @@
+# Adelphai Dorleyaiou — on_action hooks. Event lists merge with vanilla's.
+
+on_game_start_after_lobby = {
+	events = {
+		delay = { days = 5 }
+		tm_knife.0100		# the faith chooses its House of the Knife
+	}
+}

@@ -1,0 +1,14 @@
+# Adelphai Dorleyaiou — game rules. Spec: game/common/game_rules/_game_rules.info
+
+# Whether a daughter of the knife is re-embodied as an engine-female character (true female model;
+# loses memories, secrets, hooks and schemes; character ID changes) or keeps her body with cosmetic
+# feminisation only. Docs: docs/model_swap.md.
+tm_reembodiment = {
+	categories = { other }
+	default = tm_reembodiment_on
+
+	tm_reembodiment_on = {
+	}
+	tm_reembodiment_off = {
+	}
+}

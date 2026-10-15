@@ -1,0 +1,42 @@
+# Adelphai Dorleyaiou — decisions. Design: docs/faith_design.md §6 (voluntary path).
+
+tm_take_the_knife_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"		# placeholder; TODO event art
+	}
+	sort_order = 90
+
+	is_shown = {
+		is_male = yes
+		is_adult = yes
+		faith = { has_doctrine_parameter = tm_knife_voluntary }
+		NOR = {
+			has_trait = tm_daughter_of_the_knife
+			has_trait = eunuch_1
+			has_trait = beardless_eunuch
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+		is_at_war = no
+	}
+
+	cost = {
+		piety = 100
+	}
+
+	effect = {
+		trigger_event = tm_knife.0001
+	}
+
+	ai_check_interval = 120
+	ai_potential = {
+		has_trait = tm_transgender
+	}
+	ai_will_do = {
+		base = 50
+		modifier = { add = 25 has_trait = brave }
+		modifier = { add = -40 has_trait = craven }
+	}
+}

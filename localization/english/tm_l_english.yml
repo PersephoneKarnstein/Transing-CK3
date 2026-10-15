@@ -89,3 +89,28 @@
  trait_tm_novice_desc:0 "This character is in the care of a sponsor of the Mother House, partway along the road the sponsor once walked."
  trait_tm_washout:0 "Washed Out"
  trait_tm_washout_desc:0 "Taken into the House and judged unfit to remain. What became of him afterwards is not discussed."
+
+ ### Game rules ###
+ rule_tm_reembodiment:0 "Daughters of the Knife"
+ setting_tm_reembodiment_on:0 "Re-embodied"
+ setting_tm_reembodiment_on_desc:0 "After the rite, a daughter is remade as a woman in every respect the game knows: new body, same face. Memories, secrets, hooks and schemes are lost with the old register."
+ setting_tm_reembodiment_off:0 "Cosmetic only"
+ setting_tm_reembodiment_off_desc:0 "A daughter keeps her body; her portrait is softened and her beard removed. Nothing is lost."
+
+ ### Decisions ###
+ tm_take_the_knife_decision:0 "Take the Knife"
+ tm_take_the_knife_decision_desc:0 "Go to the Elder Sisters and ask for the Day of Blood."
+ tm_take_the_knife_decision_tooltip:0 "Rise a daughter of the Mother."
+ tm_take_the_knife_decision_confirm:0 "I am ready"
+
+ ### Events ###
+ tm_knife.0001.t:0 "The Knifer's Question"
+ tm_knife.0001.desc:0 "The Elder Sister who will hold the knife has taken my surety and my offering: a white candle, a cloth, a cup of wine. The physician has written in her book that this is done for health, as the law of the Emperor Leo allows. Now she asks the one question her order has always asked, and waits.\n\n“Will you ever repent?”"
+ tm_knife.0001.a:0 "Never."
+ tm_knife.0001.b:0 "Not today."
+ tm_knife.0100.t:0 "The Houses of the Knife"
+ tm_knife.0100.desc:0 "The Sisters have always argued about whom the knife is for. In the old days, they say, Grandmother's house took any captive and sold what it made. Aunt Bea's house takes only men proven cruel, gives each a sister who once walked the same road, and lets none suffer to no purpose. And there are those who say the knife must only ever be a gift, given to those who ask. The Mother House awaits your word."
+ tm_knife.0100.a:0 "Grandmother's House. Let them fear us."
+ tm_knife.0100.b:0 "Aunt Bea's House. Not pointlessly cruel."
+ tm_knife.0100.b.tt:0 "The faith keeps Aunt Bea's House."
+ tm_knife.0100.c:0 "The Gift Alone. Only those who ask."

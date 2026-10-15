@@ -14,4 +14,7 @@
 ## Content
 - [ ] Religious head title (Mother of Mothers) or a creation decision.
 - [ ] `name_list_kybeline`.
+- [ ] Rename/New Personal History event (change_first_name) after the rite.
+- [ ] Dorley path: prisoner interaction, intake trigger, sponsor chain, levers, washout.
+- [ ] Sister-Making ceremony; Rescue the Daughters CB; flavour "achievement" events.
 - [ ] In-game load test with `-develop`; CK3 Tiger pass.

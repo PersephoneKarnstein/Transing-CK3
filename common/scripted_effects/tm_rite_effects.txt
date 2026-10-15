@@ -1,0 +1,21 @@
+# Adelphai Dorleyaiou — the knife itself. Scope: the character being cut.
+
+tm_take_the_knife_effect = {
+	if = {
+		limit = { has_trait = tm_novice }
+		remove_trait = tm_novice
+	}
+	add_trait = tm_daughter_of_the_knife
+	add_piety = 50
+	if = {
+		limit = { has_trait = tm_transgender }
+		add_stress = -100				# relief: the rite answers what the Mother marked
+	}
+	else = {
+		add_stress = 50
+	}
+	if = {
+		limit = { has_game_rule = tm_reembodiment_on }
+		tm_reembody_as_woman_effect = yes
+	}
+}

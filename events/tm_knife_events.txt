@@ -1,0 +1,64 @@
+namespace = tm_knife
+
+# The knifer's question (voluntary path). Liturgy from the Beijing knifers' "will you ever repent?"
+# and the guarantor/offering sequence (docs/research/east_dale_qing_eunuchs.md, east_tsai_ming_eunuchs.md),
+# dressed in Anatolian cloth; recorded "for health" after Leo VI's Novel 60 (hist_tougher_eunuch_byzantine.md).
+tm_knife.0001 = {
+	type = character_event
+	title = tm_knife.0001.t
+	desc = tm_knife.0001.desc
+	theme = faith
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+
+	option = {	# I will not repent
+		name = tm_knife.0001.a
+		tm_take_the_knife_effect = yes
+		ai_chance = { base = 90 }
+	}
+	option = {	# Not yet
+		name = tm_knife.0001.b
+		add_piety = 50			# refund half the decision cost
+		ai_chance = { base = 10 }
+	}
+}
+
+# Year one: the faith chooses its House of the Knife. Fires once per game, for the first human
+# player of the faith; the choice rewrites the main rite's tm_knife doctrine.
+tm_knife.0100 = {
+	type = character_event
+	title = tm_knife.0100.t
+	desc = tm_knife.0100.desc
+	theme = faith
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+
+	trigger = {
+		is_ai = no
+		faith = faith:transbian_maximalism
+		NOT = { has_global_variable = tm_knife_house_chosen }
+	}
+
+	immediate = {
+		set_global_variable = { name = tm_knife_house_chosen value = yes }
+	}
+
+	option = {	# Aunt Bea's House (default)
+		name = tm_knife.0100.b
+		custom_tooltip = tm_knife.0100.b.tt
+	}
+	option = {	# Grandmother's House
+		name = tm_knife.0100.a
+		rite = { change_rite_doctrine = tm_knife_grandmother }
+		add_dread = 20
+	}
+	option = {	# The Gift Alone
+		name = tm_knife.0100.c
+		rite = { change_rite_doctrine = tm_knife_gift_alone }
+		add_piety = 100
+	}
+}
