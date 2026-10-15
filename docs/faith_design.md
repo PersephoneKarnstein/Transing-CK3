@@ -81,6 +81,8 @@ Rejected for core: `tenet_carnal_exaltation` and `tenet_hedonistic` (C6, "libera
 | `tm_novice` | Dorley chain stage marker | Timed trait/modifier for the three-year programme; carries the sponsor relation |
 | `tm_washout` | Failure marker | For the washout event and the holy-order hand-over |
 
+**Infertility is non-negotiable (user, 2026-10-14).** A re-embodied daughter is female to the engine and would otherwise roll normal fertility. Two guards: `create_character` sets `fertility = 0`, and the effect always adds `tm_daughter_of_the_knife` (`can_have_children = no`) to the new body regardless of what the old one carried. Test: a re-embodied daughter married to a man must never conceive.
+
 Re-embodiment (`tm_reembody_as_woman_effect`) fires on completion when the game rule allows; otherwise cosmetic only.
 
 ### 5a. Finding daughters to recruit and adopt (user request, 2026-10-14)
