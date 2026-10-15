@@ -2,6 +2,9 @@
 # Vanilla allows same-sex marriage only when the game rule accepted_same_sex_marriage is on AND the rite
 # accepts homosexuality. The Sisters' rite marries women to women regardless of the game rule.
 # Named zz_ so it loads after vanilla. Keep the vanilla branch intact for compatibility.
+#
+# Also OVERRIDES vanilla could_marry_character_trigger (copied verbatim from 1.20.1 except the gender
+# clause): same-sex marriage is allowed when EITHER partner's rite permits it. Re-sync on game updates.
 allowed_to_marry_same_sex_trigger = {
 	OR = {
 		AND = {
@@ -13,5 +16,58 @@ allowed_to_marry_same_sex_trigger = {
 		rite ?= {
 			rite_has_parameter = tm_day_of_blood_active
 		}
+	}
+}
+
+could_marry_character_trigger = {
+	save_temporary_scope_as = can_marry_check
+	can_marry_common_trigger = yes
+	$CHARACTER$ = { can_marry_common_trigger = yes }
+	#Opposite genders unless EITHER partner's rite permits same-sex marriage (mod change: vanilla requires the
+	#other partner's rite only, checked from both sides, so in effect both). Lets a Sister marry a woman of any faith.
+	trigger_if = {
+		limit = {
+			$CHARACTER$ = { allowed_to_marry_same_sex_trigger = no }
+			allowed_to_marry_same_sex_trigger = no
+		}
+		sex_opposite_of = $CHARACTER$
+	}
+	#Have you recently divorced this character?
+	NOT = {
+		has_opinion_modifier = {
+			modifier = divorced_me_opinion
+			target = $CHARACTER$
+		}
+	}
+	#Faith hostility & consanguinity
+	trigger_if = {
+		limit = { NOT = { is_courtier_of = $CHARACTER$ } } #If you're someone's courtier, your liege can marry you anyway
+		rite = {
+			rite_allows_marriage_consanguinity_trigger = {
+				CHARACTER_1 = scope:can_marry_check
+				CHARACTER_2 = $CHARACTER$
+			}
+			#faith_hostility_level = {
+			#	target = $CHARACTER$.faith
+			#	value < faith_hostility_prevents_marriage_level
+			#}
+		}
+	}
+	trigger_if = {
+		limit = { $CHARACTER$ = { NOT = { is_courtier_of = scope:can_marry_check } } } #If you're someone's courtier, your liege can marry you anyway
+		$CHARACTER$.rite = {
+			rite_allows_marriage_consanguinity_trigger = {
+				CHARACTER_1 = scope:can_marry_check
+				CHARACTER_2 = $CHARACTER$
+			}
+			#faith_hostility_level = {
+			#	target = scope:can_marry_check.faith
+			#	value < faith_hostility_prevents_marriage_level
+			#}
+		}
+	}
+	# Cannot marry self
+	NOT = {
+		scope:can_marry_check = { is_spouse_of = $CHARACTER$ }
 	}
 }
