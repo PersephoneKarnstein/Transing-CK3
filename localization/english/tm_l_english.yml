@@ -172,3 +172,4 @@
  tm_debug_take_the_knife_decision_confirm:0 "Do it"
  tm_debug_force_programme_interaction:0 "DEBUG: Through the Programme at Once"
  tm_debug_force_programme_interaction_desc:0 "Debug mode only. Release [recipient.GetShortUIName] and make her a daughter of the knife immediately."
+ NOT_tm_intake_not_eligible:0 "Is a man proven cruel, or one the Mother has marked"

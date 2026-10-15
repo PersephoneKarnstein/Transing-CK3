@@ -28,7 +28,7 @@ tm_daughter_of_the_knife = {
 
 	category = health
 	group_equivalence = eunuch
-	level = 1
+	level = 3							# eunuch_1 is level 1, beardless_eunuch level 2
 	can_have_children = no
 	minimum_age = 16
 	opposites = {

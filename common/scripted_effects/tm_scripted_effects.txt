@@ -22,6 +22,8 @@
 # ---------------------------------------------------------------------------------------------
 tm_reembody_as_woman_effect = {
 	save_scope_as = tm_old_body
+	debug_log = "TM reembody: start"
+	debug_log_scopes = no
 
 	# Values to carry over (triggers used as values; re-read on the old scope before the new one exists).
 	save_scope_value_as = { name = tm_gold value = gold }
@@ -41,20 +43,16 @@ tm_reembody_as_woman_effect = {
 		age = scope:tm_age
 		culture = scope:tm_old_body.culture
 		faith = scope:tm_old_body.faith
-		dynasty_house = scope:tm_old_body.house
+		dynasty = none						# house is set afterwards (step 4); an argument from a lowborn old body would fail the creation
 		location = scope:tm_old_body.location
 		random_traits = no
 		fertility = 0						# daughters of the knife are infertile; never let the new body roll female fertility
-		diplomacy = scope:tm_old_body.diplomacy
-		martial = scope:tm_old_body.martial
-		stewardship = scope:tm_old_body.stewardship
-		intrigue = scope:tm_old_body.intrigue
-		learning = scope:tm_old_body.learning
-		prowess = scope:tm_old_body.prowess
 		save_scope_as = tm_new_body
 	}
 
+	debug_log = "TM reembody: body created"
 	scope:tm_new_body = {
+		debug_log_scopes = no
 		# 2. Same face: copies the inheritable genes in the DNA string; hair/clothes regenerate from the female lists.
 		copy_inheritable_appearance_from = scope:tm_old_body
 
@@ -73,11 +71,25 @@ tm_reembody_as_woman_effect = {
 		add_trait = tm_daughter_of_the_knife
 
 		# 4. Identity.
-		set_house = scope:tm_old_body.house
-		if = { limit = { scope:tm_old_body = { has_sexuality = homosexual } }	set_sexuality = homosexual }
+		if = { limit = { exists = scope:tm_old_body.house } set_house = scope:tm_old_body.house }
+		# CK3 stores orientation relative to the character's own sex, so it must flip with the body:
+		# a man attracted to women (heterosexual) is a woman attracted to women (homosexual), and vice versa.
+		if = { limit = { scope:tm_old_body = { has_sexuality = heterosexual } }	set_sexuality = homosexual }
+		else_if = { limit = { scope:tm_old_body = { has_sexuality = homosexual } }	set_sexuality = heterosexual }
 		else_if = { limit = { scope:tm_old_body = { has_sexuality = bisexual } }	set_sexuality = bisexual }
 		else_if = { limit = { scope:tm_old_body = { has_sexuality = asexual } }	set_sexuality = asexual }
-		else_if = { limit = { scope:tm_old_body = { has_sexuality = heterosexual } }	set_sexuality = heterosexual }
+
+		# Parents carry over, so she is her mother's and father's daughter rather than nobody's.
+		if = { limit = { exists = scope:tm_old_body.father } set_father = scope:tm_old_body.father }
+		if = { limit = { exists = scope:tm_old_body.mother } set_mother = scope:tm_old_body.mother }
+
+		# Skills, copied by value after creation (vanilla pattern: value = scope:actor.diplomacy).
+		add_diplomacy_skill = { value = scope:tm_old_body.diplomacy subtract = diplomacy }
+		add_martial_skill = { value = scope:tm_old_body.martial subtract = martial }
+		add_stewardship_skill = { value = scope:tm_old_body.stewardship subtract = stewardship }
+		add_intrigue_skill = { value = scope:tm_old_body.intrigue subtract = intrigue }
+		add_learning_skill = { value = scope:tm_old_body.learning subtract = learning }
+		add_prowess_skill = { value = scope:tm_old_body.prowess subtract = prowess }
 
 		# 5. Resources and lifestyle experience.
 		add_gold = scope:tm_gold
@@ -141,6 +153,7 @@ tm_reembody_as_woman_effect = {
 		set_player_character = scope:tm_new_body
 	}
 
+	debug_log = "TM reembody: transfer done, retiring old body"
 	# 10. Close the old register. death_vanished is a vanilla death reason with no corpse flavour.
 	scope:tm_old_body = {
 		death = { death_reason = death_vanished }

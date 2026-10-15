@@ -116,7 +116,8 @@ tm_on_game_start = {
 			title:c_phrygia = {
 				holder ?= {
 					save_scope_as = tm_old_count
-					liege ?= { save_scope_as = tm_old_liege }
+					# top liege, not liege: Beatrike heads a duchy-tier title, so she cannot be a duke's vassal
+					top_liege ?= { save_scope_as = tm_old_liege }
 				}
 			}
 			if = {
