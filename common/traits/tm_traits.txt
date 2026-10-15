@@ -7,7 +7,7 @@
 # so the mark is technically genetic (recessive inheritance); at 1% the bloodline effect is negligible.
 # Visible on purpose: the vanilla Character Finder's trait filter can then find marked characters.
 tm_transgender = {
-	icon = beauty_good_1		# placeholder
+	icon = beauty_good_1.dds		# placeholder
 
 	genetic = yes
 	birth = 1
@@ -24,7 +24,7 @@ tm_transgender = {
 # but unlike eunuch_1 it blocks neither marriage nor inheritance, and it is valid for either sex
 # (a re-embodied daughter is female to the engine).
 tm_daughter_of_the_knife = {
-	icon = beardless_eunuch	# placeholder
+	icon = beardless_eunuch.dds	# placeholder
 
 	category = health
 	group_equivalence = eunuch
@@ -52,7 +52,7 @@ tm_daughter_of_the_knife = {
 
 # Dorley chain stage marker (the three-year programme). Removed at completion or washout.
 tm_novice = {
-	icon = eunuch_1			# placeholder
+	icon = eunuch_1.dds			# placeholder
 
 	category = health
 	valid_sex = male
@@ -66,7 +66,7 @@ tm_novice = {
 
 # Dorley chain failure marker.
 tm_washout = {
-	icon = eunuch_1			# placeholder
+	icon = eunuch_1.dds			# placeholder
 
 	category = fame
 	general_opinion = -10
