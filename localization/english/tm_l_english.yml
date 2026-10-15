@@ -189,3 +189,7 @@
  tm_arrival.0001.a:0 "There is room at this hearth."
  tm_arrival.0001.b:0 "Bring her to the Elder Sisters. She has waited long enough."
  tm_arrival.0001.c:0 "We cannot take her in."
+ tm_arrival.0002.t:0 "A Daughter of the House"
+ tm_arrival.0002.desc:0 "The Elder Sisters have done their work, and the traveller who came to my gate has risen a daughter. She has taken the name [tm_new_daughter.GetFirstName], and she waits to hear where her road goes now."
+ tm_arrival.0002.a:0 "Stay with us, [tm_new_daughter.GetFirstName]."
+ tm_arrival.0002.b:0 "Go to the Mother House at Dorylaion."

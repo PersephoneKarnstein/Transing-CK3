@@ -35,9 +35,49 @@ tm_arrival.0001 = {
 		add_courtier = scope:tm_arrival
 		add_piety = -50
 		scope:tm_arrival = { tm_take_the_knife_effect = yes }
+		# With re-embodiment the daughter is a new character; otherwise she is the same one.
+		if = {
+			limit = { exists = scope:tm_new_body }
+			scope:tm_new_body = { save_scope_as = tm_new_daughter }
+		}
+		else = {
+			scope:tm_arrival = { save_scope_as = tm_new_daughter }
+		}
+		trigger_event = { id = tm_arrival.0002 days = 2 }	# after her rename (tm_knife.0002 fires at 1 day)
 	}
 	option = {	# Turn her away
 		name = tm_arrival.0001.c
 		add_piety = -25
+	}
+}
+
+# Second page: the traveller has risen a daughter. Root = the ruler; scope:tm_new_daughter = her.
+tm_arrival.0002 = {
+	type = character_event
+	title = tm_arrival.0002.t
+	desc = tm_arrival.0002.desc
+	theme = faith
+	left_portrait = { character = scope:tm_new_daughter animation = happiness }
+
+	trigger = {
+		exists = scope:tm_new_daughter
+		scope:tm_new_daughter = { is_alive = yes }
+	}
+
+	option = {	# Stay at my court
+		name = tm_arrival.0002.a
+		add_courtier = scope:tm_new_daughter
+		scope:tm_new_daughter = {
+			add_opinion = { target = root modifier = grateful_opinion opinion = 30 }
+		}
+	}
+	option = {	# Go to the Mother House
+		name = tm_arrival.0002.b
+		trigger = {
+			exists = title:d_tm_mother_house.holder
+			NOT = { title:d_tm_mother_house.holder = root }
+		}
+		title:d_tm_mother_house.holder = { add_courtier = scope:tm_new_daughter }
+		add_piety = 50
 	}
 }
