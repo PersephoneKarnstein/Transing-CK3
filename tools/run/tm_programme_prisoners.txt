@@ -1,0 +1,14 @@
+# Run from the console:  run tm_programme_prisoners.txt
+# Puts every male prisoner of the player through the programme at once.
+every_prisoner = {
+	limit = {
+		is_male = yes
+		NOT = { has_trait = tm_daughter_of_the_knife }
+	}
+	release_from_prison = yes
+	if = {
+		limit = { has_trait = tm_novice }
+		remove_trait = tm_novice
+	}
+	tm_take_the_knife_effect = yes
+}

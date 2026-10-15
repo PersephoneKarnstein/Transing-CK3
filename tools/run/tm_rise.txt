@@ -1,0 +1,3 @@
+# Run from the console:  run tm_rise.txt
+# Makes the player character a daughter of the knife (re-embodiment if that game rule is on).
+tm_take_the_knife_effect = yes
