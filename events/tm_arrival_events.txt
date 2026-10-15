@@ -1,0 +1,43 @@
+﻿namespace = tm_arrival
+
+# A Marked traveller arrives asking for the Sisters. Root = the ruler.
+tm_arrival.0001 = {
+	type = character_event
+	title = tm_arrival.0001.t
+	desc = tm_arrival.0001.desc
+	theme = faith
+	left_portrait = { character = scope:tm_arrival animation = worry }
+
+	trigger = {
+		exists = capital_province
+	}
+
+	immediate = {
+		create_character = {
+			gender = male
+			age = { 16 35 }
+			culture = root.capital_county.culture
+			faith = root.faith
+			location = root.capital_province
+			trait = tm_transgender
+			save_scope_as = tm_arrival
+		}
+	}
+
+	option = {	# Shelter her
+		name = tm_arrival.0001.a
+		add_courtier = scope:tm_arrival
+		add_piety = 25
+	}
+	option = {	# Shelter her and take her to the Elder Sisters
+		name = tm_arrival.0001.b
+		trigger = { rite ?= { rite_has_parameter = tm_knife_voluntary } }
+		add_courtier = scope:tm_arrival
+		add_piety = -50
+		scope:tm_arrival = { tm_take_the_knife_effect = yes }
+	}
+	option = {	# Turn her away
+		name = tm_arrival.0001.c
+		add_piety = -25
+	}
+}

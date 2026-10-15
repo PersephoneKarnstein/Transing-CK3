@@ -18,6 +18,7 @@
 - [x] Dorley path: prisoner interaction, intake trigger, sponsor chain, levers, washout (untested in-game).
 - [x] Sister-Making relation + interaction; Rescue the Daughters CB (untested in-game).
 - [ ] Flavour "achievement" events (post-v1).
+- [ ] Compatibility note for the README: the mod overrides vanilla `allowed_to_marry_same_sex_trigger` (zz_tm_marriage_override.txt).
 - [ ] In-game load test with `-develop`; CK3 Tiger pass.
 
 ## Validation notes

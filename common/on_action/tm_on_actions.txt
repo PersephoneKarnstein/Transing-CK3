@@ -159,3 +159,32 @@ tm_on_game_start = {
 		}
 	}
 }
+
+# Arrivals: each year a ruler of the faith has a small chance that a Marked woman finds her way to the court
+# (mechanical counterpart to Rescue the Daughters; the 'flight to a sister's house' of the belief list, E9).
+yearly_playable_pulse = {
+	on_actions = {
+		tm_yearly_playable
+	}
+}
+
+tm_yearly_playable = {
+	trigger = {
+		is_landed = yes
+		rite ?= { rite_has_parameter = tm_day_of_blood_active }
+	}
+	effect = {
+		random = {
+			chance = 6
+			modifier = {								# the Mother House draws them
+				add = 6
+				any_held_title = { this = title:c_phrygia }
+			}
+			modifier = {
+				add = 3
+				any_courtier = { has_trait = tm_daughter_of_the_knife }
+			}
+			trigger_event = tm_arrival.0001
+		}
+	}
+}

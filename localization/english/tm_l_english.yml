@@ -184,3 +184,8 @@
  tm_knife.0900.t:0 "Census of the Marked"
  tm_knife.0900.desc:0 "Living men Marked by the Mother: [ROOT.Char.MakeScope.Var('tm_census_marked').GetValue|V0]\nLiving daughters of the knife: [ROOT.Char.MakeScope.Var('tm_census_daughters').GetValue|V0]\n\nShown: one Marked man (left) and one daughter (right), chosen at random."
  tm_knife.0900.a:0 "Noted."
+ tm_arrival.0001.t:0 "A Traveller at the Gate"
+ tm_arrival.0001.desc:0 "A young woman has walked a long way to reach my court, and asks at the gate not for alms but for the Sisters. The Elder Sisters know the look: the Mother has marked this one. Somewhere behind her is a father's house she will not go back to."
+ tm_arrival.0001.a:0 "There is room at this hearth."
+ tm_arrival.0001.b:0 "Bring her to the Elder Sisters. She has waited long enough."
+ tm_arrival.0001.c:0 "We cannot take her in."
