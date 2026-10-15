@@ -62,3 +62,39 @@ tm_knife.0100 = {
 		add_piety = 100
 	}
 }
+
+# New Personal History: the daughter takes a name of the Sisters (Rivera's renaming "felt just like
+# being reborn", docs/research/book_tsr_2.md; monastic name-taking). Root = the daughter.
+tm_knife.0002 = {
+	type = character_event
+	title = tm_knife.0002.t
+	desc = tm_knife.0002.desc
+	theme = faith
+	left_portrait = { character = root animation = happiness }
+
+	option = {	# A name of the Sisters
+		name = tm_knife.0002.a
+		random_list = {
+			10 = { change_first_name = Eirene }
+			10 = { change_first_name = Theodora }
+			10 = { change_first_name = Zoe }
+			8 = { change_first_name = Thekla }
+			8 = { change_first_name = Marina }
+			6 = { change_first_name = Matrona }
+			6 = { change_first_name = Kassia }
+			6 = { change_first_name = Makrina }
+			3 = { change_first_name = Aristion }
+			3 = { change_first_name = Trygonion }
+		}
+		add_prestige = 25
+	}
+	option = {	# Keep the name I carry
+		name = tm_knife.0002.b
+		trigger = { is_female = yes }	# a re-embodied daughter already carries a woman's name
+	}
+	option = {	# Keep the old name for now
+		name = tm_knife.0002.c
+		trigger = { is_male = yes }
+		add_stress = 10
+	}
+}

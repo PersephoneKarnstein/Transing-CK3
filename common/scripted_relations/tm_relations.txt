@@ -1,0 +1,12 @@
+﻿# Adelphai Dorleyaiou — Sister-Making (custom relation; design lock, user 2026-10-14).
+# Modelled on adelphopoiesis (docs/research/hist_rapp_brother_making.md): no inheritance effect, a
+# public bond of mutual obligation ranked by the faith above marriage.
+tm_sister = {
+	corresponding = tm_sister
+	opinion = 60
+	opposites = { rival nemesis }
+	modifier = {
+		monthly_piety = 0.2
+		stress_loss_mult = 0.1
+	}
+}

@@ -102,6 +102,7 @@ To verify in-game: that a custom trait appears in the finder's trait list (expec
 
 - **Voluntary path.** Decision for any adult male character of the rite with `tm_transgender` or high enough event-driven progress; performed by a priestess; in-world recorded "for health" (Leo VI Novel 60). Cost: piety; gain: trait, rename event, re-embodiment.
 - **Dorley path** (`tm_knife_aunt_bea` only). Prisoner interaction gated on the intake trigger (male, 18–30, imprisoned by a rite ruler, violent marker: `sadistic`/`wrathful`/`callous`, `secret_murder`/`secret_murder_attempt`, imprisonment reason, or mod abuse flag; excluded: `stubborn` + strongly masculine profile). Assign sponsor (`set_relation_guardian`), three-year chain with "lever" events, knife at end of year one, release as ward, "New Personal History" rename and adoption at completion; washout on violence toward a woman of the court or failed progress.
+- **Vanilla castration coexists (user, 2026-10-14).** The mod never overrides vanilla castration: the prison and family castrate interactions still produce ordinary eunuchs (`eunuch_1`/`beardless_eunuch`), not daughters. Becoming a daughter happens only through the faith's own rite, decision or Dorley path.
 - **Grandmother path** (`tm_knife_grandmother`). Vanilla `castrate_interaction` behaviour, vanilla eunuch trait, dread and prestige up, piety down, "evil" hostility from all.
 - **Gift Alone.** Voluntary path only.
 

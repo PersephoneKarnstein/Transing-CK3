@@ -1,0 +1,122 @@
+﻿# Adelphai Dorleyaiou — character interactions
+
+# The Dorley path (Aunt Bea's House): take a violent prisoner into the programme.
+# Template: vanilla castrate_interaction (00_prison_interactions.txt). Docs: docs/dorley_precedent.md.
+tm_take_into_house_interaction = {
+	interface_priority = 31
+	icon = eunuch
+	category = interaction_category_prison
+	desc = tm_take_into_house_interaction_desc
+
+	is_shown = {
+		scope:actor = {
+			is_adult = yes
+			faith = { has_doctrine_parameter = tm_knife_penal_intake_only }
+		}
+		scope:recipient = {
+			is_imprisoned_by = scope:actor
+			is_male = yes
+			is_adult = yes
+			is_eunuch_trigger = no
+			NOR = {
+				has_trait = tm_novice
+				has_trait = tm_washout
+				has_trait = tm_daughter_of_the_knife	# vanilla is_eunuch_trigger does not see daughters
+			}
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		scope:recipient = {
+			custom_description = {
+				text = tm_intake_not_eligible
+				tm_intake_eligible_trigger = yes
+			}
+			custom_description = {
+				text = "currently_being_tortured"
+				NOT = { has_character_flag = is_being_tortured }
+			}
+		}
+	}
+
+	auto_accept = yes
+
+	on_accept = {
+		scope:recipient = {
+			tm_begin_programme_effect = { CAPTOR = scope:actor }
+		}
+	}
+
+	ai_targets = { ai_recipients = prisoners }
+	ai_frequency = 24
+	is_available = {
+		faith = { has_doctrine_parameter = tm_knife_penal_intake_only }
+	}
+	ai_will_do = {
+		base = 25
+		modifier = { add = 25 has_trait = just }
+		modifier = { add = -50 has_trait = compassionate }
+	}
+}
+
+# Sister-Making: two daughters bind themselves by the old rite.
+tm_sister_making_interaction = {
+	interface_priority = 60
+	icon = icon_scheme_befriend
+	category = interaction_category_friendly
+	desc = tm_sister_making_interaction_desc
+
+	is_shown = {
+		NOT = { scope:actor = scope:recipient }
+		scope:actor = {
+			has_trait = tm_daughter_of_the_knife
+			faith = { has_doctrine_parameter = tm_sister_making_allowed }
+		}
+		scope:recipient = {
+			has_trait = tm_daughter_of_the_knife
+			faith = scope:actor.faith
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		scope:actor = { NOT = { has_relation_tm_sister = scope:recipient } }
+		scope:recipient = { is_imprisoned = no }
+		scope:actor = { is_imprisoned = no }
+	}
+
+	cost = { piety = 50 }
+
+	on_accept = {
+		scope:actor = {
+			set_relation_tm_sister = scope:recipient
+			add_piety = 100
+			add_prestige = 50
+		}
+		scope:recipient = {
+			add_piety = 100
+			add_prestige = 50
+		}
+	}
+
+	ai_accept = {
+		base = 0
+		opinion_modifier = {
+			who = scope:recipient
+			opinion_target = scope:actor
+			multiplier = 1
+		}
+		modifier = { add = 25 scope:recipient = { has_trait = trusting } }
+	}
+
+	ai_targets = { ai_recipients = courtiers }
+	ai_targets = { ai_recipients = guests }
+	ai_frequency = 60
+	is_available = { has_trait = tm_daughter_of_the_knife }
+	ai_will_do = {
+		base = 10
+		opinion_modifier = {
+			opinion_target = scope:recipient
+			multiplier = 0.5
+		}
+	}
+}

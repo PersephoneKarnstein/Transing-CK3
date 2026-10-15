@@ -1,0 +1,29 @@
+﻿# Adelphai Dorleyaiou — scripted triggers
+
+# Dorley intake (Aunt Bea's House): a man proven violent, or one the Mother already marked
+# (the Stefan case: she walked into the basement on purpose). Adults only; no upper age limit.
+tm_intake_eligible_trigger = {
+	is_male = yes
+	age >= 18
+	OR = {
+		has_trait = sadistic
+		has_trait = wrathful
+		has_trait = callous
+		has_trait = tm_transgender
+		any_secret = {
+			OR = {
+				secret_type = secret_murder
+				secret_type = secret_murder_attempt
+			}
+		}
+	}
+}
+
+# Anyone the Sisters would go to war to bring home.
+tm_captive_daughter_trigger = {
+	OR = {
+		has_trait = tm_daughter_of_the_knife
+		has_trait = tm_novice
+		has_trait = tm_transgender
+	}
+}

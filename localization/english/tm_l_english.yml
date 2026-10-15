@@ -120,3 +120,45 @@
  d_tm_mother_house_article:0 "the "
  d_tm_mother_house_adj:0 "Dorleyaian"
  tm_name_theia_beatrike:0 "Theia Beatrike"
+
+ ### Dorley path ###
+ tm_take_into_house_interaction:0 "Take into the House"
+ tm_take_into_house_interaction_desc:0 "Give [recipient.GetShortUIName] to the Mother House. A sponsor who once walked the same road will have the keeping of him for a year. If he changes, he will rise a daughter. If he will not, he will be washed out."
+ tm_intake_not_eligible:0 "Only men proven cruel, or men the Mother has already marked, are taken into the House"
+ tm_dorley.0010.t:0 "Levers"
+ tm_dorley.0010.desc:0 "[tm_sponsor.GetFirstName] has had the keeping of [tm_novice.GetFirstName] for some months now. Every sponsor knows the levers: patience, the truth of what he did, and the story of what she herself once was. Which shall she use?"
+ tm_dorley.0010.a:0 "Patience. Let him come to it."
+ tm_dorley.0010.b:0 "Make him face what he did."
+ tm_dorley.0010.c:0 "Let her tell him who she used to be."
+ tm_dorley.0100.t:0 "The Year Turns"
+ tm_dorley.0100.desc:0 "A year has passed in the cells beneath the House. The one who was brought here is not the one who will leave. [tm_sponsor.GetFirstName] says she is ready for the knife, and ready to be called sister."
+ tm_dorley.0100.a:0 "Let her rise a daughter, in her sponsor's care."
+ tm_dorley.0100.b:0 "Let her rise a daughter, and my own."
+ tm_dorley.0200.t:0 "One Light in the Cell Wing"
+ tm_dorley.0200.desc:0 "Tonight every door to the cells is locked and every lamp is out but one. The Mother of the House comes down in person, as she always does, to tell [tm_novice.GetFirstName] that the programme is over for him. It would be pointlessly cruel to go on."
+ tm_dorley.0200.a:0 "He stays in the cells."
+ tm_dorley.0200.b:0 "Release him, and have him watched."
+ tm_dorley.0200.c:0 "There is nothing left to save."
+
+ ### New Personal History ###
+ tm_knife.0002.t:0 "A New Personal History"
+ tm_knife.0002.desc:0 "The Sisters say the old name is buried with the old life. Before witnesses, a daughter may take a name of the House."
+ tm_knife.0002.a:0 "Give me a name of the Sisters."
+ tm_knife.0002.b:0 "I will keep the name I carry."
+ tm_knife.0002.c:0 "Not yet. Let the old name stand a while."
+
+ ### Sister-Making ###
+ tm_sister_making_interaction:0 "Make Sisters"
+ tm_sister_making_interaction_desc:0 "Ask [recipient.GetShortUIName] to be bound by the old rite: hands laid together on the Gospel, the elder's on top, a kiss, and a shared cup. It makes no heirs and asks nothing of the law. It is higher than marriage."
+ relation_tm_sister:0 "Sworn Sister"
+ relation_tm_sister_corresponding:0 "Sworn Sister"
+ tm_sister:0 "Sworn Sister"
+
+ ### Rescue the Daughters ###
+ tm_rescue_daughters_cb:0 "Rescue the Daughters"
+ tm_rescue_daughters_cb_desc:0 "[defender.GetShortUIName] holds daughters of the Mother in captivity. Bring them home."
+ TM_RESCUE_DAUGHTERS_CB_NAME:0 "Rescue the Daughters of [county|E]"
+ TM_RESCUE_DAUGHTERS_WAR_NAME:0 "War to Rescue the Daughters of [TITLE.GetBaseName]"
+ tm_rescue_daughters_cb_victory_desc:0 "The attacker takes the county, and every captive daughter, novice and marked man held by the defender is freed into the attacker's court."
+ tm_rescue_daughters_cb_white_peace_desc:0 "The attacker loses some prestige."
+ tm_rescue_daughters_cb_defeat_desc:0 "The attacker loses prestige and piety."

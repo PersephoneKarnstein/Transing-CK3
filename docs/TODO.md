@@ -14,9 +14,10 @@
 ## Content
 - [x] Religious head title: d_tm_mother_house, given to Theia Beatrike at game start (tm_on_game_start). Test: she appears as head of faith; her landless government is sensible.
 - [x] `name_list_kybeline` (86 female, 148 male, 22 dynasties; attested names cited per report).
-- [ ] Rename/New Personal History event (change_first_name) after the rite.
-- [ ] Dorley path: prisoner interaction, intake trigger, sponsor chain, levers, washout.
-- [ ] Sister-Making ceremony; Rescue the Daughters CB; flavour "achievement" events.
+- [x] New Personal History rename event (untested in-game).
+- [x] Dorley path: prisoner interaction, intake trigger, sponsor chain, levers, washout (untested in-game).
+- [x] Sister-Making relation + interaction; Rescue the Daughters CB (untested in-game).
+- [ ] Flavour "achievement" events (post-v1).
 - [ ] In-game load test with `-develop`; CK3 Tiger pass.
 
 ## Validation notes

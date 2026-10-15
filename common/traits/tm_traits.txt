@@ -19,8 +19,9 @@ tm_transgender = {
 	ai_boldness = 5
 }
 
-# The result of the Rite of the Knife. In the eunuch group so vanilla eunuch checks still see it,
-# but unlike eunuch_1 it blocks neither marriage nor inheritance, and it is valid for either sex
+# The result of the Rite of the Knife. Separate from vanilla castration: vanilla castrate_interaction
+# still gives eunuch_1/beardless_eunuch and never makes a daughter. Note vanilla is_eunuch_trigger checks
+# only those two traits, so faith script must test tm_daughter_of_the_knife explicitly. Unlike eunuch_1 it blocks neither marriage nor inheritance, and it is valid for either sex
 # (a re-embodied daughter is female to the engine).
 tm_daughter_of_the_knife = {
 	icon = beardless_eunuch.dds	# placeholder

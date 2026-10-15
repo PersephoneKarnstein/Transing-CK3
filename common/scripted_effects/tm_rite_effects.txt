@@ -14,8 +14,13 @@ tm_take_the_knife_effect = {
 	else = {
 		add_stress = 50
 	}
+	# New Personal History fires on whichever body survives the rite.
 	if = {
 		limit = { has_game_rule = tm_reembodiment_on }
 		tm_reembody_as_woman_effect = yes
+		scope:tm_new_body = { trigger_event = { id = tm_knife.0002 days = 1 } }
+	}
+	else = {
+		trigger_event = { id = tm_knife.0002 days = 1 }
 	}
 }

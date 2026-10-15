@@ -1,0 +1,34 @@
+﻿# Adelphai Dorleyaiou — the Dorley programme. Scope: the new novice.
+
+tm_begin_programme_effect = {
+	save_scope_as = tm_novice
+	$CAPTOR$ = { save_scope_as = tm_captor }
+
+	# Sponsor: a daughter of the knife at the captor's court if there is one, else the captor.
+	if = {
+		limit = { scope:tm_captor = { any_courtier = { has_trait = tm_daughter_of_the_knife } } }
+		scope:tm_captor = {
+			random_courtier = {
+				limit = { has_trait = tm_daughter_of_the_knife }
+				save_scope_as = tm_sponsor
+			}
+		}
+	}
+	else = {
+		scope:tm_captor = { save_scope_as = tm_sponsor }
+	}
+
+	add_trait = tm_novice
+	set_variable = { name = tm_progress value = 0 }
+	set_variable = { name = tm_levers value = 0 }
+	set_variable = { name = tm_sponsor value = scope:tm_sponsor }
+	set_variable = { name = tm_captor value = scope:tm_captor }
+	scope:tm_sponsor = { set_relation_guardian = scope:tm_novice }		# guardian <-> ward, vanilla relation
+
+	scope:tm_captor = {
+		trigger_event = {
+			id = tm_dorley.0010
+			months = 3
+		}
+	}
+}

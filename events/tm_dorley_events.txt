@@ -1,0 +1,131 @@
+﻿namespace = tm_dorley
+
+# Levers: three times, three months apart, the sponsor works on the novice. Root = captor;
+# scope:tm_novice / scope:tm_sponsor are passed from tm_begin_programme_effect and re-passed below.
+tm_dorley.0010 = {
+	type = character_event
+	title = tm_dorley.0010.t
+	desc = tm_dorley.0010.desc
+	theme = prison
+	left_portrait = { character = scope:tm_sponsor animation = personality_rational }
+	right_portrait = { character = scope:tm_novice animation = stress }
+
+	trigger = {
+		exists = scope:tm_novice
+		scope:tm_novice = {
+			is_alive = yes
+			is_imprisoned_by = root
+			has_trait = tm_novice
+		}
+	}
+
+	option = {	# Gentleness
+		name = tm_dorley.0010.a
+		scope:tm_novice = { change_variable = { name = tm_progress add = 1 } }
+		ai_chance = { base = 40 }
+	}
+	option = {	# Make him face what he did
+		name = tm_dorley.0010.b
+		scope:tm_novice = {
+			random_list = {
+				60 = { change_variable = { name = tm_progress add = 2 } }
+				40 = {
+					change_variable = { name = tm_progress add = -1 }
+					add_stress = 30
+				}
+			}
+		}
+		ai_chance = { base = 30 }
+	}
+	option = {	# Let the sponsor tell her own story
+		name = tm_dorley.0010.c
+		trigger = { NOT = { scope:tm_sponsor = root } }
+		scope:tm_novice = { change_variable = { name = tm_progress add = 2 } }
+		scope:tm_sponsor = { add_stress = 20 }
+		ai_chance = { base = 30 }
+	}
+
+	after = {
+		scope:tm_novice = { change_variable = { name = tm_levers add = 1 } }
+		if = {
+			limit = { scope:tm_novice.var:tm_levers < 3 }
+			trigger_event = { id = tm_dorley.0010 months = 3 }
+		}
+		else_if = {
+			limit = { scope:tm_novice.var:tm_progress >= 3 }
+			trigger_event = { id = tm_dorley.0100 months = 3 }
+		}
+		else = {
+			trigger_event = { id = tm_dorley.0200 months = 1 }
+		}
+	}
+}
+
+# The knife: a year in, the novice has changed enough.
+tm_dorley.0100 = {
+	type = character_event
+	title = tm_dorley.0100.t
+	desc = tm_dorley.0100.desc
+	theme = faith
+	left_portrait = { character = scope:tm_novice animation = personality_rational }
+	right_portrait = { character = scope:tm_sponsor animation = happiness }
+
+	trigger = {
+		exists = scope:tm_novice
+		scope:tm_novice = { is_alive = yes is_imprisoned_by = root }
+	}
+
+	option = {	# Release her into the House as the sponsor's ward
+		name = tm_dorley.0100.a
+		scope:tm_novice = {
+			release_from_prison = yes
+			tm_take_the_knife_effect = yes
+		}
+	}
+	option = {	# ...and adopt her
+		name = tm_dorley.0100.b
+		trigger = { faith = { has_doctrine_parameter = tm_adoptive_matriline } }
+		scope:tm_novice = {
+			release_from_prison = yes
+			save_scope_as = tm_adoptee
+		}
+		adopt_effect = { CHILD = scope:tm_adoptee ADOPTER = root }
+		scope:tm_adoptee = { tm_take_the_knife_effect = yes }
+	}
+}
+
+# Washout: the cell wing goes dark but for one light. Aunt Bea breaks the news in person.
+tm_dorley.0200 = {
+	type = character_event
+	title = tm_dorley.0200.t
+	desc = tm_dorley.0200.desc
+	theme = prison
+	left_portrait = { character = scope:tm_novice animation = fear }
+
+	trigger = {
+		exists = scope:tm_novice
+		scope:tm_novice = { is_alive = yes is_imprisoned_by = root }
+	}
+
+	immediate = {
+		scope:tm_novice = {
+			remove_trait = tm_novice
+			add_trait = tm_washout
+		}
+	}
+
+	option = {	# Keep him in the cells
+		name = tm_dorley.0200.a
+	}
+	option = {	# Let him go, and let him be watched
+		name = tm_dorley.0200.b
+		scope:tm_novice = { release_from_prison = yes }
+		add_piety = -25
+	}
+	option = {	# There is nothing left to save
+		name = tm_dorley.0200.c
+		scope:tm_novice = { death = { death_reason = death_execution killer = root } }
+		add_dread = 10
+		add_piety = -50
+	}
+}
