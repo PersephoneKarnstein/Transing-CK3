@@ -1,0 +1,23 @@
+# Adelphai Dorleyaiou — doctrine groups
+# Spec: game/common/religion/doctrine_group_types/_doctrine_group_types.info
+# Icons: gfx/interface/icons/faith_doctrine_groups/<key>.dds (TODO; the game logs a missing-icon error until then).
+
+# Who may be cut, and why. Docs: docs/dorley_precedent.md.
+doctrine_tm_knife = {
+	category = special
+	divergence = category
+
+	is_available_on_create = {
+		has_doctrine_parameter = tm_day_of_blood_active
+	}
+}
+
+# What the cut are. Aristotelian (women) vs Galenic (a third kind). Docs: beliefs.md G2/G3.
+doctrine_tm_body = {
+	category = special
+	divergence = sequence
+
+	is_available_on_create = {
+		has_doctrine_parameter = tm_day_of_blood_active
+	}
+}

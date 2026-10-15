@@ -1,4 +1,4 @@
-# Adelphai Dorleyaiou (Transbian Maximalism) — design lock (v1.7, locked 2026-10-14)
+# Adelphai Dorleyaiou (Transbian Maximalism) — design lock (v1.8, locked 2026-10-14)
 
 One decision per slot, with the belief-list row and the history verdict that backs it. Items marked **[YOUR CALL]** are the ones where I have recommended but the choice is genuinely yours; everything else I propose to lock and build.
 
@@ -20,7 +20,8 @@ Working names are placeholders for localisation; in-game key names are final.
 
 - **What it is.** A heretical rite inside the Eastern Christian world at the 867 start: the sect that kept the eunuch-angel theology the Byzantine court was already drifting away from, fused it with the memory of the Mother's priestesses, and drew one conclusion the orthodox never would: that the cut are women. Secret survival, not revival. (Beliefs F2, H18; G2 consequence 7.)
 - **Name.** *Adelphai Dorleyaiou*, "Sisters of Dorleyaion" (user, 2026-10-14): the Greek genitive of Dorylaion would be *Dorylaiou*; the *-ley-* spelling is deliberate and canonical, making the Dorley pun explicit. Adjective/adherent: Dorleyaian, Dorleyaian Sister. `tm_` remains the key prefix.
-- **Homeland.** North-west Anatolia and Galatia; **Dorylaion (`c_dorylaion`) is the faith's seat and eminent holy site**, with Constantinople as the second eminent site. Counties confirmed in game: `c_byzantion`, `c_kyzikos`, `c_ankyra`, `c_dorylaion`, `c_nikomedeia`, `c_abydos`, `c_antiocheia`. (G2 homeland verdict; AN: every ancient text calling castrates women is Anatolian or Syrian.)
+- **Homeland.** North-west Anatolia and Galatia; **Dorylaion (`b_dorylaion` in `c_phrygia`) is the faith's seat and eminent holy site**, with Constantinople as the second eminent site. In 1.20 the classical towns are **baronies**: Dorylaion (`b_dorylaion`) and Pessinus (`b_pessinus`) both lie in the county of Phrygia (`c_phrygia`, duchy of Opsikion); Kyzikos is `b_kyzikos` in `c_nikaea`; Ankyra is `b_ankyra` in `c_galatia`. Constantinople is the vanilla `constantinople` holy site (`c_byzantion`). (G2 homeland verdict; AN: every ancient text calling castrates women is Anatolian or Syrian.)
+- **Interpretations, not a merge (user, 2026-10-14).** The final product may ship two or more *distinct cultural interpretations* of the premise as separate faiths. This file specifies the Byzantine one. A Tang/Chinese interpretation (eunuch dynasties, Daoist gender-by-rite, the knifer's liturgy) is a separate later faith, and its research is not folded into this one.
 - **Branches.** A Norse rite is optional later content (seiðr, *ergi*, Uppsala bells) arriving by the Varangian route; it shares the faith but not the knife. Britain is out. (NB verdict.)
 - **Era arc.** Legal cover and neighbours' tolerance decay with the culture era: strong at 867, contested by 1066, gone by 1300. (G3 consequence 14.)
 

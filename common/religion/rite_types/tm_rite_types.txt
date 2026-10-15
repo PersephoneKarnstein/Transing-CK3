@@ -1,7 +1,7 @@
-# Transbian Maximalism — scripted main Rite
+# Adelphai Dorleyaiou — main rite
 # Spec: game/common/religion/rite_types/_rite_types.info
-# In 1.20 a Rite is the thing a character actually practises; the Ruler Designer faith picker
-# lists rites per faith (gui binds Faith.GetRites). history = no (default) keeps it selectable there.
+# Pattern: vanilla `adamites` / `paulician_rite`. Doctrines here override christianity_religion's baseline
+# in the same group. Design: docs/faith_design.md §3–4.
 
 transbian_maximalist_rite = {
 	name = transbian_maximalist_rite
@@ -9,22 +9,47 @@ transbian_maximalist_rite = {
 	faith = transbian_maximalism
 
 	color = { 0.96 0.66 0.72 }
-	icon = custom_faith_1		# TODO: pick/make an icon; path gfx/interface/icons/faith/<icon>.dds (100x100)
+	icon = christianity_rose_cross_01			# placeholder; TODO custom icon
 
 	convert = yes
 	create = yes
 	history = no
 
-	# Core tenets of the main Rite (exactly 3). TODO: choose. Full vanilla list is in README.md.
 	tenets = {
-		tenet_polyamory
-		tenet_carnal_exaltation
-		tenet_ritual_celebrations
+		tenet_tm_day_of_blood
+		tenet_tm_daughters_chosen
+		tenet_tm_sisterhood
 	}
 
-	# Rite-specific doctrine overrides go here (they beat faith- and religion-level doctrines
-	# in the same group). Leave empty while the religion file carries the full baseline set.
 	doctrines = {
+		# Main group
+		doctrine_spiritual_head
+		doctrine_gender_female_dominated
+		doctrine_pluralism_pluralistic
+		# Marriage
+		doctrine_monogamy
+		doctrine_divorce_allowed
+		doctrine_bastardry_none
+		doctrine_consanguinity_cousins
+		# Crimes
+		doctrine_homosexuality_accepted
+		doctrine_adultery_men_shunned
+		doctrine_adultery_women_shunned
+		doctrine_deviancy_virtuous
+		doctrine_witchcraft_accepted
+		# Clergy
+		doctrine_clerical_function_alms_and_pacification
+		doctrine_clerical_gender_female_only
+		doctrine_clerical_marriage_allowed
+		doctrine_clerical_succession_spiritual_appointment
+		doctrine_monasticism_encouraged
+		doctrine_funeral_bewailment
+		# Misc
+		doctrine_pilgrimage_encouraged
+		special_doctrine_is_eastern_christian_faith
+		# Faith-specific groups (tm_doctrine_types.txt)
+		tm_knife_aunt_bea			# default; the year-one event lets the player pick Grandmother's House or the Gift Alone
+		tm_body_aristotelian		# the cut are women; a Galenic splinter rite takes tm_body_galenic
 	}
 
 	cultures = { transbian_maximalist }

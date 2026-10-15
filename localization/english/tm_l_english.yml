@@ -7,36 +7,78 @@
  heritage_transbian_collective_noun:0 "Transbians"
  language_transbian_name:0 "Transbian"
 
- ### Religion ###
- transbian_maximalism_religion:0 "Adelphai Dorleyaiou"
- transbian_maximalism_religion_adj:0 "Dorleyaian"
- transbian_maximalism_religion_adherent:0 "Dorleyaian Sister"
- transbian_maximalism_religion_adherent_plural:0 "Dorleyaian Sisters"
- transbian_maximalism_religion_desc:0 "TODO: religion description."
-
  ### Faith ###
  transbian_maximalism:0 "Adelphai Dorleyaiou"
  transbian_maximalism_adj:0 "Dorleyaian"
  transbian_maximalism_adherent:0 "Dorleyaian Sister"
  transbian_maximalism_adherent_plural:0 "Dorleyaian Sisters"
- transbian_maximalism_desc:0 "TODO: faith description."
+ transbian_maximalism_old:0 "Old Dorleyaian"
+ transbian_maximalism_old_adj:0 "Old Dorleyaian"
+ transbian_maximalism_old_adherent:0 "Old Dorleyaian"
+ transbian_maximalism_old_adherent_plural:0 "Old Dorleyaians"
+ transbian_maximalism_desc:0 "The Sisters of Dorylaion keep what the court of Constantinople is forgetting: that the cut are not lessened but made new, nearer the angels. Their Phrygian house holds one thing the Patriarchs never will, that the one who takes the knife rises a daughter. They choose their heirs rather than breed them, and their altars are served by women alone."
 
  ### Rite ###
  transbian_maximalist_rite:0 "Rite of Dorleyaion"
  transbian_maximalist_rite_adj:0 "Dorleyaian"
  transbian_maximalist_rite_adherent:0 "Dorleyaian Sister"
  transbian_maximalist_rite_adherent_plural:0 "Dorleyaian Sisters"
- transbian_maximalist_rite_desc:0 "TODO: rite description."
+ transbian_maximalist_rite_desc:0 "The main rite of the Sisters, kept at the house of Dorylaion."
 
- ### Religion terminology (referenced from the religion localization block) — all TODO placeholders ###
- tm_high_god_name:0 "the Goddess"
- tm_high_god_name_possessive:0 "the Goddess'"
- tm_high_god_name_alternate:0 "the Mother"
- tm_high_god_name_alternate_possessive:0 "the Mother's"
- tm_pantheon_term:0 "the Sisterhood"
- tm_religious_symbol:0 "the Twin Crescent"
- tm_religious_head:0 "Matriarch"
- tm_high_priest:0 "High Priestess"
- tm_high_priest_plural:0 "High Priestesses"
- tm_divine_realm:0 "the Garden"
- tm_afterlife:0 "the Garden"
+ ### Faith terminology ###
+ tm_priestess:0 "Daughter"
+ tm_priestess_plural:0 "Daughters"
+ tm_elder_sister:0 "Elder Sister"
+ tm_elder_sister_plural:0 "Elder Sisters"
+ tm_mother_of_mothers:0 "Mother of Mothers"
+ tm_mother_house:0 "the Mother House"
+ tm_metroon:0 "metroon"
+ tm_metroon_plural:0 "metroa"
+ tm_devotee:0 "Sister"
+ tm_devotee_plural:0 "Sisters"
+
+ ### Tenets ###
+ tenet_tm_day_of_blood_name:0 "Day of Blood"
+ tenet_tm_day_of_blood_desc:0 "Each spring the novices take the knife in the Mother's house and rise as daughters. The cut are not lessened but completed, and the faith counts them among its women."
+ tenet_tm_daughters_chosen_name:0 "Daughters Chosen, Not Born"
+ tenet_tm_daughters_chosen_desc:0 "Blood confers nothing. A house is the women who chose it, and a mother passes her name, her lands and her office to the daughter she adopts."
+ tenet_tm_sisterhood_name:0 "Unbending Sisterhood"
+ tenet_tm_sisterhood_desc:0 "Love the sister you loathe. Quarrels between the faithful are never carried before outsiders, the cast-out are always given shelter, and two daughters may bind themselves by the old rite of sister-making."
+ tenet_tm_sisterhood_opinion:0 "Unbending Sisterhood"
+
+ ### Doctrine groups ###
+ doctrine_tm_knife_name:0 "The Knife"
+ doctrine_tm_body_name:0 "The Cut Body"
+
+ ### Doctrines ###
+ tm_knife_grandmother_name:0 "Grandmother's House"
+ tm_knife_grandmother_desc:0 "Any captive man may be cut, and the cut serve. The old regime's way, and the reputation every neighbour already believes of us."
+ tm_knife_aunt_bea_name:0 "Aunt Bea's House"
+ tm_knife_aunt_bea_desc:0 "Only men proven violent are taken, each is given a sponsor who once walked the same road, and none is made to suffer pointlessly. Those who will not change are not kept."
+ tm_knife_gift_alone_name:0 "The Gift Alone"
+ tm_knife_gift_alone_desc:0 "The knife is a gift given, never a sentence. Only those who ask are cut."
+ tm_body_aristotelian_name:0 "The Aristotelian Body"
+ tm_body_aristotelian_desc:0 "As the Philosopher taught, the cut body passes into the female state. The daughters of the knife are women in every law of the faith."
+ tm_body_galenic_name:0 "The Galenic Body"
+ tm_body_galenic_desc:0 "As Galen taught, the cut are a kind of their own, neither men nor women, nearest the angels."
+
+ ### Doctrine parameters ###
+ doctrine_parameter_tm_day_of_blood_active:0 "Men may take the knife and rise as daughters"
+ doctrine_parameter_tm_castrates_are_women:0 "The cut are counted as women"
+ doctrine_parameter_tm_castrates_third_kind:0 "The cut are counted as a third kind"
+ doctrine_parameter_tm_adoptive_matriline:0 "Adopted daughters inherit as daughters of the blood"
+ doctrine_parameter_tm_sister_making_allowed:0 "Two daughters may be bound by sister-making"
+ doctrine_parameter_tm_knife_penal_any_prisoner:0 "Any male prisoner may be cut"
+ doctrine_parameter_tm_knife_vanilla_eunuch_outcome:0 "The cut become court eunuchs, not daughters"
+ doctrine_parameter_tm_knife_penal_intake_only:0 "Only prisoners proven violent may be taken into the programme"
+ doctrine_parameter_tm_knife_sponsor_chain:0 "Each novice is given a sponsor"
+ doctrine_parameter_tm_knife_voluntary:0 "Any man of the faith may ask for the knife"
+ doctrine_parameter_tm_rescue_daughters_cb:0 "May wage war to rescue captive daughters"
+
+ ### Holy sites ###
+ holy_site_tm_dorylaion_name:0 "Dorylaion"
+ holy_site_tm_dorylaion_effect_name:0 "From [holy_site|E] #weak ($holy_site_tm_dorylaion_name$)#!"
+ holy_site_tm_kyzikos_name:0 "Kyzikos"
+ holy_site_tm_kyzikos_effect_name:0 "From [holy_site|E] #weak ($holy_site_tm_kyzikos_name$)#!"
+ holy_site_tm_ankyra_name:0 "Ankyra"
+ holy_site_tm_ankyra_effect_name:0 "From [holy_site|E] #weak ($holy_site_tm_ankyra_name$)#!"

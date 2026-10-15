@@ -1,0 +1,42 @@
+# Adelphai Dorleyaiou — holy sites
+# Spec: game/common/religion/holy_site_types/_holy_site_types.info
+# Loc: holy_site_<key>_name / holy_site_<key>_effects
+
+# Dorylaion, Phrygia: the seat of the Sisters (and the pun). In 1.20 Dorylaion is a barony of the county of
+# Phrygia, which also holds Pessinus (b_pessinus), the Mother's ancient sanctuary.
+tm_dorylaion = {
+	county = c_phrygia
+	barony = b_dorylaion
+
+	county_holder_character_modifier = {
+		monthly_piety_gain_mult = 0.1
+		courtier_and_guest_opinion = 5
+	}
+
+	faith_character_modifier = {
+		monthly_piety_gain_mult = 0.05
+		same_faith_opinion = 5
+	}
+}
+
+# Kyzikos: the Mother's sanctuary on Dindymon.
+tm_kyzikos = {
+	county = c_nikaea
+	barony = b_kyzikos
+
+	county_holder_character_modifier = {
+		learning = 1
+		monthly_piety = 0.2
+	}
+}
+
+# Ankyra: Galatia, the country of the Mother's old priests.
+tm_ankyra = {
+	county = c_galatia
+	barony = b_ankyra
+
+	county_holder_character_modifier = {
+		diplomacy = 1
+		monthly_piety = 0.2
+	}
+}

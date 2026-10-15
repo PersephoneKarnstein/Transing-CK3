@@ -1,0 +1,120 @@
+# Adelphai Dorleyaiou — core tenets
+# Spec: game/common/religion/tenet_types/_tenet_types.info
+# Exclusive to the Sisters and their offshoots: shown only to faiths already carrying tm_day_of_blood_active.
+# Icons reuse vanilla tenet icons until custom art exists.
+
+# The rite of the knife; the cut become daughters. Parameter tm_day_of_blood_active gates the decision,
+# the prisoner interaction and the spring festival (all in the faith's own script).
+tenet_tm_day_of_blood = {
+	icon = tenet_mortification_of_the_flesh
+
+	is_shown = {
+		has_doctrine_parameter = tm_day_of_blood_active
+	}
+
+	piety_cost = {
+		value = faith_tenet_cost_high
+		if = {
+			limit = { rite_has_tenet = tenet_tm_day_of_blood }
+			multiply = faith_unchanged_doctrine_cost_mult
+		}
+	}
+
+	parameters = {
+		tm_day_of_blood_active
+	}
+
+	character_modifier = {
+		monthly_piety_gain_mult = 0.05
+	}
+
+	traits = {
+		virtues = {
+			eunuch_1 = { weight = 20 scale = 1 }
+			beardless_eunuch = { weight = 20 scale = 1 }
+			# TODO add tm_daughter_of_the_knife once the trait exists
+			brave = { weight = 10 scale = 1 }
+		}
+		sins = {
+			craven = { weight = 10 scale = 1 }
+		}
+	}
+}
+
+# Daughters chosen, not born. Reuses the adoptionism parameter names so vanilla adopt_interaction
+# (00_adoption.txt checks rite_has_parameter = tenet_adoptionism_adoption_always_possible) works as-is.
+tenet_tm_daughters_chosen = {
+	icon = tenet_adoptionism
+
+	is_shown = {
+		has_doctrine_parameter = tm_day_of_blood_active
+	}
+
+	piety_cost = {
+		value = faith_tenet_cost_mid
+		if = {
+			limit = { rite_has_tenet = tenet_tm_daughters_chosen }
+			multiply = faith_unchanged_doctrine_cost_mult
+		}
+	}
+
+	parameters = {
+		tenet_adoptionism_adoption_always_possible
+		tenet_adoptionism_adoption_accepted
+		tenet_adoptionism_legitimize_bastards
+		tm_adoptive_matriline
+	}
+
+	character_modifier = {
+		different_faith_opinion = 5
+	}
+
+	traits = {
+		virtues = {
+			compassionate = { weight = 15 scale = 1 }
+			generous = { weight = 10 scale = 1 }
+		}
+		sins = {
+			greedy = { weight = 10 scale = 1 }
+		}
+	}
+}
+
+# Unbending sisterhood: love the sister you loathe; shelter the cast-out; the sister-making vow.
+tenet_tm_sisterhood = {
+	icon = tenet_communal_identity
+
+	is_shown = {
+		has_doctrine_parameter = tm_day_of_blood_active
+	}
+
+	piety_cost = {
+		value = faith_tenet_cost_low
+		if = {
+			limit = { rite_has_tenet = tenet_tm_sisterhood }
+			multiply = faith_unchanged_doctrine_cost_mult
+		}
+	}
+
+	parameters = {
+		tm_sister_making_allowed
+		sanctify_artifacts_communal
+	}
+
+	character_modifier = {
+		name = "tenet_tm_sisterhood_opinion"
+		same_faith_opinion = 10
+		courtier_and_guest_opinion = 5
+	}
+
+	traits = {
+		virtues = {
+			trusting = { weight = 10 scale = 1 }
+			forgiving = { weight = 10 scale = 1 }
+		}
+		sins = {
+			callous = { weight = 15 scale = 1 }
+			arbitrary = { weight = 10 scale = 1 }
+		}
+	}
+}

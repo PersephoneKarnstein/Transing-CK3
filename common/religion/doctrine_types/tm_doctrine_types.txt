@@ -1,0 +1,125 @@
+# Adelphai Dorleyaiou — doctrines
+# Spec: game/common/religion/doctrine_types/_doctrine_types.info
+# Parameters are read by the faith's own script (interactions, events); none are engine-special.
+# Icons reuse vanilla doctrine icons until custom art exists.
+
+#############################
+# doctrine_tm_knife
+#############################
+
+# The old regime: the knife as conquest. Vanilla court-eunuch outcome, dread, and everyone's hatred.
+tm_knife_grandmother = {
+	doctrine_group_type = doctrine_tm_knife
+	index = 0
+	divergence = 30
+	icon = "doctrine_temporal_head"
+
+	piety_cost = {
+		value = faith_doctrine_cost_mid
+		if = {
+			limit = { rite_has_doctrine = tm_knife_grandmother }
+			multiply = faith_unchanged_doctrine_cost_mult
+		}
+	}
+
+	parameters = {
+		tm_knife_penal_any_prisoner
+		tm_knife_vanilla_eunuch_outcome
+	}
+
+	character_modifier = {
+		dread_gain_mult = 0.2
+	}
+
+	special_parameters = {
+		hostility_towards_us_mult = 2
+	}
+}
+
+# The Dorley precedent: selected violent men, a sponsor, three years, and washouts.
+tm_knife_aunt_bea = {
+	doctrine_group_type = doctrine_tm_knife
+	index = 1
+	divergence = 15
+	icon = "doctrine_theocracy_lay_clergy"
+
+	piety_cost = {
+		value = faith_doctrine_cost_low
+		if = {
+			limit = { rite_has_doctrine = tm_knife_aunt_bea }
+			multiply = faith_unchanged_doctrine_cost_mult
+		}
+	}
+
+	parameters = {
+		tm_knife_penal_intake_only
+		tm_knife_sponsor_chain
+		tm_knife_voluntary
+		tm_rescue_daughters_cb
+	}
+}
+
+# Only those who ask.
+tm_knife_gift_alone = {
+	doctrine_group_type = doctrine_tm_knife
+	index = 2
+	divergence = 0
+	icon = "doctrine_pluralism_pluralistic"
+
+	piety_cost = {
+		value = faith_doctrine_cost_low
+		if = {
+			limit = { rite_has_doctrine = tm_knife_gift_alone }
+			multiply = faith_unchanged_doctrine_cost_mult
+		}
+	}
+
+	parameters = {
+		tm_knife_voluntary
+		tm_rescue_daughters_cb
+	}
+}
+
+#############################
+# doctrine_tm_body
+#############################
+
+# Aristotle: castration renders the body female. The cut are women in every law of the faith.
+tm_body_aristotelian = {
+	doctrine_group_type = doctrine_tm_body
+	index = 0
+	divergence = 25
+	icon = "doctrine_gender_female_dominated"
+
+	piety_cost = {
+		value = faith_doctrine_cost_mid
+		if = {
+			limit = { rite_has_doctrine = tm_body_aristotelian }
+			multiply = faith_unchanged_doctrine_cost_mult
+		}
+	}
+
+	parameters = {
+		tm_castrates_are_women
+	}
+}
+
+# Galen: the cut are a third kind, neither man nor woman, beloved of the angels.
+tm_body_galenic = {
+	doctrine_group_type = doctrine_tm_body
+	index = 1
+	divergence = 25
+	icon = "doctrine_gender_equal"
+
+	piety_cost = {
+		value = faith_doctrine_cost_mid
+		if = {
+			limit = { rite_has_doctrine = tm_body_galenic }
+			multiply = faith_unchanged_doctrine_cost_mult
+		}
+	}
+
+	parameters = {
+		tm_castrates_third_kind
+	}
+}
