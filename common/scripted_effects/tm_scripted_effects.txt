@@ -155,7 +155,15 @@ tm_reembody_as_woman_effect = {
 
 	debug_log = "TM reembody: transfer done, retiring old body"
 	# 10. Close the old register. death_vanished is a vanilla death reason with no corpse flavour.
+	# Players among the close family hear that she lives (the engine's death notice cannot be suppressed).
 	scope:tm_old_body = {
-		death = { death_reason = death_vanished }
+		every_close_family_member = {
+			limit = {
+				is_ai = no
+				NOT = { this = scope:tm_new_body }
+			}
+			trigger_event = { id = tm_knife.0003 days = 1 }
+		}
+		death = { death_reason = death_tm_reborn }
 	}
 }

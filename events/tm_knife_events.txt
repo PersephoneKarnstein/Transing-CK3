@@ -98,3 +98,18 @@ tm_knife.0002 = {
 		add_stress = 10
 	}
 }
+
+# To a player whose relative was re-embodied: the death notice was only the old register closing.
+tm_knife.0003 = {
+	type = character_event
+	title = tm_knife.0003.t
+	desc = tm_knife.0003.desc
+	theme = faith
+	left_portrait = { character = scope:tm_new_body animation = happiness }
+
+	trigger = { exists = scope:tm_new_body }
+
+	option = {
+		name = tm_knife.0003.a
+	}
+}

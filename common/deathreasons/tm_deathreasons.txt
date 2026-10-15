@@ -1,0 +1,6 @@
+﻿# Adelphai Dorleyaiou — the old register closes when a daughter is re-embodied.
+# The engine still posts its death notice and the family's relative-died memory (not suppressible from
+# script); this reason makes the notice read as the rebirth it is.
+death_tm_reborn = {
+	icon = "death_unknown.dds"
+}

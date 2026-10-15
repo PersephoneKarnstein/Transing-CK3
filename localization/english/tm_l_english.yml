@@ -173,3 +173,7 @@
  tm_debug_force_programme_interaction:0 "DEBUG: Through the Programme at Once"
  tm_debug_force_programme_interaction_desc:0 "Debug mode only. Release [recipient.GetShortUIName] and make her a daughter of the knife immediately."
  NOT_tm_intake_not_eligible:0 "Is a man proven cruel, or one the Mother has marked"
+ death_tm_reborn:0 "was reborn a daughter of the Mother"
+ tm_knife.0003.t:0 "Not Dead"
+ tm_knife.0003.desc:0 "The clerks have closed the old register, and word has gone out that [tm_old_body.GetFirstName] is dead. It is not so. The one you knew has taken the knife and risen a daughter, and lives on as [tm_new_body.GetFirstName]."
+ tm_knife.0003.a:0 "Welcome home, [tm_new_body.GetFirstName]."
