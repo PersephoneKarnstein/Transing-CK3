@@ -1,4 +1,4 @@
-# Transbian Maximalism — belief list (working draft v3.4)
+# Transbian Maximalism — belief list (working draft v3.5)
 
 Running list of beliefs drawn from the research, each mapped to a CK3 slot. Sources are the reports in `docs/research/`:
 
@@ -13,6 +13,7 @@ Running list of beliefs drawn from the research, each mapped to a CK3 slot. Sour
 | **W-B / W-3 / W-M** | web reports on baedelism / third-wave transfeminism / transgender Marxism |
 | **T2** | `book_tsr_2.md` (Transgender Studies Reader vol. 2) |
 | **TH / KA / AN / WH** | history reports (Trans Historical, Karras, Surtees & Dyer, Wiesner-Hanks); see section G |
+| **TB / HK / SE / TC / SM / TM / DL / AY** | fourth history pass: Terbish (Mongol), Hoeckelmann/Tsai/Kim (Tang, Ming, Goryeo), five SE Asian pieces, Chiang ed., Sommer, Tsai 1996, Dale, Ayalon; see G4 |
 | **TG / MM / RW / RP** | third history pass: Tougher *The Eunuch in Byzantine History and Society*; Marmon *Eunuchs and Sacred Boundaries in Islamic Society*; Rowson "The Effeminates of Early Medina"; Rapp *Brother-Making*; see G3 |
 | **NV / QG / NB** | second history pass: Neville *Byzantine Gender*; Neil & Garland *Questions of Gender in Byzantine Society*; Norse/English articles; see G2 |
 
@@ -184,6 +185,35 @@ Sources: **TG** `hist_tougher_eunuch_byzantine.md` (Tougher 2008, 65 entries + 2
 13. **715 is the founding trauma.** Sulayman's castration of the Medinan singers, the scribal-dot story and "we have become women in truth" give the faith a datable martyrdom and a six-step event chain (RW §6).
 14. **Grow hostility with the era.** Byzantine tolerance of eunuch-angels and of brother-making both decay after c. 1050–1300; tie rival faiths' hostility level and the medical loophole's validity to the culture era.
 15. **Al-Jahiz corrected (Ayalon read 2026-10-14, `hist_ayalon_eunuchs_caliphs.md`).** The sentence "castration transfers eunuchs from the realm of male characteristics to that of females" is not in Ayalon or al-Jahiz as quoted; it was a paraphrase in Karras. What al-Jahiz says (*Hayawan* I, 116) is that the eunuch acquires skill and patience in domestic service "and that is what comes to women", and in *Jawari wal-Ghilman* that eunuchs are "neither *ghilman* nor *jawari*". **Stronger than the lost line:** al-Mas'udi (*Muruj* VIII, 147–150) records the current 9th–10th-c. belief that eunuchs are "men among women and women among men" and "more similar to women", and refutes it: "He created them men and not women." The faith's doctrine (d) therefore existed as a popular belief that orthodoxy formally condemned — exactly the shape a heresy needs. Ayalon also supplies a real rehabilitative penal castration: al-Kunduri, castrated in 1064 for marrying the Sultan's bride and kept in office as vizier (row n), plus eunuchs taken as "husbands" by Khumarawayh's harem (895) and married eunuchs at Mecca with attributed paternity (rows d, i).
+
+### G4. Fourth history pass (2026-10-14): the East — steppe, China, Korea, Southeast Asia (plus Ayalon)
+
+Sources: **TB** `east_mongol_sex_genghis.md` (Terbish 2023, 75 entries), **HK** `east_tang_ming_goryeo.md` (Hoeckelmann 2020 on Tang; Tsai 1991 on Ming supply; Kim 2006 on Goryeo *naesi*; 56 entries), **SE** `east_sea_bissu_baylan.md` (McCoy, Kennedy, Andaya, Ismoyo, Brewer; 44 entries), **TC** `east_transgender_china.md` (Chiang ed. 2012), **SM** `east_sommer_fox_spirit.md` (Sommer, late imperial), **TM** `east_tsai_ming_eunuchs.md` (Tsai 1996, Ming), **DL** `east_dale_qing_eunuchs.md` (Dale 2018, Qing), **AY** `hist_ayalon_eunuchs_caliphs.md` (Ayalon 1999; see consequence 15 above). Period flags matter here: Tang, Yuan and the Mongol material are in-window; Ming, Qing and all Southeast Asian witnesses are post-1453 and used as templates or legend only.
+
+| Belief | East Asian / steppe / SE Asian evidence | Change / use |
+|---|---|---|
+| (a) distinct sex class | **S.** Tang and Ming eunuchs a formal estate; Chinese thought files them under *yin*, "not man not woman"; Bugis five-gender system with bissu as a sacred class "outside" male/female (Andaya); Mongol *manin* "hermaphrodite" the only native slot (TB). | Unchanged (**S**). |
+| (b) gender by rite | **M.** Daoist inner alchemy ("decapitating the red dragon") is a gender-by-rite template whose vector the Sisters invert (TC); bissu *irebba* trance-death initiation (SE); Qing *chu jia* cohort renaming borrows the monastic ordination term (DL). | Unchanged; good ceremony templates. |
+| (c) castration as sacred rite | **W in East Asia; absent in SE Asia and on the steppe.** Castration was penal (one of the Five Punishments) then a career route; Buddhist vinaya excludes castrates, "attenuated by ascetic motivations" (TC). Gang Tie, patron saint of Qing eunuchs, castrated himself (DL). No Southeast Asian castration attested at all (SE). | Keep the sacred frame eastern-Mediterranean only. |
+| (d) castrated men regarded as women | **W as self-view, M as others' view.** "Gender identity was a non-issue for eunuchs" (Dale p. 56); Tang eunuch epitaphs stress martial and civil virtues, wives, heirs (HK); Qing eunuchs "without gender confusion" (TC). But Han Confucians called them *yin*/"half woman", the *Odes* group "wives and those without balls", and Westerners simply read them as female (DL, TM). SE Asia: asog/bayog qualified by living as women and marrying men; Brewer's "femininity as the vehicle to the spirit world" (SE). AY: al-Mas'udi records and refutes "more similar to women". | **Confirmed design:** the doctrine is the faith's own, with in-corps dissent available (Galenic rite). Chinese neighbours share the Sisters' *structure* and reject their *claim*. |
+| (e) castrate / transfeminine priesthood | **S in SE Asia (as legend), M in China.** Bissu guard the regalia and the rulers' "white blood"; a 1660s Puang Matoa was an old woman leading a hundred female bissu (SE); Ming castrate temple-wardens, astrologers, Buddhist/Lamaist/Daoist ritualists (TM); 26 Qing eunuch temples (DL). | Unchanged (**S**). |
+| (f) separatism | **S as template.** Eunuch temples, the Gang Tie Miao farm refuge, Wanyiju retirement enclave, burial societies (TM, DL); bissu as a self-contained class (SE). | Raised to **S** for enclave form. |
+| (g) adoptive heirship | **S, but patrilineal.** Tang eunuch dynasties of four to six generations, Yang Fugong's "six hundred adopted sons", Dezong's 791 cap on adoption (HK); Ming surname-taking and ennobled nephews, with crown confiscation of estates (TM); Mongol social paternity (Jochi, Alan Goa) and *anda* sworn kinship (TB); bissu Puang Lolo inherits from Puang Matoa (SE). One matrilineal hook: Empress Wu "mothered" Gao Lishi (HK). | **S.** China is the mirror: same adoptive machine, male line. |
+| (h) communal property | **S as template.** Eunuch temple associations, fee-and-waiting-list retirement, burial-society dues, fellow eunuchs performing ancestor rites for the kinless (DL). | Raised to **M→S** for the order's internal economy. |
+| (i) non-marital kinship | **M.** Tang eunuchs married; Qing *duishi* pairings with palace women (DL/TM); asog married men (SE); Mongol *anda* (TB). | Unchanged. |
+| (k) intra-group hostility | **S.** Eunuch vs scholar-official as the structuring feud of Chinese politics; master abuse of apprentices; eunuch factions (HK, TM, DL). | Unchanged (**M→S**). |
+| (l) outlaw framing | **S.** Hongwu's iron tablet; penalty ladders for self-castration (flogging, cangue, exile, kin liability); Sommer's magistrates reading a man living as a woman as sorcerer or portent (*renyao* = portent, not predator, before 1453); Spanish and Islamic suppression of bissu and baylan; Terbish: Mongols met "castrated and feminine men" only in China, so the knife reads as foreign Chinese cruelty on the steppe. | Unchanged (**S**); rich neighbour text. |
+| (m) female-dominated doctrine | **M.** Khatun regencies 1241–51 (TB); bilateral kinship and female rulers in SE Asia (SE); Empress Wu and the Lotus Sutra dragon-girl (TC). | Unchanged. |
+| (n) penal castration | **M.** Real and attested (Five Punishments; Ming castration of traitors' kin despite formal abolition; al-Kunduri 1064 kept in office, AY) but never framed as rehabilitation (DL, TM). | Unchanged: the rehabilitative frame is the faith's invention. |
+| (o) sponsor / mentor | **S, richest of all passes.** Beijing knifers refuse to cut without "securities to vouch for respectability" and ask *houhui bu houhui*, "will you ever repent?" (TC, DL); Neishutang school where each ten-year-old kowtows to a designated "sage" and pays "a white candle, a handkerchief, and a dragon-shaped incense stick" (TM p. 42); palace *shifu* then temple *shifu* in retirement (DL); bissu apprenticeship (SE); Mongol *anda* (TB). | **S.** The knifer's question and the candle-handkerchief-incense offering go straight into the Rite of the Knife event text. |
+
+**Design consequences added**
+16. **China is the mirror, not the model.** Tang eunuch dynasties share the Sisters' adoptive machine and reject their gender claim; write Chinese court reactions as recognition of the structure plus contempt for the doctrine.
+17. **The knifer's liturgy.** Guarantor, the question "will you ever repent?", offerings, a hundred days' seclusion, cohort renaming: the Rite of the Knife and the Dorley intake get their ceremony from Beijing, dressed in Anatolian cloth.
+18. **Southeast Asia is legend, not history.** No witness before 1521; bissu and baylan material belongs in in-faith myth and in a later branch, never in 867 lore as fact.
+19. **Goryeo *naesi* were not eunuchs.** Do not localise Korean *naesi* as castrates.
+20. **The steppe reaction is "Chinese cruelty".** Tengrist and Mongol courts read the knife as a sedentary, foreign vice; the event text should say so.
+21. **Period vocabulary.** *Renyao* = portent; *yinyang ren* and the "predator" sense are post-1453 (SM).
 
 ---
 
