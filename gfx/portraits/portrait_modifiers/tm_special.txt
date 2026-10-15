@@ -1,0 +1,31 @@
+# Adelphai Dorleyaiou — beard and body hair removal for daughters of the knife.
+# Pattern: special_beardless_eunuch in game/gfx/portraits/portrait_modifiers/99_special.txt.
+
+tm_special_daughter_hairless = {
+	usage = game
+	selection_behavior = weighted_random
+
+	tm_no_beard_no_body_hair = {
+		dna_modifiers = {
+			morph = {
+				mode = replace
+				gene = gene_body_hair
+				template = body_hair_sparse
+				value = 0
+			}
+			accessory = {
+				mode = add
+				gene = beards
+				template = no_beard
+				range = { 0 1 }
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 999
+				has_trait = tm_daughter_of_the_knife
+			}
+		}
+	}
+}

@@ -32,7 +32,7 @@ tenet_tm_day_of_blood = {
 		virtues = {
 			eunuch_1 = { weight = 20 scale = 1 }
 			beardless_eunuch = { weight = 20 scale = 1 }
-			# TODO add tm_daughter_of_the_knife once the trait exists
+			tm_daughter_of_the_knife = { weight = 30 scale = 1 }
 			brave = { weight = 10 scale = 1 }
 		}
 		sins = {

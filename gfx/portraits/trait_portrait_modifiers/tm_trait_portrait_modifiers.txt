@@ -1,0 +1,21 @@
+# Adelphai Dorleyaiou — cosmetic feminisation (Route 1 in docs/model_swap.md).
+# Spec: game/gfx/portraits/trait_portrait_modifiers/_trait_modifier.info
+# Softens masculine face morphs on a body the engine still treats as male. Values are first guesses:
+# modify_multiply scales the existing gene strength, so 0.6 dampens rather than replaces, keeping
+# the character's own face recognisable. Tune in-game.
+
+tm_daughter_face = {
+	tm_daughter = {
+		traits = { tm_daughter_of_the_knife }
+		trigger = { is_male = yes }		# re-embodied daughters are female and need no help
+		dna_modifiers = {
+			human = {
+				morph = { mode = modify_multiply gene = gene_jaw_width value = 0.6 }
+				morph = { mode = modify_multiply gene = gene_jaw_forward value = 0.6 }
+				morph = { mode = modify_multiply gene = gene_chin_width value = 0.7 }
+				morph = { mode = modify_multiply gene = gene_bs_forehead_brow_forward value = 0.5 }
+				morph = { mode = modify_multiply gene = gene_neck_width value = 0.7 }
+			}
+		}
+	}
+}

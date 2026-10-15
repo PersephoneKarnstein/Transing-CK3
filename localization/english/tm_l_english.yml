@@ -82,3 +82,13 @@
  holy_site_tm_kyzikos_effect_name:0 "From [holy_site|E] #weak ($holy_site_tm_kyzikos_name$)#!"
  holy_site_tm_ankyra_name:0 "Ankyra"
  holy_site_tm_ankyra_effect_name:0 "From [holy_site|E] #weak ($holy_site_tm_ankyra_name$)#!"
+
+ ### Traits ###
+ trait_tm_transgender:0 "Marked by the Mother"
+ trait_tm_transgender_desc:0 "Something in this character answers to the Mother. Among the Sisters it is said that daughters are born of any womb, and that the Mother sows them among every people."
+ trait_tm_daughter_of_the_knife:0 "Daughter of the Knife"
+ trait_tm_daughter_of_the_knife_desc:0 "This character took the knife on the Day of Blood and rose a daughter. The Sisters count her among their women; others count her as they please."
+ trait_tm_novice:0 "Novice of the House"
+ trait_tm_novice_desc:0 "This character is in the care of a sponsor of the Mother House, partway along the road the sponsor once walked."
+ trait_tm_washout:0 "Washed Out"
+ trait_tm_washout_desc:0 "Taken into the House and judged unfit to remain. What became of him afterwards is not discussed."

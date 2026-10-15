@@ -1,0 +1,77 @@
+# Adelphai Dorleyaiou — traits
+# Spec: game/common/traits/_traits.info. Design: docs/faith_design.md §5–5a.
+# Icons: gfx/interface/icons/traits/<key>.dds, 120x120 RGBA. The `icon =` lines below point at vanilla art
+# as placeholders so the game loads cleanly; delete each line once the custom .dds is in place.
+
+# The seed: "Marked by the Mother". Sisters are born of any womb, so inheritance is nominal (1%).
+# random_creation/birth only work on inheritable or genetic traits, hence inherit_chance.
+# Visible on purpose: the vanilla Character Finder's trait filter can then find marked characters.
+tm_transgender = {
+	icon = "gfx/interface/icons/traits/beauty_good_1.dds"		# placeholder
+
+	inherit_chance = 1
+	both_parent_has_trait_inherit_chance = 2
+	birth = 1
+	random_creation = 1
+
+	same_opinion = 10					# t4t: the marked recognise one another
+	shown_in_ruler_designer = yes
+	ruler_designer_cost = 0
+
+	ai_boldness = 5
+}
+
+# The result of the Rite of the Knife. In the eunuch group so vanilla eunuch checks still see it,
+# but unlike eunuch_1 it blocks neither marriage nor inheritance, and it is valid for either sex
+# (a re-embodied daughter is female to the engine).
+tm_daughter_of_the_knife = {
+	icon = "gfx/interface/icons/traits/beardless_eunuch.dds"	# placeholder
+
+	category = health
+	group_equivalence = eunuch
+	can_have_children = no
+	minimum_age = 16
+	opposites = {
+		eunuch_1
+		beardless_eunuch
+	}
+
+	same_opinion = 15
+	stewardship = 1
+	learning = 1
+
+	culture_modifier = {
+		parameter = eunuch_trait_bonuses		# Court Eunuchs tradition: the vanilla bonuses also apply
+		liege_opinion = 10
+		stewardship = 1
+		intrigue = 1
+	}
+
+	shown_in_ruler_designer = yes
+	ruler_designer_cost = 0
+}
+
+# Dorley chain stage marker (the three-year programme). Removed at completion or washout.
+tm_novice = {
+	icon = "gfx/interface/icons/traits/eunuch_1.dds"			# placeholder
+
+	category = health
+	valid_sex = male
+	minimum_age = 16
+
+	stress_gain_mult = 0.25
+	learning = 1
+
+	shown_in_ruler_designer = no
+}
+
+# Dorley chain failure marker.
+tm_washout = {
+	icon = "gfx/interface/icons/traits/eunuch_1.dds"			# placeholder
+
+	category = fame
+	general_opinion = -10
+	dread_baseline_add = 5
+
+	shown_in_ruler_designer = no
+}
