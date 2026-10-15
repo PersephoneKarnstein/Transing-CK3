@@ -20,7 +20,7 @@ kybeline = {
 		tradition_female_only_inheritance	# its can_pick accepts a rite with the female-dominated gender law
 	}
 
-	name_list = name_list_greek			# TODO name_list_kybeline (Greek women's names + attested gallae/eunuch names)
+	name_list = name_list_kybeline
 
 	coa_gfx = { byzantine_group_coa_gfx }
 	building_gfx = { byzantine_building_gfx }

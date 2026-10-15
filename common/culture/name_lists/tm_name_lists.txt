@@ -1,0 +1,133 @@
+﻿# Kybeline name list — Adelphai Dorleyaiou
+# Spec: game/common/culture/name_lists/_name_lists.info. Structure copied from vanilla name_list_greek (00_byzantine.txt).
+# Kybeline children are born male or female as normal; male names are the vanilla Greek stock.
+# Daughters of the knife take a new feminine name after the rite, so female_names carries the vanilla
+# Byzantine women's names plus names attested in docs/research/ (source report cited per group).
+# Every key is either a vanilla name key or defined in localization/english/tm_names_l_english.yml.
+
+name_list_kybeline = {
+
+	cadet_dynasty_names = {
+		# Phrygian/Galatian place-based houses (new keys, tm_names_l_english.yml)
+		{ "dynnp_of" "dynn_Dorylaion" }
+		{ "dynnp_of" "dynn_Pessinous" }
+		{ "dynnp_of" "dynn_Kyzikos" }
+		{ "dynnp_of" "dynn_Ankyra" }
+		{ "dynnp_of" "dynn_Amorion" }
+		{ "dynnp_of" "dynn_Nakoleia" }
+		# Vanilla Greek houses with Anatolian toponymic or eunuch-family associations
+		"dynn_Gabras"
+		"dynn_Kastamonites"
+		"dynn_Sinopites"
+		"dynn_Kibyrraiotes"
+		"dynn_Charsianites"
+		"dynn_Antiochites"
+		"dynn_Neokaisareites"
+		"dynn_Smyrnaios"
+		"dynn_Galaton"
+		"dynn_Anatolikos"
+		"dynn_Kyminianos"		# eunuch family name (hist_tougher_eunuch_byzantine.md 7.2)
+		"dynn_Pepagomenos"		# eunuch family name (hist_tougher_eunuch_byzantine.md 7.2)
+		"dynn_Oinaiotes"		# eunuch family name (hist_tougher_eunuch_byzantine.md 7.2)
+		"dynn_Spondyles"		# eunuch family name (hist_tougher_eunuch_byzantine.md 7.2)
+		"dynn_Probatas"			# eunuch family name (hist_tougher_eunuch_byzantine.md 7.2)
+		"dynn_Nikerites"		# eunuch family name (hist_tougher_eunuch_byzantine.md 7.2)
+	}
+
+	dynasty_names = {
+		{ "dynnp_of" "dynn_Dorylaion" }
+		{ "dynnp_of" "dynn_Pessinous" }
+		{ "dynnp_of" "dynn_Kyzikos" }
+		{ "dynnp_of" "dynn_Ankyra" }
+		{ "dynnp_of" "dynn_Amorion" }
+		{ "dynnp_of" "dynn_Nakoleia" }
+		"dynn_Gabras"
+		"dynn_Kastamonites"
+		"dynn_Sinopites"
+		"dynn_Kibyrraiotes"
+		"dynn_Charsianites"
+		"dynn_Antiochites"
+		"dynn_Neokaisareites"
+		"dynn_Smyrnaios"
+		"dynn_Galaton"
+		"dynn_Anatolikos"
+		"dynn_Kyminianos"
+		"dynn_Pepagomenos"
+		"dynn_Oinaiotes"
+		"dynn_Spondyles"
+		"dynn_Probatas"
+		"dynn_Nikerites"
+	}
+
+	# Vanilla name_list_greek male names, unchanged (characters are born male or female normally)
+	male_names = {
+		Adrianos Akakios Alexandros Alexios Anastasios Anatolios Andreas Andronikos Anthemios Anthimos Antiochos Antonios Apollonios Arsenios Artemios Athanasios Bardas
+		Bartholomaios Basileios Belisarios Boethios Bosporios Christophoros Chrysanthos Chrysogonos Damianos Daniel David Demetrios Diogenes Dionysios Dorotheos Eirenaios Eudoxios Eustratios
+		Eugenios Euphemios Eusebios Eustathios Evangelos Gabriel Gennadios Georgios Gerasimos Germanos Gregoras Gregorios Hektorios Helias Herakleios Hierotheos Himerios
+		Hippolytos Hypatios Iakobos Ignatios Innokentios Ioannes Ioannikios Iordanes Ioseph Isaakios Isaias Isidoros Ioulianos Ioustinianos Ioustinos Kaisarios
+		Kallinikos Kallistos Komitas Konstantinos Konstantios Konstas Kosmas Kyriakos Kyrillos Kyros Laurentios Lazaros Leon Leontios Loukas Makarios Manuel Markos
+		Matthaios Maurikios Maximos Megistos Meletios Methodios Michael Narses Neophytos Nikephoros Niketas Nikodemos Nikolaos Niphon Orestes Pamphilios Pankratios Pantoleon Paschalis
+		Pavlos Pelagios Petros Philaretos Philippos Philotheos Phokas Photios Polykarpos Porphyrios Prokopios Pyrros Raphail Romanos Sabas Samuel Serapion Sebastianos Sergios Stephanos
+		Staurakios Symeon Symmachos Theocharistos Theodoros Theodosios Theodotos Theodoulos Theoktistos Theophanes Theophilos Theophylaktos Thomas Tiberios Traianos
+		Timotheos Tryphon Valerios Zacharias Zenobios Zenon
+		Aristarchus Aristarchos
+	}
+
+	female_names = {
+		# Common Byzantine women's names (vanilla name_list_greek)
+		10 = {
+			Anna Maria Eirene Theodora Zoe Helene Sophia Eudokia Anastasia Euphrosyne
+			Theophano Aikaterine Ioanna Eugenia Konstantia Xene Thekla Pulcheria Kale Kyra
+			Agathe Barbara Euphemia Theodosia Martha Pelagia
+		}
+		# Less common Byzantine women's names (vanilla name_list_greek)
+		5 = {
+			Alexandra Athanasia Anthousa Demetra Dorothea Eudoxia Eulalia Euphrasia Eupraxia Eusebia
+			Georgia Hypatia Ioulia Ioustina Kyriake Leontia Melissa Nonna Philippa Sergia
+			Stephania Theoktiste Thomais Zenobia Theognosia Rhodanthe
+		}
+		# Attested holy women, empresses and foundresses
+		3 = {
+			Beatrike					# the starting head of faith, Theia Beatrike (mod lore; not from a report)
+			Marina						# Mary/Marinos, transvestite saint: hist_trans_historical.md (P49), hist_questions_gender_byzantium.md
+			Matrona						# Matrona of Perge: hist_trans_historical.md, hist_questions_gender_byzantium.md
+			Olympias Kassia Febronia Theopiste Martina Elisabet	# holy women and rulers: hist_questions_gender_byzantium.md
+			Glykeria Prokopia			# Glykeria of Skyros, Procopia: hist_neville_byzantine_gender.md
+			Domna						# virgin martyr among eunuch saints: hist_tougher_eunuch_byzantine.md (7.2)
+			Makrina Emmelia				# household convent pair: hist_rapp_brother_making.md (6.5)
+			Tryphaina Stratonike		# Tryphaena who adopts Thecla; queen Stratonike of the Combabos tale: hist_ancient_gender_diversity.md
+		}
+		# Attested gallae, paired women ascetics, and feminised eunuch names
+		2 = {
+			Aristion Trygonion			# gallae named with feminine grammar, Anth. Pal. 7.233 via Roller: web_baedelism.md (4.4)
+			Demonassa					# wife of Megillos (Lucian Dial. 5): hist_ancient_gender_diversity.md
+			Marana						# Marana and Cyra, walled-in women ascetics: hist_rapp_brother_making.md (6.5)
+			Aspilia Agathoklia Kalimera Akulina Theodoule	# Edessa virgins: hist_rapp_brother_making.md (6.5)
+			Eleutheria Agapete Eutychia Hilaria	# feminised from eunuchs Eleutherios, Agapetos, Eutychios, Hilarius: hist_tougher_eunuch_byzantine.md (7.2)
+		}
+		# Rare exotic names (Latin saint; Arabic mukhannath/eunuch names)
+		1 = {
+			Wilgefortis					# bearded virgin saint: hist_trans_historical.md
+			Tuways Find Rahma			# Medinan mukhannathun laqabs: hist_rowson_mukhannathun.md (5.2)
+			Sawsan						# 'Abbasid eunuch name ("lily"): hist_ayalon_eunuchs_caliphs.md (7)
+		}
+	}
+
+	dynasty_of_location_prefix = "dynnp_of"
+
+	# Chance of male children being named after their paternal or maternal grandfather, or their father. Sum must not exceed 100.
+	pat_grf_name_chance = 50
+	mat_grf_name_chance = 50
+	father_name_chance = 0
+
+	# Chance of female children being named after their paternal or maternal grandmother, or their mother. Sum must not exceed 100.
+	pat_grm_name_chance = 50
+	mat_grm_name_chance = 50
+	mother_name_chance = 0
+
+	mercenary_names = {
+		{ name = "mercenary_company_cretans" }
+		{ name = "mercenary_company_heruli" }
+		{ name = "mercenary_company_hoplites_of_place" }
+	}
+}
