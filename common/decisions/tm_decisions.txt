@@ -23,7 +23,13 @@ tm_take_the_knife_decision = {
 	}
 
 	cost = {
-		piety = 100
+		piety = {
+			value = 100
+			if = {
+				limit = { has_personal_tenet_flag = tm_personal_knife_half_cost }
+				multiply = 0.5
+			}
+		}
 	}
 
 	effect = {

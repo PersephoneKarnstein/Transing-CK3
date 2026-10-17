@@ -42,6 +42,7 @@
  tenet_tm_sisterhood_name:0 "Unbending Sisterhood"
  tenet_tm_sisterhood_desc:0 "Love the sister you loathe. Quarrels between the faithful are never carried before outsiders, the cast-out are always given shelter, and two daughters may bind themselves by the old rite of sister-making."
  tenet_tm_sisterhood_opinion:0 "Unbending Sisterhood"
+ doctrine_parameter_tm_personal_knife_half_cost:0 "The Rite of the Knife costs you half the usual @piety_icon![piety|E]"
 
  ### Doctrine groups ###
  doctrine_tm_knife_name:0 "The Knife"

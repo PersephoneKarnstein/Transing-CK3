@@ -28,6 +28,19 @@ tenet_tm_day_of_blood = {
 		monthly_piety_gain_mult = 0.05
 	}
 
+	# Personal tenet (1.20 game-start picker and later choice). Reuses a vanilla flag that is checked by name.
+	can_pick_as_personal_tenet = {
+		faith = faith:transbian_maximalism
+	}
+	personal_tenet_modifier = {
+		stress_loss_mult = 0.15
+		health = 0.15
+	}
+	personal_tenet_parameters = {
+		tm_personal_knife_half_cost					# tm_decisions.txt: the Rite of the Knife costs half piety
+		tenet_mortification_suffering_sanctifies	# vanilla 20_health_effects.txt: piety and stress loss on wounds
+	}
+
 	traits = {
 		virtues = {
 			eunuch_1 = { weight = 20 scale = 1 }
@@ -69,6 +82,18 @@ tenet_tm_daughters_chosen = {
 		different_faith_opinion = 5
 	}
 
+	can_pick_as_personal_tenet = {
+		faith = faith:transbian_maximalism
+	}
+	personal_tenet_modifier = {
+		diplomacy = 1
+		monthly_dynasty_prestige_mult = 0.1
+	}
+	personal_tenet_parameters = {
+		tenet_adoptionism_adoption_personal_active	# vanilla 00_adoption.txt: adopt is always available
+		tenet_adoptionism_sp_on_adopt				# vanilla 05_dlc_bp2_effects.txt: rewards on adoption
+	}
+
 	traits = {
 		virtues = {
 			compassionate = { weight = 15 scale = 1 }
@@ -105,6 +130,18 @@ tenet_tm_sisterhood = {
 		name = "tenet_tm_sisterhood_opinion"
 		same_faith_opinion = 10
 		courtier_and_guest_opinion = 5
+	}
+
+	can_pick_as_personal_tenet = {
+		faith = faith:transbian_maximalism
+	}
+	personal_tenet_modifier = {
+		courtier_and_guest_opinion = 10
+		same_faith_opinion = 5
+	}
+	personal_tenet_parameters = {
+		tenet_ritual_hospitality_invite_to_court_acceptance	# vanilla: invitations to court far more likely accepted
+		tenet_communal_identity_sway_piety					# vanilla: piety on swaying someone of your rite
 	}
 
 	traits = {
