@@ -1,2 +1,38 @@
+# --- OS and editor clutter ---
 .DS_Store
+Thumbs.db
+desktop.ini
 *.swp
+*~
+.vscode/
+.idea/
+__pycache__/
+*.pyc
+
+# --- Local tool state ---
+# Paradox Modding Toolkit / pxtk: config holds machine-specific paths; caches and baselines are local.
+.px-toolkit/
+.pxignore
+# CK3 Tiger output and any stray logs
+*.log
+tiger*.json
+tiger*.txt
+
+# --- Literal text extracts: kept locally, never published ---
+# Raw Bluesky/Tumblr scrapes (private individuals' posts).
+docs/research/raw/
+# Full-text conversions of copyrighted books awaiting a read.
+docs/research/sources_pending/
+# Any other full-text book conversions.
+docs/research/books/
+*.epub
+*.pdf
+# Web-sweep reports quote and link hundreds of named private accounts.
+docs/research/web_*.md
+# Game-generated script documentation (Paradox's own output; regenerate with `script_docs`).
+docs/script_docs/
+
+# --- Build and packaging artefacts ---
+*.zip
+*.tgz
+node_modules/
