@@ -239,7 +239,6 @@ Works the research for this mod read, in full or in named chapters. Works it onl
 - Bhatt, Talia. 2025. *Trans/Rad/Fem: Essays on Transfeminism, Book 1*. Self-published.
 - Chu, Andrea Long. 2019. *Females*. Verso.
 - Gleeson, Jules Joanne, and Elle O'Rourke (eds.). 2021. *Transgender Marxism*. Pluto Press. (Read in full: introduction, 14 chapters and Jordy Rosenberg's afterword.)
-- Raymond, Janice G. 2006 [1979]. "Sappho by Surgery: The Transsexually Constructed Lesbian-Feminist." In Stryker and Whittle (eds.), *The Transgender Studies Reader*. Routledge. First published in Raymond, *The Transsexual Empire: The Making of the She-Male* (Beacon Press, 1979).
 - Stryker, Susan. 2026. *Transgender History: A Resource for Today's Struggle—and Tomorrow's*. 3rd ed. Seal Press.
 - Stryker, Susan, and Aren Z. Aizura (eds.). 2013. *The Transgender Studies Reader 2*. Routledge.
 - Stryker, Susan, and Dylan McCarthy Blackston (eds.). 2022. *The Transgender Studies Reader Remix*. Routledge.
