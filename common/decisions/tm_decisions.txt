@@ -90,3 +90,82 @@ tm_debug_census_decision = {
 	}
 	ai_check_interval = 0
 }
+
+# Petition the Mother House to name your house's lands a refuge. The mark is a house variable, so it
+# passes down the matriline (adopted and re-embodied daughters keep the house). Unlocks the seek decision
+# below and makes Marked travellers far likelier to arrive (tm_on_actions.txt, tm_yearly_playable).
+tm_declare_refuge_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"		# placeholder; TODO event art
+	}
+	sort_order = 85
+
+	is_shown = {
+		is_landed = yes
+		rite ?= { rite_has_parameter = tm_day_of_blood_active }
+		exists = house
+		NOT = { house = { has_variable = tm_refuge } }
+	}
+
+	is_valid = {
+		highest_held_title_tier >= tier_county
+	}
+
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+	}
+
+	cost = {
+		piety = 150
+		prestige = 100
+	}
+
+	effect = {
+		house = { set_variable = tm_refuge }
+		custom_tooltip = tm_declare_refuge_decision_effect_tt
+		trigger_event = tm_refuge.0001
+	}
+
+	ai_check_interval = 60
+	ai_will_do = {
+		base = 25
+		modifier = { add = 50 NOT = { any_child = { is_alive = yes is_female = yes } } }
+	}
+}
+
+# Send to the Mother House for daughters: three candidates, as vanilla's court-position and champion
+# recruitment offer a choice. Refuge houses only; five-year cooldown.
+tm_seek_daughters_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"		# placeholder; TODO event art
+	}
+	sort_order = 84
+	cooldown = { years = 5 }
+
+	is_shown = {
+		is_landed = yes
+		rite ?= { rite_has_parameter = tm_day_of_blood_active }
+		house ?= { has_variable = tm_refuge }
+	}
+
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+		exists = capital_province
+	}
+
+	cost = {
+		gold = 50
+		piety = 50
+	}
+
+	effect = {
+		custom_tooltip = tm_seek_daughters_decision_effect_tt
+		trigger_event = tm_refuge.0010
+	}
+
+	ai_check_interval = 60
+	ai_will_do = {
+		base = 10
+		modifier = { add = 60 NOT = { any_child = { is_alive = yes is_female = yes } } }
+	}
+}

@@ -30,3 +30,12 @@ tm_begin_programme_effect = {
 		}
 	}
 }
+
+# After a refuge candidate joins the court, offer to adopt her at once (Daughters Chosen faiths only).
+tm_refuge_offer_adoption_effect = {
+	$CANDIDATE$ = { save_scope_as = tm_refuge_candidate }
+	if = {
+		limit = { rite ?= { rite_has_parameter = tm_adoptive_matriline } }
+		trigger_event = { id = tm_refuge.0011 days = 1 }
+	}
+}

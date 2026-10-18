@@ -184,6 +184,10 @@ tm_yearly_playable = {
 				add = 3
 				any_courtier = { has_trait = tm_daughter_of_the_knife }
 			}
+			modifier = {								# a declared refuge (tm_declare_refuge_decision)
+				add = 15
+				house ?= { has_variable = tm_refuge }
+			}
 			trigger_event = tm_arrival.0001
 		}
 	}

@@ -1,0 +1,161 @@
+﻿namespace = tm_refuge
+
+# The Mother House answers the petition. Root = the petitioner.
+tm_refuge.0001 = {
+	type = character_event
+	title = tm_refuge.0001.t
+	desc = tm_refuge.0001.desc
+	theme = faith
+	left_portrait = { character = root animation = personality_zealous }
+	right_portrait = {
+		trigger = {
+			exists = title:d_tm_mother_house.holder
+			NOT = { title:d_tm_mother_house.holder = root }
+		}
+		character = title:d_tm_mother_house.holder
+		animation = happiness
+	}
+
+	option = {
+		name = tm_refuge.0001.a
+		custom_tooltip = tm_refuge.0001.a.tt
+	}
+}
+
+# The Mother House sends word of three who need a home. Root = the ruler.
+tm_refuge.0010 = {
+	type = character_event
+	title = tm_refuge.0010.t
+	desc = tm_refuge.0010.desc
+	theme = faith
+	left_portrait = { character = root animation = personality_rational }
+	lower_left_portrait = scope:tm_cand_child
+	lower_center_portrait = scope:tm_cand_young
+	lower_right_portrait = scope:tm_cand_elder
+
+	immediate = {
+		# A Marked girl, still a child. She can be taken as a daughter now; the knife waits until 16.
+		create_character = {
+			gender = male
+			age = { 6 11 }
+			culture = culture:kybeline
+			faith = root.faith
+			dynasty = none
+			location = root.capital_province
+			trait = tm_transgender
+			save_scope_as = tm_cand_child
+		}
+		# A young daughter of the knife and an elder sister. With re-embodiment on, they already have the
+		# female body (and are infertile, as re-embodied daughters are); otherwise the body is male.
+		if = {
+			limit = { has_game_rule = tm_reembodiment_on }
+			create_character = {
+				gender = female
+				age = { 17 24 }
+				culture = culture:kybeline
+				faith = root.faith
+				dynasty = none
+				location = root.capital_province
+				fertility = 0
+				trait = tm_daughter_of_the_knife
+				save_scope_as = tm_cand_young
+			}
+			create_character = {
+				gender = female
+				age = { 26 40 }
+				culture = culture:kybeline
+				faith = root.faith
+				dynasty = none
+				location = root.capital_province
+				fertility = 0
+				trait = tm_daughter_of_the_knife
+				save_scope_as = tm_cand_elder
+			}
+		}
+		else = {
+			create_character = {
+				gender = male
+				age = { 17 24 }
+				culture = culture:kybeline
+				faith = root.faith
+				dynasty = none
+				location = root.capital_province
+				trait = tm_daughter_of_the_knife
+				save_scope_as = tm_cand_young
+			}
+			create_character = {
+				gender = male
+				age = { 26 40 }
+				culture = culture:kybeline
+				faith = root.faith
+				dynasty = none
+				location = root.capital_province
+				trait = tm_daughter_of_the_knife
+				save_scope_as = tm_cand_elder
+			}
+		}
+		# The elder has had years in the Mother House: a little more learning and stewardship.
+		scope:tm_cand_elder = {
+			add_learning_skill = 3
+			add_stewardship_skill = 2
+		}
+	}
+
+	option = {
+		name = tm_refuge.0010.a
+		add_courtier = scope:tm_cand_child
+		tm_refuge_offer_adoption_effect = { CANDIDATE = scope:tm_cand_child }
+	}
+	option = {
+		name = tm_refuge.0010.b
+		add_courtier = scope:tm_cand_young
+		tm_refuge_offer_adoption_effect = { CANDIDATE = scope:tm_cand_young }
+	}
+	option = {
+		name = tm_refuge.0010.c
+		add_courtier = scope:tm_cand_elder
+		tm_refuge_offer_adoption_effect = { CANDIDATE = scope:tm_cand_elder }
+	}
+	option = {	# all three, at a price in piety
+		name = tm_refuge.0010.d
+		add_piety = -100
+		add_courtier = scope:tm_cand_child
+		add_courtier = scope:tm_cand_young
+		add_courtier = scope:tm_cand_elder
+		ai_chance = { base = 0 }
+	}
+	option = {
+		name = tm_refuge.0010.e
+		ai_chance = { base = 0 }
+	}
+	# Whoever is not chosen stays in the world as a wanderer; nobody is killed off.
+}
+
+# Optional second page: take the newcomer as a daughter at once. Root = the ruler.
+tm_refuge.0011 = {
+	type = character_event
+	title = tm_refuge.0011.t
+	desc = tm_refuge.0011.desc
+	theme = family
+	left_portrait = { character = root animation = happiness }
+	right_portrait = { character = scope:tm_refuge_candidate animation = happiness }
+
+	trigger = {
+		exists = scope:tm_refuge_candidate
+		scope:tm_refuge_candidate = { is_alive = yes is_courtier_of = root }
+	}
+
+	option = {
+		name = tm_refuge.0011.a
+		adopt_effect = {
+			CHILD = scope:tm_refuge_candidate
+			ADOPTER = root
+		}
+		scope:tm_refuge_candidate = {
+			add_opinion = { target = root modifier = grateful_opinion opinion = 30 }
+		}
+	}
+	option = {
+		name = tm_refuge.0011.b
+	}
+}

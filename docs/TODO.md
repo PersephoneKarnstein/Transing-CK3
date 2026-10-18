@@ -23,3 +23,11 @@
 
 ## Validation notes
 - CK3 Tiger v1.19.0 (built from source 2026-10-14) lags the 1.20 religion schema. Expected false positives on this mod: unknown `doctrine_group_type`/`index`/`divergence`/`special_parameters`, list-form doctrine parameters, `rite_has_doctrine`, the character→`rite` link, holy-site `county_holder_character_modifier`/`faith_character_modifier`, and faiths "not defined in common/religion/religions" (1.20 uses faith_types). All are documented in the installed 1.20 `.info` files. Remaining real warnings: missing art only.
+
+## Matriline continuity (added 2026-10-17)
+- [ ] In-game test: Take as Daughter on a courtier, a ward, an adult guest, and a girl with landed kin.
+- [ ] In-game test: Petition for a Refuge, then Send to the Mother House; check all five options and the adopt follow-up.
+- [ ] In-game test: re-embody an adopted daughter and confirm she is still her adoptive mother's child and heir.
+- [ ] In-game test: re-embody a mother and confirm her children still list her as parent (raw `adopt` on children who already have two parents is unverified).
+- [ ] Tune arrival chance: base 6 / Mother House +6 / daughter courtier +3 / refuge +15 per year.
+- [ ] With the re-embodiment rule off, daughters keep male bodies and cannot inherit under female-only law. Decide whether that rule should also relax the gender law.

@@ -1,0 +1,34 @@
+﻿# Run from the console:  run tm_adopt_check.txt
+# Logs each vanilla adopt_interaction check for every child ward of yours to debug.log as "TMADOPT".
+# (character:<id> only resolves history IDs, not the runtime ID shown in the debug tooltip.)
+debug_log = "TMADOPT ---- start (you)"
+debug_log_scopes = yes
+save_scope_as = tm_actor
+if = { limit = { has_game_rule = no_adoption } debug_log = "TMADOPT note: game rule no_adoption is set" }
+if = { limit = { rite ?= { rite_has_parameter = tenet_adoptionism_adoption_always_possible } } debug_log = "TMADOPT ok: your rite always allows adoption" }
+if = { limit = { is_adult = no } debug_log = "TMADOPT FAIL you are not adult" }
+if = { limit = { is_married = yes is_female = yes matrilinear_marriage = no any_consort = { is_male = yes } } debug_log = "TMADOPT FAIL you are a wife in a patrilineal marriage to a man" }
+every_relation = {
+	type = ward
+	debug_log = "TMADOPT ---- ward (scopes follow)"
+	debug_log_scopes = yes
+	if = { limit = { is_adult = yes } debug_log = "TMADOPT FAIL ward is adult" }
+	if = { limit = { is_ruler = yes } debug_log = "TMADOPT FAIL ward is a ruler" }
+	if = { limit = { is_landed = yes } debug_log = "TMADOPT FAIL ward is landed" }
+	if = { limit = { is_available = no } debug_log = "TMADOPT FAIL ward is not available (prison, travel, army, activity)" }
+	if = { limit = { is_imprisoned = yes } debug_log = "TMADOPT FAIL ward is imprisoned" }
+	every_close_or_extended_family_member = {
+		limit = { is_ruler = yes }
+		debug_log = "TMADOPT FAIL ruling relative (scopes follow)"
+		debug_log_scopes = yes
+	}
+	if = {
+		limit = { exists = house }
+		debug_log = "TMADOPT ward has a house"
+		if = { limit = { scope:tm_actor.house ?= house } debug_log = "TMADOPT FAIL ward is already in your house" }
+		if = { limit = { any_liege_or_above = { dynasty ?= prev.dynasty } } debug_log = "TMADOPT FAIL a liege shares her dynasty" }
+		if = { limit = { any_ancestor = { this = scope:tm_actor } } debug_log = "TMADOPT FAIL ward is your descendant" }
+	}
+	if = { limit = { is_child_of = scope:tm_actor } debug_log = "TMADOPT note: already your child" }
+}
+debug_log = "TMADOPT ---- end"

@@ -71,6 +71,18 @@ tm_arrival.0002 = {
 			add_opinion = { target = root modifier = grateful_opinion opinion = 30 }
 		}
 	}
+	option = {	# Stay as my daughter
+		name = tm_arrival.0002.c
+		trigger = { rite ?= { rite_has_parameter = tm_adoptive_matriline } }
+		add_courtier = scope:tm_new_daughter
+		adopt_effect = {
+			CHILD = scope:tm_new_daughter
+			ADOPTER = root
+		}
+		scope:tm_new_daughter = {
+			add_opinion = { target = root modifier = grateful_opinion opinion = 30 }
+		}
+	}
 	option = {	# Go to the Mother House
 		name = tm_arrival.0002.b
 		trigger = {

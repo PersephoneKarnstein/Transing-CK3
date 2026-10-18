@@ -82,6 +82,22 @@ tm_reembody_as_woman_effect = {
 		# Parents carry over, so she is her mother's and father's daughter rather than nobody's.
 		if = { limit = { exists = scope:tm_old_body.father } set_father = scope:tm_old_body.father }
 		if = { limit = { exists = scope:tm_old_body.mother } set_mother = scope:tm_old_body.mother }
+		# Adoption is stored only as an entry in the adopter's child list, so set_father/set_mother miss it.
+		# Any parent of the old body who is not yet a parent of the new one is an adoptive parent: re-adopt.
+		scope:tm_old_body = {
+			every_parent = {
+				limit = { NOT = { is_parent_of = scope:tm_new_body } }
+				adopt = scope:tm_new_body
+			}
+		}
+		# Her own children (born or adopted) stay hers, or a re-embodied mother would lose her heirs.
+		# Raw `adopt` (not adopt_effect) so the child keeps their house and stays where they are.
+		scope:tm_old_body = {
+			every_child = {
+				limit = { is_alive = yes }
+				scope:tm_new_body = { adopt = prev }
+			}
+		}
 
 		# Skills, copied by value after creation (vanilla pattern: value = scope:actor.diplomacy).
 		add_diplomacy_skill = { value = scope:tm_old_body.diplomacy subtract = diplomacy }
