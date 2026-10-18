@@ -194,3 +194,27 @@ Faith, rite, culture, traits (done); starting presence and head of faith; volunt
 - **Ayalon, *Eunuchs, Caliphs and Sultans* (1999)** — PDF received 2026-10-14, converted to `docs/research/sources_pending/ayalon_eunuchs_caliphs_sultans.txt`, not yet read. Target: al-Jahiz's statement on eunuchs' transfer to the female realm, in context, for flavour text.
 - **East and Southeast Asia.** CK3 1.20 includes China, Korea, Japan and Southeast Asia. Needed before the faith is given Asian branches or hostile-faith text there: Chinese court eunuchs (Tang–Yuan; Tsai, *The Eunuchs in the Ming Dynasty* for the later end), Mongol/Khanate attitudes to castration and gender variance, Korean *naesi*, Japanese absence of eunuchs, Southeast Asian *bissu*, *baylan* and *kathoey*-adjacent roles (Wiesner-Hanks touched bissu and baylan only briefly). Also the Mongol *Yassa* on sexual offences.
 - **Kerala Nair matriliny and Tuareg descent** for on-map matrilineal precedents (G verdict g).
+
+## 12. Branch faiths: distinct playstyles (planning, 2026-10-18)
+
+Three faiths, no more for now. Each answers three questions differently: how one becomes a daughter (the gate), how the line continues, and how the faith meets a hostile world. Shared across all three: the Marked trait, re-embodiment, Take as Daughter. Everything else is per-faith.
+
+| | Dorleyism (Byzantine, built) | Bæddel faith (Norse and Anglo-Saxon) | Chinese faith |
+|---|---|---|---|
+| Gate | The knife as sacrament, with a sponsor | Seiðr: trance-unmanning and public declaration; the knife only a rare Varangian import | Inner alchemy: a ten-month inner gestation, then rebirth. The knife is refused as the eunuch's road |
+| Line | Typikon: a house rule passing land to adopted daughters | Sworn sisters and fostered daughters of the hall | Adopted heirs placed in office; temple and burial societies hold property against crown confiscation |
+| World | Refuge, intake, church politics, Aristotelian vs Galenic council fight | Outlawry, landless war-band play, raiding, níð insult duels | Palace faction against the scholar-officials inside celestial / meritocratic government |
+| Skills | Learning, stewardship | Martial, prowess | Intrigue, stewardship |
+| Era arc | Eunuch-angel theology peaks 867, decays after 1066 | Tolerated while pagan, outlawed as Christianity arrives | Stable, but estates revert to the crown |
+
+### Decisions (user, 2026-10-18)
+1. **Bæddel, seiðr and ergi are one faith** for now. Name to be chosen; *bæddel* is the attested Old English word.
+2. **Chinese gate, grounded in Chiang (ed.), *Transgender China* (2012)** (`research/east_transgender_china.md`):
+   - Chiang argues that reading eunuchs as a "third sex", and China as a "castrated civilization", is a construction of 1870s-1930s Western observers (ch. 2), and warns against universalising "transgender" onto eunuchs (ch. 1). Stryker's afterword frames the field as de/colonising.
+   - Exporting Dorleyism's "the cut are women" to China would repeat exactly that projection. So the Chinese faith's founding polemic is **"we are not eunuchs"**: womanhood comes by rite, name and recognition, not by the cut.
+   - The rite inverts *neidan*: the adept gestates her own body for ten months and is born from it (ch. 3, pp. 84-86; Laozi's self-birth, p. 84). This maps directly onto re-embodiment.
+   - Hostile vocabulary the faith defines itself against: *renyao* 人妖 (portent in period, a slur today, ch. 5); the Dongfang Bubai trope of self-castration plus feminisation plus occult power (ch. 7).
+   - Remaining open question, kept for the faith's own schism: do eunuchs who seek the faith count as sisters? Recognition-by-rite says yes if they choose it; the faith never assumes it.
+   - Outside the book and to verify before use: legal gender change in the PRC is gated on surgery, which gives the alchemical (non-surgical) gate a modern resonance.
+3. **Three faiths is enough.** Southeast Asian bissu/baylan material waits for its own branch.
+4. **Shared vs separate** as in the table above.
