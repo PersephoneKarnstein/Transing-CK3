@@ -68,7 +68,10 @@ tm_reembody_as_woman_effect = {
 		}
 		# Always present on the new body, whatever the old one carried: can_have_children = no is what keeps
 		# a re-embodied (engine-female) daughter from ever becoming pregnant.
-		add_trait = tm_daughter_of_the_knife
+		if = {
+			limit = { tm_is_daughter_trigger = no }
+			add_trait = tm_daughter_of_the_knife
+		}
 
 		# 4. Identity.
 		if = { limit = { exists = scope:tm_old_body.house } set_house = scope:tm_old_body.house }

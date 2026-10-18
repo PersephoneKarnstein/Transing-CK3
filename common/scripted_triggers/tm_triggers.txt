@@ -22,8 +22,28 @@ tm_intake_eligible_trigger = {
 # Anyone the Sisters would go to war to bring home.
 tm_captive_daughter_trigger = {
 	OR = {
-		has_trait = tm_daughter_of_the_knife
+		tm_is_daughter_trigger = yes
 		has_trait = tm_novice
 		has_trait = tm_transgender
+	}
+}
+
+# Any daughter, whichever gate she came through (knife, seiðr, embryo).
+tm_is_daughter_trigger = {
+	OR = {
+		has_trait = tm_daughter_of_the_knife
+		has_trait = tm_daughter_of_seidr
+		has_trait = tm_daughter_of_the_embryo
+	}
+}
+
+# This character's rite raises daughters by some gate (used for arrivals and AI).
+tm_rite_can_raise_daughters_trigger = {
+	rite ?= {
+		OR = {
+			rite_has_parameter = tm_knife_voluntary
+			rite_has_parameter = tm_seidr_gate
+			rite_has_parameter = tm_embryo_gate
+		}
 	}
 }

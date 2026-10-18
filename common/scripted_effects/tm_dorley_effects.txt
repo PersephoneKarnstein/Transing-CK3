@@ -6,10 +6,10 @@ tm_begin_programme_effect = {
 
 	# Sponsor: a daughter of the knife at the captor's court if there is one, else the captor.
 	if = {
-		limit = { scope:tm_captor = { any_courtier = { has_trait = tm_daughter_of_the_knife } } }
+		limit = { scope:tm_captor = { any_courtier = { tm_is_daughter_trigger = yes } } }
 		scope:tm_captor = {
 			random_courtier = {
-				limit = { has_trait = tm_daughter_of_the_knife }
+				limit = { tm_is_daughter_trigger = yes }
 				save_scope_as = tm_sponsor
 			}
 		}

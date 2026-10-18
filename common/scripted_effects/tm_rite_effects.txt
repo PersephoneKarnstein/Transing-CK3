@@ -1,11 +1,13 @@
-﻿# Adelphai Dorleyaiou — the knife itself. Scope: the character being cut.
-
-tm_take_the_knife_effect = {
+﻿# Adelphai Dorleyaiou — raising a daughter. Scope: the character being raised.
+# Every faith's gate ends here; only the trait and the naming event differ.
+#   TRAIT  = tm_daughter_of_the_knife / tm_daughter_of_seidr / tm_daughter_of_the_embryo
+#   RENAME = the faith's naming event (tm_knife.0002 / tm_seidr.0002 / tm_embryo.0002)
+tm_rise_daughter_effect = {
 	if = {
 		limit = { has_trait = tm_novice }
 		remove_trait = tm_novice
 	}
-	add_trait = tm_daughter_of_the_knife
+	add_trait = $TRAIT$
 	add_piety = 50
 	if = {
 		limit = { has_trait = tm_transgender }
@@ -18,9 +20,37 @@ tm_take_the_knife_effect = {
 	if = {
 		limit = { has_game_rule = tm_reembodiment_on }
 		tm_reembody_as_woman_effect = yes
-		scope:tm_new_body = { trigger_event = { id = tm_knife.0002 days = 1 } }
+		scope:tm_new_body = { trigger_event = { id = $RENAME$ days = 1 } }
 	}
 	else = {
-		trigger_event = { id = tm_knife.0002 days = 1 }
+		trigger_event = { id = $RENAME$ days = 1 }
 	}
+}
+
+# The knife itself (Dorleyism).
+tm_take_the_knife_effect = {
+	tm_rise_daughter_effect = { TRAIT = tm_daughter_of_the_knife RENAME = tm_knife.0002 }
+}
+
+# Raise by whatever gate the root ruler's rite keeps (arrivals). Scope: the newcomer. ROOT_RULER = whose rite.
+tm_rise_by_rite_effect = {
+	if = {
+		limit = { $ROOT_RULER$.rite ?= { rite_has_parameter = tm_seidr_gate } }
+		tm_rise_daughter_effect = { TRAIT = tm_daughter_of_seidr RENAME = tm_seidr.0002 }
+	}
+	else_if = {
+		limit = { $ROOT_RULER$.rite ?= { rite_has_parameter = tm_embryo_gate } }
+		tm_rise_daughter_effect = { TRAIT = tm_daughter_of_the_embryo RENAME = tm_embryo.0002 }
+	}
+	else = {
+		tm_take_the_knife_effect = yes
+	}
+}
+
+# The jade embryo is lost: the gestation ends, and may be begun again.
+tm_embryo_lost_effect = {
+	remove_variable = tm_embryo_active
+	remove_character_modifier = tm_gestating_modifier
+	add_stress = 40
+	add_piety = -25
 }

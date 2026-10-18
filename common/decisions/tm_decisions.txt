@@ -11,7 +11,7 @@ tm_take_the_knife_decision = {
 		is_adult = yes
 		rite ?= { rite_has_parameter = tm_knife_voluntary }
 		NOR = {
-			has_trait = tm_daughter_of_the_knife
+			tm_is_daughter_trigger = yes
 			has_trait = eunuch_1
 			has_trait = beardless_eunuch
 		}
@@ -54,7 +54,7 @@ tm_debug_take_the_knife_decision = {
 	is_shown = {
 		debug_only = yes
 		is_male = yes
-		NOT = { has_trait = tm_daughter_of_the_knife }
+		NOT = { tm_is_daughter_trigger = yes }
 	}
 	effect = {
 		tm_take_the_knife_effect = yes
@@ -75,7 +75,7 @@ tm_debug_census_decision = {
 			root = { change_variable = { name = tm_census_marked add = 1 } }
 		}
 		every_living_character = {
-			limit = { has_trait = tm_daughter_of_the_knife }
+			limit = { tm_is_daughter_trigger = yes }
 			root = { change_variable = { name = tm_census_daughters add = 1 } }
 		}
 		random_living_character = {
@@ -83,7 +83,7 @@ tm_debug_census_decision = {
 			save_scope_as = tm_census_example_marked
 		}
 		random_living_character = {
-			limit = { has_trait = tm_daughter_of_the_knife }
+			limit = { tm_is_daughter_trigger = yes }
 			save_scope_as = tm_census_example_daughter
 		}
 		trigger_event = tm_knife.0900
@@ -167,5 +167,101 @@ tm_seek_daughters_decision = {
 	ai_will_do = {
 		base = 10
 		modifier = { add = 60 NOT = { any_child = { is_alive = yes is_female = yes } } }
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The northern gate: sit beneath the high seat while the völva sings, and go under. tm_seidr_events.txt.
+tm_seidr_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"		# placeholder; TODO event art
+	}
+	sort_order = 90
+	cooldown = { years = 1 }			# the spirits can refuse; try again next winter
+
+	is_shown = {
+		is_male = yes
+		is_adult = yes
+		rite ?= { rite_has_parameter = tm_seidr_gate }
+		tm_is_daughter_trigger = no
+		NOR = {
+			has_trait = eunuch_1
+			has_trait = beardless_eunuch
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+	}
+
+	cost = {
+		piety = {
+			value = 75
+			if = {
+				limit = { has_personal_tenet_flag = tm_personal_seidr_easier }
+				multiply = 0.5
+			}
+		}
+	}
+
+	effect = {
+		trigger_event = tm_seidr.0001
+	}
+
+	ai_check_interval = 120
+	ai_potential = { has_trait = tm_transgender }
+	ai_will_do = {
+		base = 50
+		modifier = { add = 25 has_trait = brave }
+		modifier = { add = -40 has_trait = craven }
+	}
+}
+
+# The Chinese gate: begin ten months' gestation of the jade embryo. tm_embryo_events.txt.
+tm_embryo_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"		# placeholder; TODO event art
+	}
+	sort_order = 90
+
+	is_shown = {
+		is_male = yes
+		is_adult = yes
+		rite ?= { rite_has_parameter = tm_embryo_gate }
+		tm_is_daughter_trigger = no
+		NOR = {
+			has_trait = eunuch_1
+			has_trait = beardless_eunuch
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+		custom_description = {
+			text = tm_embryo_already_gestating
+			NOT = { has_variable = tm_embryo_active }
+		}
+	}
+
+	cost = {
+		piety = {
+			value = 50
+			if = {
+				limit = { has_personal_tenet_flag = tm_personal_embryo_easier }
+				multiply = 0.5
+			}
+		}
+	}
+
+	effect = {
+		trigger_event = tm_embryo.0001
+	}
+
+	ai_check_interval = 120
+	ai_potential = { has_trait = tm_transgender }
+	ai_will_do = {
+		base = 50
+		modifier = { add = 25 has_trait = patient }
+		modifier = { add = -40 has_trait = impatient }
 	}
 }

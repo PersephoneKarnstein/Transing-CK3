@@ -1,0 +1,139 @@
+﻿namespace = tm_embryo
+
+# The guarantor's question. Root = the adept.
+tm_embryo.0001 = {
+	type = character_event
+	title = tm_embryo.0001.t
+	desc = tm_embryo.0001.desc
+	theme = learning
+	left_portrait = { character = root animation = personality_rational }
+
+	option = {	# "I will not repent."
+		name = tm_embryo.0001.a
+		set_variable = tm_embryo_active
+		add_character_modifier = { modifier = tm_gestating_modifier days = 300 }
+		custom_tooltip = tm_embryo.0001.a.tt
+		trigger_event = { id = tm_embryo.0010 days = { 80 100 } }
+	}
+	option = {	# Not yet
+		name = tm_embryo.0001.b
+	}
+}
+
+# Third month: stilling the essence. Root = the adept.
+tm_embryo.0010 = {
+	type = character_event
+	title = tm_embryo.0010.t
+	desc = tm_embryo.0010.desc
+	theme = learning
+	left_portrait = { character = root animation = personality_rational }
+	trigger = { has_variable = tm_embryo_active }
+
+	option = {	# Sit through the stillness alone
+		name = tm_embryo.0010.a
+		random_list = {
+			75 = {
+				modifier = { add = { value = learning multiply = 2 } }
+				modifier = { add = 20 has_personal_tenet_flag = tm_personal_embryo_easier }
+				modifier = { add = 15 has_trait = patient }
+				desc = tm_embryo.trial_kept
+				trigger_event = { id = tm_embryo.0011 days = { 80 100 } }
+			}
+			25 = {
+				modifier = { add = 15 has_trait = impatient }
+				desc = tm_embryo.trial_lost
+				tm_embryo_lost_effect = yes
+			}
+		}
+	}
+	option = {	# Pay a master to sit with me
+		name = tm_embryo.0010.b
+		trigger = { gold >= 30 }
+		remove_short_term_gold = 30
+		trigger_event = { id = tm_embryo.0011 days = { 80 100 } }
+	}
+}
+
+# Sixth month: the red dragon. The women's alchemy cuts the dragon to make a body like a man's; the adept
+# turns the same work the other way and teaches her body the moon's tides. Root = the adept.
+tm_embryo.0011 = {
+	type = character_event
+	title = tm_embryo.0011.t
+	desc = tm_embryo.0011.desc
+	theme = learning
+	left_portrait = { character = root animation = personality_zealous }
+	trigger = { has_variable = tm_embryo_active }
+
+	option = {
+		name = tm_embryo.0011.a
+		random_list = {
+			80 = {
+				modifier = { add = { value = learning multiply = 2 } }
+				modifier = { add = 15 has_trait = temperate }
+				desc = tm_embryo.trial_kept
+				trigger_event = { id = tm_embryo.0012 days = { 110 130 } }
+			}
+			20 = {
+				modifier = { add = 15 has_trait = gluttonous }
+				desc = tm_embryo.trial_lost
+				tm_embryo_lost_effect = yes
+			}
+		}
+	}
+	option = {
+		name = tm_embryo.0011.b
+		trigger = { piety >= 50 }
+		add_piety = -50
+		trigger_event = { id = tm_embryo.0012 days = { 110 130 } }
+	}
+}
+
+# Tenth month: birth from the crown of the head. Root = the adept.
+tm_embryo.0012 = {
+	type = character_event
+	title = tm_embryo.0012.t
+	desc = tm_embryo.0012.desc
+	theme = learning
+	left_portrait = { character = root animation = happiness }
+	trigger = { has_variable = tm_embryo_active }
+
+	option = {
+		name = tm_embryo.0012.a
+		remove_variable = tm_embryo_active
+		remove_character_modifier = tm_gestating_modifier
+		tm_rise_daughter_effect = { TRAIT = tm_daughter_of_the_embryo RENAME = tm_embryo.0002 }
+	}
+}
+
+# A name before witnesses. Root = the daughter.
+tm_embryo.0002 = {
+	type = character_event
+	title = tm_embryo.0002.t
+	desc = tm_embryo.0002.desc
+	theme = learning
+	left_portrait = { character = root animation = happiness }
+
+	option = {
+		name = tm_embryo.0002.a
+		random_list = {
+			10 = { change_first_name = Xuanji }		# Yu Xuanji, Tang Daoist nun and poet
+			10 = { change_first_name = Jilan }		# Li Jilan (Li Ye), Tang Daoist poet
+			10 = { change_first_name = Yuzhen }		# Princess Yuzhen, ordained a Daoist in 711
+			8 = { change_first_name = Jinxian }		# Princess Jinxian, ordained with her
+			8 = { change_first_name = Taiping }		# Princess Taiping's Daoist title
+			6 = { change_first_name = Lingzhao }
+			6 = { change_first_name = Suyun }
+			6 = { change_first_name = Qingxu }
+		}
+		add_prestige = 25
+	}
+	option = {
+		name = tm_embryo.0002.b
+		trigger = { is_female = yes }
+	}
+	option = {
+		name = tm_embryo.0002.c
+		trigger = { is_male = yes }
+		add_stress = 10
+	}
+}

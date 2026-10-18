@@ -21,7 +21,7 @@ tm_take_into_house_interaction = {
 			NOR = {
 				has_trait = tm_novice
 				has_trait = tm_washout
-				has_trait = tm_daughter_of_the_knife	# vanilla is_eunuch_trigger does not see daughters
+				tm_is_daughter_trigger = yes	# vanilla is_eunuch_trigger does not see daughters
 			}
 		}
 	}
@@ -69,11 +69,11 @@ tm_sister_making_interaction = {
 	is_shown = {
 		NOT = { scope:actor = scope:recipient }
 		scope:actor = {
-			has_trait = tm_daughter_of_the_knife
+			tm_is_daughter_trigger = yes
 			rite ?= { rite_has_parameter = tm_sister_making_allowed }
 		}
 		scope:recipient = {
-			has_trait = tm_daughter_of_the_knife
+			tm_is_daughter_trigger = yes
 			faith = scope:actor.faith
 		}
 	}
@@ -111,7 +111,7 @@ tm_sister_making_interaction = {
 	ai_targets = { ai_recipients = courtiers }
 	ai_targets = { ai_recipients = guests }
 	ai_frequency = 60
-	is_available = { has_trait = tm_daughter_of_the_knife }
+	is_available = { tm_is_daughter_trigger = yes }
 	ai_will_do = {
 		base = 10
 		opinion_modifier = {
@@ -132,7 +132,7 @@ tm_debug_force_programme_interaction = {
 		scope:recipient = {
 			is_imprisoned_by = scope:actor
 			is_male = yes
-			NOT = { has_trait = tm_daughter_of_the_knife }
+			NOT = { tm_is_daughter_trigger = yes }
 		}
 	}
 	auto_accept = yes
@@ -170,7 +170,7 @@ tm_adopt_daughter_interaction = {
 			OR = {
 				is_female = yes
 				has_trait = tm_transgender
-				has_trait = tm_daughter_of_the_knife
+				tm_is_daughter_trigger = yes
 			}
 			NOR = {
 				is_child_of = scope:actor
@@ -228,7 +228,7 @@ tm_adopt_daughter_interaction = {
 		modifier = {
 			add = 40
 			desc = tm_adopt_ai_marked
-			scope:recipient = { OR = { has_trait = tm_transgender has_trait = tm_daughter_of_the_knife } }
+			scope:recipient = { OR = { has_trait = tm_transgender tm_is_daughter_trigger = yes } }
 		}
 		modifier = {
 			add = 20
@@ -267,7 +267,7 @@ tm_adopt_daughter_interaction = {
 		}
 		modifier = {
 			add = 20
-			scope:recipient = { has_trait = tm_daughter_of_the_knife }
+			scope:recipient = { tm_is_daughter_trigger = yes }
 		}
 		modifier = {	# already plenty of children
 			add = -100

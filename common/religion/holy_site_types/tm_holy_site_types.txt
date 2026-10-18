@@ -40,3 +40,19 @@ tm_ankyra = {
 		monthly_piety = 0.2
 	}
 }
+
+# Mogao, Dunhuang: cave 331, where Wu Zetian paid for a mural of the Lotus Sutra dragon girl, who changed
+# her body in an instant (Transgender China ch. 3, p. 73). Seat of the Way of the Jade Embryo.
+tm_mogao = {
+	county = c_shazhou
+	barony = b_mogao
+
+	county_holder_character_modifier = {
+		learning = 1
+		monthly_piety_gain_mult = 0.1
+	}
+
+	faith_character_modifier = {
+		health = 0.1
+	}
+}

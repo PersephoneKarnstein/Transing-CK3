@@ -54,3 +54,73 @@ transbian_maximalist_rite = {
 
 	cultures = { kybeline }
 }
+
+# The northern rite (Bæddel). Martial, outlawed, seiðr-led. faith_design.md §12.
+tm_baeddel_rite = {
+	name = tm_baeddel_rite
+	desc = tm_baeddel_rite_desc
+	faith = tm_baeddel
+
+	color = { 0.55 0.42 0.75 }
+	icon = germanic_reformed
+
+	convert = yes
+	create = yes
+	history = no
+
+	tenets = {
+		tenet_tm_seidr
+		tenet_tm_valkyrie_host
+		tenet_tm_hall_daughters
+	}
+
+	doctrines = {
+		doctrine_gender_female_dominated
+		doctrine_no_head					# no pontiff (H11)
+		doctrine_pluralism_righteous
+		doctrine_divorce_allowed
+		doctrine_bastardry_none
+		doctrine_consanguinity_cousins
+		doctrine_homosexuality_accepted
+		doctrine_deviancy_accepted
+		doctrine_witchcraft_virtuous		# seiðr is the gate
+		doctrine_clerical_function_recruitment	# a warrior clergy for a war-band faith
+		doctrine_clerical_gender_female_only
+		doctrine_clerical_marriage_allowed
+	}
+}
+
+# The Chinese rite (Way of the Jade Embryo). Courtly, alchemical, "not eunuchs". faith_design.md §12.
+tm_yutai_rite = {
+	name = tm_yutai_rite
+	desc = tm_yutai_rite_desc
+	faith = tm_yutai
+
+	color = { 0.45 0.78 0.62 }
+	icon = taoism
+
+	convert = yes
+	create = yes
+	history = no
+
+	tenets = {
+		tenet_tm_jade_embryo
+		tenet_tm_rectified_names
+		tenet_tm_temple_societies
+	}
+
+	doctrines = {
+		doctrine_gender_female_dominated
+		doctrine_no_head
+		doctrine_pluralism_pluralistic		# syncretic, as the Daoist schools were
+		doctrine_divorce_allowed
+		doctrine_bastardry_none
+		doctrine_consanguinity_cousins
+		doctrine_homosexuality_accepted
+		doctrine_deviancy_accepted
+		doctrine_witchcraft_accepted
+		doctrine_clerical_function_alms_and_pacification
+		doctrine_clerical_gender_female_only
+		doctrine_clerical_marriage_allowed
+	}
+}

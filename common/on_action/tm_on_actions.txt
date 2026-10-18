@@ -96,6 +96,50 @@ tm_on_game_start = {
 				}
 			}
 
+			# The northern faith keeps Gotland; a völva sits at its count's court.
+			title:c_gutland = {
+				set_county_faith = faith:tm_baeddel
+				holder ?= {
+					set_character_faith = faith:tm_baeddel
+					save_scope_as = tm_gutland_count
+				}
+			}
+			if = {
+				limit = { exists = scope:tm_gutland_count }
+				create_character = {
+					gender = female
+					age = { 40 60 }
+					culture = scope:tm_gutland_count.culture
+					faith = faith:tm_baeddel
+					employer = scope:tm_gutland_count
+					dynasty = none
+					trait = tm_daughter_of_seidr
+					trait = education_learning_3
+				}
+			}
+
+			# The Way of the Jade Embryo keeps Dunhuang (Shazhou, with the Mogao caves); a nüguan at court.
+			title:c_shazhou = {
+				set_county_faith = faith:tm_yutai
+				holder ?= {
+					set_character_faith = faith:tm_yutai
+					save_scope_as = tm_shazhou_count
+				}
+			}
+			if = {
+				limit = { exists = scope:tm_shazhou_count }
+				create_character = {
+					gender = female
+					age = { 40 60 }
+					culture = scope:tm_shazhou_count.culture
+					faith = faith:tm_yutai
+					employer = scope:tm_shazhou_count
+					dynasty = none
+					trait = tm_daughter_of_the_embryo
+					trait = education_learning_3
+				}
+			}
+
 			# Historical characters are not "randomly created", so the 1% seed never rolls for them.
 			# Mark ~1% of living adult men at the start, as the trait's random_creation does for later ones.
 			every_living_character = {
@@ -171,7 +215,7 @@ yearly_playable_pulse = {
 tm_yearly_playable = {
 	trigger = {
 		is_landed = yes
-		rite ?= { rite_has_parameter = tm_day_of_blood_active }
+		rite ?= { rite_has_parameter = tm_sisters_faith }
 	}
 	effect = {
 		random = {
@@ -182,7 +226,7 @@ tm_yearly_playable = {
 			}
 			modifier = {
 				add = 3
-				any_courtier = { has_trait = tm_daughter_of_the_knife }
+				any_courtier = { tm_is_daughter_trigger = yes }
 			}
 			modifier = {								# a declared refuge (tm_declare_refuge_decision)
 				add = 15

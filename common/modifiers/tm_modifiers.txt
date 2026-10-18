@@ -1,0 +1,10 @@
+﻿# Adelphai Dorleyaiou — static modifiers
+
+# Ten months' inner gestation of the jade embryo (tm_embryo_events.txt).
+tm_gestating_modifier = {
+	icon = learning_positive
+	learning = 1
+	health = 0.1
+	stress_gain_mult = 0.15
+	monthly_piety = 0.3
+}

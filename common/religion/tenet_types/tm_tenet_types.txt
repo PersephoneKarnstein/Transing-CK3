@@ -22,6 +22,7 @@ tenet_tm_day_of_blood = {
 
 	parameters = {
 		tm_day_of_blood_active
+		tm_sisters_faith			# shared by every Sisters faith's gate tenet: same-sex marriage, arrivals
 	}
 
 	character_modifier = {
@@ -152,6 +153,308 @@ tenet_tm_sisterhood = {
 		sins = {
 			callous = { weight = 15 scale = 1 }
 			arbitrary = { weight = 10 scale = 1 }
+		}
+	}
+}
+
+# The gate: seiðr unmans the singer, and the hall hears her declare it. Decision tm_seidr_decision.
+tenet_tm_seidr = {
+	icon = tenet_esotericism
+
+	is_shown = {
+		this = faith:tm_baeddel
+	}
+
+	piety_cost = {
+		value = faith_tenet_cost_high
+		if = {
+			limit = { rite_has_tenet = tenet_tm_seidr }
+			multiply = faith_unchanged_doctrine_cost_mult
+		}
+	}
+
+	parameters = {
+		tm_seidr_gate
+		tm_sisters_faith
+	}
+
+	character_modifier = {
+		learning = 1
+		monthly_piety_gain_mult = 0.05
+	}
+
+	can_pick_as_personal_tenet = {
+		faith = faith:tm_baeddel
+	}
+	personal_tenet_modifier = {
+		learning = 1
+		stress_loss_mult = 0.1
+	}
+	personal_tenet_parameters = {
+		tm_personal_seidr_easier
+		tenet_esotericism_seek_spiritual_mysteries
+	}
+
+	traits = {
+		virtues = {
+			tm_daughter_of_seidr = { weight = 30 scale = 1 }
+			brave = { weight = 10 scale = 1 }
+		}
+		sins = {
+			craven = { weight = 10 scale = 1 }
+		}
+	}
+}
+
+# Óðinn's host and Alvild's crew: women ride together, and the hall raids to bring its daughters home.
+tenet_tm_valkyrie_host = {
+	icon = tenet_warmonger
+
+	is_shown = {
+		this = faith:tm_baeddel
+	}
+
+	piety_cost = {
+		value = faith_tenet_cost_mid
+		if = {
+			limit = { rite_has_tenet = tenet_tm_valkyrie_host }
+			multiply = faith_unchanged_doctrine_cost_mult
+		}
+	}
+
+	parameters = {
+		tm_valkyrie_host
+		tm_rescue_daughters_cb
+	}
+
+	character_modifier = {
+		prowess = 1
+		knight_effectiveness_mult = 0.1
+	}
+
+	can_pick_as_personal_tenet = {
+		faith = faith:tm_baeddel
+	}
+	personal_tenet_modifier = {
+		prowess = 2
+		martial = 1
+	}
+	personal_tenet_parameters = {
+		clergy_can_fight_personal
+	}
+
+	traits = {
+		virtues = {
+			brave = { weight = 15 scale = 1 }
+			wrathful = { weight = 10 scale = 1 }
+		}
+		sins = {
+			craven = { weight = 15 scale = 1 }
+			content = { weight = 10 scale = 1 }
+		}
+	}
+}
+
+# The hall's daughters: fostered, sworn and adopted. Blood carries nothing the hall did not give.
+tenet_tm_hall_daughters = {
+	icon = tenet_ancestor_worship
+
+	is_shown = {
+		this = faith:tm_baeddel
+	}
+
+	piety_cost = {
+		value = faith_tenet_cost_low
+		if = {
+			limit = { rite_has_tenet = tenet_tm_hall_daughters }
+			multiply = faith_unchanged_doctrine_cost_mult
+		}
+	}
+
+	parameters = {
+		tm_adoptive_matriline
+		tm_sister_making_allowed
+		tenet_adoptionism_adoption_always_possible
+		tenet_adoptionism_adoption_accepted
+		tenet_adoptionism_legitimize_bastards
+	}
+
+	character_modifier = {
+		name = "tenet_tm_hall_daughters_opinion"
+		same_faith_opinion = 10
+	}
+
+	can_pick_as_personal_tenet = {
+		faith = faith:tm_baeddel
+	}
+	personal_tenet_modifier = {
+		diplomacy = 1
+		courtier_and_guest_opinion = 10
+	}
+	personal_tenet_parameters = {
+		tenet_adoptionism_adoption_personal_active
+	}
+
+	traits = {
+		virtues = {
+			honest = { weight = 10 scale = 1 }
+			generous = { weight = 10 scale = 1 }
+		}
+		sins = {
+			deceitful = { weight = 10 scale = 1 }
+		}
+	}
+}
+
+# The gate: inner alchemy turned the other way. Ten months' gestation of one's own body, then birth.
+# Decision tm_embryo_decision. No knife: the faith refuses it as the eunuch's road.
+tenet_tm_jade_embryo = {
+	icon = tenet_inner_journey
+
+	is_shown = {
+		this = faith:tm_yutai
+	}
+
+	piety_cost = {
+		value = faith_tenet_cost_high
+		if = {
+			limit = { rite_has_tenet = tenet_tm_jade_embryo }
+			multiply = faith_unchanged_doctrine_cost_mult
+		}
+	}
+
+	parameters = {
+		tm_embryo_gate
+		tm_sisters_faith
+	}
+
+	character_modifier = {
+		health = 0.15
+		monthly_piety_gain_mult = 0.05
+	}
+
+	can_pick_as_personal_tenet = {
+		faith = faith:tm_yutai
+	}
+	personal_tenet_modifier = {
+		health = 0.25
+		stress_loss_mult = 0.1
+	}
+	personal_tenet_parameters = {
+		tm_personal_embryo_easier
+		meditation_mechanics_active
+		tenet_inner_journey_meditation_bonus
+	}
+
+	traits = {
+		virtues = {
+			tm_daughter_of_the_embryo = { weight = 30 scale = 1 }
+			patient = { weight = 10 scale = 1 }
+			temperate = { weight = 10 scale = 1 }
+		}
+		sins = {
+			impatient = { weight = 10 scale = 1 }
+			gluttonous = { weight = 10 scale = 1 }
+		}
+	}
+}
+
+# Rectification of names (zhengming) turned on its makers: a daughter named before witnesses is a daughter.
+# The faith's polemic is that she is not a eunuch, whatever the palace calls her.
+tenet_tm_rectified_names = {
+	icon = tenet_mystical_birthright
+
+	is_shown = {
+		this = faith:tm_yutai
+	}
+
+	piety_cost = {
+		value = faith_tenet_cost_mid
+		if = {
+			limit = { rite_has_tenet = tenet_tm_rectified_names }
+			multiply = faith_unchanged_doctrine_cost_mult
+		}
+	}
+
+	parameters = {
+		tm_rectified_names
+	}
+
+	character_modifier = {
+		diplomacy = 1
+		same_faith_opinion = 5
+	}
+
+	can_pick_as_personal_tenet = {
+		faith = faith:tm_yutai
+	}
+	personal_tenet_modifier = {
+		diplomacy = 1
+		monthly_prestige_gain_mult = 0.1
+	}
+	personal_tenet_parameters = {
+		tenet_ritual_hospitality_invite_to_court_acceptance
+	}
+
+	traits = {
+		virtues = {
+			just = { weight = 10 scale = 1 }
+			honest = { weight = 10 scale = 1 }
+		}
+		sins = {
+			deceitful = { weight = 10 scale = 1 }
+			arbitrary = { weight = 10 scale = 1 }
+		}
+	}
+}
+
+# Temple and burial societies hold what the crown would take back, and adopt the heirs who keep the rites.
+tenet_tm_temple_societies = {
+	icon = tenet_communal_identity
+
+	is_shown = {
+		this = faith:tm_yutai
+	}
+
+	piety_cost = {
+		value = faith_tenet_cost_low
+		if = {
+			limit = { rite_has_tenet = tenet_tm_temple_societies }
+			multiply = faith_unchanged_doctrine_cost_mult
+		}
+	}
+
+	parameters = {
+		tm_adoptive_matriline
+		tm_temple_societies
+		tenet_adoptionism_adoption_always_possible
+		tenet_adoptionism_adoption_accepted
+		tenet_adoptionism_legitimize_bastards
+	}
+
+	character_modifier = {
+		stewardship = 1
+		monthly_income_mult = 0.05
+	}
+
+	can_pick_as_personal_tenet = {
+		faith = faith:tm_yutai
+	}
+	personal_tenet_modifier = {
+		stewardship = 1
+		monthly_income_mult = 0.05
+	}
+	personal_tenet_parameters = {
+		tenet_adoptionism_sp_on_adopt
+	}
+
+	traits = {
+		virtues = {
+			diligent = { weight = 10 scale = 1 }
+			generous = { weight = 10 scale = 1 }
+		}
+		sins = {
+			greedy = { weight = 10 scale = 1 }
 		}
 	}
 }

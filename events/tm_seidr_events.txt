@@ -1,0 +1,122 @@
+﻿namespace = tm_seidr
+
+# The high seat. Root = the one going under.
+tm_seidr.0001 = {
+	type = character_event
+	title = tm_seidr.0001.t
+	desc = tm_seidr.0001.desc
+	theme = witchcraft
+	left_portrait = { character = root animation = worry }
+
+	option = {	# Go under
+		name = tm_seidr.0001.a
+		random_list = {
+			60 = {
+				modifier = { add = 30 has_trait = tm_transgender }
+				modifier = { add = 20 has_personal_tenet_flag = tm_personal_seidr_easier }
+				modifier = { add = { value = learning multiply = 2 } }
+				desc = tm_seidr.0001.a.success
+				send_interface_toast = {
+					type = event_toast_effect_good
+					title = tm_seidr.0001.a.success
+				}
+				tm_rise_daughter_effect = { TRAIT = tm_daughter_of_seidr RENAME = tm_seidr.0002 }
+				# The declaration goes to whichever body survives the rite.
+				if = {
+					limit = { exists = scope:tm_new_body }
+					scope:tm_new_body = { trigger_event = { id = tm_seidr.0003 days = 3 } }
+				}
+				else = {
+					trigger_event = { id = tm_seidr.0003 days = 3 }
+				}
+			}
+			40 = {
+				modifier = { add = 20 has_trait = craven }
+				desc = tm_seidr.0001.a.failure
+				send_interface_toast = {
+					type = event_toast_effect_bad
+					title = tm_seidr.0001.a.failure
+					add_stress = 30
+				}
+			}
+		}
+	}
+	option = {	# Not this winter
+		name = tm_seidr.0001.b
+		add_stress = 10
+	}
+}
+
+# A name of the hall. Root = the daughter.
+tm_seidr.0002 = {
+	type = character_event
+	title = tm_seidr.0002.t
+	desc = tm_seidr.0002.desc
+	theme = witchcraft
+	left_portrait = { character = root animation = happiness }
+
+	option = {
+		name = tm_seidr.0002.a
+		random_list = {
+			10 = { change_first_name = Heidr }		# the seeress of Völuspá
+			10 = { change_first_name = Thorbjorg }	# Þorbjörg lítilvölva, Eiríks saga rauða
+			8 = { change_first_name = Groa }
+			8 = { change_first_name = Hervor }
+			8 = { change_first_name = Gunnhildr }
+			8 = { change_first_name = Ragnhildr }
+			6 = { change_first_name = Thordis }
+			6 = { change_first_name = Aslaug }
+			6 = { change_first_name = Freydis }
+			4 = { change_first_name = Alvild }		# Saxo's pirate captain
+		}
+		add_prestige = 25
+	}
+	option = {
+		name = tm_seidr.0002.b
+		trigger = { is_female = yes }
+	}
+	option = {
+		name = tm_seidr.0002.c
+		trigger = { is_male = yes }
+		add_stress = 10
+	}
+}
+
+# Before the thing: she declares herself, and someone shouts "ergi". Root = the daughter.
+tm_seidr.0003 = {
+	type = character_event
+	title = tm_seidr.0003.t
+	desc = tm_seidr.0003.desc
+	theme = witchcraft
+	left_portrait = { character = root animation = anger }
+
+	option = {	# Answer with níð
+		name = tm_seidr.0003.a
+		random_list = {
+			50 = {
+				modifier = { add = { value = diplomacy multiply = 2 } }
+				desc = tm_seidr.0003.a.win
+				add_prestige = 100
+			}
+			40 = {
+				desc = tm_seidr.0003.a.lose
+				add_prestige = -50
+				add_stress = 20
+			}
+		}
+	}
+	option = {	# Answer with steel
+		name = tm_seidr.0003.b
+		add_prestige = 50
+		add_dread = 10
+		random = {
+			chance = 25
+			modifier = { add = -15 prowess >= 12 }
+			add_trait = wounded_1
+		}
+	}
+	option = {	# Let them talk
+		name = tm_seidr.0003.c
+		add_stress = 20
+	}
+}

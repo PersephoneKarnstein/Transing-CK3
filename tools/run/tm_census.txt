@@ -1,4 +1,4 @@
-# Run from the console:  run tm_census.txt
+﻿# Run from the console:  run tm_census.txt
 # Counts living Marked men and daughters of the knife worldwide and shows one of each.
 set_variable = { name = tm_census_marked value = 0 }
 set_variable = { name = tm_census_daughters value = 0 }
@@ -7,7 +7,7 @@ every_living_character = {
 	root = { change_variable = { name = tm_census_marked add = 1 } }
 }
 every_living_character = {
-	limit = { has_trait = tm_daughter_of_the_knife }
+	limit = { tm_is_daughter_trigger = yes }
 	root = { change_variable = { name = tm_census_daughters add = 1 } }
 }
 random_living_character = {
@@ -15,7 +15,7 @@ random_living_character = {
 	save_scope_as = tm_census_example_marked
 }
 random_living_character = {
-	limit = { has_trait = tm_daughter_of_the_knife }
+	limit = { tm_is_daughter_trigger = yes }
 	save_scope_as = tm_census_example_daughter
 }
 trigger_event = tm_knife.0900

@@ -63,3 +63,83 @@ transbian_maximalism = {
 	}
 
 }
+
+# ---------------------------------------------------------------------------------------------------
+# The northern faith: bæddel, seiðr and ergi in one (faith_design.md §12). Working name "Bæddel".
+# A pagan faith of the Germanic family; daughters rise by seiðr, not the knife. Seat: Gotland.
+tm_baeddel = {
+	main_rite = tm_baeddel_rite
+	historical = no
+
+	faith_details = {
+		religion = germanic_religion
+		color = { 0.55 0.42 0.75 }
+		icon = germanic_reformed			# placeholder; TODO commissioned icon
+		reformed_icon = germanic_reformed
+	}
+
+	eminent_holy_sites = {
+		uppsala			# Saxo's bell-ringing priests of Freyr (needs checking; beliefs.md G2 e)
+	}
+	holy_sites = {
+		ranaheim
+		jorvik			# the English half: bæddel is an Old English word
+		konugardr		# the Varangian road south, toward the Sisters of Dorylaion
+	}
+
+	doctrines = {
+	}
+
+	localization = {
+		PriestMale = tm_volva
+		PriestMalePlural = tm_volva_plural
+		PriestFemale = tm_volva
+		PriestFemalePlural = tm_volva_plural
+		PriestNeuter = tm_volva
+		PriestNeuterPlural = tm_volva_plural
+		HouseOfWorship = tm_hof
+		HouseOfWorship2 = tm_hof
+		HouseOfWorship3 = tm_hof
+		HouseOfWorshipPlural = tm_hof_plural
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The Chinese faith: the Way of the Jade Embryo (working name). A Daoist faith whose daughters are born of
+# their own inner gestation and who are, it insists, not eunuchs (faith_design.md §12). Seat: Dunhuang.
+tm_yutai = {
+	main_rite = tm_yutai_rite
+	historical = no
+
+	faith_details = {
+		religion = taoism_religion
+		color = { 0.45 0.78 0.62 }
+		icon = taoism					# placeholder; TODO commissioned icon
+		reformed_icon = taoism
+	}
+
+	eminent_holy_sites = {
+		tm_mogao		# cave 331: Wu Zetian's mural of the dragon girl who changed her body
+		mount_longhu	# Zhang Daoling's mountain; the Celestial Masters let women lead
+	}
+	holy_sites = {
+		mount_qingcheng
+		mount_wudang
+	}
+
+	doctrines = {
+	}
+
+	localization = {
+		PriestMale = tm_nuguan
+		PriestMalePlural = tm_nuguan_plural
+		PriestFemale = tm_nuguan
+		PriestFemalePlural = tm_nuguan_plural
+		PriestNeuter = tm_nuguan
+		PriestNeuterPlural = tm_nuguan_plural
+		HouseOfWorship = tm_guan
+		HouseOfWorship2 = tm_guan
+		HouseOfWorship3 = tm_guan
+		HouseOfWorshipPlural = tm_guan_plural
+	}
+}

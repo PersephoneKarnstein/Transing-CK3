@@ -24,7 +24,11 @@ tm_special_daughter_hairless = {
 			base = 0
 			modifier = {
 				add = 999
-				has_trait = tm_daughter_of_the_knife
+				OR = {
+					has_trait = tm_daughter_of_the_knife
+					has_trait = tm_daughter_of_seidr
+					has_trait = tm_daughter_of_the_embryo
+				}
 			}
 		}
 	}

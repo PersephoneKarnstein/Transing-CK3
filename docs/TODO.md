@@ -31,3 +31,17 @@
 - [ ] In-game test: re-embody a mother and confirm her children still list her as parent (raw `adopt` on children who already have two parents is unverified).
 - [ ] Tune arrival chance: base 6 / Mother House +6 / daughter courtier +3 / refuge +15 per year.
 - [ ] With the re-embodiment rule off, daughters keep male bodies and cannot inherit under female-only law. Decide whether that rule should also relax the gender law.
+
+## Branch faiths, stage 1 (added 2026-10-18)
+Built: shared daughter trigger and per-faith daughter traits; Bæddel faith (Gotland) with the seiðr gate; Way of the Jade Embryo (Dunhuang) with the ten-month gestation gate; arrivals raise by whichever gate the ruler's rite keeps.
+- [ ] In-game test: new game; both faiths present at Gotland and Shazhou; both selectable in the Ruler Designer.
+- [ ] In-game test: Go Under the High Seat as a Marked man, success and failure; naming; the Before the Thing declaration on the new body.
+- [ ] In-game test: Gestate the Jade Embryo through all four events, including a lost embryo and a restart.
+- [ ] Check the weighted random_list modifiers that add learning or diplomacy compute as intended.
+- [ ] Commission icons: two faith icons, two daughter traits.
+
+## Branch faiths, stage 2 (next)
+- [ ] Bæddel: níð insult duels; landless war-band play; Rescue the Daughters as a raid; Christian outlawry pressure.
+- [ ] Jade Embryo: daughter faction against scholar-officials in celestial and meritocratic governments; temple societies keep estates from crown confiscation; omen events.
+- [ ] Dorleyism: daughters in court offices; era decay of tolerance after 1066; Aristotelian and Galenic council fight; the founding charter as a house legacy.
+

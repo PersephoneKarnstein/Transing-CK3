@@ -6,7 +6,7 @@
 
 tm_daughter_face = {
 	tm_daughter = {
-		traits = { tm_daughter_of_the_knife }
+		traits = { tm_daughter_of_the_knife tm_daughter_of_seidr tm_daughter_of_the_embryo }
 		trigger = { is_male = yes }		# re-embodied daughters are female and need no help
 		dna_modifiers = {
 			human = {
