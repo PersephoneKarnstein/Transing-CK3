@@ -5,6 +5,7 @@
 
 ![Crusader Kings III 1.20](https://img.shields.io/badge/Crusader%20Kings%20III-1.20.*-8a2be2)
 ![Status: alpha](https://img.shields.io/badge/status-alpha-orange)
+![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue)
 ![Playtesters wanted](https://img.shields.io/badge/playtesters-wanted-f5a9b8)
 
 </div>
@@ -215,7 +216,7 @@ Art is wanted. The faith and trait icons are placeholders, and we would like to 
 
 ## License
 
-No license has been chosen yet. Until one is added, all rights are reserved by the author.
+Released into the public domain under [the Unlicense](LICENSE). Do whatever you want with it.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -230,18 +231,18 @@ No license has been chosen yet. Until one is added, all rights are reserved by t
 
 ## Bibliography
 
-Works the research for this mod read, in full or in named chapters. Works it only points to appear at the end of each group as "Cited in the notes, not read". Details are given as our notes record them, and a missing detail is marked rather than guessed. Corrections are welcome.
+Works the research for this mod read, in full or in named chapters. Works it only points to appear at the end of each group as "Cited in the notes, not read". Details come from the copies we read, with gaps filled from publisher and library records. Corrections are welcome.
 
 ### Transfeminist theory and trans studies
 
 - Bettcher, Talia Mae. 2013. "Evil Deceivers and Make-Believers: On Transphobic Violence and the Politics of Illusion." In Stryker and Aizura (eds.), *The Transgender Studies Reader 2*.
-- Bhatt, Talia. 2025. *Trans/Rad/Fem: Essays on Transfeminism, Book 1*. (No publisher given in the notes. Read in full, with a second pass on the chapters "The Third Sex" and "Degendering and Regendering".)
+- Bhatt, Talia. 2025. *Trans/Rad/Fem: Essays on Transfeminism, Book 1*. Self-published.
 - Chu, Andrea Long. 2019. *Females*. Verso.
 - Gleeson, Jules Joanne, and Elle O'Rourke (eds.). 2021. *Transgender Marxism*. Pluto Press. (Read in full: introduction, 14 chapters and Jordy Rosenberg's afterword.)
-- Raymond, Janice G. "Sappho by Surgery: The Transsexually Constructed Lesbian-Feminist." In Stryker and Whittle (eds.), *The Transgender Studies Reader* (2006). (Original date not given in the notes.)
-- Stryker, Susan. 2026. *Transgender History*. 3rd ed. Seal Press. (The front matter gives the subtitle "A Resource for Today's Struggle—and Tomorrow's".)
-- Stryker, Susan, and Aren Z. Aizura (eds.). 2013. *The Transgender Studies Reader 2*. (details incomplete: no publisher recorded)
-- Stryker, Susan, and Dylan McCarthy Blackston (eds.). 2022/2023. *The Transgender Studies Reader Remix*. Routledge.
+- Raymond, Janice G. 2006 [1979]. "Sappho by Surgery: The Transsexually Constructed Lesbian-Feminist." In Stryker and Whittle (eds.), *The Transgender Studies Reader*. Routledge. First published in Raymond, *The Transsexual Empire: The Making of the She-Male* (Beacon Press, 1979).
+- Stryker, Susan. 2026. *Transgender History: A Resource for Today's Struggle—and Tomorrow's*. 3rd ed. Seal Press.
+- Stryker, Susan, and Aren Z. Aizura (eds.). 2013. *The Transgender Studies Reader 2*. Routledge.
+- Stryker, Susan, and Dylan McCarthy Blackston (eds.). 2022. *The Transgender Studies Reader Remix*. Routledge.
 - Stryker, Susan, and Stephen Whittle (eds.). 2006. *The Transgender Studies Reader*. Routledge.
 
 Cited in the notes, not read: Bhatt, Talia, *Brown/Trans/Les* (2026); Feinberg, Leslie, *Transgender Warriors* (in the Remix bibliography); Koyama, Emi, *The Transfeminist Manifesto* (2001); Lewis, Sophie, *Abolish the Family* (Verso 2022); O'Brien, M. E., *Family Abolition* (Pluto 2023); Raha, Nat, and Mijke van der Drift, *Trans Femme Futures* (Pluto 2024); Serano, Julia, *Whipping Girl* (2007).
@@ -253,7 +254,7 @@ Cited in the notes, not read: Bhatt, Talia, *Brown/Trans/Les* (2026); Feinberg, 
 - Neil, Bronwen, and Lynda Garland (eds.). 2013. *Questions of Gender in Byzantine Society*. Ashgate. (Routledge reprint 2016.)
 - Neville, Leonora. 2019. *Byzantine Gender*. Past Imperfect. Arc Humanities Press.
 - Rapp, Claudia. 2016. *Brother-Making in Late Antiquity and Byzantium: Monks, Laymen, and Christian Ritual*. Oxford University Press.
-- Rowson. 1991. "The Effeminates of Early Medina." *Journal of the American Oriental Society* 111.4: 671–693. (details incomplete: author's given name not recorded)
+- Rowson, Everett K. 1991. "The Effeminates of Early Medina." *Journal of the American Oriental Society* 111.4: 671–693.
 - Tougher, Shaun. 2008. *The Eunuch in Byzantine History and Society*. Routledge. (Read in the 2009 Taylor & Francis e-library edition.)
 - Tougher, Shaun. 2013. "Bearding Byzantium: Masculinity, Eunuchs and the Byzantine Life Course." In Neil and Garland (eds.), *Questions of Gender in Byzantine Society*, 153–166.
 
@@ -264,7 +265,7 @@ Cited in the notes, not read: Ayalon, David, "On the Eunuchs in Islam," *Jerusal
 - Berry, Miles. 2022. "Gender Diversity and its Societal Place in Medieval Scandinavia." *Oregon Undergraduate Research Journal* 20.2: 134–154. (An undergraduate paper. The notes flag factual slips.)
 - Birch, Eleanor. 2025. "Deviance or Devotion: Women Dressed as Men in Late Medieval England." *Fashion Theory* 29.5: 619–639.
 - Jakobsson, Ármann. 2011. "Óðinn as mother: the old norse deviant patriarch." *Arkiv för nordisk filologi* 126. (Read in proof, paginated 01–012.)
-- Karras and Pierpont. 2023. *Sexuality in Medieval Europe: Doing Unto Others*. 4th ed. Routledge. (details incomplete: authors' given names not recorded)
+- Karras, Ruth Mazo, and Katherine E. Pierpont. 2023. *Sexuality in Medieval Europe: Doing Unto Others*. 4th ed. Routledge.
 - Tommony, Isabelle, with C. M. Forster. 2024. "Margins Undefined: the flexibility of gender boundaries in the European Middle Ages." *BILT Student Research Journal* 5: 2–9. (A peer-reviewed undergraduate journal from Bristol. Forster is credited on the version-of-record citation.)
 
 ### China, the steppe and Southeast Asia
@@ -274,13 +275,13 @@ Cited in the notes, not read: Ayalon, David, "On the Eunuchs in Islam," *Jerusal
 - Burton-Rose, Daniel. 2012. "Gendered Androgyny: Transcendent Ideals and Profane Realities in Buddhism, Classicism, and Daoism." In Chiang (ed.), *Transgender China*, 67–95.
 - Chiang, Howard (ed.). 2012. *Transgender China*. Palgrave Macmillan. (Chapters 1–5 read in full. Chapters 6–11 are modern and were only skimmed.)
 - Chiang, Howard. 2012. "How China Became a 'Castrated Civilization' and Eunuchs a 'Third Sex'." In Chiang (ed.), *Transgender China*, 23–66.
-- Dale. 2018. *Inside the World of the Eunuch*. HKU Press. (details incomplete: the author's given name and any subtitle are not recorded)
-- Hoeckelmann, Michael. 2020. "Power Emasculated: Eunuchs, Great Clans and Political Reproduction under the Tang." *Tang Studies*, 1–27. DOI 10.1080/07375034.2020.1739705. (details incomplete: volume and issue not recorded)
+- Dale, Melissa S. 2018. *Inside the World of the Eunuch: A Social History of the Emperor's Servants in Qing China*. Hong Kong University Press.
+- Höckelmann, Michael. 2020. "Power Emasculated: Eunuchs, Great Clans and Political Reproduction under the Tang." *T'ang Studies* 38: 1–27. https://doi.org/10.1080/07375034.2020.1739705
 - Ismoyo, Petsy Jessy. 2020. "Decolonizing Gender Identities in Indonesia: A Study of Bissu 'The Trans-Religious Leader' in Bugis People." *Paradigma* 10.3: 277–288.
 - Kennedy, Matthew. 1993. "Clothing, Gender, and Ritual Transvestism: The Bissu of Sulawesi." *Journal of Men's Studies* 2.1: 1–13.
 - Kim Jae-myeong 김재명 (金載名). 2006. 「高麗 內侍制의 成立」 [The Formation of the Goryeo Naesi System]. 정신문화연구 29.2 (no. 103): 151–173. (The OCR copy lost every Arabic numeral, and the page numbers were reconstructed.)
 - McCoy, Alfred W. 1982. "Baylan: Animist Religion and Philippine Peasant Ideology." *Philippine Quarterly of Culture and Society* 10.3: 141–194.
-- Sommer. 2024. *The Fox Spirit, the Stone Maiden, and Other Transgender Histories from Late Imperial China*. Columbia University Press. (details incomplete: author's given name not recorded)
+- Sommer, Matthew H. 2024. *The Fox Spirit, the Stone Maiden, and Other Transgender Histories from Late Imperial China*. Columbia University Press.
 - Terbish, Baasanjav. 2023. *Sex in the Land of Genghis Khan: From the Times of the Great Conqueror to Today*. Lanham: Lexington Books / Rowman & Littlefield.
 - Tsai, Shih-shan Henry. 1991. "The Demand and Supply of Ming Eunuchs." *Journal of Asian History* 25.2: 121–146.
 - Tsai, Shih-shan Henry. 1996. *The Eunuchs in the Ming Dynasty*. Albany: SUNY Press.
@@ -301,8 +302,7 @@ Cited in the notes, not read: Nanda, Serena, *Neither Man nor Woman: The Hijras 
 
 ### Fiction
 
-- Greaves, Alyson. 2022. *Welcome to Dorley Hall*. Book 1 of *The Sisters of Dorley*. First published as a serial on AO3, Scribblehub and Patreon, with a print edition. A second volume, *Secrets of Dorley Hall*, was launching in November 2026. Read through the fan wiki *Dorleybase* (dorley.wiki), the publisher's blurb, Goodreads reviews and the review essay "Making Women Out of Men" (*Every Book a Doorway*). See [`docs/dorley_precedent.md`](docs/dorley_precedent.md).
-- Peters, Torrey. Her line on T4T is quoted second-hand from a Tumblr reblog, where it is marked as a novel quotation. (details incomplete: the novel's title is not given)
+- Greaves, Alyson. 2022. *Welcome to Dorley Hall*. The Sisters of Dorley, book 1. Serialised online from 2022; print edition from Wilton Square Books. Read through the fan wiki *Dorleybase* (dorley.wiki), the publisher's description and reader reviews. See [`docs/dorley_precedent.md`](docs/dorley_precedent.md).
 
 ### Online discussion
 
@@ -310,7 +310,7 @@ Cited in the notes, not read: Nanda, Serena, *Neither Man nor Woman: The Hijras 
 - Bhatt, Talia. 2024. "Degendering and Regendering." Substack, 8 October 2024. The same text appears as a chapter of *Trans/Rad/Fem*.
 - Gabriel, Kay. 2020. "Gender as Accumulation Strategy." *Invert Journal*. (Read through a Tumblr excerpt.)
 - Richardson-Read, Nate. c. 2021. "Norse Myth: Queer Magic, Queer Deities, Gay Priest Cults and Cross-Dressing." Cailleach's Herbarium blog, Self-Making series, c. March 2021. **Marked popular/unverified.** The author calls it "a working theory of mine", and the notes say its Saxo claim about Freyr's priests at Uppsala still needs checking.
-- "Transition and Abolition: Notes on Marxism and Trans Politics." 2017. *Viewpoint Magazine*. (The notes give no author.)
+- Gleeson, Jules Joanne. 2017. "Transition and Abolition: Notes on Marxism and Trans Politics." *Viewpoint Magazine*.
 - Public Bluesky and Tumblr discussion of baedelism and the bæddel movement, 2013–2026, surveyed for this project in October 2026. Individual posts are not reproduced or listed; the survey notes are kept privately.
 - Public Bluesky and Tumblr discussion of third-wave transfeminism and the *Trans/Rad/Fem* circle, surveyed in October 2026. Notes kept privately.
 - Public Bluesky and Tumblr discussion of transgender Marxism, surveyed in October 2026. Notes kept privately.
