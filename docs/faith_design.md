@@ -218,3 +218,12 @@ Three faiths, no more for now. Each answers three questions differently: how one
    - Outside the book and to verify before use: legal gender change in the PRC is gated on surgery, which gives the alchemical (non-surgical) gate a modern resonance.
 3. **Three faiths is enough.** Southeast Asian bissu/baylan material waits for its own branch.
 4. **Shared vs separate** as in the table above.
+
+### Proposed revisions after Bhatt's "The Third Sex" (2026-10-18, not yet approved)
+See `research/book_bhatt_third_sex.md` §2. In short:
+1. Dorleyism stops being "preservationist" of the eunuch-angel theology; it refuses the third estate and keeps only "the cut are not men".
+2. The Galenic splinter is written as the accommodationist wing, not a neutral alternative.
+3. The Jade Embryo's polemic aims at the palace's classification, not at eunuchs; eunuchs who seek womanhood are sisters.
+4. Alms flavoured as mutual aid, not outsider "reverence".
+5. Candidate mechanic: refuges and arrivals also take in barren and widowed women discarded by the reproductive order.
+
