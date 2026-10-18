@@ -94,3 +94,56 @@ tm_arrival.0002 = {
 		add_piety = 50
 	}
 }
+
+# A woman turned out for bearing no children. The "third sex" is a dumping-ground for everyone the
+# reproductive order discards (Bhatt, research/book_bhatt_third_sex.md); the Sisters take them all in.
+# Root = the ruler.
+tm_arrival.0003 = {
+	type = character_event
+	title = tm_arrival.0003.t
+	desc = tm_arrival.0003.desc
+	theme = faith
+	left_portrait = { character = scope:tm_cast_out animation = sadness }
+
+	trigger = {
+		exists = capital_province
+	}
+
+	immediate = {
+		create_character = {
+			gender = female
+			age = { 22 45 }
+			culture = root.capital_county.culture
+			faith = root.faith
+			location = root.capital_province
+			trait = infertile
+			save_scope_as = tm_cast_out
+		}
+	}
+
+	option = {	# Shelter her
+		name = tm_arrival.0003.a
+		add_courtier = scope:tm_cast_out
+		add_piety = 15
+		scope:tm_cast_out = {
+			add_opinion = { target = root modifier = grateful_opinion opinion = 30 }
+		}
+	}
+	option = {	# Shelter her as my daughter
+		name = tm_arrival.0003.b
+		trigger = { rite ?= { rite_has_parameter = tm_adoptive_matriline } }
+		add_courtier = scope:tm_cast_out
+		adopt_effect = {
+			CHILD = scope:tm_cast_out
+			ADOPTER = root
+		}
+		scope:tm_cast_out = {
+			add_opinion = { target = root modifier = grateful_opinion opinion = 40 }
+		}
+	}
+	option = {	# Turn her away
+		name = tm_arrival.0003.c
+		add_piety = -15
+	}
+}
+

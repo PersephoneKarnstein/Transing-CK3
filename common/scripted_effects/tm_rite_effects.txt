@@ -7,6 +7,9 @@ tm_rise_daughter_effect = {
 		limit = { has_trait = tm_novice }
 		remove_trait = tm_novice
 	}
+	# A eunuch who seeks womanhood is a sister (Bhatt, faith_design.md §12): her eunuch trait gives way.
+	if = { limit = { has_trait = eunuch_1 } remove_trait = eunuch_1 }
+	if = { limit = { has_trait = beardless_eunuch } remove_trait = beardless_eunuch }
 	add_trait = $TRAIT$
 	add_piety = 50
 	if = {

@@ -10,11 +10,7 @@ tm_take_the_knife_decision = {
 		is_male = yes
 		is_adult = yes
 		rite ?= { rite_has_parameter = tm_knife_voluntary }
-		NOR = {
-			tm_is_daughter_trigger = yes
-			has_trait = eunuch_1
-			has_trait = beardless_eunuch
-		}
+		tm_is_daughter_trigger = no		# eunuchs may come too: the rite recognises what the court's knife did not
 	}
 
 	is_valid_showing_failures_only = {
@@ -38,10 +34,11 @@ tm_take_the_knife_decision = {
 
 	ai_check_interval = 120
 	ai_potential = {
-		has_trait = tm_transgender
+		OR = { has_trait = tm_transgender has_trait = eunuch_1 has_trait = beardless_eunuch }
 	}
 	ai_will_do = {
 		base = 50
+		modifier = { add = -35 NOT = { has_trait = tm_transgender } }
 		modifier = { add = 25 has_trait = brave }
 		modifier = { add = -40 has_trait = craven }
 	}
@@ -183,11 +180,7 @@ tm_seidr_decision = {
 		is_male = yes
 		is_adult = yes
 		rite ?= { rite_has_parameter = tm_seidr_gate }
-		tm_is_daughter_trigger = no
-		NOR = {
-			has_trait = eunuch_1
-			has_trait = beardless_eunuch
-		}
+		tm_is_daughter_trigger = no		# eunuchs may come too: a eunuch who seeks womanhood is a sister
 	}
 
 	is_valid_showing_failures_only = {
@@ -209,9 +202,10 @@ tm_seidr_decision = {
 	}
 
 	ai_check_interval = 120
-	ai_potential = { has_trait = tm_transgender }
+	ai_potential = { OR = { has_trait = tm_transgender has_trait = eunuch_1 has_trait = beardless_eunuch } }
 	ai_will_do = {
 		base = 50
+		modifier = { add = -35 NOT = { has_trait = tm_transgender } }
 		modifier = { add = 25 has_trait = brave }
 		modifier = { add = -40 has_trait = craven }
 	}
@@ -228,11 +222,7 @@ tm_embryo_decision = {
 		is_male = yes
 		is_adult = yes
 		rite ?= { rite_has_parameter = tm_embryo_gate }
-		tm_is_daughter_trigger = no
-		NOR = {
-			has_trait = eunuch_1
-			has_trait = beardless_eunuch
-		}
+		tm_is_daughter_trigger = no		# eunuchs may come too: a eunuch who seeks womanhood is a sister
 	}
 
 	is_valid_showing_failures_only = {
@@ -258,9 +248,10 @@ tm_embryo_decision = {
 	}
 
 	ai_check_interval = 120
-	ai_potential = { has_trait = tm_transgender }
+	ai_potential = { OR = { has_trait = tm_transgender has_trait = eunuch_1 has_trait = beardless_eunuch } }
 	ai_will_do = {
 		base = 50
+		modifier = { add = -35 NOT = { has_trait = tm_transgender } }
 		modifier = { add = 25 has_trait = patient }
 		modifier = { add = -40 has_trait = impatient }
 	}

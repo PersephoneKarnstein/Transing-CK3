@@ -241,6 +241,11 @@ tm_adopt_daughter_interaction = {
 			scope:recipient = { NOT = { exists = house } }
 		}
 		modifier = {
+			add = 30
+			desc = tm_adopt_ai_cast_out
+			scope:recipient = { has_trait = infertile is_female = yes }
+		}
+		modifier = {
 			add = -50
 			desc = tm_adopt_ai_has_mother
 			scope:recipient = { exists = mother mother = { is_alive = yes } }

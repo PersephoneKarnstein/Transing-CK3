@@ -219,9 +219,9 @@ Three faiths, no more for now. Each answers three questions differently: how one
 3. **Three faiths is enough.** Southeast Asian bissu/baylan material waits for its own branch.
 4. **Shared vs separate** as in the table above.
 
-### Proposed revisions after Bhatt's "The Third Sex" (2026-10-18, not yet approved)
+### Revisions after Bhatt's "The Third Sex" (approved by user 2026-10-18, applied)
 See `research/book_bhatt_third_sex.md` §2. In short:
-1. Dorleyism stops being "preservationist" of the eunuch-angel theology; it refuses the third estate and keeps only "the cut are not men".
+1. **Compromise (user):** Dorleyism stays nostalgic, but for a mostly forgotten sect, the Mother's gallae at Pessinus (inside c_phrygia), not for the Byzantine court. The Sisters remember Pessinus kinder than it was, and the eldest know it. They refuse the court's eunuch-angel "reverence" and its slave market as one system; the cut are women, not a third thing.
 2. The Galenic splinter is written as the accommodationist wing, not a neutral alternative.
 3. The Jade Embryo's polemic aims at the palace's classification, not at eunuchs; eunuchs who seek womanhood are sisters.
 4. Alms flavoured as mutual aid, not outsider "reverence".

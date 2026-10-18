@@ -13,7 +13,7 @@
  transbian_maximalism_old_adj:0 "Old Dorleyaian"
  transbian_maximalism_old_adherent:0 "Old Dorleyaian"
  transbian_maximalism_old_adherent_plural:0 "Old Dorleyaians"
- transbian_maximalism_desc:0 "The Sisters of Dorylaion keep what the court of Constantinople is forgetting: that the cut are not lessened but made new, nearer the angels. Their Phrygian house holds one thing the Patriarchs never will, that the one who takes the knife rises a daughter. They choose their heirs rather than breed them, and their altars are served by women alone."
+ transbian_maximalism_desc:0 "The Sisters of Dorylaion keep a house almost no one remembers. Before the Patriarchs, the Mother's gallae served at Pessinus, a day's ride away, and the Sisters say that house never closed. They remember it kinder than it was, and the eldest know it. What they will not take is what Constantinople offers instead: the court calls its eunuchs angels and buys them as boys, and the Sisters want neither the title nor the market. One who takes the knife rises a daughter, not a third thing. They choose their heirs rather than breed them, women alone serve their altars, and what they beg they share among themselves."
 
  ### Rite ###
  transbian_maximalist_rite:0 "Rite of Dorleyaion"
@@ -36,7 +36,7 @@
 
  ### Tenets ###
  tenet_tm_day_of_blood_name:0 "Day of Blood"
- tenet_tm_day_of_blood_desc:0 "Each spring the novices take the knife in the Mother's house and rise as daughters. The cut are not lessened but completed, and the faith counts them among its women."
+ tenet_tm_day_of_blood_desc:0 "Each spring the novices take the knife in the Mother's house and rise as daughters. The cut are not a third thing between men and women, whatever the court says of its eunuchs. They are women, and the faith counts them so."
  tenet_tm_daughters_chosen_name:0 "Daughters Chosen, Not Born"
  tenet_tm_daughters_chosen_desc:0 "Blood confers nothing. A house is the women who chose it, and a mother passes her name, her lands and her office to the daughter she adopts."
  tenet_tm_sisterhood_name:0 "Unbending Sisterhood"
@@ -58,7 +58,7 @@
  tm_body_aristotelian_name:0 "The Aristotelian Body"
  tm_body_aristotelian_desc:0 "As the Philosopher taught, the cut body passes into the female state. The daughters of the knife are women in every law of the faith."
  tm_body_galenic_name:0 "The Galenic Body"
- tm_body_galenic_desc:0 "As Galen taught, the cut are a kind of their own, neither men nor women, nearest the angels."
+ tm_body_galenic_desc:0 "As Galen taught, the cut are a kind of their own, neither men nor women. It is the court's teaching, and it sits easier with bishops and emperors: a third estate can be honoured, employed and kept apart. The Aristotelians call it the old cage with a new name."
 
  ### Doctrine parameters ###
  doctrine_parameter_tm_day_of_blood_active:0 "Men may take the knife and rise as daughters"
@@ -205,7 +205,7 @@
 
  # Refuge
  tm_declare_refuge_decision:0 "Petition for a Refuge"
- tm_declare_refuge_decision_desc:0 "Ask the Mother House to name the lands of my house a refuge for the Marked. Word will travel along every road the Sisters walk."
+ tm_declare_refuge_decision_desc:0 "Ask the Mother House to name the lands of my house a refuge for the Marked, and for every woman turned out because she bore no son. Word will travel along every road the Sisters walk."
  tm_declare_refuge_decision_tooltip:0 "Make the lands of your house a refuge for the Marked."
  tm_declare_refuge_decision_confirm:0 "Let them come"
  tm_declare_refuge_decision_effect_tt:0 "Your [house|E] becomes a refuge, and so will every daughter's after you:\n- Marked travellers arrive at your court far more often\n- Unlocks the decision #V Send to the Mother House#!"
@@ -264,7 +264,7 @@
  tm_yutai_adj:0 "Jade Embryo"
  tm_yutai_adherent:0 "Adept of the Jade Embryo"
  tm_yutai_adherent_plural:0 "Adepts of the Jade Embryo"
- tm_yutai_desc:0 "The alchemists teach that an adept gestates an immortal embryo in ten months and is born from it. The Way of the Jade Embryo turns the work the other way: the adept gestates her own body and is born as herself. Her teachers say she is not a eunuch, whatever the palace calls her, and that a name rightly given before witnesses is the truth."
+ tm_yutai_desc:0 "The alchemists teach that an adept gestates an immortal embryo in ten months and is born from it. The Way of the Jade Embryo turns the work the other way: the adept gestates her own body and is born as herself. The palace calls such women eunuchs so that it need not call them women. The Way answers with the rectification of names. A daughter named before witnesses is a daughter, and any eunuch who seeks the same is received as a sister."
  tm_yutai_rite:0 "Rite of the Jade Embryo"
  tm_yutai_rite_adj:0 "Jade Embryo"
  tm_yutai_rite_adherent:0 "Adept of the Jade Embryo"
@@ -278,9 +278,9 @@
  holy_site_tm_mogao_effects:0 "Cave 331, where the dragon girl changed her body in an instant"
 
  tenet_tm_jade_embryo_name:0 "The Jade Embryo"
- tenet_tm_jade_embryo_desc:0 "Ten months of stillness, and the adept is born from the crown of her own head. No knife touches her. The knife is the eunuch's road, and the Way does not walk it."
+ tenet_tm_jade_embryo_desc:0 "Ten months of stillness, and the adept is born from the crown of her own head. The Way uses no knife, but it does not despise the women the palace cut. A eunuch who seeks to be born again is received like any other."
  tenet_tm_rectified_names_name:0 "Rectified Names"
- tenet_tm_rectified_names_desc:0 "Confucius taught that when names do not match things, the state falls into disorder. The Way agrees, and draws the other conclusion: a daughter named before witnesses is a daughter, and to call her a eunuch is the disorder."
+ tenet_tm_rectified_names_desc:0 "Confucius taught that when names do not match things, the state falls into disorder. The Way agrees, and draws the other conclusion: a daughter named before witnesses is a daughter. When the palace calls her a eunuch it is not describing her. It is excusing itself."
  tenet_tm_temple_societies_name:0 "Temple Societies"
  tenet_tm_temple_societies_desc:0 "The crown takes back what a childless servant leaves. The Way's temple and burial societies hold their sisters' goods in common, keep the rites for the kinless, and adopt the heirs who will keep them after."
  doctrine_parameter_tm_embryo_gate:0 "Men may gestate the jade embryo and be born as daughters"
@@ -293,7 +293,7 @@
  trait_tm_daughter_of_seidr:0 "Daughter of the High Seat"
  trait_tm_daughter_of_seidr_desc:0 "This character went under beneath the völva's high seat and came back a daughter. Seiðr did what the knife does elsewhere."
  trait_tm_daughter_of_the_embryo:0 "Daughter of the Jade Embryo"
- trait_tm_daughter_of_the_embryo_desc:0 "This character gestated her own body for ten months and was born from it. She is not a eunuch."
+ trait_tm_daughter_of_the_embryo_desc:0 "This character gestated her own body for ten months and was born from it. Whatever the palace calls her, she is a woman."
 
  # ---------------- Decisions ----------------
  tm_seidr_decision:0 "Go Under the High Seat"
@@ -352,3 +352,11 @@
  tm_embryo.0002.c:0 "The old name will serve for now."
  tm_gestating_modifier:0 "Gestating the Jade Embryo"
  tm_gestating_modifier_desc:0 "This character is in the ten months of inner gestation."
+
+ # Cast-out women (Bhatt: the "third sex" is a dumping-ground for all the reproductive order discards)
+ tm_arrival.0003.t:0 "Turned Out"
+ tm_arrival.0003.desc:0 "A woman stands at the gate with a bundle and nothing else. Her husband's family sent her away when it was clear she would bear no children, and her own father would not take her back. Someone on the road told her that the Sisters do not ask what a woman is for."
+ tm_arrival.0003.a:0 "Then she has a place here."
+ tm_arrival.0003.b:0 "She has a place here, and a mother."
+ tm_arrival.0003.c:0 "We cannot take her in."
+ tm_adopt_ai_cast_out:0 "Cast out for her barrenness"

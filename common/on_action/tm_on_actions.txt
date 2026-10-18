@@ -232,7 +232,10 @@ tm_yearly_playable = {
 				add = 15
 				house ?= { has_variable = tm_refuge }
 			}
-			trigger_event = tm_arrival.0001
+			random_list = {
+				70 = { trigger_event = tm_arrival.0001 }	# a Marked traveller
+				30 = { trigger_event = tm_arrival.0003 }	# a woman turned out for barrenness
+			}
 		}
 	}
 }
