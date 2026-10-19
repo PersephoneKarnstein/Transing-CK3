@@ -75,3 +75,23 @@ tm_contested_inheritance_modifier = {
 	icon = social_negative
 	monthly_prestige = -0.3
 }
+
+# Took the physician's purge for a "ghost fetus" (tm_embryo.0013).
+tm_purged_modifier = {
+	icon = health_negative
+	health = -0.25
+}
+
+# Ordained by special edict (tm_ordain_by_edict_interaction).
+tm_ordained_modifier = {
+	icon = learning_positive
+	learning = 1
+	monthly_piety = 0.3
+}
+
+# The Shenquan Abbey relit at Dunhuang (tm_relight_shenquan_decision). County modifier.
+tm_shenquan_abbey_modifier = {
+	icon = county_modifier_development_positive
+	development_growth_factor = 0.1
+	county_opinion_add = 5
+}

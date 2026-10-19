@@ -255,6 +255,10 @@ tm_house.0050 = {
 	}
 	option = {	# Close it
 		name = tm_house.0050.b
+		if = {				# a House with a throne-granted name-panel is not closed lightly
+			limit = { scope:tm_house_county = { has_variable = tm_house_named } }
+			add_prestige = -100
+		}
 		root = { save_scope_as = tm_house_holder }
 		scope:tm_house_county = {
 			if = {
@@ -272,6 +276,7 @@ tm_house.0050 = {
 			base = 50
 			modifier = { add = 30 has_trait = zealous }
 			modifier = { add = 20 has_trait = callous }
+			modifier = { add = -40 scope:tm_house_county = { has_variable = tm_house_named } }
 			modifier = { add = -30 has_trait = compassionate }
 		}
 	}

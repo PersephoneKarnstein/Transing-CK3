@@ -1,0 +1,171 @@
+﻿namespace = tm_yutai
+
+# A prodigy in the prefecture: a man reported to have become a woman. The omen-readers blamed the court, never the
+# person, and mostly only recorded it (research/cn_wuxingzhi_sex_change_records.md). Root = a ruler of the Way.
+tm_yutai.0001 = {
+	type = character_event
+	title = tm_yutai.0001.t
+	desc = tm_yutai.0001.desc
+	theme = learning
+	left_portrait = { character = scope:tm_prodigy animation = worry }
+
+	trigger = { exists = capital_province }
+
+	immediate = {
+		create_character = {
+			gender = female
+			age = { 18 40 }
+			culture = root.capital_county.culture
+			faith = root.capital_county.faith
+			location = root.capital_province
+			fertility = 0
+			save_scope_as = tm_prodigy
+		}
+	}
+
+	option = {	# Report it up the chain, as the law requires
+		name = tm_yutai.0001.a
+		add_prestige = 25
+	}
+	option = {	# Hold the report
+		name = tm_yutai.0001.b
+		random_list = {
+			70 = { desc = tm_yutai.0001.b.quiet }
+			30 = {
+				desc = tm_yutai.0001.b.found
+				add_prestige = -50
+			}
+		}
+	}
+	option = {	# Ordain her in the Way
+		name = tm_yutai.0001.c
+		add_courtier = scope:tm_prodigy
+		scope:tm_prodigy = {
+			set_character_faith = root.faith
+			add_trait = tm_daughter_of_the_embryo
+			tm_give_daughter_name_effect = yes
+			set_variable = tm_declared
+			add_opinion = { target = root modifier = grateful_opinion opinion = 30 }
+		}
+		add_piety = 50
+	}
+	option = {	# Send her past the gate, to the nearest House
+		name = tm_yutai.0001.d
+		scope:tm_prodigy = { tm_send_on_effect = { EXCLUDE = root } }
+	}
+}
+
+# The magistrate's inventory: a wave of confiscation against unnamed temple houses (the Song took everything above
+# the "permanent" store in 1150; heirless estates went to the state from 1264). Named Houses are exempt.
+# Root = a ruler of the Way holding an unnamed House.
+tm_yutai.0010 = {
+	type = character_event
+	title = tm_yutai.0010.t
+	desc = tm_yutai.0010.desc
+	theme = stewardship
+	left_portrait = { character = root animation = worry }
+
+	option = {	# Open the store to him
+		name = tm_yutai.0010.a
+		remove_short_term_gold = { value = gold multiply = 0.2 max = 100 min = 0 }
+	}
+	option = {	# Pay him to count slowly
+		name = tm_yutai.0010.b
+		trigger = { gold >= 25 }
+		remove_short_term_gold = 25
+		add_prestige = -25
+	}
+	option = {	# Hide the store
+		name = tm_yutai.0010.c
+		random_list = {
+			60 = {
+				modifier = { add = { value = intrigue multiply = 2 } }
+				desc = tm_yutai.0010.c.hidden
+			}
+			40 = {
+				desc = tm_yutai.0010.c.found
+				every_held_title = {
+					limit = { tier = tier_county has_variable = tm_house }
+					change_variable = { name = tm_house_strain add = 2 }
+				}
+				liege ?= { add_opinion = { target = root modifier = angry_opinion opinion = -20 } }
+			}
+		}
+	}
+}
+
+# Huang Lingwei named a transcendent by imperial rescript, 882 (research/cn_kirkland_huang_lingwei.md).
+# Root = a ruler of the Way.
+tm_yutai.0020 = {
+	type = character_event
+	title = tm_yutai.0020.t
+	desc = tm_yutai.0020.desc
+	theme = faith
+	left_portrait = { character = root animation = happiness }
+
+	option = {	# Keep a rite at her altars
+		name = tm_yutai.0020.a
+		trigger = { gold >= 25 }
+		remove_short_term_gold = 25
+		add_piety = 75
+	}
+	option = {	# The court's honour is enough
+		name = tm_yutai.0020.b
+		add_piety = 15
+	}
+}
+
+# Repaying the righteous store (yiju 義聚): the society's store lent at about half again (research/cn_ning_hao_sheyi_wenshu.md).
+# Root = the borrower.
+tm_yutai.0030 = {
+	type = character_event
+	title = tm_yutai.0030.t
+	desc = tm_yutai.0030.desc
+	theme = stewardship
+	left_portrait = { character = root animation = personality_rational }
+
+	immediate = { remove_variable = tm_store_loan }
+
+	option = {	# Repay it with the interest
+		name = tm_yutai.0030.a
+		trigger = { gold >= 150 }
+		remove_short_term_gold = 150
+		add_piety = 10
+	}
+	option = {	# Ask the sisters to wait
+		name = tm_yutai.0030.b
+		add_prestige = -50
+		every_held_title = {
+			limit = { tier = tier_county has_variable = tm_house }
+			change_variable = { name = tm_house_strain add = 2 }
+		}
+	}
+}
+
+# The society buries a sister: dues paid at a death (S.527; research/cn_s527_womens_association.md).
+# Root = the lord whose House she belonged to; scope:tm_dead_sister.
+tm_yutai.0040 = {
+	type = character_event
+	title = tm_yutai.0040.t
+	desc = tm_yutai.0040.desc
+	theme = death
+	left_portrait = { character = root animation = sadness }
+
+	option = {	# Pay the dues, and walk with the bier
+		name = tm_yutai.0040.a
+		trigger = { gold >= 10 }
+		remove_short_term_gold = 10
+		add_piety = 20
+		every_held_title = {
+			limit = { tier = tier_county has_variable = tm_house }
+			change_variable = { name = tm_house_strain add = -1 }
+		}
+	}
+	option = {	# The society will bear it
+		name = tm_yutai.0040.b
+		every_held_title = {
+			limit = { tier = tier_county has_variable = tm_house }
+			change_variable = { name = tm_house_strain add = 1 }
+		}
+	}
+}

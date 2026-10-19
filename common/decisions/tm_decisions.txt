@@ -290,3 +290,95 @@ tm_embryo_decision = {
 		modifier = { add = -40 has_trait = impatient }
 	}
 }
+
+# ---------------------------------------------------------------------------------------------------
+# The Way of the Jade Embryo: temple-society decisions (research/cn_gernet_*, cn_ning_hao_*, cn_jia_*).
+
+# Petition for a name-panel: throne recognition protects a temple house from confiscation and closure.
+tm_name_panel_decision = {
+	picture = { reference = "gfx/interface/illustrations/decisions/decision_misc.dds" }
+	sort_order = 83
+
+	is_shown = {
+		rite ?= { rite_has_parameter = tm_temple_societies }
+		any_held_title = { tier = tier_county has_variable = tm_house NOT = { has_variable = tm_house_named } }
+	}
+
+	is_valid_showing_failures_only = { is_imprisoned = no }
+
+	cost = {
+		prestige = 150
+		gold = 100
+	}
+
+	effect = {
+		custom_tooltip = tm_name_panel_decision_effect_tt
+		every_held_title = {
+			limit = { tier = tier_county has_variable = tm_house }
+			set_variable = tm_house_named
+		}
+		add_piety = 25
+	}
+
+	ai_check_interval = 120
+	ai_will_do = { base = 30 }
+}
+
+# Borrow from the righteous store (yiju): grain and oil now, half again in a year.
+tm_righteous_store_decision = {
+	picture = { reference = "gfx/interface/illustrations/decisions/decision_misc.dds" }
+	sort_order = 82
+
+	is_shown = {
+		rite ?= { rite_has_parameter = tm_temple_societies }
+		tm_holds_sisters_house_trigger = yes
+	}
+
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+		custom_description = {
+			text = tm_store_loan_outstanding
+			NOT = { has_variable = tm_store_loan }
+		}
+	}
+
+	effect = {
+		add_gold = 100
+		set_variable = tm_store_loan
+		custom_tooltip = tm_righteous_store_decision_effect_tt
+		trigger_event = { id = tm_yutai.0030 days = 365 }
+	}
+
+	ai_check_interval = 120
+	ai_potential = { gold < 50 }
+	ai_will_do = { base = 20 }
+}
+
+# Relight the Shenquan Abbey at Dunhuang: in 867 the nüguan have no temple there (research/cn_ning_hao_sheyi_wenshu.md).
+tm_relight_shenquan_decision = {
+	picture = { reference = "gfx/interface/illustrations/decisions/decision_misc.dds" }
+	sort_order = 81
+
+	is_shown = {
+		rite ?= { rite_has_parameter = tm_embryo_gate }
+		has_title = title:c_shazhou
+		NOT = { has_global_variable = tm_shenquan_relit }
+	}
+
+	is_valid_showing_failures_only = { is_imprisoned = no }
+
+	cost = {
+		gold = 150
+		piety = 100
+	}
+
+	effect = {
+		set_global_variable = tm_shenquan_relit
+		title:c_shazhou = { add_county_modifier = { modifier = tm_shenquan_abbey_modifier } }
+		add_piety = 100
+		add_prestige = 50
+	}
+
+	ai_check_interval = 120
+	ai_will_do = { base = 50 }
+}

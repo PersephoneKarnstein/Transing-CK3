@@ -309,6 +309,35 @@ tm_yearly_playable = {
 				trigger_event = { id = tm_isl.0002 days = { 1 300 } }
 			}
 		}
+		# The Way of the Jade Embryo (tm_yutai_events.txt).
+		if = {
+			limit = { rite ?= { rite_has_parameter = tm_embryo_gate } }
+			random = {
+				chance = 3
+				trigger_event = { id = tm_yutai.0001 days = { 1 300 } }
+			}
+			if = {
+				limit = {
+					exists = liege
+					any_held_title = { tier = tier_county has_variable = tm_house NOT = { has_variable = tm_house_named } }
+				}
+				random = {
+					chance = 1
+					modifier = { add = 2 current_date >= 1264.1.1 }	# Yuan: heirless estates to the state
+					modifier = { add = 1 current_date >= 1369.1.1 }	# Ming lineage law
+					trigger_event = { id = tm_yutai.0010 days = { 1 300 } }
+				}
+			}
+			if = {
+				limit = {
+					current_date >= 882.1.1
+					current_date < 900.1.1
+					NOT = { has_character_flag = tm_huang_lingwei_seen }
+				}
+				add_character_flag = tm_huang_lingwei_seen
+				trigger_event = { id = tm_yutai.0020 days = { 1 120 } }
+			}
+		}
 		# A völva on the winter road (tm_seidr.0020).
 		if = {
 			limit = { rite ?= { rite_has_parameter = tm_seidr_gate } }
@@ -344,5 +373,25 @@ tm_yearly_playable = {
 				}
 			}
 		}
+	}
+}
+
+# A sister of a Way House dies: the temple society pays its dues (tm_yutai.0040).
+on_death = {
+	on_actions = {
+		tm_on_death
+	}
+}
+
+tm_on_death = {
+	trigger = {
+		tm_house_member_trigger = yes
+		rite ?= { rite_has_parameter = tm_temple_societies }
+		is_ruler = no
+		liege ?= { tm_holds_sisters_house_trigger = yes }
+	}
+	effect = {
+		save_scope_as = tm_dead_sister
+		liege = { trigger_event = tm_yutai.0040 }
 	}
 }

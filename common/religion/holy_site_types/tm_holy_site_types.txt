@@ -69,3 +69,15 @@ tm_pepouza = {
 		monthly_piety = 0.2
 	}
 }
+
+# The Southern Marchmount (Nanyue, Mount Heng in Hunan): the mountain of the Tang holy women Du Guangting
+# recorded (research/cn_cahill_divine_traces.md). Vanilla mount_heng is the northern Heng, in Shanxi.
+tm_nanyue = {
+	county = c_hengzhou
+	barony = b_hengyang_1
+
+	county_holder_character_modifier = {
+		learning = 1
+		monthly_piety = 0.2
+	}
+}

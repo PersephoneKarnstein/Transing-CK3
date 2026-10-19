@@ -172,15 +172,19 @@ In the north the sanctioned crossing ran toward manhood. A man who went the othe
 
 ## The Way of the Jade Embryo
 
-*Working name.* A Daoist faith of Tang China, seated at Dunhuang beneath the Mogao caves. Cave 331 there holds a mural of the Lotus Sutra's dragon girl, who changed her body in an instant. Empress Wu Zetian paid for it.
+*Working name.* A Daoist faith of Tang China, seated at Dunhuang beneath the Mogao caves, where Daoist priestesses were ordained in the eighth century. In 867 the town's Daoist abbeys stand dark after Tibetan rule; relighting the Shenquan Abbey is the faith's first project.
 
-Daoist inner alchemy teaches that an adept gestates an immortal embryo for ten months and is born from it. The Way turns the work the other way: the adept gestates her own body and is born as herself. The palace calls such women eunuchs so that it need not call them women. The Way answers with Confucius's rectification of names. A daughter named before witnesses is a daughter, and any eunuch who seeks the same is received as a sister.
+Daoist inner alchemy teaches that an adept nurtures a holy embryo for ten months until it is born from her and becomes her true self. In the faith's own telling, Lord Lao once took the shape of Mother Li and sheltered in his own womb, and the masters say a man must reach a state of pregnancy before he becomes pure yang. The Way stops there, at the mother: its adepts are born as themselves. The palace counts the cut among its men and would count these women among them too. The Way answers with Confucius's rectification of names. A daughter named before witnesses is a daughter, and any eunuch who seeks the same is received as a sister. Its high god is the Queen Mother of the West, under whom the Tang master Du Guangting ranked every woman who attains the Way.
 
-- **The gate: the jade embryo.** In *Gestate the Jade Embryo*, a guarantor vouches for the adept and a nüguan asks her "Will you ever repent?" Ten months follow. In the third month a palace censor wants her name in the eunuchs' register; in the sixth her family writes to summon her home. Either can delay the birth, but nothing she has done is lost. Birth comes from the crown of the head, and a name is given before witnesses.
-- **The line.** Temple and burial societies hold their sisters' goods in common against crown confiscation. They adopt the heirs who will keep the rites.
-- **The world.** A courtly faith of intrigue and stewardship. A planned palace faction will contend with the scholar-officials inside the imperial court.
+- **The gate: the jade embryo.** In *Gestate the Jade Embryo*, a guarantor vouches for the house that will shelter the adept, and a nüguan (a Daoist priestess) asks her "Will you ever repent?" Ten months follow:
+  - **The first bathing** (month 3): a censor checking the clergy roll threatens to strike her off as a private nun.
+  - **The White Tiger** (month 6): her family writes to summon her home. She can refuse ("Not yet! Don't rush me!") or go home to nurse her parents first.
+  - **Birth from the crown** (month 10), and a name before witnesses.
+  A physician may call it a "ghost fetus" and bring a purge. Nothing she has done is ever lost.
+- **The line.** Under Song law a daughter, born or adopted, keeps a sonless house; the magistrate takes only what a house with no daughter leaves. The faith's temple and burial societies pay dues at every birth and death, keep a righteous store that lends at interest, and petition the throne for a name-panel that protects their Houses from confiscation. Waves of confiscation grow after the Yuan conquest.
+- **The world.** A courtly faith of intrigue and stewardship. Prodigies are reported in the prefectures, and a king of the Way can ordain a woman by special edict, as the Song court once ordained a bearded woman. Buddhist neighbours read a daughter as a man reborn a woman for an old sin. A planned palace faction will contend with the scholar-officials.
 - **Tenets.** The Jade Embryo, Rectified Names, and Temple Societies.
-- **Holy sites.** The Mogao caves, Mount Longhu, Mount Qingcheng and Mount Wudang.
+- **Holy sites.** The Mogao caves, Mount Longhu, Mount Qingcheng and the Southern Marchmount (Mount Heng in Hunan), the holy women's mountain.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -367,27 +371,79 @@ The 2019 *Medieval Feminist Forum* special issue on medieval trans feminism, edi
 </details>
 
 <details>
-<summary><strong>China, the steppe and Southeast Asia</strong> (17 works)</summary>
+<summary><strong>China</strong> (53 works)</summary>
+
+- Balkwill, Stephanie. 2016. "The *Sūtra on Transforming the Female Form*: Unpacking an Early Medieval Chinese Buddhist Text." *Journal of Chinese Religions* 44.2: 127–148.
+- Bernhardt, Kathryn. 1999. *Women and Property in China, 960–1949*. Stanford University Press.
+- Birge, Bettine. 2002. *Women, Property, and Confucian Reaction in Sung and Yüan China (960–1368)*. Cambridge University Press.
+- Burton-Rose, Daniel. 2012. "Gendered Androgyny: Transcendent Ideals and Profane Realities in Buddhism, Classicism, and Daoism." In Chiang (ed.), *Transgender China*, 67–95.
+- Cheng, Hsiao-wen. 2012. *Traveling Stories and Untold Desires: Female Sexuality in Song China, 10th–13th Centuries*. PhD dissertation, University of Washington.
+- Cheng, Hsiao-wen. 2021. *Divine, Demonic, and Disordered: Women without Men in Song Dynasty China*. University of Washington Press.
+- Chen Jinhua. 2002. "Śarīra and Scepter: Empress Wu's Political Use of Buddhist Relics." *Journal of the International Association of Buddhist Studies* 25.1–2: 33–150.
+- Chiang, Howard. 2012. "How China Became a 'Castrated Civilization' and Eunuchs a 'Third Sex'." In Chiang (ed.), *Transgender China*, 23–66.
+- Chiang, Howard (ed.). 2012. *Transgender China*. Palgrave Macmillan. (Chapters 1–5 read in full. Chapters 6–11 are modern and were only skimmed.)
+- Dale, Melissa S. 2018. *Inside the World of the Eunuch: A Social History of the Emperor's Servants in Qing China*. Hong Kong University Press.
+- Despeux, Catherine, and Livia Kohn. 2003. *Women in Daoism*. Three Pines Press.
+- Faure, Bernard. 2003. *The Power of Denial: Buddhism, Purity, and Gender*. Princeton University Press.
+- Galambos, Imre. 2020. *Dunhuang Manuscript Culture: End of the First Millennium*. De Gruyter. (Open access.)
+- Geng Qiongke. 2025. "The Body, Gender, and Religious Practices: A Comparative Study of Daoist Inner Alchemy for Women and Buddhist Thoughts on the Female-to-Male Transformation." *Religions* 16.10: 1222.
+- Gernet, Jacques. 1995. *Buddhism in Chinese Society: An Economic History from the Fifth to the Tenth Centuries*. Trans. Franciscus Verellen. Columbia University Press.
+- Grass, Noa. 2024. "A Horse-Driven Court: Eunuchs and Horsemen in the Early-Ming Directorate of Imperial Horses." *Asia Major* 3rd ser. 37.2: 5–22.
+- Hao Chunwen. 2010. "The Social Life of Buddhist Monks and Nuns in Dunhuang during the Late Tang, Five Dynasties, and Early Song." *Asia Major* 3rd ser. 23.2: 77–95.
+- Hao Chunwen. 2021. "She Association Manuscripts from Dunhuang and the Study of Medieval She Association." Trans. Huang Bo. *Hualin International Journal of Buddhist Studies* 4.1: 59–98.
+- Höckelmann, Michael. 2020. "Power Emasculated: Eunuchs, Great Clans and Political Reproduction under the Tang." *T'ang Studies* 38: 1–27. https://doi.org/10.1080/07375034.2020.1739705
+- Hinsch, Bret. 2020. *Women in Tang China*. Rowman & Littlefield.
+- Huang Yongfeng and Geng Qiongke. 2023. "Women Become Immortal through the Use of Procreation Ability: A Study on the Fertility Concept of Female Alchemy." *Religions* 14.6: 727.
+- Jia Jinhua. 2018. *Gender, Power, and Talent: The Journey of Daoist Priestesses in Tang China*. Columbia University Press.
+- Kirkland, Russell. 1992. Entries on Huang Ling-wei. *T'ang Studies* 10: 153–165.
+- Levering, Miriam L. 1982. "The Dragon Girl and the Abbess of Mo-shan: Gender and Status in the Ch'an Buddhist Tradition." *Journal of the International Association of Buddhist Studies* 5.1: 19–35.
+- Lo Tung-hwa 羅彤華. 2013. 〈唐代養子的類型及其禮法地位〉 [The Types and Confucian and Legal Status of the Adopted Child in the Tang]. 《臺大歷史學報》 52: 1–51.
+- Lo, Vivienne, and Christopher Cullen (eds.). 2005. *Medieval Chinese Medicine: The Dunhuang Medical Manuscripts*. Routledge.
+- McMahon, Keith. 2013. *Women Shall Not Rule: Imperial Wives and Concubines in China from Han to Liao*. Rowman & Littlefield.
+- McMahon, Keith. 2016. *Celestial Women: Imperial Wives and Concubines in China from Song to Qing*. Rowman & Littlefield.
+- Peach, Lucinda Joy. 2002. "Social Responsibility, Sex Change, and Salvation: Gender Justice in the Lotus Sūtra." *Philosophy East and West* 52.1: 50–74.
+- Pregadio, Fabrizio. 2019. *The Way of the Golden Elixir: An Introduction to Taoist Alchemy*. 3rd ed. Golden Elixir Press.
+- Rideout, J. K. 1949, 1953. "The Rise of the Eunuchs during the T'ang Dynasty," parts 1 and 2. *Asia Major* n.s. 1: 53–72; part 2: 42–58.
+- Rong Xinjiang. 2013. *Eighteen Lectures on Dunhuang*. Trans. Imre Galambos. Brill.
+- Rothschild, N. Harry. 2015. *Emperor Wu Zhao and Her Pantheon of Devis, Divinities, and Dynastic Mothers*. Columbia University Press.
+- Schuster, Nancy. 1981. "Changing the Female Body: Wise Women and the Bodhisattva Career in Some Mahāratnakūṭasūtras." *Journal of the International Association of Buddhist Studies* 4.1: 24–69.
+- Sommer, Matthew H. 2024. *The Fox Spirit, the Stone Maiden, and Other Transgender Histories from Late Imperial China*. Columbia University Press.
+- So Wai Man. 2000. 《唐與北宋宦官研究》 [*A Study of Eunuchs in Tang and Northern Song China*]. MPhil thesis, University of Hong Kong.
+- Tsai, Shih-shan Henry. 1991. "The Demand and Supply of Ming Eunuchs." *Journal of Asian History* 25.2: 121–146.
+- Tsai, Shih-shan Henry. 1996. *The Eunuchs in the Ming Dynasty*. Albany: SUNY Press.
+- Valussi, Elena. 2008. "Blood, Tigers, Dragons: The Physiology of Transcendence for Women." *Asian Medicine* 4: 46–85.
+- Valussi, Elena. 2022. "Alchimia femminile. Brani dall'opera di Liu Yiming (1734–1821)." In Bianchi, Campo and Paolillo (eds.), *Scritti in memoria di Alfredo M. Cadonna*. Edizioni Ca' Foscari.
+- Wang Mu. 2011. *Foundations of Internal Alchemy: The Taoist Practice of Neidan*. Trans. Fabrizio Pregadio. Golden Elixir Press.
+- Wong, Alvin Ka Hin. 2012. "Transgenderism as a Heuristic Device: On the Cross-historical and Transnational Adaptations of the Legend of the White Snake." In Chiang (ed.), *Transgender China*, 127–158.
+- Xin Yuerong and Xu Tao. 2026. "The Symmetrical, Integrated, and Pre-Sexual Body Concept: From the Vitality Narrative in Daoist Female Alchemy." *Religions* 17.2: 154.
+- Zeitlin, Judith T. 1993. *Historian of the Strange: Pu Songling and the Chinese Classical Tale*. Stanford University Press.
+- Zhang Yuanlin. "An Echo from the Ancient Past: Depictions of the Lotus Sutra in Dunhuang Murals." Trans. Ho Chiew Hui. *Journal of Oriental Studies* 28: 122–149.
+- Zhou, Zuyan. 2012. "The Androgynous Ideal in Scholar-Beauty Romances: A Historical and Cultural View." In Chiang (ed.), *Transgender China*, 97–125.
+- *Primary sources in translation or in the original:*
+  - *The Lotus Sutra*, ch. 12. Trans. Tsugunari Kubo and Akira Yuyama (BDK, 2007) and Burton Watson (1993).
+  - Confucius, *Analects* 12.11, 12.17, 13.3. Trans. James Legge.
+  - The Five Phases treatises (*Wuxing zhi*) of the *Han shu*, *Xin Tang shu*, *Song shi* and *Yuan shi*, and *Taiping guangji* 367, read in Chinese.
+  - British Library Or.8210/S.527: bylaws of a Dunhuang women's association, 959, read from the manuscript images.
+  - Du Guangting. *Records of the Assembled Transcendents of the Fortified Walled City* (c. 913). Trans. Suzanne E. Cahill as *Divine Traces of the Daoist Sisterhood*. Three Pines Press, 2006.
+  - McKnight, Brian E., and James T. C. Liu (trans.). 1999. *The Enlightened Judgments: Ch'ing-ming Chi, the Sung Dynasty Collection*. SUNY Press.
+  - Ning Ke 寧可 and Hao Chunwen 郝春文 (eds.). 1997. 《敦煌社邑文書輯校》 [The Dunhuang association documents, collated]. Jiangsu guji.
+
+Cited in the notes, not read: Furth, *A Flourishing Yin*; Jay, "Another Side of Chinese Eunuch History" (1993) and "Castration, Adoption, Marriage, and Burial"; Valussi, "Beheading the Red Dragon" (SOAS PhD, 2003). Further titles, with availability, are in `docs/research/china_reading_list.md`.
+
+</details>
+
+<details>
+<summary><strong>The steppe, Korea and Southeast Asia</strong> (7 works)</summary>
 
 - Andaya, Leonard Y. 2018. "The Bissu: Study of a Third Gender in Indonesia." In Zamfira, de Montlibert and Radu (eds.), *Gender in Focus*, 64–87. Budrich. (A reprint of Andaya 2000 in B. Andaya (ed.), *Other Pasts*.)
 - Brewer, Carolyn. 1999. "Baylan, Asog, Transvestism, and Sodomy: Gender, Sexuality and the Sacred in Early Colonial Philippines." *Intersections* 2 (May). (A web text with numbered paragraphs and no page numbers.)
-- Burton-Rose, Daniel. 2012. "Gendered Androgyny: Transcendent Ideals and Profane Realities in Buddhism, Classicism, and Daoism." In Chiang (ed.), *Transgender China*, 67–95.
-- Chiang, Howard (ed.). 2012. *Transgender China*. Palgrave Macmillan. (Chapters 1–5 read in full. Chapters 6–11 are modern and were only skimmed.)
-- Chiang, Howard. 2012. "How China Became a 'Castrated Civilization' and Eunuchs a 'Third Sex'." In Chiang (ed.), *Transgender China*, 23–66.
-- Dale, Melissa S. 2018. *Inside the World of the Eunuch: A Social History of the Emperor's Servants in Qing China*. Hong Kong University Press.
-- Höckelmann, Michael. 2020. "Power Emasculated: Eunuchs, Great Clans and Political Reproduction under the Tang." *T'ang Studies* 38: 1–27. https://doi.org/10.1080/07375034.2020.1739705
 - Ismoyo, Petsy Jessy. 2020. "Decolonizing Gender Identities in Indonesia: A Study of Bissu 'The Trans-Religious Leader' in Bugis People." *Paradigma* 10.3: 277–288.
 - Kennedy, Matthew. 1993. "Clothing, Gender, and Ritual Transvestism: The Bissu of Sulawesi." *Journal of Men's Studies* 2.1: 1–13.
 - Kim Jae-myeong 김재명 (金載名). 2006. 「高麗 內侍制의 成立」 [The Formation of the Goryeo Naesi System]. 정신문화연구 29.2 (no. 103): 151–173. (The OCR copy lost every Arabic numeral, and the page numbers were reconstructed.)
 - McCoy, Alfred W. 1982. "Baylan: Animist Religion and Philippine Peasant Ideology." *Philippine Quarterly of Culture and Society* 10.3: 141–194.
-- Sommer, Matthew H. 2024. *The Fox Spirit, the Stone Maiden, and Other Transgender Histories from Late Imperial China*. Columbia University Press.
 - Terbish, Baasanjav. 2023. *Sex in the Land of Genghis Khan: From the Times of the Great Conqueror to Today*. Lanham: Lexington Books / Rowman & Littlefield.
-- Tsai, Shih-shan Henry. 1991. "The Demand and Supply of Ming Eunuchs." *Journal of Asian History* 25.2: 121–146.
-- Tsai, Shih-shan Henry. 1996. *The Eunuchs in the Ming Dynasty*. Albany: SUNY Press.
-- Wong, Alvin Ka Hin. 2012. "Transgenderism as a Heuristic Device: On the Cross-historical and Transnational Adaptations of the Legend of the White Snake." In Chiang (ed.), *Transgender China*, 127–158.
-- Zhou, Zuyan. 2012. "The Androgynous Ideal in Scholar-Beauty Romances: A Historical and Cultural View." In Chiang (ed.), *Transgender China*, 97–125.
 
-Cited in the notes, not read: Davies, Sharyn Graham, *Challenging Gender Norms: Five Genders among the Bugis in Indonesia* (2006); Furth, *A Flourishing Yin*; Jay, "Castration, Adoption, Marriage, and Burial" (1993).
+Cited in the notes, not read: Davies, Sharyn Graham, *Challenging Gender Norms: Five Genders among the Bugis in Indonesia* (2006).
 
 </details>
 

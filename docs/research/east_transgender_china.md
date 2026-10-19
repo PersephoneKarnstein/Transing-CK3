@@ -397,3 +397,5 @@ Design is locked; these are text and mechanic hooks for (A) a possible Chinese b
 - Hua Mulan ballad text/date: absent; only the archetype label (p. 105).
 - Quanzhen economy/communal property: absent.
 - Whether "cutting the red dragon" as a named women's regimen existed before the Qing compendia: the book cites only 1906 texts for the term.
+
+> **Correction (2026-10-18, China reading).** Row 22's claim that Wu Zetian funded the Cave 331 dragon-girl mural rests on Burton-Rose (2012, p. 73) alone. Zhang (cn_zhang_dunhuang_lotus_murals.md), Chen Jinhua and Rothschild find no link; Wu's Dunhuang cave is 96. In Lotus ch. 12 the dragon girl becomes a man. See also the corrections in cn_*.md.

@@ -81,6 +81,18 @@ Built: shared daughter trigger and per-faith daughter traits; Bæddel faith (Got
 - [ ] Galenic splinter rite: Theophylact's *In Defence of Eunuchs* as its book
 - [ ] Verify the Galen renderings in byz_galen_on_semen.md against De Lacy (CMG V 3,1)
 
+## China reading revisions (added 2026-10-18, untested in-game)
+- [ ] Embryo chain with the new month-6 options and the ghost-fetus event (0013)
+- [ ] Queen Mother of the West shows as the Way's high god; Southern Marchmount holy site at c_hengzhou
+- [ ] Temple society dues at births and deaths; righteous store loan and repayment; name-panel; confiscation waves
+- [ ] Prodigy in the Prefecture; Ordain by Special Edict; Relight the Shenquan Abbey; Huang Lingwei rescript (882–900)
+- [ ] Eastern-faith triggered opinion (parameter eastern_syncretic_recipient)
+
+## Stage 2 inputs from the China reading
+- [ ] Palace faction: Shence commanders and Commissioners of Military Affairs (Northern Office) vs scholar-officials (Southern Office); Yang Fugong's adopted sons; the 903 massacre; Song adoption licences and quotas
+- [ ] Event chains: Xue Xuantong (874–883), Wang Fengxian (d. 886), the abbess of Mo-shan; three routes into the abbeys; Liao Empress Chengtian
+- [ ] Regency rules by culture (Song curtain; Liao/Yuan command)
+
 ## Branch faiths, stage 2 (next)
 - [ ] **Spring the Cell** (user: build with the Bæddel stage-2 work). Hostile scheme, any adult of the three faiths, landed or not; target a ruler imprisoning a daughter, Marked woman or declared sister. Agents: Marked guards, faithful servants, friends of the House. Success: prisoner walks to the nearest House (else the plotter's court), plotter possibly unknown. Discovery and failure as vanilla hostile schemes. Template: vanilla abduct. The non-war counterpart of Rescue the Daughters and the planned Bæddel raids.
 - [ ] Bæddel: níð insult duels; landless war-band play; Rescue the Daughters as a raid; Christian outlawry pressure.

@@ -5,3 +5,9 @@
 tm_islamic_daughter_opinion = {
 	opinion = -10
 }
+
+# How Buddhist (and other Indic) observers read a daughter: a man reborn a woman as the fruit of adultery in a
+# former life (the Chinese Samantapasadika; research/cn_faure_power_of_denial.md).
+tm_eastern_daughter_opinion = {
+	opinion = -10
+}

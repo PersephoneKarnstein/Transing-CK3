@@ -464,3 +464,55 @@ tm_name_companion_interaction = {
 	ai_frequency = 60
 	ai_will_do = { base = 25 }
 }
+
+# Ordain by Special Edict: in 1124 a bearded woman was ordained a Daoist by special edict, the one recorded case of
+# acceptance (research/cn_wuxingzhi_sex_change_records.md). A king or emperor of the Way may do the same.
+tm_ordain_by_edict_interaction = {
+	interface_priority = 57
+	icon = icon_scheme_befriend
+	category = interaction_category_religion
+	desc = tm_ordain_by_edict_interaction_desc
+
+	is_shown = {
+		NOT = { scope:actor = scope:recipient }
+		scope:actor = {
+			rite ?= { rite_has_parameter = tm_embryo_gate }
+			highest_held_title_tier >= tier_kingdom
+		}
+		scope:recipient = {
+			is_adult = yes
+			OR = {
+				is_female = yes
+				has_trait = tm_transgender
+				tm_is_daughter_trigger = yes
+			}
+			NOT = { has_character_modifier = tm_ordained_modifier }
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		scope:recipient = { is_imprisoned = no }
+	}
+
+	cost = { prestige = 100 }
+	auto_accept = yes
+
+	on_accept = {
+		scope:recipient = {
+			add_character_modifier = { modifier = tm_ordained_modifier }
+			if = {
+				limit = { has_trait = tm_transgender tm_is_daughter_trigger = no NOT = { has_variable = tm_declared } }
+				tm_declare_effect = yes
+			}
+			add_opinion = { target = scope:actor modifier = grateful_opinion opinion = 30 }
+		}
+		scope:actor = { add_piety = 50 }
+	}
+
+	ai_targets = { ai_recipients = courtiers }
+	ai_frequency = 120
+	ai_will_do = {
+		base = 0
+		modifier = { add = 30 scope:recipient = { has_trait = tm_transgender } }
+	}
+}

@@ -177,6 +177,26 @@ Play Shazhou, or design a ruler of the Way. Then `add_trait tm_transgender` on y
 - With a daughter or Marked sister at court, "My sisters will stand at the gate" should appear and should always pass.
 - "Set the work down" should end the gestation cleanly. Then take the decision again and check it isn't blocked as "already gestating".
 
+**C4. Month 6 and the physician.**
+- At "The White Tiger", try each answer:
+  - "Not yet! Don't rush me!" should go straight on to the birth.
+  - "I will go home and nurse my parents" should only show while a parent is alive, and should delay the trial.
+- About one gestation in three, "A Ghost Fetus" should fire between months 4 and 5. **Check:** none of its three answers ends the gestation.
+
+**C5. Temple societies.** With a Sisters' House and the Way's rite:
+- Give birth by the embryo. Your House's strain should drop and you should gain piety: the dues at a birth.
+- Kill a sister courtier with `kill <id>`. "The Society Buries a Sister" should fire.
+- Take *Borrow from the Righteous Store*, then pass a year. The repayment event should ask for 150 gold.
+- As a vassal, take *Petition for a Name-Panel*. Then fire `event tm_yutai.0010 <your id>` with a fresh unnamed House, and check that a named House never triggers it on its own.
+
+**C6. The world of the Way.**
+- Fire `event tm_yutai.0001 <your id>` ("A Prodigy in the Prefecture") and try all four answers.
+- As a king or higher of the Way, use *Ordain by Special Edict* on a Marked courtier. She should be declared and ordained.
+- Holding Shazhou, take *Relight the Shenquan Abbey*.
+- **The faith screen:** the high god should read *the Queen Mother of the West*, and the holy sites should include *the Southern Marchmount*, not Wudang.
+- In a game started in 867, the Huang Lingwei rescript should fire once, between 882 and 900.
+- Hover over a Buddhist ruler's opinion of a daughter. It should show *A Man Reborn a Woman* (−10). Screenshot it either way.
+
 ---
 
 ## D. Shared systems

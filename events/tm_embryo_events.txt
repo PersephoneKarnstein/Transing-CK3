@@ -14,14 +14,19 @@ tm_embryo.0001 = {
 		add_character_modifier = { modifier = tm_gestating_modifier days = 300 }
 		custom_tooltip = tm_embryo.0001.a.tt
 		trigger_event = { id = tm_embryo.0010 days = { 80 100 } }
+		random = {				# a physician hears of it (research/cn_cheng_divine_demonic_disordered.md)
+			chance = 35
+			trigger_event = { id = tm_embryo.0013 days = { 120 160 } }
+		}
 	}
 	option = {	# Not yet
 		name = tm_embryo.0001.b
 	}
 }
 
-# Third month: stilling the essence, and the palace censor at the gate. The danger is outside her: the
-# censor wants her entered in the eunuchs' register. A failure delays the gestation; it never resets it
+# Third month: the first bathing, and the censor at the gate. The danger is outside her: Tang censors
+# checked the clergy roll for unregistered "private" nuns (research/cn_hinsch_women_tang.md); struck off it,
+# she would be counted among the palace's men. A failure delays the gestation; it never resets it
 # (Serano: the gate recognises, it does not test). Root = the adept.
 tm_embryo.0010 = {
 	type = character_event
@@ -69,8 +74,9 @@ tm_embryo.0010 = {
 	}
 }
 
-# Sixth month: the red dragon, and a letter from home. Her family summons her back to marry and keep the
-# ancestral rites. Root = the adept.
+# Sixth month: the White Tiger, and a letter from home. "Red dragon" is a later (1310, Qing) term; the in-period
+# image for the work in a male-born body is the White Tiger (research/cn_valussi_*.md, cn_wang_mu_internal_alchemy.md).
+# Her family summons her back to marry and keep the ancestral rites. Root = the adept.
 tm_embryo.0011 = {
 	type = character_event
 	title = tm_embryo.0011.t
@@ -92,6 +98,22 @@ tm_embryo.0011 = {
 				tm_embryo_delayed_effect = { EVENT = tm_embryo.0011 }
 			}
 		}
+	}
+	option = {	# "Not yet! Don't rush me!" (Xue Xuantong, in Du Guangting)
+		name = tm_embryo.0011.d
+		add_stress = 10
+		add_prestige = 25
+		trigger_event = { id = tm_embryo.0012 days = { 110 130 } }
+	}
+	option = {	# I will nurse my parents first, then return to the work
+		name = tm_embryo.0011.e
+		trigger = { any_parent = { is_alive = yes } }
+		add_piety = 50
+		every_parent = {
+			limit = { is_alive = yes }
+			add_opinion = { target = root modifier = grateful_opinion opinion = 20 }
+		}
+		tm_embryo_delayed_effect = { EVENT = tm_embryo.0011 }
 	}
 	option = {	# My guarantor answers for the house that shelters me
 		name = tm_embryo.0011.b
@@ -118,6 +140,25 @@ tm_embryo.0012 = {
 		name = tm_embryo.0012.a
 		remove_variable = tm_embryo_active
 		remove_character_modifier = tm_gestating_modifier
+		# The society's dues at a birth (P.3489; research/cn_ning_hao_sheyi_wenshu.md): her House celebrates.
+		if = {
+			limit = { tm_holds_sisters_house_trigger = yes }
+			save_scope_as = tm_society_host
+		}
+		else_if = {
+			limit = { liege ?= { tm_holds_sisters_house_trigger = yes } }
+			liege = { save_scope_as = tm_society_host }
+		}
+		if = {
+			limit = { exists = scope:tm_society_host }
+			scope:tm_society_host = {
+				add_piety = 15
+				every_held_title = {
+					limit = { tier = tier_county has_variable = tm_house }
+					change_variable = { name = tm_house_strain add = -1 }
+				}
+			}
+		}
 		tm_rise_daughter_effect = { TRAIT = tm_daughter_of_the_embryo RENAME = tm_embryo.0002 }
 	}
 }
@@ -152,5 +193,31 @@ tm_embryo.0002 = {
 		name = tm_embryo.0002.c
 		trigger = { is_male = yes }
 		add_stress = 10
+	}
+}
+
+# The physician's reading: a "ghost fetus" (guitai), a false pregnancy to be purged
+# (research/cn_cheng_divine_demonic_disordered.md). It never ends the gestation. Root = the adept.
+tm_embryo.0013 = {
+	type = character_event
+	title = tm_embryo.0013.t
+	desc = tm_embryo.0013.desc
+	theme = learning
+	left_portrait = { character = root animation = worry }
+	trigger = { has_variable = tm_embryo_active }
+
+	option = {	# Send him away
+		name = tm_embryo.0013.a
+		add_stress = 10
+	}
+	option = {	# Let the nüguan answer him
+		name = tm_embryo.0013.b
+		trigger = { piety >= 25 }
+		add_piety = -25
+	}
+	option = {	# Take his purge to be rid of him
+		name = tm_embryo.0013.c
+		add_stress = 25
+		add_character_modifier = { modifier = tm_purged_modifier days = 90 }
 	}
 }

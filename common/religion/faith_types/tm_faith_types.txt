@@ -125,12 +125,12 @@ tm_yutai = {
 	}
 
 	eminent_holy_sites = {
-		tm_mogao		# cave 331: Wu Zetian's mural of the dragon girl who changed her body
+		tm_mogao		# Dunhuang: the seat; its Daoist abbeys kept 37 priestesses in 758 (research/cn_jia_daoist_priestesses.md)
 		mount_longhu	# Zhang Daoling's mountain; the Celestial Masters let women lead
 	}
 	holy_sites = {
 		mount_qingcheng
-		mount_wudang
+		tm_nanyue		# the Southern Marchmount, Mount Heng in Hunan: the holy women's mountain (research/cn_cahill_divine_traces.md); replaces Wudang
 	}
 
 	doctrines = {
@@ -147,5 +147,15 @@ tm_yutai = {
 		HouseOfWorship2 = tm_guan
 		HouseOfWorship3 = tm_guan
 		HouseOfWorshipPlural = tm_guan_plural
+		# The Queen Mother of the West, "Metal Mother", under whom Du Guangting (c. 913) ranks every woman who
+		# attains the Way (research/cn_cahill_divine_traces.md).
+		HighGodName = tm_xiwangmu
+		HighGodName2 = tm_xiwangmu
+		HighGodNamePossessive = tm_xiwangmu_possessive
+		HighGodNameSheHe = CHARACTER_SHEHE_SHE
+		HighGodHerselfHimself = CHARACTER_HERSELF
+		HighGodHerHis = CHARACTER_HERHIS_HER
+		HighGodNameAlternate = tm_metal_mother
+		HighGodNameAlternatePossessive = tm_metal_mother_possessive
 	}
 }
