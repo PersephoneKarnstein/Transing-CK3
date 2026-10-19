@@ -1,0 +1,3 @@
+﻿# Run from the console:  run tm_pavai_now.txt
+# Starts the pāvai vow (the Worn Garland) for you at once, skipping the decision, its cooldown and the Mārkaḻi window.
+tm_pavai_begin_effect = yes

@@ -197,3 +197,114 @@ tm_nehpakhot = {
 		PriestNeuterPlural = tm_zekenah_plural
 	}
 }
+
+# ---------------------------------------------------------------------------------------------------
+# The Tamil faith: the Worn Garland (faith_design.md §15). A current inside Hinduism that crosses Śaiva and
+# Vaiṣṇava devotion, as the Chola inscriptions' shared vocabulary does (research/ind_orr_2013_anandakichenin.md):
+# the bride and the worn garland from the Vaiṣṇava poets, the "daughter of God" and the women's song from Śiva's
+# temples. Seat: Kanchipuram.
+tm_garland = {
+	main_rite = tm_garland_rite
+	historical = no
+
+	faith_details = {
+		religion = hinduism_religion
+		color = { 0.85 0.45 0.55 }
+		icon = hinduism				# placeholder; TODO commissioned icon
+	}
+
+	eminent_holy_sites = {
+		kanchipuram		# the only temple-women centre attested 850–1300, with Śaiva and Vaiṣṇava temples (Orr 2000)
+		tm_srirangam	# a 1126 inscription ties Āṇṭāḷ to Srirangam (research/ind_dehejia_venkatesan_antal.md)
+	}
+	holy_sites = {
+		tm_tanjavur		# the four hundred women of the temple street (SII 2 no. 66)
+		tm_madurai
+	}
+
+	doctrines = {
+	}
+
+	localization = {
+		PriestMale = tm_tevanar_makal
+		PriestMalePlural = tm_tevanar_makal_plural
+		PriestFemale = tm_tevanar_makal
+		PriestFemalePlural = tm_tevanar_makal_plural
+		PriestNeuter = tm_tevanar_makal
+		PriestNeuterPlural = tm_tevanar_makal_plural
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The Mande faith: Badenya, the Mother's Children (faith_design.md §15). Inside the West African religion, with
+# every god name overridden: vanilla uses Griaule's Dogon names, which van Beek's restudy undercuts
+# (research/waf_vanbeek_dogon.md). Seat: Kirina.
+tm_badenya = {
+	main_rite = tm_badenya_rite
+	historical = no
+
+	faith_details = {
+		religion = west_african_religion
+		color = { 0.80 0.55 0.20 }
+		icon = mande_reformed			# placeholder; TODO commissioned icon
+	}
+
+	eminent_holy_sites = {
+		tm_kirina		# the seat
+		niani
+	}
+	holy_sites = {
+		awkar			# Ghana: Tunka Manīn succeeded his maternal uncle (al-Bakrī, 1068)
+		tm_walata		# where Ibn Baṭṭūṭa saw a sister's son inherit
+		tm_do			# al-Bakrī's "Daw" (1068), with medieval burial mounds
+	}
+
+	doctrines = {
+	}
+
+	localization = {
+		HighGodName = tm_ala
+		HighGodName2 = tm_ala
+		HighGodNamePossessive = tm_ala_possessive
+		HighGodNameSheHe = CHARACTER_SHEHE_HE
+		HighGodHerselfHimself = CHARACTER_HIMSELF
+		HighGodHerHis = CHARACTER_HERHIS_HIS
+		HighGodNameAlternate = tm_ala
+		HighGodNameAlternatePossessive = tm_ala_possessive
+		CreatorName = tm_ala
+		CreatorNamePossessive = tm_ala_possessive
+		HealthGodName = tm_badenya_spirits
+		HealthGodNamePossessive = tm_badenya_spirits_possessive
+		FertilityGodName = tm_badenya_spirits
+		FertilityGodNamePossessive = tm_badenya_spirits_possessive
+		WealthGodName = tm_badenya_spirits
+		WealthGodNamePossessive = tm_badenya_spirits_possessive
+		HouseholdGodName = tm_badenya_ancestors
+		HouseholdGodNamePossessive = tm_badenya_ancestors_possessive
+		FateGodName = tm_ala
+		FateGodNamePossessive = tm_ala_possessive
+		KnowledgeGodName = tm_badenya_spirits
+		KnowledgeGodNamePossessive = tm_badenya_spirits_possessive
+		WarGodName = tm_badenya_spirits
+		WarGodNamePossessive = tm_badenya_spirits_possessive
+		TricksterGodName = tm_badenya_bush
+		TricksterGodNamePossessive = tm_badenya_bush_possessive
+		NightGodName = tm_badenya_bush
+		NightGodNamePossessive = tm_badenya_bush_possessive
+		WaterGodName = tm_badenya_spirits
+		WaterGodNamePossessive = tm_badenya_spirits_possessive
+		GoodGodNames = { tm_ala tm_badenya_ancestors }
+		DevilName = tm_badenya_bush
+		DevilNamePossessive = tm_badenya_bush_possessive
+		DevilSheHe = CHARACTER_SHEHE_THEY
+		DevilHerHis = CHARACTER_HERHIS_THEIR
+		DevilHerselfHimself = CHARACTER_THEMSELF
+		EvilGodNames = { tm_badenya_bush }
+		PriestMale = tm_jelimuso
+		PriestMalePlural = tm_jelimuso_plural
+		PriestFemale = tm_jelimuso
+		PriestFemalePlural = tm_jelimuso_plural
+		PriestNeuter = tm_jelimuso
+		PriestNeuterPlural = tm_jelimuso_plural
+	}
+}

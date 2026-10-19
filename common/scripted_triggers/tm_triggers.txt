@@ -35,6 +35,8 @@ tm_is_daughter_trigger = {
 		has_trait = tm_daughter_of_seidr
 		has_trait = tm_daughter_of_the_embryo
 		has_trait = tm_daughter_of_the_turning
+		has_trait = tm_daughter_of_the_garland
+		has_trait = tm_daughter_of_the_house
 	}
 }
 
@@ -46,6 +48,8 @@ tm_rite_can_raise_daughters_trigger = {
 			rite_has_parameter = tm_seidr_gate
 			rite_has_parameter = tm_embryo_gate
 			rite_has_parameter = tm_turning_gate
+			rite_has_parameter = tm_garland_gate
+			rite_has_parameter = tm_crossing_gate
 		}
 	}
 }
@@ -186,5 +190,49 @@ tm_is_adar_trigger = {
 	OR = {
 		current_month = 2
 		current_month = 3
+	}
+}
+
+# Mārkaḻi, the Tamil month of the pāvai vow, from mid-December to mid-January.
+tm_is_markali_trigger = {
+	OR = {
+		current_month = 12
+		current_month = 1
+	}
+}
+
+# Could keep the pāvai vow: of the Worn Garland, or Hindu and Marked (the vow turns her). Eunuchs may come too.
+tm_pavai_seeker_trigger = {
+	is_male = yes
+	is_adult = yes
+	is_imprisoned = no
+	tm_is_daughter_trigger = no
+	OR = {
+		rite ?= { rite_has_parameter = tm_garland_gate }
+		AND = {
+			faith ?= { religion = religion:hinduism_religion }
+			OR = {
+				has_trait = tm_transgender
+				has_variable = tm_declared
+			}
+		}
+	}
+}
+
+# Could make the crossing: of Badenya, or of the West African religion and Marked. Eunuchs may come too.
+tm_crossing_seeker_trigger = {
+	is_male = yes
+	is_adult = yes
+	is_imprisoned = no
+	tm_is_daughter_trigger = no
+	OR = {
+		rite ?= { rite_has_parameter = tm_crossing_gate }
+		AND = {
+			faith ?= { religion = religion:west_african_religion }
+			OR = {
+				has_trait = tm_transgender
+				has_variable = tm_declared
+			}
+		}
 	}
 }

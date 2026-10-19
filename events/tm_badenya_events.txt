@@ -1,0 +1,257 @@
+﻿namespace = tm_badenya
+
+# The crossing, the gate of Badenya (faith_design.md §15). Three parties, not a roll: she needs a smith who will
+# speak for the djinn, a woman who will claim her as her mother's child, and a jeli to speak her name. She is "hot"
+# from the bargain until the word cools her (Jansen; Schulz).
+#   0010  the smith's bargain: the djinn asks a life of her house; she gives her own manhood instead (Brett-Smith p. 76)
+#   0011  my mother's child: a woman claims her (Ma Tenenba, Conrad 2004 l. 3110)
+#   0012  the word that cools: a jeli speaks her name before the mansa (Ibn Baṭṭūṭa pp. 413–414)
+#   0015  the djinn returns, once, a year later
+# Root = the seeker. scope:tm_smith = the smith-diviner; scope:tm_host = whose court; scope:tm_claimer = the mother.
+
+# The smith's bargain. Root = the seeker.
+tm_badenya.0010 = {
+	type = character_event
+	title = tm_badenya.0010.t
+	desc = tm_badenya.0010.desc
+	theme = witchcraft
+	left_portrait = { character = scope:tm_smith animation = personality_rational }
+	right_portrait = { character = root animation = worry }
+
+	trigger = { exists = scope:tm_smith }
+
+	option = {	# Give it my manhood, and no one else's life
+		name = tm_badenya.0010.a
+		add_character_modifier = { modifier = tm_crossing_hot_modifier days = 90 }
+		set_variable = { name = tm_djinn_owed value = yes }
+		trigger_event = { id = tm_badenya.0015 days = { 330 400 } }
+		trigger_event = { id = tm_badenya.0011 days = 7 }
+	}
+	option = {	# Pay the smith and walk away
+		name = tm_badenya.0010.b
+		trigger = { gold >= 10 }
+		remove_short_term_gold = 10
+		add_stress = 10
+	}
+}
+
+# My mother's child. Root = the seeker.
+tm_badenya.0011 = {
+	type = character_event
+	title = tm_badenya.0011.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:tm_claimer }
+				desc = tm_badenya.0011.desc
+			}
+			desc = tm_badenya.0011.desc_none
+		}
+	}
+	theme = family
+	left_portrait = { character = scope:tm_claimer animation = happiness }
+	right_portrait = { character = root animation = worry }
+
+	immediate = {
+		# A mother, sister or aunt first; then any woman of the court who thinks well of her.
+		random_close_family_member = {
+			limit = {
+				is_female = yes
+				is_adult = yes
+				is_alive = yes
+				NOT = { opinion = { target = root value < 0 } }
+			}
+			save_scope_as = tm_claimer
+		}
+		if = {
+			limit = { NOT = { exists = scope:tm_claimer } }
+			scope:tm_host ?= {
+				random_courtier = {
+					limit = {
+						is_female = yes
+						is_adult = yes
+						NOT = { this = root }
+						opinion = { target = root value >= 10 }
+					}
+					save_scope_as = tm_claimer
+				}
+			}
+		}
+	}
+
+	option = {	# She claims me, and I pay the bracelets for my crossing
+		name = tm_badenya.0011.a
+		trigger = { exists = scope:tm_claimer gold >= 25 }
+		remove_short_term_gold = 25
+		scope:tm_claimer = { add_opinion = { target = root modifier = friendliness_opinion opinion = 20 } }
+		trigger_event = { id = tm_badenya.0012 days = 7 }
+	}
+	option = {	# She claims me; the bracelets can wait
+		name = tm_badenya.0011.b
+		trigger = { exists = scope:tm_claimer }
+		scope:tm_claimer = { add_prestige = -10 }
+		trigger_event = { id = tm_badenya.0012 days = 7 }
+	}
+	option = {	# No one will claim me yet
+		name = tm_badenya.0011.c
+		trigger = { NOT = { exists = scope:tm_claimer } }
+		add_stress = 20
+		remove_character_modifier = tm_crossing_hot_modifier
+	}
+}
+
+# The word that cools. Root = the seeker.
+tm_badenya.0012 = {
+	type = character_event
+	title = tm_badenya.0012.t
+	desc = tm_badenya.0012.desc
+	theme = family
+	left_portrait = { character = root animation = happiness }
+	right_portrait = { character = scope:tm_host animation = personality_rational }
+
+	option = {	# Pay the jeli well: praise
+		name = tm_badenya.0012.a
+		trigger = { gold >= 50 }
+		remove_short_term_gold = 50
+		add_prestige = 100
+		tm_badenya_rise_effect = yes
+	}
+	option = {	# Pay what I can: whatever the jeli makes of it
+		name = tm_badenya.0012.b
+		random_list = {
+			50 = {
+				desc = tm_badenya.0012.b.praise
+				add_prestige = 25
+			}
+			50 = {
+				desc = tm_badenya.0012.b.satire
+				add_prestige = -50
+				add_stress = 10
+			}
+		}
+		tm_badenya_rise_effect = yes
+	}
+}
+
+# A name before the mansa. Root = the daughter.
+tm_badenya.0002 = {
+	type = character_event
+	title = tm_badenya.0002.t
+	desc = tm_badenya.0002.desc
+	theme = family
+	left_portrait = { character = root animation = happiness }
+
+	option = {
+		name = tm_badenya.0002.a
+		tm_give_daughter_name_effect = yes
+		add_prestige = 25
+	}
+	option = {
+		name = tm_badenya.0002.b
+		trigger = { is_female = yes }
+	}
+	option = {
+		name = tm_badenya.0002.c
+		trigger = { is_male = yes }
+		add_stress = 10
+	}
+}
+
+# The djinn returns, once. Root = the daughter (or the seeker who walked away after the bargain).
+tm_badenya.0015 = {
+	type = character_event
+	title = tm_badenya.0015.t
+	desc = tm_badenya.0015.desc
+	theme = witchcraft
+	left_portrait = { character = root animation = worry }
+
+	trigger = { has_variable = tm_djinn_owed }
+
+	option = {	# Pay in gold, through the smith
+		name = tm_badenya.0015.a
+		trigger = { gold >= 50 }
+		remove_short_term_gold = 50
+		remove_variable = tm_djinn_owed
+	}
+	option = {	# Pay with offerings and prayer
+		name = tm_badenya.0015.b
+		trigger = { piety >= 75 }
+		add_piety = -75
+		remove_variable = tm_djinn_owed
+	}
+	option = {	# Pay nothing more
+		name = tm_badenya.0015.c
+		remove_variable = tm_djinn_owed
+		add_character_modifier = { modifier = tm_djinn_unpaid_modifier years = 5 }
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# A naming feast. A daughter first serves at others' feasts, taken in by a "mother"; later she hosts, and a jeli
+# speaks for her (the pattern of the contemporary record, Gaudio pp. 62–69, 145, 164–169, used as texture and marked
+# as reconstruction). Root = a daughter of the House.
+tm_badenya.0020 = {
+	type = character_event
+	title = tm_badenya.0020.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { var:tm_feasts_served ?= 3 }
+				desc = tm_badenya.0020.desc_host
+			}
+			desc = tm_badenya.0020.desc_serve
+		}
+	}
+	theme = family
+	left_portrait = { character = root animation = happiness }
+
+	option = {	# Serve, dance, and learn the feast
+		name = tm_badenya.0020.a
+		trigger = { NOT = { var:tm_feasts_served ?= 3 } }
+		if = {
+			limit = { has_variable = tm_feasts_served }
+			change_variable = { name = tm_feasts_served add = 1 }
+		}
+		else = {
+			set_variable = { name = tm_feasts_served value = 1 }
+		}
+		add_character_modifier = { modifier = tm_feast_server_modifier years = 1 }
+	}
+	option = {	# Host the feast, and let the jeli speak for me
+		name = tm_badenya.0020.b
+		trigger = { var:tm_feasts_served ?= 3 gold >= 25 }
+		remove_short_term_gold = 25
+		add_character_modifier = { modifier = tm_feast_host_modifier years = 5 }
+	}
+	option = {
+		name = tm_badenya.0020.c
+	}
+}
+
+# The House buries its own. A daughter of the House has died; her blood kin want her estate and her old name.
+# Root = her liege or employer. scope:tm_dead_daughter = the dead daughter. (Grave-price episode, eight accounts from
+# 1890, research/waf_bulman_corpus.md; burial disputes in the contemporary record, Gaudio pp. 192, 200, 204.)
+tm_badenya.0030 = {
+	type = character_event
+	title = tm_badenya.0030.t
+	desc = tm_badenya.0030.desc
+	theme = death
+	left_portrait = { character = root animation = grief }
+
+	option = {	# She is buried by the House, under her own name
+		name = tm_badenya.0030.a
+		add_piety = 30
+		every_courtier = {
+			limit = { tm_is_daughter_trigger = yes }
+			add_opinion = { target = root modifier = respect_opinion opinion = 10 }
+		}
+	}
+	option = {	# Let her blood kin take her, and her old name
+		name = tm_badenya.0030.b
+		add_prestige = 15
+		every_courtier = {
+			limit = { tm_is_daughter_trigger = yes }
+			add_opinion = { target = root modifier = tm_buried_under_old_name_opinion }
+		}
+	}
+}

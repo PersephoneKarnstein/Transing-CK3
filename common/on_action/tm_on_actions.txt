@@ -193,6 +193,49 @@ tm_on_game_start = {
 				scope:tm_arles_lord = { add_courtier = scope:tm_arles_elder }
 			}
 
+			# The Worn Garland: the temple street of Kanchipuram. The county keeps the faith; its lord need not.
+			title:c_kanchipuram = {
+				set_county_faith = faith:tm_garland
+				holder ?= { save_scope_as = tm_kanchi_lord }
+			}
+			if = {
+				limit = { exists = scope:tm_kanchi_lord }
+				create_character = {
+					gender = female
+					age = { 40 60 }
+					culture = title:c_kanchipuram.culture
+					faith = faith:tm_garland
+					employer = scope:tm_kanchi_lord
+					dynasty = none
+					trait = tm_daughter_of_the_garland
+					trait = education_diplomacy_3
+				}
+				tm_seed_marked_courtiers_effect = { HOST = scope:tm_kanchi_lord FAITH = faith:tm_garland }
+			}
+
+			# Badenya keeps Kirina (Sibi); a jelimuso who crossed sits at its lord's court.
+			title:c_sibi_mali = {
+				set_county_faith = faith:tm_badenya
+				holder ?= {
+					set_character_faith = faith:tm_badenya
+					save_scope_as = tm_kirina_lord
+				}
+			}
+			if = {
+				limit = { exists = scope:tm_kirina_lord }
+				create_character = {
+					gender = female
+					age = { 40 60 }
+					culture = scope:tm_kirina_lord.culture
+					faith = faith:tm_badenya
+					employer = scope:tm_kirina_lord
+					dynasty = none
+					trait = tm_daughter_of_the_house
+					trait = education_diplomacy_3
+				}
+				tm_seed_marked_courtiers_effect = { HOST = scope:tm_kirina_lord FAITH = faith:tm_badenya }
+			}
+
 			# Historical characters are not "randomly created", so the 1% seed never rolls for them.
 			# Mark ~1% of living adult men at the start, as the trait's random_creation does for later ones.
 			every_living_character = {
@@ -271,6 +314,45 @@ yearly_playable_pulse = {
 		tm_yearly_houses
 		tm_yearly_islamic_courts
 		tm_yearly_turning
+		tm_yearly_south
+	}
+}
+
+# The Worn Garland and Badenya (tm_garland_events.txt, tm_badenya_events.txt).
+tm_yearly_south = {
+	effect = {
+		# A name in stone: a ruler of the Garland endows the temple.
+		if = {
+			limit = { rite ?= { rite_has_parameter = tm_garland_gate } }
+			random = {
+				chance = 15
+				trigger_event = { id = tm_garland.0020 days = { 1 300 } }
+			}
+		}
+		# A pandit's objection: a Hindu lord not of the Garland with a daughter at court.
+		if = {
+			limit = {
+				faith ?= { religion = religion:hinduism_religion }
+				NOT = { rite ?= { rite_has_parameter = tm_garland_gate } }
+				any_courtier = { tm_is_daughter_trigger = yes is_adult = yes }
+			}
+			random = {
+				chance = 5
+				random_courtier = {
+					limit = { tm_is_daughter_trigger = yes is_adult = yes }
+					save_scope_as = tm_garland_daughter
+				}
+				trigger_event = { id = tm_garland.0030 days = { 1 300 } }
+			}
+		}
+		# A naming feast for a daughter of the House.
+		if = {
+			limit = { has_trait = tm_daughter_of_the_house }
+			random = {
+				chance = 30
+				trigger_event = { id = tm_badenya.0020 days = { 1 300 } }
+			}
+		}
 	}
 }
 
@@ -510,8 +592,37 @@ on_death = {
 	}
 }
 
+# The House buries its own: a daughter of the House dies (tm_badenya.0030).
+on_death = {
+	on_actions = {
+		tm_on_death_badenya
+	}
+}
+
+tm_on_death_badenya = {
+	trigger = {
+		has_trait = tm_daughter_of_the_house
+		NOT = { has_variable = tm_reborn }
+		OR = {
+			exists = liege
+			exists = employer
+		}
+	}
+	effect = {
+		save_scope_as = tm_dead_daughter
+		if = {
+			limit = { exists = employer }
+			employer = { trigger_event = tm_badenya.0030 }
+		}
+		else = {
+			liege = { trigger_event = tm_badenya.0030 }
+		}
+	}
+}
+
 tm_on_death = {
 	trigger = {
+		NOT = { has_variable = tm_reborn }
 		tm_house_member_trigger = yes
 		rite ?= { rite_has_parameter = tm_temple_societies }
 		is_ruler = no
@@ -533,7 +644,7 @@ yearly_global_pulse = {
 
 tm_yearly_growth = {
 	effect = {
-		# The call: Marked characters of other faiths may join the nearest of the four.
+		# The call: Marked characters of other faiths may join the nearest of the six.
 		every_living_character = {
 			limit = {
 				has_trait = tm_transgender

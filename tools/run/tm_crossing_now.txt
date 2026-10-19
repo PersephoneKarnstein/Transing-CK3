@@ -1,0 +1,3 @@
+﻿# Run from the console:  run tm_crossing_now.txt
+# Starts the crossing (Badenya) for you at once, skipping the decision and its cooldown.
+tm_crossing_begin_effect = yes

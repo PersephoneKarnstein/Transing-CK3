@@ -158,3 +158,71 @@ tm_nehpakhot_rite = {
 		doctrine_clerical_marriage_allowed
 	}
 }
+
+# The Tamil rite (the Worn Garland). Devotional, seasonal, endowed in stone. faith_design.md §15.
+tm_garland_rite = {
+	name = tm_garland_rite
+	desc = tm_garland_rite_desc
+	faith = tm_garland
+
+	color = { 0.85 0.45 0.55 }
+	icon = hinduism
+
+	convert = yes
+	create = yes
+	history = no
+
+	tenets = {
+		tenet_tm_pavai_vow
+		tenet_tm_temple_street
+		tenet_bhakti					# vanilla, shared with the Vaiṣṇava and Śaiva rites
+	}
+
+	doctrines = {
+		doctrine_gender_equal
+		doctrine_pluralism_pluralistic
+		doctrine_divorce_allowed
+		doctrine_bastardry_none
+		doctrine_consanguinity_cousins
+		doctrine_homosexuality_accepted
+		doctrine_deviancy_shunned
+		doctrine_witchcraft_shunned
+		doctrine_clerical_function_alms_and_pacification
+		doctrine_clerical_gender_either
+		doctrine_clerical_marriage_allowed
+	}
+}
+
+# The Mande rite (Badenya). Bargains, kin and the authorised word. faith_design.md §15.
+tm_badenya_rite = {
+	name = tm_badenya_rite
+	desc = tm_badenya_rite_desc
+	faith = tm_badenya
+
+	color = { 0.80 0.55 0.20 }
+	icon = mande_reformed
+
+	convert = yes
+	create = yes
+	history = no
+
+	tenets = {
+		tenet_tm_crossing
+		tenet_tm_mothers_children
+		tenet_ancestor_worship			# vanilla
+	}
+
+	doctrines = {
+		doctrine_gender_female_dominated
+		doctrine_pluralism_pluralistic
+		doctrine_divorce_allowed
+		doctrine_bastardry_none
+		doctrine_consanguinity_cousins
+		doctrine_homosexuality_accepted
+		doctrine_deviancy_accepted
+		doctrine_witchcraft_accepted
+		doctrine_clerical_function_alms_and_pacification
+		doctrine_clerical_gender_female_only
+		doctrine_clerical_marriage_allowed
+	}
+}

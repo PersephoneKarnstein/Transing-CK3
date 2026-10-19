@@ -373,7 +373,7 @@ Sources: `research/jud_hildenfinger_arles_documents.md`, `jud_stouff_gross_arles
 - **Not done:** conversion resistance for House counties. The engine has no such county modifier; vanilla's chaplain formula checks named modifiers only, so it would need a vanilla override.
 - **Tuning.** Every 25 years `tm_census_log_effect` writes the counts to `debug.log` (search `tm_census_log`). Rates are first guesses: expect to tune them after one or two observe runs.
 
-## 15. The fifth and sixth faiths: research done, designs proposed (2026-10-19, awaiting approval)
+## 15. The fifth and sixth faiths: the Worn Garland and Badenya (approved by user 2026-10-19, built, untested)
 
 The user chose two of four southern candidates (`research/south_reading_list.md`): India and West Africa, "if we can get them to all feel unique". Shared mechanics with other faiths are fine (user: "they can share some similarities"). Neither region has a recorded pre-1453 case of a man living as a woman in a religious role: each gate is a reconstruction the narrator marks, built on institutions that are attested.
 
@@ -427,3 +427,12 @@ New notes: `ind_benherut_sivas_saints.md`, `ind_prentiss_embodiment.md`, `ind_pe
 - *Holy sites:* Do (al-Bakrī's "Daw", 1068; medieval burial mounds) added. Koulikoro's refuge was Sumanguru's shrine (1819–1930) whose rites excluded women: place-name only.
 - *Kept:* the bird-masked bards (Ibn Baṭṭūṭa, 14th c.); the corpus editors' Komo link is their reading, and no Komo rite is shown.
 - *Names:* about 25 verified Mande women's names in `waf_conrad_conde_sunjata.md`.
+
+### Decisions (user, 2026-10-19) and build
+1. The Garland crosses Śaiva and Vaiṣṇava ("it can cross, if that makes sense for the religion and sources").
+2. Name: the Worn Garland.
+3. The djinn's debt is a one-off: one return a year after the bargain, then never again ("I don't think any other mechanic has a pay-to-play subscription in perpetuity").
+4. Both built at once, then a long observation round.
+5. The optional Tai vow is not built.
+
+Built: faiths `tm_garland` (in `hinduism_religion`) and `tm_badenya` (in `west_african_religion`, every god-name key overridden: Ala, the ancestors, the spirits, the bush spirits); rites, tenets (The Pāvai Vow, The Temple Street, vanilla Bhakti; The Crossing, Mother's Children, vanilla Ancestor Worship); holy sites (`kanchipuram` reused; `tm_srirangam`, `tm_tanjavur`, `tm_madurai`; `tm_kirina`, `niani`, `awkar` reused, `tm_walata`, `tm_do`); traits `tm_daughter_of_the_garland` ("Daughter of God") and `tm_daughter_of_the_house`; decisions `tm_pavai_decision` (Mārkaḻi only) and `tm_crossing_decision`; events `tm_garland.0010–0013, 0001, 0002, 0009, 0020, 0030` and `tm_badenya.0010–0012, 0002, 0015, 0020, 0030`; seeds at Kanchipuram (county only) and Sibi (county and lord); the growth engine's call reaches the Deccan and West Africa; burial on `on_death`, skipping bodies marked `tm_reborn` by re-embodiment (the Jade Embryo's burial hook now skips them too).

@@ -150,6 +150,13 @@ Built: shared daughter trigger and per-faith daughter traits; Bæddel faith (Got
 - [ ] Does the theocracy keep Phrygia out of Byzantium's administrative appointments? If not, consider making the Mother House independent, or a `title_lost` re-grant
 - [ ] Conversion resistance for House counties would need a vanilla script-value override (court_chaplain_conversion_factors); decide whether it is worth it
 
+## The Worn Garland and Badenya (added 2026-10-19, untested in-game)
+- [ ] Mārkaḻi window; companions falling away; the staff roll; names of the temple street; the endowment and the pandit's objection
+- [ ] Badenya: the three-party gate; no claimant; the jeli's satire; the djinn's single return (and on the new body); naming feasts; burial skipping re-embodied bodies
+- [ ] Badenya's god names (Ala, the ancestors, the bush spirits): check with a Mande speaker; check every vanilla god-name key is overridden
+- [ ] Optional, not built: a solitary Tai vow to Kāma at Kanchi after the Mārkaḻi vow (user: "either or")
+- [ ] Commissioned faith icons for both (placeholders: hinduism, mande_reformed)
+
 ## Branch faiths, stage 2 (next)
 - [ ] **Spring the Cell** (user: build with the Bæddel stage-2 work). Hostile scheme, any adult of the four faiths, landed or not; target a ruler imprisoning a daughter, Marked woman or declared sister. Agents: Marked guards, faithful servants, friends of the House. Success: prisoner walks to the nearest House (else the plotter's court), plotter possibly unknown. Discovery and failure as vanilla hostile schemes. Template: vanilla abduct. The non-war counterpart of Rescue the Daughters and the planned Bæddel raids.
 - [ ] Bæddel: níð insult duels; landless war-band play; Rescue the Daughters as a raid; Christian outlawry pressure.

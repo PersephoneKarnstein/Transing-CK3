@@ -64,6 +64,14 @@ tm_rise_by_rite_effect = {
 		limit = { $ROOT_RULER$.rite ?= { rite_has_parameter = tm_turning_gate } }
 		tm_rise_daughter_effect = { TRAIT = tm_daughter_of_the_turning RENAME = tm_hipukh.0002 }
 	}
+	else_if = {
+		limit = { $ROOT_RULER$.rite ?= { rite_has_parameter = tm_garland_gate } }
+		tm_rise_daughter_effect = { TRAIT = tm_daughter_of_the_garland RENAME = tm_garland.0002 }
+	}
+	else_if = {
+		limit = { $ROOT_RULER$.rite ?= { rite_has_parameter = tm_crossing_gate } }
+		tm_rise_daughter_effect = { TRAIT = tm_daughter_of_the_house RENAME = tm_badenya.0002 }
+	}
 	else = {
 		tm_take_the_knife_effect = yes
 	}
@@ -112,6 +120,40 @@ tm_give_daughter_name_effect = {
 			6 = { change_first_name = Lingzhao }
 			6 = { change_first_name = Suyun }
 			6 = { change_first_name = Qingxu }
+		}
+	}
+	else_if = {
+		limit = { rite ?= { rite_has_parameter = tm_garland_gate } }
+		# Names of the temple street: women of the Tanjavur inscription, SII 2 no. 66 (research/ind_tanjavur_inscription.md §5).
+		random_list = {
+			10 = { change_first_name = Arangam }		# ¶¶266, 387: Srirangam's name
+			10 = { change_first_name = Umai }			# seven women of the street
+			8 = { change_first_name = Madevi }
+			8 = { change_first_name = Sidevi }
+			6 = { change_first_name = Sivadevi }
+			6 = { change_first_name = Ekaviri }
+			6 = { change_first_name = Eduttapadam }	# "raised foot", the dance pose
+			5 = { change_first_name = Udaram }
+			5 = { change_first_name = Marudamanikkam }
+			4 = { change_first_name = Panchavanmadevi }
+			4 = { change_first_name = Rajaraji }
+		}
+	}
+	else_if = {
+		limit = { rite ?= { rite_has_parameter = tm_crossing_gate } }
+		# Mande women's names from the Sunjata tradition (epic, recorded 1889–1994; research/waf_conrad_conde_sunjata.md §5).
+		random_list = {
+			10 = { change_first_name = Sogolon }
+			10 = { change_first_name = Kolonkan }
+			10 = { change_first_name = Tenenba }		# the mother who claimed a child she did not bear
+			8 = { change_first_name = Kamissa }
+			8 = { change_first_name = Sira }
+			6 = { change_first_name = Keleya }
+			6 = { change_first_name = Nyuma }
+			6 = { change_first_name = Manyan }
+			5 = { change_first_name = Sugulun }
+			4 = { change_first_name = Flaba }
+			4 = { change_first_name = Tenenbajan }
 		}
 	}
 	else_if = {
@@ -164,6 +206,14 @@ tm_add_rite_daughter_trait_effect = {
 	else_if = {
 		limit = { $ROOT_RULER$.rite ?= { rite_has_parameter = tm_turning_gate } }
 		add_trait = tm_daughter_of_the_turning
+	}
+	else_if = {
+		limit = { $ROOT_RULER$.rite ?= { rite_has_parameter = tm_garland_gate } }
+		add_trait = tm_daughter_of_the_garland
+	}
+	else_if = {
+		limit = { $ROOT_RULER$.rite ?= { rite_has_parameter = tm_crossing_gate } }
+		add_trait = tm_daughter_of_the_house
 	}
 	else = {
 		add_trait = tm_daughter_of_the_knife
@@ -365,5 +415,125 @@ tm_turning_niddui_effect = {
 	}
 	else = {
 		add_character_modifier = { modifier = tm_niddui_modifier years = 3 }
+	}
+}
+
+# Begin the pāvai vow (scope: the seeker). The companions are the women of the host's court, and an elder daughter
+# of the Garland keeps the vow with them. tm_garland_events.txt.
+tm_pavai_begin_effect = {
+	if = {
+		limit = { is_ruler = yes }
+		save_scope_as = tm_host
+	}
+	else_if = {
+		limit = { exists = employer }
+		employer = { save_scope_as = tm_host }
+	}
+	else = {
+		save_scope_as = tm_host
+	}
+	if = {
+		limit = {
+			scope:tm_host = {
+				any_courtier = {
+					NOT = { this = root }
+					has_trait = tm_daughter_of_the_garland
+					is_adult = yes
+				}
+			}
+		}
+		scope:tm_host = {
+			random_courtier = {
+				limit = {
+					NOT = { this = root }
+					has_trait = tm_daughter_of_the_garland
+					is_adult = yes
+				}
+				save_scope_as = tm_garland_elder
+			}
+		}
+	}
+	else = {
+		create_character = {
+			gender = female
+			age = { 40 65 }
+			culture = scope:tm_host.culture
+			faith = faith:tm_garland
+			dynasty = none
+			location = scope:tm_host.capital_province
+			trait = tm_daughter_of_the_garland
+			trait = education_diplomacy_3
+			save_scope_as = tm_garland_elder
+		}
+	}
+	# Companions: up to five women of the court, plus the elder.
+	set_variable = { name = tm_pavai_companions value = 1 }
+	scope:tm_host = {
+		every_courtier = {
+			limit = {
+				is_female = yes
+				is_adult = yes
+				NOT = { this = root }
+			}
+			if = {
+				limit = { root.var:tm_pavai_companions < 6 }
+				root = { change_variable = { name = tm_pavai_companions add = 1 } }
+			}
+		}
+	}
+	add_character_modifier = { modifier = tm_pavai_vow_modifier days = 60 }
+	trigger_event = tm_garland.0010
+}
+
+# Scope: the seeker. Ends the vow's temporary state.
+tm_pavai_clear_effect = {
+	remove_variable = tm_pavai_companions
+	remove_variable = tm_pavai_garland_worn
+	remove_variable = tm_pavai_saiva
+	remove_variable = tm_pavai_vaishnava
+	remove_character_modifier = tm_pavai_vow_modifier
+}
+
+# Begin the crossing (scope: the seeker). A smith-diviner speaks for the djinn. tm_badenya_events.txt.
+tm_crossing_begin_effect = {
+	if = {
+		limit = { is_ruler = yes }
+		save_scope_as = tm_host
+	}
+	else_if = {
+		limit = { exists = employer }
+		employer = { save_scope_as = tm_host }
+	}
+	else = {
+		save_scope_as = tm_host
+	}
+	create_character = {
+		gender = male
+		age = { 40 65 }
+		culture = scope:tm_host.culture
+		faith = scope:tm_host.faith
+		dynasty = none
+		location = scope:tm_host.capital_province
+		trait = education_learning_2
+		save_scope_as = tm_smith
+	}
+	trigger_event = tm_badenya.0010
+}
+
+# The word has cooled her: she rises a daughter of the House. Scope: the seeker.
+tm_badenya_rise_effect = {
+	remove_character_modifier = tm_crossing_hot_modifier
+	if = {
+		limit = { NOT = { faith = faith:tm_badenya } }
+		set_character_faith = faith:tm_badenya
+	}
+	tm_rise_daughter_effect = { TRAIT = tm_daughter_of_the_house RENAME = tm_badenya.0002 }
+	# The djinn's one return follows her into the new body.
+	if = {
+		limit = { exists = scope:tm_new_body }
+		scope:tm_new_body = {
+			set_variable = { name = tm_djinn_owed value = yes }
+			trigger_event = { id = tm_badenya.0015 days = { 330 400 } }
+		}
 	}
 }

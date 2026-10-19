@@ -37,6 +37,8 @@ tm_daughter_of_the_knife = {
 		tm_daughter_of_seidr
 		tm_daughter_of_the_embryo
 		tm_daughter_of_the_turning
+			tm_daughter_of_the_garland
+		tm_daughter_of_the_house
 	}
 
 	same_opinion = 15
@@ -69,6 +71,10 @@ tm_daughter_of_the_knife = {
 		parameter = tm_turning_gate
 		opinion_modifier = tm_turned_sister_opinion
 	}
+	triggered_opinion = {
+		parameter = tm_garland_gate
+		opinion_modifier = tm_garland_sister_opinion
+	}
 
 	shown_in_ruler_designer = yes
 	ruler_designer_cost = 0
@@ -86,6 +92,8 @@ tm_daughter_of_seidr = {
 		tm_daughter_of_the_knife
 		tm_daughter_of_the_embryo
 		tm_daughter_of_the_turning
+			tm_daughter_of_the_garland
+		tm_daughter_of_the_house
 	}
 
 	same_opinion = 15
@@ -111,6 +119,10 @@ tm_daughter_of_seidr = {
 		parameter = tm_turning_gate
 		opinion_modifier = tm_turned_sister_opinion
 	}
+	triggered_opinion = {
+		parameter = tm_garland_gate
+		opinion_modifier = tm_garland_sister_opinion
+	}
 
 	shown_in_ruler_designer = yes
 	ruler_designer_cost = 0
@@ -128,6 +140,8 @@ tm_daughter_of_the_embryo = {
 		tm_daughter_of_the_knife
 		tm_daughter_of_seidr
 		tm_daughter_of_the_turning
+			tm_daughter_of_the_garland
+		tm_daughter_of_the_house
 	}
 
 	same_opinion = 15
@@ -153,6 +167,10 @@ tm_daughter_of_the_embryo = {
 		parameter = tm_turning_gate
 		opinion_modifier = tm_turned_sister_opinion
 	}
+	triggered_opinion = {
+		parameter = tm_garland_gate
+		opinion_modifier = tm_garland_sister_opinion
+	}
 
 	shown_in_ruler_designer = yes
 	ruler_designer_cost = 0
@@ -170,6 +188,8 @@ tm_daughter_of_the_turning = {
 		tm_daughter_of_the_knife
 		tm_daughter_of_seidr
 		tm_daughter_of_the_embryo
+			tm_daughter_of_the_garland
+		tm_daughter_of_the_house
 	}
 
 	same_opinion = 15
@@ -193,6 +213,101 @@ tm_daughter_of_the_turning = {
 	triggered_opinion = {
 		parameter = tm_turning_gate
 		opinion_modifier = tm_turned_sister_opinion
+	}
+	triggered_opinion = {
+		parameter = tm_garland_gate
+		opinion_modifier = tm_garland_sister_opinion
+	}
+
+	shown_in_ruler_designer = yes
+	ruler_designer_cost = 0
+}
+
+# The Tamil gate: she kept the pāvai vow with her companions, wore the garland before it was offered, and was given a
+# name and the staff on her head, "a daughter of God" (tevanar makal, Orr pp. 52–59; Goodall pp. 110–112).
+tm_daughter_of_the_garland = {
+	icon = beardless_eunuch.dds	# placeholder
+
+	category = health
+	can_have_children = no
+	minimum_age = 16
+	opposites = {
+		tm_daughter_of_the_knife
+		tm_daughter_of_seidr
+		tm_daughter_of_the_embryo
+		tm_daughter_of_the_turning
+		tm_daughter_of_the_house
+	}
+
+	same_opinion = 15
+	diplomacy = 2
+	monthly_piety_gain_mult = 0.1
+
+	triggered_opinion = {
+		parameter = islamic_syncretic_recipient
+		opinion_modifier = tm_islamic_daughter_opinion
+	}
+	triggered_opinion = {
+		parameter = eastern_syncretic_recipient
+		opinion_modifier = tm_eastern_daughter_opinion
+	}
+	triggered_opinion = {
+		parameter = jewish_syncretic_recipient
+		opinion_modifier = tm_jewish_daughter_opinion
+	}
+	triggered_opinion = {
+		parameter = tm_turning_gate
+		opinion_modifier = tm_turned_sister_opinion
+	}
+	triggered_opinion = {
+		parameter = tm_garland_gate
+		opinion_modifier = tm_garland_sister_opinion
+	}
+
+	shown_in_ruler_designer = yes
+	ruler_designer_cost = 0
+}
+
+# The Mande gate: she paid the djinn with her own manhood, a woman claimed her as her mother's child, and a jeli
+# spoke her name before the mansa (faith_design.md §15).
+tm_daughter_of_the_house = {
+	icon = beardless_eunuch.dds	# placeholder
+
+	category = health
+	can_have_children = no
+	minimum_age = 16
+	opposites = {
+		tm_daughter_of_the_knife
+		tm_daughter_of_seidr
+		tm_daughter_of_the_embryo
+		tm_daughter_of_the_turning
+		tm_daughter_of_the_garland
+	}
+
+	same_opinion = 15
+	diplomacy = 1
+	prowess = 1
+	monthly_prestige_gain_mult = 0.1
+
+	triggered_opinion = {
+		parameter = islamic_syncretic_recipient
+		opinion_modifier = tm_islamic_daughter_opinion
+	}
+	triggered_opinion = {
+		parameter = eastern_syncretic_recipient
+		opinion_modifier = tm_eastern_daughter_opinion
+	}
+	triggered_opinion = {
+		parameter = jewish_syncretic_recipient
+		opinion_modifier = tm_jewish_daughter_opinion
+	}
+	triggered_opinion = {
+		parameter = tm_turning_gate
+		opinion_modifier = tm_turned_sister_opinion
+	}
+	triggered_opinion = {
+		parameter = tm_garland_gate
+		opinion_modifier = tm_garland_sister_opinion
 	}
 
 	shown_in_ruler_designer = yes

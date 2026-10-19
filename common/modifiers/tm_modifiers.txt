@@ -140,3 +140,40 @@ tm_fisica_women_modifier = {
 	learning = 1
 	monthly_prestige = 0.1
 }
+
+# A name in stone: a gift to the temple, inscribed (tm_garland.0020; the Chola temple-gift inscriptions, Orr 2000).
+tm_inscribed_share_modifier = {
+	icon = piety_positive
+	monthly_piety = 0.5
+	monthly_prestige = 0.2
+}
+
+# The pāvai vow is being kept (tm_garland.0010 to 0001).
+tm_pavai_vow_modifier = {
+	icon = piety_positive
+	stress_loss_mult = 0.1
+}
+
+# Hot: between the smith's bargain and the word that cools (Jansen; Schulz).
+tm_crossing_hot_modifier = {
+	icon = stress_negative
+	stress_gain_mult = 0.2
+}
+
+# She served at others' naming feasts; later she hosts (tm_badenya.0020).
+tm_feast_server_modifier = {
+	icon = social_positive
+	diplomacy = 1
+}
+
+tm_feast_host_modifier = {
+	icon = prestige_positive
+	monthly_prestige = 0.5
+}
+
+# She did not pay the djinn's second price (tm_badenya.0015).
+tm_djinn_unpaid_modifier = {
+	icon = health_negative
+	health = -0.5
+	stress_gain_mult = 0.2
+}

@@ -596,3 +596,200 @@ tenet_tm_three_lamps = {
 		}
 	}
 }
+
+# The gate: the pāvai vow, kept in Mārkaḻi with companions (Āṇṭāḷ's Tiruppāvai; the Śaiva Tiruvempāvai that
+# temple women paid to sing, Orr pp. 17–18). Decision tm_pavai_decision.
+tenet_tm_pavai_vow = {
+	icon = tenet_ritual_celebrations
+
+	is_shown = {
+		OR = {
+			this = faith:tm_garland
+			this = rite:tm_garland_rite
+		}
+	}
+
+	piety_cost = {
+		value = faith_tenet_cost_high
+		if = {
+			limit = { rite_has_tenet = tenet_tm_pavai_vow }
+			multiply = faith_unchanged_doctrine_cost_mult
+		}
+	}
+
+	parameters = {
+		tm_garland_gate
+		tm_sisters_faith
+	}
+
+	character_modifier = {
+		diplomacy = 1
+		monthly_piety_gain_mult = 0.05
+	}
+
+	can_pick_as_personal_tenet = {
+		faith = faith:tm_garland
+	}
+	personal_tenet_modifier = {
+		diplomacy = 1
+		stress_loss_mult = 0.1
+	}
+
+	traits = {
+		virtues = {
+			tm_daughter_of_the_garland = { weight = 30 scale = 1 }
+			gregarious = { weight = 10 scale = 1 }
+		}
+		sins = {
+			shy = { weight = 10 scale = 1 }
+		}
+	}
+}
+
+# The temple street: a daughter's share and house, recorded in stone (SII 2 no. 66), passed to a successor she
+# names. Gifts buy inscriptions (tm_garland.0020).
+tenet_tm_temple_street = {
+	icon = tenet_communal_identity
+
+	is_shown = {
+		OR = {
+			this = faith:tm_garland
+			this = rite:tm_garland_rite
+		}
+	}
+
+	piety_cost = {
+		value = faith_tenet_cost_low
+		if = {
+			limit = { rite_has_tenet = tenet_tm_temple_street }
+			multiply = faith_unchanged_doctrine_cost_mult
+		}
+	}
+
+	parameters = {
+		tm_adoptive_matriline
+		tm_temple_street
+		tenet_adoptionism_adoption_always_possible
+		tenet_adoptionism_adoption_accepted
+	}
+
+	character_modifier = {
+		name = "tenet_tm_temple_street_opinion"
+		same_faith_opinion = 10
+		monthly_income_mult = 0.05
+	}
+
+	can_pick_as_personal_tenet = {
+		faith = faith:tm_garland
+	}
+	personal_tenet_modifier = {
+		stewardship = 1
+	}
+
+	traits = {
+		virtues = {
+			generous = { weight = 15 scale = 1 }
+		}
+		sins = {
+			greedy = { weight = 15 scale = 1 }
+		}
+	}
+}
+
+# The gate: the crossing. A smith's bargain, a woman's claim, and a jeli's word that cools (Brett-Smith; Conrad;
+# Ibn Baṭṭūṭa). Decision tm_crossing_decision.
+tenet_tm_crossing = {
+	icon = tenet_esotericism
+
+	is_shown = {
+		OR = {
+			this = faith:tm_badenya
+			this = rite:tm_badenya_rite
+		}
+	}
+
+	piety_cost = {
+		value = faith_tenet_cost_high
+		if = {
+			limit = { rite_has_tenet = tenet_tm_crossing }
+			multiply = faith_unchanged_doctrine_cost_mult
+		}
+	}
+
+	parameters = {
+		tm_crossing_gate
+		tm_sisters_faith
+	}
+
+	character_modifier = {
+		monthly_prestige_gain_mult = 0.1
+		diplomacy = 1
+	}
+
+	can_pick_as_personal_tenet = {
+		faith = faith:tm_badenya
+	}
+	personal_tenet_modifier = {
+		diplomacy = 1
+		monthly_prestige = 0.2
+	}
+
+	traits = {
+		virtues = {
+			tm_daughter_of_the_house = { weight = 30 scale = 1 }
+			brave = { weight = 10 scale = 1 }
+		}
+		sins = {
+			craven = { weight = 10 scale = 1 }
+		}
+	}
+}
+
+# Mother's children: the line runs through a sister or daughter (Ghana 1063; Walata), a woman may claim a child she
+# did not bear (Ma Tenenba, Conrad 2004 l. 3110), and the House buries its own.
+tenet_tm_mothers_children = {
+	icon = tenet_ancestor_worship
+
+	is_shown = {
+		OR = {
+			this = faith:tm_badenya
+			this = rite:tm_badenya_rite
+		}
+	}
+
+	piety_cost = {
+		value = faith_tenet_cost_low
+		if = {
+			limit = { rite_has_tenet = tenet_tm_mothers_children }
+			multiply = faith_unchanged_doctrine_cost_mult
+		}
+	}
+
+	parameters = {
+		tm_adoptive_matriline
+		tm_house_buries_its_own
+		tenet_adoptionism_adoption_always_possible
+		tenet_adoptionism_adoption_accepted
+	}
+
+	character_modifier = {
+		name = "tenet_tm_mothers_children_opinion"
+		same_faith_opinion = 10
+	}
+
+	can_pick_as_personal_tenet = {
+		faith = faith:tm_badenya
+	}
+	personal_tenet_modifier = {
+		diplomacy = 1
+	}
+
+	traits = {
+		virtues = {
+			compassionate = { weight = 15 scale = 1 }
+		}
+		sins = {
+			callous = { weight = 15 scale = 1 }
+		}
+	}
+}

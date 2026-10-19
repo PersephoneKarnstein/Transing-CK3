@@ -2,7 +2,7 @@
 # A 119-year observe run (867–986) left the four faiths with 81 living members between them: nothing drew anyone in,
 # only rulers could start a rite, and the AI never adopted. These effects are the growth engine.
 
-# A Marked character of another faith hears of the Sisters and may join the nearest faith of the four.
+# A Marked character of another faith hears of the Sisters and may join the nearest faith of the six.
 # Scope: the character. Called yearly from tm_yearly_growth (tm_on_actions.txt).
 tm_sisters_call_effect = {
 	# The nearest faith, by the character's own faith and where they live.
@@ -44,6 +44,14 @@ tm_sisters_call_effect = {
 		}
 		save_scope_value_as = { name = tm_call_target value = flag:yutai }
 	}
+	else_if = {
+		limit = { location ?= { geographical_region = world_india_deccan } }
+		save_scope_value_as = { name = tm_call_target value = flag:garland }
+	}
+	else_if = {
+		limit = { location ?= { geographical_region = world_africa_west } }
+		save_scope_value_as = { name = tm_call_target value = flag:badenya }
+	}
 	if = {
 		limit = { exists = scope:tm_call_target }
 		random = {
@@ -80,6 +88,14 @@ tm_sisters_call_effect = {
 				limit = { scope:tm_call_target = flag:baeddel }
 				set_character_faith = faith:tm_baeddel
 			}
+			else_if = {
+				limit = { scope:tm_call_target = flag:garland }
+				set_character_faith = faith:tm_garland
+			}
+			else_if = {
+				limit = { scope:tm_call_target = flag:badenya }
+				set_character_faith = faith:tm_badenya
+			}
 			else = {
 				set_character_faith = faith:tm_yutai
 			}
@@ -108,6 +124,14 @@ tm_offer_courtier_rite_effect = {
 		trigger_event = { id = tm_hipukh.0009 days = 1 }	# waits for Adar
 	}
 	else_if = {
+		limit = { rite ?= { rite_has_parameter = tm_garland_gate } }
+		trigger_event = { id = tm_garland.0009 days = 1 }	# waits for Mārkaḻi
+	}
+	else_if = {
+		limit = { rite ?= { rite_has_parameter = tm_crossing_gate } }
+		tm_crossing_begin_effect = yes
+	}
+	else_if = {
 		limit = { rite ?= { rite_has_parameter = tm_knife_voluntary } }
 		trigger_event = tm_knife.0001
 	}
@@ -119,9 +143,11 @@ tm_census_log_effect = {
 	save_scope_value_as = { name = tm_census_baeddel value = { value = 0 every_living_character = { limit = { faith = faith:tm_baeddel } add = 1 } } }
 	save_scope_value_as = { name = tm_census_yutai value = { value = 0 every_living_character = { limit = { faith = faith:tm_yutai } add = 1 } } }
 	save_scope_value_as = { name = tm_census_nehpakhot value = { value = 0 every_living_character = { limit = { faith = faith:tm_nehpakhot } add = 1 } } }
+	save_scope_value_as = { name = tm_census_garland value = { value = 0 every_living_character = { limit = { faith = faith:tm_garland } add = 1 } } }
+	save_scope_value_as = { name = tm_census_badenya value = { value = 0 every_living_character = { limit = { faith = faith:tm_badenya } add = 1 } } }
 	save_scope_value_as = { name = tm_census_daughters value = { value = 0 every_living_character = { limit = { tm_is_daughter_trigger = yes } add = 1 } } }
 	save_scope_value_as = { name = tm_census_marked value = { value = 0 every_living_character = { limit = { has_trait = tm_transgender } add = 1 } } }
-	save_scope_value_as = { name = tm_census_counties value = { value = 0 every_county = { limit = { OR = { faith = faith:transbian_maximalism faith = faith:tm_baeddel faith = faith:tm_yutai faith = faith:tm_nehpakhot } } add = 1 } } }
+	save_scope_value_as = { name = tm_census_counties value = { value = 0 every_county = { limit = { OR = { faith = faith:transbian_maximalism faith = faith:tm_baeddel faith = faith:tm_yutai faith = faith:tm_nehpakhot faith = faith:tm_garland faith = faith:tm_badenya } } add = 1 } } }
 	debug_log = "tm_census_log"
 	debug_log_scopes = yes
 }

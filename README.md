@@ -17,7 +17,7 @@
 
   <h3 align="center">Transing CK3</h3>
   <p align="center">
-    <em>Adelphai Dorleyaiou</em>, the Sisters of Dorylaion: four trans-women-centred faiths for Crusader Kings III.
+    <em>Adelphai Dorleyaiou</em>, the Sisters of Dorylaion: six trans-women-centred faiths for Crusader Kings III.
     <br />
     <a href="#playtesters-wanted"><strong>Help playtest »</strong></a>
     <br />
@@ -44,6 +44,8 @@
     <li><a href="#bædling-the-high-seat">Bædling: the High Seat</a></li>
     <li><a href="#the-way-of-the-jade-embryo">The Way of the Jade Embryo</a></li>
     <li><a href="#ha-nehpakhot-the-women-who-were-turned">Ha-Nehpakhot: the women who were turned</a></li>
+    <li><a href="#the-worn-garland">The Worn Garland</a></li>
+    <li><a href="#badenya-the-mothers-children">Badenya: the Mother's Children</a></li>
     <li><a href="#shared-mechanics">Shared mechanics</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
@@ -55,9 +57,9 @@
 
 ## About the project
 
-This mod adds four faiths built around trans women to Crusader Kings III. Each is grounded in a different historical setting and plays differently. Their tenets come from contemporary transfeminist writing: baedelism, third-wave transfeminism and transgender Marxism. A history pass then gives each a veneer of plausibility in its own place and period.
+This mod adds six faiths built around trans women to Crusader Kings III. Each is grounded in a different historical setting and plays differently. Their tenets come from contemporary transfeminist writing: baedelism, third-wave transfeminism and transgender Marxism. A history pass then gives each a veneer of plausibility in its own place and period.
 
-The four faiths answer the same three questions in different ways:
+The six faiths answer the same three questions in different ways:
 
 | Faith | How one becomes a daughter | How the line continues | How it meets the world | Home |
 |---|---|---|---|---|
@@ -65,6 +67,8 @@ The four faiths answer the same three questions in different ways:
 | **Bædling** | Seiðr: a völva goes into trance for the seeker | The hall's fostered, sworn and adopted daughters | Outlawry, raiding and insult duels | Gotland |
 | **Way of the Jade Embryo** | Ten months' inner gestation of one's own body | Adopted heirs, and temple societies that hold property in common | Palace factions against the scholar-officials | Dunhuang, at the Mogao caves |
 | **Ha-Nehpakhot** | The Turning: a prayer said aloud at Purim | The women of the lamp, and the three women's commandments | The baylons' licence or their shunning; patronage by translating or medicine | The Jewish street of Arles |
+| **The Worn Garland** | The pāvai vow, kept through Mārkaḻi with companions; the staff and a name | A share on the temple street, recorded in stone | Temple endowments; orthodox pandits | The temple street of Kanchipuram |
+| **Badenya** | A smith's bargain, a woman's claim, and a jeli's word that cools | Through a sister or daughter; the House buries its own | Praise and satire; the smiths' power; naming feasts | Kirina, in Mali |
 
 What the mod is not:
 
@@ -107,7 +111,7 @@ The mod is in alpha. Most of it has never run in a real campaign, and we need pe
    path="C:/Users/you/Documents/Transing-CK3"
    ```
 4. **Enable it.** Open the Paradox launcher, go to *Playsets*, add **Adelphai Dorleyaiou** to a playset, and make that playset active.
-5. **Start a new game.** In the Ruler Designer you can choose the Kybeline culture and any of the four faiths. You can also convert to one in a normal game.
+5. **Start a new game.** In the Ruler Designer you can choose the Kybeline culture and any of the six faiths. You can also convert to one in a normal game.
 
 To update later, pull or re-download into the same folder. The launcher file does not need to change.
 
@@ -115,8 +119,8 @@ To update later, pull or re-download into the same folder. The launcher file doe
 
 Good first tests:
 
-- **Ruler Designer.** Do all four faiths and the Kybeline culture appear?
-- **The four rites.** As a Marked man, take each faith's decision: *Take the Knife*, *Ask a Völva to Sit for Me*, *Gestate the Jade Embryo* and *Keep the Fourteenth of Adar* (February or March only).
+- **Ruler Designer.** Do all six faiths and the Kybeline culture appear?
+- **The six rites.** As a Marked man, take each faith's decision: *Take the Knife*, *Ask a Völva to Sit for Me*, *Gestate the Jade Embryo*, *Keep the Fourteenth of Adar* (February or March only), *Keep the Pāvai Vow* (December or January only) and *Go to the Smith*.
 - **Re-embodiment.** After a rite, do your titles, marriage, children, adoptive parents and skills carry over?
 - **Adoption.** Try *Take as Daughter* on a courtier, a ward and a guest.
 - **Arrivals and Houses.** Found a Sisters' House. Over a long reign, do Marked travellers, cast-out women and friends of the House arrive? Does the House choose an Elder Sister, and split when it is strained? Give the county to a ruler of another faith and see whether they close it.
@@ -210,6 +214,44 @@ The rabbis divide the eunuch made "by the hands of heaven" from the one made "by
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## The Worn Garland
+
+*Working name.* A current of Tamil devotion inside Hinduism that crosses Śiva's temples and Viṣṇu's, seated on the temple street of Kanchipuram. The bride and the worn garland come from the Vaiṣṇava poets; the "daughter of God" and the women's song from Śiva's temples, whose inscriptions share one vocabulary with Viṣṇu's.
+
+Tamil poets, men among them, sang to the god as girls in love from the seventh century; a Vīraśaiva saint of the twelfth asked to be the devotees' bride, and a thirteenth-century commentator wrote that before God the devotee "loses his own male nature and will wear the dress of a woman". In period this was a rite or a reading. The Garland holds that it was a life. Its scripture is King Bhaṅgāśvana of the Mahābhārata, turned into a woman, who was offered her old body back and said, "I desire to remain a woman." Chola temples called their women "daughters of God" and gave them houses and shares on the temple street; no record shows a man among them, so the Garland is a reconstruction, and says so.
+
+- **The gate: the pāvai vow.** *Keep the Pāvai Vow* can only be taken in Mārkaḻi (December or January). It is a month-long vow kept with companions, the women of the court:
+  - **The waking.** Before dawn she goes from door to door and wakes the girls of the street.
+  - **The song.** The Śaiva *Tiruvempāvai*, which temple women paid to sing, or Āṇṭāḷ's *Tiruppāvai*. Cold dawns thin the circle.
+  - **The garland.** She may wear the god's garland before it is offered, as Āṇṭāḷ did, and risk being seen.
+  - **The dream** of the wedding: a sign, not the success. Āṇṭāḷ woke from the same dream.
+  - **The staff and the name.** The old rite of Śiva's temples touched a staff to a girl's head and named her a daughter of God. What decides it is how many of the circle held to the end.
+- **The line.** A share on the temple street, recorded in stone; a daughter names the one who will hold it after her.
+- **The world.** A name in stone: gold given to the temple buys an inscription and lasting piety. Orthodox pandits answer with Ilā, the king turned woman who was turned back in every telling.
+- **Tenets.** The Pāvai Vow, The Temple Street, and Bhakti.
+- **Holy sites.** Kanchipuram, Srirangam, Thanjavur and Madurai.
+- **What it leaves out.** No link to hijra communities; Āṇṭāḷ is venerated, never cast as founder or a trans figure; temple women are not "brides of God" (a 17th-century idea) or courtesans.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Badenya: the Mother's Children
+
+*Working name.* A Mande faith inside the West African religion, seated at Kirina in Mali. In Mande speech *badenya*, mother-childness, is the bond of those who share a mother; *fadenya*, father-childness, the rivalry of those who share a father. Badenya takes the first as its law. Its god names replace the vanilla religion's, which come from Marcel Griaule's Dogon studies, since discredited.
+
+In the Sunjata tradition a woman named Tenenba claimed a hero she had not borne: "I have given birth to a child without getting pregnant." Twentieth-century Bamana sculptors told of a djinn that asks a life of the household, and of a man who gave his own manhood instead and called himself less than a man after. Badenya says she is not less. Ibn Baṭṭūṭa saw bird-masked bards before the king of Mali in 1352, and the line passed through a sister's son at Ghana and Walata. No source shows a man becoming a woman here before 1453; the faith is built on institutions that are attested, and says so.
+
+- **The gate: the crossing.** *Go to the Smith*. She is "hot", as the Mande say of one between states, until the word cools her:
+  - **The smith's bargain.** The djinn asks a life of her house; she gives her own manhood instead. The djinn returns once, a year later, for a second price.
+  - **My mother's child.** A woman of her family or the court must claim her, and she pays bracelets for her crossing. If no woman will, she waits.
+  - **The word that cools.** A jeli speaks her name before the lord, her claiming mother's name before it. Paid well, it is praise; paid badly, it may be a joke the court remembers.
+- **The line.** Through a sister or a daughter. When a daughter dies, her blood kin may come for her body and her birth name; the House would bury her under her own.
+- **The world.** Naming feasts: a daughter first serves at others', then hosts her own while a jeli speaks for her. This texture comes from contemporary West African studies and is marked as reconstruction; the faith borrows roles, never the identity of any living community.
+- **Tenets.** The Crossing, Mother's Children, and Ancestor Worship.
+- **Holy sites.** Kirina, Niani, Awkar, Walata and Do.
+- **What it leaves out.** No Ṣàngó priests, *'yan daudu*, *góor-jigéen*, *woubi* or *sasso* are mapped onto it; no Griaule cosmology; none of the Kangaba sanctuary's rites.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## Shared mechanics
 
 - **Marked by the Mother.** A rare trait for men who are trans women before any rite. You can filter for it in the Character Finder to find people to recruit and adopt.
@@ -220,9 +262,9 @@ The rabbis divide the eunuch made "by the hands of heaven" from the one made "by
 - **The Sisters Choose.** An elective succession law: the ruler, the faith's clergy and its vassals choose an heir from among the ruler's born and adopted children, the women of the faith on the council, and the faithful vassals.
 - **Jewish and Indic neighbours.** Jewish courts think less of a daughter of any faith ("what came forth male is male"), and a Jewish lord may be asked to rule on one at court; the Nehpakhot cancel it. Buddhist, Hindu and Jain courts read a daughter of the knife as a castrated man and think much less of her, and a daughter of the other gates as a man become a woman, which they mind less.
 - **Islamic neighbours.** Islamic courts value a daughter as a trusted servant and think less of her as a ruler: their jesters may mock a daughter who rules, while an Islamic lord may come to trust one in his household.
-- **The call.** Each year a Marked character of another faith may join the nearest of the four: Byzantium and Anatolia to Dorleyism, the North and the Baltic to the Bædlings, China and the Tarim to the Jade Embryo, and the Jewish faiths to Ha-Nehpakhot. A Sisters' House nearby, or a daughter at court, makes it likelier. Courtiers who are Marked, eunuchs or declared sisters may begin their faith's rite on their own, and a ruler with no heir of her faith looks for a daughter to take.
+- **The call.** Each year a Marked character of another faith may join the nearest of the six: Byzantium and Anatolia to Dorleyism, the North and the Baltic to the Bædlings, China and the Tarim to the Jade Embryo, the Jewish faiths to Ha-Nehpakhot, the Deccan and Tamil country to the Worn Garland, and West Africa to Badenya. A Sisters' House nearby, or a daughter at court, makes it likelier. Courtiers who are Marked, eunuchs or declared sisters may begin their faith's rite on their own, and a ruler with no heir of her faith looks for a daughter to take.
 - **Arrivals.** Each year a Marked traveller, a woman turned out for bearing no children, or (where there is a House) a friend of the House may come to the court of a ruler of these faiths. Turning someone away sends them on to the next House.
-- **Same-sex marriage.** All four faiths allow it, whatever the game rule says.
+- **Same-sex marriage.** All six faiths allow it, whatever the game rule says.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -525,6 +567,81 @@ For how Buddhist, Hindu, Jain and Delhi Sultanate courts read every faith's daug
 - Gyatso, Janet. 2003. "One Plus One Makes Three: Buddhist Gender, Monasticism, and the Law of the Non-excluded Middle." *History of Religions* 43.2: 89–115.
 - Jackson, Peter. 1999. *The Delhi Sultanate: A Political and Military History*. Cambridge University Press.
 - Zwilling, Leonard, and Michael J. Sweet. 2000. "The Evolution of Third-Sex Constructs in Ancient India: A Study in Ambiguity." In Leslie and McGee (eds.), *Invented Identities: The Interplay of Gender, Religion and Politics in India*, 99–132. Oxford University Press.
+
+</details>
+
+<details>
+<summary><strong>South India</strong> (25 works)</summary>
+
+For the Worn Garland, and for how Hindu, Jain and Buddhist courts of the south read every faith's daughters.
+
+- Anandakichenin, Suganya. 2020. "The Female Voice and the Crossing of the Boundaries of Scholarship: A Note on the *Rahasyam* of the Lady from Tirukkōḷūr." *Cracow Indological Studies* 22.1.
+- Anandakichenin, Suganya. 2020. Review of Ben-Herut, *Śiva's Saints*. *Cracow Indological Studies* 22.1: 251–254.
+- Ben-Herut, Gil. 2018. *Śiva's Saints: The Origins of Devotion in Kannada according to Harihara's Ragaḷegaḷu*. Oxford University Press.
+- Carman, John, and Vasudha Narayanan. 1989. *The Tamil Veda: Piḷḷāṉ's Interpretation of the Tiruvāymoḻi*. University of Chicago Press.
+- Dehejia, Vidya. 1990. *Āṇṭāḷ and Her Path of Love: Poems of a Woman Saint from South India*. State University of New York Press.
+- Doniger, Wendy. 1999. *Splitting the Difference: Gender and Myth in Ancient Greece and India*. University of Chicago Press.
+- Goodall, Dominic. 2018. "Rudragaṇikās: Courtesans in Śiva's Temple? Some Hitherto Neglected Sanskrit Sources." *Cracow Indological Studies* 20.1: 91–143.
+- Govindacharya, Alkondavilli. 1902. *The Holy Lives of the Azhvars, or The Dravida Saints*. Mysore.
+- Hardy, Friedhelm. 1983. *Viraha-Bhakti: The Early History of Kṛṣṇa Devotion in South India*. Oxford University Press.
+- Kersenboom-Story, Saskia C. 1987. *Nityasumaṅgalī: Devadasi Tradition in South India*. Motilal Banarsidass.
+- Merkle, Sarah. 2016. "Tying the Knot with the Dēvi: Gender Transgression in Regional and Trans-Regional Discourses." *Cracow Indological Studies* 18: 367–389.
+- Narayanan, Vasudha. 1994. *The Vernacular Veda: Revelation, Recitation, and Ritual*. University of South Carolina Press.
+- Orr, Leslie C. 2000. *Donors, Devotees, and Daughters of God: Temple Women in Medieval Tamilnadu*. Oxford University Press.
+- Orr, Leslie C. 2013. "Words for Worship: Tamil and Sanskrit in Medieval Temple Inscriptions." In Cox and Vergiani (eds.), *Bilingual Discourse and Cross-Cultural Fertilisation: Sanskrit and Tamil in Medieval India*. Institut français de Pondichéry.
+- Pechilis, Karen. 2012. *Interpreting Devotion: The Poetry and Legacy of a Female Bhakti Saint of India*. Routledge.
+- Pechilis, Karen, and Selva J. Raj (eds.). 2013. *South Asian Religions: Tradition and Today*. Routledge.
+- Prentiss, Karen Pechilis. 1999. *The Embodiment of Bhakti*. Oxford University Press.
+- Ramanujan, A. K. (trans.). 1973. *Speaking of Śiva*. Penguin.
+- Ramanujan, A. K. (trans.). 1981. *Hymns for the Drowning: Poems for Viṣṇu by Nammāḻvār*. Princeton University Press.
+- Ramanujan, A. K. 1982. "On Woman Saints." In Hawley and Wulff (eds.), *The Divine Consort: Rādhā and the Goddesses of India*, 316–324. Graduate Theological Union.
+- Shulman, David Dean. 1980. *Tamil Temple Myths: Sacrifice and Divine Marriage in the South Indian Śaiva Tradition*. Princeton University Press.
+- Venkatesan, Archana. 2007. "A Woman's Kind of Love: Female Longing in the Tamil Alvar Poetry." *Journal of Hindu-Christian Studies* 20: 16–24.
+- Venkatesan, Archana (trans.). 2010. *The Secret Garland: Āṇṭāḷ's Tiruppāvai and Nācciyār Tirumoḻi*. Oxford University Press.
+
+Primary texts read in translation: the *Mahābhārata* (trans. Ganguli), for Bhaṅgāśvana (13.12), Ilā, Śikhaṇḍin and Bṛhannalā; *South Indian Inscriptions* vol. 2, nos. 66–68 (ed. Hultzsch), the four hundred women of Thanjavur.
+
+</details>
+
+<details>
+<summary><strong>West Africa</strong> (32 works)</summary>
+
+For Badenya. The medieval and epic sources first; then contemporary studies, used only for the faith's everyday texture and marked as reconstruction.
+
+- Austen, Ralph A. (ed.). 1999. *In Search of Sunjata: The Mande Oral Epic as History, Literature and Performance*. Indiana University Press. (Including David C. Conrad, "Mooning Armies and Mothering Heroes".)
+- Brett-Smith, Sarah C. 1994. *The Making of Bamana Sculpture: Creativity and Gender*. Cambridge University Press.
+- Bulman, Stephen, Stephen Belcher and Valentin Vydrin (eds.). 2023. *Corpus of Early Accounts of the Sunjata Epic, 1889–1959*. Oxford University Press for the British Academy.
+- Conrad, David C. (ed. and trans.), and Djanka Tassey Condé. 2004. *Sunjata: A West African Epic of the Mande Peoples*. Hackett.
+- Gomez, Michael A. 2018. *African Dominion: A New History of Empire in Early and Medieval West Africa*. Princeton University Press.
+- Jansen, Jan. 1996. "The Younger Brother and the Stranger: In Search of a Status Discourse for Mande." *Cahiers d'études africaines* 36 (144): 659–688.
+- Jansen, Jan. 1996. "'Elle connaît tout le Mande': A Tribute to the Griotte Siramori Diabate." *Research in African Literatures*.
+- Jansen, Jan. 2002. *Les secrets du Manding : les récits du sanctuaire Kamabolon de Kangaba (Mali)*. Research School CNWS.
+- Jansen, Jan. 2018. "Beyond the Mali Empire: A New Paradigm for the Sunjata Epic." *International Journal of African Historical Studies* 51.2: 317–340.
+- Johnson, Samuel. 1921. *The History of the Yorubas*. Routledge.
+- Koné, Kassim. 2004. "When Male Becomes Female and Female Becomes Male in Mande." *Wagadu* 1.
+- Matory, J. Lorand. 2003. "Gendered Agendas: The Secrets Scholars Keep about Yorùbá-Atlantic Religion." *Gender & History* 15.3: 409–439.
+- Matory, J. Lorand. 2005. *Sex and the Empire That Is No More: Gender and the Politics of Metaphor in Oyo Yoruba Religion*. 2nd ed. Berghahn.
+- Niane, D. T. 1965. *Sundiata: An Epic of Old Mali*. Trans. G. D. Pickett. Longman.
+- Schulz, Dorothea E. 2002. "'The World Is Made by Talk': Female Fans, Popular Music, and New Forms of Public Sociality in Urban Mali." *Cahiers d'études africaines* 168: 797–829.
+- van Beek, Walter E. A. 1991. "Dogon Restudied: A Field Evaluation of the Work of Marcel Griaule." *Current Anthropology* 32.2: 139–167.
+
+Primary sources read in translation: Ibn Baṭṭūṭa, *Voyages*, vol. 4 (trans. Defrémery and Sanguinetti); Ibn Khaldūn, *Histoire des Berbères*, vol. 2 (trans. de Slane); al-Saʿdī, *Tarikh es-Soudan* (trans. Houdas).
+
+*Contemporary West Africa:*
+
+- Bertolt, Boris. 2020. "Les ambiguïtés de la question homosexuelle au Sénégal." *Cahiers d'études africaines* 239.
+- Broqua, Christophe. 2010. "La socialisation du désir homosexuel masculin à Bamako." *Civilisations* 59.1: 37–58.
+- Broqua, Christophe. 2012. "Les formes sociales de l'homosexualité masculine à Bamako dans une perspective comparée." *Politique et Sociétés*.
+- Broqua, Christophe. 2017. "Góor-jigéen : la resignification négative d'une catégorie entre genre et sexualité (Sénégal)." *Socio* 9: 163–183.
+- Broqua, Christophe, and Joseph Larmarange. 2022. "Seriously Accounting for Local Categories: Gendered Sexual Orientation among 'Men Who Have Sex with Men' in Côte d'Ivoire." SocArXiv.
+- Gaudio, Rudolf Pell. 2009. *Allah Made Us: Sexual Outlaws in an Islamic African City*. Wiley-Blackwell.
+- Geoffrion, Karine. 2013. "'I Wish Our Gender Could Be Dual': Male Femininities in Ghanaian University Students." *Cahiers d'études africaines* 209–210: 417–443.
+- Larmarange, Joseph, and Christophe Broqua. 2023. "Orientation sexuelle et identité de genre : quelles catégories d'enquête en Afrique subsaharienne ?" INED.
+- M'Baye, Babacar. 2019. "Afropolitan Sexual and Gender Identities in Colonial Senegal." *Humanities* 8.4: 166.
+- Mackin, Atim. 2026. "Les woubis et les travestis de Côte d'Ivoire dans les médias." *Convergences francophones* 9.2: 14–23.
+- Niang, Cheikh Ibrahima, et al. 2002. *Meeting the Sexual Health Needs of Men Who Have Sex with Men in Senegal*. Horizons Final Report, Population Council.
+- Otu, Kwame Edwin. 2022. *Amphibious Subjects: Sasso and the Contested Politics of Queer Self-Making in Neoliberal Ghana*. University of California Press (Luminos).
+- Pierce, Steven. 2016. "'Nigeria Can Do without Such Perverts'." *Comparative Studies of South Asia, Africa and the Middle East* 36.1: 3–20.
 
 </details>
 

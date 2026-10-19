@@ -1,0 +1,275 @@
+﻿namespace = tm_garland
+
+# The pāvai vow, the gate of the Worn Garland (faith_design.md §15). Kept in Mārkaḻi (mid-December to mid-January)
+# over a month, with companions. What decides it is whether the circle holds, not one person's skill.
+#   0010  the waking: before dawn she wakes the girls of the street (Tiruppāvai; Hardy pp. 416, 436)
+#   0011  the song: the Śaiva Tiruvempāvai (Orr pp. 17–18, 107–08) or Āṇṭāḷ's Tiruppāvai
+#   0012  the garland worn before it is offered (Āṇṭāḷ's transgression; Venkatesan p. 223)
+#   0013  the dream of the wedding: a sign, not the success (Nācciyār Tirumoḻi)
+#   0001  the staff on the head and a name: a daughter of God (Goodall pp. 110–112; Orr pp. 52–59)
+# Root = the seeker. scope:tm_garland_elder = an elder daughter of the Garland; scope:tm_host = whose court.
+
+# The waking. Root = the seeker.
+tm_garland.0010 = {
+	type = character_event
+	title = tm_garland.0010.t
+	desc = tm_garland.0010.desc
+	theme = faith
+	left_portrait = { character = root animation = happiness }
+	right_portrait = { character = scope:tm_garland_elder animation = personality_rational }
+
+	trigger = { exists = scope:tm_garland_elder }
+
+	option = {	# Go from door to door and wake them all
+		name = tm_garland.0010.a
+		trigger = { gold >= 10 }
+		remove_short_term_gold = 10			# sweets for the girls who come
+		change_variable = { name = tm_pavai_companions add = 1 }
+		trigger_event = { id = tm_garland.0011 days = 10 }
+	}
+	option = {	# Wake those who will come
+		name = tm_garland.0010.b
+		trigger_event = { id = tm_garland.0011 days = 10 }
+	}
+	option = {	# Not this Mārkaḻi
+		name = tm_garland.0010.c
+		add_stress = 10
+		tm_pavai_clear_effect = yes
+	}
+}
+
+# The song. Root = the seeker.
+tm_garland.0011 = {
+	type = character_event
+	title = tm_garland.0011.t
+	desc = tm_garland.0011.desc
+	theme = faith
+	left_portrait = { character = root animation = happiness }
+	right_portrait = { character = scope:tm_garland_elder animation = personality_rational }
+
+	trigger = { exists = scope:tm_garland_elder }
+
+	immediate = {
+		# A week of cold dawns: one of the circle may fall away.
+		random = {
+			chance = 35
+			change_variable = { name = tm_pavai_companions add = -1 }
+			set_variable = { name = tm_pavai_lost_one value = yes days = 30 }
+		}
+	}
+
+	option = {	# The Tiruvempāvai, the song of Śiva's temple women
+		name = tm_garland.0011.a
+		set_variable = { name = tm_pavai_saiva value = yes days = 60 }
+		add_piety = 10
+		trigger_event = { id = tm_garland.0012 days = 10 }
+	}
+	option = {	# Āṇṭāḷ's Tiruppāvai
+		name = tm_garland.0011.b
+		set_variable = { name = tm_pavai_vaishnava value = yes days = 60 }
+		add_piety = 10
+		trigger_event = { id = tm_garland.0012 days = 10 }
+	}
+}
+
+# The garland. Root = the seeker.
+tm_garland.0012 = {
+	type = character_event
+	title = tm_garland.0012.t
+	desc = tm_garland.0012.desc
+	theme = faith
+	left_portrait = { character = root animation = worry }
+
+	immediate = {
+		random = {
+			chance = 35
+			change_variable = { name = tm_pavai_companions add = -1 }
+		}
+	}
+
+	option = {	# Wear it before it is offered
+		name = tm_garland.0012.a
+		set_variable = { name = tm_pavai_garland_worn value = yes days = 60 }
+		random = {
+			chance = 30
+			add_stress = 15
+			send_interface_toast = {
+				type = event_toast_effect_bad
+				title = tm_garland.0012.a.caught
+			}
+		}
+		trigger_event = { id = tm_garland.0013 days = 5 }
+	}
+	option = {	# Offer it as it came
+		name = tm_garland.0012.b
+		trigger_event = { id = tm_garland.0013 days = 5 }
+	}
+}
+
+# The dream. Root = the seeker.
+tm_garland.0013 = {
+	type = character_event
+	title = tm_garland.0013.t
+	desc = tm_garland.0013.desc
+	theme = faith
+	left_portrait = { character = root animation = personality_rational }
+
+	option = {	# It is a sign
+		name = tm_garland.0013.a
+		add_piety = 15
+		trigger_event = { id = tm_garland.0001 days = 5 }
+	}
+	option = {	# It was only a dream
+		name = tm_garland.0013.b
+		add_stress = 10
+		trigger_event = { id = tm_garland.0001 days = 5 }
+	}
+}
+
+# The staff and the name. Root = the seeker.
+tm_garland.0001 = {
+	type = character_event
+	title = tm_garland.0001.t
+	desc = tm_garland.0001.desc
+	theme = faith
+	left_portrait = { character = scope:tm_garland_elder animation = personality_zealous }
+	right_portrait = { character = root animation = worry }
+
+	trigger = { exists = scope:tm_garland_elder }
+
+	option = {	# Bow the head to the staff
+		name = tm_garland.0001.a
+		random_list = {
+			25 = {
+				modifier = { add = 30 has_trait = tm_transgender }
+				modifier = {							# the circle that held
+					has_variable = tm_pavai_companions
+					add = { value = var:tm_pavai_companions multiply = 8 }
+				}
+				modifier = { add = 20 has_variable = tm_pavai_garland_worn }
+				modifier = { add = 15 location ?= { county ?= { this = title:c_kanchipuram } } }
+				desc = tm_garland.0001.a.success
+				send_interface_toast = {
+					type = event_toast_effect_good
+					title = tm_garland.0001.a.success
+				}
+				tm_pavai_clear_effect = yes
+				if = {
+					limit = { NOT = { faith = faith:tm_garland } }
+					set_character_faith = faith:tm_garland
+				}
+				tm_rise_daughter_effect = { TRAIT = tm_daughter_of_the_garland RENAME = tm_garland.0002 }
+			}
+			60 = {								# the circle broke: the vow waits for next Mārkaḻi
+				desc = tm_garland.0001.a.failure
+				send_interface_toast = {
+					type = event_toast_effect_bad
+					title = tm_garland.0001.a.failure
+					add_stress = 10
+				}
+				tm_pavai_clear_effect = yes
+			}
+		}
+	}
+}
+
+# A name of the temple street. Root = the daughter.
+tm_garland.0002 = {
+	type = character_event
+	title = tm_garland.0002.t
+	desc = tm_garland.0002.desc
+	theme = faith
+	left_portrait = { character = root animation = happiness }
+
+	option = {
+		name = tm_garland.0002.a
+		tm_give_daughter_name_effect = yes
+		add_prestige = 25
+	}
+	option = {
+		name = tm_garland.0002.b
+		trigger = { is_female = yes }
+	}
+	option = {
+		name = tm_garland.0002.c
+		trigger = { is_male = yes }
+		add_stress = 10
+	}
+}
+
+# Hidden: a courtier offered the vow waits for Mārkaḻi (tm_offer_courtier_rite_effect). Re-fires monthly, a year at most.
+tm_garland.0009 = {
+	type = character_event
+	hidden = yes
+
+	immediate = {
+		if = {
+			limit = { tm_is_markali_trigger = yes }
+			remove_variable = tm_markali_wait
+			tm_pavai_begin_effect = yes
+		}
+		else_if = {
+			limit = { NOT = { var:tm_markali_wait ?= 12 } }
+			change_variable = { name = tm_markali_wait add = 1 }
+			trigger_event = { id = tm_garland.0009 days = 30 }
+		}
+		else = {
+			remove_variable = tm_markali_wait
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# A name in stone: a gift to the temple, inscribed, as the Chola temple-gift inscriptions record (Orr 2000).
+# Root = a ruler of the Garland, or a daughter of the Garland who rules.
+tm_garland.0020 = {
+	type = character_event
+	title = tm_garland.0020.t
+	desc = tm_garland.0020.desc
+	theme = faith
+	left_portrait = { character = root animation = happiness }
+
+	option = {	# Endow a lamp and a share, and have it cut in stone
+		name = tm_garland.0020.a
+		trigger = { gold >= 100 }
+		remove_short_term_gold = 100
+		add_character_modifier = { modifier = tm_inscribed_share_modifier years = 20 }
+		capital_county ?= { set_variable = { name = tm_temple_street value = yes } }
+	}
+	option = {	# A smaller gift, unrecorded
+		name = tm_garland.0020.b
+		trigger = { gold >= 30 }
+		remove_short_term_gold = 30
+		add_piety = 40
+	}
+	option = {
+		name = tm_garland.0020.c
+	}
+}
+
+# A pandit's objection. A Hindu lord not of the Garland is asked to rule on a daughter at court.
+# Root = the lord. scope:tm_garland_daughter = the daughter (any gate).
+tm_garland.0030 = {
+	type = character_event
+	title = tm_garland.0030.t
+	desc = tm_garland.0030.desc
+	theme = faith
+	left_portrait = { character = scope:tm_garland_daughter animation = worry }
+
+	trigger = { exists = scope:tm_garland_daughter }
+
+	option = {	# "To hell with birth as a woman."
+		name = tm_garland.0030.a
+		add_piety = 20
+		scope:tm_garland_daughter = { add_opinion = { target = root modifier = disappointed_opinion opinion = -20 } }
+	}
+	option = {	# "Bhaṅgāśvana chose, and Indra let her."
+		name = tm_garland.0030.b
+		add_piety = -10
+		scope:tm_garland_daughter = { add_opinion = { target = root modifier = respect_opinion opinion = 20 } }
+	}
+	option = {	# Let the temple decide
+		name = tm_garland.0030.c
+		add_prestige = 10
+	}
+}

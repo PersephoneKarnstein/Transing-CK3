@@ -115,3 +115,69 @@ tm_montpellier = {
 		monthly_prestige = 0.2
 	}
 }
+
+# Srirangam: a 1126 inscription ties Āṇṭāḷ to its god; the god-waking song was sung daily here by the 9th–10th c.
+# (Hardy pp. 416, 436). The Worn Garland.
+tm_srirangam = {
+	county = c_tagadur
+	barony = b_srirangam
+
+	county_holder_character_modifier = {
+		learning = 1
+		monthly_piety = 0.2
+	}
+}
+
+# Thanjavur: Rājarāja's temple, whose inscription gave four hundred women each a house and a share (SII 2 no. 66).
+tm_tanjavur = {
+	county = c_cholamandalam
+	barony = b_tanjavur
+
+	county_holder_character_modifier = {
+		stewardship = 1
+		monthly_piety = 0.2
+	}
+}
+
+tm_madurai = {
+	county = c_madurai
+	barony = b_madurai
+
+	county_holder_character_modifier = {
+		diplomacy = 1
+		monthly_piety = 0.2
+	}
+}
+
+# Kirina: the battlefield of the Sunjata tradition. Badenya's seat.
+tm_kirina = {
+	county = c_sibi_mali
+	barony = b_kirina
+
+	county_holder_character_modifier = {
+		diplomacy = 1
+		monthly_prestige = 0.2
+	}
+}
+
+# Walata: Ibn Baṭṭūṭa saw a man's sister's son inherit here (Defrémery vol. 4, pp. 388–389).
+tm_walata = {
+	county = c_walata
+	barony = b_walata
+
+	county_holder_character_modifier = {
+		stewardship = 1
+		monthly_piety = 0.2
+	}
+}
+
+# Do, by Ségou: al-Bakrī's "Daw" (1068), with medieval burial mounds (research/waf_bulman_corpus.md).
+tm_do = {
+	county = c_dodugu
+	barony = b_segou
+
+	county_holder_character_modifier = {
+		learning = 1
+		monthly_piety = 0.2
+	}
+}

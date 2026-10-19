@@ -294,6 +294,81 @@ tm_turning_decision = {
 	}
 }
 
+# The Tamil gate: keep the pāvai vow through Mārkaḻi with companions. tm_garland_events.txt.
+tm_pavai_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"		# placeholder; TODO event art
+	}
+	sort_order = 90
+	cooldown = { years = 1 }			# one Mārkaḻi a year
+
+	is_shown = {
+		tm_pavai_seeker_trigger = yes
+	}
+
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+		custom_tooltip = {
+			text = tm_pavai_decision_markali_tt
+			tm_is_markali_trigger = yes
+		}
+	}
+
+	cost = {
+		piety = 50
+	}
+
+	effect = {
+		tm_pavai_begin_effect = yes
+	}
+
+	ai_check_interval = 20				# often enough to catch the Mārkaḻi window
+	ai_potential = {
+		tm_is_markali_trigger = yes
+		OR = { has_trait = tm_transgender has_trait = eunuch_1 has_trait = beardless_eunuch }
+	}
+	ai_will_do = {
+		base = 50
+		modifier = { add = -35 NOT = { has_trait = tm_transgender } }
+		modifier = { add = 20 has_trait = gregarious }
+		modifier = { add = -20 has_trait = shy }
+	}
+}
+
+# The Mande gate: the crossing. tm_badenya_events.txt.
+tm_crossing_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"		# placeholder; TODO event art
+	}
+	sort_order = 90
+	cooldown = { years = 2 }
+
+	is_shown = {
+		tm_crossing_seeker_trigger = yes
+	}
+
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+	}
+
+	cost = {
+		prestige = 50
+	}
+
+	effect = {
+		tm_crossing_begin_effect = yes
+	}
+
+	ai_check_interval = 120
+	ai_potential = { OR = { has_trait = tm_transgender has_trait = eunuch_1 has_trait = beardless_eunuch } }
+	ai_will_do = {
+		base = 50
+		modifier = { add = -35 NOT = { has_trait = tm_transgender } }
+		modifier = { add = 20 has_trait = brave }
+		modifier = { add = -30 has_trait = craven }
+	}
+}
+
 # The Chinese gate: begin ten months' gestation of the jade embryo. tm_embryo_events.txt.
 tm_embryo_decision = {
 	picture = {

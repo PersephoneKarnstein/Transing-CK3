@@ -36,3 +36,15 @@ tm_ruled_a_man_opinion = {
 	opinion = -25
 	years = 10
 }
+
+# The Worn Garland is a Hindu current, so its own members carry the eastern_syncretic_recipient parameter too; this
+# cancels the eastern penalty for them (they read a daughter as a soul made woman before the god).
+tm_garland_sister_opinion = {
+	opinion = 5
+}
+
+# A daughter of the House buried by her blood kin under her old name (tm_badenya.0030).
+tm_buried_under_old_name_opinion = {
+	opinion = -30
+	years = 15
+}

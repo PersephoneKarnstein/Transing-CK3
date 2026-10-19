@@ -26,8 +26,10 @@ Scenarios for playtesters. Each one sets up a situation on purpose, so that a si
 | `tm_adopt_check.txt` | Logs why vanilla adoption is or isn't offered for your wards |
 | `tm_turning_now.txt` | Starts the Turning (Ha-Nehpakhot) at once, skipping the decision, its cooldown and the Adar window |
 | `tm_turning_prayers.txt` | Adds three unanswered Adars to your next Turning (+30 to the roll) |
+| `tm_pavai_now.txt` | Starts the pāvai vow (the Worn Garland), skipping the Mārkaḻi window |
+| `tm_crossing_now.txt` | Starts the crossing (Badenya) |
 | `tm_growth_now.txt` | Runs one year of the growth engine now (the call, and the rite offered to courtiers) |
-| `tm_census_log.txt` | Writes the four faiths' counts to `debug.log` now (search `tm_census_log`) |
+| `tm_census_log.txt` | Writes the six faiths' counts to `debug.log` now (search `tm_census_log`) |
 
 **Vanilla console commands you'll use:**
 - `add_trait <trait> <id>` and `remove_trait <trait> <id>`
@@ -53,11 +55,13 @@ Scenarios for playtesters. Each one sets up a situation on purpose, so that a si
 ## 0. Smoke test (everyone, five minutes)
 
 **0.1 Load.** Start the 867 bookmark.
-- In the faith screen, check that *Dorleyism*, *Bædling*, *Way of the Jade Embryo* and *Ha-Nehpakhot* all exist with their icons and holy sites. Ha-Nehpakhot sits under the Judaism religion, beside Rabbinic Judaism and Karaism.
+- In the faith screen, check that *Dorleyism*, *Bædling*, *Way of the Jade Embryo*, *Ha-Nehpakhot*, *the Worn Garland* and *Badenya* all exist with their icons and holy sites. Ha-Nehpakhot sits under Judaism, the Worn Garland under Hinduism, and Badenya under the West African religion.
 - Check the holy sites:
   - **Dorleyism:** Dorylaion, Constantinople, Kyzikos, Ankyra, Pepouza.
   - **Bædling:** Uppsala, Trondheim, York, Kyiv.
   - **Way of the Jade Embryo:** Mogao, Longhu, Qingcheng, the Southern Marchmount (Mount Heng in Hunan).
+  - **The Worn Garland:** Kanchipuram, Srirangam, Thanjavur, Madurai.
+  - **Badenya:** Kirina, Niani, Awkar, Walata, Do. Its god names should be Ala, the ancestors and the bush spirits, never Amma or the Nummo.
   - **Ha-Nehpakhot:** Arles, Jerusalem, Narbonne, Montpellier, Hamadan. Hover each and read its text: Arles should mention the women's synagogue and the lamp alms; Narbonne the *nasi* who held land "under no lord"; Montpellier "from Lunel to Montpellier".
 - Send `error.log` even if nothing looks wrong.
 
@@ -65,14 +69,16 @@ Scenarios for playtesters. Each one sets up a situation on purpose, so that a si
 - Phrygia should be Dorleyite and held by Theia Beatrike, the Mother of Mothers, with three Elder Sisters at her court.
 - Gotland should be Bædling, with a völva at court.
 - Shazhou should follow the Way of the Jade Embryo, with a nüguan (a Daoist nun) at court.
+- **The Worn Garland:** the county of Kanchipuram should follow it (its lord need not), with a daughter of God and two Marked young men at the lord's court.
+- **Badenya:** Sibi (Kirina) should follow it, county and lord, with a daughter of the House and two Marked young men at court.
 - **Ha-Nehpakhot holds no land.** In the Character Finder, filter for the trait *Daughter of the Turning*: an elder (50–65) should be living unlanded in Arles (county of Venaissin). Filter for Ha-Nehpakhot: two Marked young men should be there too. Hover the county of Venaissin in debug mode: it should carry the variable `tm_kahal`. Screenshot both.
 - Hover over Theia's portrait and screenshot the debug tooltip.
 
-**0.3 Census.** Run `run tm_census.txt`. Note the counts of Marked characters and daughters (all four gates count). They should be roughly 1% of adult men, and a handful of daughters.
+**0.3 Census.** Run `run tm_census.txt`. Note the counts of Marked characters and daughters (all six gates count). They should be roughly 1% of adult men, and a handful of daughters.
 
-**0.4 Ruler Designer.** Check that all four faiths and the Kybeline culture can be picked, and that the Marked trait costs nothing. Ha-Nehpakhot is listed under Judaism.
+**0.4 Ruler Designer.** Check that all six faiths and the Kybeline culture can be picked, and that the Marked trait costs nothing. Ha-Nehpakhot is listed under Judaism.
 
-**0.5 The four decisions.** As a Marked man of each faith (Ruler Designer, or `add_trait tm_transgender` and convert), open the decisions list and screenshot it. Each faith should show its own gate: *Take the Knife*, *Ask a Völva to Sit for Me*, *Gestate the Jade Embryo*, and *Keep the Fourteenth of Adar*. The last should be greyed out outside February and March.
+**0.5 The six decisions.** As a Marked man of each faith (Ruler Designer, or `add_trait tm_transgender` and convert), open the decisions list and screenshot it. Each faith should show its own gate: *Take the Knife*, *Ask a Völva to Sit for Me*, *Gestate the Jade Embryo*, *Keep the Fourteenth of Adar* (greyed out outside February and March), *Keep the Pāvai Vow* (greyed out outside December and January) and *Go to the Smith*.
 
 **0.6 Text check.** Read the faith description and the tenets of Ha-Nehpakhot (*The Turning*, *The Three Lamps*, vanilla *Legalism*) and the trait *Daughter of the Turning*. Report any raw `tm_` key or broken text.
 
@@ -211,7 +217,7 @@ Play Shazhou, or design a ruler of the Way. Then `add_trait tm_transgender` on y
 
 ## D. Shared systems
 
-**D1. Declare Before Witnesses.** As a Marked man in any of the four faiths, take *Declare Before Witnesses* and choose a name.
+**D1. Declare Before Witnesses.** As a Marked man in any of the six faiths, take *Declare Before Witnesses* and choose a name.
 - Then go through your faith's rite (A1, B1, C1 or F2), **once with re-embodiment on and once with it off.**
 - **Check:**
   - your declared name survives the rite;
@@ -243,7 +249,7 @@ Note the cost and whether she accepted. Then **check the line of succession list
 - Then use *Take as Daughter* on her. The price should be half the normal one.
 - **Send:** both cost tooltips.
 
-**D5. Sisters' Houses.** As any ruler of the four faiths, run `run tm_make_sisters.txt`, then take *Found a Sisters' House*.
+**D5. Sisters' Houses.** As any ruler of the six faiths, run `run tm_make_sisters.txt`, then take *Found a Sisters' House*.
 1. Hover over your capital county in debug mode. It should carry the variables `tm_house`, `tm_house_strain` (0) and `tm_house_protectress`. Screenshot it.
 2. Run `run tm_house_tick.txt`. "The Sisters Choose" should fire, with an Elder Sister drawn from the lot. Run it a few times on fresh Houses and see whether different nominees win.
 3. Run `run tm_house_strain.txt`, then `run tm_house_tick.txt`. "The House Divides" should found a House in a neighbouring county. Hover over that county to confirm.
@@ -272,7 +278,7 @@ Note the cost and whether she accepted. Then **check the line of succession list
 
 **Send:** the count of each type and how many years you played.
 
-**D9. The Sisters Choose.** As a duke or higher of any of the four faiths, change your realm's succession law to *The Sisters Choose*.
+**D9. The Sisters Choose.** As a duke or higher of any of the six faiths, change your realm's succession law to *The Sisters Choose*.
 - Run `run tm_make_sisters.txt` and adopt one of them.
 - Open the succession screen and check who can vote and who can stand:
   - voters: you, your vassals of the faith, and clergy of the faith;
@@ -287,7 +293,7 @@ Note the cost and whether she accepted. Then **check the line of succession list
 - Then `play` an Islamic ruler, give them a daughter courtier (`run tm_rise.txt` on a courtier won't work, so use `add_trait tm_daughter_of_the_knife <id>` on a female courtier), and run `run tm_khasi.txt`.
 - **Opinion penalty:** hover over the Islamic ruler's opinion of any daughter. It should show *A Castrated Man in Law* (−10). This is the change most likely to fail silently, so a screenshot either way helps.
 
-**D12. Same-sex marriage.** In all four faiths, check that two women, including a daughter and a cis woman, can marry, whatever the vanilla game rule says. For Ha-Nehpakhot this overrides the Judaism religion's own doctrine, so check it there especially.
+**D12. Same-sex marriage.** In all six faiths, check that two women, including a daughter and a cis woman, can marry, whatever the vanilla game rule says. For Ha-Nehpakhot this overrides the Judaism religion's own doctrine, so check it there especially.
 
 **D13. Jewish and Indic neighbours.** These reactions apply to daughters of every faith, not only Ha-Nehpakhot. Hover the opinion of:
 - a Rabbinic or Karaite character toward any daughter: *What Came Forth Male* (−10);
@@ -397,11 +403,53 @@ Several things depend on the date, so test in three periods if you can: **before
 
 ## G. Growth (quick checks)
 
-**G1. The call.** Start in 867 as any ruler. In the Character Finder, filter for *Marked by the Mother* and note a few Marked characters of other faiths in Anatolia, Scandinavia, China, or of a Jewish faith. Run `run tm_growth_now.txt` ten times. Some should have joined the nearest of the four. Marked characters elsewhere (France, India) should never change.
+**G1. The call.** Start in 867 as any ruler. In the Character Finder, filter for *Marked by the Mother* and note a few Marked characters of other faiths in Anatolia, Scandinavia, China, Tamil or Kannada country, West Africa, or of a Jewish faith. Run `run tm_growth_now.txt` ten times. Some should have joined the nearest of the six. Marked characters elsewhere (France, northern India) should never change.
 
-**G2. The rite for courtiers.** As a ruler of any of the four, `add_trait tm_transgender` on two male courtiers of your faith, then run `run tm_growth_now.txt` a few times. Within a few runs one should start the rite (the first event of the chain appears on the courtier; switch to them with `play <id>` to see it). A courtier of Ha-Nehpakhot should only start in February or March.
+**G2. The rite for courtiers.** As a ruler of any of the six, `add_trait tm_transgender` on two male courtiers of your faith, then run `run tm_growth_now.txt` a few times. Within a few runs one should start the rite (the first event of the chain appears on the courtier; switch to them with `play <id>` to see it). A courtier of Ha-Nehpakhot should only start in February or March.
 
 **G3. Adoption by the AI.** `play` an AI daughter who rules (or make one), give her a female courtier of her faith, go back to your own character and let a few years pass. She should take the courtier as a daughter. Check the courtier's family panel.
 
 **G4. Phrygia.** At the 867 start, the Mother of Mothers should be a theocracy. Use `effect title:c_phrygia = { change_title_holder = { holder = <any Orthodox id> change = ... } }` or play on until Byzantium takes it, then run `run tm_growth_now.txt`: the Mother House holder should get a pressed claim on Phrygia.
+
+---
+
+## H. The Worn Garland
+
+Play the lord of Kanchipuram, or design a Worn Garland ruler in Tamil country. `add_trait tm_transgender`, `piety 500`, `gold 500`. Put a few adult women at your court (they are the companions).
+
+**H1. The Mārkaḻi window.** *Keep the Pāvai Vow* should be greyed out outside December and January, with the tooltip "It is Mārkaḻi (December or January)".
+
+**H2. The vow, best case.** Five women at court, a daughter of God among them, at Kanchipuram. Take the decision.
+- **Expect, about ten days apart:** "The Waking", "The Song" (choose either), "The Garland" (wear it), "The Dream", then "The Staff and the Name".
+- **Check:** the debug tooltip shows `tm_pavai_companions` falling by one now and then; the more who hold, the likelier success; on success the naming offers names of the temple street (Arangam, Umai, Madevi and others).
+
+**H3. The vow, worst case.** No women at court, away from Kanchipuram, offer the garland unworn. Repeat with `run tm_pavai_now.txt` and **record successes against failures**.
+
+**H4. A name in stone.** As a ruler of the Garland, wait for "A Name in Stone" (`tm_garland.0020`). The 100-gold endowment should give *A Name in Stone* and mark your capital county.
+
+**H5. A pandit's objection.** As a Hindu ruler not of the Garland, with a daughter of any faith at court, wait for "A Pandit's Objection" (`tm_garland.0030`).
+
+**H6. Opinions.** A Vaiṣṇava or Śaiva character's opinion of a daughter of God should show *A Man Become a Woman* (−5); a Garland character's should cancel it with *A Soul Made Woman* (+5).
+
+---
+
+## I. Badenya
+
+Play the lord of Sibi (Kirina), or design a Badenya ruler in Mali. `add_trait tm_transgender`, `gold 500`, `prestige 500`. Have a mother, sister or aunt alive, or a woman at court who likes you (opinion 10+).
+
+**I1. The crossing, best case.** Take *Go to the Smith*.
+- **Expect:** "The Smith's Bargain" (give your manhood), about a week later "My Mother's Child" (a named woman claims you), then "The Word That Cools" (pay the jeli well), then the naming (Sogolon, Kolonkan, Tenenba and others).
+- **Check:** the *Hot* modifier between the bargain and the word; it is gone after.
+
+**I2. No one to claim her.** With no living close female kin and no woman at court who likes you, run `run tm_crossing_now.txt`. "My Mother's Child" should offer only "No one will claim me yet", and the chain should stop.
+
+**I3. The jeli's price.** Choose "Pay what I can" several times. Roughly half should be praise and half a joke the court laughs at; both should still make you a daughter.
+
+**I4. The djinn returns, once.** About a year after the bargain, "The Djinn Returns" (`tm_badenya.0015`) should fire, **on the new body if re-embodiment is on**. Pay or refuse. It must never fire a second time.
+
+**I5. Naming feasts.** As a daughter of the House, wait for "A Naming Feast" (`tm_badenya.0020`) over several years: the first three should only let you serve; after that you may host.
+
+**I6. The House buries its own.** `kill` a daughter of the House at your court. "The House Buries Its Own" should fire for you. **Check that it does not fire when a daughter is re-embodied** (the old body's death is not a burial).
+
+**I7. God names.** In the faith screen and in any event mentioning the high god, Badenya's should be *Ala*; the devil *the bush spirits*.
 
