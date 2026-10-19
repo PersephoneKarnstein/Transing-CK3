@@ -333,3 +333,23 @@ Grounded in `research/jud_*.md` (Strassfeld 2013, Kalonymus's *Even Boḥan*, th
 8. Hard limits extended (above).
 9. Eastern opinion split by gate: `tm_eastern_knife_opinion` (−15, a castrated man to Buddhist, Hindu and Jain law) on the knife's daughter; `tm_eastern_daughter_opinion` (−5, "A Man Become a Woman") on the others.
 10. `tm_byz.0012` (The Wills) fires only under a liege of Byzantine heritage; Slavic princes left sexual morality to the church (Levin).
+
+### Revisions after the third Judaism reading (approved by user 2026-10-19, applied)
+Sources: `research/jud_hildenfinger_arles_documents.md`, `jud_stouff_gross_arles.md`, `jud_benshalom_provence_languedoc.md`, `jud_grossman_pious_rebellious.md`, `jud_women_synagogue_articles.md`, `jud_kahn_three_blessings.md`, `jud_assis_catalonia_sexuality.md`, `jud_horowitz_reckless_rites.md`, `jud_davidson_renan_kalonymus.md`, `jud_shatzmiller_medicine.md`, `jud_male_menses_myth.md`.
+
+**Corrections.**
+1. The Revel: "the rabbis grumble and let it pass". Rabbinic permission for Purim dress is 16th-century (Minz, Isserles); Horowitz calls the custom "technically an infringement".
+2. The women's gallery becomes the women's synagogue, the room below the men's (Arles deed of 1452, REJ 48: 75–76). Variable `tm_turning_gallery` renamed `tm_turning_women_synagogue`.
+3. Holy-site text: the *nasi* of Narbonne held land outright, under no lord (Ben-Shalom); the translators' country runs from Lunel to Montpellier.
+4. The *Touchstone* gate moves to 1323.1.1 (*Even Boḥan* is dated Tevet 5083, winter 1322–23).
+5. README: the blessing "who made me a woman" is written down only after 1453 (Leeds MS Roth 32; Farissol 1478, 1480); its age is the faith's claim. Kalonymus worked at Arles (1307–17, 1328), not only was born there. Gilgul into a woman is 13th-century Castilian (Sachs-Shmueli), not only Lurianic; character voice only.
+6. Hard limits, added: none of the medieval "Jewish male menses" tropes (`research/jud_male_menses_myth.md` lists 18), and no "blood" in Three Lamps text; no Christian Purim-violence accusations, no Haman on a cross, no Haman burned in effigy, no "Purim cakes" (a blood-libel motif); no Byzantine converts' oath (8th–11th c.); the Manosque 1306 Purim dress exists only inside a Christian accusation and is not used. The sect's era stays as built (user); the French expulsion of 1306 is not modelled, since the base game models no expulsions (user: "we're adding a transfeminism expansion").
+
+**Design.**
+7. The Revel before 1323 is unattested: a dated variant (`tm_hipukh.0011.desc_early`) has her alone in the dress, and "laugh with the others" appears only from 1323.
+8. No medieval women-only confraternity is attested, and the Arles *holim* of 1401 was 18 men. The sect is **the women of the lamp**: women householders who sit together in the women's synagogue and keep the synagogue's lamp alms (Stouff's *aumône du luminaire*). Player text no longer says *ḥevrah*.
+9. The elders become **the baylons and the council** (`tm_hipukh.0003`, "Before the Baylons"). From 1401, in a county with `tm_kahal`, the council includes women (Arles, Oct. 1401: five women called, "what touches all must be approved by all"; 1407: Estes de Cailario and Regina sat): a desc variant and +10 to win.
+10. Names: Venguessona, Dulcia, Bonafilia, Astruga join the street list; Estes (the Arles form of Esther) joins the scroll list. Name keys added to loc for every street name missing from vanilla (Tiger flagged nine that the previous commit lacked).
+11. The Three Lamps for a daughter whose days do not come: she keeps them "as the *zekenah* keeps them", the old woman past them (m. Niddah 1:3–5, *unverified*).
+12. A physician variant, `tm_hipukh.0031` "A Fisica at Court", beside the translation (women physicians are well attested, women translators are not): licence her (`tm_fisica_licensed_modifier`), licence her for women only (`tm_fisica_women_modifier`), or refuse.
+13. In Provence (Occitan culture) the naming text gives the women's blessing as *qui fis me fenna* (Baricci 2023 p. 66; *unverified* against the manuscript).

@@ -62,7 +62,7 @@ The four faiths answer the same three questions in different ways:
 | | Dorleyism | Bædling | Way of the Jade Embryo | Ha-Nehpakhot |
 |---|---|---|---|---|
 | **How one becomes a daughter** | The knife, as a sacrament with a sponsor | Seiðr: a völva goes into trance for the seeker | Ten months' inner gestation of one's own body | The Turning: a prayer said aloud at Purim |
-| **How the line continues** | A founding charter passes land to adopted daughters | The hall's fostered, sworn and adopted daughters | Adopted heirs, and temple societies that hold property in common | A women's ḥevrah, and the three women's commandments |
+| **How the line continues** | A founding charter passes land to adopted daughters | The hall's fostered, sworn and adopted daughters | Adopted heirs, and temple societies that hold property in common | The women of the lamp, and the three women's commandments |
 | **How it meets the world** | Refuge, intake and church politics | Outlawry, raiding and insult duels | Palace factions against the scholar-officials | The worthies' licence or their shunning; patronage by translating |
 | **Home** | Dorylaion, Phrygia | Gotland | Dunhuang, at the Mogao caves | The Jewish street of Arles |
 
@@ -191,22 +191,22 @@ Daoist inner alchemy teaches that an adept nurtures a holy embryo for ten months
 
 ## Ha-Nehpakhot: the women who were turned
 
-*Working name.* A small current inside Judaism, kept by a women's *ḥevrah* (confraternity) in the Jewish street of Arles. It holds no land at the start: it lives under other lords, as the Jews of Arles lived under their archbishop.
+*Working name.* A small current inside Judaism, kept by the women of the lamp: women householders of the Jewish street of Arles who sit together in the women's synagogue, below the men's, and keep the alms of the synagogue lamp. (No medieval women-only confraternity is attested; Arles had a lamp alms, and in 1401 its council called five women to sit, "because what concerns all must be approved by all".) It holds no land at the start: it lives under other lords, as the Jews of Arles lived under their archbishop.
 
-The rabbis divide the eunuch made "by the hands of heaven" from the one made "by human hands", and the made eunuch stays, in law, a man. No rabbinic text lets anyone pass from male to female, and a Jewish court would read a daughter of the knife as a man made a eunuch. The Talmud does tell how Leah prayed and the child in her womb was turned into a daughter, Dinah, though it adds that one does not cite miracles. In 1322 or so Kalonymus ben Kalonymus, born at Arles, wrote the satire *Even Boḥan* (*The Touchstone*) in Catalonia. In it he asks God, perhaps in jest, "would that You turn me from male to female", and he describes young Jewish men putting on women's dress for Purim. The Nehpakhot take all of this at its word, in their own voice. They say only the hands of heaven turn, so the faith uses no knife.
+The rabbis divide the eunuch made "by the hands of heaven" from the one made "by human hands", and the made eunuch stays, in law, a man. No rabbinic text lets anyone pass from male to female, and a Jewish court would read a daughter of the knife as a man made a eunuch. The Talmud does tell how Leah prayed and the child in her womb was turned into a daughter, Dinah, though it adds that one does not cite miracles. In the winter of 1322–23 Kalonymus ben Kalonymus, who was born at Arles and worked there, wrote the satire *Even Boḥan* (*The Touchstone*) in Catalonia. In it he asks God, perhaps in jest, "would that You turn me from male to female", and he describes young Jewish men putting on women's dress for Purim. The Nehpakhot take all of this at its word, in their own voice. They say only the hands of heaven turn, so the faith uses no knife.
 
 - **The gate: the Turning.** *Keep the Fourteenth of Adar* can only be taken in Adar (February or March). It is a five-part rite:
-  - **The scroll.** An elder of the ḥevrah reads Esther in the women's gallery, and beside "it was turned about" she reads the other turnings: Abraham from the furnace, the staff, the sea, and Dinah.
-  - **The revel.** The young men put on the woman's dress for the joke. She keeps it on when the joke is over.
+  - **The scroll.** An elder reads Esther in the women's synagogue, and beside "it was turned about" she reads the other turnings: Abraham from the furnace, the staff, the sea, and Dinah.
+  - **The revel.** From 1323 the young men put on the woman's dress for the joke, and the rabbis grumble and let it pass (permission comes only in the 16th century). She keeps it on when the joke is over. Before 1323 the custom is unattested, so she is the only one in the dress.
   - **The prayer.** The men thank God each morning that He did not make them women. She asks aloud for the reverse.
-  - **The name**, on Shushan Purim. The women teach her their blessing, "who made me a woman", from a 15th-century Judeo-Provençal prayer book. She takes a name from the scroll (Dinah, Esther, Sara) or a name of the street, as the Jewish women of Provence were called in the notaries' books (Rosa, Mairona, Bella, Regina, Blanca, Gratiosa, Bonadonna and others).
-  - **Before the elders.** The rabbis allow the dress for one day's merriment, and only "as the town's worthies permit". She can answer with Dinah, text against text, and win her county a licence; lose and be shunned (*niddui*); cite the *Touchstone*; claim the house as its lady and accept the shunning; or put the dress away. A community could shun only by its Christian lord's licence, so a lord who has taken her people under his protection refuses it, and the sentence falls.
-  - **The odds.** The Turning rests on learning, the elder's and her own, and on patience. Every Adar's unanswered prayer makes the next more likely, as Leah's was answered in its time. A seeker of another Jewish faith who is turned joins the ḥevrah.
-- **The line.** Womanhood is what she keeps: the three women's commandments Kalonymus wished for (the days of separation, the portion of the dough, the Sabbath lamp). An elder can teach the prayer to one who will need it, and the women spin together by moonlight.
-- **The world.** A learned, landless faith. A lord of any faith with a daughter of the Turning at court may commission a translation from Arabic, as Robert of Naples employed Kalonymus, and take her people under protection. Jewish lords are asked to rule whether what came forth male is male. Jewish characters think less of daughters of every faith; the Nehpakhot think more.
+  - **The name**, on Shushan Purim. The women teach her their blessing, "who made me a woman" (in Provence, in their own tongue: *qui fis me fenna*). It is written down only after 1453, in Provençal women's prayer books; that it is older is the faith's claim. She takes a name from the scroll (Dinah, Esther, Sara) or a name of the street, as the Jewish women of Provence were called in the notaries' books (Rosa, Mairona, Bella, Regina, Blanca, Gratiosa, Bonadonna and others).
+  - **Before the baylons.** The dress has outlived Purim, and the baylons and council of the street must judge; from 1401 the council at Arles includes women, and that helps her. She can answer with Dinah, text against text, and win her county a licence; lose and be shunned (*niddui*); cite the *Touchstone*; claim the house as its lady and accept the shunning; or put the dress away. A community could shun only by its Christian lord's licence, so a lord who has taken her people under his protection refuses it, and the sentence falls.
+  - **The odds.** The Turning rests on learning, the elder's and her own, and on patience. Every Adar's unanswered prayer makes the next more likely, as Leah's was answered in its time. A seeker of another Jewish faith who is turned joins the sect.
+- **The line.** Womanhood is what she keeps: the three women's commandments Kalonymus wished for (the days of separation, the portion of the dough, the Sabbath lamp). One whose days do not come keeps them as the *zekenah*, the old woman past them, keeps them. An elder can teach the prayer to one who will need it, and the women spin together by moonlight.
+- **The world.** A learned, landless faith. A lord of any faith with a daughter of the Turning at court may commission a translation from Arabic, as Robert of Naples employed Kalonymus, and take her people under protection; or licence her as a *fisica*, a physician, as Provençal women physicians were licensed. Jewish lords are asked to rule whether what came forth male is male. Jewish characters think less of daughters of every faith; the Nehpakhot think more.
 - **Tenets.** The Turning, The Three Lamps, and Legalism.
 - **Holy sites.** Arles, Jerusalem (whose county holds Hebron and Leah's tomb), Narbonne, Montpellier, and Hamadan, the tomb of Esther and Mordecai.
-- **What it leaves out.** The old charge that medieval Jews ran the slave and eunuch trade is a historiographic motif, not a finding (Phelan 2023), so no Jewish character in the mod trades in slaves or eunuchs. The faith is not seated in Khazaria, and the narrator never says the Talmud recognised "six genders": those are legal categories for bodies, mostly intersex ones, and only a character may claim them.
+- **What it leaves out.** The old charge that medieval Jews ran the slave and eunuch trade is a historiographic motif, not a finding (Phelan 2023), so no Jewish character in the mod trades in slaves or eunuchs. The faith is not seated in Khazaria, and the narrator never says the Talmud recognised "six genders": those are legal categories for bodies, mostly intersex ones, and only a character may claim them. Nor does it use any of the medieval Christian tropes about Jewish bodies (the "male menses", the bloody flux) or the accusations about Purim.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -388,25 +388,46 @@ Cited in the notes, not read: Ayalon, David, "On the Eunuchs in Islam," *Jerusal
 </details>
 
 <details>
-<summary><strong>Medieval Judaism</strong> (13 works)</summary>
+<summary><strong>Medieval Judaism</strong> (32 works)</summary>
 
 For Ha-Nehpakhot, and for how Jewish courts answer every faith's daughters. The open-access English of Kalonymus's prayer (Open Siddur, CC BY-SA) was a reading aid only; every line in the mod is rendered afresh from the public-domain Hebrew.
 
+- Assis, Yom Tov. 2000–2001. "El comportament sexual en la societat hispanojueva de l'edat mitjana." *Tamid* 3: 7–47.
+- Baricci, Erica. 2014. "'Bendig tu…qui fis me fenna': donne, libri e letteratura nel Medioevo giudeo-provenzale." *Altre Modernità* 05/2014: 221–242.
+- Baricci, Erica. 2023. "Canti e preghiere dal siddur giudeo-provenzale (Ms. Leeds, Brotherton Library, Roth 32)." *Specula* 6: 63–95.
+- Baumgarten, Elisheva. 2016. "Prier à part ? Le genre dans les synagogues ashkénazes médiévales (XIIIe–XIVe siècle)." *Clio. Femmes, Genre, Histoire* 44: 43–62.
+- Ben-Shalom, Ram. 2024. *The Jews of Provence and Languedoc: Renaissance in the Shadow of the Church*. Trans. Shmuel Sermoneta-Gertel. Littman Library of Jewish Civilization.
 - Chotzner, J. 1900. "Kalonymos ben Kalonymos, a Hebrew Satirist of the Thirteenth Century." *Jewish Quarterly Review* 13.1: 128–146.
+- Davidson, Israel. 1907. *Parody in Jewish Literature*. Columbia University Press.
 - Fonrobert, Charlotte Elisheva. 2006. "The Semiotics of the Sexed Body in Early Halakhic Discourse." In Matthew Kraus (ed.), *How Should Rabbinic Literature Be Read in the Modern World?*, 79–104. Gorgias.
 - Fonrobert, Charlotte Elisheva. 2007. "Regulating the Human Body: Rabbinic Legal Discourse and the Making of Jewish Gender." In *The Cambridge Companion to the Talmud and Rabbinic Literature*, 270–294. Cambridge University Press.
 - Grabowski, Antoni. 2015. "Eunuch between Economy and Philology: The Case of *carzimasium*." *Mélanges de l'École française de Rome – Moyen Âge* 127.1.
+- Gross, Heinrich. 1897. *Gallia Judaica: dictionnaire géographique de la France d'après les sources rabbiniques*. Léopold Cerf.
+- Grossman, Avraham. 2004. *Pious and Rebellious: Jewish Women in Medieval Europe*. Trans. Jonathan Chipman. Brandeis University Press.
+- Guerson, Alexandra, and Dana Wessell Lightfoot. 2019. "Crises and Community: Catalan Jewish Women and Conversas in Girona, 1391–1420." *Tamid* 14: 91–130.
+- Hildenfinger, Paul. 1900–1904. "Documents relatifs aux Juifs d'Arles." *Revue des études juives* 41: 62–97; 47: 221–242; 48: 48–81, 265–272.
+- Horowitz, Elliott. 2006. *Reckless Rites: Purim and the Legacy of Jewish Violence*. Princeton University Press.
+- Kahn, Yoel H. 2011. *The Three Blessings: Boundaries, Censorship, and Identity in Jewish Liturgy*. Oxford University Press.
 - Kalonymus ben Kalonymus. c. 1322. *Even Boḥan*. Lemberg, 1865.
 - Lev, Sarra. 2024. *And the Sages Did Not Know: Early Rabbinic Approaches to Intersex*. University of Pennsylvania Press.
+- Marienberg, Evyatar. 2004. "Menstruation in Sacred Spaces: Medieval and Early-Modern Jewish Women in the Synagogue." *Nordisk Judaistik* 25.1: 7–16.
 - Neis, Rafael Rachel. 2023. *When a Human Gives Birth to a Raven: Rabbis and the Reproduction of Species*. University of California Press (Luminos).
 - Phelan, Joseph. 2023. "The Jewish 'Monopoly' of the Slave Trade in the Early Middle Ages: The Origins of an Enduring Historical Motif." *Patterns of Prejudice* 57.3: 161–174.
+- Renan, Ernest, and Adolf Neubauer. 1893. *Les écrivains juifs français du XIVe siècle*. Imprimerie nationale.
+- Resnick, Irven M. 2000. "Medieval Roots of the Myth of Jewish Male Menses." *Harvard Theological Review* 93.3: 241–263.
+- Roguin Maor, Noga, Ariel Roguin, and Nathan Roguin. 2021. "Medieval Roots of the Myth of Jewish Male Menstruation." *Rambam Maimonides Medical Journal* 12.4: e0033.
+- Roos, Lena. 2017. "Cross-dressing among Medieval Ashkenazi Jews: Confirming Challenged Group Borders." *Nordisk Judaistik* 28.2: 4–22.
 - Rosen, Tova. 2000. "Circumcised Cinderella: The Fantasies of a Fourteenth-Century Jewish Author." *Prooftexts* 20.1: 87–110.
 - Rosen, Tova. 2003. *Unveiling Eve: Reading Gender in Medieval Hebrew Literature*. University of Pennsylvania Press.
+- Shatzmiller, Joseph. 1994. *Jews, Medicine, and Medieval Society*. University of California Press.
 - Shatzmiller, Joseph. 2023. *Collected Studies, Volume 1: The Jews of Provence*. Academic Studies Press.
+- Stouff, Louis. 2014. *Arles au Moyen Âge finissant*. Presses universitaires de Provence.
 - Strassfeld, Max K. 2013. "Classically Queer: Eunuchs and Androgynes in Rabbinic Literature." PhD dissertation, Stanford University.
 - Strassfeld, Max K. 2022. *Trans Talmud: Androgynes and Eunuchs in Rabbinic Literature*. University of California Press.
 
-Primary texts read through Sefaria: Mishnah and Tosefta Bikkurim; Babylonian Talmud, Berakhot 60a and Yevamot 80b; Maimonides, *Mishneh Torah* (Avodah Zarah 12, Ishut 4, Issurei Bi'ah 16); *Shulḥan Arukh*, Oraḥ Ḥayyim 696:8 with Isserles.
+Read but not used: Howard, *Hebrew Gospel of Matthew* (1995), which is Shem Tov ibn Shaprut's *Even Boḥan* (1380s), a different work from Kalonymus's.
+
+Primary texts read through Sefaria: Mishnah and Tosefta Bikkurim; Babylonian Talmud, Berakhot 60a, Yevamot 64a–b (with Rashi) and Yevamot 80b; *Bereshit Rabbah* 60:16; *Sefer ha-Ḥinukh* 291, 542–543; Rashi on Deuteronomy 22:5; Maimonides, *Mishneh Torah* (Avodah Zarah 12, Ishut 4, Issurei Bi'ah 16); *Shulḥan Arukh*, Oraḥ Ḥayyim 696:8 with Isserles.
 
 </details>
 

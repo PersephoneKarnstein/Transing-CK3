@@ -119,7 +119,11 @@ tm_give_daughter_name_effect = {
 		# A name of the street: Jewish women of Provence in the notaries' books (research/jud_shatzmiller_jews_of_provence.md §1).
 		random_list = {
 			10 = { change_first_name = Rosa }		# Manosque 1283–1304 (Shatzmiller pp. 209–221)
-			10 = { change_first_name = Mairona }	# Arles 1387; "a very common name" (p. 305 n. 15)
+			10 = { change_first_name = Mairona }	# Arles 1387; "a very common name" (p. 305 n. 15); the street form of Miriam (Gross)
+			8 = { change_first_name = Venguessona }	# Arles 1423–36; the bayloni met in her house (Hildenfinger, REJ 47: 224–226)
+			6 = { change_first_name = Dulcia }		# Arles 1431 (REJ 48: 59)
+			5 = { change_first_name = Bonafilia }	# Arles 1402 (REJ 41: 84)
+			5 = { change_first_name = Astruga }		# Arles 1452, seller of the women's seats (REJ 48: 76)
 			8 = { change_first_name = Bella }		# Manosque 1283, 1338; Marseille c. 1250
 			8 = { change_first_name = Regina }		# Manosque 1315, 1338
 			6 = { change_first_name = Blanca }		# Manosque 1292
@@ -272,7 +276,7 @@ tm_feminise_name_effect = {
 	else_if = { limit = { has_first_name = Freyr } change_first_name = Freyja }
 }
 
-# Begin the Turning for the seeker (scope). An elder of the ḥevrah keeps the rite: one at the host's court,
+# Begin the Turning for the seeker (scope). An elder among the women of the lamp keeps the rite: one at the host's court,
 # or one from the Jewish street. tm_hipukh_events.txt.
 tm_turning_begin_effect = {
 	if = {
@@ -315,7 +319,7 @@ tm_turning_begin_effect = {
 	trigger_event = tm_hipukh.0010
 }
 
-# An elder of the ḥevrah, a woman already turned. She lives in the Jewish street, not at court.
+# An elder among the women of the lamp, a woman already turned. She lives in the Jewish street, not at court.
 tm_create_hevrah_elder_effect = {
 	create_character = {
 		gender = female
@@ -332,7 +336,7 @@ tm_create_hevrah_elder_effect = {
 
 # Scope: the seeker. Ends this Adar's temporary state; the count of Adars prayed (tm_turning_prayers) stays.
 tm_turning_clear_effect = {
-	remove_variable = tm_turning_gallery
+	remove_variable = tm_turning_women_synagogue
 	remove_variable = tm_turning_kept_dress
 }
 
@@ -341,6 +345,7 @@ tm_turning_scroll_name_effect = {
 	random_list = {
 		10 = { change_first_name = Dinah }		# turned in the womb (Berakhot 60a)
 		10 = { change_first_name = Esther }		# Purim; cf. Aster, Manosque 1313 (Shatzmiller p. 63)
+		6 = { change_first_name = Estes }		# the street form of Esther at Arles (Hildenfinger, REJ 41: 84, 87)
 		8 = { change_first_name = Sara }		# Manosque 1296 (p. 211)
 	}
 }

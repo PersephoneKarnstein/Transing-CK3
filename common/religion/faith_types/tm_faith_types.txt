@@ -189,7 +189,7 @@ tm_nehpakhot = {
 
 	doctrines = {
 		temple_authority_rabbinic_doctrine
-		doctrine_no_head					# vanilla Judaism keeps none; the ḥevrah has elders, not a pontiff
+		doctrine_no_head					# vanilla Judaism keeps none; the women of the lamp have elders, not a pontiff
 	}
 
 	localization = {

@@ -140,10 +140,10 @@ tm_on_game_start = {
 				}
 			}
 
-			# Ha-Nehpakhot hold no land: a ḥevrah in the Jewish street of Arles, under its lord. Kalonymus
+			# Ha-Nehpakhot hold no land: the women of the lamp in the Jewish street of Arles, under its lord. Kalonymus
 			# (born 1287) is claimed in the faith's own voice only; no character stands for him.
 			title:c_venaissin = {
-				set_variable = tm_kahal			# the ḥevrah's own street: the Turning is likelier here (tm_hipukh.0001)
+				set_variable = tm_kahal			# the women of the lamp's own street: the Turning is likelier here (tm_hipukh.0001)
 			}
 			create_character = {
 				gender = female
@@ -263,11 +263,31 @@ tm_yearly_turning = {
 			}
 			random = {
 				chance = 5
-				random_courtier = {
-					limit = { has_trait = tm_daughter_of_the_turning is_adult = yes }
-					save_scope_as = tm_translator
+				random_list = {
+					50 = {
+						random_courtier = {
+							limit = { has_trait = tm_daughter_of_the_turning is_adult = yes }
+							save_scope_as = tm_translator
+						}
+						trigger_event = { id = tm_hipukh.0030 days = { 1 300 } }
+					}
+					50 = {									# women physicians are attested; women translators are not
+						trigger = {
+							any_courtier = {
+								has_trait = tm_daughter_of_the_turning is_adult = yes
+								NOT = { has_character_modifier = tm_fisica_licensed_modifier }
+							}
+						}
+						random_courtier = {
+							limit = {
+								has_trait = tm_daughter_of_the_turning is_adult = yes
+								NOT = { has_character_modifier = tm_fisica_licensed_modifier }
+							}
+							save_scope_as = tm_fisica
+						}
+						trigger_event = { id = tm_hipukh.0031 days = { 1 300 } }
+					}
 				}
-				trigger_event = { id = tm_hipukh.0030 days = { 1 300 } }
 			}
 		}
 		if = {

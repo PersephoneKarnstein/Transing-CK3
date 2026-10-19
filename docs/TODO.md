@@ -126,7 +126,19 @@ Built: shared daughter trigger and per-faith daughter traits; Bæddel faith (Got
 - [ ] German court: Walther's "Under the Linden" (one manuscript: *herre frowe*) (`research/cmp_puff_german_genealogies.md`)
 - [ ] Ha-Nehpakhot: Sarah as *aylonit* (b. Yevamot 64b) as a matriarch; Rashi's glosses as the worthies' lines; whether the spinning circle's talk can reach the worthies (Mishnah Sotah 6:1); the 1306 French expulsion for Narbonne and Montpellier; Hildenfinger's Arles documents; Iancu on the expulsion c. 1500
 - [ ] Wendish (if wanted): "a pythoness as war-leader" (1209) confirmed in the Latin; Arkona took a third of spoils; Poznań's carnival dress ban (15th c.) (`research/cmp_alvarezpedrosa_sources_slavic.md`)
-- [ ] Still unsourced: Puff, *Sodomy in Reformation Germany and Switzerland* (2003)
+- [x] Puff, *Sodomy in Reformation Germany and Switzerland* (2003): unavailable (user, 2026-10-19); rely on Rolker, Karras & Pierpont and DeVun for the German lands
+
+## Third Judaism reading (added 2026-10-19, untested in-game)
+- [ ] Revel date variant; the women's synagogue options; Before the Baylons with the 1401 council; *fisica* event 0031; Provençal blessing; new names
+
+## Stage 2 inputs from the third Judaism reading
+- [ ] "The Women at the Door": she brings the prayer to the women standing outside the synagogue (Grossman; Marienberg)
+- [ ] The brother's prayer book: a family-acceptance event after Leeds MS Roth 32, a wedding gift from a brother
+- [ ] A rival takes her case to the Christian bailiff: a fine, or the patron's protection (Assis; Shatzmiller)
+- [ ] "A seat below": buy a seat in the women's synagogue (Arles 1452: three seats for 9½ florins)
+- [ ] Carnival before Purim (Arles 1433): the abbot of youth demands the *pelote*; pay, appeal to the seneschal, or defy (Christian harassment and a lord's protection; never Jewish wrongdoing)
+- [ ] A Catalan women's-name list (Astruga, Bonafilla, Bellaire, Tolrana) for seekers in Catalonia
+- [ ] Not modelled: the French expulsion of 1306, and any expulsion (user: the base game models none)
 
 ## Branch faiths, stage 2 (next)
 - [ ] **Spring the Cell** (user: build with the Bæddel stage-2 work). Hostile scheme, any adult of the four faiths, landed or not; target a ruler imprisoning a daughter, Marked woman or declared sister. Agents: Marked guards, faithful servants, friends of the House. Success: prisoner walks to the nearest House (else the plotter's court), plotter possibly unknown. Discovery and failure as vanilla hostile schemes. Template: vanilla abduct. The non-war counterpart of Rescue the Daughters and the planned Bæddel raids.

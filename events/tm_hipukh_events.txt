@@ -5,15 +5,16 @@
 #   - it can start only in Adar (tm_is_adar_trigger);
 #   - it turns on learning and on patience: each Adar's unanswered prayer makes the next likelier, as Leah
 #     prayed (tm_turning_prayers never resets);
-#   - its stakes are the community's: the worthies of the town grant a licence to the county, or shun her.
+#   - its stakes are the community's: the baylons and council grant a licence to the county, or shun her
+#     (only by the lord's licence: tm_turning_niddui_effect).
 # Sources: Even Boḥan (Lemberg 1865) pp. 15–19 and 29, research/jud_kalonymus_even_bohan.md; Berakhot 60a;
 # Isserles on OḤ 696:8, research/jud_rabbinic_primary_texts.md.
-#   0010  the scroll: the Megillah read in the women's gallery
-#   0011  the revel: the young men put on the woman's dress for the joke; she keeps it on
+#   0010  the scroll: the Megillah read in the women's synagogue, the room below the men's (Arles 1452)
+#   0011  the revel: from 1323 the young men put on the woman's dress for the joke; she keeps it on
 #   0001  the prayer: "turn me from male to female", said aloud
 #   0002  the name, on Shushan Purim
-#   0003  before the elders: the dress has outlived the Purim licence
-# Root = the seeker. scope:tm_zekenah = the elder of the ḥevrah; scope:tm_host = whose court it is.
+#   0003  before the baylons: the dress has outlived Purim
+# Root = the seeker. scope:tm_zekenah = the elder among the women of the lamp; scope:tm_host = whose court it is.
 
 # The scroll. Root = the seeker.
 tm_hipukh.0010 = {
@@ -26,9 +27,9 @@ tm_hipukh.0010 = {
 
 	trigger = { exists = scope:tm_zekenah }
 
-	option = {	# Hear it from the women's gallery
+	option = {	# Go down to the women's synagogue, the room below the men's (Arles 1452; REJ 48: 75–76)
 		name = tm_hipukh.0010.a
-		set_variable = { name = tm_turning_gallery value = yes days = 30 }
+		set_variable = { name = tm_turning_women_synagogue value = yes days = 30 }
 		add_piety = 10
 		trigger_event = { id = tm_hipukh.0011 days = 1 }
 	}
@@ -47,7 +48,17 @@ tm_hipukh.0010 = {
 tm_hipukh.0011 = {
 	type = character_event
 	title = tm_hipukh.0011.t
-	desc = tm_hipukh.0011.desc
+	# The young men's Purim dress is attested from Even Boḥan (1322–23) only (research/jud_horowitz_reckless_rites.md);
+	# before that she alone wears it.
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { current_date < 1323.1.1 }
+				desc = tm_hipukh.0011.desc_early
+			}
+			desc = tm_hipukh.0011.desc
+		}
+	}
 	theme = faith
 	left_portrait = { character = root animation = happiness }
 	right_portrait = { character = scope:tm_zekenah animation = personality_rational }
@@ -62,6 +73,7 @@ tm_hipukh.0011 = {
 	}
 	option = {	# Laugh with the others; it is only Purim
 		name = tm_hipukh.0011.b
+		trigger = { current_date >= 1323.1.1 }
 		trigger_event = { id = tm_hipukh.0001 days = 1 }
 	}
 	option = {	# Refuse the dress
@@ -78,7 +90,7 @@ tm_hipukh.0001 = {
 	desc = {
 		first_valid = {
 			triggered_desc = {
-				trigger = { current_date >= 1322.1.1 }
+				trigger = { current_date >= 1323.1.1 }
 				desc = tm_hipukh.0001.desc_touchstone
 			}
 			desc = tm_hipukh.0001.desc
@@ -98,14 +110,14 @@ tm_hipukh.0001 = {
 				modifier = { add = learning }
 				modifier = { add = scope:tm_zekenah.learning }
 				modifier = { add = 20 has_personal_tenet_flag = tm_personal_turning_easier }
-				modifier = { add = 10 has_variable = tm_turning_gallery }
+				modifier = { add = 10 has_variable = tm_turning_women_synagogue }
 				modifier = { add = 20 has_variable = tm_turning_kept_dress }
 				modifier = { add = 15 has_variable = tm_hevrah_taught }
 				modifier = {							# the worthies of this town have licensed it before
 					add = 15
 					location ?= { county ?= { has_variable = tm_worthies_licence } }
 				}
-				modifier = {							# the ḥevrah's own street (Arles at the start)
+				modifier = {							# the women of the lamp's own street (Arles at the start)
 					add = 10
 					location ?= { county ?= { has_variable = tm_kahal } }
 				}
@@ -121,7 +133,7 @@ tm_hipukh.0001 = {
 				tm_turning_clear_effect = yes
 				remove_variable = tm_turning_prayers
 				remove_variable = tm_hevrah_taught
-				# A seeker of another Jewish faith is turned into the ḥevrah.
+				# A seeker of another Jewish faith is turned into the sect.
 				if = {
 					limit = { NOT = { faith = faith:tm_nehpakhot } }
 					set_character_faith = faith:tm_nehpakhot
@@ -161,7 +173,15 @@ tm_hipukh.0001 = {
 tm_hipukh.0002 = {
 	type = character_event
 	title = tm_hipukh.0002.t
-	desc = tm_hipukh.0002.desc
+	desc = {
+		first_valid = {
+			triggered_desc = {						# the Judeo-Provençal women's blessing (Leeds MS Roth 32; research/jud_kahn_three_blessings.md)
+				trigger = { culture ?= culture:occitan }
+				desc = tm_hipukh.0002.desc_provence
+			}
+			desc = tm_hipukh.0002.desc
+		}
+	}
 	theme = faith
 	left_portrait = { character = root animation = happiness }
 
@@ -186,12 +206,33 @@ tm_hipukh.0002 = {
 	}
 }
 
-# Before the elders. Isserles allows the Purim dress only "for mere merriment" and "as the town's worthies
-# permit"; now she wears it after Purim, and the kahal must answer. Root = the daughter.
+# Before the baylons. The rabbis only grumble at the Purim dress (permission is Minz and Isserles, 16th c.); now she
+# wears it after Purim, and the baylons and council of the street must answer. Root = the daughter.
 tm_hipukh.0003 = {
 	type = character_event
 	title = tm_hipukh.0003.t
-	desc = tm_hipukh.0003.desc
+	desc = {
+		first_valid = {
+			triggered_desc = {						# Arles, Oct. 1401: the council called five women (Stouff; research/jud_stouff_gross_arles.md)
+				trigger = { scope:tm_council_women = yes }
+				desc = tm_hipukh.0003.desc_council
+			}
+			desc = tm_hipukh.0003.desc
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				current_date >= 1401.1.1
+				location ?= { county ?= { has_variable = tm_kahal } }
+			}
+			save_scope_value_as = { name = tm_council_women value = yes }
+		}
+		else = {
+			save_scope_value_as = { name = tm_council_women value = no }
+		}
+	}
 	theme = faith
 	left_portrait = { character = root animation = worry }
 
@@ -200,6 +241,7 @@ tm_hipukh.0003 = {
 		random_list = {
 			40 = {
 				modifier = { add = { value = learning multiply = 2 } }
+				modifier = { add = 10 scope:tm_council_women = yes }	# the women of the street sit in the council
 				desc = tm_hipukh.0003.a.win
 				add_prestige = 75
 				location ?= { county ?= { set_variable = { name = tm_worthies_licence value = yes years = 10 } } }
@@ -213,7 +255,7 @@ tm_hipukh.0003 = {
 	}
 	option = {	# Answer with the Touchstone: the young men put on the dress every Adar
 		name = tm_hipukh.0003.b
-		trigger = { current_date >= 1322.1.1 }
+		trigger = { current_date >= 1323.1.1 }
 		add_piety = 50
 		add_prestige = 25
 	}
@@ -332,5 +374,41 @@ tm_hipukh.0040 = {
 		name = tm_hipukh.0040.c
 		capital_county ?= { set_variable = { name = tm_worthies_licence value = yes years = 5 } }
 		add_piety = -10
+	}
+}
+
+# A fisica at court. Women physicians are recorded in dozens of Provençal documents: Sara of Saint-Gilles took a
+# pupil at Marseille in 1326; Mayrona was fined at Bayons for practising unlicensed (Shatzmiller 1994, pp. 20–25,
+# 109–111; research/jud_shatzmiller_medicine.md). Root = the lord. scope:tm_fisica = the daughter.
+tm_hipukh.0031 = {
+	type = character_event
+	title = tm_hipukh.0031.t
+	desc = tm_hipukh.0031.desc
+	theme = learning
+	left_portrait = { character = scope:tm_fisica animation = personality_rational }
+
+	trigger = { exists = scope:tm_fisica }
+
+	option = {	# Licence her to practise
+		name = tm_hipukh.0031.a
+		trigger = { gold >= 50 }
+		remove_short_term_gold = 50
+		scope:tm_fisica = {
+			add_character_modifier = { modifier = tm_fisica_licensed_modifier years = 10 }
+			add_opinion = { target = root modifier = respect_opinion opinion = 20 }
+		}
+	}
+	option = {	# Licence her to treat women only: "they are better suited to treat sick women than are men"
+		name = tm_hipukh.0031.b
+		trigger = { gold >= 25 }
+		remove_short_term_gold = 25
+		scope:tm_fisica = {
+			add_character_modifier = { modifier = tm_fisica_women_modifier years = 10 }
+			add_opinion = { target = root modifier = respect_opinion opinion = 10 }
+		}
+	}
+	option = {	# No licence
+		name = tm_hipukh.0031.c
+		scope:tm_fisica = { add_opinion = { target = root modifier = disappointed_opinion opinion = -10 } }
 	}
 }

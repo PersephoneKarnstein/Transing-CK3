@@ -126,3 +126,17 @@ tm_translation_patron_modifier = {
 	learning = 1
 	monthly_prestige = 0.2
 }
+
+# A daughter licensed as a physician (tm_hipukh.0031; Shatzmiller 1994, pp. 15, 109–111).
+tm_fisica_licensed_modifier = {
+	icon = learning_positive
+	learning = 2
+	monthly_prestige = 0.3
+}
+
+# Licensed to treat women only, as the Neapolitan licences framed it (Shatzmiller 1994, pp. 110–111).
+tm_fisica_women_modifier = {
+	icon = learning_positive
+	learning = 1
+	monthly_prestige = 0.1
+}

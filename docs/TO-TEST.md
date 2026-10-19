@@ -300,11 +300,13 @@ Design a Ha-Nehpakhot ruler in or near Provence, or play the count of Venaissin 
 
 **F2. The full rite, in the best case.** Keep a daughter of the Turning at court, and stand in Arles (whose county carries the ḥevrah's street bonus).
 - Take the decision.
-- **Expect, in order:** "The Scroll" (choose the women's gallery), "The Revel" (keep the dress on), "The Prayer" (say it aloud), then on success "A Name for Shushan Purim" and, about a week later, "Before the Elders".
+- **Expect, in order:** "The Scroll" (go down to the women's synagogue), "The Revel" (keep the dress on), "The Prayer" (say it aloud), then on success "A Name for Shushan Purim" and, about a week later, "Before the Baylons".
 - **Check:**
   - the elder in the portraits is your court's daughter of the Turning;
-  - the prayer text mentions Kalonymus and the *Touchstone* only on or after 1322;
-  - the naming event offers two choices: "A name from the scroll and the Torah" (Dinah, Esther or Sara) and "A name of the street" (Rosa, Mairona, Bella, Regina, Blanca and others);
+  - the prayer text mentions Kalonymus and the *Touchstone* only on or after 1323;
+  - the Revel: from 1323 the young men dress up and "the rabbis grumble and let it pass"; before 1323 she alone wears the dress, and "Laugh with the others" is missing;
+  - the naming event offers two choices: "A name from the scroll and the Torah" (Dinah, Esther, Estes or Sara) and "A name of the street" (Rosa, Mairona, Venguessona, Bella, Regina, Dulcia and others). **Screenshot any name that shows as a raw key;**
+  - for an Occitan character the naming text quotes the blessing as *qui fis me fenna*;
   - its text includes the women's blessing, "who made me a woman".
 
 **F3. The elder from the street, in the worst case.** Remove every daughter of the Turning from your court, play outside Provence, choose the men's side at the scroll and laugh off the revel.
@@ -314,9 +316,10 @@ Design a Ha-Nehpakhot ruler in or near Provence, or play the count of Venaissin 
 **F4. Conversion.** As a Marked Rabbinic (or Karaite) Jew, take the decision.
 - **Check:** on success the new daughter's faith is Ha-Nehpakhot. On failure the faith stays as it was.
 
-**F5. Before the elders.** Try all four answers across several runs and screenshot each.
+**F5. Before the baylons.** Try all four answers across several runs and screenshot each.
 - "Answer with Dinah": on a win, the county you stand in should carry `tm_worthies_licence` for ten years, and a later Turning there should be likelier. On a loss, check the *Niddui* modifier (three years).
-- "The Touchstone…" should appear only on or after 1322.
+- "The Touchstone…" should appear only on or after 1323.
+- **The council.** From 1401, in Arles (the county with the women of the lamp), the event text should say the baylons called the women of the street too, and "Answer with Dinah" should win noticeably more often. Before 1401, or elsewhere, the plain text.
 - "I am the lady of the house" gives *Niddui* even though she gains piety.
 - **The lord's licence.** Repeat a losing dispute in a county whose holder has *Patron of a Translation* (take it in F7 first, as that lord). The toast "The lord would not license the ban" should appear and *Niddui* should not.
 
@@ -336,4 +339,7 @@ Design a Ha-Nehpakhot ruler in or near Provence, or play the count of Venaissin 
 **F11. Eastern opinions by gate.** Hover a Buddhist or Hindu character's opinion of a daughter of the knife: it should show *Unmanned by the Knife* (−15). Of a daughter of seiðr, the embryo or the Turning: *A Man Become a Woman* (−5).
 
 **F12. The Wills only in Byzantium.** As a Dorleyite vassal of a Catholic or a Slavic Orthodox liege, let the suppression ladder climb (`run tm_suppression_next.txt`). It should stop at the second rung ("assemblies banned") and never fire "The Wills". Under a Greek liege it should still reach "The Wills".
+
+**F13. A fisica at court.** Play a ruler of any faith with a daughter of the Turning at court and wait for "A Fisica at Court" (`tm_hipukh.0031`); it shares the yearly roll with "A Book in Arabic", so either may come. Try all three options.
+- **Check:** "Licence her" costs 50 gold and gives her *Licensed Fisica*; "women only" costs 25 and gives *Fisica of Women*; once licensed she is not offered again.
 
