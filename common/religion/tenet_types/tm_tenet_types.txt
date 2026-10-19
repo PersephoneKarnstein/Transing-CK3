@@ -458,3 +458,97 @@ tenet_tm_temple_societies = {
 		}
 	}
 }
+
+# The gate: the Turning. A prayer said aloud at Purim, after Leah's for Dinah (Berakhot 60a) and Kalonymus's
+# "would that you turn me from male to female" (Even Boḥan, p. 18). Decision tm_turning_decision, Adar only.
+tenet_tm_turning = {
+	icon = tenet_pursuit_of_knowledge
+
+	is_shown = {
+		this = faith:tm_nehpakhot
+	}
+
+	piety_cost = {
+		value = faith_tenet_cost_high
+		if = {
+			limit = { rite_has_tenet = tenet_tm_turning }
+			multiply = faith_unchanged_doctrine_cost_mult
+		}
+	}
+
+	parameters = {
+		tm_turning_gate
+		tm_sisters_faith
+	}
+
+	character_modifier = {
+		learning = 1
+		monthly_piety_gain_mult = 0.05
+	}
+
+	can_pick_as_personal_tenet = {
+		faith = faith:tm_nehpakhot
+	}
+	personal_tenet_modifier = {
+		learning = 2
+	}
+	personal_tenet_parameters = {
+		tm_personal_turning_easier
+	}
+
+	traits = {
+		virtues = {
+			tm_daughter_of_the_turning = { weight = 30 scale = 1 }
+			patient = { weight = 15 scale = 1 }
+		}
+		sins = {
+			impatient = { weight = 15 scale = 1 }
+		}
+	}
+}
+
+# The three women's commandments Kalonymus wished he could keep: niddah, ḥallah and the Sabbath lamp
+# (Even Boḥan, p. 17; Mishnah Shabbat 2:6). Womanhood as something done, every week.
+tenet_tm_three_lamps = {
+	icon = tenet_ritual_celebrations
+
+	is_shown = {
+		this = faith:tm_nehpakhot
+	}
+
+	piety_cost = {
+		value = faith_tenet_cost_low
+		if = {
+			limit = { rite_has_tenet = tenet_tm_three_lamps }
+			multiply = faith_unchanged_doctrine_cost_mult
+		}
+	}
+
+	parameters = {
+		tm_three_lamps
+	}
+
+	character_modifier = {
+		name = "tenet_tm_three_lamps_opinion"
+		same_faith_opinion = 10
+		stress_loss_mult = 0.05
+	}
+
+	can_pick_as_personal_tenet = {
+		faith = faith:tm_nehpakhot
+	}
+	personal_tenet_modifier = {
+		stewardship = 1
+		stress_loss_mult = 0.1
+	}
+
+	traits = {
+		virtues = {
+			just = { weight = 15 scale = 1 }
+			generous = { weight = 10 scale = 1 }
+		}
+		sins = {
+			greedy = { weight = 15 scale = 1 }
+		}
+	}
+}

@@ -95,3 +95,34 @@ tm_shenquan_abbey_modifier = {
 	development_growth_factor = 0.1
 	county_opinion_add = 5
 }
+
+# Niddui: the elders' shunning, the strongest sentence a kahal under a Christian lord could carry out
+# (tm_hipukh.0003). No lashes are carried out on screen.
+tm_niddui_modifier = {
+	icon = social_negative
+	same_faith_opinion = -15
+	monthly_piety_gain_mult = -0.2
+	stress_gain_mult = 0.1
+}
+
+# She lit the Sabbath lamp, set aside the ḥallah, kept the days (tm_hipukh.0020).
+tm_three_lamps_modifier = {
+	icon = piety_positive
+	monthly_piety = 0.5
+	stress_loss_mult = 0.1
+}
+
+# The women spin by moonlight and tell stories to one another (Even Boḥan, p. 16).
+tm_spinning_circle_modifier = {
+	icon = social_positive
+	diplomacy = 1
+	stress_loss_mult = 0.1
+}
+
+# A lord who commissioned a translation from a daughter of the Turning, as Robert of Naples did from
+# Kalonymus (tm_hipukh.0030).
+tm_translation_patron_modifier = {
+	icon = learning_positive
+	learning = 1
+	monthly_prestige = 0.2
+}

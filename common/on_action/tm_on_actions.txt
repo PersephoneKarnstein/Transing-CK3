@@ -140,6 +140,37 @@ tm_on_game_start = {
 				}
 			}
 
+			# Ha-Nehpakhot hold no land: a ḥevrah in the Jewish street of Arles, under its lord. Kalonymus
+			# (born 1287) is claimed in the faith's own voice only; no character stands for him.
+			title:c_venaissin = {
+				set_variable = tm_kahal			# the ḥevrah's own street: the Turning is likelier here (tm_hipukh.0001)
+			}
+			create_character = {
+				gender = female
+				age = { 50 65 }
+				culture = title:c_venaissin.culture
+				faith = faith:tm_nehpakhot
+				dynasty = none
+				location = title:c_venaissin.title_province
+				trait = tm_daughter_of_the_turning
+				trait = education_learning_4
+				trait = patient
+				learning = 16
+			}
+			while = {
+				count = 2
+				create_character = {
+					gender = male
+					age = { 18 30 }
+					culture = title:c_venaissin.culture
+					faith = faith:tm_nehpakhot
+					dynasty = none
+					location = title:c_venaissin.title_province
+					trait = tm_transgender
+					trait = education_learning_2
+				}
+			}
+
 			# Historical characters are not "randomly created", so the 1% seed never rolls for them.
 			# Mark ~1% of living adult men at the start, as the trait's random_creation does for later ones.
 			every_living_character = {
@@ -211,6 +242,49 @@ yearly_playable_pulse = {
 		tm_yearly_playable
 		tm_yearly_houses
 		tm_yearly_islamic_courts
+		tm_yearly_turning
+	}
+}
+
+# Ha-Nehpakhot (tm_hipukh_events.txt): the three lamps for a daughter of the Turning; a lord of any faith
+# offered a translation; a Jewish lord asked to rule on a daughter at his court.
+tm_yearly_turning = {
+	effect = {
+		if = {
+			limit = { has_trait = tm_daughter_of_the_turning }
+			random = {
+				chance = 25
+				trigger_event = { id = tm_hipukh.0020 days = { 1 300 } }
+			}
+		}
+		if = {
+			limit = {
+				any_courtier = { has_trait = tm_daughter_of_the_turning is_adult = yes }
+			}
+			random = {
+				chance = 5
+				random_courtier = {
+					limit = { has_trait = tm_daughter_of_the_turning is_adult = yes }
+					save_scope_as = tm_translator
+				}
+				trigger_event = { id = tm_hipukh.0030 days = { 1 300 } }
+			}
+		}
+		if = {
+			limit = {
+				rite ?= { rite_has_parameter = jewish_syncretic_recipient }
+				NOT = { rite ?= { rite_has_parameter = tm_turning_gate } }
+				any_courtier = { tm_is_daughter_trigger = yes is_adult = yes }
+			}
+			random = {
+				chance = 5
+				random_courtier = {
+					limit = { tm_is_daughter_trigger = yes is_adult = yes }
+					save_scope_as = tm_jewish_daughter
+				}
+				trigger_event = { id = tm_hipukh.0040 days = { 1 300 } }
+			}
+		}
 	}
 }
 
@@ -288,7 +362,10 @@ tm_yearly_playable = {
 						limit = { var:tm_suppression = 1 }
 						trigger_event = { id = tm_byz.0011 days = { 1 300 } }
 					}
-					else = {
+					# The Wills is Byzantine law; Slavic princes left sexual morality to the church
+					# (research/cmp_levin_orthodox_slavs.md), so other lieges stop at the second rung.
+					else_if = {
+						limit = { liege ?= { culture ?= { has_cultural_pillar = heritage_byzantine } } }
 						trigger_event = { id = tm_byz.0012 days = { 1 300 } }
 					}
 				}
@@ -342,8 +419,6 @@ tm_yearly_playable = {
 		if = {
 			limit = {
 				rite ?= { rite_has_parameter = tm_seidr_gate }
-				# Iceland has a völva's grave but no living völva in the sources (research/norse_jochens_images_women.md)
-				NOT = { capital_province ?= { geographical_region = custom_iceland } }
 			}
 			random = {
 				chance = 12

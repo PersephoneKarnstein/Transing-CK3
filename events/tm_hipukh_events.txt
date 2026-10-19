@@ -1,0 +1,336 @@
+﻿namespace = tm_hipukh
+
+# The Turning (ha-Hipukh), the gate of Ha-Nehpakhot. It is kept at Purim, as weddings and the völva rite are
+# kept in parts, but it plays differently (faith_design.md §13):
+#   - it can start only in Adar (tm_is_adar_trigger);
+#   - it turns on learning and on patience: each Adar's unanswered prayer makes the next likelier, as Leah
+#     prayed (tm_turning_prayers never resets);
+#   - its stakes are the community's: the worthies of the town grant a licence to the county, or shun her.
+# Sources: Even Boḥan (Lemberg 1865) pp. 15–19 and 29, research/jud_kalonymus_even_bohan.md; Berakhot 60a;
+# Isserles on OḤ 696:8, research/jud_rabbinic_primary_texts.md.
+#   0010  the scroll: the Megillah read in the women's gallery
+#   0011  the revel: the young men put on the woman's dress for the joke; she keeps it on
+#   0001  the prayer: "turn me from male to female", said aloud
+#   0002  the name, on Shushan Purim
+#   0003  before the elders: the dress has outlived the Purim licence
+# Root = the seeker. scope:tm_zekenah = the elder of the ḥevrah; scope:tm_host = whose court it is.
+
+# The scroll. Root = the seeker.
+tm_hipukh.0010 = {
+	type = character_event
+	title = tm_hipukh.0010.t
+	desc = tm_hipukh.0010.desc
+	theme = faith
+	left_portrait = { character = scope:tm_zekenah animation = personality_rational }
+	right_portrait = { character = root animation = worry }
+
+	trigger = { exists = scope:tm_zekenah }
+
+	option = {	# Hear it from the women's gallery
+		name = tm_hipukh.0010.a
+		set_variable = { name = tm_turning_gallery value = yes days = 30 }
+		add_piety = 10
+		trigger_event = { id = tm_hipukh.0011 days = 1 }
+	}
+	option = {	# Hear it among the men, as always
+		name = tm_hipukh.0010.b
+		trigger_event = { id = tm_hipukh.0011 days = 1 }
+	}
+	option = {	# Not this Adar
+		name = tm_hipukh.0010.c
+		add_stress = 10
+		tm_turning_clear_effect = yes
+	}
+}
+
+# The revel. Root = the seeker.
+tm_hipukh.0011 = {
+	type = character_event
+	title = tm_hipukh.0011.t
+	desc = tm_hipukh.0011.desc
+	theme = faith
+	left_portrait = { character = root animation = happiness }
+	right_portrait = { character = scope:tm_zekenah animation = personality_rational }
+
+	trigger = { exists = scope:tm_zekenah }
+
+	option = {	# Keep the dress on when the joke is over
+		name = tm_hipukh.0011.a
+		set_variable = { name = tm_turning_kept_dress value = yes days = 30 }
+		add_stress = -10
+		trigger_event = { id = tm_hipukh.0001 days = 1 }
+	}
+	option = {	# Laugh with the others; it is only Purim
+		name = tm_hipukh.0011.b
+		trigger_event = { id = tm_hipukh.0001 days = 1 }
+	}
+	option = {	# Refuse the dress
+		name = tm_hipukh.0011.c
+		add_stress = 15
+		tm_turning_clear_effect = yes
+	}
+}
+
+# The prayer. Root = the seeker.
+tm_hipukh.0001 = {
+	type = character_event
+	title = tm_hipukh.0001.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { current_date >= 1322.1.1 }
+				desc = tm_hipukh.0001.desc_touchstone
+			}
+			desc = tm_hipukh.0001.desc
+		}
+	}
+	theme = faith
+	left_portrait = { character = scope:tm_zekenah animation = personality_zealous }
+	right_portrait = { character = root animation = worry }
+
+	trigger = { exists = scope:tm_zekenah }
+
+	option = {	# Say it aloud
+		name = tm_hipukh.0001.a
+		random_list = {
+			30 = {
+				modifier = { add = 30 has_trait = tm_transgender }
+				modifier = { add = learning }
+				modifier = { add = scope:tm_zekenah.learning }
+				modifier = { add = 20 has_personal_tenet_flag = tm_personal_turning_easier }
+				modifier = { add = 10 has_variable = tm_turning_gallery }
+				modifier = { add = 20 has_variable = tm_turning_kept_dress }
+				modifier = { add = 15 has_variable = tm_hevrah_taught }
+				modifier = {							# the worthies of this town have licensed it before
+					add = 15
+					location ?= { county ?= { has_variable = tm_worthies_licence } }
+				}
+				modifier = {							# the ḥevrah's own street (Arles at the start)
+					add = 10
+					location ?= { county ?= { has_variable = tm_kahal } }
+				}
+				modifier = {							# Leah prayed: every Adar's prayer counts
+					has_variable = tm_turning_prayers
+					add = { value = var:tm_turning_prayers multiply = 10 }
+				}
+				desc = tm_hipukh.0001.a.success
+				send_interface_toast = {
+					type = event_toast_effect_good
+					title = tm_hipukh.0001.a.success
+				}
+				tm_turning_clear_effect = yes
+				remove_variable = tm_turning_prayers
+				remove_variable = tm_hevrah_taught
+				# A seeker of another Jewish faith is turned into the ḥevrah.
+				if = {
+					limit = { NOT = { faith = faith:tm_nehpakhot } }
+					set_character_faith = faith:tm_nehpakhot
+				}
+				tm_rise_daughter_effect = { TRAIT = tm_daughter_of_the_turning RENAME = tm_hipukh.0002 }
+				# The elders answer whichever body survives the rite.
+				if = {
+					limit = { exists = scope:tm_new_body }
+					scope:tm_new_body = { trigger_event = { id = tm_hipukh.0003 days = 7 } }
+				}
+				else = {
+					trigger_event = { id = tm_hipukh.0003 days = 7 }
+				}
+			}
+			60 = {								# no fault in the seeker: Leah's prayer was answered in its time
+				desc = tm_hipukh.0001.a.failure
+				send_interface_toast = {
+					type = event_toast_effect_bad
+					title = tm_hipukh.0001.a.failure
+					add_stress = 10
+				}
+				tm_turning_clear_effect = yes
+				if = {
+					limit = { has_variable = tm_turning_prayers }
+					change_variable = { name = tm_turning_prayers add = 1 }
+				}
+				else = {
+					set_variable = { name = tm_turning_prayers value = 1 }
+				}
+			}
+		}
+	}
+}
+
+# The name, on Shushan Purim, and the women's blessing "who made me a woman" (a 15th-c. Judeo-Provençal prayer
+# book, Rosen citing Tabory; research/jud_rosen_circumcised_cinderella.md). Root = the daughter.
+tm_hipukh.0002 = {
+	type = character_event
+	title = tm_hipukh.0002.t
+	desc = tm_hipukh.0002.desc
+	theme = faith
+	left_portrait = { character = root animation = happiness }
+
+	option = {	# A name from the scroll and the Torah: Dinah, Esther, Sara
+		name = tm_hipukh.0002.a
+		tm_turning_scroll_name_effect = yes
+		add_piety = 25
+	}
+	option = {	# A name of the street, as the Jewish women of Provence were called
+		name = tm_hipukh.0002.d
+		tm_give_daughter_name_effect = yes
+		add_prestige = 25
+	}
+	option = {
+		name = tm_hipukh.0002.b
+		trigger = { is_female = yes }
+	}
+	option = {
+		name = tm_hipukh.0002.c
+		trigger = { is_male = yes }
+		add_stress = 10
+	}
+}
+
+# Before the elders. Isserles allows the Purim dress only "for mere merriment" and "as the town's worthies
+# permit"; now she wears it after Purim, and the kahal must answer. Root = the daughter.
+tm_hipukh.0003 = {
+	type = character_event
+	title = tm_hipukh.0003.t
+	desc = tm_hipukh.0003.desc
+	theme = faith
+	left_portrait = { character = root animation = worry }
+
+	option = {	# Answer with Dinah: a learned dispute
+		name = tm_hipukh.0003.a
+		random_list = {
+			40 = {
+				modifier = { add = { value = learning multiply = 2 } }
+				desc = tm_hipukh.0003.a.win
+				add_prestige = 75
+				location ?= { county ?= { set_variable = { name = tm_worthies_licence value = yes years = 10 } } }
+			}
+			50 = {
+				desc = tm_hipukh.0003.a.lose
+				tm_turning_niddui_effect = yes
+				add_stress = 15
+			}
+		}
+	}
+	option = {	# Answer with the Touchstone: the young men put on the dress every Adar
+		name = tm_hipukh.0003.b
+		trigger = { current_date >= 1322.1.1 }
+		add_piety = 50
+		add_prestige = 25
+	}
+	option = {	# "I am the lady of the house"
+		name = tm_hipukh.0003.c
+		add_piety = 75
+		add_stress = -20
+		tm_turning_niddui_effect = yes
+	}
+	option = {	# Put the dress away until next Adar
+		name = tm_hipukh.0003.d
+		add_stress = 25
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The three lamps: what she does, every week (Even Boḥan, p. 17; Mishnah Shabbat 2:6). Root = the daughter.
+tm_hipukh.0020 = {
+	type = character_event
+	title = tm_hipukh.0020.t
+	desc = tm_hipukh.0020.desc
+	theme = faith
+	left_portrait = { character = root animation = happiness }
+	lower_right_portrait = scope:tm_hevrah_pupil
+
+	immediate = {
+		random_courtier = {
+			limit = {
+				is_adult = yes
+				tm_turning_seeker_trigger = yes
+				NOT = { has_variable = tm_hevrah_taught }
+			}
+			save_scope_as = tm_hevrah_pupil
+		}
+	}
+
+	option = {	# Light the lamp and keep the days
+		name = tm_hipukh.0020.a
+		add_character_modifier = { modifier = tm_three_lamps_modifier years = 1 }
+	}
+	option = {	# Spin with the women by moonlight
+		name = tm_hipukh.0020.b
+		add_character_modifier = { modifier = tm_spinning_circle_modifier years = 1 }
+		every_courtier = {
+			limit = { is_female = yes is_adult = yes }
+			add_opinion = { target = root modifier = friendliness_opinion opinion = 5 }
+		}
+	}
+	option = {	# Teach the prayer to one who will need it
+		name = tm_hipukh.0020.c
+		trigger = { exists = scope:tm_hevrah_pupil }
+		scope:tm_hevrah_pupil = {
+			set_variable = tm_hevrah_taught
+			add_opinion = { target = root modifier = respect_opinion opinion = 15 }
+		}
+		add_piety = 25
+	}
+}
+
+# A book in Arabic. A lord of any faith asks a daughter of the Turning to translate it, as Robert of Naples
+# employed Kalonymus (Chotzner 1900, pp. 128–129). Root = the lord. scope:tm_translator = the daughter.
+tm_hipukh.0030 = {
+	type = character_event
+	title = tm_hipukh.0030.t
+	desc = tm_hipukh.0030.desc
+	theme = learning
+	left_portrait = { character = scope:tm_translator animation = personality_rational }
+
+	trigger = { exists = scope:tm_translator }
+
+	option = {	# Commission the translation, and take her people under my protection
+		name = tm_hipukh.0030.a
+		trigger = { gold >= 50 }
+		remove_short_term_gold = 50
+		add_character_modifier = { modifier = tm_translation_patron_modifier years = 10 }
+		scope:tm_translator = {
+			add_prestige = 50
+			add_opinion = { target = root modifier = respect_opinion opinion = 20 }
+		}
+		capital_county ?= { set_variable = { name = tm_worthies_licence value = yes years = 10 } }
+	}
+	option = {	# Pay for the book, nothing more
+		name = tm_hipukh.0030.b
+		trigger = { gold >= 25 }
+		remove_short_term_gold = 25
+		add_learning_lifestyle_xp = 100
+	}
+	option = {	# I have no use for it
+		name = tm_hipukh.0030.c
+	}
+}
+
+# A Jewish lord rules on a daughter at his court: "what came forth male is male", answered with Dinah.
+# Root = the lord. scope:tm_jewish_daughter = the daughter (any gate).
+tm_hipukh.0040 = {
+	type = character_event
+	title = tm_hipukh.0040.t
+	desc = tm_hipukh.0040.desc
+	theme = faith
+	left_portrait = { character = scope:tm_jewish_daughter animation = worry }
+
+	trigger = { exists = scope:tm_jewish_daughter }
+
+	option = {	# "What came forth male is male."
+		name = tm_hipukh.0040.a
+		add_piety = 25
+		scope:tm_jewish_daughter = {
+			add_opinion = { target = root modifier = tm_ruled_a_man_opinion }
+		}
+	}
+	option = {	# "One does not cite miracles. But she keeps her place."
+		name = tm_hipukh.0040.b
+		add_prestige = 10
+	}
+	option = {	# "Let the worthies of the town decide."
+		name = tm_hipukh.0040.c
+		capital_county ?= { set_variable = { name = tm_worthies_licence value = yes years = 5 } }
+		add_piety = -10
+	}
+}

@@ -41,8 +41,8 @@ tm_ankyra = {
 	}
 }
 
-# Mogao, Dunhuang: cave 331, where Wu Zetian paid for a mural of the Lotus Sutra dragon girl, who changed
-# her body in an instant (Transgender China ch. 3, p. 73). Seat of the Way of the Jade Embryo.
+# Mogao, Dunhuang: cave 331 shows the Lotus Sutra dragon girl, who changed
+# her body in an instant (no patron is recorded; research/china_reading_list.md finding 1). Seat of the Way of the Jade Embryo.
 tm_mogao = {
 	county = c_shazhou
 	barony = b_mogao
@@ -79,5 +79,39 @@ tm_nanyue = {
 	county_holder_character_modifier = {
 		learning = 1
 		monthly_piety = 0.2
+	}
+}
+
+# Arles: Kalonymus ben Kalonymus was born here in 1287, son of the community's nasi, in the one street the
+# archbishop allowed the Jews (Chotzner 1900, p. 128). Seat of Ha-Nehpakhot.
+tm_arles = {
+	county = c_venaissin
+	barony = b_arles
+
+	county_holder_character_modifier = {
+		learning = 1
+		monthly_piety = 0.2
+	}
+}
+
+# Narbonne: the great Jewish community of the Midi, whose nasi held property under the viscounts.
+tm_narbonne = {
+	county = c_carcassonne
+	barony = b_narbonne
+
+	county_holder_character_modifier = {
+		learning = 1
+		monthly_piety = 0.2
+	}
+}
+
+# Montpellier and Lunel: the translators' country. Kalonymus himself translated from Arabic for Robert of Naples.
+tm_montpellier = {
+	county = c_montpellier
+	barony = b_montpellier
+
+	county_holder_character_modifier = {
+		learning = 1
+		monthly_prestige = 0.2
 	}
 }

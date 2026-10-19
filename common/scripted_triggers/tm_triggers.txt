@@ -28,12 +28,13 @@ tm_captive_daughter_trigger = {
 	}
 }
 
-# Any daughter, whichever gate she came through (knife, seiðr, embryo).
+# Any daughter, whichever gate she came through (knife, seiðr, embryo, the Turning).
 tm_is_daughter_trigger = {
 	OR = {
 		has_trait = tm_daughter_of_the_knife
 		has_trait = tm_daughter_of_seidr
 		has_trait = tm_daughter_of_the_embryo
+		has_trait = tm_daughter_of_the_turning
 	}
 }
 
@@ -44,6 +45,7 @@ tm_rite_can_raise_daughters_trigger = {
 			rite_has_parameter = tm_knife_voluntary
 			rite_has_parameter = tm_seidr_gate
 			rite_has_parameter = tm_embryo_gate
+			rite_has_parameter = tm_turning_gate
 		}
 	}
 }
@@ -157,5 +159,32 @@ tm_praiposita_court_trigger = {
 	OR = {
 		is_female = yes
 		tm_is_daughter_trigger = yes
+	}
+}
+
+# Could keep the fourteenth of Adar and pray to be turned: of Ha-Nehpakhot, or of another Jewish faith and
+# Marked (the Turning converts her). Eunuchs may come too: a eunuch who seeks womanhood is a sister.
+tm_turning_seeker_trigger = {
+	is_male = yes
+	is_adult = yes
+	is_imprisoned = no
+	tm_is_daughter_trigger = no
+	OR = {
+		rite ?= { rite_has_parameter = tm_turning_gate }
+		AND = {
+			rite ?= { rite_has_parameter = jewish_syncretic_recipient }
+			OR = {
+				has_trait = tm_transgender
+				has_variable = tm_declared
+			}
+		}
+	}
+}
+
+# Purim falls in Adar, which the game's calendar puts in February or March.
+tm_is_adar_trigger = {
+	OR = {
+		current_month = 2
+		current_month = 3
 	}
 }

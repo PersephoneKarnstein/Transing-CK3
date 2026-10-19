@@ -124,3 +124,37 @@ tm_yutai_rite = {
 		doctrine_clerical_marriage_allowed
 	}
 }
+
+# The Jewish rite (Ha-Nehpakhot). Calendar-bound, learned, communal, landless. faith_design.md §13.
+tm_nehpakhot_rite = {
+	name = tm_nehpakhot_rite
+	desc = tm_nehpakhot_rite_desc
+	faith = tm_nehpakhot
+
+	color = { 0.62 0.55 0.85 }
+	icon = judaism_custom_1
+
+	convert = yes
+	create = yes
+	history = no
+
+	tenets = {
+		tenet_tm_turning
+		tenet_tm_three_lamps
+		tenet_legalism					# shared with the Rabbinic rite: the argument is over the law, inside the law
+	}
+
+	doctrines = {
+		doctrine_gender_equal
+		doctrine_pluralism_pluralistic
+		doctrine_divorce_allowed
+		doctrine_bastardry_none
+		doctrine_consanguinity_cousins
+		doctrine_homosexuality_accepted
+		doctrine_deviancy_shunned
+		doctrine_witchcraft_shunned
+		doctrine_clerical_function_alms_and_pacification
+		doctrine_clerical_gender_either
+		doctrine_clerical_marriage_allowed
+	}
+}

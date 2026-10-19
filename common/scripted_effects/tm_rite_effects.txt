@@ -1,6 +1,6 @@
 ﻿# Adelphai Dorleyaiou — raising a daughter. Scope: the character being raised.
 # Every faith's gate ends here; only the trait and the naming event differ.
-#   TRAIT  = tm_daughter_of_the_knife / tm_daughter_of_seidr / tm_daughter_of_the_embryo
+#   TRAIT  = tm_daughter_of_the_knife / tm_daughter_of_seidr / tm_daughter_of_the_embryo / tm_daughter_of_the_turning
 #   RENAME = the faith's naming event (tm_knife.0002 / tm_seidr.0002 / tm_embryo.0002)
 tm_rise_daughter_effect = {
 	if = {
@@ -60,6 +60,10 @@ tm_rise_by_rite_effect = {
 		limit = { $ROOT_RULER$.rite ?= { rite_has_parameter = tm_embryo_gate } }
 		tm_rise_daughter_effect = { TRAIT = tm_daughter_of_the_embryo RENAME = tm_embryo.0002 }
 	}
+	else_if = {
+		limit = { $ROOT_RULER$.rite ?= { rite_has_parameter = tm_turning_gate } }
+		tm_rise_daughter_effect = { TRAIT = tm_daughter_of_the_turning RENAME = tm_hipukh.0002 }
+	}
 	else = {
 		tm_take_the_knife_effect = yes
 	}
@@ -110,6 +114,25 @@ tm_give_daughter_name_effect = {
 			6 = { change_first_name = Qingxu }
 		}
 	}
+	else_if = {
+		limit = { rite ?= { rite_has_parameter = tm_turning_gate } }
+		# A name of the street: Jewish women of Provence in the notaries' books (research/jud_shatzmiller_jews_of_provence.md §1).
+		random_list = {
+			10 = { change_first_name = Rosa }		# Manosque 1283–1304 (Shatzmiller pp. 209–221)
+			10 = { change_first_name = Mairona }	# Arles 1387; "a very common name" (p. 305 n. 15)
+			8 = { change_first_name = Bella }		# Manosque 1283, 1338; Marseille c. 1250
+			8 = { change_first_name = Regina }		# Manosque 1315, 1338
+			6 = { change_first_name = Blanca }		# Manosque 1292
+			6 = { change_first_name = Gratiosa }	# Manosque 1338
+			6 = { change_first_name = Bonadonna }	# Manosque 1338
+			6 = { change_first_name = Comtessa }	# Manosque 1305
+			5 = { change_first_name = Mandina }		# Manosque 1292
+			5 = { change_first_name = Benvenguda }	# Marseille c. 1255
+			4 = { change_first_name = Bonahora }	# Manosque 1305
+			4 = { change_first_name = Astes }		# Manosque 1305, 1338
+			3 = { change_first_name = Roseta }		# Manosque 1296
+		}
+	}
 	else = {
 		random_list = {
 			10 = { change_first_name = Eirene }
@@ -133,6 +156,10 @@ tm_add_rite_daughter_trait_effect = {
 	else_if = {
 		limit = { $ROOT_RULER$.rite ?= { rite_has_parameter = tm_embryo_gate } }
 		add_trait = tm_daughter_of_the_embryo
+	}
+	else_if = {
+		limit = { $ROOT_RULER$.rite ?= { rite_has_parameter = tm_turning_gate } }
+		add_trait = tm_daughter_of_the_turning
 	}
 	else = {
 		add_trait = tm_daughter_of_the_knife
@@ -243,4 +270,95 @@ tm_feminise_name_effect = {
 	else_if = { limit = { has_first_name = VigfU_s } change_first_name = VigdI__s }
 	else_if = { limit = { has_first_name = BergT_O_r } change_first_name = BergT_O_ra }
 	else_if = { limit = { has_first_name = Freyr } change_first_name = Freyja }
+}
+
+# Begin the Turning for the seeker (scope). An elder of the ḥevrah keeps the rite: one at the host's court,
+# or one from the Jewish street. tm_hipukh_events.txt.
+tm_turning_begin_effect = {
+	if = {
+		limit = { is_ruler = yes }
+		save_scope_as = tm_host
+	}
+	else_if = {
+		limit = { exists = employer }
+		employer = { save_scope_as = tm_host }
+	}
+	else = {
+		save_scope_as = tm_host
+	}
+	if = {
+		limit = {
+			scope:tm_host = {
+				any_courtier = {
+					NOT = { this = root }
+					has_trait = tm_daughter_of_the_turning
+					is_adult = yes
+					is_imprisoned = no
+				}
+			}
+		}
+		scope:tm_host = {
+			random_courtier = {
+				limit = {
+					NOT = { this = root }
+					has_trait = tm_daughter_of_the_turning
+					is_adult = yes
+					is_imprisoned = no
+				}
+				save_scope_as = tm_zekenah
+			}
+		}
+	}
+	else = {
+		tm_create_hevrah_elder_effect = { HOST = scope:tm_host }
+	}
+	trigger_event = tm_hipukh.0010
+}
+
+# An elder of the ḥevrah, a woman already turned. She lives in the Jewish street, not at court.
+tm_create_hevrah_elder_effect = {
+	create_character = {
+		gender = female
+		age = { 45 70 }
+		culture = $HOST$.culture
+		faith = faith:tm_nehpakhot
+		dynasty = none
+		location = $HOST$.capital_province
+		trait = tm_daughter_of_the_turning
+		trait = education_learning_3
+		save_scope_as = tm_zekenah
+	}
+}
+
+# Scope: the seeker. Ends this Adar's temporary state; the count of Adars prayed (tm_turning_prayers) stays.
+tm_turning_clear_effect = {
+	remove_variable = tm_turning_gallery
+	remove_variable = tm_turning_kept_dress
+}
+
+# A name from the scroll and the Torah, the faith's own reading. Scope: the one being named.
+tm_turning_scroll_name_effect = {
+	random_list = {
+		10 = { change_first_name = Dinah }		# turned in the womb (Berakhot 60a)
+		10 = { change_first_name = Esther }		# Purim; cf. Aster, Manosque 1313 (Shatzmiller p. 63)
+		8 = { change_first_name = Sara }		# Manosque 1296 (p. 211)
+	}
+}
+
+# Niddui needs the lord's licence: a Jewish community could ban only by its Christian lord's leave, granted for a
+# term (Arles 1405, Shatzmiller p. 87; a rabbi tried for an unlicensed ban, 1310, p. 89). A lord who has taken the
+# daughter's people under protection (tm_hipukh.0030) refuses it. Scope: the daughter.
+tm_turning_niddui_effect = {
+	if = {
+		limit = {
+			location ?= { county ?= { holder ?= { has_character_modifier = tm_translation_patron_modifier } } }
+		}
+		send_interface_toast = {
+			type = event_toast_effect_good
+			title = tm_turning_niddui_refused
+		}
+	}
+	else = {
+		add_character_modifier = { modifier = tm_niddui_modifier years = 3 }
+	}
 }

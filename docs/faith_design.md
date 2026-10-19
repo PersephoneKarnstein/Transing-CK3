@@ -278,5 +278,58 @@ Notes: `research/norse_jochens_*.md`, `norse_mitchell_witchcraft_magic.md`, `nor
 2. **The shout is *ragr*,** and the retort "*Ragr* is said of men": *ergi* was also hurled at women (Solli; Mitchell). No narrator text says the word was never used of women.
 3. **The rite in the faith's voice.** Tolley: the *Eiríks saga* scene is "almost wholly unreliable", but a light trance on a platform and the warding songs (which keep the völva) survive. Lines now say "the song held" and "I did not make her. I saw her." (Jochens: the völva uncovers fate).
 4. **"Óðinn's host has no men" is the faith's polemic** against the skalds' Valhöll of dead men (the einherjar). Seiðr is Freyja's art.
-5. **The winter-road völva** no longer cites Þorbjörg (set c. 1000) and does not visit Icelandic courts.
+5. **The winter-road völva** no longer cites Þorbjörg (set c. 1000). She goes everywhere, Iceland included: the sources' silence on living Icelandic völur (Jochens) is an absence of evidence, not a ban, and a Bædling realm is not saga Iceland.
 6. **Stage 2 inputs:** sorcery law in three stages (royal examples at conversion; church outlawry c. 1100–1300; death penalty Norway c. 1300, Sweden c. 1350; trials rare); "Six Housewives" compurgation; Pour the Cup (end a flyting, first cup, the inheritance toast); women's suits through a friend of the House; dress clause only with a powerful prosecutor; "They Say He Keeps Seiðmenn"; "Weave the Warding Shirt"; *sigewif* for the war-band; English reaction text (Wulfstan 1014: valkyries among witches).
+
+## 13. Ha-Nehpakhot, the Jewish sect (approved by user 2026-10-19, built)
+
+Grounded in `research/jud_*.md` (Strassfeld 2013, Kalonymus's *Even Boḥan*, the rabbinic primary texts, Neis 2023, Grabowski 2015, Phelan 2023) and the "Medieval Judaism" section of `research/comparanda_reading_list.md`.
+
+**Decisions (user, 2026-10-19).**
+1. **Era.** Present at every start, as the other faiths are. Content that quotes Kalonymus (the *Touchstone* variant of the prayer, the elders' *Touchstone* answer) waits for 1322.
+2. **The body.** The Turning ends like the other gates: the daughter trait and, under the game rule, re-embodiment. Told in the faith's voice as heaven's turning, "as Dinah was".
+3. **Other daughters.** Daughters of every gate are sisters; the knife is refused as this faith's own gate (as for the Bædlings).
+4. **Text.** Every quotation is rendered afresh from the public-domain Hebrew; the CC-licensed English translations are reading aids only.
+5. **Rescue the Daughters** is *not* barred from Jewish targets. Its text never calls anyone a slaver, so a bar would be an overcorrection.
+6. **No head of faith**, as in vanilla Judaism. The ḥevrah's offices wait for a source.
+7. **README** says why the slave-trade motif is excluded (Phelan).
+
+**How it plays differently** (user: "we do want each faith to play differently").
+
+| | Bædling (seiðr) | Ha-Nehpakhot (the Turning) |
+|---|---|---|
+| When | Any time; cooldown a year | Adar only (February–March); one Purim a year |
+| What decides it | The warding songs, the feast, the völva's learning | Her own learning and the elder's; patience (+10 per unanswered Adar, never reset); the gallery and the kept dress; the county's licence and the ḥevrah's street |
+| Who keeps it | A völva, at court or on the winter road | An elder of the ḥevrah, at court or from the Jewish street |
+| Afterwards | Before the thing: an insult duel | Before the elders: a learned dispute that licenses the county for ten years, or *niddui* (shunning) for three |
+| The line | Fostering, the songs taught to a ward | The three lamps; the prayer taught to a Marked courtier (+15) |
+| The world | Martial: raids, warrior clergy | Landless and learned: a lord of any faith may commission a translation and protect her people; Jewish lords are asked to rule on daughters |
+| Conversion | — | A seeker of another Jewish faith who is turned joins the sect |
+
+**Built.**
+- `tm_nehpakhot` (faith in `judaism_religion`), `tm_nehpakhot_rite` (tenets: The Turning, The Three Lamps, vanilla Legalism; gender equal, clergy of either sex).
+- Holy sites: `tm_arles` (seat, `b_arles`), `jerusalem`, `tm_narbonne`, `tm_montpellier`, `hamadan`. Hebron sits in Jerusalem's county, so it is not a separate site.
+- Trait `tm_daughter_of_the_turning` (learning, diplomacy; not a eunuch equivalent).
+- Opinion: every daughter trait now carries `tm_jewish_daughter_opinion` (−10, Jewish observers: "what came forth male is male") and `tm_turned_sister_opinion` (+10 for the sect, cancelling it).
+- Decision `tm_turning_decision`; events `tm_hipukh.0010 → 0011 → 0001 → 0002 → 0003`; yearly `tm_hipukh.0020` (the three lamps), `0030` (a translation), `0040` (a Jewish lord's ruling).
+- Seed: the variable `tm_kahal` on `c_venaissin`; an elder daughter of the Turning and two Marked young men of the sect in Arles, unlanded.
+
+**Hard limits.** No knife and no potion (Issurei Bi'ah 16:12). No lashes on screen. No "until I expire" line. No hyena or other animal imagery (a Christian slur). No "a created being of its own" as the sect's self-description; the faith refuses it as a compromise. No Jewish slave or eunuch traders; no Khazar seat. Christian hostile text attacks doctrine, never Jews as a people, and never ties Jewish "inconstancy" to intersex bodies (Wingard on DeVun). The narrator never says the Talmud recognised six genders, or that Kalonymus was a trans woman. Added after the second reading (`research/cmp_devun_shape_of_sex.md`, `jud_strassfeld_trans_talmud.md`, `jud_fonrobert_sexed_body.md`): no Christian "turning" puns (turncoat, "will turn again"); no "neither" or *neutericum* slurs against the lords who protect them; no beast or demon imagery for Jews at all; never voice b. Nazir 59a's "slip in among women" rationale; never name the modern book titled after Deut. 32:20's *dor tahapukhot*.
+
+**Open.**
+- A source for Provençal Jewish women's names (Iancu; Shatzmiller). Until then the naming list is biblical.
+- *Trans Talmud* (2022), for the *aylonit* chapter.
+- Community roles (quorum, witness, confraternity offices) need the medieval codes.
+- The Turning is open to Marked seekers of every Jewish faith (Rabbinic, Karaite and the rest). Karaite law differs from rabbinic law on Purim and on the Talmud's authority, so a Karaite seeker may need her own text.
+
+### Revisions after the second Judaism and comparanda reading (approved by user 2026-10-19, applied)
+1. *Touchstone* prayer line: "The learned call it a jest; the ḥevrah says he meant it." No source ties the lament to Purim; the Purim parody is *Massekhet Purim*, written in Rome (Rosen).
+2. *Even Boḥan* was written in Catalonia; Arles is Kalonymus's birthplace (Rosen). README corrected.
+3. `tm_isl.0002`: the jester is "a shaven man in women's finery"; no source has a veil (Rowson 2008; William of Adam; Leo).
+4. Jaunpur: Jackson confirms the adopted-heir succession but calls neither Malik Sarwar nor Khusraw Khan a eunuch, and Sarwar never took the title of sultan.
+5. Names, option (b): "A name from the scroll and the Torah" (Dinah, Esther, Sara; `tm_turning_scroll_name_effect`) and "A name of the street" (Rosa, Mairona, Bella, Regina, Blanca, Gratiosa, Bonadonna, Comtessa, Mandina, Benvenguda, Bonahora, Astes, Roseta; `tm_give_daughter_name_effect`), from Shatzmiller.
+6. *Niddui* needs the lord's licence (Shatzmiller pp. 87, 89): `tm_turning_niddui_effect` lets a county lord who protects her people (`tm_translation_patron_modifier`) refuse it.
+7. The women's blessing "who made me a woman" (a 15th-c. Judeo-Provençal prayer book, Rosen citing Tabory) in `tm_hipukh.0002`.
+8. Hard limits extended (above).
+9. Eastern opinion split by gate: `tm_eastern_knife_opinion` (−15, a castrated man to Buddhist, Hindu and Jain law) on the knife's daughter; `tm_eastern_daughter_opinion` (−5, "A Man Become a Woman") on the others.
+10. `tm_byz.0012` (The Wills) fires only under a liege of Byzantine heritage; Slavic princes left sexual morality to the church (Levin).

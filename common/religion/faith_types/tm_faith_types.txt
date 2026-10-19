@@ -159,3 +159,45 @@ tm_yutai = {
 		HighGodNameAlternatePossessive = tm_metal_mother_possessive
 	}
 }
+
+# ---------------------------------------------------------------------------------------------------
+# The Jewish sect: Ha-Nehpakhot, "the women who were turned" (faith_design.md §13). A small current inside
+# Judaism, seated in the Jewish street of Arles. Its gate is prayer answered at Purim, never a human hand:
+# the rabbis split the eunuch made "by the hands of heaven" from the one made "by human hands"
+# (research/jud_strassfeld_classically_queer.md), and Dinah was turned in the womb at Leah's prayer (Berakhot 60a).
+# It holds no land at the start: it lives under other lords (Arles under its archbishop).
+tm_nehpakhot = {
+	main_rite = tm_nehpakhot_rite
+	historical = no
+
+	faith_details = {
+		religion = judaism_religion
+		color = { 0.62 0.55 0.85 }
+		icon = judaism_custom_1			# placeholder; TODO commissioned icon
+		reformed_icon = judaism_custom_1
+	}
+
+	eminent_holy_sites = {
+		tm_arles		# Kalonymus ben Kalonymus was born in its one Jewish street (research/jud_kalonymus_even_bohan.md)
+		jerusalem		# the county holds Hebron and the tomb of Leah, who prayed for Dinah
+	}
+	holy_sites = {
+		tm_narbonne
+		tm_montpellier	# the Provençal translators' country (the Tibbonids, Lunel and Montpellier)
+		hamadan			# the tomb of Esther and Mordecai: Purim
+	}
+
+	doctrines = {
+		temple_authority_rabbinic_doctrine
+		doctrine_no_head					# vanilla Judaism keeps none; the ḥevrah has elders, not a pontiff
+	}
+
+	localization = {
+		PriestMale = tm_zekenah
+		PriestMalePlural = tm_zekenah_plural
+		PriestFemale = tm_zekenah
+		PriestFemalePlural = tm_zekenah_plural
+		PriestNeuter = tm_zekenah
+		PriestNeuterPlural = tm_zekenah_plural
+	}
+}

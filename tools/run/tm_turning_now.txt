@@ -1,0 +1,3 @@
+﻿# Run from the console:  run tm_turning_now.txt
+# Starts the Turning for you at once, skipping the decision, its cooldown and the Adar window.
+tm_turning_begin_effect = yes

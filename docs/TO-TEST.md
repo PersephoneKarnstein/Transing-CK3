@@ -64,7 +64,7 @@ Scenarios for playtesters. Each one sets up a situation on purpose, so that a si
 
 **0.3 Census.** Run `run tm_census.txt`. Note the counts of Marked characters and daughters. They should be roughly 1% of adult men, and a handful of daughters.
 
-**0.4 Ruler Designer.** Check that all three faiths and the Kybeline culture can be picked, and that the Marked trait costs nothing.
+**0.4 Ruler Designer.** Check that all four faiths and the Kybeline culture can be picked, and that the Marked trait costs nothing.
 
 ---
 
@@ -201,7 +201,7 @@ Play Shazhou, or design a ruler of the Way. Then `add_trait tm_transgender` on y
 
 ## D. Shared systems
 
-**D1. Declare Before Witnesses.** As a Marked man in any of the three faiths, take *Declare Before Witnesses* and choose a name.
+**D1. Declare Before Witnesses.** As a Marked man in any of the four faiths, take *Declare Before Witnesses* and choose a name.
 - Then go through your faith's rite (A1, B1 or C1), **once with re-embodiment on and once with it off.**
 - **Check:**
   - your declared name survives the rite;
@@ -233,7 +233,7 @@ Note the cost and whether she accepted. Then **check the line of succession list
 - Then use *Take as Daughter* on her. The price should be half the normal one.
 - **Send:** both cost tooltips.
 
-**D5. Sisters' Houses.** As any ruler of the three faiths, run `run tm_make_sisters.txt`, then take *Found a Sisters' House*.
+**D5. Sisters' Houses.** As any ruler of the four faiths, run `run tm_make_sisters.txt`, then take *Found a Sisters' House*.
 1. Hover over your capital county in debug mode. It should carry the variables `tm_house`, `tm_house_strain` (0) and `tm_house_protectress`. Screenshot it.
 2. Run `run tm_house_tick.txt`. "The Sisters Choose" should fire, with an Elder Sister drawn from the lot. Run it a few times on fresh Houses and see whether different nominees win.
 3. Run `run tm_house_strain.txt`, then `run tm_house_tick.txt`. "The House Divides" should found a House in a neighbouring county. Hover over that county to confirm.
@@ -262,7 +262,7 @@ Note the cost and whether she accepted. Then **check the line of succession list
 
 **Send:** the count of each type and how many years you played.
 
-**D9. The Sisters Choose.** As a duke or higher of any of the three faiths, change your realm's succession law to *The Sisters Choose*.
+**D9. The Sisters Choose.** As a duke or higher of any of the four faiths, change your realm's succession law to *The Sisters Choose*.
 - Run `run tm_make_sisters.txt` and adopt one of them.
 - Open the succession screen and check who can vote and who can stand:
   - voters: you, your vassals of the faith, and clergy of the faith;
@@ -277,7 +277,7 @@ Note the cost and whether she accepted. Then **check the line of succession list
 - Then `play` an Islamic ruler, give them a daughter courtier (`run tm_rise.txt` on a courtier won't work, so use `add_trait tm_daughter_of_the_knife <id>` on a female courtier), and run `run tm_khasi.txt`.
 - **Opinion penalty:** hover over the Islamic ruler's opinion of any daughter. It should show *A Castrated Man in Law* (−10). This is the change most likely to fail silently, so a screenshot either way helps.
 
-**D12. Same-sex marriage.** In all three faiths, check that two women, including a daughter and a cis woman, can marry, whatever the vanilla game rule says.
+**D12. Same-sex marriage.** In all four faiths, check that two women, including a daughter and a cis woman, can marry, whatever the vanilla game rule says.
 
 ---
 
@@ -288,3 +288,52 @@ Start a new 867 game, pick any ruler, type `observe`, and run at full speed to a
 - save the game and send the save and `error.log`.
 
 This shows whether the AI ever uses the rites, Houses, fostering, Companions, the elective law and the court offices. It also catches errors that only show up after decades.
+
+---
+
+## F. Ha-Nehpakhot
+
+Design a Ha-Nehpakhot ruler in or near Provence, or play the count of Venaissin (Arles) and `add_trait tm_transgender`, then convert to Ha-Nehpakhot from the faith screen. Give yourself `piety 500` and `gold 500`. The sect starts with no land: an elder daughter of the Turning and two Marked young men live unlanded in Arles.
+
+**F1. The Adar window.** Outside February and March the decision *Keep the Fourteenth of Adar* should show but be greyed out, with the tooltip "It is Adar (February or March)". Wait, or use the console to advance the date, until February.
+- **Check:** the decision becomes valid in February and March, and not in April.
+
+**F2. The full rite, in the best case.** Keep a daughter of the Turning at court, and stand in Arles (whose county carries the ḥevrah's street bonus).
+- Take the decision.
+- **Expect, in order:** "The Scroll" (choose the women's gallery), "The Revel" (keep the dress on), "The Prayer" (say it aloud), then on success "A Name for Shushan Purim" and, about a week later, "Before the Elders".
+- **Check:**
+  - the elder in the portraits is your court's daughter of the Turning;
+  - the prayer text mentions Kalonymus and the *Touchstone* only on or after 1322;
+  - the naming event offers two choices: "A name from the scroll and the Torah" (Dinah, Esther or Sara) and "A name of the street" (Rosa, Mairona, Bella, Regina, Blanca and others);
+  - its text includes the women's blessing, "who made me a woman".
+
+**F3. The elder from the street, in the worst case.** Remove every daughter of the Turning from your court, play outside Provence, choose the men's side at the scroll and laugh off the revel.
+- Repeat several times (`run tm_turning_now.txt` skips the window and the cooldown) and **record successes against failures.**
+- **Check:** each failure adds one to the variable `tm_turning_prayers` (inspect it with the character debug view), and the odds rise with it. `run tm_turning_prayers.txt` adds three at once. On success the variable is cleared.
+
+**F4. Conversion.** As a Marked Rabbinic (or Karaite) Jew, take the decision.
+- **Check:** on success the new daughter's faith is Ha-Nehpakhot. On failure the faith stays as it was.
+
+**F5. Before the elders.** Try all four answers across several runs and screenshot each.
+- "Answer with Dinah": on a win, the county you stand in should carry `tm_worthies_licence` for ten years, and a later Turning there should be likelier. On a loss, check the *Niddui* modifier (three years).
+- "The Touchstone…" should appear only on or after 1322.
+- "I am the lady of the house" gives *Niddui* even though she gains piety.
+- **The lord's licence.** Repeat a losing dispute in a county whose holder has *Patron of a Translation* (take it in F7 first, as that lord). The toast "The lord would not license the ban" should appear and *Niddui* should not.
+
+**F6. The three lamps.** As a daughter of the Turning, wait for "The Three Lamps" (`tm_hipukh.0020`), or fire it with `event tm_hipukh.0020 <your id>`. Try all three options.
+- **Check:** "Teach the prayer" appears only when a Marked courtier who could seek the Turning is present, and that courtier then gets a better roll in F2.
+
+**F7. A book in Arabic.** Play a ruler of any faith (try a Catholic one) with a daughter of the Turning at court. Wait for "A Book in Arabic" (`tm_hipukh.0030`), or fire it with `event tm_hipukh.0030 <your id>`. **Note:** fired from the console, the translator scope is missing and the event will not show; let the yearly pulse fire it, or report that it never appears.
+- **Check:** commissioning costs 50 gold, gives *Patron of a Translation*, and licenses your capital county.
+
+**F8. A Jewish lord's ruling.** Play a Rabbinic ruler (Khazaria in 867, or the Ruler Designer) with a daughter of any faith at court. Wait for "What Came Forth Male" (`tm_hipukh.0040`).
+- **Check:** "What came forth male is male" gives her the opinion *Ruled Me a Man* toward you.
+
+**F9. Opinions.** Hover a Rabbinic character's opinion of any daughter (knife, seiðr, embryo or Turning). It should include *What Came Forth Male* (−10). A Ha-Nehpakhot character's opinion should show it cancelled by *Turned, as Dinah Was* (+10). **This uses a tenet parameter in `triggered_opinion`, which is untested: report if either line is missing.**
+
+**F10. Names and screen.** In the faith screen the faith should be *Ha-Nehpakhot*, its clergy *Zekenah*, and its holy sites Arles, Jerusalem, Narbonne, Montpellier and Hamadan. Screenshot it.
+
+**F11. Eastern opinions by gate.** Hover a Buddhist or Hindu character's opinion of a daughter of the knife: it should show *Unmanned by the Knife* (−15). Of a daughter of seiðr, the embryo or the Turning: *A Man Become a Woman* (−5).
+
+**F12. The Wills only in Byzantium.** As a Dorleyite vassal of a Catholic or a Slavic Orthodox liege, let the suppression ladder climb (`run tm_suppression_next.txt`). It should stop at the second rung ("assemblies banned") and never fire "The Wills". Under a Greek liege it should still reach "The Wills".
+

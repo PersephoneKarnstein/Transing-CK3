@@ -97,8 +97,39 @@ Built: shared daughter trigger and per-faith daughter traits; Bæddel faith (Got
 - [ ] Event chains: Xue Xuantong (874–883), Wang Fengxian (d. 886), the abbess of Mo-shan; three routes into the abbeys; Liao Empress Chengtian
 - [ ] Regency rules by culture (Song curtain; Liao/Yuan command)
 
+## Ha-Nehpakhot (added 2026-10-19, untested in-game)
+- [ ] The Adar window (`tm_is_adar_trigger`, `current_month`), and AI seekers catching it (ai_check_interval 20)
+- [ ] The five-part Turning; the persistence variable `tm_turning_prayers`; conversion of Rabbinic and Karaite seekers
+- [ ] Before the Elders: county licence `tm_worthies_licence`, *Niddui*; the 1322 gate on the *Touchstone* lines
+- [ ] Yearly: the three lamps (0020), a book in Arabic (0030), a Jewish lord's ruling (0040)
+- [ ] `triggered_opinion` with a tenet parameter (`tm_turning_gate`) and with `jewish_syncretic_recipient`
+- [ ] Seed at Arles: three unlanded sect characters; whether they drift away from Provence
+
+## Stage 2 inputs from the comparanda round (2026-10-19)
+- [ ] Ha-Nehpakhot: a source for Provençal Jewish women's names (Iancu; Shatzmiller); the *aylonit* chapter of *Trans Talmud*; community roles from the medieval codes; Karaite text; the moonlit spinning circle as a recurring sisterhood event; "the adornment" (a gold ornament) as an artifact
+- [ ] Catholic reaction: a canonist event on Huguccio's "prevailing sex" by conduct (women's company and work) and the Susa oath before the bishop of Turin (`research/cmp_vanderlugt_sex_difference.md`; Rolker); Peter the Chanter's woman's name at confirmation; whether Catholic hostility to daughters hardens around 1200
+- [ ] Andalusi reaction: Ibn Ḥazm's charge against al-Ḥakam I as a reaction to Grandmother's House (`research/cmp_delapuente_alhakam.md`)
+- [ ] Possible fifth faith (Wendish), if wanted: women's ash divination (Saxo 14.39.11), the woman seer who led a Polish army in 1209, goddess banners (`research/cmp_alvarezpedrosa_slavic_rituals.md`)
+- [ ] Southeast Asian faith deferred (user, 2026-10-19): a Visayan babaylan/asog faith at Cebu, marked as a reconstruction
+
+## Second comparanda reading (added 2026-10-19, untested in-game)
+- [ ] Names split in `tm_hipukh.0002` (scroll / street); the women's blessing line
+- [ ] *Niddui* refused by a protecting lord (`tm_turning_niddui_effect`)
+- [ ] Eastern opinion split: knife −15, other gates −5
+- [ ] The Wills only under Byzantine-heritage lieges
+
+## Stage 2 inputs from the second comparanda reading
+- [ ] Orthodox Slavs: a penance ladder for Slavic Orthodox lieges in place of The Wills; opinions by House (Gift Alone most condemned: self-castration as suicide, a boy cut by force still ordainable; `research/cmp_levin_orthodox_slavs.md`); `christian_syncretic_recipient` would also hit Dorleyites, so cancel it as for the sect
+- [ ] Hindu and Jain reaction layers by event (klība: disinherited, owed food and clothing; Jain judgement by *veda*)
+- [ ] Mamluk hostile event: *istiḥlāl al-muḥarramāt* (teaching the forbidden as permitted) as apostasy, after Ibn al-Baqaqi (1302) (`research/isl_islamicate_sexualities.md`)
+- [ ] Catholic: Hostiensis's oath before the bishop; Baldus on Giovanni Malaspina inheriting by settled choice (1390s) (`research/cmp_devun_shape_of_sex.md`)
+- [ ] German court: Walther's "Under the Linden" (one manuscript: *herre frowe*) (`research/cmp_puff_german_genealogies.md`)
+- [ ] Ha-Nehpakhot: Sarah as *aylonit* (b. Yevamot 64b) as a matriarch; Rashi's glosses as the worthies' lines; whether the spinning circle's talk can reach the worthies (Mishnah Sotah 6:1); the 1306 French expulsion for Narbonne and Montpellier; Hildenfinger's Arles documents; Iancu on the expulsion c. 1500
+- [ ] Wendish (if wanted): "a pythoness as war-leader" (1209) confirmed in the Latin; Arkona took a third of spoils; Poznań's carnival dress ban (15th c.) (`research/cmp_alvarezpedrosa_sources_slavic.md`)
+- [ ] Still unsourced: Puff, *Sodomy in Reformation Germany and Switzerland* (2003)
+
 ## Branch faiths, stage 2 (next)
-- [ ] **Spring the Cell** (user: build with the Bæddel stage-2 work). Hostile scheme, any adult of the three faiths, landed or not; target a ruler imprisoning a daughter, Marked woman or declared sister. Agents: Marked guards, faithful servants, friends of the House. Success: prisoner walks to the nearest House (else the plotter's court), plotter possibly unknown. Discovery and failure as vanilla hostile schemes. Template: vanilla abduct. The non-war counterpart of Rescue the Daughters and the planned Bæddel raids.
+- [ ] **Spring the Cell** (user: build with the Bæddel stage-2 work). Hostile scheme, any adult of the four faiths, landed or not; target a ruler imprisoning a daughter, Marked woman or declared sister. Agents: Marked guards, faithful servants, friends of the House. Success: prisoner walks to the nearest House (else the plotter's court), plotter possibly unknown. Discovery and failure as vanilla hostile schemes. Template: vanilla abduct. The non-war counterpart of Rescue the Daughters and the planned Bæddel raids.
 - [ ] Bæddel: níð insult duels; landless war-band play; Rescue the Daughters as a raid; Christian outlawry pressure.
 - [ ] Jade Embryo: daughter faction against scholar-officials in celestial and meritocratic governments; temple societies keep estates from crown confiscation; omen events.
 - [ ] Dorleyism: daughters in court offices; era decay of tolerance after 1066; Aristotelian and Galenic council fight; the founding charter as a house legacy.

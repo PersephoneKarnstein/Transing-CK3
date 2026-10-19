@@ -6,8 +6,33 @@ tm_islamic_daughter_opinion = {
 	opinion = -10
 }
 
-# How Buddhist (and other Indic) observers read a daughter: a man reborn a woman as the fruit of adultery in a
-# former life (the Chinese Samantapasadika; research/cn_faure_power_of_denial.md).
+# How Buddhist (and other Indic) observers read a daughter of the seiðr, the embryo or the Turning: a man become
+# a woman, the fruit of an old sin (the Chinese Samantapasadika, research/cn_faure_power_of_denial.md; South Asian
+# sources agree, research/sea_gyatso_cabezon_buddhist_law.md). A change within one life is routine in monastic law.
 tm_eastern_daughter_opinion = {
+	opinion = -5
+}
+
+# A daughter of the knife, to Buddhist, Hindu and Jain law alike: a castrated man, a made paṇḍaka or klība.
+tm_eastern_knife_opinion = {
+	opinion = -15
+}
+
+# How Jewish observers read a daughter of any gate: "what came forth male is male" (the rule that kind follows
+# origin, research/jud_neis_raven.md); a daughter of the knife is a eunuch made by human hands
+# (research/jud_strassfeld_classically_queer.md). Applied by triggered_opinion on the daughter traits.
+tm_jewish_daughter_opinion = {
 	opinion = -10
+}
+
+# Ha-Nehpakhot hold the jewish_syncretic_recipient parameter too, as every Jewish faith does; this cancels it
+# for them. They read every daughter as turned.
+tm_turned_sister_opinion = {
+	opinion = 10
+}
+
+# A Jewish lord who ruled that his court's daughter is a man (tm_hipukh.0040).
+tm_ruled_a_man_opinion = {
+	opinion = -25
+	years = 10
 }

@@ -245,6 +245,55 @@ tm_seidr_decision = {
 	}
 }
 
+# The Jewish gate: keep the fourteenth of Adar and pray to be turned. Five-part rite: tm_hipukh_events.txt.
+# Unlike the other gates it waits on the calendar, and every Adar's prayer counts toward the next.
+tm_turning_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"		# placeholder; TODO event art
+	}
+	sort_order = 90
+	cooldown = { years = 1 }			# one Purim a year
+
+	is_shown = {
+		tm_turning_seeker_trigger = yes
+	}
+
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+		custom_tooltip = {
+			text = tm_turning_decision_adar_tt
+			tm_is_adar_trigger = yes
+		}
+	}
+
+	cost = {
+		piety = {
+			value = 50
+			if = {
+				limit = { has_personal_tenet_flag = tm_personal_turning_easier }
+				multiply = 0.5
+			}
+		}
+	}
+
+	effect = {
+		tm_turning_begin_effect = yes
+	}
+
+	ai_check_interval = 20				# often enough to catch the Adar window
+	ai_potential = {
+		tm_is_adar_trigger = yes
+		OR = { has_trait = tm_transgender has_trait = eunuch_1 has_trait = beardless_eunuch }
+	}
+	ai_will_do = {
+		base = 50
+		modifier = { add = -35 NOT = { has_trait = tm_transgender } }
+		modifier = { add = 20 has_trait = patient }
+		modifier = { add = 15 has_variable = tm_turning_prayers }
+		modifier = { add = -30 has_trait = craven }
+	}
+}
+
 # The Chinese gate: begin ten months' gestation of the jade embryo. tm_embryo_events.txt.
 tm_embryo_decision = {
 	picture = {

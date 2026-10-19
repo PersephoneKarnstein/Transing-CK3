@@ -1,0 +1,9 @@
+﻿# Run from the console:  run tm_turning_prayers.txt
+# Adds three unanswered Adars (+30 to the next Turning roll), to test the persistence bonus.
+if = {
+	limit = { has_variable = tm_turning_prayers }
+	change_variable = { name = tm_turning_prayers add = 3 }
+}
+else = {
+	set_variable = { name = tm_turning_prayers value = 3 }
+}

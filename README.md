@@ -17,7 +17,7 @@
 
   <h3 align="center">Transing CK3</h3>
   <p align="center">
-    <em>Adelphai Dorleyaiou</em>, the Sisters of Dorylaion: three trans-women-centred faiths for Crusader Kings III.
+    <em>Adelphai Dorleyaiou</em>, the Sisters of Dorylaion: four trans-women-centred faiths for Crusader Kings III.
     <br />
     <a href="#playtesters-wanted"><strong>Help playtest »</strong></a>
     <br />
@@ -43,6 +43,7 @@
     <li><a href="#dorleyism-the-sisters-of-dorylaion">Dorleyism: the Sisters of Dorylaion</a></li>
     <li><a href="#bædling-the-high-seat">Bædling: the High Seat</a></li>
     <li><a href="#the-way-of-the-jade-embryo">The Way of the Jade Embryo</a></li>
+    <li><a href="#ha-nehpakhot-the-women-who-were-turned">Ha-Nehpakhot: the women who were turned</a></li>
     <li><a href="#shared-mechanics">Shared mechanics</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
@@ -54,16 +55,16 @@
 
 ## About the project
 
-This mod adds three faiths built around trans women to Crusader Kings III. Each is grounded in a different historical setting and plays differently. Their tenets come from contemporary transfeminist writing: baedelism, third-wave transfeminism and transgender Marxism. A history pass then gives each a veneer of plausibility in its own place and period.
+This mod adds four faiths built around trans women to Crusader Kings III. Each is grounded in a different historical setting and plays differently. Their tenets come from contemporary transfeminist writing: baedelism, third-wave transfeminism and transgender Marxism. A history pass then gives each a veneer of plausibility in its own place and period.
 
-The three faiths answer the same three questions in different ways:
+The four faiths answer the same three questions in different ways:
 
-| | Dorleyism | Bædling | Way of the Jade Embryo |
-|---|---|---|---|
-| **How one becomes a daughter** | The knife, as a sacrament with a sponsor | Seiðr: a völva goes into trance for the seeker | Ten months' inner gestation of one's own body |
-| **How the line continues** | A founding charter passes land to adopted daughters | The hall's fostered, sworn and adopted daughters | Adopted heirs, and temple societies that hold property in common |
-| **How it meets the world** | Refuge, intake and church politics | Outlawry, raiding and insult duels | Palace factions against the scholar-officials |
-| **Home** | Dorylaion, Phrygia | Gotland | Dunhuang, at the Mogao caves |
+| | Dorleyism | Bædling | Way of the Jade Embryo | Ha-Nehpakhot |
+|---|---|---|---|---|
+| **How one becomes a daughter** | The knife, as a sacrament with a sponsor | Seiðr: a völva goes into trance for the seeker | Ten months' inner gestation of one's own body | The Turning: a prayer said aloud at Purim |
+| **How the line continues** | A founding charter passes land to adopted daughters | The hall's fostered, sworn and adopted daughters | Adopted heirs, and temple societies that hold property in common | A women's ḥevrah, and the three women's commandments |
+| **How it meets the world** | Refuge, intake and church politics | Outlawry, raiding and insult duels | Palace factions against the scholar-officials | The worthies' licence or their shunning; patronage by translating |
+| **Home** | Dorylaion, Phrygia | Gotland | Dunhuang, at the Mogao caves | The Jewish street of Arles |
 
 What the mod is not:
 
@@ -106,7 +107,7 @@ The mod is in alpha. Most of it has never run in a real campaign, and we need pe
    path="C:/Users/you/Documents/Transing-CK3"
    ```
 4. **Enable it.** Open the Paradox launcher, go to *Playsets*, add **Adelphai Dorleyaiou** to a playset, and make that playset active.
-5. **Start a new game.** In the Ruler Designer you can choose the Kybeline culture and any of the three faiths. You can also convert to one in a normal game.
+5. **Start a new game.** In the Ruler Designer you can choose the Kybeline culture and any of the four faiths. You can also convert to one in a normal game.
 
 To update later, pull or re-download into the same folder. The launcher file does not need to change.
 
@@ -114,8 +115,8 @@ To update later, pull or re-download into the same folder. The launcher file doe
 
 Good first tests:
 
-- **Ruler Designer.** Do all three faiths and the Kybeline culture appear?
-- **The three rites.** As a Marked man, take each faith's decision: *Take the Knife*, *Ask a Völva to Sit for Me* and *Gestate the Jade Embryo*.
+- **Ruler Designer.** Do all four faiths and the Kybeline culture appear?
+- **The four rites.** As a Marked man, take each faith's decision: *Take the Knife*, *Ask a Völva to Sit for Me*, *Gestate the Jade Embryo* and *Keep the Fourteenth of Adar* (February or March only).
 - **Re-embodiment.** After a rite, do your titles, marriage, children, adoptive parents and skills carry over?
 - **Adoption.** Try *Take as Daughter* on a courtier, a ward and a guest.
 - **Arrivals and Houses.** Found a Sisters' House. Over a long reign, do Marked travellers, cast-out women and friends of the House arrive? Does the House choose an Elder Sister, and split when it is strained? Give the county to a ruler of another faith and see whether they close it.
@@ -143,7 +144,7 @@ The Sisters are nostalgic for a sect almost nobody remembers: the Mother's galli
   - **Gift Alone:** only grown women who ask. "Even the Mother of God was asked." "A gift you cannot refuse is not a gift." The strongest doctrine over a long game.
 - **The line.** Daughters choose their heirs rather than breed them. A woman of the House can foster a daughter, who belongs but does not inherit, or take her as a daughter with the written clause that makes her an heir. Each House has a Protectress from the founder's female line, as the convent charters passed protection of a convent "in perpetuity", and its sisters name three for Elder Sister and let the lot decide.
 - **The court.** Dukes and above can appoint daughters of the knife and eunuchs to the offices the Byzantine court reserved for its eunuchs: Parakoimomene, Protovestiaria and Papias. Any woman can be Praiposita of the empress's chamber.
-- **The world.** The *Rescue the Daughters* war frees captive daughters from a neighbour. A bishop may preach that the Sisters are "Cybele in Christian clothes", and under a lord of another Christian faith the old laws against heretics climb rung by rung, faster after the Komnenian turn of 1081: the books burned, the assemblies banned, the wills voided.
+- **The world.** The *Rescue the Daughters* war frees captive daughters from a neighbour. A bishop may preach that the Sisters are "Cybele in Christian clothes", and under a lord of another Christian faith the old laws against heretics climb rung by rung, faster after the Komnenian turn of 1081: the books burned, the assemblies banned, and, under a Byzantine lord, the wills voided.
 - **Tenets.** Day of Blood, Daughters Chosen Not Born, and Unbending Sisterhood.
 - **Head of faith.** The Mother of Mothers, Theia Beatrike, an elder daughter seated at Dorylaion, with up to seven Companions, as the Montanist prophetesses had theirs.
 - **Holy sites.** Dorylaion and Constantinople, Kyzikos, Ankyra, and ruined Pepouza.
@@ -161,7 +162,7 @@ In the north the sanctioned crossing ran toward manhood. A man who went the othe
   - **The völva comes.** She is given the high seat and a feast.
   - **The warding songs.** Someone must sing the *varðlokkur*, which girls learn from their foster-mothers. A woman of the faith can teach them to a daughter or ward.
   - **The platform.** The völva goes up into trance while the seeker waits below.
-  - **The odds.** The faith holds that the völva sees a daughter rather than makes one, and the odds turn on whether the song holds, not on the seeker's merit; it may fail until next winter. The rite follows the seeress in *Eiríks saga rauða*, which scholars think was largely invented to honour her host; the warding songs are the part most likely to be old. Völur also travel the halls in winter, outside Iceland, and can be asked to sit for anyone at court.
+  - **The odds.** The faith holds that the völva sees a daughter rather than makes one, and the odds turn on whether the song holds, not on the seeker's merit; it may fail until next winter. The rite follows the seeress in *Eiríks saga rauða*, which scholars think was largely invented to honour her host; the warding songs are the part most likely to be old. Völur also travel the halls in winter and can be asked to sit for anyone at court.
 - **The declaration.** A new daughter declares herself before the thing, perhaps with a name fastened by a gift or the woman's form of her own. When someone shouts *ragr*, she can answer in verse, with steel, by owning seiðr as women's art, with "*ragr* is said of men", or not at all.
 - **The line.** The hall's daughters are fostered, sworn and adopted. Two may bind themselves as sisters by the old oath.
 - **The world.** A martial faith. The skalds fill Valhöll with dead men; the Bædlings say the Allfather's true host has none, and point to the shield-maidens at Brávellir. English courts call valkyries witches. The hall raids to bring its daughters home, and its clergy fight. The faith's devil is Níðhöggr, the malice-striker: its enemy is *níð* itself, the slander shouted at the thing.
@@ -188,6 +189,27 @@ Daoist inner alchemy teaches that an adept nurtures a holy embryo for ten months
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## Ha-Nehpakhot: the women who were turned
+
+*Working name.* A small current inside Judaism, kept by a women's *ḥevrah* (confraternity) in the Jewish street of Arles. It holds no land at the start: it lives under other lords, as the Jews of Arles lived under their archbishop.
+
+The rabbis divide the eunuch made "by the hands of heaven" from the one made "by human hands", and the made eunuch stays, in law, a man. No rabbinic text lets anyone pass from male to female, and a Jewish court would read a daughter of the knife as a man made a eunuch. The Talmud does tell how Leah prayed and the child in her womb was turned into a daughter, Dinah, though it adds that one does not cite miracles. In 1322 or so Kalonymus ben Kalonymus, born at Arles, wrote the satire *Even Boḥan* (*The Touchstone*) in Catalonia. In it he asks God, perhaps in jest, "would that You turn me from male to female", and he describes young Jewish men putting on women's dress for Purim. The Nehpakhot take all of this at its word, in their own voice. They say only the hands of heaven turn, so the faith uses no knife.
+
+- **The gate: the Turning.** *Keep the Fourteenth of Adar* can only be taken in Adar (February or March). It is a five-part rite:
+  - **The scroll.** An elder of the ḥevrah reads Esther in the women's gallery, and beside "it was turned about" she reads the other turnings: Abraham from the furnace, the staff, the sea, and Dinah.
+  - **The revel.** The young men put on the woman's dress for the joke. She keeps it on when the joke is over.
+  - **The prayer.** The men thank God each morning that He did not make them women. She asks aloud for the reverse.
+  - **The name**, on Shushan Purim. The women teach her their blessing, "who made me a woman", from a 15th-century Judeo-Provençal prayer book. She takes a name from the scroll (Dinah, Esther, Sara) or a name of the street, as the Jewish women of Provence were called in the notaries' books (Rosa, Mairona, Bella, Regina, Blanca, Gratiosa, Bonadonna and others).
+  - **Before the elders.** The rabbis allow the dress for one day's merriment, and only "as the town's worthies permit". She can answer with Dinah, text against text, and win her county a licence; lose and be shunned (*niddui*); cite the *Touchstone*; claim the house as its lady and accept the shunning; or put the dress away. A community could shun only by its Christian lord's licence, so a lord who has taken her people under his protection refuses it, and the sentence falls.
+  - **The odds.** The Turning rests on learning, the elder's and her own, and on patience. Every Adar's unanswered prayer makes the next more likely, as Leah's was answered in its time. A seeker of another Jewish faith who is turned joins the ḥevrah.
+- **The line.** Womanhood is what she keeps: the three women's commandments Kalonymus wished for (the days of separation, the portion of the dough, the Sabbath lamp). An elder can teach the prayer to one who will need it, and the women spin together by moonlight.
+- **The world.** A learned, landless faith. A lord of any faith with a daughter of the Turning at court may commission a translation from Arabic, as Robert of Naples employed Kalonymus, and take her people under protection. Jewish lords are asked to rule whether what came forth male is male. Jewish characters think less of daughters of every faith; the Nehpakhot think more.
+- **Tenets.** The Turning, The Three Lamps, and Legalism.
+- **Holy sites.** Arles, Jerusalem (whose county holds Hebron and Leah's tomb), Narbonne, Montpellier, and Hamadan, the tomb of Esther and Mordecai.
+- **What it leaves out.** The old charge that medieval Jews ran the slave and eunuch trade is a historiographic motif, not a finding (Phelan 2023), so no Jewish character in the mod trades in slaves or eunuchs. The faith is not seated in Khazaria, and the narrator never says the Talmud recognised "six genders": those are legal categories for bodies, mostly intersex ones, and only a character may claim them.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## Shared mechanics
 
 - **Marked by the Mother.** A rare trait for men who are trans women before any rite. You can filter for it in the Character Finder to find people to recruit and adopt.
@@ -196,9 +218,10 @@ Daoist inner alchemy teaches that an adept nurtures a holy embryo for ten months
 - **Declare Before Witnesses.** A Marked sister can take a daughter's name before any rite. The rite changes her body, not her name, and a failed or delayed rite never takes the name back.
 - **Sisters' Houses.** A ruler can found a House in her capital county. It belongs to the county, not her family: a later ruler of another faith may let it stand or close it, and closing sends the sisters on to another House rather than deleting them. Each House chooses its own Elder Sister every five years, frays under strain (too few hands, war levies), and splits to found a daughter House next door. Houses draw arrivals and can send newcomers to your court. Cis women of the faith are sisters too, and men of the faith can stay as friends of the House.
 - **The Sisters Choose.** An elective succession law: the ruler, the faith's clergy and its vassals choose an heir from among the ruler's born and adopted children, the women of the faith on the council, and the faithful vassals.
+- **Jewish and Indic neighbours.** Jewish courts think less of a daughter of any faith ("what came forth male is male"), and a Jewish lord may be asked to rule on one at court; the Nehpakhot cancel it. Buddhist, Hindu and Jain courts read a daughter of the knife as a castrated man and think much less of her, and a daughter of the other gates as a man become a woman, which they mind less.
 - **Islamic neighbours.** Islamic courts value a daughter as a trusted servant and think less of her as a ruler: their jesters may mock a daughter who rules, while an Islamic lord may come to trust one in his household.
 - **Arrivals.** Each year a Marked traveller, a woman turned out for bearing no children, or (where there is a House) a friend of the House may come to the court of a ruler of these faiths. Turning someone away sends them on to the next House.
-- **Same-sex marriage.** All three faiths allow it, whatever the game rule says.
+- **Same-sex marriage.** All four faiths allow it, whatever the game rule says.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -312,14 +335,17 @@ Cited in the notes, not read: Kuefler, *The Manly Eunuch* (2001); Messis, *Les e
 </details>
 
 <details>
-<summary><strong>Islamic comparanda</strong> (7 works)</summary>
+<summary><strong>Islamic comparanda</strong> (10 works)</summary>
 
 - Ayalon, David. 1999. *Eunuchs, Caliphs and Sultans: A Study in Power Relationships*. Jerusalem: Magnes Press.
+- Davis, Natalie Zemon. 2006. *Trickster Travels: A Sixteenth-Century Muslim between Worlds*. Hill and Wang.
+- de la Puente, Cristina. 2023. "Al-Ḥakam I in the Andalusi Sources: His Slaves, Eunuchs, and Concubines." *Slavery & Abolition* 44.4: 593–615.
 - El-Azhari, Taef. 2019. *Queens, Eunuchs and Concubines in Islamic History, 661–1257*. Edinburgh University Press.
 - Marmon, Shaun. 1995. *Eunuchs and Sacred Boundaries in Islamic Society*. Oxford University Press.
 - Rowson, Everett K. 1991. "The Categorization of Gender and Sexual Irregularity in Medieval Arabic Vice Lists." In Julia Epstein and Kristina Straub (eds.), *Body Guards: The Cultural Politics of Gender Ambiguity*, 50–79. Routledge.
 - Rowson, Everett K. 1991. "The Effeminates of Early Medina." *Journal of the American Oriental Society* 111.4: 671–693.
 - Rowson, Everett K. 2003. "Gender Irregularity as Entertainment: Institutionalized Transvestism at the Caliphal Court in Medieval Baghdad." In Sharon Farmer and Carol Braun Pasternack (eds.), *Gender and Difference in the Middle Ages*, 45–72. University of Minnesota Press.
+- Rowson, Everett K. 2008. "Homoerotic Liaisons among the Mamluk Elite in Late Medieval Egypt and Syria." In Babayan and Najmabadi (eds.), *Islamicate Sexualities: Translations across Temporal Geographies of Desire*, 204–238. Harvard University Press.
 - Sanders, Paula. 1991. "Gendering the Ungendered Body: Hermaphrodites in Medieval Islamic Law." In Nikki R. Keddie and Beth Baron (eds.), *Women in Middle Eastern History: Shifting Boundaries in Sex and Gender*, 74–95. Yale University Press.
 
 Cited in the notes, not read: Ayalon, David, "On the Eunuchs in Islam," *Jerusalem Studies in Arabic and Islam* 1 (1979): 67–124; El-Rouayheb, *Before Homosexuality*; Babayan and Najmabadi (eds.), *Islamicate Sexualities*.
@@ -362,19 +388,47 @@ Cited in the notes, not read: Ayalon, David, "On the Eunuchs in Islam," *Jerusal
 </details>
 
 <details>
-<summary><strong>Medieval trans studies</strong> (9 works)</summary>
+<summary><strong>Medieval Judaism</strong> (13 works)</summary>
 
-The 2019 *Medieval Feminist Forum* special issue on medieval trans feminism, edited by M. W. Bychowski and Dorothy Kim.
+For Ha-Nehpakhot, and for how Jewish courts answer every faith's daughters. The open-access English of Kalonymus's prayer (Open Siddur, CC BY-SA) was a reading aid only; every line in the mod is rendered afresh from the public-domain Hebrew.
 
+- Chotzner, J. 1900. "Kalonymos ben Kalonymos, a Hebrew Satirist of the Thirteenth Century." *Jewish Quarterly Review* 13.1: 128–146.
+- Fonrobert, Charlotte Elisheva. 2006. "The Semiotics of the Sexed Body in Early Halakhic Discourse." In Matthew Kraus (ed.), *How Should Rabbinic Literature Be Read in the Modern World?*, 79–104. Gorgias.
+- Fonrobert, Charlotte Elisheva. 2007. "Regulating the Human Body: Rabbinic Legal Discourse and the Making of Jewish Gender." In *The Cambridge Companion to the Talmud and Rabbinic Literature*, 270–294. Cambridge University Press.
+- Grabowski, Antoni. 2015. "Eunuch between Economy and Philology: The Case of *carzimasium*." *Mélanges de l'École française de Rome – Moyen Âge* 127.1.
+- Kalonymus ben Kalonymus. c. 1322. *Even Boḥan*. Lemberg, 1865.
+- Lev, Sarra. 2024. *And the Sages Did Not Know: Early Rabbinic Approaches to Intersex*. University of Pennsylvania Press.
+- Neis, Rafael Rachel. 2023. *When a Human Gives Birth to a Raven: Rabbis and the Reproduction of Species*. University of California Press (Luminos).
+- Phelan, Joseph. 2023. "The Jewish 'Monopoly' of the Slave Trade in the Early Middle Ages: The Origins of an Enduring Historical Motif." *Patterns of Prejudice* 57.3: 161–174.
+- Rosen, Tova. 2000. "Circumcised Cinderella: The Fantasies of a Fourteenth-Century Jewish Author." *Prooftexts* 20.1: 87–110.
+- Rosen, Tova. 2003. *Unveiling Eve: Reading Gender in Medieval Hebrew Literature*. University of Pennsylvania Press.
+- Shatzmiller, Joseph. 2023. *Collected Studies, Volume 1: The Jews of Provence*. Academic Studies Press.
+- Strassfeld, Max K. 2013. "Classically Queer: Eunuchs and Androgynes in Rabbinic Literature." PhD dissertation, Stanford University.
+- Strassfeld, Max K. 2022. *Trans Talmud: Androgynes and Eunuchs in Rabbinic Literature*. University of California Press.
+
+Primary texts read through Sefaria: Mishnah and Tosefta Bikkurim; Babylonian Talmud, Berakhot 60a and Yevamot 80b; Maimonides, *Mishneh Torah* (Avodah Zarah 12, Ishut 4, Issurei Bi'ah 16); *Shulḥan Arukh*, Oraḥ Ḥayyim 696:8 with Isserles.
+
+</details>
+
+<details>
+<summary><strong>Medieval trans studies</strong> (14 works)</summary>
+
+The 2019 *Medieval Feminist Forum* special issue on medieval trans feminism, edited by M. W. Bychowski and Dorothy Kim, and three later surveys and re-readings.
+
+- Boyd, David Lorenzo, and Ruth Mazo Karras. 1995. "The Interrogation of a Male Transvestite Prostitute in Fourteenth-Century London." *GLQ* 1.4: 459–465.
 - Bychowski, M. W. 2019. "The Necropolitics of Narcissus: Confessions of Transgender Suicide in the Middle Ages." *Medieval Feminist Forum* 55.1: 207–248.
+- DeVun, Leah. 2021. *The Shape of Sex: Nonbinary Gender from Genesis to the Renaissance*. Columbia University Press.
 - Ellison, Joy, and Nicholas Hoffman. 2019. "The Afterward: Sylvia Rivera and Marsha P. Johnson in the Medieval Imaginary." *Medieval Feminist Forum* 55.1: 267–294.
 - Gutt, Blake. 2019. "Medieval Trans Lives in Anamorphosis: Looking Back and Seeing Differently (Pregnant Men and Backward Birth)." *Medieval Feminist Forum* 55.1: 174–206.
 - Henningsen, Kadin. 2019. "'Calling [herself] Eleanor': Gender Labor and Becoming a Woman in the Rykener Case." *Medieval Feminist Forum* 55.1: 249–266.
+- Karras, Ruth Mazo, and Tom Linkinen. 2016. "John/Eleanor Rykener Revisited." In Doggett and O'Sullivan (eds.), *Founding Feminisms in Medieval Studies: Essays in Honor of E. Jane Burns*, 111–121. D. S. Brewer.
 - Kim, Dorothy, and M. W. Bychowski. 2019. "Visions of Medieval Trans Feminism: An Introduction." *Medieval Feminist Forum* 55.1: 6–41.
 - Lumbley, Coral. 2019. "Imperatrix, Domina, Rex: Conceptualizing the Female King in Twelfth-Century England." *Medieval Feminist Forum* 55.1: 64–99.
 - McGucken, Stephenie. 2019. "Vice & Virtue As Woman?: The Iconography of Gender Identity in the Late Anglo-Saxon Psychomachia Illustrations." *Medieval Feminist Forum* 55.1: 42–63.
 - Nestel, Meghan. 2019. "A Space of Her Own: Genderfluidity and Negotiation in *The Life of Christina of Markyate*." *Medieval Feminist Forum* 55.1: 100–134.
 - Watt, Caitlin G. 2019. "'Car vallés sui et nient mescine': Trans Heroism and Literary Masculinity in *Le Roman de Silence*." *Medieval Feminist Forum* 55.1: 135–173.
+- van der Lugt, Maaike. 2010. "Sex Difference in Medieval Theology and Canon Law: A Tribute to Joan Cadden." *Medieval Feminist Forum* 46.1: 101–121.
+- Wingard, Tess. 2023. "The Trans Middle Ages: Incorporating Transgender and Intersex Studies into the History of Medieval Sexuality." *English Historical Review* 138.593: 933–951.
 
 </details>
 
@@ -441,6 +495,18 @@ Cited in the notes, not read: Furth, *A Flourishing Yin*; Jay, "Another Side of 
 </details>
 
 <details>
+<summary><strong>South Asia</strong> (4 works)</summary>
+
+For how Buddhist, Hindu, Jain and Delhi Sultanate courts read every faith's daughters.
+
+- Cabezón, José Ignacio. 2017. *Sexuality in Classical South Asian Buddhism*. Wisdom Publications.
+- Gyatso, Janet. 2003. "One Plus One Makes Three: Buddhist Gender, Monasticism, and the Law of the Non-excluded Middle." *History of Religions* 43.2: 89–115.
+- Jackson, Peter. 1999. *The Delhi Sultanate: A Political and Military History*. Cambridge University Press.
+- Zwilling, Leonard, and Michael J. Sweet. 2000. "The Evolution of Third-Sex Constructs in Ancient India: A Study in Ambiguity." In Leslie and McGee (eds.), *Invented Identities: The Interplay of Gender, Religion and Politics in India*, 99–132. Oxford University Press.
+
+</details>
+
+<details>
 <summary><strong>The steppe, Korea and Southeast Asia</strong> (7 works)</summary>
 
 - Andaya, Leonard Y. 2018. "The Bissu: Study of a Third Gender in Indonesia." In Zamfira, de Montlibert and Radu (eds.), *Gender in Focus*, 64–87. Budrich. (A reprint of Andaya 2000 in B. Andaya (ed.), *Other Pasts*.)
@@ -456,11 +522,16 @@ Cited in the notes, not read: Davies, Sharyn Graham, *Challenging Gender Norms: 
 </details>
 
 <details>
-<summary><strong>General and comparative history</strong> (5 works)</summary>
+<summary><strong>General and comparative history</strong> (10 works)</summary>
 
 - Adkins, Evelyn. 2020. "The Politics of Transgender Representation in Apuleius' *Golden Ass* and *Loukios, or the Ass*." In Surtees and Dyer (eds.), *Exploring Gender Diversity in the Ancient World*, 157–168.
+- Álvarez-Pedrosa, Juan Antonio (ed.). 2021. *Sources of Slavic Pre-Christian Religion*. Brill.
+- Álvarez-Pedrosa, Juan Antonio, and Enrique Santos Marinas. 2023. *Rituals in Slavic Pre-Christian Religion: Festivals, Banqueting, and Divination*. Arc Humanities Press.
 - Betancourt, Roland. 2021. "Where Are All the Trans Women in Byzantium?" In LaFleur, Raskolnikov and Kłosowska (eds.), *Trans Historical*.
+- Krass, Andreas. 2012. "Saying It with Flowers: Post-Foucauldian Literary History and the Poetics of Taboo in a Premodern German Love Song." In Spector, Puff and Herzog (eds.), *After The History of Sexuality: German Genealogies With and Beyond Foucault*, 63–75. Berghahn.
 - LaFleur, Greta, Masha Raskolnikov, and Anna Kłosowska (eds.). 2021. *Trans Historical: Gender Plurality Before the Modern*. Cornell University Press.
+- Levin, Eve. 1989. *Sex and Society in the World of the Orthodox Slavs, 900–1700*. Cornell University Press.
+- Puff, Helmut. 2012. "After the History of (Male) Homosexuality." In Spector, Puff and Herzog (eds.), *After The History of Sexuality*, 17–30. Berghahn.
 - Surtees, Allison, and Jennifer Dyer (eds.). 2020. *Exploring Gender Diversity in the Ancient World*. Edinburgh University Press.
 - Wiesner-Hanks, Merry E. 2011. *Gender in History: Global Perspectives*. 2nd ed. Wiley-Blackwell.
 
