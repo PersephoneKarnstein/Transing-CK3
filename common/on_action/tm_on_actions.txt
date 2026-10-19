@@ -209,6 +209,21 @@ tm_on_game_start = {
 yearly_playable_pulse = {
 	on_actions = {
 		tm_yearly_playable
+		tm_yearly_houses
+	}
+}
+
+# Every lord who holds a county with a Sisters' House, of any faith (tm_house_effects.txt).
+tm_yearly_houses = {
+	effect = {
+		save_scope_as = tm_house_holder
+		every_held_title = {
+			limit = {
+				tier = tier_county
+				has_variable = tm_house
+			}
+			tm_house_yearly_effect = yes
+		}
 	}
 }
 
@@ -218,6 +233,15 @@ tm_yearly_playable = {
 		rite ?= { rite_has_parameter = tm_sisters_faith }
 	}
 	effect = {
+		# Saves from before 0.2 kept the refuge on the house; it now belongs to the capital county.
+		if = {
+			limit = { house ?= { has_variable = tm_refuge } }
+			house = { remove_variable = tm_refuge }
+			if = {
+				limit = { capital_county ?= { NOT = { has_variable = tm_house } } }
+				capital_county = { tm_found_house_effect = yes }
+			}
+		}
 		random = {
 			chance = 6
 			modifier = {								# the Mother House draws them
@@ -228,13 +252,21 @@ tm_yearly_playable = {
 				add = 3
 				any_courtier = { tm_is_daughter_trigger = yes }
 			}
-			modifier = {								# a declared refuge (tm_declare_refuge_decision)
+			modifier = {								# a Sisters' House (tm_found_house_decision)
 				add = 15
-				house ?= { has_variable = tm_refuge }
+				tm_holds_sisters_house_trigger = yes
+			}
+			modifier = {								# the Gift Alone: word travels that no one is cut unasked
+				add = 3
+				rite ?= { rite_has_doctrine = tm_knife_gift_alone }
 			}
 			random_list = {
-				70 = { trigger_event = tm_arrival.0001 }	# a Marked traveller
-				30 = { trigger_event = tm_arrival.0003 }	# a woman turned out for barrenness
+				60 = { trigger_event = tm_arrival.0001 }	# a Marked traveller
+				25 = { trigger_event = tm_arrival.0003 }	# a woman turned out for barrenness
+				15 = {										# a friend of the House
+					trigger = { tm_holds_sisters_house_trigger = yes }
+					trigger_event = tm_arrival.0004
+				}
 			}
 		}
 	}

@@ -22,6 +22,11 @@ tm_arrival.0001 = {
 			trait = tm_transgender
 			save_scope_as = tm_arrival
 		}
+		# She says what she is: she arrives already named (Serano: recognise, do not diagnose).
+		scope:tm_arrival = {
+			tm_give_daughter_name_effect = yes
+			tm_declare_effect = yes
+		}
 	}
 
 	option = {	# Shelter her
@@ -45,9 +50,10 @@ tm_arrival.0001 = {
 		}
 		trigger_event = { id = tm_arrival.0002 days = 2 }	# after her rename (tm_knife.0002 fires at 1 day)
 	}
-	option = {	# Turn her away
+	option = {	# Turn her away: she goes on to another House, or to the roads
 		name = tm_arrival.0001.c
 		add_piety = -25
+		scope:tm_arrival = { tm_send_on_effect = { EXCLUDE = root } }
 	}
 }
 
@@ -141,9 +147,63 @@ tm_arrival.0003 = {
 			add_opinion = { target = root modifier = grateful_opinion opinion = 40 }
 		}
 	}
-	option = {	# Turn her away
+	option = {	# Turn her away: she goes on to another House, or to the roads
 		name = tm_arrival.0003.c
 		add_piety = -15
+		scope:tm_cast_out = { tm_send_on_effect = { EXCLUDE = root } }
+	}
+}
+
+# A friend of the House: a man or a woman of the faith asks to stay and serve as the House's guest. The Houses
+# are not separatist (research/book_raha_vdd_trans_femme_futures.md row 19). Root = the ruler.
+tm_arrival.0004 = {
+	type = character_event
+	title = tm_arrival.0004.t
+	desc = tm_arrival.0004.desc
+	theme = faith
+	left_portrait = { character = scope:tm_friend animation = personality_rational }
+
+	trigger = {
+		exists = capital_province
+	}
+
+	immediate = {
+		random_list = {
+			60 = {
+				create_character = {
+					gender = male
+					age = { 20 50 }
+					culture = root.capital_county.culture
+					faith = root.faith
+					location = root.capital_province
+					save_scope_as = tm_friend
+				}
+			}
+			40 = {
+				create_character = {
+					gender = female
+					age = { 20 50 }
+					culture = root.capital_county.culture
+					faith = root.faith
+					location = root.capital_province
+					save_scope_as = tm_friend
+				}
+			}
+		}
+	}
+
+	option = {	# Welcome, friend
+		name = tm_arrival.0004.a
+		add_courtier = scope:tm_friend
+		scope:tm_friend = {
+			add_character_modifier = { modifier = tm_house_friend_modifier }
+			add_opinion = { target = root modifier = grateful_opinion opinion = 20 }
+		}
+		add_piety = 10
+	}
+	option = {	# Send them on to another House
+		name = tm_arrival.0004.b
+		scope:tm_friend = { tm_send_on_effect = { EXCLUDE = root } }
 	}
 }
 

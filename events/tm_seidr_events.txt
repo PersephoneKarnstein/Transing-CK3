@@ -30,8 +30,7 @@ tm_seidr.0001 = {
 					trigger_event = { id = tm_seidr.0003 days = 3 }
 				}
 			}
-			40 = {
-				modifier = { add = 20 has_trait = craven }
+			40 = {								# no trait makes the spirits refuse: ergi and craven are one slur
 				desc = tm_seidr.0001.a.failure
 				send_interface_toast = {
 					type = event_toast_effect_bad
@@ -114,6 +113,12 @@ tm_seidr.0003 = {
 			modifier = { add = -15 prowess >= 12 }
 			add_trait = wounded_1
 		}
+	}
+	option = {	# Own it: seiðr is women's art, and I am a woman who does it
+		name = tm_seidr.0003.d
+		add_piety = 50
+		add_prestige = 25
+		add_stress = -10
 	}
 	option = {	# Let them talk
 		name = tm_seidr.0003.c

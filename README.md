@@ -116,7 +116,8 @@ Good first tests:
 - **The three rites.** As a Marked man, take each faith's decision: *Take the Knife*, *Go Under the High Seat* and *Gestate the Jade Embryo*.
 - **Re-embodiment.** After a rite, do your titles, marriage, children, adoptive parents and skills carry over?
 - **Adoption.** Try *Take as Daughter* on a courtier, a ward and a guest.
-- **Arrivals and refuges.** Over a long reign, do Marked travellers and cast-out women arrive at your court?
+- **Arrivals and Houses.** Found a Sisters' House. Over a long reign, do Marked travellers, cast-out women and friends of the House arrive? Does the House choose an Elder Sister, and split when it is strained? Give the county to a ruler of another faith and see whether they close it.
+- **Declare Before Witnesses** and **The Sisters Choose** (an elective succession law): does the declared name survive the rite, and does the election pick sensible heirs?
 
 When something breaks, [open an issue](https://github.com/PersephoneKarnstein/Transing-CK3/issues/new?labels=bug) and include:
 
@@ -135,11 +136,11 @@ The game's console can run test scripts from `tools/run/`. Copy them into the `r
 The Sisters are nostalgic for a sect almost nobody remembers, the gallae of the Mother at Pessinus, a day's ride away. They say that house never closed, and they remember it kinder than it was. What they refuse is what the Byzantine court offers in its place. The court calls its eunuchs angels and buys them as boys. The Sisters want neither the title nor the market. One who takes the knife rises a daughter, not a third thing.
 
 - **The gate: the knife.** *Take the Knife* is a sacrament with a sponsor, ending in a new name. Each faith picks one of three houses for who may be cut:
-  - **Grandmother's House:** any captive, in the old cruel way.
-  - **Aunt Bea's House:** only violent prisoners, each under a sponsor who walked the same road, with a washout path for those who will not change.
-  - **Gift Alone:** only those who ask.
+  - **Grandmother's House:** any captive, in the old cruel way. She called them eunuchs, not daughters: unmanning them was the point.
+  - **Aunt Bea's House:** only violent prisoners, each under a sponsor who walked the same road, with a washout path for those who will not change. It holds that every woman it makes is a woman, and admits that it keeps cells.
+  - **Gift Alone:** only those who ask. "A gift you cannot refuse is not a gift." The strongest doctrine over a long game.
 - **The line.** Daughters choose their heirs rather than breed them. Inheritance runs through adopted daughters, on the model of Byzantine convent charters that passed estates to women "in perpetuity."
-- **The world.** A ruler can petition the Mother House to declare their house a refuge. Marked travellers and women turned out by their families then come far more often, and the house can send to the Mother House for newcomers. The *Rescue the Daughters* war frees captive daughters from a neighbour.
+- **The world.** The *Rescue the Daughters* war frees captive daughters from a neighbour. Sisters' Houses (shared by all three faiths, below) spread from Dorylaion.
 - **Tenets.** Day of Blood, Daughters Chosen Not Born, and Unbending Sisterhood.
 - **Head of faith.** The Mother of Mothers, Theia Beatrike, an elder daughter seated at Dorylaion.
 - **The schism to come.** The main rite is Aristotelian: the cut are women. A planned Galenic splinter takes the court's view that the cut are "a kind of their own." The Aristotelians call that "the old cage with a new name."
@@ -152,7 +153,7 @@ The Sisters are nostalgic for a sect almost nobody remembers, the gallae of the 
 
 In the north the sanctioned crossing has always run toward manhood. A man who went the other way was *ergi*, outlawed by law and killed by custom. The Bæddels keep the other road. Our sources find no castration in the north at all, so this faith does not use the knife.
 
-- **The gate: seiðr.** In *Go Under the High Seat*, the völva sings and the seeker goes under. The spirits may refuse, and then you try again next winter. A daughter then declares herself before the thing. When someone shouts *ergi*, she answers in verse, with steel, or not at all.
+- **The gate: seiðr.** In *Go Under the High Seat*, the völva sings and the seeker goes under. The spirits may refuse, and then you try again next winter. A daughter then declares herself before the thing. When someone shouts *ergi*, she answers in verse, with steel, by owning seiðr as women's art, or not at all.
 - **The line.** The hall's daughters are fostered, sworn and adopted. Two may bind themselves as sisters by the old oath.
 - **The world.** A martial faith. Óðinn's host has no men in it. The hall raids to bring its daughters home, and its clergy fight.
 - **Tenets.** Seiðr Unmans, Óðinn's Host, and Daughters of the Hall.
@@ -166,7 +167,7 @@ In the north the sanctioned crossing has always run toward manhood. A man who we
 
 Daoist inner alchemy teaches that an adept gestates an immortal embryo for ten months and is born from it. The Way turns the work the other way: the adept gestates her own body and is born as herself. The palace calls such women eunuchs so that it need not call them women. The Way answers with Confucius's rectification of names. A daughter named before witnesses is a daughter, and any eunuch who seeks the same is received as a sister.
 
-- **The gate: the jade embryo.** In *Gestate the Jade Embryo*, a guarantor vouches for the adept and a nüguan asks her "Will you ever repent?" Ten months follow, with trials in the third and sixth months. Either trial can lose the embryo, and then the work begins again. Birth comes from the crown of the head, and a name is given before witnesses.
+- **The gate: the jade embryo.** In *Gestate the Jade Embryo*, a guarantor vouches for the adept and a nüguan asks her "Will you ever repent?" Ten months follow. In the third month a palace censor wants her name in the eunuchs' register; in the sixth her family writes to summon her home. Either can delay the birth, but nothing she has done is lost. Birth comes from the crown of the head, and a name is given before witnesses.
 - **The line.** Temple and burial societies hold their sisters' goods in common against crown confiscation. They adopt the heirs who will keep the rites.
 - **The world.** A courtly faith of intrigue and stewardship. A planned palace faction will contend with the scholar-officials inside the imperial court.
 - **Tenets.** The Jade Embryo, Rectified Names, and Temple Societies.
@@ -179,14 +180,18 @@ Daoist inner alchemy teaches that an adept gestates an immortal embryo for ten m
 - **Marked by the Mother.** A rare trait for men who are trans women before any rite. You can filter for it in the Character Finder to find people to recruit and adopt.
 - **Re-embodiment.** After a rite, the daughter continues in a female body with the same face. Her titles, marriage, children, parents, adoptive parents, skills and lifestyle experience carry over. Re-embodied daughters are infertile. A game rule turns this off.
 - **Take as Daughter.** Each faith's own adoption. Unlike vanilla adoption it accepts adults, and it ignores the rules that block children with landed relatives.
-- **Arrivals.** Each year a Marked traveller, or a woman turned out for bearing no children, may come to the court of a ruler of these faiths.
+- **Declare Before Witnesses.** A Marked sister can take a daughter's name before any rite. The rite changes her body, not her name, and a failed or delayed rite never takes the name back.
+- **Sisters' Houses.** A ruler can found a House in her capital county. It belongs to the county, not her family: a later ruler of another faith may let it stand or close it, and closing sends the sisters on to another House rather than deleting them. Each House chooses its own Elder Sister every five years, frays under strain (too few hands, war levies), and splits to found a daughter House next door. Houses draw arrivals and can send newcomers to your court. Cis women of the faith are sisters too, and men of the faith can stay as friends of the House.
+- **The Sisters Choose.** An elective succession law: the ruler, the faith's clergy and its vassals choose an heir from among the ruler's born and adopted children, the women of the faith on the council, and the faithful vassals.
+- **Arrivals.** Each year a Marked traveller, a woman turned out for bearing no children, or (where there is a House) a friend of the House may come to the court of a ruler of these faiths. Turning someone away sends them on to the next House.
 - **Same-sex marriage.** All three faiths allow it, whatever the game rule says.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Roadmap
 
-- [x] Dorleyism: faith, culture, the three houses of the knife, the Dorley prisoner path, refuges
+- [x] Dorleyism: faith, culture, the three houses of the knife, the Dorley prisoner path
+- [x] Sisters' Houses, Declare Before Witnesses, The Sisters Choose
 - [x] Bæddel and the Way of the Jade Embryo: faiths, tenets and gates
 - [x] Re-embodiment, Take as Daughter, arrivals
 - [ ] Bæddel: insult duels, landless war-band play, Christian outlawry pressure
@@ -239,12 +244,14 @@ Works the research for this mod read, in full or in named chapters. Works it onl
 - Bhatt, Talia. 2025. *Trans/Rad/Fem: Essays on Transfeminism, Book 1*. Self-published.
 - Chu, Andrea Long. 2019. *Females*. Verso.
 - Gleeson, Jules Joanne, and Elle O'Rourke (eds.). 2021. *Transgender Marxism*. Pluto Press. (Read in full: introduction, 14 chapters and Jordy Rosenberg's afterword.)
+- Raha, Nat, and Mijke van der Drift. 2024. *Trans Femme Futures: Abolitionist Ethics for Transfeminist Worlds*. Pluto Press.
+- Serano, Julia. 2016 [2007]. *Whipping Girl: A Transsexual Woman on Sexism and the Scapegoating of Femininity*. 2nd ed. Seal Press.
 - Stryker, Susan. 2026. *Transgender History: A Resource for Today's Struggle—and Tomorrow's*. 3rd ed. Seal Press.
 - Stryker, Susan, and Aren Z. Aizura (eds.). 2013. *The Transgender Studies Reader 2*. Routledge.
 - Stryker, Susan, and Dylan McCarthy Blackston (eds.). 2022. *The Transgender Studies Reader Remix*. Routledge.
 - Stryker, Susan, and Stephen Whittle (eds.). 2006. *The Transgender Studies Reader*. Routledge.
 
-Cited in the notes, not read: Bhatt, Talia, *Brown/Trans/Les* (2026); Feinberg, Leslie, *Transgender Warriors* (in the Remix bibliography); Koyama, Emi, *The Transfeminist Manifesto* (2001); Lewis, Sophie, *Abolish the Family* (Verso 2022); O'Brien, M. E., *Family Abolition* (Pluto 2023); Raha, Nat, and Mijke van der Drift, *Trans Femme Futures* (Pluto 2024); Serano, Julia, *Whipping Girl* (2007).
+Cited in the notes, not read: Bhatt, Talia, *Brown/Trans/Les* (2026); Feinberg, Leslie, *Transgender Warriors* (in the Remix bibliography); Koyama, Emi, *The Transfeminist Manifesto* (2001); Lewis, Sophie, *Abolish the Family* (Verso 2022); O'Brien, M. E., *Family Abolition* (Pluto 2023).
 
 ### Byzantium, Islam and the eunuch traditions
 
@@ -254,10 +261,11 @@ Cited in the notes, not read: Bhatt, Talia, *Brown/Trans/Les* (2026); Feinberg, 
 - Neville, Leonora. 2019. *Byzantine Gender*. Past Imperfect. Arc Humanities Press.
 - Rapp, Claudia. 2016. *Brother-Making in Late Antiquity and Byzantium: Monks, Laymen, and Christian Ritual*. Oxford University Press.
 - Rowson, Everett K. 1991. "The Effeminates of Early Medina." *Journal of the American Oriental Society* 111.4: 671–693.
+- Sanders, Paula. 1991. "Gendering the Ungendered Body: Hermaphrodites in Medieval Islamic Law." In Nikki R. Keddie and Beth Baron (eds.), *Women in Middle Eastern History: Shifting Boundaries in Sex and Gender*, 74–95. Yale University Press.
 - Tougher, Shaun. 2008. *The Eunuch in Byzantine History and Society*. Routledge. (Read in the 2009 Taylor & Francis e-library edition.)
 - Tougher, Shaun. 2013. "Bearding Byzantium: Masculinity, Eunuchs and the Byzantine Life Course." In Neil and Garland (eds.), *Questions of Gender in Byzantine Society*, 153–166.
 
-Cited in the notes, not read: Ayalon, David, "On the Eunuchs in Islam," *Jerusalem Studies in Arabic and Islam* 1 (1979): 67–124; Kuefler, *The Manly Eunuch* (2001); Messis, *Les eunuques à Byzance* (2014); Mullett on Theophylact of Ochrid's *In Defence of Eunuchs*; Ringrose, *The Perfect Servant* (2003); Sanders, Paula, "Gendering the Ungendered Body: Hermaphrodites in Medieval Islamic Law" (1991).
+Cited in the notes, not read: Ayalon, David, "On the Eunuchs in Islam," *Jerusalem Studies in Arabic and Islam* 1 (1979): 67–124; Kuefler, *The Manly Eunuch* (2001); Messis, *Les eunuques à Byzance* (2014); Mullett on Theophylact of Ochrid's *In Defence of Eunuchs*; Ringrose, *The Perfect Servant* (2003).
 
 ### Northern Europe
 

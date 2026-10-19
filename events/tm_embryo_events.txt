@@ -20,7 +20,9 @@ tm_embryo.0001 = {
 	}
 }
 
-# Third month: stilling the essence. Root = the adept.
+# Third month: stilling the essence, and the palace censor at the gate. The danger is outside her: the
+# censor wants her entered in the eunuchs' register. A failure delays the gestation; it never resets it
+# (Serano: the gate recognises, it does not test). Root = the adept.
 tm_embryo.0010 = {
 	type = character_event
 	title = tm_embryo.0010.t
@@ -29,33 +31,46 @@ tm_embryo.0010 = {
 	left_portrait = { character = root animation = personality_rational }
 	trigger = { has_variable = tm_embryo_active }
 
-	option = {	# Sit through the stillness alone
+	option = {	# Hold the stillness; let the censor wait at the gate
 		name = tm_embryo.0010.a
 		random_list = {
-			75 = {
+			70 = {
 				modifier = { add = { value = learning multiply = 2 } }
 				modifier = { add = 20 has_personal_tenet_flag = tm_personal_embryo_easier }
-				modifier = { add = 15 has_trait = patient }
 				desc = tm_embryo.trial_kept
 				trigger_event = { id = tm_embryo.0011 days = { 80 100 } }
 			}
-			25 = {
-				modifier = { add = 15 has_trait = impatient }
-				desc = tm_embryo.trial_lost
-				tm_embryo_lost_effect = yes
+			30 = {
+				desc = tm_embryo.trial_delayed
+				tm_embryo_delayed_effect = { EVENT = tm_embryo.0010 }
 			}
 		}
 	}
-	option = {	# Pay a master to sit with me
+	option = {	# The sisters of the guan stand at the gate for me
 		name = tm_embryo.0010.b
+		trigger = {
+			any_courtier = {
+				NOT = { this = root }
+				OR = { tm_is_daughter_trigger = yes has_trait = tm_transgender }
+				faith = root.faith
+			}
+		}
+		trigger_event = { id = tm_embryo.0011 days = { 80 100 } }
+	}
+	option = {	# Pay the censor to forget the road to my door
+		name = tm_embryo.0010.c
 		trigger = { gold >= 30 }
 		remove_short_term_gold = 30
 		trigger_event = { id = tm_embryo.0011 days = { 80 100 } }
 	}
+	option = {	# Set the work down for now
+		name = tm_embryo.0010.d
+		tm_embryo_set_down_effect = yes
+	}
 }
 
-# Sixth month: the red dragon. The women's alchemy cuts the dragon to make a body like a man's; the adept
-# turns the same work the other way and teaches her body the moon's tides. Root = the adept.
+# Sixth month: the red dragon, and a letter from home. Her family summons her back to marry and keep the
+# ancestral rites. Root = the adept.
 tm_embryo.0011 = {
 	type = character_event
 	title = tm_embryo.0011.t
@@ -64,27 +79,29 @@ tm_embryo.0011 = {
 	left_portrait = { character = root animation = personality_zealous }
 	trigger = { has_variable = tm_embryo_active }
 
-	option = {
+	option = {	# Turn the work, and leave the letter unanswered
 		name = tm_embryo.0011.a
 		random_list = {
-			80 = {
+			75 = {
 				modifier = { add = { value = learning multiply = 2 } }
-				modifier = { add = 15 has_trait = temperate }
 				desc = tm_embryo.trial_kept
 				trigger_event = { id = tm_embryo.0012 days = { 110 130 } }
 			}
-			20 = {
-				modifier = { add = 15 has_trait = gluttonous }
-				desc = tm_embryo.trial_lost
-				tm_embryo_lost_effect = yes
+			25 = {
+				desc = tm_embryo.trial_delayed
+				tm_embryo_delayed_effect = { EVENT = tm_embryo.0011 }
 			}
 		}
 	}
-	option = {
+	option = {	# My guarantor answers for the house that shelters me
 		name = tm_embryo.0011.b
 		trigger = { piety >= 50 }
 		add_piety = -50
 		trigger_event = { id = tm_embryo.0012 days = { 110 130 } }
+	}
+	option = {	# Set the work down for now
+		name = tm_embryo.0011.c
+		tm_embryo_set_down_effect = yes
 	}
 }
 

@@ -1,0 +1,96 @@
+﻿# The Sisters Choose (tm_sisters_elective_succession_law).
+# Root = elector; scope:candidate, scope:title, scope:holder, scope:holder_candidate as in vanilla.
+# Only rulers can be electors, so the House's voice comes through clergy (the chaplain is a woman in every
+# Sisters' faith) and same-faith vassals.
+
+tm_sisters_elective = {
+	elector_vote_strength = {
+		base = 1
+		modifier = {			# the faith's own clergy speak for the House
+			add = 1
+			is_clergy = yes
+		}
+	}
+
+	electors = {
+		character_sets = {
+			tm_sisters_electors_holder = {
+				type = holder
+			}
+			tm_sisters_electors_vassals = {
+				type = holder_direct_vassals
+				limit = {
+					is_adult = yes
+					is_incapable = no
+					faith = scope:holder.faith
+				}
+			}
+			tm_sisters_electors_clergy = {
+				type = same_faith_clergy
+				limit = {
+					is_adult = yes
+					is_incapable = no
+				}
+			}
+		}
+	}
+
+	candidate_score = {
+		base = 0
+		elector_self_voting_pattern_feudal_elective_modifier = yes
+		holder_voting_pattern_feudal_elective_modifier = yes
+		elector_voting_pattern_opinion_feudal_elective_modifier = yes
+		modifier = {			# a daughter or a Marked sister
+			add = 40
+			scope:candidate = {
+				OR = {
+					tm_is_daughter_trigger = yes
+					has_trait = tm_transgender
+				}
+			}
+		}
+		modifier = {			# of the faith
+			add = 30
+			scope:candidate = { faith = scope:holder.faith }
+		}
+		modifier = {			# an Elder Sister of a House
+			add = 20
+			scope:candidate = { has_character_modifier = tm_elder_sister_modifier }
+		}
+		modifier = {
+			add = {
+				value = scope:candidate.learning
+				add = scope:candidate.diplomacy
+			}
+		}
+	}
+
+	candidates = {
+		character_sets = {
+			tm_sisters_elective_family = {
+				type = holder_close_or_extended_family
+				limit = {
+					is_child_of = scope:holder		# born or adopted: adoption sits in the child list
+					feudal_elective_potential_landless_dynastic_candidate_trigger = yes
+				}
+			}
+			tm_sisters_elective_council = {
+				type = holder_council_members
+				limit = {
+					faith = scope:holder.faith
+					OR = {
+						is_female = yes
+						tm_is_daughter_trigger = yes
+					}
+				}
+			}
+			tm_sisters_elective_vassals = {
+				type = holder_direct_vassals
+				limit = {
+					faith = scope:holder.faith
+					feudal_elective_potential_landed_candidate_trigger = yes
+				}
+			}
+		}
+	}
+}

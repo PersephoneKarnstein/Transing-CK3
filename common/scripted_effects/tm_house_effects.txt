@@ -1,0 +1,157 @@
+﻿# Adelphai Dorleyaiou — the Sisters' Houses. Design: research/book_raha_vdd_trans_femme_futures.md rows 1, 5, 19.
+# A House is a set of variables on a county title:
+#   tm_house            the House stands here
+#   tm_house_strain     0+; rises when too few hands or the lord is at war, falls with care; at 6 it splits
+#   tm_elder_sister     the character chosen Elder Sister
+#   tm_elder_term       expires after five years; when gone, the sisters choose again
+#   tm_house_tolerated_by   a lord of another faith who chose to let it stand
+
+# Scope: the county.
+tm_found_house_effect = {
+	set_variable = tm_house
+	set_variable = { name = tm_house_strain value = 0 }
+	add_county_modifier = { modifier = tm_sisters_house_county_modifier }
+}
+
+# Scope: the county. scope:tm_house_holder = the lord closing it. The residents are not deleted: each walks
+# to another House (a ruler who holds one), or takes to the roads.
+tm_close_house_effect = {
+	remove_variable = tm_house
+	remove_variable = tm_house_strain
+	remove_variable = tm_elder_sister
+	remove_variable = tm_elder_term
+	remove_variable = tm_house_tolerated_by
+	remove_county_modifier = tm_sisters_house_county_modifier
+	scope:tm_house_holder = {
+		every_courtier = {
+			limit = {
+				tm_house_member_trigger = yes
+				is_imprisoned = no
+			}
+			tm_send_on_effect = { EXCLUDE = scope:tm_house_holder }
+		}
+	}
+}
+
+# Scope: a character with nowhere to stay. Sends her to a ruler who keeps a Sisters' House, if any;
+# otherwise to the roads (the pool). Never deletes her. EXCLUDE = a ruler not to send her to.
+tm_send_on_effect = {
+	save_scope_as = tm_sent_on
+	if = {
+		limit = {
+			any_ruler = {
+				tm_holds_sisters_house_trigger = yes
+				NOT = { this = $EXCLUDE$ }
+			}
+		}
+		random_ruler = {
+			limit = {
+				tm_holds_sisters_house_trigger = yes
+				NOT = { this = $EXCLUDE$ }
+			}
+			weight = {
+				base = 1
+				modifier = { add = 4 faith = scope:tm_sent_on.faith }
+			}
+			add_courtier = scope:tm_sent_on
+		}
+	}
+	else_if = {
+		limit = { is_courtier = yes }
+		move_to_pool = yes
+	}
+}
+
+# The yearly life of one House. Scope: the county. scope:tm_house_holder = its holder.
+tm_house_yearly_effect = {
+	save_scope_as = tm_house_county
+	if = {
+		# A lord of another faith: tolerate or close, once per lord.
+		limit = {
+			scope:tm_house_holder = { NOT = { rite ?= { rite_has_parameter = tm_sisters_faith } } }
+			NOT = {
+				has_variable = tm_house_tolerated_by
+				var:tm_house_tolerated_by = scope:tm_house_holder
+			}
+		}
+		scope:tm_house_holder = { trigger_event = tm_house.0050 }
+	}
+	else_if = {
+		limit = { scope:tm_house_holder = { rite ?= { rite_has_parameter = tm_sisters_faith } } }
+		# Strain: hands and war.
+		if = {
+			limit = {
+				scope:tm_house_holder = {
+					NOT = { any_courtier = { count >= 2 tm_house_member_trigger = yes is_adult = yes } }
+				}
+			}
+			change_variable = { name = tm_house_strain add = 1 }
+		}
+		else_if = {
+			limit = {
+				scope:tm_house_holder = {
+					any_courtier = { count >= 4 tm_house_member_trigger = yes is_adult = yes }
+				}
+			}
+			change_variable = { name = tm_house_strain add = -1 }
+		}
+		if = {
+			limit = { scope:tm_house_holder = { is_at_war = yes } }		# levies drawn from the House's county
+			change_variable = { name = tm_house_strain add = 1 }
+		}
+		if = {
+			limit = { var:tm_house_strain < 0 }
+			set_variable = { name = tm_house_strain value = 0 }
+		}
+
+		# The Elder Sister's term.
+		if = {
+			limit = {
+				OR = {
+					NOT = { has_variable = tm_elder_term }
+					NOT = { has_variable = tm_elder_sister }
+					var:tm_elder_sister = {
+						OR = {
+							is_alive = no
+							NOT = { is_courtier_of = scope:tm_house_holder }
+						}
+					}
+				}
+				scope:tm_house_holder = { any_courtier = { tm_elder_sister_eligible_trigger = yes } }
+			}
+			scope:tm_house_holder = { trigger_event = tm_house.0010 }
+		}
+		else_if = {
+			limit = { var:tm_house_strain >= 6 }
+			scope:tm_house_holder = { trigger_event = tm_house.0030 }
+		}
+		else_if = {
+			limit = {
+				var:tm_house_strain >= 3
+				has_variable = tm_elder_sister
+				var:tm_elder_sister = { is_alive = yes }
+			}
+			random = {
+				chance = 50
+				scope:tm_house_holder = { trigger_event = tm_house.0020 }
+			}
+		}
+		else = {
+			random = {
+				chance = 15
+				scope:tm_house_holder = { trigger_event = tm_house.0040 }
+			}
+		}
+	}
+}
+
+# Named before witnesses. Scope: the one declaring.
+tm_declare_effect = {
+	set_variable = tm_declared
+	add_character_modifier = { modifier = tm_declared_modifier }
+	add_prestige = 25
+	if = {
+		limit = { has_trait = tm_transgender }
+		add_stress = -50
+	}
+}

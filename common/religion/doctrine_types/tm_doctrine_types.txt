@@ -78,6 +78,13 @@ tm_knife_gift_alone = {
 		tm_knife_voluntary
 		tm_rescue_daughters_cb
 	}
+
+	# The best long-run doctrine (Raha & van der Drift; user decision 2026-10-18): playing well and playing
+	# kind agree. More arrivals too (tm_on_actions.txt) and AI Houses (tm_found_house_decision).
+	character_modifier = {
+		monthly_piety_gain_mult = 0.1
+		same_faith_opinion = 5
+	}
 }
 
 #############################

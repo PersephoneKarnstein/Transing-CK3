@@ -22,11 +22,24 @@ tm_refuge.0001 = {
 	}
 }
 
-# The Mother House sends word of three who need a home. Root = the ruler.
+# The Houses send word of three who need a hearth. Any of them may decline (an invitation, not a
+# recruitment). Root = the ruler.
 tm_refuge.0010 = {
 	type = character_event
 	title = tm_refuge.0010.t
-	desc = tm_refuge.0010.desc
+	desc = {
+		desc = tm_refuge.0010.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:tm_cand_young = { has_variable = tm_declines } }
+				desc = tm_refuge.0010.desc_young_declines
+			}
+			triggered_desc = {
+				trigger = { scope:tm_cand_elder = { has_variable = tm_declines } }
+				desc = tm_refuge.0010.desc_elder_declines
+			}
+		}
+	}
 	theme = faith
 	left_portrait = { character = root animation = personality_rational }
 	lower_left_portrait = scope:tm_cand_child
@@ -34,41 +47,43 @@ tm_refuge.0010 = {
 	lower_right_portrait = scope:tm_cand_elder
 
 	immediate = {
-		# A Marked girl, still a child. She can be taken as a daughter now; the knife waits until 16.
+		# A Marked girl, still a child. She can be taken as a daughter now; the gate waits until 16.
 		create_character = {
 			gender = male
 			age = { 6 11 }
-			culture = culture:kybeline
+			culture = root.capital_county.culture
 			faith = root.faith
 			dynasty = none
 			location = root.capital_province
 			trait = tm_transgender
 			save_scope_as = tm_cand_child
 		}
-		# A young daughter of the knife and an elder sister. With re-embodiment on, they already have the
-		# female body (and are infertile, as re-embodied daughters are); otherwise the body is male.
+		scope:tm_cand_child = {
+			tm_give_daughter_name_effect = yes
+			set_variable = tm_declared
+		}
+		# A young daughter and an elder sister. With re-embodiment on, they already have the female body
+		# (and are infertile, as re-embodied daughters are); otherwise the body is male.
 		if = {
 			limit = { has_game_rule = tm_reembodiment_on }
 			create_character = {
 				gender = female
 				age = { 17 24 }
-				culture = culture:kybeline
+				culture = root.capital_county.culture
 				faith = root.faith
 				dynasty = none
 				location = root.capital_province
 				fertility = 0
-				trait = tm_daughter_of_the_knife
 				save_scope_as = tm_cand_young
 			}
 			create_character = {
 				gender = female
 				age = { 26 40 }
-				culture = culture:kybeline
+				culture = root.capital_county.culture
 				faith = root.faith
 				dynasty = none
 				location = root.capital_province
 				fertility = 0
-				trait = tm_daughter_of_the_knife
 				save_scope_as = tm_cand_elder
 			}
 		}
@@ -76,28 +91,38 @@ tm_refuge.0010 = {
 			create_character = {
 				gender = male
 				age = { 17 24 }
-				culture = culture:kybeline
+				culture = root.capital_county.culture
 				faith = root.faith
 				dynasty = none
 				location = root.capital_province
-				trait = tm_daughter_of_the_knife
 				save_scope_as = tm_cand_young
 			}
 			create_character = {
 				gender = male
 				age = { 26 40 }
-				culture = culture:kybeline
+				culture = root.capital_county.culture
 				faith = root.faith
 				dynasty = none
 				location = root.capital_province
-				trait = tm_daughter_of_the_knife
 				save_scope_as = tm_cand_elder
 			}
 		}
-		# The elder has had years in the Mother House: a little more learning and stewardship.
+		scope:tm_cand_young = {
+			tm_add_rite_daughter_trait_effect = { ROOT_RULER = root }
+			tm_give_daughter_name_effect = yes
+		}
 		scope:tm_cand_elder = {
+			tm_add_rite_daughter_trait_effect = { ROOT_RULER = root }
+			tm_give_daughter_name_effect = yes
+			# The elder has had years among the Elder Sisters: a little more learning and stewardship.
 			add_learning_skill = 3
 			add_stewardship_skill = 2
+		}
+		# Sometimes one of them would rather stay where she is.
+		random_list = {
+			70 = {}
+			15 = { scope:tm_cand_young = { set_variable = tm_declines } }
+			15 = { scope:tm_cand_elder = { set_variable = tm_declines } }
 		}
 	}
 
@@ -108,20 +133,28 @@ tm_refuge.0010 = {
 	}
 	option = {
 		name = tm_refuge.0010.b
+		trigger = { scope:tm_cand_young = { NOT = { has_variable = tm_declines } } }
 		add_courtier = scope:tm_cand_young
 		tm_refuge_offer_adoption_effect = { CANDIDATE = scope:tm_cand_young }
 	}
 	option = {
 		name = tm_refuge.0010.c
+		trigger = { scope:tm_cand_elder = { NOT = { has_variable = tm_declines } } }
 		add_courtier = scope:tm_cand_elder
 		tm_refuge_offer_adoption_effect = { CANDIDATE = scope:tm_cand_elder }
 	}
-	option = {	# all three, at a price in piety
+	option = {	# all who will come, at a price in piety
 		name = tm_refuge.0010.d
 		add_piety = -100
 		add_courtier = scope:tm_cand_child
-		add_courtier = scope:tm_cand_young
-		add_courtier = scope:tm_cand_elder
+		if = {
+			limit = { scope:tm_cand_young = { NOT = { has_variable = tm_declines } } }
+			add_courtier = scope:tm_cand_young
+		}
+		if = {
+			limit = { scope:tm_cand_elder = { NOT = { has_variable = tm_declines } } }
+			add_courtier = scope:tm_cand_elder
+		}
 		ai_chance = { base = 0 }
 	}
 	option = {

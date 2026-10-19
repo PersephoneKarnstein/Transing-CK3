@@ -47,3 +47,36 @@ tm_rite_can_raise_daughters_trigger = {
 		}
 	}
 }
+
+# Holds at least one county with a Sisters' House (tm_found_house_decision).
+tm_holds_sisters_house_trigger = {
+	any_held_title = {
+		tier = tier_county
+		has_variable = tm_house
+	}
+}
+
+# Belongs to a Sisters' House: of a sisters' faith, and a woman, Marked, a daughter, or a friend of the
+# House. The Houses are not separatist (Raha & van der Drift): cis women of the faith are sisters, and men
+# of the faith may stay as friends of the House.
+tm_house_member_trigger = {
+	rite ?= { rite_has_parameter = tm_sisters_faith }
+	OR = {
+		is_female = yes
+		tm_is_daughter_trigger = yes
+		has_trait = tm_transgender
+		has_character_modifier = tm_house_friend_modifier
+	}
+}
+
+# Can be chosen Elder Sister of a House: a member who is a woman (friends of the House are guests).
+tm_elder_sister_eligible_trigger = {
+	is_adult = yes
+	is_imprisoned = no
+	rite ?= { rite_has_parameter = tm_sisters_faith }
+	OR = {
+		is_female = yes
+		tm_is_daughter_trigger = yes
+		has_trait = tm_transgender
+	}
+}

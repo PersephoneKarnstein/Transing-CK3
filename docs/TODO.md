@@ -40,7 +40,17 @@ Built: shared daughter trigger and per-faith daughter traits; Bæddel faith (Got
 - [ ] Check the weighted random_list modifiers that add learning or diplomacy compute as intended.
 - [ ] Commission icons: two faith icons, two daughter traits.
 
+## Serano / Raha & van der Drift / Sanders revisions (added 2026-10-18, untested in-game)
+- [ ] Declare Before Witnesses: name kept through each gate, with and without re-embodiment (`change_first_name = { template_character }` on a dead old body is unverified)
+- [ ] Embryo trials: delay re-fires the same trial; gestating modifier refreshes; "set it down" clears state
+- [ ] Found a Sisters' House: Elder Sister chosen, term expires at 5 years, strain rises/falls, burnout (0020), split (0030), tend-you (0040)
+- [ ] Hand a House county to another faith: 0050 fires once per lord; closing sends sisters to another House or the pool
+- [ ] Old saves: house variable `tm_refuge` migrates to the capital county
+- [ ] The Sisters Choose: law appears for duchy+ rulers of the faiths; electors and candidates as intended; Tiger flags the law/election files as unknown fields (1.20 format lag, same structure as vanilla)
+- [ ] Friend of the House arrival (0004); turned-away arrivals reach another House
+
 ## Branch faiths, stage 2 (next)
+- [ ] **Spring the Cell** (user: build with the Bæddel stage-2 work). Hostile scheme, any adult of the three faiths, landed or not; target a ruler imprisoning a daughter, Marked woman or declared sister. Agents: Marked guards, faithful servants, friends of the House. Success: prisoner walks to the nearest House (else the plotter's court), plotter possibly unknown. Discovery and failure as vanilla hostile schemes. Template: vanilla abduct. The non-war counterpart of Rescue the Daughters and the planned Bæddel raids.
 - [ ] Bæddel: níð insult duels; landless war-band play; Rescue the Daughters as a raid; Christian outlawry pressure.
 - [ ] Jade Embryo: daughter faction against scholar-officials in celestial and meritocratic governments; temple societies keep estates from crown confiscation; omen events.
 - [ ] Dorleyism: daughters in court offices; era decay of tolerance after 1066; Aristotelian and Galenic council fight; the founding charter as a house legacy.

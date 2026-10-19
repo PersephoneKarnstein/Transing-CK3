@@ -8,3 +8,36 @@ tm_gestating_modifier = {
 	stress_gain_mult = 0.15
 	monthly_piety = 0.3
 }
+
+# A Sisters' House stands in this county (tm_found_house_decision). County modifier.
+tm_sisters_house_county_modifier = {
+	icon = county_modifier_development_positive
+	development_growth_factor = 0.1
+	county_opinion_add = 5
+}
+
+# Named before witnesses, the body not yet answered (tm_declare_decision). Removed at the gate.
+tm_declared_modifier = {
+	icon = stress_positive
+	stress_gain_mult = -0.1
+}
+
+# Elder Sister of a House, for her five-year term (tm_house.0010).
+tm_elder_sister_modifier = {
+	icon = learning_positive
+	learning = 2
+	monthly_piety = 0.5
+}
+
+# Let the House tend you (tm_house.0040).
+tm_tended_modifier = {
+	icon = health_positive
+	health = 0.25
+	stress_gain_mult = -0.1
+}
+
+# A friend of the House: a man or woman of the faith who stays as the House's guest (tm_arrival.0004).
+tm_house_friend_modifier = {
+	icon = social_positive
+	same_faith_opinion = 5
+}

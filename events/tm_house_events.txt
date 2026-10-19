@@ -1,0 +1,248 @@
+﻿namespace = tm_house
+
+# Declare Before Witnesses (tm_declare_decision). Root = the one declaring.
+tm_house.0001 = {
+	type = character_event
+	title = tm_house.0001.t
+	desc = tm_house.0001.desc
+	theme = faith
+	left_portrait = { character = root animation = happiness }
+
+	option = {	# A daughter's name by the House's custom
+		name = tm_house.0001.a
+		tm_give_daughter_name_effect = yes
+		tm_declare_effect = yes
+	}
+	option = {	# The name I already answer to
+		name = tm_house.0001.b
+		tm_declare_effect = yes
+	}
+	option = {	# Not before these witnesses
+		name = tm_house.0001.c
+	}
+}
+
+# The sisters choose an Elder Sister for five years. Root = the holder; scope:tm_house_county.
+tm_house.0010 = {
+	type = character_event
+	title = tm_house.0010.t
+	desc = tm_house.0010.desc
+	theme = faith
+	left_portrait = { character = scope:tm_new_elder animation = personality_rational }
+
+	trigger = {
+		exists = scope:tm_house_county
+		any_courtier = { tm_elder_sister_eligible_trigger = yes }
+	}
+
+	immediate = {
+		scope:tm_house_county = {
+			if = {
+				limit = {
+					has_variable = tm_elder_sister
+					var:tm_elder_sister = { is_alive = yes }
+				}
+				var:tm_elder_sister = {
+					save_scope_as = tm_old_elder
+					remove_character_modifier = tm_elder_sister_modifier
+				}
+			}
+		}
+		# The sisters' choice, not the lord's: the one the others trust and who knows the work. A sitting
+		# Elder Sister does not succeed herself.
+		ordered_courtier = {
+			limit = {
+				tm_elder_sister_eligible_trigger = yes
+				NOT = {
+					exists = scope:tm_old_elder
+					this = scope:tm_old_elder
+				}
+			}
+			order_by = {
+				value = learning
+				add = diplomacy
+				if = { limit = { tm_is_daughter_trigger = yes } add = 5 }
+				if = { limit = { has_trait = compassionate } add = 4 }
+			}
+			save_scope_as = tm_new_elder
+		}
+		if = {
+			limit = { NOT = { exists = scope:tm_new_elder } }
+			scope:tm_old_elder = { save_scope_as = tm_new_elder }		# she alone is left: she serves again
+		}
+		scope:tm_house_county = {
+			set_variable = { name = tm_elder_sister value = scope:tm_new_elder }
+			set_variable = { name = tm_elder_term value = yes years = 5 }
+		}
+		scope:tm_new_elder = {
+			add_character_modifier = { modifier = tm_elder_sister_modifier years = 5 }
+		}
+	}
+
+	option = {
+		name = tm_house.0010.a
+	}
+	option = {	# Thank the one who served before
+		name = tm_house.0010.b
+		trigger = { exists = scope:tm_old_elder NOT = { scope:tm_old_elder = scope:tm_new_elder } }
+		scope:tm_old_elder = {
+			add_stress = -30
+			add_opinion = { target = root modifier = grateful_opinion opinion = 20 }
+		}
+		add_prestige = -25
+	}
+}
+
+# Burnout: the Elder Sister is doing all the little work alone. Root = the holder; scope:tm_house_county.
+tm_house.0020 = {
+	type = character_event
+	title = tm_house.0020.t
+	desc = tm_house.0020.desc
+	theme = faith
+	left_portrait = { character = scope:tm_elder animation = stress }
+
+	trigger = {
+		exists = scope:tm_house_county
+		scope:tm_house_county = {
+			has_variable = tm_elder_sister
+			var:tm_elder_sister = { is_alive = yes }
+		}
+	}
+
+	immediate = {
+		scope:tm_house_county.var:tm_elder_sister = { save_scope_as = tm_elder }
+	}
+
+	option = {	# See her, and send help
+		name = tm_house.0020.a
+		trigger = { gold >= 25 }
+		remove_short_term_gold = 25
+		scope:tm_elder = {
+			add_stress = -40
+			add_opinion = { target = root modifier = grateful_opinion opinion = 20 }
+		}
+		scope:tm_house_county = { change_variable = { name = tm_house_strain add = -2 } }
+	}
+	option = {	# Ask the sisters to share the work
+		name = tm_house.0020.b
+		add_piety = 10
+		scope:tm_elder = { add_stress = -15 }
+		scope:tm_house_county = { change_variable = { name = tm_house_strain add = -1 } }
+	}
+	option = {	# She has always managed
+		name = tm_house.0020.c
+		scope:tm_elder = { add_stress = 40 }
+		scope:tm_house_county = { change_variable = { name = tm_house_strain add = 1 } }
+	}
+}
+
+# The House splits: some of the sisters go to found a daughter House in a neighbouring county. Splitting is
+# how a House grows. Root = the holder; scope:tm_house_county.
+tm_house.0030 = {
+	type = character_event
+	title = tm_house.0030.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:tm_new_house_county }
+				desc = tm_house.0030.desc
+			}
+			desc = tm_house.0030.desc_crowded
+		}
+	}
+	theme = faith
+	left_portrait = { character = root animation = personality_rational }
+
+	trigger = { exists = scope:tm_house_county }
+
+	immediate = {
+		scope:tm_house_county = {
+			random_neighboring_county = {
+				limit = { NOT = { has_variable = tm_house } }
+				weight = {
+					base = 1
+					modifier = { add = 5 holder ?= { this = root } }
+					modifier = { add = 3 holder ?= { rite ?= { rite_has_parameter = tm_sisters_faith } } }
+				}
+				save_scope_as = tm_new_house_county
+			}
+		}
+	}
+
+	option = {
+		name = tm_house.0030.a
+		if = {
+			limit = { exists = scope:tm_new_house_county }
+			scope:tm_new_house_county = { tm_found_house_effect = yes }
+			scope:tm_house_county = { set_variable = { name = tm_house_strain value = 1 } }
+			add_piety = 50
+			add_prestige = 25
+		}
+		else = {
+			scope:tm_house_county = { set_variable = { name = tm_house_strain value = 3 } }
+			add_stress = 10
+		}
+	}
+}
+
+# Let them tend you. Accepting care counts for more than giving coin. Root = the holder.
+tm_house.0040 = {
+	type = character_event
+	title = tm_house.0040.t
+	desc = tm_house.0040.desc
+	theme = faith
+	left_portrait = { character = root animation = happiness }
+
+	trigger = { exists = scope:tm_house_county }
+
+	option = {	# Let them
+		name = tm_house.0040.a
+		add_stress = -30
+		add_character_modifier = { modifier = tm_tended_modifier years = 2 }
+		scope:tm_house_county = { change_variable = { name = tm_house_strain add = -1 } }
+		ai_chance = { base = 60 }
+	}
+	option = {	# Send coin instead
+		name = tm_house.0040.b
+		trigger = { gold >= 50 }
+		remove_short_term_gold = 50
+		add_piety = 15
+		ai_chance = { base = 40 }
+	}
+}
+
+# A lord of another faith holds a county with a Sisters' House. Root = the holder; scope:tm_house_county.
+tm_house.0050 = {
+	type = character_event
+	title = tm_house.0050.t
+	desc = tm_house.0050.desc
+	theme = faith
+	left_portrait = { character = root animation = personality_rational }
+
+	trigger = {
+		exists = scope:tm_house_county
+		scope:tm_house_county = { has_variable = tm_house }
+	}
+
+	option = {	# Let it stand
+		name = tm_house.0050.a
+		scope:tm_house_county = { set_variable = { name = tm_house_tolerated_by value = root } }
+		ai_chance = {
+			base = 50
+			modifier = { add = 30 has_trait = compassionate }
+			modifier = { add = 20 has_trait = content }
+			modifier = { add = -30 has_trait = zealous }
+		}
+	}
+	option = {	# Close it
+		name = tm_house.0050.b
+		root = { save_scope_as = tm_house_holder }
+		scope:tm_house_county = { tm_close_house_effect = yes }
+		ai_chance = {
+			base = 50
+			modifier = { add = 30 has_trait = zealous }
+			modifier = { add = 20 has_trait = callous }
+			modifier = { add = -30 has_trait = compassionate }
+		}
+	}
+}

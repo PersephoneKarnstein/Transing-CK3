@@ -88,10 +88,12 @@ tm_debug_census_decision = {
 	ai_check_interval = 0
 }
 
-# Petition the Mother House to name your house's lands a refuge. The mark is a house variable, so it
-# passes down the matriline (adopted and re-embodied daughters keep the house). Unlocks the seek decision
-# below and makes Marked travellers far likelier to arrive (tm_on_actions.txt, tm_yearly_playable).
-tm_declare_refuge_decision = {
+# Found a Sisters' House in your capital county. The House belongs to the county, not to the ruler's
+# family (Raha & van der Drift: shelter granted by a lord can be taken away, so let it outlive the lord).
+# Whoever holds the county later chooses to tolerate it or close it (tm_house_events.txt). The House draws
+# Marked travellers, unlocks the seek decision below, and runs itself: an Elder Sister on a five-year term,
+# strain, and splitting into a daughter House (tm_house_events.txt).
+tm_found_house_decision = {
 	picture = {
 		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"		# placeholder; TODO event art
 	}
@@ -99,13 +101,9 @@ tm_declare_refuge_decision = {
 
 	is_shown = {
 		is_landed = yes
-		rite ?= { rite_has_parameter = tm_day_of_blood_active }
-		exists = house
-		NOT = { house = { has_variable = tm_refuge } }
-	}
-
-	is_valid = {
-		highest_held_title_tier >= tier_county
+		rite ?= { rite_has_parameter = tm_sisters_faith }
+		exists = capital_county
+		NOT = { capital_county = { has_variable = tm_house } }
 	}
 
 	is_valid_showing_failures_only = {
@@ -118,8 +116,9 @@ tm_declare_refuge_decision = {
 	}
 
 	effect = {
-		house = { set_variable = tm_refuge }
-		custom_tooltip = tm_declare_refuge_decision_effect_tt
+		capital_county = { save_scope_as = tm_house_county }
+		scope:tm_house_county = { tm_found_house_effect = yes }
+		custom_tooltip = tm_found_house_decision_effect_tt
 		trigger_event = tm_refuge.0001
 	}
 
@@ -127,11 +126,12 @@ tm_declare_refuge_decision = {
 	ai_will_do = {
 		base = 25
 		modifier = { add = 50 NOT = { any_child = { is_alive = yes is_female = yes } } }
+		modifier = { add = 25 rite ?= { rite_has_doctrine = tm_knife_gift_alone } }
 	}
 }
 
-# Send to the Mother House for daughters: three candidates, as vanilla's court-position and champion
-# recruitment offer a choice. Refuge houses only; five-year cooldown.
+# Ask the Mother House who needs a hearth: three candidates, as vanilla's court-position and champion
+# recruitment offer a choice. Rulers with a Sisters' House only; five-year cooldown.
 tm_seek_daughters_decision = {
 	picture = {
 		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"		# placeholder; TODO event art
@@ -141,8 +141,8 @@ tm_seek_daughters_decision = {
 
 	is_shown = {
 		is_landed = yes
-		rite ?= { rite_has_parameter = tm_day_of_blood_active }
-		house ?= { has_variable = tm_refuge }
+		rite ?= { rite_has_parameter = tm_sisters_faith }
+		tm_holds_sisters_house_trigger = yes
 	}
 
 	is_valid_showing_failures_only = {
@@ -164,6 +164,39 @@ tm_seek_daughters_decision = {
 	ai_will_do = {
 		base = 10
 		modifier = { add = 60 NOT = { any_child = { is_alive = yes is_female = yes } } }
+	}
+}
+
+# Declare Before Witnesses: she says what she is and takes a daughter's name, before (or without) any
+# gate. Recognition is separate from the body (Serano): a failed trance or a delayed gestation delays the
+# body, never the name. tm_rise_daughter_effect then keeps this name instead of renaming her.
+tm_declare_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"		# placeholder; TODO event art
+	}
+	sort_order = 91
+
+	is_shown = {
+		is_male = yes
+		age >= 12
+		rite ?= { rite_has_parameter = tm_sisters_faith }
+		tm_is_daughter_trigger = no
+		NOT = { has_variable = tm_declared }
+	}
+
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+	}
+
+	effect = {
+		trigger_event = tm_house.0001
+	}
+
+	ai_check_interval = 60
+	ai_potential = { has_trait = tm_transgender }
+	ai_will_do = {
+		base = 60
+		modifier = { add = -30 has_trait = shy }
 	}
 }
 

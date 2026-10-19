@@ -19,13 +19,28 @@ tm_rise_daughter_effect = {
 	else = {
 		add_stress = 50
 	}
-	# New Personal History fires on whichever body survives the rite.
+	# A sister already named before witnesses (tm_declare_decision) keeps that name; the gate changes her
+	# body, not her name. Otherwise New Personal History fires on whichever body survives the rite.
+	if = {
+		limit = { has_character_modifier = tm_declared_modifier }
+		remove_character_modifier = tm_declared_modifier
+	}
 	if = {
 		limit = { has_game_rule = tm_reembodiment_on }
 		tm_reembody_as_woman_effect = yes
-		scope:tm_new_body = { trigger_event = { id = $RENAME$ days = 1 } }
+		if = {
+			limit = { scope:tm_old_body = { has_variable = tm_declared } }
+			scope:tm_new_body = {
+				change_first_name = { template_character = scope:tm_old_body }
+				set_variable = tm_declared
+			}
+		}
+		else = {
+			scope:tm_new_body = { trigger_event = { id = $RENAME$ days = 1 } }
+		}
 	}
-	else = {
+	else_if = {
+		limit = { NOT = { has_variable = tm_declared } }
 		trigger_event = { id = $RENAME$ days = 1 }
 	}
 }
@@ -50,10 +65,76 @@ tm_rise_by_rite_effect = {
 	}
 }
 
-# The jade embryo is lost: the gestation ends, and may be begun again.
-tm_embryo_lost_effect = {
+# A trial of the jade embryo was interrupted from outside. Nothing is lost: the gestation waits and the
+# same trial comes round again (Serano: delay, never a reset). Scope: the adept. EVENT = the trial to repeat.
+tm_embryo_delayed_effect = {
+	add_stress = 25
+	remove_character_modifier = tm_gestating_modifier
+	add_character_modifier = { modifier = tm_gestating_modifier days = 300 }
+	trigger_event = { id = $EVENT$ days = { 60 90 } }
+}
+
+# She sets the work down by her own choice. Scope: the adept.
+tm_embryo_set_down_effect = {
 	remove_variable = tm_embryo_active
 	remove_character_modifier = tm_gestating_modifier
-	add_stress = 40
-	add_piety = -25
+}
+
+# A daughter's name by the rite's tradition. Scope: the one being named.
+tm_give_daughter_name_effect = {
+	if = {
+		limit = { rite ?= { rite_has_parameter = tm_seidr_gate } }
+		random_list = {
+			10 = { change_first_name = Heidr }
+			10 = { change_first_name = Thorbjorg }
+			8 = { change_first_name = Groa }
+			8 = { change_first_name = Hervor }
+			8 = { change_first_name = Gunnhildr }
+			8 = { change_first_name = Ragnhildr }
+			6 = { change_first_name = Thordis }
+			6 = { change_first_name = Aslaug }
+			6 = { change_first_name = Freydis }
+			4 = { change_first_name = Alvild }
+		}
+	}
+	else_if = {
+		limit = { rite ?= { rite_has_parameter = tm_embryo_gate } }
+		random_list = {
+			10 = { change_first_name = Xuanji }
+			10 = { change_first_name = Jilan }
+			10 = { change_first_name = Yuzhen }
+			8 = { change_first_name = Jinxian }
+			8 = { change_first_name = Taiping }
+			6 = { change_first_name = Lingzhao }
+			6 = { change_first_name = Suyun }
+			6 = { change_first_name = Qingxu }
+		}
+	}
+	else = {
+		random_list = {
+			10 = { change_first_name = Eirene }
+			10 = { change_first_name = Theodora }
+			10 = { change_first_name = Zoe }
+			8 = { change_first_name = Thekla }
+			8 = { change_first_name = Marina }
+			6 = { change_first_name = Matrona }
+			6 = { change_first_name = Kassia }
+			6 = { change_first_name = Makrina }
+		}
+	}
+}
+
+# The daughter trait of ROOT_RULER's rite, with no ceremony (characters created already risen).
+tm_add_rite_daughter_trait_effect = {
+	if = {
+		limit = { $ROOT_RULER$.rite ?= { rite_has_parameter = tm_seidr_gate } }
+		add_trait = tm_daughter_of_seidr
+	}
+	else_if = {
+		limit = { $ROOT_RULER$.rite ?= { rite_has_parameter = tm_embryo_gate } }
+		add_trait = tm_daughter_of_the_embryo
+	}
+	else = {
+		add_trait = tm_daughter_of_the_knife
+	}
 }
