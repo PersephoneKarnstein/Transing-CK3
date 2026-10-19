@@ -24,6 +24,8 @@ Scenarios for playtesters. Each one sets up a situation on purpose, so that a si
 | `tm_isl_jest.txt` | Fires "Laughed At in the Hall" against a random Islamic ruler |
 | `tm_khasi.txt` | Fires "The Khasi of the Household" (you must be of an Islamic faith) |
 | `tm_adopt_check.txt` | Logs why vanilla adoption is or isn't offered for your wards |
+| `tm_turning_now.txt` | Starts the Turning (Ha-Nehpakhot) at once, skipping the decision, its cooldown and the Adar window |
+| `tm_turning_prayers.txt` | Adds three unanswered Adars to your next Turning (+30 to the roll) |
 
 **Vanilla console commands you'll use:**
 - `add_trait <trait> <id>` and `remove_trait <trait> <id>`
@@ -49,22 +51,28 @@ Scenarios for playtesters. Each one sets up a situation on purpose, so that a si
 ## 0. Smoke test (everyone, five minutes)
 
 **0.1 Load.** Start the 867 bookmark.
-- In the faith screen, check that *Dorleyism*, *Bædling* and *Way of the Jade Embryo* all exist with their icons and holy sites.
+- In the faith screen, check that *Dorleyism*, *Bædling*, *Way of the Jade Embryo* and *Ha-Nehpakhot* all exist with their icons and holy sites. Ha-Nehpakhot sits under the Judaism religion, beside Rabbinic Judaism and Karaism.
 - Check the holy sites:
   - **Dorleyism:** Dorylaion, Constantinople, Kyzikos, Ankyra, Pepouza.
   - **Bædling:** Uppsala, Trondheim, York, Kyiv.
-  - **Way of the Jade Embryo:** Mogao, Longhu, Qingcheng, Wudang.
+  - **Way of the Jade Embryo:** Mogao, Longhu, Qingcheng, the Southern Marchmount (Mount Heng in Hunan).
+  - **Ha-Nehpakhot:** Arles, Jerusalem, Narbonne, Montpellier, Hamadan. Hover each and read its text: Arles should mention the women's synagogue and the lamp alms; Narbonne the *nasi* who held land "under no lord"; Montpellier "from Lunel to Montpellier".
 - Send `error.log` even if nothing looks wrong.
 
 **0.2 Starting presence.**
 - Phrygia should be Dorleyite and held by Theia Beatrike, the Mother of Mothers, with three Elder Sisters at her court.
 - Gotland should be Bædling, with a völva at court.
 - Shazhou should follow the Way of the Jade Embryo, with a nüguan (a Daoist nun) at court.
+- **Ha-Nehpakhot holds no land.** In the Character Finder, filter for the trait *Daughter of the Turning*: an elder (50–65) should be living unlanded in Arles (county of Venaissin). Filter for Ha-Nehpakhot: two Marked young men should be there too. Hover the county of Venaissin in debug mode: it should carry the variable `tm_kahal`. Screenshot both.
 - Hover over Theia's portrait and screenshot the debug tooltip.
 
-**0.3 Census.** Run `run tm_census.txt`. Note the counts of Marked characters and daughters. They should be roughly 1% of adult men, and a handful of daughters.
+**0.3 Census.** Run `run tm_census.txt`. Note the counts of Marked characters and daughters (all four gates count). They should be roughly 1% of adult men, and a handful of daughters.
 
-**0.4 Ruler Designer.** Check that all four faiths and the Kybeline culture can be picked, and that the Marked trait costs nothing.
+**0.4 Ruler Designer.** Check that all four faiths and the Kybeline culture can be picked, and that the Marked trait costs nothing. Ha-Nehpakhot is listed under Judaism.
+
+**0.5 The four decisions.** As a Marked man of each faith (Ruler Designer, or `add_trait tm_transgender` and convert), open the decisions list and screenshot it. Each faith should show its own gate: *Take the Knife*, *Ask a Völva to Sit for Me*, *Gestate the Jade Embryo*, and *Keep the Fourteenth of Adar*. The last should be greyed out outside February and March.
+
+**0.6 Text check.** Read the faith description and the tenets of Ha-Nehpakhot (*The Turning*, *The Three Lamps*, vanilla *Legalism*) and the trait *Daughter of the Turning*. Report any raw `tm_` key or broken text.
 
 ---
 
@@ -202,7 +210,7 @@ Play Shazhou, or design a ruler of the Way. Then `add_trait tm_transgender` on y
 ## D. Shared systems
 
 **D1. Declare Before Witnesses.** As a Marked man in any of the four faiths, take *Declare Before Witnesses* and choose a name.
-- Then go through your faith's rite (A1, B1 or C1), **once with re-embodiment on and once with it off.**
+- Then go through your faith's rite (A1, B1, C1 or F2), **once with re-embodiment on and once with it off.**
 - **Check:**
   - your declared name survives the rite;
   - the naming event does not fire a second time.
@@ -277,7 +285,13 @@ Note the cost and whether she accepted. Then **check the line of succession list
 - Then `play` an Islamic ruler, give them a daughter courtier (`run tm_rise.txt` on a courtier won't work, so use `add_trait tm_daughter_of_the_knife <id>` on a female courtier), and run `run tm_khasi.txt`.
 - **Opinion penalty:** hover over the Islamic ruler's opinion of any daughter. It should show *A Castrated Man in Law* (−10). This is the change most likely to fail silently, so a screenshot either way helps.
 
-**D12. Same-sex marriage.** In all four faiths, check that two women, including a daughter and a cis woman, can marry, whatever the vanilla game rule says.
+**D12. Same-sex marriage.** In all four faiths, check that two women, including a daughter and a cis woman, can marry, whatever the vanilla game rule says. For Ha-Nehpakhot this overrides the Judaism religion's own doctrine, so check it there especially.
+
+**D13. Jewish and Indic neighbours.** These reactions apply to daughters of every faith, not only Ha-Nehpakhot. Hover the opinion of:
+- a Rabbinic or Karaite character toward any daughter: *What Came Forth Male* (−10);
+- a Ha-Nehpakhot character toward the same daughter: the −10 cancelled by *Turned, as Dinah Was* (+10);
+- a Buddhist, Hindu or Jain character toward a daughter of the knife: *Unmanned by the Knife* (−15); toward any other daughter: *A Man Become a Woman* (−5).
+Screenshot each. Full scenarios are F8, F9 and F11.
 
 ---
 
@@ -289,20 +303,44 @@ Start a new 867 game, pick any ruler, type `observe`, and run at full speed to a
 
 This shows whether the AI ever uses the rites, Houses, fostering, Companions, the elective law and the court offices. It also catches errors that only show up after decades.
 
+For Ha-Nehpakhot, which has no land of its own, also note:
+- whether the three Arles characters are still alive and still in Provence, or have wandered off;
+- how many daughters of the Turning exist (Character Finder, trait filter), and whether any AI took the Turning (it can only do so in February and March);
+- whether any ruler got "A Book in Arabic", "A Fisica at Court" or "What Came Forth Male" (search `debug.log` for `tm_hipukh`).
+
+Run a second, shorter observe from the 1066 bookmark, and if you can a third past 1323 (start at 1178 and run on), so the dated Revel, the *Touchstone* lines and the 1401 council can appear.
+
 ---
 
 ## F. Ha-Nehpakhot
 
 Design a Ha-Nehpakhot ruler in or near Provence, or play the count of Venaissin (Arles) and `add_trait tm_transgender`, then convert to Ha-Nehpakhot from the faith screen. Give yourself `piety 500` and `gold 500`. The sect starts with no land: an elder daughter of the Turning and two Marked young men live unlanded in Arles.
 
+Several things depend on the date, so test in three periods if you can: **before 1323** (the 867 bookmark), **1323–1400** (Kalonymus's lines and the young men's Revel), and **1401 on** (the council with women at Arles). Use an Occitan character for at least one run, for the Provençal blessing.
+
+| Scenario | What it covers |
+|---|---|
+| F1 | The Adar window |
+| F2 | The five-part rite, best case; re-embodiment; names; the Revel by date; the Provençal blessing |
+| F3 | The worst case, and the unanswered-Adar bonus |
+| F4 | Conversion of a Rabbinic or Karaite seeker |
+| F5 | Before the Baylons: the four answers, the council, the lord's refusal of *niddui* |
+| F6 | The Three Lamps (yearly) |
+| F7, F13 | A Book in Arabic; A Fisica at Court |
+| F8, F9 | A Jewish lord's ruling; Jewish opinions |
+| F10 | Names and the faith screen |
+| F11, F12 | Eastern opinions by gate; The Wills only in Byzantium |
+
 **F1. The Adar window.** Outside February and March the decision *Keep the Fourteenth of Adar* should show but be greyed out, with the tooltip "It is Adar (February or March)". Wait, or use the console to advance the date, until February.
 - **Check:** the decision becomes valid in February and March, and not in April.
 
 **F2. The full rite, in the best case.** Keep a daughter of the Turning at court, and stand in Arles (whose county carries the ḥevrah's street bonus).
-- Take the decision.
+- Take the decision, **once with re-embodiment on and once with it off.**
 - **Expect, in order:** "The Scroll" (go down to the women's synagogue), "The Revel" (keep the dress on), "The Prayer" (say it aloud), then on success "A Name for Shushan Purim" and, about a week later, "Before the Baylons".
 - **Check:**
   - the elder in the portraits is your court's daughter of the Turning;
+  - "The Scroll" offers "Go down to the women's synagogue" and "Go up to the men's synagogue", and its text says the women's synagogue is the room below the men's (no "gallery" anywhere);
+  - the event texts say "the women of the lamp", never *ḥevrah*;
   - the prayer text mentions Kalonymus and the *Touchstone* only on or after 1323;
   - the Revel: from 1323 the young men dress up and "the rabbis grumble and let it pass"; before 1323 she alone wears the dress, and "Laugh with the others" is missing;
   - the naming event offers two choices: "A name from the scroll and the Torah" (Dinah, Esther, Estes or Sara) and "A name of the street" (Rosa, Mairona, Venguessona, Bella, Regina, Dulcia and others). **Screenshot any name that shows as a raw key;**
@@ -324,7 +362,10 @@ Design a Ha-Nehpakhot ruler in or near Provence, or play the count of Venaissin 
 - **The lord's licence.** Repeat a losing dispute in a county whose holder has *Patron of a Translation* (take it in F7 first, as that lord). The toast "The lord would not license the ban" should appear and *Niddui* should not.
 
 **F6. The three lamps.** As a daughter of the Turning, wait for "The Three Lamps" (`tm_hipukh.0020`), or fire it with `event tm_hipukh.0020 <your id>`. Try all three options.
-- **Check:** "Teach the prayer" appears only when a Marked courtier who could seek the Turning is present, and that courtier then gets a better roll in F2.
+- **Check:**
+  - "Teach the prayer" appears only when a Marked courtier who could seek the Turning is present, and that courtier then gets a better roll in F2;
+  - "Spin with the women by moonlight" raises the opinion of every adult woman at court;
+  - the tenet *The Three Lamps* reads that one whose days do not come keeps them "as the zekenah keeps them", and no Three Lamps text mentions blood.
 
 **F7. A book in Arabic.** Play a ruler of any faith (try a Catholic one) with a daughter of the Turning at court. Wait for "A Book in Arabic" (`tm_hipukh.0030`), or fire it with `event tm_hipukh.0030 <your id>`. **Note:** fired from the console, the translator scope is missing and the event will not show; let the yearly pulse fire it, or report that it never appears.
 - **Check:** commissioning costs 50 gold, gives *Patron of a Translation*, and licenses your capital county.
@@ -342,4 +383,5 @@ Design a Ha-Nehpakhot ruler in or near Provence, or play the count of Venaissin 
 
 **F13. A fisica at court.** Play a ruler of any faith with a daughter of the Turning at court and wait for "A Fisica at Court" (`tm_hipukh.0031`); it shares the yearly roll with "A Book in Arabic", so either may come. Try all three options.
 - **Check:** "Licence her" costs 50 gold and gives her *Licensed Fisica*; "women only" costs 25 and gives *Fisica of Women*; once licensed she is not offered again.
+- **Note:** as with F7, firing it from the console leaves the physician scope empty and the event will not show; let the yearly pulse fire it.
 
