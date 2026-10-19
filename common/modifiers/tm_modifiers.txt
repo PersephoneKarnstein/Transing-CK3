@@ -41,3 +41,37 @@ tm_house_friend_modifier = {
 	icon = social_positive
 	same_faith_opinion = 5
 }
+
+# Protectress of a Sisters' House (tm_house_name_protectress_effect).
+tm_house_protectress_modifier = {
+	icon = social_positive
+	monthly_prestige = 0.3
+	same_faith_opinion = 5
+}
+
+# Fostered by a woman of the House: belonging without inheritance (tm_foster_daughter_interaction).
+tm_fostered_modifier = {
+	icon = social_positive
+	stress_gain_mult = -0.05
+}
+
+# A Companion (koinonos) of the Mother of Mothers (tm_name_companion_interaction).
+tm_companion_modifier = {
+	icon = learning_positive
+	learning = 1
+	monthly_piety = 0.5
+	same_faith_opinion = 10
+}
+
+# Conforming outwardly under the heresy laws (tm_byz.0012).
+tm_outward_conformity_modifier = {
+	icon = stress_negative
+	stress_gain_mult = 0.15
+	monthly_piety_gain_mult = -0.2
+}
+
+# A daughter whose inheritance the bishops' court calls void (tm_byz.0012).
+tm_contested_inheritance_modifier = {
+	icon = social_negative
+	monthly_prestige = -0.3
+}

@@ -23,7 +23,7 @@ Working names are placeholders for localisation; in-game key names are final.
 - **Homeland.** North-west Anatolia and Galatia; **Dorylaion (`b_dorylaion` in `c_phrygia`) is the faith's seat and eminent holy site**, with Constantinople as the second eminent site. In 1.20 the classical towns are **baronies**: Dorylaion (`b_dorylaion`) and Pessinus (`b_pessinus`) both lie in the county of Phrygia (`c_phrygia`, duchy of Opsikion); Kyzikos is `b_kyzikos` in `c_nikaea`; Ankyra is `b_ankyra` in `c_galatia`. Constantinople is the vanilla `constantinople` holy site (`c_byzantion`). (G2 homeland verdict; AN: every ancient text calling castrates women is Anatolian or Syrian.)
 - **Interpretations, not a merge (user, 2026-10-14).** The final product may ship two or more *distinct cultural interpretations* of the premise as separate faiths. This file specifies the Byzantine one. A Tang/Chinese interpretation (eunuch dynasties, Daoist gender-by-rite, the knifer's liturgy) is a separate later faith, and its research is not folded into this one.
 - **Branches.** A Norse rite is optional later content (seiðr, *ergi*, Uppsala bells) arriving by the Varangian route; it shares the faith but not the knife. Britain is out. (NB verdict.)
-- **Era arc.** Legal cover and neighbours' tolerance decay with the culture era: strong at 867, contested by 1066, gone by 1300. (G3 consequence 14.)
+- **Era arc.** Legal cover and neighbours' tolerance decay: strong at 867, contested from 1057 and especially after the Komnenian turn of 1081 (Athos closed to eunuchs 1083), gone by 1300. Leo VI's Novel 60 was never repealed; what decays is eunuch power and tolerance (research/byz_sideris_eunuques_societe.md, byz_ringrose_perfect_servant.md). (G3 consequence 14.)
 
 ## 2. Religion stack
 
@@ -128,7 +128,7 @@ To verify in-game: that a custom trait appears in the finder's trait list (expec
 ## 9. Localisation and flavour
 
 - HighGod: the Mother (barren protector, not progenitor; H20). Devil: the Bearded (the Galenist slur inverted). House of worship: *metroon*. Clergy: Daughter / Elder Sister / Mother of the House. Religious head title: Mother of Mothers.
-- Festival: Day of Blood (spring). Founding trauma: 715 and "the Greater Circumcision" (RW). Hostile texts: Firmicus Maternus ("they wish to be believed women"), Roman *semivir*, Islamic *haram*.
+- Festival: Day of Blood (spring). Founding trauma: 717 (Rowson; earlier notes said 715) and "the Greater Circumcision" (RW). Hostile texts: Firmicus Maternus ("they wish to be believed women"), Roman *semivir*, Islamic *haram*.
 - Easter eggs for the in-group only in event text, never in UI strings: AGA, novelty mug, "Dorleypilled".
 
 ## 10. Build order
@@ -205,7 +205,7 @@ Three faiths, no more for now. Each answers three questions differently: how one
 | Line | Typikon: a house rule passing land to adopted daughters | Sworn sisters and fostered daughters of the hall | Adopted heirs placed in office; temple and burial societies hold property against crown confiscation |
 | World | Refuge, intake, church politics, Aristotelian vs Galenic council fight | Outlawry, landless war-band play, raiding, níð insult duels | Palace faction against the scholar-officials inside celestial / meritocratic government |
 | Skills | Learning, stewardship | Martial, prowess | Intrigue, stewardship |
-| Era arc | Eunuch-angel theology peaks 867, decays after 1066 | Tolerated while pagan, outlawed as Christianity arrives | Stable, but estates revert to the crown |
+| Era arc | Eunuch power peaks 867, decays from 1057 and after 1081 | Tolerated while pagan, outlawed as Christianity arrives | Stable, but estates revert to the crown |
 
 ### Decisions (user, 2026-10-18)
 1. **Bæddel, seiðr and ergi are one faith** for now. Name to be chosen; *bæddel* is the attested Old English word.
@@ -248,3 +248,15 @@ Notes: `research/norse_*.md`, `research/oe_fulk_jurasinski_canons_theodore.md`, 
 6. **Corrections:** Saxo's Uppsala passage names effeminate mimes and bells, no priests or dress; Alvild's crew had men; Grágás has no adoption (*ættleiðing*) law, so Take as Daughter's precedents are *arfsal* and fostering; northern castration was a punishment, not absent.
 7. **Rules adopted:** faiths may claim historical figures in their own voice, the narrator never does; no suicide content; a daughter's courage is never "manly"; Þrymskviða and Saxo's Óðinn-as-Wecha are never precedents (the latter is a rape and is named and rejected).
 8. **Stage 2 inputs** (TODO.md): insult duel structure, feud ledger and compensation, outlawry tiers and reprieve, the dress clause, holy-site lore, Eleanor Rykener event, female-king titles, `secret_tm_sister`.
+
+### Revisions after the Byzantine reading (approved by user 2026-10-18, applied)
+Notes: `research/byz_*.md`, `research/isl_*.md`; reading list `research/byzantium_reading_list.md`.
+1. **Corrections.** The decline runs from 1057 and the Komnenian turn of 1081, not 1066; Leo VI's Novel 60 was never withdrawn. "The court calls its eunuchs angels" is the Sisters' polemic (the image began in 7th-century saints' Lives), not the narrator's. *Gallae* is outsiders' poetry (Catullus 63, a Hellenistic fragment); narrator text says galli. Pessinus was run by hereditary priests titled Attis, not a eunuch house. Anatolian galli dressed as women but their inscriptions are masculine; only Syrian texts call castrates women. Aunt Bea's House claims no Byzantine precedent (Byzantium rarely castrated as punishment). Rowson dates Sulayman's order 717.
+2. **Galenic splinter = the rite that agrees with the Emperor** (Leo VI, Novel 98: men, women, eunuchs). Both labels checked: Aristotle has castrates "change into the female condition" (GA 784a, 787b); Galen leaves "neither female nor male, but some third thing" (K IV 585). Galen quotes in the notes are our own renderings of Kühn's Greek; check against De Lacy before publishing them.
+3. **No House cuts a child** (Byzantium honoured cutting boys of 7–14). **Exception (user): Grandmother's House**, which cut boys as the court's merchants did.
+4. **Two-day rite:** Day of Blood (24 March, blood and mourning) then the Hilaria (knife, question, name): `tm_knife.0001` → `tm_knife.0004`.
+5. **Court offices** for Dorleyite dukes and above: Parakoimomene, Protovestiaria, Papias (daughters of the knife and eunuchs), Praiposita (any woman or daughter). `common/court_positions/types/tm_court_positions.txt`.
+6. **Montanism as ancestry, in the faith's voice:** Pessinus → Pepouza → Dorylaion. Ruined Pepouza replaces Antioch as a holy site (`tm_pepouza`, c_lydia/b_sebaste). Up to seven Companions of the Mother of Mothers (`tm_name_companion_interaction`). "Cybele in Christian clothes" (`tm_byz.0001`) with an answer per wing. Suppression ladder under a lord of another Christian faith (`tm_byz.0010–0012`): books, assemblies, wills; faster after 1081.
+7. **Protectress and lot** (user: "mirrors the college of cardinals"): a House Protectress from the founder's female line, else elected from the holder's house (`tm_house_name_protectress_effect`); she sways a new lord against closing the House. The Elder Sister is drawn by lot from three nominees. **Fostering** separated from full-heir adoption (`tm_foster_daughter_interaction`; Take as Daughter half price for a foster-daughter).
+8. **Islamic neighbours:** daughters carry `tm_islamic_daughter_opinion` (−10) with Islamic observers; `tm_isl.0001` (the khasi of the household) and `tm_isl.0002` (laughed at in the hall). Court cross-dressing is presented as entertainment for the powerful, never tolerance.
+9. **Staged for later** (TODO.md): Liudprand's four boys (949) as a rescue-and-adopt event; Ignatios returning as patriarch (867); the Tarsus boy-train; the Emperor halting at Dorylaion (Opsikion); the Steward at the Gate; Psellos c. 1066; the Athos ban (1083); an Abbasid event pack.

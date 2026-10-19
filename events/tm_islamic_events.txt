@@ -1,0 +1,59 @@
+﻿namespace = tm_isl
+
+# How an Islamic court sees a daughter: in law a castrated man (research/hist_sanders_khuntha.md), to the
+# jesters a mukhannath (isl_rowson_gender_irregularity.md), in the household a trusted khasi (isl_el_azhari_queens_eunuchs.md).
+# They value her as a servant and despise her as a ruler. The court's paid cross-dressing entertainers are entertainment
+# for the men at the top, never tolerance (Rowson).
+
+# The khasi of the household. Root = an Islamic ruler; scope:tm_isl_daughter = a daughter at their court.
+tm_isl.0001 = {
+	type = character_event
+	title = tm_isl.0001.t
+	desc = tm_isl.0001.desc
+	theme = court
+	left_portrait = { character = scope:tm_isl_daughter animation = personality_rational }
+
+	trigger = { exists = scope:tm_isl_daughter }
+
+	option = {	# Trust her with the household
+		name = tm_isl.0001.a
+		scope:tm_isl_daughter = {
+			add_opinion = { target = root modifier = grateful_opinion opinion = 20 }
+			add_prestige = 25
+		}
+		add_stress = -10
+	}
+	option = {	# Keep her at arm's length
+		name = tm_isl.0001.b
+	}
+}
+
+# Laughed at in Baghdad. Root = a daughter who rules; scope:tm_isl_court = an Islamic neighbour.
+tm_isl.0002 = {
+	type = character_event
+	title = tm_isl.0002.t
+	desc = tm_isl.0002.desc
+	theme = diplomacy
+	left_portrait = { character = root animation = anger }
+	right_portrait = { character = scope:tm_isl_court animation = laugh }
+
+	trigger = { exists = scope:tm_isl_court }
+
+	option = {	# Laugh with them
+		name = tm_isl.0002.a
+		add_stress = -10
+		add_prestige = -25
+	}
+	option = {	# Send a gift, and a verse that answers the jester
+		name = tm_isl.0002.b
+		trigger = { gold >= 50 }
+		remove_short_term_gold = 50
+		add_prestige = 50
+		scope:tm_isl_court = { add_opinion = { target = root modifier = respect_opinion opinion = 15 } }
+	}
+	option = {	# Remember it
+		name = tm_isl.0002.c
+		add_opinion = { target = scope:tm_isl_court modifier = angry_opinion opinion = -30 }
+		add_stress = 10
+	}
+}

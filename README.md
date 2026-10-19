@@ -133,17 +133,19 @@ The game's console can run test scripts from `tools/run/`. Copy them into the `r
 
 *Adelphai Dorleyaiou.* A Christian heresy in Byzantine Anatolia, centred on the house at Dorylaion. The name is a pun on Dorley Hall.
 
-The Sisters are nostalgic for a sect almost nobody remembers, the gallae of the Mother at Pessinus, a day's ride away. They say that house never closed, and they remember it kinder than it was. What they refuse is what the Byzantine court offers in its place. The court calls its eunuchs angels and buys them as boys. The Sisters want neither the title nor the market. One who takes the knife rises a daughter, not a third thing.
+The Sisters are nostalgic for a sect almost nobody remembers: the Mother's galli of Phrygia, whom they call *gallae*. They say the house at Pessinus never closed, and they remember it kinder than it was; Pessinus in fact belonged to priests titled Attis who passed the office from father to son. In their own voice they claim a line from Pessinus through the prophetesses of Pepouza, the women-led Montanist church of Phrygia, to Dorylaion. What they refuse is what the Byzantine court offers instead. "The court calls its eunuchs angels," they say, "and buys them as boys." The Emperor's law counts three kinds of people: men, women and eunuchs. The Sisters hold that one who takes the knife rises a daughter, not a third thing.
 
-- **The gate: the knife.** *Take the Knife* is a sacrament with a sponsor, ending in a new name. Each faith picks one of three houses for who may be cut:
-  - **Grandmother's House:** any captive, in the old cruel way. She called them eunuchs, not daughters: unmanning them was the point.
-  - **Aunt Bea's House:** only violent prisoners, each under a sponsor who walked the same road, with a washout path for those who will not change. It holds that every woman it makes is a woman, and admits that it keeps cells.
-  - **Gift Alone:** only those who ask. "A gift you cannot refuse is not a gift." The strongest doctrine over a long game.
-- **The line.** Daughters choose their heirs rather than breed them. Inheritance runs through adopted daughters, on the model of Byzantine convent charters that passed estates to women "in perpetuity."
-- **The world.** The *Rescue the Daughters* war frees captive daughters from a neighbour. Sisters' Houses (shared by all three faiths, below) spread from Dorylaion.
+- **The gate: the knife.** *Take the Knife* takes two days, as the Mother's festival did: blood and mourning on the Day of Blood (24 March), then the knife, the knifer's question and a new name at the Hilaria, the festival of joy. Each faith picks one of three houses for who may be cut:
+  - **Grandmother's House:** any captive, man or boy, in the old cruel way. She called them eunuchs, not daughters: unmanning them was the point.
+  - **Aunt Bea's House:** only grown men proven violent, each under a sponsor who walked the same road, with a washout path for those who will not change. It holds that every woman it makes is a woman, claims no law for it, and admits that it keeps cells.
+  - **Gift Alone:** only grown women who ask. "Even the Mother of God was asked." "A gift you cannot refuse is not a gift." The strongest doctrine over a long game.
+- **The line.** Daughters choose their heirs rather than breed them. A woman of the House can foster a daughter, who belongs but does not inherit, or take her as a daughter with the written clause that makes her an heir. Each House has a Protectress from the founder's female line, as the convent charters passed protection of a convent "in perpetuity", and its sisters name three for Elder Sister and let the lot decide.
+- **The court.** Dukes and above can appoint daughters of the knife and eunuchs to the offices the Byzantine court reserved for its eunuchs: Parakoimomene, Protovestiaria and Papias. Any woman can be Praiposita of the empress's chamber.
+- **The world.** The *Rescue the Daughters* war frees captive daughters from a neighbour. A bishop may preach that the Sisters are "Cybele in Christian clothes", and under a lord of another Christian faith the old laws against heretics climb rung by rung, faster after the Komnenian turn of 1081: the books burned, the assemblies banned, the wills voided.
 - **Tenets.** Day of Blood, Daughters Chosen Not Born, and Unbending Sisterhood.
-- **Head of faith.** The Mother of Mothers, Theia Beatrike, an elder daughter seated at Dorylaion.
-- **The schism to come.** The main rite is Aristotelian: the cut are women. A planned Galenic splinter takes the court's view that the cut are "a kind of their own." The Aristotelians call that "the old cage with a new name."
+- **Head of faith.** The Mother of Mothers, Theia Beatrike, an elder daughter seated at Dorylaion, with up to seven Companions, as the Montanist prophetesses had theirs.
+- **Holy sites.** Dorylaion and Constantinople, Kyzikos, Ankyra, and ruined Pepouza.
+- **The schism to come.** The main rite is Aristotelian: the cut body changes into the female condition. A planned Galenic splinter is the rite that agrees with the Emperor: the cut are "a third thing, neither". The Aristotelians call that "the old cage with a new name."
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -188,6 +190,7 @@ Daoist inner alchemy teaches that an adept gestates an immortal embryo for ten m
 - **Declare Before Witnesses.** A Marked sister can take a daughter's name before any rite. The rite changes her body, not her name, and a failed or delayed rite never takes the name back.
 - **Sisters' Houses.** A ruler can found a House in her capital county. It belongs to the county, not her family: a later ruler of another faith may let it stand or close it, and closing sends the sisters on to another House rather than deleting them. Each House chooses its own Elder Sister every five years, frays under strain (too few hands, war levies), and splits to found a daughter House next door. Houses draw arrivals and can send newcomers to your court. Cis women of the faith are sisters too, and men of the faith can stay as friends of the House.
 - **The Sisters Choose.** An elective succession law: the ruler, the faith's clergy and its vassals choose an heir from among the ruler's born and adopted children, the women of the faith on the council, and the faithful vassals.
+- **Islamic neighbours.** Islamic courts value a daughter as a trusted servant and think less of her as a ruler: their jesters may mock a daughter who rules, while an Islamic lord may come to trust one in his household.
 - **Arrivals.** Each year a Marked traveller, a woman turned out for bearing no children, or (where there is a House) a friend of the House may come to the court of a ruler of these faiths. Turning someone away sends them on to the next House.
 - **Same-sex marriage.** All three faiths allow it, whatever the game rule says.
 
@@ -201,7 +204,7 @@ Daoist inner alchemy teaches that an adept gestates an immortal embryo for ten m
 - [x] Re-embodiment, Take as Daughter, arrivals
 - [ ] Bædling: insult duels, feud and settlement, outlawry and landless war-bands, Spring the Cell
 - [ ] Jade Embryo: the palace faction, temple societies against confiscation, omen events
-- [ ] Dorleyism: daughters in court offices, the court's tolerance decaying after 1066, the Galenic splinter rite
+- [ ] Dorleyism: the Galenic splinter rite; events from the reading (Liudprand's boys, Ignatios, the Tarsus boy-train, the Emperor at Dorylaion)
 - [ ] Flavour achievement events, the Pope first
 - [ ] Commissioned art for faith icons, traits and events
 
@@ -264,19 +267,56 @@ Cited in the notes, not read: Bhatt, Talia, *Brown/Trans/Les* (2026); Feinberg, 
 </details>
 
 <details>
-<summary><strong>Byzantium, Islam and the eunuch traditions</strong> (9 works)</summary>
+<summary><strong>Byzantium, Cybele and the eunuch traditions</strong> (30 works)</summary>
 
-- Ayalon, David. 1999. *Eunuchs, Caliphs and Sultans: A Study in Power Relationships*. Jerusalem: Magnes Press.
-- Marmon, Shaun. 1995. *Eunuchs and Sacred Boundaries in Islamic Society*. Oxford University Press.
+- Betancourt, Roland. 2020. *Byzantine Intersectionality: Sexuality, Gender, and Race in the Middle Ages*. Princeton University Press.
+- Burns, Krishni. 2025. *Bringing Their Mother Home: Roman Multiculturalism and the Mother of the Gods*. University of Michigan Press. (Open access.)
+- Bury, J. B. 1911. *The Imperial Administrative System in the Ninth Century, with a Revised Text of the Kletorologion of Philotheos*. British Academy.
+- Davis, Stephen J. 2002. "Crossed Texts, Crossed Sex: Intertextuality and Gender in Early Christian Legends of Holy Women Disguised as Men." *Journal of Early Christian Studies* 10.1: 1–36.
+- Garland, Lynda. 1999. *Byzantine Empresses: Women and Power in Byzantium, AD 527–1204*. Routledge.
+- Guilland, Rodolphe. 1943. "Les eunuques dans l'Empire byzantin." *Études byzantines* 1: 197–238.
+- King, Helen. 2013. *The One-Sex Body on Trial: The Classical and Early Modern Evidence*. Ashgate.
+- Latham, Jacob. 2012. "'Fabulous Clap-Trap': Roman Masculinity, the Cult of Magna Mater, and Literary Constructions of the *galli* at Rome." *Journal of Religion* 92.1: 84–122.
+- Macrides, R. J. 1990. "Kinship by Arrangement: The Case of Adoption." *Dumbarton Oaks Papers* 44: 109–118.
 - Neil, Bronwen, and Lynda Garland (eds.). 2013. *Questions of Gender in Byzantine Society*. Ashgate. (Routledge reprint 2016.)
 - Neville, Leonora. 2019. *Byzantine Gender*. Past Imperfect. Arc Humanities Press.
 - Rapp, Claudia. 2016. *Brother-Making in Late Antiquity and Byzantium: Monks, Laymen, and Christian Ritual*. Oxford University Press.
-- Rowson, Everett K. 1991. "The Effeminates of Early Medina." *Journal of the American Oriental Society* 111.4: 671–693.
-- Sanders, Paula. 1991. "Gendering the Ungendered Body: Hermaphrodites in Medieval Islamic Law." In Nikki R. Keddie and Beth Baron (eds.), *Women in Middle Eastern History: Shifting Boundaries in Sex and Gender*, 74–95. Yale University Press.
+- Ringrose, Kathryn M. 2003. *The Perfect Servant: Eunuchs and the Social Construction of Gender in Byzantium*. University of Chicago Press.
+- Roller, Lynn E. 1997. "The Ideology of the Eunuch Priest." *Gender & History* 9.3: 542–559.
+- Roller, Lynn E. 1999. *In Search of God the Mother: The Cult of Anatolian Cybele*. University of California Press.
+- Sidéris, Georges. 2010. "Les eunuques de Byzance (IVe–XIIe siècle) : de la société de cour à la société urbaine." In Élisabeth Malamut (ed.), *Dynamiques sociales au Moyen Âge*, 89–116. Presses universitaires de Provence.
+- Sidéris, Georges. 2013. "Sur l'origine des anges eunuques à Byzance." In Constantin Zuckerman (ed.), *Constructing the Seventh Century*, Travaux et Mémoires 17: 539–558.
+- Spencer-Hall, Alicia, and Blake Gutt (eds.). 2021. *Trans and Genderqueer Subjects in Medieval Hagiography*. Amsterdam University Press. (Open access.)
 - Tougher, Shaun. 2008. *The Eunuch in Byzantine History and Society*. Routledge. (Read in the 2009 Taylor & Francis e-library edition.)
 - Tougher, Shaun. 2013. "Bearding Byzantium: Masculinity, Eunuchs and the Byzantine Life Course." In Neil and Garland (eds.), *Questions of Gender in Byzantine Society*, 153–166.
+- Tougher, Shaun (ed.). 2002. *Eunuchs in Antiquity and Beyond*. Classical Press of Wales and Duckworth.
+- Trevett, Christine. 1996. *Montanism: Gender, Authority and the New Prophecy*. Cambridge University Press.
+- *Primary sources in translation:*
+  - Aristotle. *Generation of Animals*. Trans. Arthur Platt. In *The Works of Aristotle*, vol. V. Oxford, 1912.
+  - Constantine Porphyrogennetos. *The Book of Ceremonies*. Trans. Ann Moffatt and Maxeme Tall. Byzantina Australiensia 18. 2012.
+  - Galen. *On Semen* (*De semine*). Greek text (Kühn IV); the notes' renderings are our own and should be checked against De Lacy's translation (CMG V 3,1, 1992).
+  - Gautier, Paul (ed. and trans.). 1985. "Le typikon de la Théotokos Kécharitôménè." *Revue des études byzantines* 43: 5–165.
+  - Liudprand of Cremona. *The Complete Works*. Trans. Paolo Squatriti. Catholic University of America Press, 2007.
+  - Paul of Aegina. *The Seven Books*, vol. II. Trans. Francis Adams. Sydenham Society, 1846.
+  - Talbot, Alice-Mary (ed.). 1996. *Holy Women of Byzantium: Ten Saints' Lives in English Translation*. Dumbarton Oaks. (Open access.)
+  - Thomas, John, and Angela Constantinides Hero (eds.). 2000. *Byzantine Monastic Foundation Documents*. 5 vols. Dumbarton Oaks. (Open access.)
 
-Cited in the notes, not read: Ayalon, David, "On the Eunuchs in Islam," *Jerusalem Studies in Arabic and Islam* 1 (1979): 67–124; Kuefler, *The Manly Eunuch* (2001); Messis, *Les eunuques à Byzance* (2014); Mullett on Theophylact of Ochrid's *In Defence of Eunuchs*; Ringrose, *The Perfect Servant* (2003).
+Cited in the notes, not read: Kuefler, *The Manly Eunuch* (2001); Messis, *Les eunuques à Byzance* (2014); Mullett on Theophylact of Ochrid's *In Defence of Eunuchs* (read only through Tougher 2002). Further titles, with availability, are in `docs/research/byzantium_reading_list.md`.
+
+</details>
+
+<details>
+<summary><strong>Islamic comparanda</strong> (7 works)</summary>
+
+- Ayalon, David. 1999. *Eunuchs, Caliphs and Sultans: A Study in Power Relationships*. Jerusalem: Magnes Press.
+- El-Azhari, Taef. 2019. *Queens, Eunuchs and Concubines in Islamic History, 661–1257*. Edinburgh University Press.
+- Marmon, Shaun. 1995. *Eunuchs and Sacred Boundaries in Islamic Society*. Oxford University Press.
+- Rowson, Everett K. 1991. "The Categorization of Gender and Sexual Irregularity in Medieval Arabic Vice Lists." In Julia Epstein and Kristina Straub (eds.), *Body Guards: The Cultural Politics of Gender Ambiguity*, 50–79. Routledge.
+- Rowson, Everett K. 1991. "The Effeminates of Early Medina." *Journal of the American Oriental Society* 111.4: 671–693.
+- Rowson, Everett K. 2003. "Gender Irregularity as Entertainment: Institutionalized Transvestism at the Caliphal Court in Medieval Baghdad." In Sharon Farmer and Carol Braun Pasternack (eds.), *Gender and Difference in the Middle Ages*, 45–72. University of Minnesota Press.
+- Sanders, Paula. 1991. "Gendering the Ungendered Body: Hermaphrodites in Medieval Islamic Law." In Nikki R. Keddie and Beth Baron (eds.), *Women in Middle Eastern History: Shifting Boundaries in Sex and Gender*, 74–95. Yale University Press.
+
+Cited in the notes, not read: Ayalon, David, "On the Eunuchs in Islam," *Jerusalem Studies in Arabic and Islam* 1 (1979): 67–124; El-Rouayheb, *Before Homosexuality*; Babayan and Najmabadi (eds.), *Islamicate Sexualities*.
 
 </details>
 
@@ -358,7 +398,7 @@ Cited in the notes, not read: Davies, Sharyn Graham, *Challenging Gender Norms: 
 - Surtees, Allison, and Jennifer Dyer (eds.). 2020. *Exploring Gender Diversity in the Ancient World*. Edinburgh University Press.
 - Wiesner-Hanks, Merry E. 2011. *Gender in History: Global Perspectives*. 2nd ed. Wiley-Blackwell.
 
-Cited in the notes, not read: Nanda, Serena, *Neither Man nor Woman: The Hijras of India* (1990); Reddy, Gayatri, *With Respect to Sex* (title as given, truncated in the notes); Roller, Lynn, *In Search of God the Mother: The Cult of Anatolian Cybele* (1999).
+Cited in the notes, not read: Nanda, Serena, *Neither Man nor Woman: The Hijras of India* (1990); Reddy, Gayatri, *With Respect to Sex* (title as given, truncated in the notes).
 
 </details>
 

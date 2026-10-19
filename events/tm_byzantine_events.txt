@@ -1,0 +1,134 @@
+﻿namespace = tm_byz
+
+# "Cybele in Christian clothes": the charge Jerome and Didymus laid on Montanus (research/byz_trevett_montanism.md),
+# laid now on the Sisters. Each wing of the faith answers in its own voice. Root = a Dorleyite ruler.
+tm_byz.0001 = {
+	type = character_event
+	title = tm_byz.0001.t
+	desc = tm_byz.0001.desc
+	theme = faith
+	left_portrait = { character = root animation = personality_rational }
+
+	option = {	# Aristotelian: we took one thing from the Mother
+		name = tm_byz.0001.a
+		trigger = { rite ?= { rite_has_parameter = tm_castrates_are_women } }
+		add_piety = 50
+	}
+	option = {	# Galenic: the Emperor's own law counts three kinds
+		name = tm_byz.0001.b
+		trigger = { rite ?= { rite_has_parameter = tm_castrates_third_kind } }
+		add_prestige = 50
+	}
+	option = {	# Grandmother's House: the Mother was ours first
+		name = tm_byz.0001.c
+		trigger = { rite ?= { rite_has_doctrine = tm_knife_grandmother } }
+		add_dread = 10
+		add_piety = 25
+	}
+	option = {	# We are Christians, and we will say so as often as we must
+		name = tm_byz.0001.d
+		add_piety = -25
+		add_stress = 10
+	}
+}
+
+# The suppression ladder: the codes against heretics, rung by rung (research/byz_trevett_montanism.md). It climbs
+# faster after the Komnenian turn of 1081 (research/byz_sideris_eunuques_societe.md). Root = a Dorleyite ruler
+# whose liege keeps another Christian faith. var:tm_suppression counts the rungs reached.
+
+# Rung 1: the books.
+tm_byz.0010 = {
+	type = character_event
+	title = tm_byz.0010.t
+	desc = tm_byz.0010.desc
+	theme = faith
+	left_portrait = { character = root animation = worry }
+
+	immediate = { set_variable = { name = tm_suppression value = 1 } }
+
+	option = {	# Copy them first
+		name = tm_byz.0010.a
+		trigger = { gold >= 50 }
+		remove_short_term_gold = 50
+	}
+	option = {	# Hide them
+		name = tm_byz.0010.b
+		random_list = {
+			60 = {
+				modifier = { add = { value = intrigue multiply = 2 } }
+				desc = tm_byz.0010.b.hidden
+			}
+			40 = {
+				desc = tm_byz.0010.b.found
+				liege ?= { add_opinion = { target = root modifier = angry_opinion opinion = -20 } }
+			}
+		}
+	}
+	option = {	# Hand them over
+		name = tm_byz.0010.c
+		add_piety = -50
+		add_stress = 20
+	}
+}
+
+# Rung 2: the assemblies.
+tm_byz.0011 = {
+	type = character_event
+	title = tm_byz.0011.t
+	desc = tm_byz.0011.desc
+	theme = faith
+	left_portrait = { character = root animation = worry }
+
+	immediate = { set_variable = { name = tm_suppression value = 2 } }
+
+	option = {	# Meet in secret
+		name = tm_byz.0011.a
+		add_stress = 15
+		every_held_title = {
+			limit = { tier = tier_county has_variable = tm_house }
+			change_variable = { name = tm_house_strain add = 1 }
+		}
+	}
+	option = {	# Meet in the open and let them come
+		name = tm_byz.0011.b
+		add_piety = 75
+		liege ?= { add_opinion = { target = root modifier = angry_opinion opinion = -30 } }
+	}
+	option = {	# Obey
+		name = tm_byz.0011.c
+		add_piety = -50
+		add_stress = 25
+	}
+}
+
+# Rung 3: the wills. A heretic's estate goes to orthodox kin, which would undo every adopted daughter.
+tm_byz.0012 = {
+	type = character_event
+	title = tm_byz.0012.t
+	desc = tm_byz.0012.desc
+	theme = faith
+	left_portrait = { character = root animation = anger }
+
+	immediate = { set_variable = { name = tm_suppression value = 3 } }
+
+	option = {	# Register the adoptions with the Emperor's court
+		name = tm_byz.0012.a
+		trigger = { gold >= 100 }
+		remove_short_term_gold = 100
+		set_variable = tm_wills_registered
+	}
+	option = {	# Conform outwardly
+		name = tm_byz.0012.b
+		add_piety = -100
+		add_character_modifier = { modifier = tm_outward_conformity_modifier years = 10 }
+	}
+	option = {	# Defy them
+		name = tm_byz.0012.c
+		add_prestige = 50
+		liege ?= { add_opinion = { target = root modifier = angry_opinion opinion = -40 } }
+		every_child = {
+			limit = { is_alive = yes tm_is_daughter_trigger = yes }
+			add_character_modifier = { modifier = tm_contested_inheritance_modifier years = 10 }
+		}
+	}
+}

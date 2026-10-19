@@ -11,6 +11,71 @@ tm_found_house_effect = {
 	set_variable = tm_house
 	set_variable = { name = tm_house_strain value = 0 }
 	add_county_modifier = { modifier = tm_sisters_house_county_modifier }
+	tm_house_name_protectress_effect = yes
+}
+
+# The Protectress (ephoros): as in the Kecharitomene typikon (research/byz_thomas_hero_typika.md), the House's
+# protection passes down the founder's female line; when that line fails, the sisters elect a woman of the
+# holder's house. She guards the House against the lord but may not touch its goods or choose its sisters.
+# Scope: the county. Uses its holder.
+tm_house_name_protectress_effect = {
+	save_scope_as = tm_protectress_county
+	if = {
+		limit = {
+			has_variable = tm_house_protectress
+			var:tm_house_protectress = { is_alive = yes }
+		}
+		var:tm_house_protectress = { save_scope_as = tm_old_protectress }
+		var:tm_house_protectress = {
+			ordered_child = {
+				limit = { is_alive = yes is_adult = yes tm_praiposita_court_trigger = yes }
+				order_by = age
+				save_scope_as = tm_next_protectress
+			}
+		}
+	}
+	else_if = {
+		limit = { has_variable = tm_house_protectress }
+		var:tm_house_protectress = {
+			ordered_child = {
+				limit = { is_alive = yes is_adult = yes tm_praiposita_court_trigger = yes }
+				order_by = age
+				save_scope_as = tm_next_protectress
+			}
+		}
+	}
+	if = {
+		limit = { NOT = { exists = scope:tm_next_protectress } NOT = { exists = scope:tm_old_protectress } }
+		holder ?= {
+			if = {
+				limit = { is_adult = yes tm_praiposita_court_trigger = yes }
+				save_scope_as = tm_next_protectress
+			}
+			else = {
+				ordered_child = {
+					limit = { is_alive = yes is_adult = yes tm_praiposita_court_trigger = yes }
+					order_by = age
+					save_scope_as = tm_next_protectress
+				}
+			}
+		}
+	}
+	if = {
+		limit = { NOT = { exists = scope:tm_next_protectress } NOT = { exists = scope:tm_old_protectress } }
+		holder ?= {
+			house ?= {
+				random_house_member = {
+					limit = { is_alive = yes is_adult = yes tm_praiposita_court_trigger = yes }
+					save_scope_as = tm_next_protectress
+				}
+			}
+		}
+	}
+	if = {
+		limit = { exists = scope:tm_next_protectress NOT = { exists = scope:tm_old_protectress } }
+		set_variable = { name = tm_house_protectress value = scope:tm_next_protectress }
+		scope:tm_next_protectress = { add_character_modifier = { modifier = tm_house_protectress_modifier } }
+	}
 }
 
 # Scope: the county. scope:tm_house_holder = the lord closing it. The residents are not deleted: each walks
@@ -21,6 +86,14 @@ tm_close_house_effect = {
 	remove_variable = tm_elder_sister
 	remove_variable = tm_elder_term
 	remove_variable = tm_house_tolerated_by
+	if = {
+		limit = {
+			has_variable = tm_house_protectress
+			var:tm_house_protectress = { is_alive = yes }
+		}
+		var:tm_house_protectress = { remove_character_modifier = tm_house_protectress_modifier }
+	}
+	remove_variable = tm_house_protectress
 	remove_county_modifier = tm_sisters_house_county_modifier
 	scope:tm_house_holder = {
 		every_courtier = {
@@ -102,6 +175,17 @@ tm_house_yearly_effect = {
 		if = {
 			limit = { var:tm_house_strain < 0 }
 			set_variable = { name = tm_house_strain value = 0 }
+		}
+
+		# The Protectress: if she has died, the next woman of her line, or one the sisters elect, takes it up.
+		if = {
+			limit = {
+				OR = {
+					NOT = { has_variable = tm_house_protectress }
+					var:tm_house_protectress = { is_alive = no }
+				}
+			}
+			tm_house_name_protectress_effect = yes
 		}
 
 		# The Elder Sister's term.

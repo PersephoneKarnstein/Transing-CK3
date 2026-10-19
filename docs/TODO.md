@@ -63,6 +63,22 @@ Built: shared daughter trigger and per-faith daughter traits; Bæddel faith (Got
 - [ ] Holy-site lore: York (Eiríkr's 80 seiðmenn, Gunnhildr), Trondheim (Þorgerðr Hǫlgabrúðr), Kyiv (armed women among the Rus' dead, 971) (Price)
 - [ ] Eleanor Rykener event; female-king title keys; `secret_tm_sister` (medtrans notes)
 
+## Byzantine reading revisions (added 2026-10-18, untested in-game)
+- [ ] Two-day knife rite (0001 → 0004)
+- [ ] Court offices appear for Dorleyite dukes+, valid holders as intended; the lifestyle-xp modifier names (vanilla pattern) load
+- [ ] Pepouza holy site in c_lydia / b_sebaste
+- [ ] Protectress named at founding, passes on death; Elder Sister lot (ordered_courtier max 3 + random_in_list)
+- [ ] Foster as Daughter; Take as Daughter half price for one's own foster-daughter
+- [ ] Name a Companion (Mother of Mothers only, max 7)
+- [ ] tm_byz.0001 answers per wing; suppression ladder 0010→0012 under a non-Dorley Christian liege, faster after 1081
+- [ ] Islamic triggered opinion (parameter islamic_syncretic_recipient on the observer); tm_isl.0001 / 0002
+
+## Stage 2 inputs from the Byzantine reading
+- [ ] Events: Liudprand's four boys (949) rescue-and-adopt; Ignatios returns as patriarch (867); Tarsus boy-train with options per knife house; the Emperor halts at Dorylaion (Opsikion); Steward at the Gate; Psellos's "feminine nature" (c. 1066); Athos closed to eunuchs (1083)
+- [ ] Abbasid event pack: the jester, the beard plucked overnight, the barber sent to humiliate a prince (Rowson)
+- [ ] Galenic splinter rite: Theophylact's *In Defence of Eunuchs* as its book
+- [ ] Verify the Galen renderings in byz_galen_on_semen.md against De Lacy (CMG V 3,1)
+
 ## Branch faiths, stage 2 (next)
 - [ ] **Spring the Cell** (user: build with the Bæddel stage-2 work). Hostile scheme, any adult of the three faiths, landed or not; target a ruler imprisoning a daughter, Marked woman or declared sister. Agents: Marked guards, faithful servants, friends of the House. Success: prisoner walks to the nearest House (else the plotter's court), plotter possibly unknown. Discovery and failure as vanilla hostile schemes. Template: vanilla abduct. The non-war counterpart of Rescue the Daughters and the planned Bæddel raids.
 - [ ] Bæddel: níð insult duels; landless war-band play; Rescue the Daughters as a raid; Christian outlawry pressure.

@@ -56,3 +56,16 @@ tm_mogao = {
 		health = 0.1
 	}
 }
+
+# Pepouza: the Montanist holy city, where the prophetesses Priscilla and Maximilla said the New Jerusalem
+# would come down. A ruin by the ninth century (research/byz_trevett_montanism.md). The faith claims it in
+# its own voice as the second link in its line: Pessinus, Pepouza, Dorylaion.
+tm_pepouza = {
+	county = c_lydia
+	barony = b_sebaste
+
+	county_holder_character_modifier = {
+		learning = 1
+		monthly_piety = 0.2
+	}
+}

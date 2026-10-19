@@ -1,0 +1,477 @@
+﻿# Adelphai Dorleyaiou — court offices for Dorleyite rulers (duke and above).
+# The Byzantine court reserved offices for eunuchs (Philotheos' Kletorologion, 899: research/byz_bury_kletorologion.md;
+# byz_guilland_eunuques.md; byz_ringrose_perfect_servant.md) and appointed women to the empress's chamber with the same
+# rite and words as a male koubikoularios (byz_moffatt_tall_de_cerimoniis.md). The Sisters keep the offices and give
+# them to their daughters. Template: vanilla chief_eunuch_court_position (00_court_positions.txt).
+
+# tm_parakoimomene: the bedchamber: the one who sleeps beside the ruler.
+tm_parakoimomene_court_position = {
+	sort_order = 275
+	max_available_positions = 1
+	minimum_rank = duchy
+	skill = intrigue
+
+	court_position_asset = {
+		animation = scheme
+		background = "gfx/interface/illustrations/event_scenes/throneroom_mediterranean.dds"
+	}
+
+	opinion = {
+		value = regular_court_position_opinion
+	}
+
+	aptitude_level_breakpoints = { 20 40 60 80 }
+
+	aptitude = {
+		value = 1
+		add = {
+			value = intrigue
+			multiply = 2.5
+			max = 50
+			desc = court_position_skill_intrigue
+		}
+		add = {
+			value = diplomacy
+			multiply = 2.5
+			desc = court_position_skill_diplomacy
+		}
+		add = court_position_aptitude_high_penalty_value
+		add = general_aptitude_bonus
+	}
+
+	is_shown = {
+		rite ?= { rite_has_parameter = tm_day_of_blood_active }
+		highest_held_title_tier >= tier_duchy
+	}
+
+	valid_position = {
+		rite ?= { rite_has_parameter = tm_day_of_blood_active }
+		highest_held_title_tier >= tier_duchy
+	}
+
+	is_shown_character = {
+		scope:employee = {
+			court_position_employee_shown_trigger = yes
+		}
+	}
+
+	valid_character = {
+		scope:employee = {
+			liege ?= scope:liege
+			tm_cut_court_trigger = yes
+		}
+	}
+
+	revoke_cost = {
+		prestige = {
+			value = minor_court_position_prestige_revoke_cost
+		}
+	}
+
+	salary = {
+		gold = {
+			value = 0
+			if = {
+				limit = { scope:liege = { has_treasury = no } }
+				add = chief_eunuch_total_salary_value
+			}
+		}
+		treasury = {
+			value = 0
+			if = {
+				limit = { scope:liege = { has_treasury = yes } }
+				add = chief_eunuch_total_salary_value
+			}
+		}
+		prestige = {
+			value = chief_eunuch_prestige_salary_value
+		}
+		round = no
+	}
+
+	received_salary = {
+		gold = {
+			value = chief_eunuch_total_salary_value
+		}
+		prestige = {
+			value = chief_eunuch_prestige_salary_value
+		}
+		round = no
+	}
+
+	scaling_employer_modifiers = {
+		terrible = { enemy_hostile_scheme_success_chance_max_add = -2 }
+		poor = { enemy_hostile_scheme_success_chance_max_add = -4 }
+		average = { enemy_hostile_scheme_success_chance_max_add = -6 stress_loss_mult = 0.05 }
+		good = { enemy_hostile_scheme_success_chance_max_add = -8 stress_loss_mult = 0.1 }
+		excellent = { enemy_hostile_scheme_success_chance_max_add = -10 stress_loss_mult = 0.15 }
+	}
+
+	modifier = {
+		monthly_intrigue_lifestyle_xp_gain_mult = 0.1
+	}
+
+	ai_position_score = {
+		value = 50
+		add = court_position_debt_considerations_value
+	}
+	ai_candidate_score = {
+		value = 100
+		add = scope:base_value
+		add = court_position_candidate_score_base_value
+	}
+}
+
+# tm_protovestiaria: the wardrobe and the privy purse.
+tm_protovestiaria_court_position = {
+	sort_order = 274
+	max_available_positions = 1
+	minimum_rank = duchy
+	skill = stewardship
+
+	court_position_asset = {
+		animation = scheme
+		background = "gfx/interface/illustrations/event_scenes/throneroom_mediterranean.dds"
+	}
+
+	opinion = {
+		value = regular_court_position_opinion
+	}
+
+	aptitude_level_breakpoints = { 20 40 60 80 }
+
+	aptitude = {
+		value = 1
+		add = {
+			value = stewardship
+			multiply = 2.5
+			max = 50
+			desc = court_position_skill_stewardship
+		}
+		add = {
+			value = diplomacy
+			multiply = 2.5
+			desc = court_position_skill_diplomacy
+		}
+		add = court_position_aptitude_high_penalty_value
+		add = general_aptitude_bonus
+	}
+
+	is_shown = {
+		rite ?= { rite_has_parameter = tm_day_of_blood_active }
+		highest_held_title_tier >= tier_duchy
+	}
+
+	valid_position = {
+		rite ?= { rite_has_parameter = tm_day_of_blood_active }
+		highest_held_title_tier >= tier_duchy
+	}
+
+	is_shown_character = {
+		scope:employee = {
+			court_position_employee_shown_trigger = yes
+		}
+	}
+
+	valid_character = {
+		scope:employee = {
+			liege ?= scope:liege
+			tm_cut_court_trigger = yes
+		}
+	}
+
+	revoke_cost = {
+		prestige = {
+			value = minor_court_position_prestige_revoke_cost
+		}
+	}
+
+	salary = {
+		gold = {
+			value = 0
+			if = {
+				limit = { scope:liege = { has_treasury = no } }
+				add = chief_eunuch_total_salary_value
+			}
+		}
+		treasury = {
+			value = 0
+			if = {
+				limit = { scope:liege = { has_treasury = yes } }
+				add = chief_eunuch_total_salary_value
+			}
+		}
+		prestige = {
+			value = chief_eunuch_prestige_salary_value
+		}
+		round = no
+	}
+
+	received_salary = {
+		gold = {
+			value = chief_eunuch_total_salary_value
+		}
+		prestige = {
+			value = chief_eunuch_prestige_salary_value
+		}
+		round = no
+	}
+
+	scaling_employer_modifiers = {
+		terrible = { domain_tax_mult = 0.01 }
+		poor = { domain_tax_mult = 0.02 }
+		average = { domain_tax_mult = 0.04 }
+		good = { domain_tax_mult = 0.06 }
+		excellent = { domain_tax_mult = 0.08 }
+	}
+
+	modifier = {
+		monthly_stewardship_lifestyle_xp_gain_mult = 0.1
+	}
+
+	ai_position_score = {
+		value = 50
+		add = court_position_debt_considerations_value
+	}
+	ai_candidate_score = {
+		value = 100
+		add = scope:base_value
+		add = court_position_candidate_score_base_value
+	}
+}
+
+# tm_papias: the palace keys: who comes in, and who goes out.
+tm_papias_court_position = {
+	sort_order = 273
+	max_available_positions = 1
+	minimum_rank = duchy
+	skill = intrigue
+
+	court_position_asset = {
+		animation = scheme
+		background = "gfx/interface/illustrations/event_scenes/throneroom_mediterranean.dds"
+	}
+
+	opinion = {
+		value = regular_court_position_opinion
+	}
+
+	aptitude_level_breakpoints = { 20 40 60 80 }
+
+	aptitude = {
+		value = 1
+		add = {
+			value = intrigue
+			multiply = 2.5
+			max = 50
+			desc = court_position_skill_intrigue
+		}
+		add = {
+			value = stewardship
+			multiply = 2.5
+			desc = court_position_skill_stewardship
+		}
+		add = court_position_aptitude_high_penalty_value
+		add = general_aptitude_bonus
+	}
+
+	is_shown = {
+		rite ?= { rite_has_parameter = tm_day_of_blood_active }
+		highest_held_title_tier >= tier_duchy
+	}
+
+	valid_position = {
+		rite ?= { rite_has_parameter = tm_day_of_blood_active }
+		highest_held_title_tier >= tier_duchy
+	}
+
+	is_shown_character = {
+		scope:employee = {
+			court_position_employee_shown_trigger = yes
+		}
+	}
+
+	valid_character = {
+		scope:employee = {
+			liege ?= scope:liege
+			tm_cut_court_trigger = yes
+		}
+	}
+
+	revoke_cost = {
+		prestige = {
+			value = minor_court_position_prestige_revoke_cost
+		}
+	}
+
+	salary = {
+		gold = {
+			value = 0
+			if = {
+				limit = { scope:liege = { has_treasury = no } }
+				add = chief_eunuch_total_salary_value
+			}
+		}
+		treasury = {
+			value = 0
+			if = {
+				limit = { scope:liege = { has_treasury = yes } }
+				add = chief_eunuch_total_salary_value
+			}
+		}
+		prestige = {
+			value = chief_eunuch_prestige_salary_value
+		}
+		round = no
+	}
+
+	received_salary = {
+		gold = {
+			value = chief_eunuch_total_salary_value
+		}
+		prestige = {
+			value = chief_eunuch_prestige_salary_value
+		}
+		round = no
+	}
+
+	scaling_employer_modifiers = {
+		terrible = { enemy_hostile_scheme_phase_duration_add = 1 }
+		poor = { enemy_hostile_scheme_phase_duration_add = 2 }
+		average = { enemy_hostile_scheme_phase_duration_add = 4 }
+		good = { enemy_hostile_scheme_phase_duration_add = 6 }
+		excellent = { enemy_hostile_scheme_phase_duration_add = 8 }
+	}
+
+	modifier = {
+		monthly_intrigue_lifestyle_xp_gain_mult = 0.1
+	}
+
+	ai_position_score = {
+		value = 50
+		add = court_position_debt_considerations_value
+	}
+	ai_candidate_score = {
+		value = 100
+		add = scope:base_value
+		add = court_position_candidate_score_base_value
+	}
+}
+
+# tm_praiposita: the empress's chamber and the women of the court.
+tm_praiposita_court_position = {
+	sort_order = 272
+	max_available_positions = 1
+	minimum_rank = duchy
+	skill = diplomacy
+
+	court_position_asset = {
+		animation = scheme
+		background = "gfx/interface/illustrations/event_scenes/throneroom_mediterranean.dds"
+	}
+
+	opinion = {
+		value = regular_court_position_opinion
+	}
+
+	aptitude_level_breakpoints = { 20 40 60 80 }
+
+	aptitude = {
+		value = 1
+		add = {
+			value = diplomacy
+			multiply = 2.5
+			max = 50
+			desc = court_position_skill_diplomacy
+		}
+		add = {
+			value = learning
+			multiply = 2.5
+			desc = court_position_skill_learning
+		}
+		add = court_position_aptitude_high_penalty_value
+		add = general_aptitude_bonus
+	}
+
+	is_shown = {
+		rite ?= { rite_has_parameter = tm_day_of_blood_active }
+		highest_held_title_tier >= tier_duchy
+	}
+
+	valid_position = {
+		rite ?= { rite_has_parameter = tm_day_of_blood_active }
+		highest_held_title_tier >= tier_duchy
+	}
+
+	is_shown_character = {
+		scope:employee = {
+			court_position_employee_shown_trigger = yes
+		}
+	}
+
+	valid_character = {
+		scope:employee = {
+			liege ?= scope:liege
+			tm_praiposita_court_trigger = yes
+		}
+	}
+
+	revoke_cost = {
+		prestige = {
+			value = minor_court_position_prestige_revoke_cost
+		}
+	}
+
+	salary = {
+		gold = {
+			value = 0
+			if = {
+				limit = { scope:liege = { has_treasury = no } }
+				add = chief_eunuch_total_salary_value
+			}
+		}
+		treasury = {
+			value = 0
+			if = {
+				limit = { scope:liege = { has_treasury = yes } }
+				add = chief_eunuch_total_salary_value
+			}
+		}
+		prestige = {
+			value = chief_eunuch_prestige_salary_value
+		}
+		round = no
+	}
+
+	received_salary = {
+		gold = {
+			value = chief_eunuch_total_salary_value
+		}
+		prestige = {
+			value = chief_eunuch_prestige_salary_value
+		}
+		round = no
+	}
+
+	scaling_employer_modifiers = {
+		terrible = { court_grandeur_baseline_add = 1 }
+		poor = { court_grandeur_baseline_add = 1 }
+		average = { court_grandeur_baseline_add = 2 monthly_prestige = 0.2 }
+		good = { court_grandeur_baseline_add = 2 monthly_prestige = 0.4 }
+		excellent = { court_grandeur_baseline_add = 3 monthly_prestige = 0.6 }
+	}
+
+	modifier = {
+		monthly_diplomacy_lifestyle_xp_gain_mult = 0.1
+	}
+
+	ai_position_score = {
+		value = 50
+		add = court_position_debt_considerations_value
+	}
+	ai_candidate_score = {
+		value = 100
+		add = scope:base_value
+		add = court_position_candidate_score_base_value
+	}
+}

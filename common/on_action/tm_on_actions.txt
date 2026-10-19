@@ -210,6 +210,25 @@ yearly_playable_pulse = {
 	on_actions = {
 		tm_yearly_playable
 		tm_yearly_houses
+		tm_yearly_islamic_courts
+	}
+}
+
+# An Islamic ruler with a daughter at court comes to trust her as the household's khasi (tm_isl.0001).
+tm_yearly_islamic_courts = {
+	trigger = {
+		rite ?= { rite_has_parameter = islamic_syncretic_recipient }
+		any_courtier = { tm_is_daughter_trigger = yes is_adult = yes }
+	}
+	effect = {
+		random = {
+			chance = 5
+			random_courtier = {
+				limit = { tm_is_daughter_trigger = yes is_adult = yes }
+				save_scope_as = tm_isl_daughter
+			}
+			trigger_event = { id = tm_isl.0001 days = { 1 300 } }
+		}
 	}
 }
 
@@ -240,6 +259,54 @@ tm_yearly_playable = {
 			if = {
 				limit = { capital_county ?= { NOT = { has_variable = tm_house } } }
 				capital_county = { tm_found_house_effect = yes }
+			}
+		}
+		# Dorleyism in the Byzantine world (tm_byzantine_events.txt).
+		if = {
+			limit = { rite ?= { rite_has_parameter = tm_day_of_blood_active } }
+			random = {
+				chance = 4
+				trigger_event = { id = tm_byz.0001 days = { 1 300 } }
+			}
+			# The heresy laws, rung by rung, under a liege of another Christian faith.
+			if = {
+				limit = {
+					liege ?= {
+						NOT = { faith = root.faith }
+						faith = { religion_tag = christianity_religion }
+					}
+					NOT = { var:tm_suppression ?= 3 }
+				}
+				random = {
+					chance = 3
+					modifier = { add = 5 current_date >= 1081.1.1 }	# the Komnenian turn
+					if = {
+						limit = { NOT = { has_variable = tm_suppression } }
+						trigger_event = { id = tm_byz.0010 days = { 1 300 } }
+					}
+					else_if = {
+						limit = { var:tm_suppression = 1 }
+						trigger_event = { id = tm_byz.0011 days = { 1 300 } }
+					}
+					else = {
+						trigger_event = { id = tm_byz.0012 days = { 1 300 } }
+					}
+				}
+			}
+		}
+		# A daughter who rules, laughed at by an Islamic neighbour (tm_isl.0002).
+		if = {
+			limit = {
+				tm_is_daughter_trigger = yes
+				any_neighboring_top_liege_realm_owner = { rite ?= { rite_has_parameter = islamic_syncretic_recipient } }
+			}
+			random = {
+				chance = 4
+				random_neighboring_top_liege_realm_owner = {
+					limit = { rite ?= { rite_has_parameter = islamic_syncretic_recipient } }
+					save_scope_as = tm_isl_court
+				}
+				trigger_event = { id = tm_isl.0002 days = { 1 300 } }
 			}
 		}
 		# A völva on the winter road (tm_seidr.0020).

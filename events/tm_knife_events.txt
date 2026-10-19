@@ -1,8 +1,12 @@
 ﻿namespace = tm_knife
 
-# The knifer's question (voluntary path). Liturgy from the Beijing knifers' "will you ever repent?"
-# and the guarantor/offering sequence (docs/research/east_dale_qing_eunuchs.md, east_tsai_ming_eunuchs.md),
-# dressed in Anatolian cloth; recorded "for health" after Leo VI's Novel 60 (hist_tougher_eunuch_byzantine.md).
+# The Day of Blood and the Hilaria (voluntary path). Two days, as the Mother's festival ran: blood-letting
+# and mourning on 24 March, the knife and the new name at the Hilaria, the festival of joy two days later
+# (research/byz_burns_mother_home.md, byz_latham_galli.md, byz_roller_eunuch_priest.md). The knifer's
+# question comes with the knife: liturgy from the Beijing knifers' "will you ever repent?"
+# (east_dale_qing_eunuchs.md), recorded "for health" after Leo VI's Novel 60 (hist_tougher_eunuch_byzantine.md).
+
+# The Day of Blood. Root = the novice.
 tm_knife.0001 = {
 	type = character_event
 	title = tm_knife.0001.t
@@ -13,15 +17,39 @@ tm_knife.0001 = {
 		animation = worry
 	}
 
-	option = {	# I will not repent
+	option = {	# Let my blood fall with theirs
 		name = tm_knife.0001.a
-		tm_take_the_knife_effect = yes
+		add_stress = 10
+		trigger_event = { id = tm_knife.0004 days = 2 }
 		ai_chance = { base = 90 }
 	}
-	option = {	# Not yet
+	option = {	# Not this spring
 		name = tm_knife.0001.b
 		add_piety = 50			# refund half the decision cost
 		ai_chance = { base = 10 }
+	}
+}
+
+# The Hilaria: the knife and the knifer's question. Root = the novice.
+tm_knife.0004 = {
+	type = character_event
+	title = tm_knife.0004.t
+	desc = tm_knife.0004.desc
+	theme = faith
+	left_portrait = {
+		character = root
+		animation = personality_zealous
+	}
+
+	option = {	# I will not repent
+		name = tm_knife.0004.a
+		tm_take_the_knife_effect = yes
+		ai_chance = { base = 95 }
+	}
+	option = {	# Not today
+		name = tm_knife.0004.b
+		add_piety = 50
+		ai_chance = { base = 5 }
 	}
 }
 

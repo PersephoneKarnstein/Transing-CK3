@@ -25,7 +25,7 @@ transbian_maximalism = {
 	holy_sites = {
 		tm_kyzikos		# Cybele's Dindymene sanctuary
 		tm_ankyra		# Galatia, the Mother's country
-		antioch
+		tm_pepouza		# the Montanist prophetesses' ruined city (replaces Antioch: the Syrian galli are not this faith's line)
 	}
 
 	# Core tenets and rite-specific doctrines live on the main rite (tm_rite_types.txt).

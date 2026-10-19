@@ -142,3 +142,20 @@ tm_seidr_seeker_trigger = {
 		has_variable = tm_declared
 	}
 }
+
+# May hold the eunuch-reserved offices of a Dorleyite court: daughters of the knife, and eunuchs.
+tm_cut_court_trigger = {
+	OR = {
+		has_trait = tm_daughter_of_the_knife
+		has_trait = eunuch_1
+		has_trait = beardless_eunuch
+	}
+}
+
+# May keep the empress's chamber: any woman, or any daughter.
+tm_praiposita_court_trigger = {
+	OR = {
+		is_female = yes
+		tm_is_daughter_trigger = yes
+	}
+}

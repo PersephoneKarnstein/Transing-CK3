@@ -49,6 +49,12 @@ tm_daughter_of_the_knife = {
 		intrigue = 1
 	}
 
+	# Islamic courts value her as a servant and despise her as a ruler (tm_islamic_events.txt).
+	triggered_opinion = {
+		parameter = islamic_syncretic_recipient
+		opinion_modifier = tm_islamic_daughter_opinion
+	}
+
 	shown_in_ruler_designer = yes
 	ruler_designer_cost = 0
 }
@@ -71,6 +77,12 @@ tm_daughter_of_seidr = {
 	learning = 1
 	monthly_piety_gain_mult = 0.1
 
+	# Islamic courts value her as a servant and despise her as a ruler (tm_islamic_events.txt).
+	triggered_opinion = {
+		parameter = islamic_syncretic_recipient
+		opinion_modifier = tm_islamic_daughter_opinion
+	}
+
 	shown_in_ruler_designer = yes
 	ruler_designer_cost = 0
 }
@@ -92,6 +104,12 @@ tm_daughter_of_the_embryo = {
 	intrigue = 1
 	stewardship = 1
 	health = 0.25
+
+	# Islamic courts value her as a servant and despise her as a ruler (tm_islamic_events.txt).
+	triggered_opinion = {
+		parameter = islamic_syncretic_recipient
+		opinion_modifier = tm_islamic_daughter_opinion
+	}
 
 	shown_in_ruler_designer = yes
 	ruler_designer_cost = 0
