@@ -1,4 +1,4 @@
-# Contemporary West African gender variance (eight sources, 2010–2026): design reading for Badenya
+# Contemporary West African gender variance (eleven sources, 2002–2026): design reading for Badenya
 
 Sources (all in `docs/research/sources_pending/south/west_africa/contemporary/`; full references in `south_more_sources.md` A2):
 1. Broqua, Christophe. 2017. "Góor-jigéen : la resignification négative d'une catégorie entre genre et sexualité (Sénégal)." *Socio* 9: 163–183. DOI 10.4000/socio.3063. Cited by OpenEdition paragraph (¶).
@@ -12,6 +12,13 @@ Sources (all in `docs/research/sources_pending/south/west_africa/contemporary/`;
 
 Read from text extractions kept outside the repo (`scratchpad/south_text/cwa/`).
 
+Added 2026-10-19 (sections A9–A11, C7–C10, D7; texts in `scratchpad/south_text/`, not in `sources_pending`):
+9. M'Baye, Babacar. 2019. "Afropolitan Sexual and Gender Identities in Colonial Senegal." *Humanities* 8.4: 166. DOI 10.3390/h8040166. Open access (CC BY). Cited by article page (1–16).
+10. Broqua, Christophe. 2012. "Les formes sociales de l'homosexualité masculine à Bamako dans une perspective comparée : entre tactiques et mobilisations collectives." *Politique et Sociétés* 31.2: 113–144. DOI 10.7202/1014354ar. Cited by journal page. The extraction drops most digits (years, counts), so no figure from it is quoted here.
+11. Niang, Cheikh Ibrahima, Moustapha Diagne, Youssoupha Niang, Amadou Mody Moreau, Dominique Gomis, Mayé Diouf, Karim Seck, Abdoulaye Sidibé Wade, Placide Tapsoba and Chris Castle. 2002. *Meeting the Sexual Health Needs of Men Who Have Sex with Men in Senegal.* Horizons Final Report. Washington, DC: Population Council. CC BY-NC-ND. Cited by the report's printed page.
+
+The two book-length studies read with these, Gaudio 2009 (Kano) and Otu 2022 (Accra), have their own note: `waf_gaudio_otu.md`.
+
 **What was read.**
 - In full: Broqua 2017; Mackin 2026.
 - In part:
@@ -21,6 +28,10 @@ Read from text extractions kept outside the repo (`scratchpad/south_text/cwa/`).
   - Larmarange and Broqua 2023: pp. 1–11;
   - Pierce 2016: pp. 2–3 and 8–10, by search for 'yan daudu, *karuwai*, *hisbah*;
   - Bertolt 2020: pp. 653–663, by search for góor-jigéen, brotherhoods and burial.
+- Added sources:
+  - M'Baye 2019: in full;
+  - Broqua 2012: pp. 113–131 and 134–136 read; the rest (the ARCAD-SIDA history, the South African comparison, pp. 131–144) searched by keyword only;
+  - Niang et al. 2002: skimmed for roles and terms only (executive summary pp. 1–2; findings pp. 9–13); methods, clinical and survey sections skipped. Page numbers are the report's printed footers, which match the table of contents.
 
 **Relation to existing notes.**
 - `south_more_sources.md` A0 (framing) and A1 (findings) summarised these sources before they were read in full. This note checks A1 against the texts and corrects page references (§C).
@@ -65,7 +76,7 @@ Read from text extractions kept outside the repo (`scratchpad/south_text/cwa/`).
   - The 2008 "mariage clandestin" (clandestine wedding) photos opened a period of arrests under art. 319-3 (¶33).
 - **The argument.** A gender category was "homosexualised". Broqua reports the case against a third category (¶40–41).
 
-### A2. Broqua 2010: Bamako (the only Mande-language source here)
+### A2. Broqua 2010: Bamako (a Mande-language source; see also A10)
 
 - **Fieldwork.** Interviews in Bamako, conducted in Bambara and then transcribed (p. 39).
 - **The pair.** Insiders split partners into *yoss*, insertive and masculine, and *qualités*, receptive "et présentent des caractéristiques féminines" (with feminine characteristics) (p. 39).
@@ -159,6 +170,58 @@ Read from text extractions kept outside the repo (`scratchpad/south_text/cwa/`).
 - **Burial.** Burial requires recognition as Muslim. An activist reported that some LGBT people "ont été déterrés" (were dug up) and that cemeteries were guarded against their burial (p. 662).
   - With Gorer's 1935 note (A1), burial is the oldest and sharpest religious exclusion in this material.
 
+### A9. M'Baye 2019: góor-jigéen in colonial Senegal (essay)
+
+- **What it is.** An essay reading two European texts, Corre's *L'ethnographie criminelle* (1894) and Michael Davidson's travelogue "Dakar" (in *Some Boys*, 1970; visits of 1949 and 1958), as evidence of an "Afropolitan" gender-variant subculture in colonial Senegal (pp. 1–2).
+- **The term.** *Gôr djiguène*, "man-woman", an "umbrella term" for persons "perceived as being transgender, homosexual, bisexual, or too effeminate" (p. 3). Spellings vary (*goorjigeen*, *goor jiggen*; p. 11).
+- **No earlier attestation.** M'Baye's Corre passages concern the *signares* (creole women) and "vices contre nature" in "milieux trop privés" (pp. 4–5), and "pederasty" that Corre blames on Europeans in Algeria and Indochina (p. 5). None names the góor-jigéen. The 1894 witness that the Wolof term existed is Broqua 2017 ¶2 (A1), not this essay.
+- **Davidson's dated scenes.**
+  - 1958: a "middle-aged" person whom Davidson calls a *tapette* enters a French bar in silk and gold earrings; the patronne serves him as any customer (p. 11; M'Baye cites Davidson p. 167, and "p. 27" for the patronne).
+  - French sex workers drive the newcomer out for trespassing on their "beat" (p. 12).
+  - A drag party in a *bidonville* (p. 12).
+- **Problems.**
+  - The "transgender" label is M'Baye's, not his sources'; Davidson writes "tapette" and "queen" (pp. 11–12).
+  - Davidson is a European sex tourist writing about boys; M'Baye himself calls his impulses pedophilic (p. 9) and reports that most at the 1958 party were "around fifteen" (p. 12), yet reads them as Afropolitan agents. **Nothing from Davidson may be used.**
+  - Citation errors: the same Corre passage is "p. 56" in the text and "p. 34" in the note (pp. 4–5); a Davidson quotation is given as "p. 27" in a chapter that runs pp. 163–172 (p. 11); a novel (Condé's *Segu*) is used as evidence (p. 5).
+- **Usable.** *Sutura*, "a Wolofized Arabic concept that can mean discretion, modesty, privacy, or protection" (p. 5, after Mills 2011). The saying *Niit deñu koy sutural*, "you owe your fellow human being discretion" (p. 5, after Coly 2019). Broqua 2010 p. 48 records *sutura* in Bamako too (A2).
+
+### A10. Broqua 2012: social forms of male homosexuality in Bamako
+
+- **The argument.** Bamako today resembles New York before "liberation" (Chauncey): a gender model of the effeminate versus the "normal" man, double lives, tactics of silence (pp. 117–121). But reading Africa as the West's past is "evolutionniste" and wrong. Globalisation diversifies; Bamako combines the gender, age and "egalitarian" models (pp. 121–125).
+- **Bambara and borrowed terms** (p. 118):
+  - *góor-jigéen* (from Wolof), the most common word;
+  - *cεtεmùsotε*, "ni homme, ni femme", and *cεmùsoman*, "un homme comme une femme";
+  - *yossi* (from Wolof) for the masculine, insertive partner; *qualité* (French) for the feminine one; a man may call his partner "ma femme";
+  - *soungourouba*, "pute" in the sense of an easy girl, for the receptive partner; *kamelemba*, "coureur de jupons", for the insertive one;
+  - *să*, "serpent", the main pejorative; it names gender, not sex, and is used for any man thought not virile enough (p. 118).
+- **Self-names are veiled.** *Milieu* (the community), *branché* (a member), *contre* (a homophobe), even *truc* (pp. 124, 126–127). The too visible are called *déclarés* and avoided (p. 121); young effeminate men are *petites folles* (p. 131).
+- **Tactics** ("jeux du système"):
+  - two young men may share a bed without suspicion (p. 120);
+  - mock weddings between men are held partly in public, "moyennant un savant mensonge sur le motif des réjouissances" (p. 120);
+  - possession cults and trades such as dyer and hairdresser offer acceptance (p. 121);
+  - money in sex follows the general rule that "tout service mérite salaire" (p. 126).
+- **Silence.** Public disclosure is rarely seen as a necessary step; silence may be "la condition de l'acceptation" (p. 127).
+- **Kinship.** Marriage and children are obligatory and "souvent largement consentie[s]"; reproduction is kept apart from pleasure (pp. 127–128). A man whose role in an AIDS association became known was summoned to a family council of "plusieurs dizaines de personnes" and told to step back (p. 136).
+- **Law and hostility.** In 2012 Malian law did not mention homosexual practices (p. 122; later changes not checked here). Religious authorities on the national ethics committee tried to stop the 2000s studies (pp. 129–130). A tea circle (*grin*) once assured Broqua that "an official congress of homosexuals" had met in Bamako, a rumour set off by an "homme-femme" insulted in the street (p. 134 n.).
+- **No feminine institution.** As in 2010 (A2), Bamako has no role like the Wolof góor-jigéen's ceremonial one.
+
+### A11. Niang et al. 2002: the Horizons report (Dakar; skimmed)
+
+- **The study.** 250 men surveyed and interviewed in Dakar and nearby towns for HIV programming (pp. 1, 7–8). A public-health report; the sample is young and not representative (p. 8).
+- **Terms** (p. 9).
+  - *Gor jigeen*, "man-woman": "a man who is very close to the world of women, to the point of identifying with them." Men now find it "discriminatory and demeaning": "The term Gor jigeen frightens us."
+  - Self-names: *Ibbi* (more feminine, less dominant in sex) and *Yoos* (insertive, who "do not consider themselves to be homosexuals"). The categories have "more to do with identity and status than with sexual practices."
+- **Roles** (pp. 9–10).
+  - "In ceremonies, the Yoos are served food by the Ibbi," and the Ibbi, "like women", eat with their hands (p. 9).
+  - Ibbi advise powerful women "on clothes and make-up, cook for certain special occasions, and help organize marriage and baptism ceremonies" (p. 10).
+  - In the 1950s, each "great lady" of a political party had a group of such men "who acted as her publicists", attacking her women rivals, for her support (p. 10).
+  - These patrons were "traditionally called 'Gor jigeen mothers'" (p. 10). This confirms Broqua 2017 ¶17's citation of "Niang et al. 2002: 10".
+  - An Ibbi may take a young woman as his "sister" (*jigeen*), do her henna, make-up and hair, and be her confidant, "without any possibility of having sexual relations"; she calls him "Camen" (p. 10; unglossed).
+- **Names.** Older Ibbi "will give you the surname that you are to call them by" and hide their real names (p. 10).
+- **Protection.** In some Lébou neighbourhoods "No one dares insult an Ibbi who is a member of our community; he is protected the way you would protect the insane" (p. 10). Protection as of a dependant, not honour.
+- **Religion** (p. 13). A Muslim dignitary: "we cannot accept homosexuals either in our homes or in our mosques"; a cleric says a handshake requires purifying prayers. Men themselves say they will renounce it in old age to be right with Islam.
+- **Not used.** The violence figures (p. 12), the testimonies of childhood abuse (p. 11), the recognition signs in the mosque (p. 10) and all clinical material.
+
 ## B. What these suggest for a medieval Mande faith (analogy only)
 
 ### B1. Roles that recur across four societies
@@ -209,6 +272,7 @@ The narrator can say so: "Later West African societies knew people in roles like
 ### B5. Words *not* to use and words to use
 
 - **Not as self-names:** góor-jigéen, woubi, *qualité*, *yoss*/*yossi*, travesti, 'yan daudu, Kodjo-besia, *sa*, Woubikan, *kawa*.
+  - Added from A9–A11 and `waf_gaudio_otu.md`: *Ibbi*/*Yoos*, *cεtεmùsotε*, *cεmùsoman*, *soungourouba*, *kamelemba*, *branché*, *milieu*, *déclaré*, *masu harka*, sasso/sasofo, *Kwadwo Besia*, *Ntowbea*, *ƙawa*, *uwa*/*'ya* as titles, "Camen".
 - **As hostile in-world slurs only** (Mande characters of other faiths):
   - "snake-walker", after *sa* (Broqua 2010 p. 46);
   - "false woman", after the 2020s songs (Mackin p. 18);
@@ -225,6 +289,10 @@ The narrator can say so: "Later West African societies knew people in roles like
 4. Bertolt: running-head pages 653–677, not 645–669. The góor-jigéen passage is pp. 656–657; brotherhoods p. 660; burial p. 662 (A2 cites "PDF pp. 17, 27").
 5. Mackin: the "matinée mandingue" had **griots** (p. 16). It is a Manding-style fête with bards, made by travestis' own association. Treat it as atmosphere. It shows that griot performance is a living idiom of celebration, not that it ever honoured trans women before 1997.
 6. Larmarange and Broqua 2023: add the "woman > transgender" finding (p. 11) to A0.3.
+7. Niang et al. 2002 p. 10 confirms Broqua 2017 ¶17's source for the "mothers". The report spells the self-term *Ibbi* (A3 gives Wolof *ubbi*; Larmarange and Broqua 2023 *ibbi*).
+8. M'Baye 2019 adds no attestation earlier than Corre 1894 (A1, via Broqua 2017 ¶2). His "transgender" is his own label for Davidson's subjects (A9).
+9. Bamako vocabulary: Broqua 2012 p. 118 gives *cεmùsoman*, "un homme comme une femme", beside *cεtεmùsotε*, "ni homme, ni femme". Koné writes *cèmusonin* and *cètèmusotè* (`waf_kone_male_female_mande.md`). The two authors' orthographies differ; a Bamana speaker should check any form before it is used, even as a slur.
+10. *Sutura* is attested in Bamako (Broqua 2010 p. 48), not only in Wolof; M'Baye p. 5 (after Mills and Coly) adds its moral sense, the discretion owed to another person.
 
 ## D. Design suggestions for Badenya
 
@@ -267,3 +335,13 @@ None of these sources gives a Mande site. Keep the sites from the medieval and e
 - "A false woman." Faith: "Ask her mother which of us is false."
 - Maliki jurist: "The mosque will not bury her." Faith: "Then her House will."
 - Approving Mande matron: "She cooks for the naming like one born to it." Faith: "She was."
+- Hostile courtier: "Neither man nor woman." Faith: "A woman. Her mother said so, and the jeli sang it." (Shape from *cεtεmùsotε*, Broqua 2012 p. 118; Koné p. 2.)
+
+### D7. Additions from A9–A11 (analogy only; see also `waf_gaudio_otu.md` §4–5)
+
+- **The great lady's voice.** A daughter attached to a great woman at court can serve as her praise voice and the scourge of her rivals (after Niang et al. 2002 p. 10, the 1950s "publicists"). Mechanic: the daughter adds to her patroness's scheme power or prestige against rival women at court; the rivals' enmity is the cost. It fits the intrigue around queen Qāsā (`waf_ibn_battuta_mali.md`).
+- **A sister outside the House.** A daughter may befriend a young woman of court as her "sister", doing her henna and hair: friendship, not courtship (after Niang p. 10). Mechanic: a friend relation and opinion with the young woman's mother.
+- **The feast under another name.** At a hostile court the House can hold its Naming Feast as "a sister's wedding" (after Broqua 2012 p. 120; Gaudio 2009 p. 176). Lower risk, lower prestige; discovery feeds the "They say it was a wedding" event (`waf_gaudio_otu.md` §4.7).
+- **Owed discretion.** Faith flavour: the House never exposes anyone's secret, even an enemy's (after *sutura*, A9 and A2; *gundo*, B5). Mechanic: refusing to use a known secret against a rival gives opinion with House members.
+- **The family council.** On joining the House, a daughter may be summoned before her natal kin in council (after Broqua 2012 p. 136): stay (kin opinion loss) or keep both ties at a cost in gold or prestige.
+- **Do not use:** the *Ibbi*/*Yoos* serving order or eating customs, protection "as you would protect the insane", recognition signs, anything from Davidson, any testimony of violence or abuse.

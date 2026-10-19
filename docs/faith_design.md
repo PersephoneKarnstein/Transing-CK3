@@ -405,4 +405,25 @@ Notes: `research/waf_*.md` (14). Works read: Ibn Baṭṭūṭa; Ibn Khaldūn; *
 - **Festival.** A seven-yearly "New Roof" that gathers the daughters into an age-set (invented on the pattern of the Kangaba re-roofing, whose present form is 1880–1912; the Kamabolon's own rites are not used: a living, guarded sanctuary).
 - **Seat.** Kirina (`c_sibi_mali`), with a refuge rock at Koulikoro (a barony there). Holy sites: Niani, Awkar (Ghana), Walata, and one more to choose.
 - **Reaction.** The vanilla Orisha faith reads a daughter warmly, as an initiand (+5; Matory); Oyo-type courts are out of period (Old Oyo's datable layer is c. 1555–1610).
-- **Never.** No Ṣàngó priests, 'yan daudu, góor-jigéen or woubi mapped onto the faith; no Griaule or Dieterlen cosmology; no Kamabolon rites; Bamana terms to be checked by a speaker.
+- **Never.** No Ṣàngó priests, 'yan daudu, góor-jigéen, woubi, sasso (or the derogatory Kwadwo Besia) or Ibbi mapped onto the faith: in the scholarship these are mostly men who act "like women" and see themselves as men (Gaudio p. 10; Otu), so Badenya borrows their social roles only, never their identity; no Griaule or Dieterlen cosmology; no Kamabolon rites; Bamana terms to be checked by a speaker.
+
+### §15 revisions after the second southern reading (2026-10-19)
+New notes: `ind_benherut_sivas_saints.md`, `ind_prentiss_embodiment.md`, `ind_pechilis_karaikkal.md`, `ind_kersenboom_nityasumangali.md`, `ind_shulman_temple_myths.md`, `ind_carman_narayanan_tamil_veda.md`, `ind_dehejia_venkatesan_antal.md`, `ind_hardy_viraha_bhakti.md`; `waf_conrad_conde_sunjata.md`, `waf_bulman_corpus.md`, `waf_gaudio_otu.md`, and additions to `waf_contemporary_gender.md`.
+
+**The Worn Garland.**
+- *Bride, in period:* *śaraṇasati liṅgapati*, "the devotee is wife, the liṅga husband" (Harihara, early 13th c.; Ben-Herut pp. 85–88); Basavaṇṇa's initiation as a temple wedding with Nandi officiating (pp. 86–87). In period the bride role is a rite, not a life; the faith claims it as a life in its own voice. The 13th-c. *Īṭu* on *Tiruvāymoḻi* 1.4: the devotee "loses his own male nature and will wear the dress of a woman" (Hardy p. 563). Hardy argues the commentators misread poems whose girl is a body, not a soul (pp. 270, 368): the faith sides with the body.
+- *Precedent the faith may claim:* Kāraikkāl Ammaiyār, whose body Śiva changed at her own request and who stayed a woman, "Mother" (*Periya Purāṇam*, c. 1135, vv. 49–50). Never "disease": the faith's voice says "they thought her possessed".
+- *Gate, refined:* the pāvai vow has two wakings, first the friends and then the god (Hardy pp. 416, 436, 513); the *pāvai* is a sand image of the goddess (p. 414); the *paṟai* drum is the token the girls ask for (Hardy pp. 476–478; Dehejia); a mother or friend witnesses. The final step, the staff on the head and a name, can be at court or temple (Kersenboom: the *talaikkōli* title).
+- *Dates:* Āṇṭāḷ c. 850; Nammāḻvār before 900; Tirumaṅkai at Kanchi under Nandivarman II (8th c.). An Āṇṭāḷ shrine at Śrīvilliputtūr is attested by 1453/54. "God alone is male" has no dated source: do not use.
+- *Line:* "married to the god" stays 17th c. (Kersenboom gives no earlier date); adoption stays a reconstruction; the *putrikā*, the appointed daughter of Brahmanical law (Pechilis & Raj p. 54), is the period precedent for a daughter as heir.
+- *Map:* Kanchipuram is a vanilla holy site (`kanchipuram`, county only); Srirangam, Thanjavur and Madurai need `tm_` sites (baronies `b_srirangam`, `b_tanjavur`, `b_madurai`). Chidambaram, Tiruvālaṅkāṭu and Kāraikkāl are not on the map.
+- *Excluded:* the palmyra-horse ride (*maṭal*), a lover's public self-mortification.
+
+**Badenya.**
+- *Claiming, stronger:* Ma Tenenba, foster-mother of Fakoli, "I have given birth to a child without getting pregnant!" (Conrad 2004, l. 3110); Fakoli is "Soma Tenenba's son" (ll. 2688–89); her brothers grant her three months at home as for a new mother. The mother's-name prefix is confirmed, for daughters too (So'olon Kolonkan).
+- *Smith's bargain, weaker:* Kosiya Kante's genies ask for four named kin and refuse substitutes (ll. 2835–3099), and the episode is a 1994 recording only. Self-substitution now rests on Brett-Smith alone (20th-c.), marked as reconstruction.
+- *Line and burial:* "The House buries its own" rests on the grave-price episode (eight accounts from 1890) and on the contemporary record (burial under one's own name; blood kin taking the estate).
+- *Texture:* a "mother" takes in a newcomer by referral and teaches her a craft; feasts have a "mother" and a "father"; the young serve and dance while elders sit as a jeli speaks for them (Gaudio pp. 62–69, 145, 164–169; Niang). The naming feast becomes a two-stage arc: a daughter first serves, later hosts.
+- *Holy sites:* Do (al-Bakrī's "Daw", 1068; medieval burial mounds) added. Koulikoro's refuge was Sumanguru's shrine (1819–1930) whose rites excluded women: place-name only.
+- *Kept:* the bird-masked bards (Ibn Baṭṭūṭa, 14th c.); the corpus editors' Komo link is their reading, and no Komo rite is shown.
+- *Names:* about 25 verified Mande women's names in `waf_conrad_conde_sunjata.md`.
