@@ -340,7 +340,11 @@ tm_yearly_playable = {
 		}
 		# A völva on the winter road (tm_seidr.0020).
 		if = {
-			limit = { rite ?= { rite_has_parameter = tm_seidr_gate } }
+			limit = {
+				rite ?= { rite_has_parameter = tm_seidr_gate }
+				# Iceland has a völva's grave but no living völva in the sources (research/norse_jochens_images_women.md)
+				NOT = { capital_province ?= { geographical_region = custom_iceland } }
+			}
 			random = {
 				chance = 12
 				trigger_event = { id = tm_seidr.0020 days = { 1 60 } }

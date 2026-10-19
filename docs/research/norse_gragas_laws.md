@@ -311,3 +311,5 @@ Checked against the translation. Notes are cited by file and row.
 10. **`README.md` l. 154 / `tm_baeddel_desc`** ("A man who went the other way was *ergi*, outlawed by law and killed by custom"). Gade and MS already flag this, and the README still carries it. The code outlaws **the speaker** of the three words (full outlawry) and **cross-dressing** in either direction (**lesser** outlawry: three years abroad, then full restoration). It never outlaws being *ragr*.
 11. **`beliefs.md` (l), Norse cell** ("full outlawry and licence to kill for the three words; lesser outlawry for cross-dressing in either direction"). **Confirmed** (Add. §423; K §155, §254).
 12. **Any saga-derived divorce-for-dress mechanic.** It is not law (§1.2). Attribute it to *Laxdæla saga*.
+
+> **Checked against later reading:** see the corrections in `norse_mitchell_witchcraft_magic.md` (which law codes banned sitting out and keeping a staff; seiðr in later Icelandic law and the 1326 Niðaróss statute; Tolley on the staff and on war seiðr).

@@ -58,6 +58,10 @@ Built: shared daughter trigger and per-faith daughter traits; Bæddel faith (Got
 - [ ] Níðhöggr shows as the Bædling devil; feminised names apply (vanilla Norse name keys)
 
 ## Stage 2 inputs from the Norse reading
+- [ ] Sorcery law era arc (conversion examples; church outlawry 1100–1300; death penalty Norway c. 1300, Sweden c. 1350), rare dated trials (Óláfr Tryggvason; Bergen 1324–25; Kirkjubær 1343; Greenland 1407) (Mitchell)
+- [ ] "Six Housewives" compurgation; women's suits carried by a friend of the House; dress clause needs a powerful prosecutor (Mitchell; Jochens)
+- [ ] Pour the Cup: end a flyting / first cup / inheritance toast at the high seat (Damico; Evans & Hancock)
+- [ ] Events: "They Say He Keeps Seiðmenn" (Tolley); "Weave the Warding Shirt" (Jochens); English reaction text, Wulfstan 1014 (Damico)
 - [ ] Insult duel: 3 rounds, charges checked against real traits, owning the word strongest, stakes by witnesses and venue (Lögberg doubles); Raise the Níð-Pole scheme (Clover; Meulengracht Sørensen; Grágás)
 - [ ] Feud ledger, Offer Bót compensation, fostering to seal a settlement (Miller)
 - [ ] Outlawry: lesser (life-ring, three homes, three summers) and full; reprieve by killing outlaws; three endings (Grágás; Ahola)

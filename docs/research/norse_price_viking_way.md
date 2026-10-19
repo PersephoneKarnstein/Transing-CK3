@@ -189,3 +189,5 @@ These are in-world paraphrases for event, trait and holy-site text. Attribute th
 - "Behind the shield-wall she sat high, and the women sang around her." (after p. 327) Battle-platform commander effect.
 - "Better walk past than be her guest, even if night falls." (Sigrdrífumál 26, p. 77) Hostile Christian reaction to a völva at court.
 - "Her bones were blue, and her staff was a great one; they carried her far from where men walk." (after *Laxdæla* 76, p. 133) The völva's grave found under a church. Use it as a Christian-era event, and in the "door of the dead" burial.
+
+> **Checked against later reading:** see the corrections in `norse_mitchell_witchcraft_magic.md and norse_tolley_shamanism.md` (which law codes banned sitting out and keeping a staff; seiðr in later Icelandic law and the 1326 Niðaróss statute; Tolley on the staff and on war seiðr).

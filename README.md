@@ -153,18 +153,18 @@ The Sisters are nostalgic for a sect almost nobody remembers: the Mother's galli
 
 ## Bædling: the High Seat
 
-*Working name.* A Germanic pagan faith of Scandinavia and Anglo-Saxon England. It takes its name from *bædling*, the Old English word the Canons of Theodore use for an effeminate man (the glossaries also keep *bæddel*), and joins it to *seiðr* and *ergi*.
+*Working name.* A Germanic pagan faith of Scandinavia and Anglo-Saxon England. It takes its name from *bædling*, a word of uncertain meaning that the Old English Canons of Theodore set apart from "other men" in their canons on sex between men; one glossary puts it beside *effeminati*, and the glossaries also keep *bæddel*. It joins that word to *seiðr* and *ergi*.
 
-In the north the sanctioned crossing ran toward manhood. A man who went the other way was called *ergi*, yet Icelandic law outlawed not him but whoever said the word, and the man so named could kill the speaker. The Bædlings keep the other road. In the north castration punished thieves and unmade enemies; it was never a rite, so this faith does not use the knife.
+In the north the sanctioned crossing ran toward manhood. A man who went the other way was called *ragr*, yet Icelandic law outlawed not him but whoever said the word, and the man so named could kill the speaker. The Bædlings keep the other road. In the north castration punished thieves and unmade enemies; it was never a rite, so this faith does not use the knife.
 
 - **The gate: seiðr.** *Ask a Völva to Sit for Me* is a three-day rite, like a wedding, built on the seeress in *Eiríks saga rauða*:
   - **The völva comes.** She is given the high seat and a feast.
   - **The warding songs.** Someone must sing the *varðlokkur*, which girls learn from their foster-mothers. A woman of the faith can teach them to a daughter or ward.
   - **The platform.** The völva goes up into trance while the seeker waits below.
-  - **The odds.** The spirits come for the song, not for the seeker's merit, and may refuse until next winter. Völur also travel the halls in winter and can be asked to sit for anyone at court.
-- **The declaration.** A new daughter declares herself before the thing, perhaps with a name fastened by a gift or the woman's form of her own. When someone shouts *ergi*, she can answer in verse, with steel, by owning seiðr as women's art, with "that word is for men", or not at all.
+  - **The odds.** The faith holds that the völva sees a daughter rather than makes one, and the odds turn on whether the song holds, not on the seeker's merit; it may fail until next winter. The rite follows the seeress in *Eiríks saga rauða*, which scholars think was largely invented to honour her host; the warding songs are the part most likely to be old. Völur also travel the halls in winter, outside Iceland, and can be asked to sit for anyone at court.
+- **The declaration.** A new daughter declares herself before the thing, perhaps with a name fastened by a gift or the woman's form of her own. When someone shouts *ragr*, she can answer in verse, with steel, by owning seiðr as women's art, with "*ragr* is said of men", or not at all.
 - **The line.** The hall's daughters are fostered, sworn and adopted. Two may bind themselves as sisters by the old oath.
-- **The world.** A martial faith. Óðinn's host has no men in it, and shield-maidens stood at Brávellir. The hall raids to bring its daughters home, and its clergy fight. The faith's devil is Níðhöggr, the malice-striker: its enemy is *níð* itself, the slander shouted at the thing.
+- **The world.** A martial faith. The skalds fill Valhöll with dead men; the Bædlings say the Allfather's true host has none, and point to the shield-maidens at Brávellir. English courts call valkyries witches. The hall raids to bring its daughters home, and its clergy fight. The faith's devil is Níðhöggr, the malice-striker: its enemy is *níð* itself, the slander shouted at the thing.
 - **Tenets.** Seiðr Unmans, Óðinn's Host, and Daughters of the Hall.
 - **Holy sites.** Uppsala, Trondheim, York and Kyiv. Kyiv sits on the Varangian road south toward Dorylaion.
 
@@ -327,22 +327,30 @@ Cited in the notes, not read: Ayalon, David, "On the Eunuchs in Islam," *Jerusal
 </details>
 
 <details>
-<summary><strong>Northern Europe</strong> (20 works)</summary>
+<summary><strong>Northern Europe</strong> (28 works)</summary>
 
 - Acker, Paul, and Carolyne Larrington (eds.). 2002. *The Poetic Edda: Essays on Old Norse Mythology*. Routledge Medieval Casebooks. Routledge.
 - Ahola, Joonas. 2014. *Outlawry in the Icelandic Family Sagas*. PhD dissertation, University of Helsinki.
 - Berry, Miles. 2022. "Gender Diversity and its Societal Place in Medieval Scandinavia." *Oregon Undergraduate Research Journal* 20.2: 134–154. (An undergraduate paper. The notes flag factual slips.)
 - Birch, Eleanor. 2025. "Deviance or Devotion: Women Dressed as Men in Late Medieval England." *Fashion Theory* 29.5: 619–639.
 - Blain, Jenny. 2002. *Nine Worlds of Seid-Magic: Ecstasy and Neo-Shamanism in North European Paganism*. Routledge. (Much of it concerns modern practice; the notes separate that from the medieval evidence.)
-- Clover, Carol J. 1993. "Regardless of Sex: Men, Women, and Power in Early Northern Europe." *Speculum* 68.2: 363–387.
 - Clover, Carol J. 1980. "The Germanic Context of the Unferþ Episode." *Speculum* 55.3: 444–468.
+- Clover, Carol J. 1993. "Regardless of Sex: Men, Women, and Power in Early Northern Europe." *Speculum* 68.2: 363–387.
+- Damico, Helen. 1984. *Beowulf's Wealhtheow and the Valkyrie Tradition*. University of Wisconsin Press.
+- Evans, Gareth Lloyd, and Jessica Clare Hancock (eds.). 2020. *Masculinities in Old Norse Literature*. D. S. Brewer.
 - Gade, Kari Ellen. 1986. "Homosexuality and Rape of Males in Old Norse Law and Literature." *Scandinavian Studies* 58.2: 124–141.
 - Gardeła, Leszek, Sophie Bønding and Peter Pentz (eds.). 2023. *The Norse Sorceress: Mind and Materiality in the Viking World*. Oxbow Books. (Open access.)
 - Jakobsson, Ármann. 2011. "Óðinn as mother: the old norse deviant patriarch." *Arkiv för nordisk filologi* 126. (Read in proof, paginated 01–012.)
+- Jochens, Jenny. 1995. *Women in Old Norse Society*. Cornell University Press.
+- Jochens, Jenny. 1996. *Old Norse Images of Women*. University of Pennsylvania Press.
 - Karras, Ruth Mazo, and Katherine E. Pierpont. 2023. *Sexuality in Medieval Europe: Doing Unto Others*. 4th ed. Routledge.
 - Meulengracht Sørensen, Preben. 1983. *The Unmanly Man: Concepts of Sexual Defamation in Early Northern Society*. Trans. Joan Turville-Petre. The Viking Collection 1. Odense University Press.
 - Miller, William Ian. 1990. *Bloodtaking and Peacemaking: Feud, Law, and Society in Saga Iceland*. University of Chicago Press.
+- Mitchell, Stephen A. 2011. *Witchcraft and Magic in the Nordic Middle Ages*. University of Pennsylvania Press.
 - Price, Neil. 2019. *The Viking Way: Magic and Mind in Late Iron Age Scandinavia*. 2nd ed. Oxbow Books.
+- Sayers, William. 2020. "The Etymologies of Old English *Bædling* 'Sodomite' and Modern English *Bad*." *ANQ* 33.1: 9–11.
+- Solli, Brit. 2008. "Queering the Cosmology of the Vikings: A Queer Analysis of the Cult of Odin and 'Holy White Stones'." *Journal of Homosexuality* 54.1–2: 192–208.
+- Tolley, Clive. 2009. *Shamanism in Norse Myth and Magic*, vol. 1. FF Communications 296. Academia Scientiarum Fennica.
 - Tommony, Isabelle, with C. M. Forster. 2024. "Margins Undefined: the flexibility of gender boundaries in the European Middle Ages." *BILT Student Research Journal* 5: 2–9. (A peer-reviewed undergraduate journal from Bristol. Forster is credited on the version-of-record citation.)
 - Wade, Erik. 2020. "The Beast with Two Backs: Bestiality, Sex Between Men, and Byzantine Theology in the *Paenitentiale Theodori*." *Journal of Medieval Worlds* 2.1–2: 11–26.
 - *Primary sources in translation:*
