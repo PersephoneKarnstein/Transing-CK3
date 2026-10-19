@@ -9,7 +9,11 @@ tenet_tm_day_of_blood = {
 	icon = tenet_mortification_of_the_flesh
 
 	is_shown = {
-		this = faith:transbian_maximalism		# 1.20 doctrines live on the rite, so a faith-level parameter check is always false
+		# 1.20 evaluates this on the rite; older code on the faith (xTiger: Faith or Rite)
+		OR = {
+			this = faith:transbian_maximalism
+			this = rite:transbian_maximalist_rite
+		}
 	}
 
 	piety_cost = {
@@ -61,7 +65,11 @@ tenet_tm_daughters_chosen = {
 	icon = tenet_adoptionism
 
 	is_shown = {
-		this = faith:transbian_maximalism		# 1.20 doctrines live on the rite, so a faith-level parameter check is always false
+		# 1.20 evaluates this on the rite; older code on the faith (xTiger: Faith or Rite)
+		OR = {
+			this = faith:transbian_maximalism
+			this = rite:transbian_maximalist_rite
+		}
 	}
 
 	piety_cost = {
@@ -111,7 +119,11 @@ tenet_tm_sisterhood = {
 	icon = tenet_communal_identity
 
 	is_shown = {
-		this = faith:transbian_maximalism		# 1.20 doctrines live on the rite, so a faith-level parameter check is always false
+		# 1.20 evaluates this on the rite; older code on the faith (xTiger: Faith or Rite)
+		OR = {
+			this = faith:transbian_maximalism
+			this = rite:transbian_maximalist_rite
+		}
 	}
 
 	piety_cost = {
@@ -162,7 +174,11 @@ tenet_tm_seidr = {
 	icon = tenet_esotericism
 
 	is_shown = {
-		this = faith:tm_baeddel
+		# 1.20 evaluates this on the rite; older code on the faith (xTiger: Faith or Rite)
+		OR = {
+			this = faith:tm_baeddel
+			this = rite:tm_baeddel_rite
+		}
 	}
 
 	piety_cost = {
@@ -211,7 +227,11 @@ tenet_tm_valkyrie_host = {
 	icon = tenet_warmonger
 
 	is_shown = {
-		this = faith:tm_baeddel
+		# 1.20 evaluates this on the rite; older code on the faith (xTiger: Faith or Rite)
+		OR = {
+			this = faith:tm_baeddel
+			this = rite:tm_baeddel_rite
+		}
 	}
 
 	piety_cost = {
@@ -260,7 +280,11 @@ tenet_tm_hall_daughters = {
 	icon = tenet_ancestor_worship
 
 	is_shown = {
-		this = faith:tm_baeddel
+		# 1.20 evaluates this on the rite; older code on the faith (xTiger: Faith or Rite)
+		OR = {
+			this = faith:tm_baeddel
+			this = rite:tm_baeddel_rite
+		}
 	}
 
 	piety_cost = {
@@ -312,7 +336,11 @@ tenet_tm_jade_embryo = {
 	icon = tenet_inner_journey
 
 	is_shown = {
-		this = faith:tm_yutai
+		# 1.20 evaluates this on the rite; older code on the faith (xTiger: Faith or Rite)
+		OR = {
+			this = faith:tm_yutai
+			this = rite:tm_yutai_rite
+		}
 	}
 
 	piety_cost = {
@@ -365,7 +393,11 @@ tenet_tm_rectified_names = {
 	icon = tenet_mystical_birthright
 
 	is_shown = {
-		this = faith:tm_yutai
+		# 1.20 evaluates this on the rite; older code on the faith (xTiger: Faith or Rite)
+		OR = {
+			this = faith:tm_yutai
+			this = rite:tm_yutai_rite
+		}
 	}
 
 	piety_cost = {
@@ -413,7 +445,11 @@ tenet_tm_temple_societies = {
 	icon = tenet_communal_identity
 
 	is_shown = {
-		this = faith:tm_yutai
+		# 1.20 evaluates this on the rite; older code on the faith (xTiger: Faith or Rite)
+		OR = {
+			this = faith:tm_yutai
+			this = rite:tm_yutai_rite
+		}
 	}
 
 	piety_cost = {
@@ -465,7 +501,11 @@ tenet_tm_turning = {
 	icon = tenet_pursuit_of_knowledge
 
 	is_shown = {
-		this = faith:tm_nehpakhot
+		# 1.20 evaluates this on the rite; older code on the faith (xTiger: Faith or Rite)
+		OR = {
+			this = faith:tm_nehpakhot
+			this = rite:tm_nehpakhot_rite
+		}
 	}
 
 	piety_cost = {
@@ -513,7 +553,11 @@ tenet_tm_three_lamps = {
 	icon = tenet_ritual_celebrations
 
 	is_shown = {
-		this = faith:tm_nehpakhot
+		# 1.20 evaluates this on the rite; older code on the faith (xTiger: Faith or Rite)
+		OR = {
+			this = faith:tm_nehpakhot
+			this = rite:tm_nehpakhot_rite
+		}
 	}
 
 	piety_cost = {

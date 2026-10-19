@@ -140,6 +140,11 @@ Built: shared daughter trigger and per-faith daughter traits; Bæddel faith (Got
 - [ ] A Catalan women's-name list (Astruga, Bonafilla, Bellaire, Tolrana) for seekers in Catalonia
 - [ ] Not modelled: the French expulsion of 1306, and any expulsion (user: the base game models none)
 
+## Validation (added 2026-10-19)
+- Validator is now xTiger (CK3 1.20 fork of Tiger), built at `~/.local/share/xtiger`, also connected as the `xtiger` MCP server. Old Tiger's 1.20 false alarms are gone (20 reports, against 378).
+- Fixed from its reports: *The Sisters Choose* used the invalid voter type `same_faith_clergy` (now `same_faith_clerical_electors`); `reformed_icon` removed from all four faiths; tenet `is_shown` now checks the faith or its main rite.
+- Known remaining reports, kept on purpose: `history` on rites (vanilla uses it, so a likely xTiger false alarm); `faith:…` inside tenet `is_shown` (xTiger expects a rite, while the game's `_tenet_types.info` says faith; the `OR` covers both). Check in-game that each faith's tenets show in the reform screen.
+
 ## Branch faiths, stage 2 (next)
 - [ ] **Spring the Cell** (user: build with the Bæddel stage-2 work). Hostile scheme, any adult of the four faiths, landed or not; target a ruler imprisoning a daughter, Marked woman or declared sister. Agents: Marked guards, faithful servants, friends of the House. Success: prisoner walks to the nearest House (else the plotter's court), plotter possibly unknown. Discovery and failure as vanilla hostile schemes. Template: vanilla abduct. The non-war counterpart of Rescue the Daughters and the planned Bæddel raids.
 - [ ] Bæddel: níð insult duels; landless war-band play; Rescue the Daughters as a raid; Christian outlawry pressure.

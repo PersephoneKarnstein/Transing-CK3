@@ -26,7 +26,7 @@ tm_sisters_elective = {
 				}
 			}
 			tm_sisters_electors_clergy = {
-				type = same_faith_clergy
+				type = same_faith_clerical_electors
 				limit = {
 					is_adult = yes
 					is_incapable = no

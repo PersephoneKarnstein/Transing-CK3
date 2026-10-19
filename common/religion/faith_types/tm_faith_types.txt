@@ -12,7 +12,6 @@ transbian_maximalism = {
 		religion = christianity_religion
 		color = { 0.96 0.66 0.72 }
 		icon = tm_dorleyaian
-		reformed_icon = tm_dorleyaian
 		graphical_faith = "orthodox_gfx"
 		religious_head = d_tm_mother_house	# filled at game start by Theia Beatrike (tm_on_actions.txt)
 	}
@@ -75,7 +74,6 @@ tm_baeddel = {
 		religion = germanic_religion
 		color = { 0.55 0.42 0.75 }
 		icon = germanic_reformed			# placeholder; TODO commissioned icon
-		reformed_icon = germanic_reformed
 	}
 
 	eminent_holy_sites = {
@@ -121,7 +119,6 @@ tm_yutai = {
 		religion = taoism_religion
 		color = { 0.45 0.78 0.62 }
 		icon = taoism					# placeholder; TODO commissioned icon
-		reformed_icon = taoism
 	}
 
 	eminent_holy_sites = {
@@ -174,7 +171,6 @@ tm_nehpakhot = {
 		religion = judaism_religion
 		color = { 0.62 0.55 0.85 }
 		icon = judaism_custom_1			# placeholder; TODO commissioned icon
-		reformed_icon = judaism_custom_1
 	}
 
 	eminent_holy_sites = {
