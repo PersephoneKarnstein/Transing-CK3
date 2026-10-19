@@ -1245,3 +1245,299 @@ In 1.20, faiths are defined in `common/religion/faith_types/00_faith_types.txt` 
 - Tolotang's history.
 
 ---
+
+## Further sources for the two chosen faiths, and contemporary West Africa (2026-10-19)
+
+The user chose two of the four candidates, the Worn Garland (India) and Badenya (West Africa), and asked for contemporary West African sources "to fill in gaps left by scant historical sources in a way that feels familiar". Corrections to some page references here are in `waf_contemporary_gender.md` §C.
+
+Draft for `docs/research/south_reading_list.md`. Nothing here is committed.
+
+**Checks.** Made on 2026-10-19 against Crossref, OpenAlex, Open Library, archive.org metadata, publisher or repository pages, and downloaded copies. The session's web-search quota was used up before this pass started, so nothing came from search-engine results. Anything not confirmed is marked *unverified*. Page numbers are given only where I saw them in a downloaded copy. Text extractions are in `scratchpad/south_text/cwa/` and `south_text/ind2/`, not in the repo.
+
+**Downloads.**
+- Contemporary West Africa: `docs/research/sources_pending/south/west_africa/contemporary/`
+- West Africa: `docs/research/sources_pending/south/west_africa/`
+- India: `docs/research/sources_pending/south/india/`
+
+Each `SOURCES.txt` has new lines added. Contemporary files are listed in the west_africa `SOURCES.txt` with the `contemporary/` prefix.
+
+**Grades** are as in the reading list: PERIOD, BACK, LATER. Everything in part A is **LATER** (19th–21st c.).
+
+### A. Gender identity in contemporary West Africa
+
+#### A0. Framing (binding on every entry below)
+
+1. **Every term here belongs to living people, and many of them are criminalised or attacked.**
+   - Senegal applies art. 319-3 of the 1965 penal code more and more since 2008 (Broqua 2017, ¶33).
+   - In northern Nigeria, *hisbah* raids are followed by sodomy charges (Pierce 2016).
+   - Ghana has had media panics in 2006 and 2011 (Geoffrion 2013, ¶18).
+   - Côte d'Ivoire had an "anti-woubi" crisis in 2024 (Djedje 2026, item A14).
+
+   The faith must not borrow góor-jigéen, woubi, 'yan daudu, Kodjo-besia, sasso or any other self-name. These communities must not be presented as the faith, or as its medieval ancestors.
+2. **None of these terms is attested before the colonial period.**
+   - The earliest description of the góor-jigéen that Broqua finds is the naval doctor Armand Corre in 1894. Corre was told that the Wolof expression "serait de date récente" (would be of recent date) (Broqua 2017, ¶2).
+   - Using any of this for 1300 is reconstruction, and the narrator must say so (reading-list grade LATER).
+3. **Avoid "third gender".** Broqua (¶40–41, citing Mathieu and Hérault) argues against reading the góor-jigéen as a third category. Geoffrion records Ghanaian students' wish that "our gender could be dual" without making a third sex of it. This agrees with Bhatt.
+4. **Most of these figures are people assigned male who take on women's roles.** That makes them the right comparison for a trans-women's faith. But the sources mostly describe them through *sexuality* (MSM surveys) or through *role* (ceremony, trade). Few describe a woman's identity in her own words. Where a source records a self-description, it is noted below.
+
+#### A1. Findings that matter for Badenya
+
+1. **The best-documented West African pattern is a role in women's ceremonial work, sponsored by high-status women, not a cult.**
+   - The Senegalese góor-jigéen wore women's dress and makeup and belonged to "the world of women". The patrons were mainly the wealthy *diriyanké*.
+   - The góor-jigéen ran **weddings and naming ceremonies** (*baptêmes*), because of skill in cooking. A dish is still called "sauce góor-jigéen". The góor-jigéen also advised these women (Broqua 2017, ¶16).
+   - Patrons could be called "mère[s] de góor-jigéen" (mothers of a góor-jigéen) (¶17, citing Niang et al. 2002: 10).
+   - Networks were **ranked by seniority** and passed on skills and rules (¶35).
+   - Some married women and had children, and nobody asked about their sexuality (¶18).
+   - Ghana's Kodjo-besia appear as market women and food sellers who join women's clubs (Geoffrion 2013, ¶16). Hausa 'yan daudu sell cooked food and live alongside independent women, the *karuwai* (Pierce 2016, PDF p. 8, summarising Gaudio).
+   - Design use, as an analogy only: a daughter of Badenya could have a **sponsoring "mother" among the women of the house**, which fits Koné's *badenya*. She could serve at **naming feasts**, which suits a faith whose gate ends in a new name.
+2. **The language is "born so" or "God made us", not choice.**
+   - Kodjo-besia: "That is how they were born" (an informant in Geoffrion 2013, ¶16). It is also read as a "female soul" (¶19).
+   - Gaudio's title, *Allah Made Us*, is a 'yan daudu phrase.
+   - Design use: the faith's voice can say "the djinn knew what I was before the smith did" (from `waf_brett_smith_bamana.md`). Its doctrine should treat her womanhood as given and recognised, not chosen.
+3. **Names: the Twi term is built on a day-name.**
+   - *Kodjo-besia* literally means "Kodjo is a woman [inside]" (Geoffrion 2013, ¶16). Kodjo (Kwadwo) is the Akan day-name for a Monday-born boy (general knowledge; Geoffrion's n. 9 glosses it, not checked).
+   - Design use: a gate that takes a birth-name and turns it into a woman's name is a familiar West African move. Akan is not Mande, though; Mande naming goes through the mother and her lineage (Koné 2004).
+4. **Possession can license cross-dress, in Akan material only.** Geoffrion (¶17) cites Banks 2012, an unpublished thesis (*unverified*): some Akan priests (*akɔmfoɔ*) are called Kodjo-besia, and possession by spirits of the "opposite" gender lets them adopt its dress "without social disapproval". This is LATER, Akan, and second-hand. Do **not** import it into Badenya. The Mande gate already rests on the smith and the djinn (Brett-Smith).
+5. **There is Mande-area vocabulary, but it is hostile.**
+   - In Bamako, men of the *milieu* call the receptive, feminine partner *qualité* and the masculine partner *yoss* (Broqua 2010, p. 40). Someone who knows about it without taking part is *fàamu*, "understanding" (p. 45).
+   - The common insults are the Wolof *góor-jigéen* and the Bambara *sa*, "snake", for a swaying, womanly walk (p. 47). Broqua (2017, ¶15, citing Maïga 2001: 154) also says *góor-jigéen* has entered Bambara.
+   - Shame (*màlo*) against honour (*dànbe*) is the main social regulator (Broqua 2010, p. 48).
+   - Design use: **reaction lines** from Mande-culture characters of other faiths. "Snake-walker" works as an in-world slur, in hostile characters' mouths only. *màlo/dànbe* can be the frame for an opinion modifier. Nothing here is a self-name the faith could take.
+6. **Coded speech and a public festival, from Abidjan.**
+   - Woubis built a secret register, *Woubikan*, alongside Nouchi (Broqua and Larmarange 2022, p. 6).
+   - In 1997 the community held a **"matinée mandingue"**, a Manding-style daytime fête, at Bingerville. This is documented in the film *Woubi Chéri* (Mackin 2026, p. 17).
+   - Design use: a coded women's speech fits the jeli's word, which is a medieval attestation (Ibn Baṭṭūṭa). The "Manding fête" shows that Mande dress and festival are a living idiom of celebration. Treat it as atmosphere, not evidence.
+
+#### A2. Entries
+
+1. **Broqua, Christophe.** 2017. "Góor-jigéen : la resignification négative d'une catégorie entre genre et sexualité (Sénégal)." *Socio* 9: 163–183. DOI 10.4000/socio.3063.
+   - Terms: *góor-jigéen* ("homme-femme"); *diriyanké* patrons; "mère de góor-jigéen"; "sauce góor-jigéen".
+   - Religion: the Islamic NGO Jamra campaigns from the 1980s (¶30).
+   - Kinship: some married and had children (¶18).
+   - Dress: women's clothes, makeup, skin-lightening (¶16).
+   - Work: master of ceremonies at weddings and naming ceremonies; cook; counsellor (¶16).
+   - Transmission ranked by seniority (¶35). The 1894 "recent" term (¶2). The term spread to The Gambia, Mauritania and Mali (¶15). Critique of the third-gender reading (¶40–41).
+   - Use: *line*, *gate* (analogy), *reaction*, *method*. LATER.
+   - **P1** · OA (OpenEdition HTML; the PDF is paywalled) · **Downloaded** (`contemporary/broqua_2017_goor_jigeen_socio9.html`; paragraph numbers are OpenEdition's ¶).
+2. **Niang, Cheikh Ibrahima, Placide Tapsoba, Ellen Weiss, et al.** 2003. "'It's raining stones': stigma, violence and HIV vulnerability among men who have sex with men in Dakar, Senegal." *Culture, Health & Sexuality* 5.6: 499–512. DOI 10.1080/1369105031000152715.
+   - *With:* Niang et al. 2002, *Meeting the Sexual Health Needs of Men Who Have Sex with Men in Senegal* (Horizons/Population Council), DOI 10.31899/hiv2.1047, OA.
+   - *With:* Niang 2010, "Understanding sex between men in Senegal: beyond current linguistic and discursive categories", in Aggleton and Parker (eds.), *Routledge Handbook of Sexuality, Health and Rights*, 116–124, DOI 10.4324/9780203860229.ch13.
+   - Niang is a Senegalese anthropologist. Broqua cites him for the "mothers" (2002: 10). He also cites the Saint-Louis góor-jigéen's coded slogan for Senghor's entry into the town (Niang 2010: 118–119, via Broqua ¶17). Not read here.
+   - Use: *line*, *reaction*. LATER.
+   - **P1** · Library (CHS); the Horizons report is OA but blocked to scripts (Population Council, Cloudflare) · Not downloaded.
+3. **M'Baye, Babacar.** 2019. "Afropolitan Sexual and Gender Identities in Colonial Senegal." *Humanities* 8.4: 166. DOI 10.3390/h8040166. OA (CC BY).
+   - *With:* Babacar M'Baye and Besi Brillian Muhonja (eds.), *Gender and Sexuality in Senegalese Societies* (Lanham: Lexington, 2019), ISBN 978-1-7936-0112-4. Open Library also lists Ayo A. Coly with the editors; the editorship is *unverified*. The volume includes Ayo A. Coly, "The Invention of the Homosexual", 27–52, DOI 10.5040/9781666990775.ch-1.
+   - Use: *line*, *method*. LATER (colonial). By Senegalese and Senegal-born scholars. Not read here.
+   - **P1** · OA (MDPI, bot-blocked); Coly: Library · Not downloaded.
+4. **Broqua, Christophe.** 2010. "La socialisation du désir homosexuel masculin à Bamako." *Civilisations* 59.1: 37–58. DOI 10.4000/civilisations.2242.
+   - Fieldwork in Bamako, with interviews in Bambara (p. 40).
+   - Terms: *yoss* / *qualité* (p. 40); *fàamu* (p. 45); the insults *góor-jigéen* and *sa* "snake" (p. 47); *màlo* shame against *dànbe* honour (p. 48).
+   - Islam's condemnation internalised as guilt (p. 49).
+   - The only Mande-language material in this list. Hostile vocabulary, no institutional role.
+   - *With:* Broqua 2012, "Les formes sociales de l'homosexualité masculine à Bamako dans une perspective comparée", *Politique et Sociétés* 31.2: 113–144, DOI 10.7202/1014354ar. OA, but Érudit is bot-blocked.
+   - *With:* Broqua 2013, "Male Homosexuality in Bamako", in Nyeck and Epprecht (eds.), *Sexual Diversity in Africa* (MQUP), 208–224.
+   - Use: *reaction*, *method*. LATER.
+   - **P1** · OA · **Downloaded** (`contemporary/broqua_2010_bamako_civilisations.pdf`).
+5. **Brooks, Philip, and Laurent Bocahut** (dirs.). 1998. *Woubi Chéri*. Documentary film, Dominant 7 / La Sept ARTE. Filmed in Abidjan in 1997.
+   - Treat it as a document, read through Mackin, Atim. 2026. "Les woubis et les travestis de Côte d'Ivoire dans les médias." *Convergences francophones* 9.2: 14–23. DOI 10.29173/cf1029. CC BY 4.0.
+   - Terms: *woubi*, women's social role in a male couple; *yossi*; *travesti*; *toussou bakari*, women (p. 14).
+   - A *travestie* in the film says she is still called woubi "parce que … je me comporte en femme" (p. 15). For her these are social "rôles", not sexual ones (p. 21). This is the clearest self-description in this list.
+   - The "matinée mandingue" at Bingerville, 27 December 1997 (p. 17). Miss Woubi contests since 2009, and hostile press coverage (pp. 19–20).
+   - Use: *line* (role, festival), *reaction*. LATER.
+   - **P1** · Film: Library / distributor; Mackin: OA · **Downloaded** (Mackin, `contemporary/mackin_2026_woubis_travestis_cf.pdf`).
+6. **Broqua, Christophe, and Joseph Larmarange.** 2022. "Seriously accounting for local categories: Gendered sexual orientation among 'men who have sex with men' in Côte d'Ivoire." SocArXiv preprint, DOI 10.31235/osf.io/xmfpn.
+   - Survey of 518 people, 2018–19.
+   - Terms: woubi/yossi, plus "both" and "neither"; the coded register *Woubikan* beside Nouchi (p. 6).
+   - On a man/woman/transgender question, 12% chose "transgender"; 29% recognised themselves in *travesti* (p. 21).
+   - Religion: no differences between categories; the sample is Catholic, evangelical and Muslim (pp. 12, 35).
+   - Use: *method*. LATER. It shows that the categories blur.
+   - **P2** · OA · **Downloaded**.
+7. **Gaudio, Rudolf Pell.** 2009. *Allah Made Us: Sexual Outlaws in an Islamic African City*. Malden, MA and Oxford: Wiley-Blackwell. ISBN 978-1-4051-5252-5 (pb), 978-1-4051-5251-8 (hb). DOI 10.1002/9781444310535.
+   - Kano, from the 1990s. Terms: *'yan daudu*. *'Yan* means "children of" or "those who do", as in *'yan bori* (Pierce 2016, PDF p. 8).
+   - Already in `comparanda_reading_list.md` (item 14) as method; listed here for the identity reading.
+   - Use: *reaction* (Hausa Muslim courts), *line* (food trade). LATER.
+   - **P1** · Library · Not downloaded.
+8. **Pierce, Steven.** 2016. "'Nigeria Can Do without Such Perverts': Sexual Anxiety and Political Crisis in Postcolonial Nigeria." *Comparative Studies of South Asia, Africa and the Middle East* 36.1: 3–20. DOI 10.1215/1089201x-3482075.
+   - The 2007 Bauchi *hisbah* raid on men said to be "wearing women's clothing" (proof PDF p. 2).
+   - 'Yan daudu and *karuwai* households; 'yan daudu working as cooks and food sellers (PDF p. 8, after Gaudio).
+   - Use: *reaction*. LATER.
+   - **P1** · OA (author's proofs, Manchester repository) · **Downloaded**. Page references are to the proof PDF.
+9. **Geoffrion, Karine.** 2013. "'I Wish our Gender Could Be Dual': Male Femininities in Ghanaian University Students." *Cahiers d'études africaines* 53 (209–210): 417–443. DOI 10.4000/etudesafricaines.17373.
+   - Terms: *Kodjo-besia*, "Kodjo is a woman [inside]" (¶16).
+   - Work: market woman, food seller, beautician; membership of women's clubs (¶16).
+   - Born so; a "female soul" (¶16, ¶19). Possessed *akɔmfoɔ* (¶17, via Banks 2012).
+   - The term shifted to mean "gay" after 2006 and 2011 (¶18).
+   - Church as the place of the "Proper Boy" masculinity type (section on masculinity types; ¶ not noted).
+   - Use: *line*, *gate* (naming, analogy), *reaction*. LATER.
+   - **P1** · OA · **Downloaded**. Paragraph numbers are OpenEdition's.
+10. **Otu, Kwame Edwin.** 2022 (not 2024). *Amphibious Subjects: Sasso and the Contested Politics of Queer Self-Making in Neoliberal Ghana*. Oakland: University of California Press (Luminos OA). DOI 10.1525/luminos.131. ISBN 978-0-520-38185-8.
+    - A Ghanaian scholar. Chapters: "Situating Sasso: Mapping Effeminate Subjectivities…" (25–48); "The Paradox of Rituals: Queer Possibilities in Heteronormative Scenes" (102–120).
+    - Use: *line*, *reaction*. LATER.
+    - **P1** · OA, but blocked to scripts (Luminos 403 and de Gruyter); a browser download should work · Not downloaded.
+11. **Dankwa, Serena Owusua.** 2021. *Knowing Women: Same-Sex Intimacy, Gender, and Identity in Postcolonial Ghana*. Cambridge: Cambridge University Press. DOI 10.1017/9781108863575. ISBN 978-1-108-49590-5.
+    - About women. *Supi* friendship, secrecy and "the gift of knowing" (79–122); "Sugar Motherhood" (172–219).
+    - Use: *line* (kinship idioms of care between women, and indirection), *method*. Not trans material. LATER.
+    - **P2** · Library · Not downloaded.
+12. **Ekine, Sokari, and Hakima Abbas** (eds.). 2013. *Queer African Reader*. Dakar, Nairobi and Oxford: Pambazuka Press. ISBN 978-0-85749-099-5. Open Library dates it 2012.
+    - African activist and scholarly voices, Nigeria included. Contents not checked.
+    - Use: *method*, voice.
+    - **P2** · Library · Not downloaded.
+13. **Overviews:**
+    - Nyeck, S. N. (ed.). 2019. *Routledge Handbook of Queer African Studies*. Routledge. DOI 10.4324/9781351141963.
+    - Nyeck, S. N., and Marc Epprecht (eds.). 2013. *Sexual Diversity in Africa: Politics, Theory, and Citizenship*. MQUP. ISBN 978-0-7735-4187-0. Contains Broqua on Bamako (208–224) and Nyanzi on The Gambia (67–88).
+    - Matebeni, Zethu, Surya Monro and Vasu Reddy (eds.). 2018. *Queer in Africa*. Routledge. DOI 10.4324/9781315406749.
+    - Awondo, Patrick, Peter Geschiere and Graeme Reid. 2012. "Homophobic Africa? Toward a More Nuanced View." *African Studies Review* 55.3: 145–168. DOI 10.1017/S0002020600007241. OA (Cambridge; bot-blocked).
+    - Epprecht 2008 is already listed as WA item 20.
+    - Use: *method*.
+    - **P2** · Library (Awondo et al.: OA) · Not downloaded.
+14. **Reaction and politics (P3):**
+    - Bertolt, Boris. 2020. "Les ambiguïtés de la question homosexuelle au Sénégal." *Cahiers d'études africaines* 239: 645–669. DOI 10.4000/etudesafricaines.31808.
+      - Covers the Sufi brotherhoods and electoral politics (PDF pp. 17, 27).
+      - OA · **Downloaded**.
+    - Larmarange, Joseph, and Christophe Broqua. 2023. "Minorités de genre et de sexualité." INED. DOI 10.4000/books.ined.19336.
+      - A review of the categories used in sub-Saharan surveys.
+      - OA · **Downloaded**.
+    - Djedje, Ballet Brice-Stéphane. 2026. "'On a eu chaud': Digital resistance and community solidarity during the 2024 anti-Woubi crisis in Côte d'Ivoire." *Sexualities*. DOI 10.1177/13634607261430437.
+      - OA · Not downloaded.
+
+**Not found.** I found no scholarly source on gender-variant life in Burkina Faso or Niger that treats local terms. There is only health-survey literature (e.g. Fiorentino et al. 2020, *AIDS* 35.4). Nor did I find an institutional role in Mande-speaking (Bamana or Maninka) communities comparable to the góor-jigéen.
+
+### B. More sources for the two faiths
+
+#### B1. Badenya (West Africa)
+
+Already read or in hand: Ibn Baṭṭūṭa, Ibn Khaldūn, Johnson, Brett-Smith, Koné, Matory 2003 and 2005, van Beek 1991, Austen 1999, Gomez 2018. **P1, about 12 more, to bring the count to about 20:**
+
+1. **Conrad, David C.** 1999. "Mooning Armies and Mothering Heroes: Female Power in the Mande Epic Tradition." In Austen (ed.), *In Search of Sunjata*. ISBN 978-0-253-21248-1.
+   - **Already in hand** in `austen_1999_in_search_of_sunjata.pdf`, so it can be read now.
+   - Use: *gate*, *line*. BACK.
+   - **P1** · In hand.
+2. **Jansen, Jan.** 1999. "An Ethnography of the Epic of Sunjata in Kela." Austen (ed.), ch. 13.
+   - **Also in the Austen PDF.** Kangaba's Kamabolon and its seven-yearly reroofing.
+   - Use: *seat*, *world*. LATER.
+   - **P1** · In hand.
+3. **Jansen, Jan.** 2002. *Les secrets du Manding : les récits du sanctuaire Kamabolon de Kangaba (Mali)*. Leiden: CNWS Publications 115. ISBN 90-5789-077-1.
+   - Kangaba's Sunjata texts with commentary. Sogolon Kolonkan, Sunjata's sister, shows him Sumaoro on a kind of "television" under her wrapper. Jansen notes that in the Kela version this woman is captured and freed, unlike Niane's. He also notes that women's position in Kela tradition "a souffert d'une régression grave au XXème siècle" (suffered a serious decline in the 20th century).
+   - **Caution:** the Kamabolon is a living Keita sanctuary. Use the texts for names and narrative only, never rites.
+   - Use: *gate* (myth), *line*, *seat*. LATER/BACK.
+   - **P1** · OA (Leiden repository) · **Downloaded**.
+4. **Jansen, Jan.** 2018. "Beyond the Mali Empire – A New Paradigm for the Sunjata Epic." *International Journal of African Historical Studies* 51.2: 317–340. Journal details from OpenAlex and the Leiden record; DOI not found.
+   - Reads the epic through "other-than-human beings", masquerade and the smith–warrior pair, at a time-depth of up to three millennia. It cuts against dating the epic to the 13th century.
+   - Use: *method*, *gate* (smith and djinn).
+   - **P1** · OA · **Downloaded**.
+5. **Jansen, Jan.** 1996. "The Younger Brother and the Stranger: In Search of a Status Discourse for Mande." *Cahiers d'études africaines* 36 (144): 659–688. DOI 10.3406/cea.1996.1861.
+   - Kangaba's status idiom. A check on Bird and Kendall's badenya/fadenya.
+   - Use: *line*.
+   - **P1** · OA (Leiden copy) · **Downloaded**.
+6. **Jansen, Jan.** 1996. "'Elle connaît tout le Mande': A Tribute to the Griotte Siramori Diabate." *Research in African Literatures*. Volume and pages *unverified*.
+   - Women bards (*jelimusow*) as keepers of the whole Mande word.
+   - Use: *gate* (the bard who sings the name), *line*.
+   - **P1** · OA (Leiden) · **Downloaded**.
+7. **Bulman, Stephen, Stephen Belcher, and Valentin Vydrin** (eds.). 2023. *Corpus of Early Accounts of the Sunjata Epic, 1889–1959*. London: British Academy (Fontes Historiae Africanae). DOI 10.5871/bacad/9780197267387.001.0001. ISBN 978-0-19-726738-7.
+   - The versions recorded before Niane, with name forms. Answers the "Sunjata names" open question better than Niane alone.
+   - Use: *gate* (names), *method*.
+   - **P1** · Library · Not downloaded.
+8. **Niane, Djibril Tamsir.** 1960. *Soundjata ou l'épopée mandingue*. Paris: Présence Africaine. English trans. G. D. Pickett, *Sundiata: An Epic of Old Mali* (Longman 1965; 2006 ed. ISBN 978-0-582-26475-8).
+   - Use: *gate* (myth: Sogolon, the sister). BACK. A Guinean historian's version, from Mamadou Kouyaté.
+   - **P1** · Preview (archive.org `sundiepicofol00nian`, lending) · Not downloaded.
+9. **Conrad, David C.** (ed. and trans.). 2004. *Sunjata: A West African Epic of the Mande Peoples*. Hackett. ISBN 978-0-87220-697-7.
+   - Already WA item 7. Promoted from P2 to P1 for names.
+   - **P1** · Library.
+10. **Levtzion, Nehemia, and J. F. P. Hopkins** (eds.). 1981. *Corpus of Early Arabic Sources for West African History*. CUP. ISBN 978-0-521-22422-2; Markus Wiener pb 2000, ISBN 978-1-55876-241-1.
+    - Standard English for al-Bakrī, al-ʿUmarī and Ibn Baṭṭūṭa, to check the French readings.
+    - **P1** · Library · Not downloaded.
+11. **Hoffman, Barbara G.** 2002. "Gender Ideology and Practice in Mande Societies and in Mande Studies." *Mande Studies* 4: 1–20. DOI 10.2979/mnd.2002.a873339.
+    - The 2002 gender issue. It also has Koné's original article (21–29, DOI 10.2979/mnd.2002.a873342), Zobel on griots and gender (45–64), Langeveld on the Kankurang mask and female ritual (83–100), and Van Dyke on Bamana sculpture (101–119).
+    - Use: *line*, *method*.
+    - **P1** · Library (JSTOR) · Not downloaded.
+12. **Durán, Lucy.** 2007. "Ngaraya: Women and Musical Mastery in Mali." *BSOAS* 70.3: 569–602. DOI 10.1017/S0041977X07000845.
+    - The *ngara*, the master, as a title women can hold.
+    - Use: *gate* (who has the right to sing her name), *line*.
+    - **P1** · OA (Cambridge; bot-blocked) · Not downloaded.
+
+**P2:**
+- Hale, Thomas A. 1998. *Griots and Griottes: Masters of Words and Music*. Indiana UP. ISBN 978-0-253-33458-9.
+- Camara, Sory. 1976. *Gens de la parole : essai sur la condition et le rôle des griots dans la société malinké*. Mouton; Karthala repr. 1992, ISBN 978-2-86537-354-3. A Guinean scholar. The subtitle is from memory (*unverified*).
+- Schulz, Dorothea E. 2002. "'The World is Made by Talk': Female Fans, Popular Music, and New Forms of Public Sociality in Urban Mali." *CEA* 42 (168). DOI 10.4000/etudesafricaines.167. OA · **Downloaded**.
+- Houdas, O. (trans.). 1900. *Tarikh es-Soudan*. Paris: Leroux. Public domain · **Downloaded** (text). Mostly post-1453 Songhay, but it has the Mali-overlordship passages; grade BACK.
+- Already listed WA items 8–11: Bird and Kendall 1980; Conrad and Frank 1995; McNaughton 1988; Hoffman 2000. Lending copies on archive.org: `explorationsinaf00karp`, `statusidentityin0000unse`, `mandeblacksmiths00mcna_0`.
+- Levtzion, N. 1973. *Ancient Ghana and Mali*. Methuen. Archive.org `bwb_S0-AWH-349`, lending.
+- Koné, [Kassim?]. 2024. "Sunjata Fasa and the Oral Epic Tradition of Mali." In *The Epic World* (Routledge), 175–188. DOI 10.4324/9780429286698-16. The author's first name is *unverified*.
+
+#### B2. The Worn Garland (India)
+
+Already read or in hand: Ganguli, Merkle, SII 2, Hawley and Wulff (Ramanujan), Narayanan 1994, Doniger 1999, Ramanujan 1973 and 1981, Venkatesan 2010, Orr 2000. **P1, 12 more:**
+
+1. **Venkatesan, Archana.** 2007. "A Woman's Kind of Love: Female Longing in the Tamil Āḻvār Poetry." *Journal of Hindu-Christian Studies* 20: art. 7. DOI 10.7825/2164-6279.1383.
+   - Use: *theology*, *gate*.
+   - **P1** · OA (Butler Digital Commons; Cloudflare-blocked) · Not downloaded.
+2. **Anandakichenin, Suganya.** 2020. "The Female Voice and the Crossing of the Boundaries of Scholarship: A Note on the *Rahasyam* of the Lady from Tirukkōḷūr, with a Complete, Annotated Translation." *Cracow Indological Studies* 22.1: 95–134. DOI 10.12797/CIS.22.2020.01.05.
+   - Tirukkōḷūr Peṇpiḷḷai, perhaps 12th c., a woman who answers Rāmānuja.
+   - The summary says Śrīvaiṣṇavism grants women liberation and "religious, albeit non-Vedic, learning" (p. 95), but rarely let them author.
+   - Use: *line* (a woman's learned voice), *reaction*.
+   - **P1** · OA · **Downloaded**.
+   - *With:* her review of Ben-Herut 2018, CIS 22.1: 251–254. **Downloaded.**
+3. **Govindāchārya, Alkondavilli.** 1902. *The Holy Lives of the Azhvārs, or the Drāvida Saints*. Mysore.
+   - An English retelling of the Śrīvaiṣṇava *guruparamparā* hagiography, which is late. The Āṇṭāḷ life begins around p. 41 (running heads "Life of St. Andal" at pp. 42–47 in the OCR).
+   - Use: *gate* (the legend as tradition tells it). Flag as late tradition, not 9th-c. evidence.
+   - **P1** · Public domain (archive.org `holylivesazhvrs00govigoog`) · **Downloaded** (OCR text).
+4. **Carman, John, and Vasudha Narayanan.** 1989. *The Tamil Veda: Piḷḷāṉ's Interpretation of the Tiruvāymoḻi*. University of Chicago Press. ISBN 978-0-226-09305-5.
+   - Already item 10; promoted from P2 to P1.
+   - **P1** · Library.
+5. **Hardy, Friedhelm.** 1983. *Viraha-Bhakti: The Early History of Kṛṣṇa Devotion in South India*. Delhi: OUP. ISBN 978-0-19-561251-6. The ISBN is as in the reading list; the date is confirmed by reviews (*IESHR* 1986, DOI 10.1177/001946468602300411).
+   - **P1** · Library.
+6. **Dehejia, Vidya.** 1990. *Āṇṭāḷ and Her Path of Love: Poems of a Woman Saint from South India*. Albany: SUNY Press. ISBN 978-0-7914-0395-2 (hb), 978-0-7914-0396-9 (pb).
+   - The full translation, to set beside Venkatesan.
+   - **P1** · Library.
+7. **Orr, Leslie C.** 2005. "Identity and Divinity: Boundary-crossing Goddesses in Medieval South India." *Journal of the American Academy of Religion* 73.1: 9–43. DOI 10.1093/jaarel/lfi003.
+   - The reading list gave lfi002; Crossref gives lfi003.
+   - Use: *theology* (goddess identities crossing in Chola inscriptions).
+   - **P1** · Library.
+8. **Kersenboom, Saskia C.** 1987. *Nityasumaṅgalī: Devadasi Tradition in South India*. Delhi: Motilal Banarsidass. ISBN 978-81-208-0330-5.
+   - Read for the history of temple women. Per `ind_merkle_tying_knot.md`, do **not** use the word.
+   - **P1** · Library.
+9. **Pechilis, Karen.** 2012. *Interpreting Devotion: The Poetry and Legacy of a Female Bhakti Saint of India*. Routledge. DOI 10.4324/9780203145890.
+   - The Kāraikkāl precedent of a body changed at the devotee's request.
+   - Already item 12; promoted.
+   - **P1** · Library.
+10. **Ben-Herut, Gil.** 2018. *Śiva's Saints*. OUP. DOI 10.1093/oso/9780190878849.001.0001.
+    - Already item 11; promoted.
+    - **P1** · Library.
+11. **Shulman, David Dean.** 1980. *Tamil Temple Myths: Sacrifice and Divine Marriage in the South Indian Śaiva Tradition*. Princeton UP. ISBN 978-0-691-06415-4; Legacy ebook 978-1-4008-5692-3.
+    - The local *talapurāṇa* logic of a goddess's marriage. It is the frame for a holy-site text.
+    - **P1** · Library.
+12. **Hari Rao, V. N.** (ed. and trans.). 1961. *Kōil Oḻugu: The Chronicle of the Srirangam Temple, with Historical Notes*. Madras. Publisher *unverified*. Reviewed in *JAOS* 82.2 (1962): 281, DOI 10.2307/597966.
+    - Answers the open questions on the Kōyil Oḻuku's date and on Bībī Nācciyār.
+    - An archive.org upload exists, but its licence is unclear; not used.
+    - **P1** · Library.
+
+**P2:**
+- Goodall, Dominic. 2018. "Rudragaṇikās: Courtesans in Śiva's Temple?" *CIS* 20.1: 91–143. DOI 10.12797/cis.20.2018.01.06. OA · **Downloaded**. Sanskrit Śaiva sources on temple women.
+- Orr, Leslie C. 2013. "Words for Worship: Tamil and Sanskrit in Medieval Temple Inscriptions." IFP/EFEO. DOI 10.4000/books.ifp.2909. OA · **Downloaded** (HTML).
+- Ali, Daud. 2007. "The Service Retinues of the Chola Court: A Study of the Term *veḷam* in Tamil Inscriptions." *BSOAS* 70.3: 487–509. DOI 10.1017/S0041977X0700081X. OA (Cambridge; bot-blocked). On palace women.
+- Gutiérrez, Andrea. 2023. "Toward a Better Understanding of Medieval Temple Food Practices: The View from Srirangam." *Journal of Hindu Studies* 16.2: 182–205. DOI 10.1093/jhs/hiad016.
+- Hopkins, Steven P. 2007. *An Ornament for Jewels* (Vedānta Deśika's love poems). OUP. DOI 10.1093/acprof:oso/9780195326390.001.0001. OA at Swarthmore Works (Cloudflare-blocked).
+- Prentiss (Pechilis), Karen. 1999. *The Embodiment of Bhakti*. OUP. ISBN *unverified*.
+- Peterson, Indira V. 1989. *Poems to Śiva*. Princeton UP. ISBN 978-0-691-06767-4.
+- Already listed, unchanged at P2: Talbot 1995 (*Syllables of Sky*, ISBN 978-0-19-563549-2; **FtM**, reaction only); Hiltebeitel 1995; Saroja 2012 (ISBN 978-81-89110-34-5); Ramaswamy 1997 (ISBN 978-81-85952-39-0).
+- Champakalakshmi, R. 2011. *Religion, Tradition, and Ideology: Pre-colonial South India*. OUP Delhi. ISBN *unverified*; confirmed by a review, *RSR* 2013, DOI 10.1111/rsr.12066_2. An Indian historian on temple and bhakti.
+
+### C. OA items blocked to scripts (please download in a browser)
+
+- Otu 2022: https://doi.org/10.1525/luminos.131 (Luminos "Download")
+- M'Baye 2019: https://www.mdpi.com/2076-0787/8/4/166/pdf
+- Niang et al. 2002 (Horizons): https://knowledgecommons.popcouncil.org/cgi/viewcontent.cgi?article=1070&context=departments_sbsr-hiv
+- Broqua 2012: https://www.erudit.org/fr/revues/ps/2012-v31-n2-ps0459/1014354ar.pdf
+- Awondo et al. 2012: https://doi.org/10.1017/S0002020600007241
+- Durán 2007: https://doi.org/10.1017/S0041977X07000845
+- Venkatesan 2007: https://digitalcommons.butler.edu/cgi/viewcontent.cgi?article=1383&context=jhcs
+- Ali 2007: https://doi.org/10.1017/S0041977X0700081X
+- Hopkins 2007: https://works.swarthmore.edu/cgi/viewcontent.cgi?article=1063&context=fac-religion
+- Djedje 2026: https://journals.sagepub.com/doi/pdf/10.1177/13634607261430437
+- Still from before: Matory 2003, hdl.handle.net/10161/7033
+
+### D. Need from the user (P1, not open access)
+
+- **Contemporary West Africa:** Gaudio 2009 (ISBN 978-1-4051-5252-5); Niang et al. 2003 (DOI 10.1080/1369105031000152715); M'Baye and Muhonja 2019 (ISBN 978-1-7936-0112-4).
+- **West Africa:** Bulman, Belcher and Vydrin 2023 (ISBN 978-0-19-726738-7); Niane/Pickett (ISBN 978-0-582-26475-8); Conrad 2004 (ISBN 978-0-87220-697-7); Levtzion and Hopkins (ISBN 978-0-521-22422-2); *Mande Studies* 4 (2002) (DOI 10.2979/mnd.2002.a873339).
+- **India:** Carman and Narayanan (ISBN 978-0-226-09305-5); Hardy 1983 (ISBN 978-0-19-561251-6); Dehejia 1990 (ISBN 978-0-7914-0396-9); Orr 2005 (DOI 10.1093/jaarel/lfi003); Kersenboom 1987 (ISBN 978-81-208-0330-5); Pechilis 2012 (DOI 10.4324/9780203145890); Ben-Herut 2018 (DOI 10.1093/oso/9780190878849.001.0001); Shulman 1980 (ISBN 978-0-691-06415-4); Hari Rao 1961, *Kōil Oḻugu*.

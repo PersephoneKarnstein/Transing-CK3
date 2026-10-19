@@ -372,3 +372,37 @@ Sources: `research/jud_hildenfinger_arles_documents.md`, `jud_stouff_gross_arles
 - **Seats.** The Mother of Mothers rules as a theocracy (untested whether this keeps Phrygia out of the Byzantine appointments); if Phrygia leaves the faith, the Mother House holder gets a pressed claim. Each seat court starts with two Marked young men; the Arles sect is employed at the count of Venaissin's court instead of left in the pool.
 - **Not done:** conversion resistance for House counties. The engine has no such county modifier; vanilla's chaplain formula checks named modifiers only, so it would need a vanilla override.
 - **Tuning.** Every 25 years `tm_census_log_effect` writes the counts to `debug.log` (search `tm_census_log`). Rates are first guesses: expect to tune them after one or two observe runs.
+
+## 15. The fifth and sixth faiths: research done, designs proposed (2026-10-19, awaiting approval)
+
+The user chose two of four southern candidates (`research/south_reading_list.md`): India and West Africa, "if we can get them to all feel unique". Shared mechanics with other faiths are fine (user: "they can share some similarities"). Neither region has a recorded pre-1453 case of a man living as a woman in a religious role: each gate is a reconstruction the narrator marks, built on institutions that are attested.
+
+### The Worn Garland (working name), Tamil South India
+Notes: `research/ind_*.md` (14). Works read: Ganguli's *Mahābhārata*; Merkle 2016; SII 2 no. 66; Orr 2000, 2013; Venkatesan 2010; Narayanan 1994; Ramanujan 1973, 1981, 1982; Doniger 1999; Goodall 2018; Anandakichenin 2020; Govindacharya 1902.
+- **Family.** A current inside vanilla Hinduism that crosses Śaiva and Vaiṣṇava devotion, as the inscriptions' shared vocabulary does (Orr 2013). The bride and the worn garland come from the Vaiṣṇava poets; the "daughter of God" title, the rite and the women's song from Śiva's temples.
+- **Theology, in period.** "Before God all men are women" (Ramanujan 1982, p. 324); Mahādēvi 68, Basavaṇṇa 703 ("I'll be your devotees' bride"), the 13th-c. *Ācāryahṛdayam* ("in love, a woman's words"). Scripture: Bhaṅgāśvana, who chose to stay a woman (MBh 13.12). Ilā, who asked to alternate and was cured back to manhood in every version, is the "third thing" the faith refuses (Bhatt).
+- **Gate: the pāvai vow, in Mārkaḻi** (mid-December to mid-January). A month-long trial kept with companions:
+  1. the waking: before dawn she wakes the girls of the street (companions at court; each week one may fall away);
+  2. the song: the Śaiva *Tiruvempāvai* (which temple women paid to sing, Orr pp. 17–18, 107–08) or Āṇṭāḷ's *Tiruppāvai*; the choice tilts which holy sites favour her;
+  3. the garland worn before it is offered (Āṇṭāḷ's transgression, first witnessed in a mid-10th-c. verse; Venkatesan p. 223): the risk of being caught;
+  4. the dream: a sign, not the success (in the poem she wakes to find it false);
+  5. the staff on the head and a name: the 12th-c. Śaiva initiation that made a temple woman a "daughter of Rudra" (Goodall pp. 110–112), at the temple, with a gift.
+- **Line.** The temple street: a daughter's share (paddy and a house, as the 400 women of Tanjavur held, SII 2 no. 66), recorded in stone. Inheritance from a temple woman "may have" passed mother to daughter (Orr p. 72); adoption before 1300 is Orr's guess, so *Take as Daughter* here is a marked reconstruction.
+- **World.** An endowment economy: gold buys an inscription, which buys lasting piety and a protected share; temple managers and dynastic patrons; diplomacy. Era arc: "daughter of God" (*tevanar makal*) flourishes 850–985 and fades after 1070 (Orr pp. 52, 57–59), so the faith's institutions weaken late in the game.
+- **Seat.** Kanchipuram: the only temple-women centre attested through 850–1300, with Śaiva and Vaiṣṇava temples (a Pallava queen's Śiva temple of 758 had fifteen named women on its staff). Holy sites: Srirangam, Thanjavur, Madurai, and a Chidambaram-area site if the map has one.
+- **Reaction.** Orthodox lines from the Ilā variants ("To hell with birth as a woman", Sahyādrikhaṇḍa); Buddhist and Jain lines already in §13 revisions.
+- **Never.** No hijra link; Āṇṭāḷ venerated, never founder or a trans figure; no "bride of God" for temple women (17th c.); no courtesan or slave framing (Goodall's frame); Śrīvilliputtūr's Āṇṭāḷ temple (c. 1571) is out of period.
+
+### Badenya, the Mother's Children (working name), Mande West Africa
+Notes: `research/waf_*.md` (14). Works read: Ibn Baṭṭūṭa; Ibn Khaldūn; *Tārīkh al-Sūdān*; Brett-Smith 1994; Koné 2004; Johnson 1921; Matory 2003, 2005; van Beek 1991; Austen (ed.) 1999 (Conrad, Wilks, Camara and others); Gomez 2018; Jansen 1996, 1996, 2002, 2018; Schulz 2002; eight contemporary studies (Broqua 2010, 2017; Broqua & Larmarange 2022; Larmarange & Broqua 2023; Geoffrion 2013; Mackin 2026; Pierce 2016; Bertolt 2020).
+- **Family.** Inside vanilla West African religion, overriding every god-name key: vanilla uses Griaule's Dogon names (Amma, Nummo, Yurugu), which van Beek's restudy undercuts. Mande *nyama* is usable; Dogon cosmology is not.
+- **Gate: the crossing**, in three parts, with a "hot" seeker "cooled" by the authorised word (Jansen; Schulz):
+  1. the smith's bargain: the djinn's price is a dependant's life; she gives her own manhood instead (Brett-Smith p. 76, a demotion in the sculptor's words that the faith reclaims; Kosiya Kante's self-substitution in the epic, Conrad pp. 206–07, in the faith's voice only). A smith and potter pair; a yearly debt to the djinn afterwards;
+  2. the claiming: a woman of the faith calls her "my mother's child" and pays bracelets for her crossing; the epic's sister-guide and foster-mother are the models (Conrad p. 205);
+  3. the word that cools: a jeli, man or woman, speaks her name before the mansa, with the claiming mother's name prefixed (Sun-Jata); paid well it is praise, ill-paid it is satire (Ibn Baṭṭūṭa pp. 413–414: the bird-masked bards; al-ʿUmarī's court poet).
+- **Line.** Through a sister or daughter (Ghana 1063, Walata; not Mali's royal line, which is contested: `waf_ibn_khaldun_mali.md` correction). "The House buries its own": refusal of burial is the oldest exclusion in the contemporary record, so the faith's own burial is a doctrine.
+- **World.** A praise and shame economy (jeli and jelimusow), smiths' dangerous power, Maliki jurists at court, hunters. Daughters run naming ceremonies and weddings and are sponsored by "mothers" in networks ranked by seniority: the contemporary pattern (Broqua; Geoffrion; Mackin), used to make the faith feel familiar and marked by the narrator as reconstruction. People in those studies say "born so", "God made us", and more choose "woman" than "transgender".
+- **Festival.** A seven-yearly "New Roof" that gathers the daughters into an age-set (invented on the pattern of the Kangaba re-roofing, whose present form is 1880–1912; the Kamabolon's own rites are not used: a living, guarded sanctuary).
+- **Seat.** Kirina (`c_sibi_mali`), with a refuge rock at Koulikoro (a barony there). Holy sites: Niani, Awkar (Ghana), Walata, and one more to choose.
+- **Reaction.** The vanilla Orisha faith reads a daughter warmly, as an initiand (+5; Matory); Oyo-type courts are out of period (Old Oyo's datable layer is c. 1555–1610).
+- **Never.** No Ṣàngó priests, 'yan daudu, góor-jigéen or woubi mapped onto the faith; no Griaule or Dieterlen cosmology; no Kamabolon rites; Bamana terms to be checked by a speaker.

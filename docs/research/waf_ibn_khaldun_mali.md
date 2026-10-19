@@ -90,3 +90,6 @@ Ibn Khaldūn writes Mali's history as a list of kings with short judgments, from
 ### Names
 
 - Royal names from this list: Mārī Jāṭa, Walī, Wātī, Khalīfa, Abū Bakr, Sākūra, Qū (Gao), Muḥammad, Mūsā, Maghā, Sulaymān, Qāsā, Sandakī, Maḥmūd. All male. **No woman is named in pp. 109–116**; Mārī Jāṭa's daughter and sister, through whom the throne passed, are unnamed. For women's names see `waf_ibn_battuta_mali.md` §5.
+
+## Correction (2026-10-19, after `waf_conrad_austen_sunjata.md` and `waf_gomez_african_dominion.md`)
+"Mansa Mūsā descends from Mārī Jāṭa's sister's son" rests on de Slane's French only. Levtzion and Hopkins's translation, followed by Gomez, Conrad and Wilks, makes Mūsā a descendant of Sunjata's *brother* Abū Bakr. Do not cite Mali's royal line as matrilateral succession. The solid evidence for succession through a sister or daughter is Ghana (Tunka Manīn succeeded his maternal uncle, 1063, al-Bakrī), Walata (Ibn Baṭṭūṭa), and the first Abū Bakr of Mali, a daughter's son. Check the Arabic before any loc line relies on it.
