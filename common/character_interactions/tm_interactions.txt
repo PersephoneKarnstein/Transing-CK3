@@ -280,3 +280,52 @@ tm_adopt_daughter_interaction = {
 		}
 	}
 }
+
+# Teach the Warding Songs: the varðlokkur pass from foster-mother to foster-daughter, as Halldis taught
+# Guðríðr (Eiríks saga rauða ch. 4). A singer who knows them makes the seiðr rite far likelier to succeed.
+tm_teach_vardlokkur_interaction = {
+	interface_priority = 55
+	icon = icon_scheme_befriend
+	category = interaction_category_friendly
+	desc = tm_teach_vardlokkur_interaction_desc
+
+	is_shown = {
+		NOT = { scope:actor = scope:recipient }
+		scope:actor = {
+			tm_knows_vardlokkur_trigger = yes
+			rite ?= { rite_has_parameter = tm_seidr_gate }
+		}
+		scope:recipient = {
+			NOT = { tm_knows_vardlokkur_trigger = yes }
+			age >= 8
+			OR = {
+				is_female = yes
+				has_trait = tm_transgender
+			}
+			OR = {
+				is_child_of = scope:actor
+				has_relation_guardian = scope:actor
+			}
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		scope:recipient = { is_imprisoned = no }
+		scope:actor = { is_imprisoned = no }
+	}
+
+	auto_accept = yes
+
+	on_accept = {
+		scope:recipient = {
+			set_variable = tm_knows_vardlokkur
+			add_learning_lifestyle_xp = 100
+		}
+		scope:actor = { add_piety = 25 }
+	}
+
+	ai_targets = { ai_recipients = family }
+	ai_targets = { ai_recipients = courtiers }
+	ai_frequency = 36
+	ai_will_do = { base = 50 }
+}

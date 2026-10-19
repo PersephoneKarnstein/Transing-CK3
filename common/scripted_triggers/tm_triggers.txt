@@ -80,3 +80,65 @@ tm_elder_sister_eligible_trigger = {
 		has_trait = tm_transgender
 	}
 }
+
+# Has a Norse man's name with a feminine form (tm_feminise_name_effect).
+tm_has_feminisable_name_trigger = {
+	OR = {
+		has_first_name = T_orbjO_rn
+		has_first_name = T_orsteinn
+		has_first_name = T_orD_r
+		has_first_name = T_orgils
+		has_first_name = T_orfinnr
+		has_first_name = T_O_rO_lfr
+		has_first_name = T_orbrandr
+		has_first_name = Ragnarr
+		has_first_name = RO_gnvaldr
+		has_first_name = SigurT_r
+		has_first_name = Sigtryggr
+		has_first_name = SigrbjO_rn
+		has_first_name = Gunnarr
+		has_first_name = U_lfr
+		has_first_name = U_lfkell
+		has_first_name = U_lfhE_D_inn
+		has_first_name = A_lfr
+		has_first_name = A_lfgeir
+		has_first_name = Ingimar
+		has_first_name = IngO_lfr
+		has_first_name = Ingjaldr
+		has_first_name = HO_lmgeirr
+		has_first_name = BjO_rn
+		has_first_name = KolbjO_rn
+		has_first_name = StyrbjO_rn
+		has_first_name = ArnbjO_rn
+		has_first_name = A_sbjO_rn
+		has_first_name = GuT_mundr
+		has_first_name = GuT_rO_T_r
+		has_first_name = Hallsteinn
+		has_first_name = VigfU_s
+		has_first_name = BergT_O_r
+		has_first_name = Freyr
+	}
+}
+
+# Knows the warding songs (varðlokkur): every daughter of the high seat, and anyone taught them.
+tm_knows_vardlokkur_trigger = {
+	OR = {
+		has_trait = tm_daughter_of_seidr
+		has_variable = tm_knows_vardlokkur
+	}
+}
+
+# Could ask a völva to sit for them.
+tm_seidr_seeker_trigger = {
+	is_male = yes
+	is_adult = yes
+	is_imprisoned = no
+	rite ?= { rite_has_parameter = tm_seidr_gate }
+	tm_is_daughter_trigger = no
+	OR = {
+		has_trait = tm_transgender
+		has_trait = eunuch_1
+		has_trait = beardless_eunuch
+		has_variable = tm_declared
+	}
+}

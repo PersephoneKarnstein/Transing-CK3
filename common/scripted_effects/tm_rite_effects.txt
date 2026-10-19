@@ -138,3 +138,109 @@ tm_add_rite_daughter_trait_effect = {
 		add_trait = tm_daughter_of_the_knife
 	}
 }
+
+# Start the seiðr rite for the seeker (scope). Finds a völva at the host's court, or one comes on the road.
+tm_seidr_begin_effect = {
+	if = {
+		limit = { is_ruler = yes }
+		save_scope_as = tm_host
+	}
+	else_if = {
+		limit = { exists = employer }
+		employer = { save_scope_as = tm_host }
+	}
+	else = {
+		save_scope_as = tm_host
+	}
+	if = {
+		limit = {
+			scope:tm_host = {
+				any_courtier = {
+					NOT = { this = root }
+					has_trait = tm_daughter_of_seidr
+					is_adult = yes
+					is_imprisoned = no
+				}
+			}
+		}
+		scope:tm_host = {
+			random_courtier = {
+				limit = {
+					NOT = { this = root }
+					has_trait = tm_daughter_of_seidr
+					is_adult = yes
+					is_imprisoned = no
+				}
+				save_scope_as = tm_volva
+			}
+		}
+	}
+	else = {
+		tm_create_travelling_volva_effect = { HOST = scope:tm_host }
+	}
+	trigger_event = tm_seidr.0010
+}
+
+# A seeress on the road, like Þorbjörg lítilvölva, last of ten sisters. She is a guest and travels on.
+tm_create_travelling_volva_effect = {
+	create_character = {
+		gender = female
+		age = { 45 70 }
+		culture = $HOST$.culture
+		faith = faith:tm_baeddel
+		dynasty = none
+		location = $HOST$.capital_province
+		trait = tm_daughter_of_seidr
+		trait = education_learning_3
+		save_scope_as = tm_volva
+	}
+	scope:tm_volva = {
+		set_variable = tm_knows_vardlokkur
+		add_learning_skill = 4
+	}
+}
+
+# Scope: the seeker. Ends the rite's temporary state.
+tm_seidr_clear_effect = {
+	remove_variable = tm_seidr_feast
+	remove_variable = tm_seidr_song_known
+	remove_variable = tm_seidr_song_reluctant
+}
+
+# Norse girls were often named by feminising a man's name (research/norse_gardela_bonding_pentz_norse_sorceress.md).
+# Scope: the one renamed. Keys are vanilla name_list_norse names.
+tm_feminise_name_effect = {
+	if = { limit = { has_first_name = T_orbjO_rn } change_first_name = T_O_runn }
+	else_if = { limit = { has_first_name = T_orsteinn } change_first_name = T_O_rdI_s }
+	else_if = { limit = { has_first_name = T_orD_r } change_first_name = T_O_ra }
+	else_if = { limit = { has_first_name = T_orgils } change_first_name = T_O_ra }
+	else_if = { limit = { has_first_name = T_orfinnr } change_first_name = T_O_rdI_s }
+	else_if = { limit = { has_first_name = T_O_rO_lfr } change_first_name = T_O_ra }
+	else_if = { limit = { has_first_name = T_orbrandr } change_first_name = T_O_ra }
+	else_if = { limit = { has_first_name = Ragnarr } change_first_name = Ragnhildr }
+	else_if = { limit = { has_first_name = RO_gnvaldr } change_first_name = RO_gnfrI_D_r }
+	else_if = { limit = { has_first_name = SigurT_r } change_first_name = SigrI_D_r }
+	else_if = { limit = { has_first_name = Sigtryggr } change_first_name = SignY_ }
+	else_if = { limit = { has_first_name = SigrbjO_rn } change_first_name = SigrI_D_r }
+	else_if = { limit = { has_first_name = Gunnarr } change_first_name = Gunnhildr }
+	else_if = { limit = { has_first_name = U_lfr } change_first_name = U_lfhildr }
+	else_if = { limit = { has_first_name = U_lfkell } change_first_name = U_lfhildr }
+	else_if = { limit = { has_first_name = U_lfhE_D_inn } change_first_name = Ylva }
+	else_if = { limit = { has_first_name = A_lfr } change_first_name = A_lfrhildr }
+	else_if = { limit = { has_first_name = A_lfgeir } change_first_name = AlfrI_D_r }
+	else_if = { limit = { has_first_name = Ingimar } change_first_name = IngibjO_rg }
+	else_if = { limit = { has_first_name = IngO_lfr } change_first_name = Inga }
+	else_if = { limit = { has_first_name = Ingjaldr } change_first_name = IngjerT_r }
+	else_if = { limit = { has_first_name = HO_lmgeirr } change_first_name = HO_lmfrI_D_r }
+	else_if = { limit = { has_first_name = BjO_rn } change_first_name = BjO_rg }
+	else_if = { limit = { has_first_name = KolbjO_rn } change_first_name = BjO_rg }
+	else_if = { limit = { has_first_name = StyrbjO_rn } change_first_name = BjO_rg }
+	else_if = { limit = { has_first_name = ArnbjO_rn } change_first_name = BjO_rg }
+	else_if = { limit = { has_first_name = A_sbjO_rn } change_first_name = A__sa }
+	else_if = { limit = { has_first_name = GuT_mundr } change_first_name = GuD_rU_n }
+	else_if = { limit = { has_first_name = GuT_rO_T_r } change_first_name = GuD_rU_n }
+	else_if = { limit = { has_first_name = Hallsteinn } change_first_name = Halla }
+	else_if = { limit = { has_first_name = VigfU_s } change_first_name = VigdI__s }
+	else_if = { limit = { has_first_name = BergT_O_r } change_first_name = BergT_O_ra }
+	else_if = { limit = { has_first_name = Freyr } change_first_name = Freyja }
+}

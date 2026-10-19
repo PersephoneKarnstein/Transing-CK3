@@ -49,6 +49,20 @@ Built: shared daughter trigger and per-faith daughter traits; Bæddel faith (Got
 - [ ] The Sisters Choose: law appears for duchy+ rulers of the faiths; electors and candidates as intended; Tiger flags the law/election files as unknown fields (1.20 format lag, same structure as vanilla)
 - [ ] Friend of the House arrival (0004); turned-away arrivals reach another House
 
+## Norse reading revisions (added 2026-10-18, untested in-game)
+- [ ] Seiðr chain 0010 → 0011 → 0001: scopes tm_volva / tm_host carry through; travelling völva created when no daughter of seidr at court; feast gold taken from host
+- [ ] Winter völva visit (0020): sitting for a courtier runs the chain on the courtier
+- [ ] Teach the Warding Songs on a daughter and a ward
+- [ ] Níðhöggr shows as the Bædling devil; feminised names apply (vanilla Norse name keys)
+
+## Stage 2 inputs from the Norse reading
+- [ ] Insult duel: 3 rounds, charges checked against real traits, owning the word strongest, stakes by witnesses and venue (Lögberg doubles); Raise the Níð-Pole scheme (Clover; Meulengracht Sørensen; Grágás)
+- [ ] Feud ledger, Offer Bót compensation, fostering to seal a settlement (Miller)
+- [ ] Outlawry: lesser (life-ring, three homes, three summers) and full; reprieve by killing outlaws; three endings (Grágás; Ahola)
+- [ ] Dress clause as a Christian-era / law pressure; covers weapon-bearing women (Grágás)
+- [ ] Holy-site lore: York (Eiríkr's 80 seiðmenn, Gunnhildr), Trondheim (Þorgerðr Hǫlgabrúðr), Kyiv (armed women among the Rus' dead, 971) (Price)
+- [ ] Eleanor Rykener event; female-king title keys; `secret_tm_sister` (medtrans notes)
+
 ## Branch faiths, stage 2 (next)
 - [ ] **Spring the Cell** (user: build with the Bæddel stage-2 work). Hostile scheme, any adult of the three faiths, landed or not; target a ruler imprisoning a daughter, Marked woman or declared sister. Agents: Marked guards, faithful servants, friends of the House. Success: prisoner walks to the nearest House (else the plotter's court), plotter possibly unknown. Discovery and failure as vanilla hostile schemes. Template: vanilla abduct. The non-war counterpart of Rescue the Daughters and the planned Bæddel raids.
 - [ ] Bæddel: níð insult duels; landless war-band play; Rescue the Daughters as a raid; Christian outlawry pressure.

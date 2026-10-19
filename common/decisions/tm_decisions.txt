@@ -201,7 +201,8 @@ tm_declare_decision = {
 }
 
 # ---------------------------------------------------------------------------------------------------
-# The northern gate: sit beneath the high seat while the völva sings, and go under. tm_seidr_events.txt.
+# The northern gate: invite a völva, find a singer for the warding songs, and wait below while she goes
+# into trance on the platform. Three-part rite: tm_seidr_events.txt.
 tm_seidr_decision = {
 	picture = {
 		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"		# placeholder; TODO event art
@@ -231,7 +232,7 @@ tm_seidr_decision = {
 	}
 
 	effect = {
-		trigger_event = tm_seidr.0001
+		tm_seidr_begin_effect = yes
 	}
 
 	ai_check_interval = 120

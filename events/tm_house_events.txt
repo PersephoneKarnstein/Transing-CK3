@@ -13,6 +13,12 @@ tm_house.0001 = {
 		tm_give_daughter_name_effect = yes
 		tm_declare_effect = yes
 	}
+	option = {	# The woman's form of my own name
+		name = tm_house.0001.d
+		trigger = { tm_has_feminisable_name_trigger = yes }
+		tm_feminise_name_effect = yes
+		tm_declare_effect = yes
+	}
 	option = {	# The name I already answer to
 		name = tm_house.0001.b
 		tm_declare_effect = yes

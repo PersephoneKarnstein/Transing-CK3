@@ -41,7 +41,7 @@
       </ul>
     </li>
     <li><a href="#dorleyism-the-sisters-of-dorylaion">Dorleyism: the Sisters of Dorylaion</a></li>
-    <li><a href="#bæddel-the-high-seat">Bæddel: the High Seat</a></li>
+    <li><a href="#bædling-the-high-seat">Bædling: the High Seat</a></li>
     <li><a href="#the-way-of-the-jade-embryo">The Way of the Jade Embryo</a></li>
     <li><a href="#shared-mechanics">Shared mechanics</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
@@ -58,9 +58,9 @@ This mod adds three faiths built around trans women to Crusader Kings III. Each 
 
 The three faiths answer the same three questions in different ways:
 
-| | Dorleyism | Bæddel | Way of the Jade Embryo |
+| | Dorleyism | Bædling | Way of the Jade Embryo |
 |---|---|---|---|
-| **How one becomes a daughter** | The knife, as a sacrament with a sponsor | Seiðr: going under beneath the völva's high seat | Ten months' inner gestation of one's own body |
+| **How one becomes a daughter** | The knife, as a sacrament with a sponsor | Seiðr: a völva goes into trance for the seeker | Ten months' inner gestation of one's own body |
 | **How the line continues** | A founding charter passes land to adopted daughters | The hall's fostered, sworn and adopted daughters | Adopted heirs, and temple societies that hold property in common |
 | **How it meets the world** | Refuge, intake and church politics | Outlawry, raiding and insult duels | Palace factions against the scholar-officials |
 | **Home** | Dorylaion, Phrygia | Gotland | Dunhuang, at the Mogao caves |
@@ -113,7 +113,7 @@ To update later, pull or re-download into the same folder. The launcher file doe
 Good first tests:
 
 - **Ruler Designer.** Do all three faiths and the Kybeline culture appear?
-- **The three rites.** As a Marked man, take each faith's decision: *Take the Knife*, *Go Under the High Seat* and *Gestate the Jade Embryo*.
+- **The three rites.** As a Marked man, take each faith's decision: *Take the Knife*, *Ask a Völva to Sit for Me* and *Gestate the Jade Embryo*.
 - **Re-embodiment.** After a rite, do your titles, marriage, children, adoptive parents and skills carry over?
 - **Adoption.** Try *Take as Daughter* on a courtier, a ward and a guest.
 - **Arrivals and Houses.** Found a Sisters' House. Over a long reign, do Marked travellers, cast-out women and friends of the House arrive? Does the House choose an Elder Sister, and split when it is strained? Give the county to a ruler of another faith and see whether they close it.
@@ -147,15 +147,20 @@ The Sisters are nostalgic for a sect almost nobody remembers, the gallae of the 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Bæddel: the High Seat
+## Bædling: the High Seat
 
-*Working name.* A Germanic pagan faith of Scandinavia and Anglo-Saxon England. It merges *bæddel*, an attested Old English word, with *seiðr* and *ergi*.
+*Working name.* A Germanic pagan faith of Scandinavia and Anglo-Saxon England. It takes its name from *bædling*, the Old English word the Canons of Theodore use for an effeminate man (the glossaries also keep *bæddel*), and joins it to *seiðr* and *ergi*.
 
-In the north the sanctioned crossing has always run toward manhood. A man who went the other way was *ergi*, outlawed by law and killed by custom. The Bæddels keep the other road. Our sources find no castration in the north at all, so this faith does not use the knife.
+In the north the sanctioned crossing ran toward manhood. A man who went the other way was called *ergi*, yet Icelandic law outlawed not him but whoever said the word, and the man so named could kill the speaker. The Bædlings keep the other road. In the north castration punished thieves and unmade enemies; it was never a rite, so this faith does not use the knife.
 
-- **The gate: seiðr.** In *Go Under the High Seat*, the völva sings and the seeker goes under. The spirits may refuse, and then you try again next winter. A daughter then declares herself before the thing. When someone shouts *ergi*, she answers in verse, with steel, by owning seiðr as women's art, or not at all.
+- **The gate: seiðr.** *Ask a Völva to Sit for Me* is a three-day rite, like a wedding, built on the seeress in *Eiríks saga rauða*:
+  - **The völva comes.** She is given the high seat and a feast.
+  - **The warding songs.** Someone must sing the *varðlokkur*, which girls learn from their foster-mothers. A woman of the faith can teach them to a daughter or ward.
+  - **The platform.** The völva goes up into trance while the seeker waits below.
+  - **The odds.** The spirits come for the song, not for the seeker's merit, and may refuse until next winter. Völur also travel the halls in winter and can be asked to sit for anyone at court.
+- **The declaration.** A new daughter declares herself before the thing, perhaps with a name fastened by a gift or the woman's form of her own. When someone shouts *ergi*, she can answer in verse, with steel, by owning seiðr as women's art, with "that word is for men", or not at all.
 - **The line.** The hall's daughters are fostered, sworn and adopted. Two may bind themselves as sisters by the old oath.
-- **The world.** A martial faith. Óðinn's host has no men in it. The hall raids to bring its daughters home, and its clergy fight.
+- **The world.** A martial faith. Óðinn's host has no men in it, and shield-maidens stood at Brávellir. The hall raids to bring its daughters home, and its clergy fight. The faith's devil is Níðhöggr, the malice-striker: its enemy is *níð* itself, the slander shouted at the thing.
 - **Tenets.** Seiðr Unmans, Óðinn's Host, and Daughters of the Hall.
 - **Holy sites.** Uppsala, Trondheim, York and Kyiv. Kyiv sits on the Varangian road south toward Dorylaion.
 
@@ -192,9 +197,9 @@ Daoist inner alchemy teaches that an adept gestates an immortal embryo for ten m
 
 - [x] Dorleyism: faith, culture, the three houses of the knife, the Dorley prisoner path
 - [x] Sisters' Houses, Declare Before Witnesses, The Sisters Choose
-- [x] Bæddel and the Way of the Jade Embryo: faiths, tenets and gates
+- [x] Bædling and the Way of the Jade Embryo: faiths, tenets and gates
 - [x] Re-embodiment, Take as Daughter, arrivals
-- [ ] Bæddel: insult duels, landless war-band play, Christian outlawry pressure
+- [ ] Bædling: insult duels, feud and settlement, outlawry and landless war-bands, Spring the Cell
 - [ ] Jade Embryo: the palace faction, temple societies against confiscation, omen events
 - [ ] Dorleyism: daughters in court offices, the court's tolerance decaying after 1066, the Galenic splinter rite
 - [ ] Flavour achievement events, the Pope first
@@ -238,7 +243,10 @@ Released into the public domain under [the Unlicense](LICENSE). Do whatever you 
 
 Works the research for this mod read, in full or in named chapters. Works it only points to appear at the end of each group as "Cited in the notes, not read". Details come from the copies we read, with gaps filled from publisher and library records. Corrections are welcome.
 
-### Transfeminist theory and trans studies
+Click a heading to expand it.
+
+<details>
+<summary><strong>Transfeminist theory and trans studies</strong> (10 works)</summary>
 
 - Bettcher, Talia Mae. 2013. "Evil Deceivers and Make-Believers: On Transphobic Violence and the Politics of Illusion." In Stryker and Aizura (eds.), *The Transgender Studies Reader 2*.
 - Bhatt, Talia. 2025. *Trans/Rad/Fem: Essays on Transfeminism, Book 1*. Self-published.
@@ -253,7 +261,10 @@ Works the research for this mod read, in full or in named chapters. Works it onl
 
 Cited in the notes, not read: Bhatt, Talia, *Brown/Trans/Les* (2026); Feinberg, Leslie, *Transgender Warriors* (in the Remix bibliography); Koyama, Emi, *The Transfeminist Manifesto* (2001); Lewis, Sophie, *Abolish the Family* (Verso 2022); O'Brien, M. E., *Family Abolition* (Pluto 2023).
 
-### Byzantium, Islam and the eunuch traditions
+</details>
+
+<details>
+<summary><strong>Byzantium, Islam and the eunuch traditions</strong> (9 works)</summary>
 
 - Ayalon, David. 1999. *Eunuchs, Caliphs and Sultans: A Study in Power Relationships*. Jerusalem: Magnes Press.
 - Marmon, Shaun. 1995. *Eunuchs and Sacred Boundaries in Islamic Society*. Oxford University Press.
@@ -267,15 +278,54 @@ Cited in the notes, not read: Bhatt, Talia, *Brown/Trans/Les* (2026); Feinberg, 
 
 Cited in the notes, not read: Ayalon, David, "On the Eunuchs in Islam," *Jerusalem Studies in Arabic and Islam* 1 (1979): 67–124; Kuefler, *The Manly Eunuch* (2001); Messis, *Les eunuques à Byzance* (2014); Mullett on Theophylact of Ochrid's *In Defence of Eunuchs*; Ringrose, *The Perfect Servant* (2003).
 
-### Northern Europe
+</details>
 
+<details>
+<summary><strong>Northern Europe</strong> (20 works)</summary>
+
+- Acker, Paul, and Carolyne Larrington (eds.). 2002. *The Poetic Edda: Essays on Old Norse Mythology*. Routledge Medieval Casebooks. Routledge.
+- Ahola, Joonas. 2014. *Outlawry in the Icelandic Family Sagas*. PhD dissertation, University of Helsinki.
 - Berry, Miles. 2022. "Gender Diversity and its Societal Place in Medieval Scandinavia." *Oregon Undergraduate Research Journal* 20.2: 134–154. (An undergraduate paper. The notes flag factual slips.)
 - Birch, Eleanor. 2025. "Deviance or Devotion: Women Dressed as Men in Late Medieval England." *Fashion Theory* 29.5: 619–639.
+- Blain, Jenny. 2002. *Nine Worlds of Seid-Magic: Ecstasy and Neo-Shamanism in North European Paganism*. Routledge. (Much of it concerns modern practice; the notes separate that from the medieval evidence.)
+- Clover, Carol J. 1993. "Regardless of Sex: Men, Women, and Power in Early Northern Europe." *Speculum* 68.2: 363–387.
+- Clover, Carol J. 1980. "The Germanic Context of the Unferþ Episode." *Speculum* 55.3: 444–468.
+- Gade, Kari Ellen. 1986. "Homosexuality and Rape of Males in Old Norse Law and Literature." *Scandinavian Studies* 58.2: 124–141.
+- Gardeła, Leszek, Sophie Bønding and Peter Pentz (eds.). 2023. *The Norse Sorceress: Mind and Materiality in the Viking World*. Oxbow Books. (Open access.)
 - Jakobsson, Ármann. 2011. "Óðinn as mother: the old norse deviant patriarch." *Arkiv för nordisk filologi* 126. (Read in proof, paginated 01–012.)
 - Karras, Ruth Mazo, and Katherine E. Pierpont. 2023. *Sexuality in Medieval Europe: Doing Unto Others*. 4th ed. Routledge.
+- Meulengracht Sørensen, Preben. 1983. *The Unmanly Man: Concepts of Sexual Defamation in Early Northern Society*. Trans. Joan Turville-Petre. The Viking Collection 1. Odense University Press.
+- Miller, William Ian. 1990. *Bloodtaking and Peacemaking: Feud, Law, and Society in Saga Iceland*. University of Chicago Press.
+- Price, Neil. 2019. *The Viking Way: Magic and Mind in Late Iron Age Scandinavia*. 2nd ed. Oxbow Books.
 - Tommony, Isabelle, with C. M. Forster. 2024. "Margins Undefined: the flexibility of gender boundaries in the European Middle Ages." *BILT Student Research Journal* 5: 2–9. (A peer-reviewed undergraduate journal from Bristol. Forster is credited on the version-of-record citation.)
+- Wade, Erik. 2020. "The Beast with Two Backs: Bestiality, Sex Between Men, and Byzantine Theology in the *Paenitentiale Theodori*." *Journal of Medieval Worlds* 2.1–2: 11–26.
+- *Primary sources in translation:*
+  - Dennis, Andrew, Peter Foote and Richard Perkins (trans.). 1980–2000. *Laws of Early Iceland: Grágás I–II*. University of Manitoba Press.
+  - Fulk, R. D., and Stefan Jurasinski (eds.). 2012. *The Old English Canons of Theodore*. Early English Text Society S.S. 25. Oxford University Press.
+  - Kunz, Keneva (trans.). 2008. *The Vinland Sagas*. Introduction by Gísli Sigurðsson. Penguin Classics.
+  - Saxo Grammaticus. *The Danish History, Books I–IX*. Trans. Oliver Elton (1894). Read in a public-domain electronic edition.
 
-### China, the steppe and Southeast Asia
+</details>
+
+<details>
+<summary><strong>Medieval trans studies</strong> (9 works)</summary>
+
+The 2019 *Medieval Feminist Forum* special issue on medieval trans feminism, edited by M. W. Bychowski and Dorothy Kim.
+
+- Bychowski, M. W. 2019. "The Necropolitics of Narcissus: Confessions of Transgender Suicide in the Middle Ages." *Medieval Feminist Forum* 55.1: 207–248.
+- Ellison, Joy, and Nicholas Hoffman. 2019. "The Afterward: Sylvia Rivera and Marsha P. Johnson in the Medieval Imaginary." *Medieval Feminist Forum* 55.1: 267–294.
+- Gutt, Blake. 2019. "Medieval Trans Lives in Anamorphosis: Looking Back and Seeing Differently (Pregnant Men and Backward Birth)." *Medieval Feminist Forum* 55.1: 174–206.
+- Henningsen, Kadin. 2019. "'Calling [herself] Eleanor': Gender Labor and Becoming a Woman in the Rykener Case." *Medieval Feminist Forum* 55.1: 249–266.
+- Kim, Dorothy, and M. W. Bychowski. 2019. "Visions of Medieval Trans Feminism: An Introduction." *Medieval Feminist Forum* 55.1: 6–41.
+- Lumbley, Coral. 2019. "Imperatrix, Domina, Rex: Conceptualizing the Female King in Twelfth-Century England." *Medieval Feminist Forum* 55.1: 64–99.
+- McGucken, Stephenie. 2019. "Vice & Virtue As Woman?: The Iconography of Gender Identity in the Late Anglo-Saxon Psychomachia Illustrations." *Medieval Feminist Forum* 55.1: 42–63.
+- Nestel, Meghan. 2019. "A Space of Her Own: Genderfluidity and Negotiation in *The Life of Christina of Markyate*." *Medieval Feminist Forum* 55.1: 100–134.
+- Watt, Caitlin G. 2019. "'Car vallés sui et nient mescine': Trans Heroism and Literary Masculinity in *Le Roman de Silence*." *Medieval Feminist Forum* 55.1: 135–173.
+
+</details>
+
+<details>
+<summary><strong>China, the steppe and Southeast Asia</strong> (17 works)</summary>
 
 - Andaya, Leonard Y. 2018. "The Bissu: Study of a Third Gender in Indonesia." In Zamfira, de Montlibert and Radu (eds.), *Gender in Focus*, 64–87. Budrich. (A reprint of Andaya 2000 in B. Andaya (ed.), *Other Pasts*.)
 - Brewer, Carolyn. 1999. "Baylan, Asog, Transvestism, and Sodomy: Gender, Sexuality and the Sacred in Early Colonial Philippines." *Intersections* 2 (May). (A web text with numbered paragraphs and no page numbers.)
@@ -297,7 +347,10 @@ Cited in the notes, not read: Ayalon, David, "On the Eunuchs in Islam," *Jerusal
 
 Cited in the notes, not read: Davies, Sharyn Graham, *Challenging Gender Norms: Five Genders among the Bugis in Indonesia* (2006); Furth, *A Flourishing Yin*; Jay, "Castration, Adoption, Marriage, and Burial" (1993).
 
-### General and comparative history
+</details>
+
+<details>
+<summary><strong>General and comparative history</strong> (5 works)</summary>
 
 - Adkins, Evelyn. 2020. "The Politics of Transgender Representation in Apuleius' *Golden Ass* and *Loukios, or the Ass*." In Surtees and Dyer (eds.), *Exploring Gender Diversity in the Ancient World*, 157–168.
 - Betancourt, Roland. 2021. "Where Are All the Trans Women in Byzantium?" In LaFleur, Raskolnikov and Kłosowska (eds.), *Trans Historical*.
@@ -307,11 +360,17 @@ Cited in the notes, not read: Davies, Sharyn Graham, *Challenging Gender Norms: 
 
 Cited in the notes, not read: Nanda, Serena, *Neither Man nor Woman: The Hijras of India* (1990); Reddy, Gayatri, *With Respect to Sex* (title as given, truncated in the notes); Roller, Lynn, *In Search of God the Mother: The Cult of Anatolian Cybele* (1999).
 
-### Fiction
+</details>
+
+<details>
+<summary><strong>Fiction</strong> (1 work)</summary>
 
 - Greaves, Alyson. 2022. *Welcome to Dorley Hall*. The Sisters of Dorley, book 1. Serialised online from 2022; print edition from Wilton Square Books. Read through the fan wiki *Dorleybase* (dorley.wiki), the publisher's description and reader reviews. See [`docs/dorley_precedent.md`](docs/dorley_precedent.md).
 
-### Online discussion
+</details>
+
+<details>
+<summary><strong>Online discussion</strong> (9 works)</summary>
 
 - Bhatt, Talia. 2024. "The Third Sex." Substack (taliabhattwrites.substack.com). The same text appears as a chapter of *Trans/Rad/Fem*.
 - Bhatt, Talia. 2024. "Degendering and Regendering." Substack, 8 October 2024. The same text appears as a chapter of *Trans/Rad/Fem*.
@@ -323,17 +382,22 @@ Cited in the notes, not read: Nanda, Serena, *Neither Man nor Woman: The Hijras 
 - Public Bluesky and Tumblr discussion of transgender Marxism, surveyed in October 2026. Notes kept privately.
 - Public Bluesky and Tumblr reader discussion of *The Sisters of Dorley*, 2025–2026. See [`docs/dorley_precedent.md`](docs/dorley_precedent.md).
 
-### Primary sources cited through the literature
+</details>
+
+<details>
+<summary><strong>Primary sources cited through the literature</strong> (8 groups)</summary>
 
 None of these were read directly. Each was used through the secondary works above, and the report that cites it is given in brackets.
 
-- Norse and English: *Grágás*; Snorri's *Ynglinga saga*; *Lokasenna*; *Þrymskviða*; *Ljósvetninga saga*; Saxo Grammaticus, *Gesta Danorum*; *Legenda aurea* and the Vernon MS; the Durham 1417 court record (Birch); Old English glossaries and penitentials for *bæddel* and *bædling* (the online survey).
+- Norse and English: Snorri's *Ynglinga saga*; *Lokasenna*; *Þrymskviða*; *Ljósvetninga saga*; *Legenda aurea* and the Vernon MS; the Durham 1417 court record (Birch); the Old English glossaries for *bæddel* (Wade; Fulk and Jurasinski). *Grágás*, Saxo and the Canons of Theodore are now read in translation and listed under Northern Europe.
 - Byzantine: Constantine VII, *De cerimoniis*; Philotheos, *Kletorologion* (899); Leo VI's Novels (26, 60); the *Ekloga*; John Malalas; Justinian, Novel 142; canon 1 of Nicaea; Laodicea; Theophylact of Ochrid, *In Defence of Eunuchs*; the *Kecharitomene* typikon; Paul of Aegina; Liudprand of Cremona; Matthaios Blastares, *Syntagma*; John Pediasimos, *Peri gamôn*; Harmenopoulos, *Hexabiblos*.
 - Islamic: al-Jahiz, *Kitab al-Hayawan*; al-Mas'udi, *Muruj al-dhahab*; *Kitab al-Aghani*; *Kitab al-'Ayn* (Ayalon; Rowson).
 - Chinese and Buddhist: *Soushenji*; the Lotus Sutra (Kumārajīva tr., 406); the *Saṃyutta Nikāya*; *Taiping guangji* (978); *Mingshi*; the Tang Code (Chiang ed.; Hoeckelmann; Tsai; Sommer).
 - Mongol: *The Secret History of the Mongols*; Rashid al-Din; Juvaini; Carpini; Rubruck; Marco Polo; the *Yuanshi* (Terbish, who used English translations).
 - Southeast Asian: *I La Galigo*; the Bugis *lontara'* chronicles; Pigafetta (1521) (McCoy; Kennedy; Andaya; Brewer).
 - Classical and Latin: Apuleius, *Golden Ass*; Catullus; Ovid; Lucian; Firmicus Maternus; Matthew 19:12 (Surtees and Dyer; Karras and Pierpont; Tougher).
-- Later medieval Western: *Roman de Silence*; the Eleanor/John Rykener deposition (1394); Bracton, *De legibus et consuetudinibus Angliae*; *Fleta* (Trans Historical; Stryker; Karras and Pierpont).
+- Later medieval Western: *Roman de Silence* (Watt); the Eleanor Rykener deposition (1394) (Henningsen); Bracton, *De legibus et consuetudinibus Angliae*; *Fleta* (Trans Historical; Stryker; Karras and Pierpont).
+
+</details>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

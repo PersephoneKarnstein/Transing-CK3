@@ -79,7 +79,7 @@ tm_baeddel = {
 	}
 
 	eminent_holy_sites = {
-		uppsala			# Saxo's bell-ringing priests of Freyr (needs checking; beliefs.md G2 e)
+		uppsala			# Saxo 6: effeminate gestures, mimes and the 'unmanly clatter of bells' at the sacrifices (no priests or dress named; research/norse_saxo_gesta_danorum.md)
 	}
 	holy_sites = {
 		ranaheim
@@ -101,6 +101,12 @@ tm_baeddel = {
 		HouseOfWorship2 = tm_hof
 		HouseOfWorship3 = tm_hof
 		HouseOfWorshipPlural = tm_hof_plural
+		# The devil is níð itself, not the shape-changer: vanilla Loki would echo the deceiver stereotype.
+		DevilName = tm_nidhoggr
+		DevilNamePossessive = tm_nidhoggr_possessive
+		DevilSheHe = CHARACTER_SHEHE_IT
+		DevilHerHis = CHARACTER_HERHIS_ITS
+		DevilHerselfHimself = CHARACTER_ITSELF
 	}
 }
 

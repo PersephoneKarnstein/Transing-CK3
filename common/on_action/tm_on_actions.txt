@@ -242,6 +242,14 @@ tm_yearly_playable = {
 				capital_county = { tm_found_house_effect = yes }
 			}
 		}
+		# A völva on the winter road (tm_seidr.0020).
+		if = {
+			limit = { rite ?= { rite_has_parameter = tm_seidr_gate } }
+			random = {
+				chance = 12
+				trigger_event = { id = tm_seidr.0020 days = { 1 60 } }
+			}
+		}
 		random = {
 			chance = 6
 			modifier = {								# the Mother House draws them

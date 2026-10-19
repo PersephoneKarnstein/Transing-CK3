@@ -1,25 +1,136 @@
 ﻿namespace = tm_seidr
 
-# The high seat. Root = the one going under.
+# The seiðr gate is a three-part rite, as weddings are (sources: Eiríks saga rauða ch. 4 via
+# research/norse_kunz_vinland_sagas.md; Price; Gardeła et al.). The völva, not the seeker, goes into trance:
+#   0010  the völva comes: a feast and the high seat of honour
+#   0011  the warding songs: someone must know them; they pass from foster-mother to foster-daughter
+#   0001  the platform: the völva goes up, the seeker waits below, the spirits come for the song
+# Root = the seeker. scope:tm_volva = the seeress; scope:tm_host = whose hall it is.
+
+# The völva comes. Root = the seeker.
+tm_seidr.0010 = {
+	type = character_event
+	title = tm_seidr.0010.t
+	desc = tm_seidr.0010.desc
+	theme = witchcraft
+	left_portrait = { character = scope:tm_volva animation = personality_rational }
+	right_portrait = { character = root animation = worry }
+
+	trigger = { exists = scope:tm_volva }
+
+	option = {	# Set out the high seat and the feast
+		name = tm_seidr.0010.a
+		trigger = { scope:tm_host = { gold >= 50 } }
+		scope:tm_host = { remove_short_term_gold = 50 }
+		set_variable = { name = tm_seidr_feast value = yes days = 30 }
+		trigger_event = { id = tm_seidr.0011 days = 1 }
+	}
+	option = {	# Plain hospitality
+		name = tm_seidr.0010.b
+		trigger_event = { id = tm_seidr.0011 days = 1 }
+	}
+	option = {	# Not this winter
+		name = tm_seidr.0010.c
+		add_stress = 10
+	}
+}
+
+# The warding songs. Root = the seeker.
+tm_seidr.0011 = {
+	type = character_event
+	title = tm_seidr.0011.t
+	desc = tm_seidr.0011.desc
+	theme = witchcraft
+	left_portrait = { character = scope:tm_volva animation = personality_rational }
+	lower_left_portrait = scope:tm_singer_known
+	lower_right_portrait = scope:tm_singer_reluctant
+
+	trigger = { exists = scope:tm_volva exists = scope:tm_host }
+
+	immediate = {
+		scope:tm_host = {
+			random_courtier = {
+				limit = {
+					NOT = { this = root }
+					NOT = { this = scope:tm_volva }
+					is_adult = yes
+					tm_knows_vardlokkur_trigger = yes
+				}
+				save_scope_as = tm_singer_known
+			}
+			# Like Guðríðr: a woman who learned them as a girl and is not sure she should sing them now.
+			random_courtier = {
+				limit = {
+					NOT = { this = root }
+					is_adult = yes
+					is_female = yes
+					NOT = { tm_knows_vardlokkur_trigger = yes }
+					NOT = { rite ?= { rite_has_parameter = tm_seidr_gate } }
+				}
+				save_scope_as = tm_singer_reluctant
+			}
+		}
+	}
+
+	option = {	# She knows them
+		name = tm_seidr.0011.a
+		trigger = { exists = scope:tm_singer_known }
+		set_variable = { name = tm_seidr_song_known value = yes days = 30 }
+		scope:tm_singer_known = { add_piety = 10 }
+		trigger_event = { id = tm_seidr.0001 days = 1 }
+	}
+	option = {	# Ask the one who learned them as a girl
+		name = tm_seidr.0011.b
+		trigger = { exists = scope:tm_singer_reluctant }
+		random_list = {
+			60 = {
+				modifier = {
+					add = 30
+					scope:tm_singer_reluctant = { opinion = { target = root value >= 20 } }
+				}
+				desc = tm_seidr.0011.b.yes
+				set_variable = { name = tm_seidr_song_reluctant value = yes days = 30 }
+				scope:tm_singer_reluctant = { set_variable = tm_knows_vardlokkur }
+			}
+			40 = {
+				desc = tm_seidr.0011.b.no
+			}
+		}
+		trigger_event = { id = tm_seidr.0001 days = 1 }
+	}
+	option = {	# The women hum what they remember
+		name = tm_seidr.0011.c
+		trigger_event = { id = tm_seidr.0001 days = 1 }
+	}
+}
+
+# The platform. The völva goes up and into trance; the seeker waits below. Root = the seeker.
 tm_seidr.0001 = {
 	type = character_event
 	title = tm_seidr.0001.t
 	desc = tm_seidr.0001.desc
 	theme = witchcraft
-	left_portrait = { character = root animation = worry }
+	left_portrait = { character = scope:tm_volva animation = personality_zealous }
+	right_portrait = { character = root animation = worry }
 
-	option = {	# Go under
+	trigger = { exists = scope:tm_volva }
+
+	option = {	# Wait for her answer
 		name = tm_seidr.0001.a
 		random_list = {
-			60 = {
+			40 = {
 				modifier = { add = 30 has_trait = tm_transgender }
 				modifier = { add = 20 has_personal_tenet_flag = tm_personal_seidr_easier }
-				modifier = { add = { value = learning multiply = 2 } }
+				modifier = { add = 15 has_variable = tm_seidr_feast }
+				modifier = { add = 30 has_variable = tm_seidr_song_known }
+				modifier = { add = 20 has_variable = tm_seidr_song_reluctant }
+				modifier = { add = scope:tm_volva.learning }
 				desc = tm_seidr.0001.a.success
 				send_interface_toast = {
 					type = event_toast_effect_good
 					title = tm_seidr.0001.a.success
 				}
+				tm_seidr_clear_effect = yes
 				tm_rise_daughter_effect = { TRAIT = tm_daughter_of_seidr RENAME = tm_seidr.0002 }
 				# The declaration goes to whichever body survives the rite.
 				if = {
@@ -30,19 +141,23 @@ tm_seidr.0001 = {
 					trigger_event = { id = tm_seidr.0003 days = 3 }
 				}
 			}
-			40 = {								# no trait makes the spirits refuse: ergi and craven are one slur
+			40 = {								# the spirits came for the song or did not; no fault in the seeker
+				modifier = {
+					add = 20
+					NOR = {
+						has_variable = tm_seidr_song_known
+						has_variable = tm_seidr_song_reluctant
+					}
+				}
 				desc = tm_seidr.0001.a.failure
 				send_interface_toast = {
 					type = event_toast_effect_bad
 					title = tm_seidr.0001.a.failure
-					add_stress = 30
+					add_stress = 15
 				}
+				tm_seidr_clear_effect = yes
 			}
 		}
-	}
-	option = {	# Not this winter
-		name = tm_seidr.0001.b
-		add_stress = 10
 	}
 }
 
@@ -68,6 +183,19 @@ tm_seidr.0002 = {
 			6 = { change_first_name = Freydis }
 			4 = { change_first_name = Alvild }		# Saxo's pirate captain
 		}
+		add_prestige = 25
+	}
+	option = {	# Fasten the name with a gift (nafnfesti)
+		name = tm_seidr.0002.d
+		trigger = { gold >= 25 }
+		remove_short_term_gold = 25
+		tm_give_daughter_name_effect = yes
+		add_prestige = 50
+	}
+	option = {	# The woman's form of my own name
+		name = tm_seidr.0002.e
+		trigger = { tm_has_feminisable_name_trigger = yes }
+		tm_feminise_name_effect = yes
 		add_prestige = 25
 	}
 	option = {
@@ -120,8 +248,59 @@ tm_seidr.0003 = {
 		add_prestige = 25
 		add_stress = -10
 	}
+	option = {	# "The word is for men": argr can only be said of a man, so it does not reach her
+		name = tm_seidr.0003.e
+		add_prestige = 75
+		add_stress = -15
+	}
 	option = {	# Let them talk
 		name = tm_seidr.0003.c
 		add_stress = 20
+	}
+}
+
+# A völva on the winter road. She travels from hall to hall as Þorbjörg did. Root = the ruler.
+tm_seidr.0020 = {
+	type = character_event
+	title = tm_seidr.0020.t
+	desc = tm_seidr.0020.desc
+	theme = witchcraft
+	left_portrait = { character = scope:tm_volva animation = personality_rational }
+	lower_right_portrait = scope:tm_seeker_courtier
+
+	trigger = { exists = capital_province }
+
+	immediate = {
+		root = { save_scope_as = tm_host }
+		tm_create_travelling_volva_effect = { HOST = root }
+		random_courtier = {
+			limit = { tm_seidr_seeker_trigger = yes }
+			save_scope_as = tm_seeker_courtier
+		}
+	}
+
+	option = {	# Ask her to sit for me
+		name = tm_seidr.0020.a
+		trigger = { tm_seidr_seeker_trigger = yes }
+		set_variable = { name = tm_seidr_feast value = yes days = 30 }
+		trigger_event = { id = tm_seidr.0011 days = 1 }
+	}
+	option = {	# Ask her to sit for one of my court
+		name = tm_seidr.0020.b
+		trigger = { exists = scope:tm_seeker_courtier }
+		scope:tm_seeker_courtier = {
+			set_variable = { name = tm_seidr_feast value = yes days = 30 }
+			trigger_event = { id = tm_seidr.0011 days = 1 }
+		}
+	}
+	option = {	# Feast her and hear what she sees
+		name = tm_seidr.0020.c
+		trigger = { gold >= 25 }
+		remove_short_term_gold = 25
+		add_piety = 25
+		add_prestige = 25
+	}
+	option = {	# Send her on her road
+		name = tm_seidr.0020.d
 	}
 }
