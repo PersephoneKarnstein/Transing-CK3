@@ -1,0 +1,3 @@
+﻿# Run from the console:  run tm_seidr_now.txt
+# Starts the three-part seiðr rite for you at once, skipping the decision and its cooldown.
+tm_seidr_begin_effect = yes

@@ -1,0 +1,11 @@
+﻿# Run from the console:  run tm_house_tick.txt
+# Runs one year of Sisters' House life now for every House county you hold (strain, Elder Sister term,
+# Protectress, burnout/split/tend events, or the tolerate-or-close event if you are of another faith).
+save_scope_as = tm_house_holder
+every_held_title = {
+	limit = {
+		tier = tier_county
+		has_variable = tm_house
+	}
+	tm_house_yearly_effect = yes
+}

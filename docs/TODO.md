@@ -1,5 +1,7 @@
 # TODO
 
+In-game test scenarios for playtesters are in [TO-TEST.md](TO-TEST.md); the "untested" items below are covered there.
+
 ## Art
 - [ ] **Commission official-looking art for all icons** (user, 2026-10-14). Interim user-drawn icons installed 2026-10-14: faith/rite `tm_dorleyaian`, traits `tm_transgender`, `tm_washout`; the final set should match vanilla CK3 style. 15 icons, specs in the build notes and `~/Downloads/ck3_icon_examples/` for reference:
   - faith/rite: `gfx/interface/icons/faith/tm_dorleyaian.dds` 100×100

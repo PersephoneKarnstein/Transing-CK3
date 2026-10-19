@@ -1,0 +1,31 @@
+﻿# Run from the console:  run tm_make_sisters.txt
+# Adds four adult sisters of your faith to your court: two daughters of your rite, one Marked woman not yet
+# risen, and one cis woman. Use them for Houses, Elder Sister lots, Companions, court offices and fostering.
+while = {
+	count = 2
+	create_character = {
+		gender = female
+		age = { 20 45 }
+		culture = root.culture
+		faith = root.faith
+		employer = root
+		fertility = 0
+		save_scope_as = tm_test_daughter
+	}
+	scope:tm_test_daughter = { tm_add_rite_daughter_trait_effect = { ROOT_RULER = root } }
+}
+create_character = {
+	gender = male
+	age = { 18 30 }
+	culture = root.culture
+	faith = root.faith
+	employer = root
+	trait = tm_transgender
+}
+create_character = {
+	gender = female
+	age = { 25 50 }
+	culture = root.culture
+	faith = root.faith
+	employer = root
+}

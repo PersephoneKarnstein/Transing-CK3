@@ -1,0 +1,13 @@
+﻿# Run from the console:  run tm_suppression_next.txt
+# Fires the next rung of the heresy-law ladder for you (books, then assemblies, then wills), whatever your liege.
+if = {
+	limit = { NOT = { has_variable = tm_suppression } }
+	trigger_event = tm_byz.0010
+}
+else_if = {
+	limit = { var:tm_suppression = 1 }
+	trigger_event = tm_byz.0011
+}
+else = {
+	trigger_event = tm_byz.0012
+}

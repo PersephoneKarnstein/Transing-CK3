@@ -1,0 +1,10 @@
+﻿# Run from the console:  run tm_isl_jest.txt
+# Fires "Laughed At in the Hall" against a random Islamic ruler (needs one to exist anywhere).
+random_ruler = {
+	limit = { rite ?= { rite_has_parameter = islamic_syncretic_recipient } }
+	save_scope_as = tm_isl_court
+}
+if = {
+	limit = { exists = scope:tm_isl_court }
+	trigger_event = tm_isl.0002
+}

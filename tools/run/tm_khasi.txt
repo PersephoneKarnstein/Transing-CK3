@@ -1,0 +1,10 @@
+﻿# Run from the console:  run tm_khasi.txt
+# If you keep an Islamic faith and have a daughter at court, fires "The Khasi of the Household" for her.
+random_courtier = {
+	limit = { tm_is_daughter_trigger = yes }
+	save_scope_as = tm_isl_daughter
+}
+if = {
+	limit = { exists = scope:tm_isl_daughter }
+	trigger_event = tm_isl.0001
+}

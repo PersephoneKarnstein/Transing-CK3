@@ -79,6 +79,8 @@ What the mod is not:
 
 The mod is in alpha. Most of it has never run in a real campaign, and we need people to play it and tell us what breaks. You don't need any modding experience.
 
+> **Playtesters: start with the [test guide](docs/TO-TEST.md).** It lists specific scenarios to set up, from a five-minute smoke test to long observer runs, with console helpers to skip the waiting, what you should see, and exactly what to send back. Pick any scenario; partial results and "it worked" are both useful.
+
 ### Prerequisites
 
 - **Crusader Kings III 1.20.x.** The mod is written against 1.20.1.
@@ -125,7 +127,7 @@ When something breaks, [open an issue](https://github.com/PersephoneKarnstein/Tr
 - **Your error log.** It is `error.log` in the `logs` folder next to your mod folder.
 - **A save**, if you can attach one.
 
-The game's console can run test scripts from `tools/run/`. Copy them into the `run` folder next to your mod folder, launch the game with `-debug_mode`, open the console with `~`, and type, for example, `run tm_census.txt`.
+**[docs/TO-TEST.md](docs/TO-TEST.md) lists specific scenarios to set up, with what to expect and what to send.** The game's console can run test scripts from `tools/run/`. Copy them into the `run` folder next to your mod folder, launch the game with `-debug_mode`, open the console with `~`, and type, for example, `run tm_census.txt`.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

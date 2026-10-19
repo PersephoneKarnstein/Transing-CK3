@@ -1,0 +1,8 @@
+﻿# Run from the console:  run tm_house_strain.txt
+# Sets your capital county's House strain to 6, so the next  run tm_house_tick.txt  splits the House.
+capital_county = {
+	if = {
+		limit = { has_variable = tm_house }
+		set_variable = { name = tm_house_strain value = 6 }
+	}
+}
