@@ -270,24 +270,39 @@ tm_adopt_daughter_interaction = {
 
 	ai_targets = { ai_recipients = courtiers }
 	ai_targets = { ai_recipients = guests }
-	ai_frequency = 36
+	ai_targets = { ai_recipients = family }
+	ai_frequency = 12
 	is_available = {
 		is_adult = yes
 		rite ?= { rite_has_parameter = tm_adoptive_matriline }
 	}
+	# An observe run (867–986) saw no Take as Daughter at all: a daughter who rules has no children, and her
+	# titles left the faith at her death. The AI now adopts whenever it has no heir of its own faith.
 	ai_will_do = {
 		base = 0
-		modifier = {	# no living daughter to carry the line
-			add = 60
-			scope:actor = { NOT = { any_child = { is_alive = yes is_female = yes } } }
+		modifier = {	# no living child of the faith to carry the line
+			add = 70
+			scope:actor = { NOT = { any_child = { is_alive = yes faith = scope:actor.faith } } }
+		}
+		modifier = {	# a daughter who rules cannot bear one
+			add = 30
+			scope:actor = { tm_is_daughter_trigger = yes }
 		}
 		modifier = {
 			add = 20
 			scope:recipient = { tm_is_daughter_trigger = yes }
 		}
-		modifier = {	# already plenty of children
+		modifier = {	# a sister of the faith
+			add = 15
+			scope:recipient.faith = scope:actor.faith
+		}
+		modifier = {	# a niece or kinswoman keeps it in the family
+			add = 10
+			scope:recipient = { is_close_or_extended_family_of = scope:actor }
+		}
+		modifier = {	# already enough children of the faith
 			add = -100
-			scope:actor = { any_child = { count >= 3 is_alive = yes } }
+			scope:actor = { any_child = { count >= 2 is_alive = yes faith = scope:actor.faith } }
 		}
 	}
 }

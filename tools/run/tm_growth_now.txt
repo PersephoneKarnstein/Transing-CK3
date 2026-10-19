@@ -1,0 +1,3 @@
+﻿# Run from the console:  run tm_growth_now.txt
+# Runs one year of the growth engine now: the call to Marked characters of other faiths, and the rite offered to courtiers.
+trigger_event = { on_action = tm_yearly_growth }

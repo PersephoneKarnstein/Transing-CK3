@@ -118,6 +118,11 @@ tm_on_game_start = {
 				}
 			}
 
+			if = {
+				limit = { exists = scope:tm_gutland_count }
+				tm_seed_marked_courtiers_effect = { HOST = scope:tm_gutland_count FAITH = faith:tm_baeddel }
+			}
+
 			# The Way of the Jade Embryo keeps Dunhuang (Shazhou, with the Mogao caves); a nüguan at court.
 			title:c_shazhou = {
 				set_county_faith = faith:tm_yutai
@@ -140,10 +145,16 @@ tm_on_game_start = {
 				}
 			}
 
+			if = {
+				limit = { exists = scope:tm_shazhou_count }
+				tm_seed_marked_courtiers_effect = { HOST = scope:tm_shazhou_count FAITH = faith:tm_yutai }
+			}
+
 			# Ha-Nehpakhot hold no land: the women of the lamp in the Jewish street of Arles, under its lord. Kalonymus
 			# (born 1287) is claimed in the faith's own voice only; no character stands for him.
 			title:c_venaissin = {
 				set_variable = tm_kahal			# the women of the lamp's own street: the Turning is likelier here (tm_hipukh.0001)
+				holder ?= { save_scope_as = tm_arles_lord }
 			}
 			create_character = {
 				gender = female
@@ -152,6 +163,7 @@ tm_on_game_start = {
 				faith = faith:tm_nehpakhot
 				dynasty = none
 				location = title:c_venaissin.title_province
+				save_scope_as = tm_arles_elder
 				trait = tm_daughter_of_the_turning
 				trait = education_learning_4
 				trait = patient
@@ -168,7 +180,17 @@ tm_on_game_start = {
 					location = title:c_venaissin.title_province
 					trait = tm_transgender
 					trait = education_learning_2
+					save_temporary_scope_as = tm_arles_youth
 				}
+				# At the lord's court, as Jews of Arles served as its physicians: pool characters drift and die out.
+				if = {
+					limit = { exists = scope:tm_arles_lord }
+					scope:tm_arles_lord = { add_courtier = scope:tm_arles_youth }
+				}
+			}
+			if = {
+				limit = { exists = scope:tm_arles_lord }
+				scope:tm_arles_lord = { add_courtier = scope:tm_arles_elder }
 			}
 
 			# Historical characters are not "randomly created", so the 1% seed never rolls for them.
@@ -231,6 +253,12 @@ tm_on_game_start = {
 					}
 				}
 			}
+			# The Mother of Mothers rules as a theocracy: in the 867 run Byzantium's administrative appointments
+			# revoked Phrygia and gave it to an Orthodox governor. Untested whether this alone holds it (TO-TEST G4).
+			scope:tm_beatrike = {
+				change_government = theocracy_government
+			}
+			tm_seed_marked_courtiers_effect = { HOST = scope:tm_beatrike FAITH = faith:transbian_maximalism }
 		}
 	}
 }
@@ -492,5 +520,71 @@ tm_on_death = {
 	effect = {
 		save_scope_as = tm_dead_sister
 		liege = { trigger_event = tm_yutai.0040 }
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Growth (docs/faith_design.md §14). Once a year, for the whole world.
+yearly_global_pulse = {
+	on_actions = {
+		tm_yearly_growth
+	}
+}
+
+tm_yearly_growth = {
+	effect = {
+		# The call: Marked characters of other faiths may join the nearest of the four.
+		every_living_character = {
+			limit = {
+				has_trait = tm_transgender
+				is_adult = yes
+				is_imprisoned = no
+				NOT = { rite ?= { rite_has_parameter = tm_sisters_faith } }
+			}
+			tm_sisters_call_effect = yes
+		}
+		# The rite offered to those who are not rulers (the AI weighs decisions only for rulers).
+		every_living_character = {
+			limit = {
+				is_male = yes
+				is_adult = yes
+				is_ruler = no
+				is_imprisoned = no
+				rite ?= { rite_has_parameter = tm_sisters_faith }
+				tm_is_daughter_trigger = no
+				NOT = { has_variable = tm_rite_offered }
+				OR = {
+					has_trait = tm_transgender
+					has_trait = eunuch_1
+					has_trait = beardless_eunuch
+					has_variable = tm_declared
+				}
+			}
+			random = {
+				chance = 8
+				modifier = { add = 17 has_trait = tm_transgender }
+				modifier = { add = 10 has_variable = tm_declared }
+				tm_offer_courtier_rite_effect = yes
+			}
+		}
+		# The Mother House never forgets Phrygia: if the county leaves the faith, the Mother of Mothers holds a claim.
+		if = {
+			limit = {
+				title:c_phrygia.holder ?= { NOT = { faith = faith:transbian_maximalism } }
+				title:d_tm_mother_house.holder ?= { NOT = { has_claim_on = title:c_phrygia } }
+			}
+			title:d_tm_mother_house.holder = { add_pressed_claim = title:c_phrygia }
+		}
+		# Census for tuning: every 25 years, the counts go to debug.log (search "tm_census_log").
+		if = {
+			limit = {
+				OR = {
+					NOT = { has_global_variable = tm_next_census }
+					current_year >= global_var:tm_next_census
+				}
+			}
+			set_global_variable = { name = tm_next_census value = { value = current_year add = 25 } }
+			tm_census_log_effect = yes
+		}
 	}
 }

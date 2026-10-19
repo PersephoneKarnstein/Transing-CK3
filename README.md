@@ -59,12 +59,12 @@ This mod adds four faiths built around trans women to Crusader Kings III. Each i
 
 The four faiths answer the same three questions in different ways:
 
-| | Dorleyism | Bædling | Way of the Jade Embryo | Ha-Nehpakhot |
+| Faith | How one becomes a daughter | How the line continues | How it meets the world | Home |
 |---|---|---|---|---|
-| **How one becomes a daughter** | The knife, as a sacrament with a sponsor | Seiðr: a völva goes into trance for the seeker | Ten months' inner gestation of one's own body | The Turning: a prayer said aloud at Purim |
-| **How the line continues** | A founding charter passes land to adopted daughters | The hall's fostered, sworn and adopted daughters | Adopted heirs, and temple societies that hold property in common | The women of the lamp, and the three women's commandments |
-| **How it meets the world** | Refuge, intake and church politics | Outlawry, raiding and insult duels | Palace factions against the scholar-officials | The worthies' licence or their shunning; patronage by translating |
-| **Home** | Dorylaion, Phrygia | Gotland | Dunhuang, at the Mogao caves | The Jewish street of Arles |
+| **Dorleyism** | The knife, as a sacrament with a sponsor | A founding charter passes land to adopted daughters | Refuge, intake and church politics | Dorylaion, Phrygia |
+| **Bædling** | Seiðr: a völva goes into trance for the seeker | The hall's fostered, sworn and adopted daughters | Outlawry, raiding and insult duels | Gotland |
+| **Way of the Jade Embryo** | Ten months' inner gestation of one's own body | Adopted heirs, and temple societies that hold property in common | Palace factions against the scholar-officials | Dunhuang, at the Mogao caves |
+| **Ha-Nehpakhot** | The Turning: a prayer said aloud at Purim | The women of the lamp, and the three women's commandments | The baylons' licence or their shunning; patronage by translating or medicine | The Jewish street of Arles |
 
 What the mod is not:
 
@@ -220,6 +220,7 @@ The rabbis divide the eunuch made "by the hands of heaven" from the one made "by
 - **The Sisters Choose.** An elective succession law: the ruler, the faith's clergy and its vassals choose an heir from among the ruler's born and adopted children, the women of the faith on the council, and the faithful vassals.
 - **Jewish and Indic neighbours.** Jewish courts think less of a daughter of any faith ("what came forth male is male"), and a Jewish lord may be asked to rule on one at court; the Nehpakhot cancel it. Buddhist, Hindu and Jain courts read a daughter of the knife as a castrated man and think much less of her, and a daughter of the other gates as a man become a woman, which they mind less.
 - **Islamic neighbours.** Islamic courts value a daughter as a trusted servant and think less of her as a ruler: their jesters may mock a daughter who rules, while an Islamic lord may come to trust one in his household.
+- **The call.** Each year a Marked character of another faith may join the nearest of the four: Byzantium and Anatolia to Dorleyism, the North and the Baltic to the Bædlings, China and the Tarim to the Jade Embryo, and the Jewish faiths to Ha-Nehpakhot. A Sisters' House nearby, or a daughter at court, makes it likelier. Courtiers who are Marked, eunuchs or declared sisters may begin their faith's rite on their own, and a ruler with no heir of her faith looks for a daughter to take.
 - **Arrivals.** Each year a Marked traveller, a woman turned out for bearing no children, or (where there is a House) a friend of the House may come to the court of a ruler of these faiths. Turning someone away sends them on to the next House.
 - **Same-sex marriage.** All four faiths allow it, whatever the game rule says.
 

@@ -1,0 +1,3 @@
+﻿# Run from the console:  run tm_census_log.txt
+# Writes the four faiths' counts (members, daughters, Marked, counties) to debug.log now. Search debug.log for tm_census_log.
+tm_census_log_effect = yes

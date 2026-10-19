@@ -1,0 +1,143 @@
+﻿# Adelphai Dorleyaiou — how the faiths grow (docs/faith_design.md §14).
+# A 119-year observe run (867–986) left the four faiths with 81 living members between them: nothing drew anyone in,
+# only rulers could start a rite, and the AI never adopted. These effects are the growth engine.
+
+# A Marked character of another faith hears of the Sisters and may join the nearest faith of the four.
+# Scope: the character. Called yearly from tm_yearly_growth (tm_on_actions.txt).
+tm_sisters_call_effect = {
+	# The nearest faith, by the character's own faith and where they live.
+	if = {
+		limit = { rite ?= { rite_has_parameter = jewish_syncretic_recipient } }
+		save_scope_value_as = { name = tm_call_target value = flag:nehpakhot }
+	}
+	else_if = {
+		limit = {
+			location ?= {
+				OR = {
+					geographical_region = world_asia_minor
+					geographical_region = world_europe_south_east
+				}
+			}
+		}
+		save_scope_value_as = { name = tm_call_target value = flag:dorleyism }
+	}
+	else_if = {
+		limit = {
+			location ?= {
+				OR = {
+					geographical_region = world_europe_north
+					geographical_region = world_europe_west_britannia
+					geographical_region = custom_eastern_baltic
+				}
+			}
+		}
+		save_scope_value_as = { name = tm_call_target value = flag:baeddel }
+	}
+	else_if = {
+		limit = {
+			location ?= {
+				OR = {
+					geographical_region = world_asia_china
+					geographical_region = world_steppe_tarim
+				}
+			}
+		}
+		save_scope_value_as = { name = tm_call_target value = flag:yutai }
+	}
+	if = {
+		limit = { exists = scope:tm_call_target }
+		random = {
+			chance = 2
+			modifier = {								# she already serves at a Sisters' court
+				add = 8
+				employer ?= { rite ?= { rite_has_parameter = tm_sisters_faith } }
+			}
+			modifier = {								# a Sisters' House in her county
+				add = 5
+				location ?= { county ?= { has_variable = tm_house } }
+			}
+			modifier = {								# a daughter of any faith at her court
+				add = 3
+				employer ?= { any_courtier = { tm_is_daughter_trigger = yes } }
+			}
+			modifier = {								# she has already declared her name
+				add = 4
+				has_variable = tm_declared
+			}
+			modifier = {								# rulers turn more slowly: a realm's faith goes with them
+				factor = 0.25
+				is_ruler = yes
+			}
+			if = {
+				limit = { scope:tm_call_target = flag:nehpakhot }
+				set_character_faith = faith:tm_nehpakhot
+			}
+			else_if = {
+				limit = { scope:tm_call_target = flag:dorleyism }
+				set_character_faith = faith:transbian_maximalism
+			}
+			else_if = {
+				limit = { scope:tm_call_target = flag:baeddel }
+				set_character_faith = faith:tm_baeddel
+			}
+			else = {
+				set_character_faith = faith:tm_yutai
+			}
+			add_stress = -20
+		}
+	}
+}
+
+# Offer the faith's rite to a Marked character or eunuch who is not a ruler: the AI weighs decisions only for rulers,
+# so without this a courtier could never rise. Uses the same event chains as the decisions. Scope: the seeker.
+tm_offer_courtier_rite_effect = {
+	set_variable = { name = tm_rite_offered value = yes years = 3 }
+	if = {
+		limit = { rite ?= { rite_has_parameter = tm_seidr_gate } }
+		tm_seidr_begin_effect = yes
+	}
+	else_if = {
+		limit = { rite ?= { rite_has_parameter = tm_embryo_gate } }
+		if = {
+			limit = { NOT = { has_variable = tm_embryo_active } }
+			trigger_event = tm_embryo.0001
+		}
+	}
+	else_if = {
+		limit = { rite ?= { rite_has_parameter = tm_turning_gate } }
+		trigger_event = { id = tm_hipukh.0009 days = 1 }	# waits for Adar
+	}
+	else_if = {
+		limit = { rite ?= { rite_has_parameter = tm_knife_voluntary } }
+		trigger_event = tm_knife.0001
+	}
+}
+
+# Counts of each faith's living members, daughters and Marked, written to debug.log. Scope: none (global).
+tm_census_log_effect = {
+	save_scope_value_as = { name = tm_census_dorleyism value = { value = 0 every_living_character = { limit = { faith = faith:transbian_maximalism } add = 1 } } }
+	save_scope_value_as = { name = tm_census_baeddel value = { value = 0 every_living_character = { limit = { faith = faith:tm_baeddel } add = 1 } } }
+	save_scope_value_as = { name = tm_census_yutai value = { value = 0 every_living_character = { limit = { faith = faith:tm_yutai } add = 1 } } }
+	save_scope_value_as = { name = tm_census_nehpakhot value = { value = 0 every_living_character = { limit = { faith = faith:tm_nehpakhot } add = 1 } } }
+	save_scope_value_as = { name = tm_census_daughters value = { value = 0 every_living_character = { limit = { tm_is_daughter_trigger = yes } add = 1 } } }
+	save_scope_value_as = { name = tm_census_marked value = { value = 0 every_living_character = { limit = { has_trait = tm_transgender } add = 1 } } }
+	save_scope_value_as = { name = tm_census_counties value = { value = 0 every_county = { limit = { OR = { faith = faith:transbian_maximalism faith = faith:tm_baeddel faith = faith:tm_yutai faith = faith:tm_nehpakhot } } add = 1 } } }
+	debug_log = "tm_census_log"
+	debug_log_scopes = yes
+}
+
+# Two Marked young men of the faith at a seat court, so the courtier rite has seekers from the start.
+tm_seed_marked_courtiers_effect = {
+	while = {
+		count = 2
+		create_character = {
+			gender = male
+			age = { 16 28 }
+			culture = $HOST$.culture
+			faith = $FAITH$
+			employer = $HOST$
+			dynasty = none
+			trait = tm_transgender
+		}
+	}
+}

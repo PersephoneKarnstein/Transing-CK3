@@ -26,6 +26,8 @@ Scenarios for playtesters. Each one sets up a situation on purpose, so that a si
 | `tm_adopt_check.txt` | Logs why vanilla adoption is or isn't offered for your wards |
 | `tm_turning_now.txt` | Starts the Turning (Ha-Nehpakhot) at once, skipping the decision, its cooldown and the Adar window |
 | `tm_turning_prayers.txt` | Adds three unanswered Adars to your next Turning (+30 to the roll) |
+| `tm_growth_now.txt` | Runs one year of the growth engine now (the call, and the rite offered to courtiers) |
+| `tm_census_log.txt` | Writes the four faiths' counts to `debug.log` now (search `tm_census_log`) |
 
 **Vanilla console commands you'll use:**
 - `add_trait <trait> <id>` and `remove_trait <trait> <id>`
@@ -303,6 +305,12 @@ Start a new 867 game, pick any ruler, type `observe`, and run at full speed to a
 
 This shows whether the AI ever uses the rites, Houses, fostering, Companions, the elective law and the court offices. It also catches errors that only show up after decades.
 
+**This is now the most important test.** The first observe run (867–986) found the faiths dying out, and the growth engine is new and untuned (`docs/faith_design.md` §14). Please:
+- send `debug.log` and search it for `tm_census_log`: the counts are written every 25 years (members of each faith, daughters, Marked, counties). These numbers are what the rates will be tuned on;
+- note whether any faith **booms** (hundreds of members, or many counties) as well as whether any dies;
+- check Phrygia at the end: is it still Dorleyite, and is the Mother of Mothers a theocracy? If Byzantium took it, does the Mother House holder have a claim on it?
+- check that Arles has Ha-Nehpakhot courtiers at the count of Venaissin's court.
+
 For Ha-Nehpakhot, which has no land of its own, also note:
 - whether the three Arles characters are still alive and still in Provence, or have wandered off;
 - how many daughters of the Turning exist (Character Finder, trait filter), and whether any AI took the Turning (it can only do so in February and March);
@@ -384,4 +392,16 @@ Several things depend on the date, so test in three periods if you can: **before
 **F13. A fisica at court.** Play a ruler of any faith with a daughter of the Turning at court and wait for "A Fisica at Court" (`tm_hipukh.0031`); it shares the yearly roll with "A Book in Arabic", so either may come. Try all three options.
 - **Check:** "Licence her" costs 50 gold and gives her *Licensed Fisica*; "women only" costs 25 and gives *Fisica of Women*; once licensed she is not offered again.
 - **Note:** as with F7, firing it from the console leaves the physician scope empty and the event will not show; let the yearly pulse fire it.
+
+---
+
+## G. Growth (quick checks)
+
+**G1. The call.** Start in 867 as any ruler. In the Character Finder, filter for *Marked by the Mother* and note a few Marked characters of other faiths in Anatolia, Scandinavia, China, or of a Jewish faith. Run `run tm_growth_now.txt` ten times. Some should have joined the nearest of the four. Marked characters elsewhere (France, India) should never change.
+
+**G2. The rite for courtiers.** As a ruler of any of the four, `add_trait tm_transgender` on two male courtiers of your faith, then run `run tm_growth_now.txt` a few times. Within a few runs one should start the rite (the first event of the chain appears on the courtier; switch to them with `play <id>` to see it). A courtier of Ha-Nehpakhot should only start in February or March.
+
+**G3. Adoption by the AI.** `play` an AI daughter who rules (or make one), give her a female courtier of her faith, go back to your own character and let a few years pass. She should take the courtier as a daughter. Check the courtier's family panel.
+
+**G4. Phrygia.** At the 867 start, the Mother of Mothers should be a theocracy. Use `effect title:c_phrygia = { change_title_holder = { holder = <any Orthodox id> change = ... } }` or play on until Byzantium takes it, then run `run tm_growth_now.txt`: the Mother House holder should get a pressed claim on Phrygia.
 

@@ -145,6 +145,11 @@ Built: shared daughter trigger and per-faith daughter traits; Bæddel faith (Got
 - Fixed from its reports: *The Sisters Choose* used the invalid voter type `same_faith_clergy` (now `same_faith_clerical_electors`); `reformed_icon` removed from all four faiths; tenet `is_shown` now checks the faith or its main rite.
 - Known remaining reports, kept on purpose: `history` on rites (vanilla uses it, so a likely xTiger false alarm); `faith:…` inside tenet `is_shown` (xTiger expects a rite, while the game's `_tenet_types.info` says faith; the `OR` covers both). Check in-game that each faith's tenets show in the reform screen.
 
+## Growth engine (added 2026-10-19, untested in-game)
+- [ ] Tune the call (2% base) and the courtier rite (8/25%) from the `tm_census_log` counts of one or two observe runs
+- [ ] Does the theocracy keep Phrygia out of Byzantium's administrative appointments? If not, consider making the Mother House independent, or a `title_lost` re-grant
+- [ ] Conversion resistance for House counties would need a vanilla script-value override (court_chaplain_conversion_factors); decide whether it is worth it
+
 ## Branch faiths, stage 2 (next)
 - [ ] **Spring the Cell** (user: build with the Bæddel stage-2 work). Hostile scheme, any adult of the four faiths, landed or not; target a ruler imprisoning a daughter, Marked woman or declared sister. Agents: Marked guards, faithful servants, friends of the House. Success: prisoner walks to the nearest House (else the plotter's court), plotter possibly unknown. Discovery and failure as vanilla hostile schemes. Template: vanilla abduct. The non-war counterpart of Rescue the Daughters and the planned Bæddel raids.
 - [ ] Bæddel: níð insult duels; landless war-band play; Rescue the Daughters as a raid; Christian outlawry pressure.

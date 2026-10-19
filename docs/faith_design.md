@@ -353,3 +353,22 @@ Sources: `research/jud_hildenfinger_arles_documents.md`, `jud_stouff_gross_arles
 11. The Three Lamps for a daughter whose days do not come: she keeps them "as the *zekenah* keeps them", the old woman past them (m. Niddah 1:3–5, *unverified*).
 12. A physician variant, `tm_hipukh.0031` "A Fisica at Court", beside the translation (women physicians are well attested, women translators are not): licence her (`tm_fisica_licensed_modifier`), licence her for women only (`tm_fisica_women_modifier`), or refuse.
 13. In Provence (Occitan culture) the naming text gives the women's blessing as *qui fis me fenna* (Baricci 2023 p. 66; *unverified* against the manuscript).
+
+## 14. Growth: why the faiths died out, and the engine (approved by user 2026-10-19, built, untested)
+
+**The observe run.** 867 to 986 (119 years), all DLC. At 986.1.1 of 44,585 living characters: Dorleyism 16 (2 rulers, 0 counties), Bædling 20 (1 ruler; 4 counties in Livonia, Dorpat, Pinsk and Kletsk), the Jade Embryo 44 (1 ruler; Shazhou), Ha-Nehpakhot 1. Daughters who ever rose: 11 of the knife, 7 of seiðr, 1 of the embryo, 0 of the Turning. The save showed the rite doctrines applied correctly; the faith-level doctrine lists are engine defaults.
+
+**Causes.**
+1. Nothing drew anyone in: the AI converts only to its liege's faith, and Marked characters of other faiths had no pull toward ours.
+2. Only rulers could start a rite (the AI weighs decisions for rulers), and nearly every Marked character and daughter is a courtier.
+3. No *Take as Daughter* in the whole save: a daughter who rules is infertile, so her titles left the faith at her death.
+4. Phrygia was revoked by Byzantium's administrative appointments and given to an Orthodox governor; Gotland was revoked and conquered.
+5. Ha-Nehpakhot's unlanded seed in the pool dwindled to one.
+
+**The engine** (`common/scripted_effects/tm_growth_effects.txt`, `tm_yearly_growth` on `yearly_global_pulse`).
+- **The call.** Each year every adult Marked character of another faith has a 2% chance to join the nearest of the four: Jewish faiths to Ha-Nehpakhot; Asia Minor and the Balkans to Dorleyism; the North, Britain and the eastern Baltic to the Bædlings; China and the Tarim to the Jade Embryo. +8 at a Sisters' court, +5 in a county with a House, +3 with a daughter at court, +4 if declared; rulers ×0.25.
+- **The rite offered to courtiers.** Each year a Marked man, eunuch or declared sister of the four who is not a ruler has an 8% chance (25% if Marked, +10 if declared) to begin the faith's own chain; then not again for three years. The Turning waits for Adar (`tm_hipukh.0009`).
+- **Adoption.** *Take as Daughter*: the AI now weighs it every year, targets family too, and wants it (+70) whenever it has no living child of its own faith, +30 more if it is a daughter.
+- **Seats.** The Mother of Mothers rules as a theocracy (untested whether this keeps Phrygia out of the Byzantine appointments); if Phrygia leaves the faith, the Mother House holder gets a pressed claim. Each seat court starts with two Marked young men; the Arles sect is employed at the count of Venaissin's court instead of left in the pool.
+- **Not done:** conversion resistance for House counties. The engine has no such county modifier; vanilla's chaplain formula checks named modifiers only, so it would need a vanilla override.
+- **Tuning.** Every 25 years `tm_census_log_effect` writes the counts to `debug.log` (search `tm_census_log`). Rates are first guesses: expect to tune them after one or two observe runs.

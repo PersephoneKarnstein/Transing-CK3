@@ -16,6 +16,28 @@
 #   0003  before the baylons: the dress has outlived Purim
 # Root = the seeker. scope:tm_zekenah = the elder among the women of the lamp; scope:tm_host = whose court it is.
 
+# Hidden: a courtier offered the Turning waits for Adar (tm_offer_courtier_rite_effect). Re-fires monthly, a year at most.
+tm_hipukh.0009 = {
+	type = character_event
+	hidden = yes
+
+	immediate = {
+		if = {
+			limit = { tm_is_adar_trigger = yes }
+			remove_variable = tm_adar_wait
+			tm_turning_begin_effect = yes
+		}
+		else_if = {
+			limit = { NOT = { var:tm_adar_wait ?= 12 } }
+			change_variable = { name = tm_adar_wait add = 1 }
+			trigger_event = { id = tm_hipukh.0009 days = 30 }
+		}
+		else = {
+			remove_variable = tm_adar_wait
+		}
+	}
+}
+
 # The scroll. Root = the seeker.
 tm_hipukh.0010 = {
 	type = character_event
