@@ -224,13 +224,24 @@ tm_on_game_start = {
 				count = 3
 				create_character = {
 					after_creation = { tm_register_seed_effect = { SEAT = arles } }
-					age = { 2 12 }
+					age = { 6 12 }						# old enough for a guardian
 					gender_female_chance = 50
 					father = scope:tm_arles_father
 					mother = scope:tm_arles_mother
 					dynasty = inherit
 					location = title:c_venaissin.title_province
 					save_temporary_scope_as = tm_arles_child
+				}
+				# Raised by their own parents, or they grow up in the faith of the lord's court: in an observe run all
+				# three were Christian by 901.
+				scope:tm_arles_child = {
+					if = {
+						limit = { is_female = yes }
+						set_relation_guardian = scope:tm_arles_mother
+					}
+					else = {
+						set_relation_guardian = scope:tm_arles_father
+					}
 				}
 				if = {
 					limit = { exists = scope:tm_arles_lord }
