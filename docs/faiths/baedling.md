@@ -1,0 +1,141 @@
+# Bædling
+*the High Seat* · [Back to the README](../../README.md#bædling-the-high-seat)
+
+A Germanic pagan faith of Scandinavia and Anglo-Saxon England, seated on Gotland. Its daughters do not take the knife. A völva goes up onto her platform, someone sings the warding songs, and the faith holds that she sees a daughter waiting below. The faith is built from the Old English penitentials, Icelandic law, the sagas' seeresses and the archaeology of staff graves. This page sets out what those sources say and where the mod goes past them.
+
+## At a glance
+
+| | |
+|---|---|
+| **Setting and start** | The pagan North at every start date. Faith `tm_baeddel` in the Germanic religion; rite "Rite of the High Seat". Doctrines: female-dominated, no head of faith, female-only clergy who may marry, a recruiting (warrior) clergy, witchcraft virtuous. |
+| **Seat and holy sites** | Seat: Gotland, whose count is of the faith from the start, with a völva at the count's court. Holy sites: Uppsala (eminent), Trondheim, York and Kyiv. |
+| **Culture** | No culture of its own. The faith takes root in whatever Norse, Baltic or English culture holds the county. |
+| **How one becomes a daughter** | *Ask a Völva to Sit for Me*: a three-part rite of seiðr (the völva comes, the warding songs, the platform). The völva goes into trance, not the seeker. |
+| **How the line continues** | Fostering, sworn sisterhood and adoption (tenet *Daughters of the Hall*). The warding songs pass from foster-mother to foster-daughter. |
+| **How it meets the world** | A martial faith with fighting clergy and the *Rescue the Daughters* war. Its devil is Níðhöggr: its enemy is *níð*, the slander shouted at the thing. |
+| **Main sources** | Fulk and Jurasinski 2012; *Grágás* (Dennis, Foote and Perkins 1980–2000); *Eiríks saga rauða* (Kunz 2008); Price 2019; Tolley 2009; Gardeła, Bønding and Pentz 2023; Meulengracht Sørensen 1983; Jochens 1995, 1996; Mitchell 2011. |
+
+## The historical setting
+
+**The word.** *Bædling* is Old English. It occurs five times in the Old English *Canons of Theodore*, a confessor's handbook translated from Theodore of Tarsus's Latin penitential at some date between 690 and about 1025 (Fulk and Jurasinski 2012, p. xl). Canon B 6 gives ten winters' fast to "he who lies with a *bædling*, or with another weaponed-man, or with a beast" (p. 15). The Latin has only "a male"; the translator added the *bædling* and set him apart from "another" man (p. 66). In A 54 and B 8 the *bædling* is the one penanced, and B 8 adds that such men are, "effeminately, like an adulteress", in a feminine grammatical form (pp. 15, 69). The editors gloss the word "homosexual (?)", question mark theirs (p. 87), and think it named "some more distinctive trait" now lost (pp. 66–67). One glossary puts *bædlingas* beside *effeminati* (p. 66). The root, *bæddel*, survives only twice, as a gloss for *Hermafroditus* (Wade 2020, p. 22 n. 68; p. 23); Fulk and Jurasinski derive *bædling* from it (p. 67). Sayers proposes a British (Celtic) root instead (2020, p. 10) and gives no support to the popular claim that modern *bad* comes from *bæddel* (pp. 9–10). The faith's name echoes the modern word *baedelism*; the etymology above is all the sources give.
+
+**The law of the North.** Icelandic law, written down in the twelfth and thirteenth centuries and already Christian, punished the *word*, not the man. Anyone who called a man *ragr*, *stroðinn* or *sorðinn* ("womanish", "buggered", "fucked" in the translators' rendering) was fully outlawed, and "for those three words a man also has the right to kill", until the next General Assembly (*Grágás*, Add. §423, II p. 354; K §238, II p. 198). Meulengracht Sørensen calls this the least conditional right of vengeance in the code (1983, p. 17). The only Norse law that ever punished sex between men was a Norwegian clause of 1164, a crown-and-archbishop tool for confiscating land, which did not spread (Gade 1986, pp. 124–25, 131). *Grágás* did outlaw dress: a woman who wore men's clothes, cut her hair short or carried weapons "in order to be different" was a lesser outlaw, and "the same is prescribed for men if they dress in women's clothing" (K §254, II p. 219; K §155, II pp. 69–70).
+
+*Argr*, the adjective behind the shout, fused three senses: sexually used as a woman, versed in sorcery, and cowardly (Meulengracht Sørensen 1983, pp. 18–20). In its sexual sense it "can only be applied to a man" (p. 18). Women could be called *org*, but there it meant lust (p. 18), and Skírnir's curse throws the noun *ergi* at a woman (Mitchell 2011, pp. 53–54).
+
+**Which way the crossing ran.** In the sagas and in Saxo a woman could take up arms and be admired for it, though the story usually ends in marriage (Meulengracht Sørensen 1983, pp. 22–23). Saxo praises women captains at Brávellir and his shield-maidens as women who had become like men, and disapproves of them for it (Saxo, Book 7, p. 158; Book 8, pp. 172–75, in the edition read). A man who went the other way was mocked. Clover once argued for a single sliding scale of gender (1993, p. 379), but Evans and Hancock call that model "far from universally accepted" (2020, p. 6): in the sagas sex was fixed, which is why likening a man to a woman cut so deep (Finlay, p. 181). Castration in the North was something done to enemies and outcasts. In 1135 Magnús was gelded so that he "could never call himself a king again" (Meulengracht Sørensen 1983, p. 82); *Grágás* let anyone castrate a vagrant without penalty (K §254, II p. 219); Frostaþing law gelded men for bestiality (Gade 1986, p. 127).
+
+**Seiðr and the völva.** Snorri says seiðr brought "so much *ergi*" that men could not work it without shame, "and so this skill was taught to the priestesses" (*Ynglinga saga* 7, in Price 2019, p. 172). In *Lokasenna* 24 Loki taunts Óðinn for having beaten the drum "as witches do" (Frakes, in Acker and Larrington 2002, p. 167). Price finds that women carried "the primary role" in seiðr (p. 71) and that its practice by women was "socially acceptable" (p. 175). The fullest account of a rite is *Eiríks saga rauða* ch. 4. In a lean Greenland winter the seeress Þorbjǫrg, the last of ten prophesying sisters, is given a high seat with a hen-feather cushion and a meal of kid's-milk porridge and the hearts of every animal on the farm. The next day she goes up onto a platform raised for sorcery. Only Guðríðr knows the *varðlokkur*, learned from her foster-mother Halldís in Iceland. She refuses at first ("I am a Christian woman"), then sings (Kunz 2008, ch. 4). Price shows the high seat and the platform are two different things (p. 120), and that in every set-piece account the seeress goes into trance while the questioner waits below (pp. 74–75, 172). Jochens adds that the völva only uncovers fate; she does not change it (1996, p. 116).
+
+How far to trust this scene is disputed. It was written down in the early thirteenth century about an event set c. 1000 (Gardeła, Bønding and Pentz 2023, p. 5). Tolley calls it "almost wholly unreliable" (2009, p. 589) and reads Þorbjǫrg as a pagan "anti-bishop" (pp. 491–92). But he keeps the word *varðlokkur*, "frozen within it, as if in amber" (p. 517), and reads the song as readying the völva's own guard before a light trance (pp. 504, 517). The archaeology is firmer. About forty staffs come mostly from women's graves (Gardeła et al. 2023, p. 422). Miniature chair pendants are found only with women where the sex is known (Jessen, p. 451). At Fyrkat a pagan seeress was buried with honour c. 980 inside a Christian king's fortress (Roesdahl, pp. 293–98).
+
+**Gender in the graves.** Can we be sure most people in the staff graves "were gendered women"? "No, we cannot," Price writes; "a transgender reading is also possible", though he calls the term problematic for the remote past (2019, p. 341). At Klinta on Öland a man was cremated with a brooch, beads and a needle and a woman with an axe (p. 103; Colwill 2021, p. 190). Picture stones from Lärbro on Gotland show bearded figures in women's dress (Price, p. 175). The earliest staffs, before 800, come from weapon burials read as male; women took the role over in the 800s (Delvaux, in Gardeła et al. 2023, pp. 440, 447). Colwill argues that the written shame around seiðr is a later Christian layer, while the graves honour their dead (2021, p. 184).
+
+**Christianity.** The Old English canons say nothing on dress or castration (Fulk and Jurasinski 2012), but count those who heed charms and dream-reading "among heathen people" (A 127, p. 13). Wulfstan's sermon of 1014 lists "witches and valkyries" among the ruin of England (Damico 1984, p. 53). Norway's sorcery law turned capital around 1300 and Sweden's around 1350, though trials stayed rare (Mitchell 2011, pp. 125, 156–57, 204).
+
+## What the faith holds
+
+**The other road.** The Bædlings take their name from the word the confessors set apart from other men. The clerks never wrote down what made a man a *bædling*. "The Bædlings say it was this road, and they keep it" (the faith's description in game). The claim is theirs; the narrator makes no claim about who the *bædlingas* were (Wade 2020, p. 23, holds the word open across several readings; Gutt 2019, pp. 188–89, separates recognising a figure from asserting what she was).
+
+**Seiðr Unmans.** Seiðr is Freyja's art, which she taught (Tolley 2009, p. 422; Quinn, in Acker and Larrington 2002, p. 268). The Bædlings take Snorri at his word: if seiðr was given to the priestesses because it unmans, then a man who works it is no longer a man, "and they do not call that shame". When *ragr* is shouted, the faith's answers include "Seiðr is women's art. I am a woman, and I do it" and "*Ragr* is said of men. It does not reach me", the second resting on Meulengracht Sørensen's reading of *argr* (1983, p. 18).
+
+**The völva sees; she does not make.** "I did not make her. I saw her." This follows Jochens's völva who uncovers fate (1996, p. 116). It also follows the mod's rule from Serano that a gate should recognise a woman, not test her (Serano 2016).
+
+**Óðinn's Host.** "The skalds fill Valhöll with dead men. The Bædlings say the Allfather's true host has none in it." This is polemic, in the faith's voice. It leans on Jakobsson's reading of Óðinn as "a leader of amazons, perhaps more mother than father", whose valkyrie army has no males (2011), and on Price's note that Freyja chooses half the slain (2019, p. 69). It runs against Damico, who shows that by the seventh century Óðinn's battle companions had become "dancing youths" (1984, p. 53), and it answers the far-right reading of the einherjar as a "violent, white, intensely homosocial masculinity" (Evans and Hancock 2020, p. 239). The faith points to the women Saxo puts at Brávellir: Hetha on the right flank, Wisna as standard-bearer (Saxo, Book 8, p. 174).
+
+**Daughters of the Hall.** "Blood carries nothing the hall did not give." Icelandic law had no adoption rite (*Grágás* has no *ættleiðing*), but it had fostering, a contract to sixteen (K §141, II p. 46), and the inheritance-trade, *arfsal*, that made a stranger one's heir in effect (K §127, II pp. 26–27). The foster-daughter and foster-mother are two of the six women a man may kill for (K §90, I p. 154; Jochens 1995, p. 32). Miller finds the foster bond "as deep as, if not deeper than, that between parent and child" (1990, p. 171). Sworn brothers passed under a strip of raised turf and mixed blood (p. 173); the faith gives that oath to sisters.
+
+**The knife is not theirs.** In the North the knife unmade kings and punished outcasts (see above). Meulengracht Sørensen likens castrating an enemy to *níð*: both aim "to make a no-man of a man" (1983, p. 84). The faith therefore does not cut. A daughter of another faith's knife is still a sister.
+
+**Níðhöggr.** The vanilla Germanic faith's devil is Loki, who in *Lokasenna* is taunted for having borne children as a woman (Anderson, in Acker and Larrington 2002, p. 152). Making him the devil would cast the shape-changer as evil. The Bædlings' devil is Níðhöggr instead, whose name begins with *níð*: the enemy is slander.
+
+**No third sex.** The faith refuses the reading of seiðr workers as a third gender (Solli 2008, pp. 197–98), which Price finds rests on a speculative etymology (2019, p. 177) and Colwill calls an "unnuanced" borrowing (2021, p. 183). Bhatt's argument that third-sexing is a feature of patriarchy, not a challenge to it, is why (Bhatt 2025). A daughter is a woman.
+
+**Why these holy sites.** *Uppsala*: Saxo's Starkaðr left the sacrifices in disgust at "the effeminate gestures and the clapping of the mimes" and "the unmanly clatter of the bells" (Saxo, Book 6, p. 135). Saxo names no priests and no dress. *Trondheim*: Jarl Hákon's patron Þorgerðr Hǫlgabrúðr, who brought a hailstorm out of the north at Hjǫrungavágr in 986 (Price 2019, pp. 288–90). *York*: Eiríkr Blóðøx, "later to be king of York", burned his brother Rǫgnvaldr with eighty *seiðmenn* "and for this deed he was much praised" (pp. 80–81), though Tolley warns the label may be "no more than accusation spread by his enemies" (2009, p. 154). *Kyiv*: after the Rus' defeat of 971 the Byzantines found "the bodies of women in armour" among Sviatoslav's dead (Price 2019, p. 275). Kyiv sits on the Varangian road south toward Dorylaion. *Gotland*, the seat, has the Lärbro stones and chair pendants from its hoards (pp. 121–24, 175).
+
+## From source to mechanic
+
+| Mechanic or event | What it does in game | Source and page | Research note |
+|---|---|---|---|
+| *Ask a Völva to Sit for Me* (decision) | Starts the three-part rite; one-year cooldown, "try again next winter". Open to Marked men, eunuchs and declared sisters of the faith. | *Eiríks saga* ch. 4 (Kunz 2008); Price 2019, pp. 39–41, 120 | [note](../research/norse_kunz_vinland_sagas.md) |
+| *The Völva Comes* (`tm_seidr.0010`) | The high seat with its hen-feather cushion, kid's-milk porridge and hearts. A full feast (50 gold) raises the odds; plain hospitality does not lower them. | Kunz 2008, ch. 4; high seat separate from platform, Price 2019, p. 120; the meal echoes Deuteronomy, Tolley 2009, p. 498 | [note](../research/norse_price_viking_way.md) |
+| *The Warding Songs* (`tm_seidr.0011`) | Someone must sing the *varðlokkur*: a courtier who knows them (large bonus), a woman who learned them as a girl and may refuse (Guðríðr's case), or humming. | Kunz 2008, ch. 4 and n. 8; Tolley 2009, pp. 503–04, 517 | [note](../research/norse_tolley_shamanism.md) |
+| *The Platform* (`tm_seidr.0001`) | The völva goes into trance; the seeker waits below. Odds come from the song, the feast and the völva's learning, never the seeker's virtue. Failure: "The song did not hold this winter." | Price 2019, pp. 74–75, 172; Gardeła et al. 2023, p. 6; Jochens 1996, p. 116 | [note](../research/norse_gardela_bonding_pentz_norse_sorceress.md) |
+| *A Name of the Hall* (`tm_seidr.0002`) | A name from the sagas, a name fastened with a gift, or the woman's form of her own name. | *Nafnfestr* and *Movierung* (Albris, in Gardeła et al. 2023, p. 284); no Norse men take women's names (Franks, p. 36) | [note](../research/norse_gardela_bonding_pentz_norse_sorceress.md) |
+| *Before the Thing* (`tm_seidr.0003`) | Someone shouts *ragr*. Five answers: verse, steel, "Seiðr is women's art", "*Ragr* is said of men", or silence. | *Grágás* Add. §423, II p. 354; Meulengracht Sørensen 1983, pp. 17–18; Clover 1980, pp. 456–59 (conceding and reversing wins a flyting) | [note](../research/norse_gragas_laws.md) |
+| *Teach the Warding Songs* (interaction) | One who knows the songs teaches them to her child or ward (a girl or a Marked child) aged 8 or over. | Halldís and Guðríðr, Kunz 2008, ch. 4; Blain 2002, p. 33; fostering, *Grágás* K §141, II p. 46 | [note](../research/norse_blain_nine_worlds.md) |
+| *A Völva on the Winter Road* (`tm_seidr.0020`) | A travelling seeress may visit a ruler of the faith in a given year; she can sit for the ruler or a courtier, or be feasted. | Price 2019, pp. 40–41, 72–73; prophecy at the Winter Nights, Gunnell in Gardeła et al. 2023, p. 43 | [note](../research/norse_price_viking_way.md) |
+| Tenet *Seiðr Unmans* | The gate; learning and piety; the daughter trait counts as a virtue. Clergy are female-only. | *Ynglinga saga* 7, Price 2019, p. 172; Jochens 1996, p. 73; *Lokasenna* 24, Frakes in Acker and Larrington 2002, p. 167 | [note](../research/norse_jochens_images_women.md) |
+| Tenet *Óðinn's Host*; *Rescue the Daughters* war | Prowess and knights; clergy may fight; war to free captive daughters. | Saxo, Book 8, pp. 172–75; Jakobsson 2011; Damico 1984, p. 53 (the counter-evidence) | [note](../research/norse_saxo_gesta_danorum.md) |
+| Tenet *Daughters of the Hall*; *Make Sisters* | Adoption always possible; sworn sisterhood. | *Arfsal*, *Grágás* K §127, II pp. 26–27; Miller 1990, pp. 171–73 | [note](../research/norse_miller_bloodtaking.md) |
+| The name *Bædling* | Display name of faith and adherents (game key `tm_baeddel`). | Fulk and Jurasinski 2012, pp. 15, 66–67, 87; Wade 2020, pp. 22–23; Sayers 2020, pp. 9–10 | [note](../research/oe_fulk_jurasinski_canons_theodore.md) |
+| Devil Níðhöggr | Replaces vanilla Loki. | Loki's child-bearing, Anderson in Acker and Larrington 2002, p. 152 | [note](../research/norse_acker_larrington_poetic_edda_essays.md) |
+| No knife | The faith has no castration rite of its own. | Meulengracht Sørensen 1983, pp. 82–84; Gade 1986, p. 127; *Grágás* K §254, II p. 219 | [note](../research/norse_meulengracht_sorensen_unmanly_man.md) |
+| Holy sites | Uppsala, Trondheim, York, Kyiv. | Saxo, Book 6, p. 135; Price 2019, pp. 80–81, 275, 288–90 | [note](../research/norse_saxo_gesta_danorum.md) |
+
+## How it plays
+
+**The gate.** A Marked man, a eunuch or a declared sister of the faith takes *Ask a Völva to Sit for Me*. If no daughter of the High Seat is at court, a travelling völva is created and comes. The chain runs over three days, as a wedding does. First the feast: pay for the high seat and the full meal, offer plain hospitality, or send her away for the winter. Then the song: the best odds come from a courtier who already knows the *varðlokkur*. A woman of another faith who learned them as a girl may agree to sing (likelier if she likes the seeker) or refuse. Failing both, the women hum. Then the platform. Success gives the trait *Daughter of the High Seat* and, under the game rule, re-embodiment; failure costs some stress and nothing else, and the rite can be tried again next winter. Failure is the song's, not hers: nothing about the seeker counts against her.
+
+**The name and the thing.** After the rite she chooses a name. Three days later she declares herself before the thing and someone shouts *ragr*. Verse is a diplomacy roll that can win the most prestige or lose some; steel brings prestige and dread and risks a wound; owning seiðr brings piety; "*Ragr* is said of men" brings prestige and eases stress; silence costs stress.
+
+**The line.** Daughters bear no children, so the hall continues by fostering and adoption. A woman who knows the songs should teach them to her wards, since a known singer is the largest single bonus at the platform. *Take as Daughter*, *Declare Before Witnesses*, Sisters' Houses and *The Sisters Choose* work as for every faith (see [Shared mechanics](../../README.md#shared-mechanics)).
+
+**Growth.** Each year a Marked character of another faith in Scandinavia, Britain or the eastern Baltic may hear the call and join, more likely with a member or a House nearby. Courtiers who are Marked, eunuchs or declared sisters may begin the rite on their own. The faith is meant to grow slowly. Members with no court, if Marked or daughters, may come home to the faith's court. Gotland's count is converted at the start, as Shazhou's is: the island is the faith's own. In one test run that count's line founded a Scandinavian empire; the start was then made a minority one, and in the next runs the faith never held land. The converted count is back, to be tuned if it blooms again (faith_design.md §14).
+
+**Neighbours.** Christian, Jewish, Islamic and Indic courts react to daughters as described in the README. Planned for a later stage, and not yet built: insult duels on the flyting pattern, feud and settlement, the outlawry tiers of *Grágás*, landless war-bands, *Spring the Cell*, the sorcery law's era arc and Wulfstan's sermon as English reaction text.
+
+## What is attested and what is invented
+
+**Attested in the sources.**
+- *Bædling* as an Old English word in the penitential, set apart from "other men" and likened to an adulteress; *bæddel* as a gloss for *Hermafroditus* (Fulk and Jurasinski 2012; Wade 2020).
+- The Icelandic law that outlawed the speaker of *ragr*, the dress clause, the absence of adoption law, fostering and *arfsal* (*Grágás*).
+- Seiðr as chiefly women's work, shameful for men in the written sources (Snorri; Price 2019; Tolley 2009).
+- The words *seiðr*, *seiðhjallr*, *vǫlva* and *varðlokkur*, a raised platform, a light trance, a wandering seeress, and songs learned from a foster-mother, at least in saga (Tolley 2009, p. 517; Kunz 2008).
+- Staff graves, chair pendants, mixed grave goods at Klinta, the Lärbro stones, and women in armour among the Rus' dead in 971 (Price 2019; Gardeła et al. 2023).
+- Women warriors in Saxo and the sagas, as literature (Saxo; Jochens 1996, p. 110, reads them as a male fantasy).
+
+**Disputed.** Whether *Eiríks saga* records a real rite (Price and Gardeła lean yes; Mitchell 2011, p. 97, thinks its overall impression probably right; Tolley rejects almost all of it). Whether the staff-bearers were all women (Price 2019, p. 341). What *bædling* meant, and where it came from (Fulk and Jurasinski against Sayers).
+
+**Reconstructed or invented by the mod.**
+- No source shows a man becoming a woman through seiðr. Franks finds no Norse man taking a woman's name (Gardeła et al. 2023, p. 36). The gate is the faith's inversion of a real link between seiðr and *ergi*.
+- No source ties *bædling* to seiðr, or the English word to the Norse rite. The faith joins them.
+- "Óðinn's host has no men" is polemic; the evidence cuts both ways.
+- The sworn sisterhood is borrowed from sworn brotherhood.
+- The three-day sequence follows one saga scene that may be largely literary; the odds, cooldown and bonuses are game design.
+- The Bædlings never existed. No living community is meant by them.
+
+## Sources
+
+**Primary sources in translation**
+- Dennis, Andrew, Peter Foote and Richard Perkins (trans.). 1980–2000. *Laws of Early Iceland: Grágás I–II*. University of Manitoba Press. [note](../research/norse_gragas_laws.md)
+- Fulk, R. D., and Stefan Jurasinski (eds.). 2012. *The Old English Canons of Theodore*. Early English Text Society S.S. 25. Oxford University Press. [note](../research/oe_fulk_jurasinski_canons_theodore.md)
+- Kunz, Keneva (trans.). 2008. *The Vinland Sagas*. Introduction by Gísli Sigurðsson. Penguin Classics. [note](../research/norse_kunz_vinland_sagas.md)
+- Saxo Grammaticus. *The Danish History, Books I–IX*. Trans. Oliver Elton (1894). Read in a public-domain electronic edition; page numbers are that edition's. [note](../research/norse_saxo_gesta_danorum.md)
+
+**Scholarship**
+- Acker, Paul, and Carolyne Larrington (eds.). 2002. *The Poetic Edda: Essays on Old Norse Mythology*. Routledge Medieval Casebooks. Routledge. [note](../research/norse_acker_larrington_poetic_edda_essays.md)
+- Blain, Jenny. 2002. *Nine Worlds of Seid-Magic: Ecstasy and Neo-Shamanism in North European Paganism*. Routledge. [note](../research/norse_blain_nine_worlds.md)
+- Clover, Carol J. 1980. "The Germanic Context of the Unferþ Episode." *Speculum* 55.3: 444–468. [note](../research/norse_clover_unferth_flyting.md)
+- Clover, Carol J. 1993. "Regardless of Sex: Men, Women, and Power in Early Northern Europe." *Speculum* 68.2: 363–387. [note](../research/norse_clover_regardless_of_sex.md)
+- Damico, Helen. 1984. *Beowulf's Wealhtheow and the Valkyrie Tradition*. University of Wisconsin Press. [note](../research/norse_damico_wealhtheow_valkyrie.md)
+- Evans, Gareth Lloyd, and Jessica Clare Hancock (eds.). 2020. *Masculinities in Old Norse Literature*. D. S. Brewer. [note](../research/norse_evans_hancock_masculinities.md)
+- Gade, Kari Ellen. 1986. "Homosexuality and Rape of Males in Old Norse Law and Literature." *Scandinavian Studies* 58.2: 124–141. [note](../research/norse_gade_homosexuality_law.md)
+- Gardeła, Leszek, Sophie Bønding and Peter Pentz (eds.). 2023. *The Norse Sorceress: Mind and Materiality in the Viking World*. Oxbow Books. (Open access.) [note](../research/norse_gardela_bonding_pentz_norse_sorceress.md)
+- Gutt, Blake. 2019. "Medieval Trans Lives in Anamorphosis: Looking Back and Seeing Differently (Pregnant Men and Backward Birth)." *Medieval Feminist Forum* 55.1: 174–206. [note](../research/medtrans_gutt_anamorphosis.md)
+- Jakobsson, Ármann. 2011. "Óðinn as mother: the old norse deviant patriarch." *Arkiv för nordisk filologi* 126. (Read in proof, paginated 01–012.) [note](../research/hist_norse_british_articles.md)
+- Jochens, Jenny. 1995. *Women in Old Norse Society*. Cornell University Press. [note](../research/norse_jochens_women_society.md)
+- Jochens, Jenny. 1996. *Old Norse Images of Women*. University of Pennsylvania Press. [note](../research/norse_jochens_images_women.md)
+- Meulengracht Sørensen, Preben. 1983. *The Unmanly Man: Concepts of Sexual Defamation in Early Northern Society*. Trans. Joan Turville-Petre. The Viking Collection 1. Odense University Press. [note](../research/norse_meulengracht_sorensen_unmanly_man.md)
+- Miller, William Ian. 1990. *Bloodtaking and Peacemaking: Feud, Law, and Society in Saga Iceland*. University of Chicago Press. [note](../research/norse_miller_bloodtaking.md)
+- Mitchell, Stephen A. 2011. *Witchcraft and Magic in the Nordic Middle Ages*. University of Pennsylvania Press. [note](../research/norse_mitchell_witchcraft_magic.md)
+- Price, Neil. 2019. *The Viking Way: Magic and Mind in Late Iron Age Scandinavia*. 2nd ed. Oxbow Books. [note](../research/norse_price_viking_way.md)
+- Sayers, William. 2020. "The Etymologies of Old English *Bædling* 'Sodomite' and Modern English *Bad*." *ANQ* 33.1: 9–11. [note](../research/oe_sayers_baedling_etymology.md)
+- Solli, Brit. 2008. "Queering the Cosmology of the Vikings: A Queer Analysis of the Cult of Odin and 'Holy White Stones'." *Journal of Homosexuality* 54.1–2: 192–208. [note](../research/norse_solli_queering_cosmology.md)
+- Spencer-Hall, Alicia, and Blake Gutt (eds.). 2021. *Trans and Genderqueer Subjects in Medieval Hagiography*. Amsterdam University Press. (Open access.) Cited for Lee Colwill, "The Queerly Departed: Narratives of Veneration in the Burials of Late Iron Age Scandinavia", ch. 7, pp. 177–97. [note](../research/norse_colwill_hagiography_chapter.md)
+- Tolley, Clive. 2009. *Shamanism in Norse Myth and Magic*, vol. 1. FF Communications 296. Academia Scientiarum Fennica. [note](../research/norse_tolley_shamanism.md)
+- Wade, Erik. 2020. "The Beast with Two Backs: Bestiality, Sex Between Men, and Byzantine Theology in the *Paenitentiale Theodori*." *Journal of Medieval Worlds* 2.1–2: 11–26. [note](../research/medtrans_wade_beast_two_backs.md)
+
+**Theory**
+- Bhatt, Talia. 2025. *Trans/Rad/Fem: Essays on Transfeminism, Book 1*. Self-published. [note](../research/book_bhatt_third_sex.md)
+- Serano, Julia. 2016 [2007]. *Whipping Girl: A Transsexual Woman on Sexism and the Scapegoating of Femininity*. 2nd ed. Seal Press. [note](../research/book_serano_whipping_girl.md)

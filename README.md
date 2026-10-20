@@ -154,13 +154,15 @@ The Sisters are nostalgic for a sect almost nobody remembers: the Mother's galli
 - **Holy sites.** Dorylaion and Constantinople, Kyzikos, Ankyra, and ruined Pepouza.
 - **The schism to come.** The main rite is Aristotelian: the cut body changes into the female condition. A planned Galenic splinter is the rite that agrees with the Emperor: the cut are "a third thing, neither". The Aristotelians call that "the old cage with a new name."
 
+**Read more:** [the full overview of Adelphai Dorleyaiou](docs/faiths/adelphai-dorleyaiou.md), with its history, sources and mechanics, cited to the page.
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Bædling: the High Seat
 
 *Working name.* A Germanic pagan faith of Scandinavia and Anglo-Saxon England. It takes its name from *bædling*, a word of uncertain meaning that the Old English Canons of Theodore set apart from "other men" in their canons on sex between men; one glossary puts it beside *effeminati*, and the glossaries also keep *bæddel*. It joins that word to *seiðr* and *ergi*.
 
-In the north the sanctioned crossing ran toward manhood. A man who went the other way was called *ragr*, yet Icelandic law outlawed not him but whoever said the word, and the man so named could kill the speaker. The Bædlings keep the other road. In the north castration punished thieves and unmade enemies; it was never a rite, so this faith does not use the knife.
+In the north the sanctioned crossing ran toward manhood. A man who went the other way was called *ragr*, yet Icelandic law outlawed not him but whoever said the word, and the man so named could kill the speaker. The Bædlings keep the other road. In the north the law let vagrants be castrated without penalty, and men unmanned their enemies; it was never a rite, so this faith does not use the knife.
 
 - **The gate: seiðr.** *Ask a Völva to Sit for Me* is a three-day rite, like a wedding, built on the seeress in *Eiríks saga rauða*:
   - **The völva comes.** She is given the high seat and a feast.
@@ -172,6 +174,8 @@ In the north the sanctioned crossing ran toward manhood. A man who went the othe
 - **The world.** A martial faith. The skalds fill Valhöll with dead men; the Bædlings say the Allfather's true host has none, and point to the shield-maidens at Brávellir. English courts call valkyries witches. The hall raids to bring its daughters home, and its clergy fight. The faith's devil is Níðhöggr, the malice-striker: its enemy is *níð* itself, the slander shouted at the thing.
 - **Tenets.** Seiðr Unmans, Óðinn's Host, and Daughters of the Hall.
 - **Holy sites.** Uppsala, Trondheim, York and Kyiv. Kyiv sits on the Varangian road south toward Dorylaion.
+
+**Read more:** [the full overview of Bædling](docs/faiths/baedling.md), with its history, sources and mechanics, cited to the page.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -190,6 +194,8 @@ Daoist inner alchemy teaches that an adept nurtures a holy embryo for ten months
 - **The world.** A courtly faith of intrigue and stewardship. Prodigies are reported in the prefectures, and a king of the Way can ordain a woman by special edict, as the Song court once ordained a bearded woman. Buddhist neighbours read a daughter as a man reborn a woman for an old sin. A planned palace faction will contend with the scholar-officials.
 - **Tenets.** The Jade Embryo, Rectified Names, and Temple Societies.
 - **Holy sites.** The Mogao caves, Mount Longhu, Mount Qingcheng and the Southern Marchmount (Mount Heng in Hunan), the holy women's mountain.
+
+**Read more:** [the full overview of Yutai Dao](docs/faiths/yutai-dao.md), with its history, sources and mechanics, cited to the page.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -212,6 +218,8 @@ The rabbis divide the eunuch made "by the hands of heaven" from the one made "by
 - **Holy sites.** Arles, Jerusalem (whose county holds Hebron and Leah's tomb), Narbonne, Montpellier, and Hamadan, the tomb of Esther and Mordecai.
 - **What it leaves out.** The old charge that medieval Jews ran the slave and eunuch trade is a historiographic motif, not a finding (Phelan 2023), so no Jewish character in the mod trades in slaves or eunuchs. The faith is not seated in Khazaria, and the narrator never says the Talmud recognised "six genders": those are legal categories for bodies, mostly intersex ones, and only a character may claim them. Nor does it use any of the medieval Christian tropes about Jewish bodies (the "male menses", the bloody flux) or the accusations about Purim.
 
+**Read more:** [the full overview of Ha-Nehpakhot](docs/faiths/ha-nehpakhot.md), with its history, sources and mechanics, cited to the page.
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Cūṭikkoṭutta Mālai
@@ -220,7 +228,7 @@ The rabbis divide the eunuch made "by the hands of heaven" from the one made "by
 
 *Working name.* A current of Tamil devotion inside Hinduism that crosses Śiva's temples and Viṣṇu's, seated on the temple street of Kanchipuram. The bride and the worn garland come from the Vaiṣṇava poets; the "daughter of God" and the women's song from Śiva's temples, whose inscriptions share one vocabulary with Viṣṇu's.
 
-Tamil poets, men among them, sang to the god as girls in love from the seventh century; a Vīraśaiva saint of the twelfth asked to be the devotees' bride, and a thirteenth-century commentator wrote that before God the devotee "loses his own male nature and will wear the dress of a woman". In period this was a rite or a reading. The Garland holds that it was a life. Its scripture is King Bhaṅgāśvana of the Mahābhārata, turned into a woman, who was offered her old body back and said, "I desire to remain a woman." Chola temples called their women "daughters of God" and gave them houses and shares on the temple street; no record shows a man among them, so the Garland is a reconstruction, and says so.
+Tamil poets, men among them, sang to the god as girls in love from the seventh century; a Kannada Śaiva poet of the twelfth asked to be the devotees' bride, and a thirteenth-century commentator wrote that before God the devotee "loses his own male nature and will wear the dress of a woman". In period this was a rite or a reading. The Garland holds that it was a life. Its scripture is King Bhaṅgāśvana of the Mahābhārata, turned into a woman, who was offered her old body back and said, "I desire to remain a woman." Chola temples called their women "daughters of God" and gave them houses and shares on the temple street; no record shows a man among them, so the Garland is a reconstruction, and says so.
 
 - **The gate: the pāvai vow.** *Keep the Pāvai Vow* can only be taken in Mārkaḻi (December or January). It is a month-long vow kept with companions, the women of the court:
   - **The waking.** Before dawn she goes from door to door and wakes the girls of the street.
@@ -233,6 +241,8 @@ Tamil poets, men among them, sang to the god as girls in love from the seventh c
 - **Tenets.** The Pāvai Vow, The Temple Street, and Bhakti.
 - **Holy sites.** Kanchipuram, Srirangam, Thanjavur and Madurai.
 - **What it leaves out.** No link to hijra communities; Āṇṭāḷ is venerated, never cast as founder or a trans figure; temple women are not "brides of God" (a 17th-century idea) or courtesans.
+
+**Read more:** [the full overview of Cūṭikkoṭutta Mālai](docs/faiths/cutikkotutta-malai.md), with its history, sources and mechanics, cited to the page.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -252,6 +262,8 @@ In the Sunjata tradition a woman named Tenenba claimed a hero she had not borne:
 - **Holy sites.** Kirina, Niani, Awkar, Walata and Do.
 - **What it leaves out.** No Ṣàngó priests, *'yan daudu*, *góor-jigéen*, *woubi* or *sasso* are mapped onto it; no Griaule cosmology; none of the Kangaba sanctuary's rites.
 
+**Read more:** [the full overview of Badenya](docs/faiths/badenya.md), with its history, sources and mechanics, cited to the page.
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Shared mechanics
@@ -264,7 +276,7 @@ In the Sunjata tradition a woman named Tenenba claimed a hero she had not borne:
 - **The Sisters Choose.** An elective succession law: the ruler, the faith's clergy and its vassals choose an heir from among the ruler's born and adopted children, the women of the faith on the council, and the faithful vassals.
 - **Jewish and Indic neighbours.** Jewish courts think less of a daughter of any faith ("what came forth male is male"), and a Jewish lord may be asked to rule on one at court; the Nehpakhot cancel it. Buddhist, Hindu and Jain courts read a daughter of the knife as a castrated man and think much less of her, and a daughter of the other gates as a man become a woman, which they mind less.
 - **Islamic neighbours.** Islamic courts value a daughter as a trusted servant and think less of her as a ruler: their jesters may mock a daughter who rules, while an Islamic lord may come to trust one in his household.
-- **The call.** Each year a Marked character of another faith may join the nearest of the six: Byzantium and Anatolia to Adelphai Dorleyaiou, the North and the Baltic to the Bædlings, China and the Tarim to the Jade Embryo, the Jewish faiths to Ha-Nehpakhot, the Deccan and Tamil country to the Worn Garland, and West Africa to Badenya. A Sisters' House nearby, or a daughter at court, makes it likelier. Courtiers who are Marked, eunuchs or declared sisters may begin their faith's rite on their own, and a ruler with no heir of her faith looks for a daughter to take.
+- **The call.** Each year a Marked character of another faith may join the nearest of the six: Byzantium and Anatolia to Adelphai Dorleyaiou, the North and the Baltic to the Bædlings, China and the Tarim to Yutai Dao, the Jewish faiths to Ha-Nehpakhot, the Deccan and Tamil country to the Worn Garland, and West Africa to Badenya. A Sisters' House nearby, or a daughter at court, makes it likelier. Courtiers who are Marked, eunuchs or declared sisters may begin their faith's rite on their own, and a ruler with no heir of her faith looks for a daughter to take.
 - **Arrivals.** Each year a Marked traveller, a woman turned out for bearing no children, or (where there is a House) a friend of the House may come to the court of a ruler of these faiths. Turning someone away sends them on to the next House.
 - **Same-sex marriage.** All six faiths allow it, whatever the game rule says.
 

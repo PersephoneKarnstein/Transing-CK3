@@ -809,7 +809,7 @@
  tm_garland.0020.b:0 "Give a smaller gift, unrecorded."
  tm_garland.0020.c:0 "Not this year."
  tm_garland.0030.t:0 "A Pandit's Objection"
- tm_garland.0030.desc:0 "A learned man of my court objects to [tm_garland_daughter.GetFirstName]. In one telling of Ilā's story, he says, the king turned woman cried “To hell with birth as a woman”, and every telling turns Ilā back to a man. Her friends answer with Bhangāśvana, who was offered her old body and chose to stay a woman."
+ tm_garland.0030.desc:0 "A learned man of my court objects to [tm_garland_daughter.GetFirstName]. In one telling of Ilā's story, he says, Ilā wished to stay a woman, and the goddesses themselves talked her out of it: “To hell with birth as a woman.” Every telling turns Ilā back to a man. Her friends answer with Bhangāśvana, who was offered her old body and chose to stay a woman."
  tm_garland.0030.a:0 "“To hell with birth as a woman.”"
  tm_garland.0030.b:0 "“Bhangāśvana chose, and Indra let her.”"
  tm_garland.0030.c:0 "Let the temple decide."

@@ -101,6 +101,9 @@ tm_on_game_start = {
 			# The northern faith keeps Gotland; a völva sits at the court that holds it (tm_seed_foothold_effect).
 			tm_seed_foothold_effect = { COUNTY = title:c_gutland FAITH = faith:tm_baeddel SEAT = gotland }
 			scope:tm_foothold_host ?= { save_scope_as = tm_gutland_count }
+			# The island is the faith's own: its count is converted, as Shazhou's is (user, 2026-10-20). In the second
+			# observe run this line went on to create Scandinavia; tune it if it blooms again.
+			title:c_gutland.holder ?= { set_character_faith = faith:tm_baeddel }
 			if = {
 				limit = { exists = scope:tm_gutland_count }
 				create_character = {
@@ -272,6 +275,16 @@ tm_on_game_start = {
 					trait = tm_daughter_of_the_garland
 					trait = education_diplomacy_3
 				}
+			}
+			# Kanchipuram is the Pallava capital, so its lord keeps it. A patron of the temple street holds Candragiri, in
+			# the same duchy, as his vassal: a landed court of the faith (user, 2026-10-20). The Marked young men are hers.
+			tm_seed_foothold_effect = { COUNTY = title:c_candragiri FAITH = faith:tm_garland SEAT = kanchipuram }
+			if = {
+				limit = { scope:tm_foothold_host ?= { faith = faith:tm_garland } }
+				tm_seed_marked_courtiers_effect = { HOST = scope:tm_foothold_host FAITH = faith:tm_garland SEAT = kanchipuram }
+			}
+			else_if = {
+				limit = { exists = scope:tm_kanchi_lord }
 				tm_seed_marked_courtiers_effect = { HOST = scope:tm_kanchi_lord FAITH = faith:tm_garland SEAT = kanchipuram }
 			}
 
@@ -791,6 +804,9 @@ tm_yearly_growth = {
 		}
 		# The pilgrimage to the kahal (tm_kahal_pilgrimage_effect): Marked young Jews come to the seat to be taken in.
 		tm_kahal_pilgrimage_effect = yes
+		# The way home (tm_homecoming_effect): Marked members and daughters with no court come to the faith's home court.
+		tm_homecoming_effect = { FAITH = faith:tm_baeddel SEAT = title:c_gutland }
+		tm_homecoming_effect = { FAITH = faith:tm_garland SEAT = title:c_kanchipuram }
 		# The kahal: a Jew at a court where the sect is two or more may join it. A sect within Judaism keeps its families,
 		# and their children are born into it; this is how it renews itself, not by the Marked alone.
 		every_living_character = {

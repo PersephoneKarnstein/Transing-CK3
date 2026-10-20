@@ -1,0 +1,144 @@
+# Adelphai Dorleyaiou
+*the Sisters of Dorylaion* · [Back to the README](../../README.md#adelphai-dorleyaiou-the-sisters-of-dorylaion)
+
+A Christian heresy in Byzantine Anatolia, seated at Dorylaion in Phrygia. It sits inside the Byzantine court's long culture of eunuchs, and its argument is with that culture. The Byzantine court made cut men into a third estate: honoured, useful, and owned. The Sisters say the cut are women. This page sets out the history the faith is built on, what it claims in its own voice, how each mechanic traces back to a source, and where the sources stop and the mod takes over.
+
+## At a glance
+
+| | |
+|---|---|
+| **Setting and start** | Byzantine Anatolia, 867. A Christian heresy (`christianity_religion`), present from the first day. |
+| **Seat and holy sites** | Dorylaion (`b_dorylaion`, county of Phrygia) is the seat and an eminent holy site, with Constantinople. Further holy sites: Kyzikos, Ankyra and ruined Pepouza. |
+| **Culture** | Kybeline: a Greek offshoot with Byzantine heritage, the communal ethos, a female-only martial custom, and the monastic-communities and esteemed-hospitality traditions. |
+| **How one becomes a daughter** | The knife, given over two days: the Day of Blood on 24 March and the Hilaria two days later. Each faith chooses one of three Houses that decide who may be cut. |
+| **How the line continues** | By adoption. A woman of the House can foster a daughter or take her as an heir by written clause. Each Sisters' House has a Protectress from the founder's female line and an Elder Sister drawn by lot. |
+| **How it meets the world** | Court offices for daughters, the *Rescue the Daughters* war, a bishop's charge of "Cybele in Christian clothes", and a ladder of laws against heretics that climbs faster after 1081. |
+| **Main sources** | Roller 1997 and 1999; Latham 2012; Burns 2025; Trevett 1996; Tougher 2008; Ringrose 2003; Sidéris 2010 and 2013; Guilland 1943; Bury 1911; Macrides 1990; Rapp 2016; the Kecharitomene typikon; Aristotle and Galen; Bhatt 2025. |
+
+## The historical setting
+
+**Phrygia and the Mother.** Dorylaion, modern Eskişehir, lies in the old heartland of the Phrygian Mother. Her twenty-three rock-cut facades fall inside a triangle drawn between Eskişehir, Kütahya and Afyon (Roller 1999, p. 84). Her Phrygian name was simply *Matar*, "Mother"; *Kybele* was an epithet meaning "of the mountain" (Roller 1999, pp. 244, 328–29). She was a protector, not a fertility goddess. The stress on fertility came later, at Rome (Roller 1999, pp. 114, 318; Burns 2025, pp. 17–18).
+
+**Pessinus, as it really was.** Pessinus, in the same county as Dorylaion on the game map, was the shrine Rome remembered as the oldest and holiest. Its sanctuary has never been found (Roller 1999, pp. 192, 341). It was a temple-state ruled by priestly dynasts who all took the title Attis (Roller 1999, pp. 193–94). A first-century inscription shows the chief priesthood passing from father to son (Roller 1997, p. 544), and in Roller's words, "the evidence for eunuch priests at Pessinous during this period is very slim" (Roller 1999, p. 342 n. 81).
+
+**The galli.** The castrated priests of the Mother, the galli, are known almost entirely from hostile Greek and Latin writers, and most of the evidence comes from Rome, not Anatolia (Lightfoot in Tougher (ed.) 2002, pp. 72–73, 79). Roller warns that "in no case does the voice of a eunuch survive" (Roller 1997, p. 543). What can be said: the priest cut himself as an adult, removing the testicles only, after an apprenticeship and not in frenzy (Roller 1997, p. 542; Roller 1999, pp. 324–25; Burns 2025, p. 114). A relief from Kyzikos shows Soterides in a long gown and a veil, though his inscription calls him *Gallos* (Roller 1997, p. 544; Roller 1999, p. 333). The feminine *Gallai* appears only in outsiders' poetry: a Hellenistic fragment and Catullus 63 (Roller 1999, pp. 230–31; Latham 2012, p. 99). In Apuleius's novel the galli call each other "sisters" (Lightfoot in Tougher (ed.) 2002, pp. 76, 79). Roman law made the gallus "neither man nor woman", a non-person, and antiquity never saw the gallus as a sacred third gender (Roller 1997, pp. 549, 555).
+
+The famous March festival is Roman. Claudius's cycle ran from the carrying of the pine to the *dies sanguinis*, the Day of Blood, on 24 March, when devotees offered their own blood, and then the Hilaria (Latham 2012, pp. 107–8). Castration on the Day of Blood itself is "improbable" (Latham 2012, pp. 107–8); Burns places it, if anywhere, at the Hilaria (Burns 2025, p. 114).
+
+**Montanism.** The one real Phrygian Christian heresy with women clergy began at Ardabau, which an early source places in a district that could lie anywhere between Philadelphia and Dorylaion (Trevett 1996, p. 21). Its prophetesses Priscilla and Maximilla spoke with the authority of the Spirit; the Quintillians later ordained women presbyters and bishops, citing Galatians 3:28 (Trevett 1996, pp. 185, 221). A grave from the Dorylaion region commemorates Mountane, very likely a Montanist (Trevett 1996, pp. 172, 204). Their ladder ran from the patriarchs of Pepouza, to regional *koinonoi* ("companions"), to bishops (Trevett 1996, pp. 186, 210–14). The empire suppressed them with legal instruments: books burned, assemblies banned, heretics' wills voided and their property given to orthodox kin (Trevett 1996, pp. 199, 228–29). Survival is secure in Phrygia to the mid-sixth century, doubtful in the eighth, and unattested by the ninth (Trevett 1996, pp. 227–31). Opponents had called Montanus a castrated priest of Cybele; Trevett treats this as late polemic (Trevett 1996, pp. 78, 154).
+
+**The court and its eunuchs in 867.** By the start date Byzantine law counted three kinds of people: Leo VI's Novel 98 distinguishes men, women and eunuchs (Sidéris 2010, p. 89), and calls eunuchs "some strange sex" (Tougher 2008, p. 111). Philotheos's *Kletorologion* of 899 sets out eight eunuch ranks and ten offices reserved to eunuchs, from the *parakoimomenos* who slept beside the emperor to the *papias* who held the palace keys (Bury 1911, pp. 121, 124–28). Eunuchs could hold any other office except the city prefect, the quaestor and the domestics (Bury 1911, p. 145). The empress had her own chamber, and a woman *koubikoularaia* was made by the same rite and the same words as a male eunuch *koubikoularios* (*Book of Ceremonies* II.24–25, R622–R627).
+
+Most court eunuchs were cut as children. Of 196 named eunuchs, the 25 with any detail were nearly all castrated before puberty, some at seven (Ringrose 2003, p. 61). By the middle period the supply was largely home-grown: Paphlagonian farmers cut their sons for court careers (Tougher 2008, p. 61). The standard surgical manual gives a method for "children, still of a tender age", and its author says he performs it only because the powerful insist (Paul of Aegina VI.68). Foreign boys still came: in 949 Liudprand gave the emperor four *carzimasia*, child eunuchs made by Verdun merchants (Liudprand, *Retribution* 6.6, p. 199). Adult self-castration was the despised kind (Ringrose 2003, p. 15).
+
+The law forbade making eunuchs and tolerated buying them. Leo VI's Novel 60 softened the penalties and let a free man be cut on a physician's decision (Guilland 1943, p. 200; Tougher 2008, p. 29). Nicaea's first canon barred self-castrates from the clergy but not men cut by physicians (Tougher 2008, pp. 69–70). Leo's Novels 26 and 27 opened adoption to eunuchs and to all women, virgins included (Macrides 1990, p. 111).
+
+**Angels.** The comparison of eunuchs with angels was real but it was not law. It begins in seventh-century saints' Lives, where angels appear *like* palace eunuchs (Sidéris 2013, pp. 555–57). By the ninth and tenth centuries heaven was imagined as a court, and eunuchs and angels were thought to look alike (Neville 2019, p. 54). Neville judges that Byzantines more likely placed eunuchs on a scale of virtue than in a separate gender (Neville 2019, pp. 52–53), and Ringrose, who argues for a third gender, is clear that eunuchs were still considered men (Ringrose 2003, p. 4).
+
+**Decline.** Eunuch power did not end by repeal; Novel 60 was never withdrawn. From Isaac I in 1057, and above all under the Komnenoi from 1081, eunuchs left the front rank; Alexios I barred them from Athos in 1083 (Guilland 1943, pp. 230, 232). Gaul traces the later decline to household offices passing to the emperor's kin and to aristocratic women (Gaul in Tougher (ed.) 2002, p. 209).
+
+## What the faith holds
+
+**The cut are women, not a third thing.** This is the faith's central claim, and it is a heresy against its own era. The Emperor's law counts three kinds; the Sisters count two. They take the direction of travel from Aristotle, who wrote that eunuchs "change into the female condition" (*Generation of Animals* 784a; also 787b), and refuse his ranking, in which the female is a defective male (737a). Ringrose states the split in the terms the faith uses: Aristotle has eunuchs changed into a female state, while Galen entertains a third type of being (Ringrose 2003, p. 16). The doctrine follows Bhatt's argument that third-sexing is a feature of patriarchy, not a challenge to it, and that "veneration" of a third class is marginalisation (Bhatt 2025, "The Third Sex").
+
+**"The court calls its eunuchs angels, and buys them as boys."** The Sisters' polemic joins two things the court kept apart: the angel imagery and the slave market. Both halves are attested (Sidéris 2013, p. 555; Ringrose 2003, p. 61; Liudprand, *Retribution* 6.6, p. 199). The polemic compresses, as polemic does: the angel image began with the monks, not the palace. The Sisters also refuse the court's honour. Ringrose shows that every negative trait in the category "eunuch" was borrowed from women, while the virtues were left to men (Ringrose 2003, p. 6); the Sisters say the palace calls its cut men "of a different kind" so it never has to call them women.
+
+**Pessinus never closed.** The Sisters call the galli *gallae* and claim them as foremothers. They know the word came from Roman poets. They remember Pessinus kinder than it was, and the eldest admit it: the house belonged to men named Attis who had sons (Roller 1997, p. 544). The Roman record swings between Varro's tender "Naiads" and the contempt of Martial and Juvenal (Latham 2012, pp. 96, 109), so the faith's memory is one more selective reading of a selective record. Raha and van der Drift warn against waxing lyrical with nostalgia (Raha and van der Drift 2024), and the faith knows its nostalgia for what it is.
+
+**A line from Pessinus to Pepouza to Dorylaion.** In their own voice the Sisters claim a succession: the Mother's people at Pessinus, then the prophetesses of Pepouza, then themselves. They say of Pepouza, "they were not us, but they kept the door open." The narrator says only what the record says: Montanism was a Christian movement of cis women and men, its link to Cybele is hostile polemic (Trevett 1996, pp. 9–10, 89), and it is unattested by the ninth century. The faith may also claim the "Honoured Eunuch" bishop Heortasius of Appia and the eunuch priest Aurelios Appa of Laodicea, two Phrygian epitaphs Sidéris calls perhaps Montanist (Sidéris 2010, p. 91). Trevett warns that epitaph markers do not prove Montanism (Trevett 1996, pp. 204–8), so this is the faith's claim, never the page's. So is their story that the archangel of Germia, near Pessinus, had another name before he had wings: Mango's theory that Michael's cult took over the Mother's sites is, for Sidéris, hypothesis and analogy (Sidéris 2013, pp. 541–42; Ringrose 2003, p. 147).
+
+**The barren Mother.** The Mother protects; she does not breed. The faith counts barrenness no defect, which fits the Phrygian goddess as Roller and Burns describe her (Roller 1999, p. 114; Burns 2025, pp. 17–18) and answers Bhatt's account of how the reproductive order treats infertile women and trans women alike (Bhatt 2025).
+
+**Daughters are chosen, not born.** The line runs through adoption, as Leo VI's law allowed. The tenet quotes the Emperor's reason: "it is not nature but the malice of men" that took eunuchs' children from them (Guilland 1943, p. 201).
+
+## From source to mechanic
+
+| Mechanic or event | What it does in game | Source and page | Research note |
+|---|---|---|---|
+| **Day of Blood** (`tm_knife.0001`) | On 24 March novices let blood and mourn; no knife that day. | Latham 2012, pp. 107–8: the Roman *dies sanguinis*, castration "improbable". | [note](../research/byz_latham_galli.md) |
+| **The Hilaria** (`tm_knife.0004`) | Two days later, the knife, the knifer's question and a new name. | Burns 2025, p. 114: the cut placed at the Hilaria; testicles only, with stone or potsherd. | [note](../research/byz_burns_mother_home.md) |
+| Physician's note "for health" | The rite is recorded as the law of Leo allows. | Guilland 1943, p. 200 (Novel 60, a physician's decision); Tougher 2008, p. 29. | [note](../research/byz_guilland_eunuques.md) |
+| **Grandmother's House** | Any captive, man or boy; they become eunuchs, not daughters. | Liudprand, *Retribution* 4.9, p. 146 (captives cut as a gift); Ringrose 2003, p. 61 (court eunuchs cut before puberty, some at seven); Paul of Aegina VI.68. | [note](../research/byz_liudprand.md) |
+| **Aunt Bea's House** | Only grown men proven violent, with a sponsor and a washout path; admits it keeps cells. | No Byzantine precedent claimed: Byzantium did not normally castrate as punishment (Ringrose 2003, p. 68). Justinian's penal castration is the faith's dark ancestry (Betancourt 2020, pp. 83–84). | [note](../research/byz_ringrose_perfect_servant.md) |
+| **The Gift Alone** | Only grown women who ask. "Even the Mother of God was asked." | Betancourt 2020, pp. 19–20, 57 (the Virgin's spoken consent in ninth-century homilies); Burns 2025, p. 111 (Domitian's law against cutting a boy without consent). | [note](../research/byz_betancourt_intersectionality.md) |
+| **Aristotelian rite** (main) | The cut change into the female condition and are women in every law of the faith. | Aristotle, *GA* 784a, 787b; King 2013, pp. 37–41. | [note](../research/byz_aristotle_generation_animals.md) |
+| **Galenic splinter** (planned) | "A third thing, neither": the rite that agrees with the Emperor. | Galen, *De semine*, K IV 585 (our own rendering, to check against De Lacy); Sidéris 2010, p. 89 (Novel 98). | [note](../research/byz_galen_on_semen.md) |
+| **Daughters Chosen, Not Born** | Adoption carries the line; childlessness costs nothing. | Macrides 1990, p. 111 (Novels 26–27); Tougher 2008, p. 66. | [note](../research/byz_macrides_adoption.md) |
+| **Foster as Daughter** vs **Take as Daughter** | A foster-daughter belongs but does not inherit unless a clause names her heir. | Macrides 1990, p. 112: adoption did not make an heir without an express clause. | [note](../research/byz_macrides_adoption.md) |
+| **Protectress of the House** | From the founder's female line; guards the House, may not touch its goods. | Kecharitomene typikon [3], [80], Thomas and Hero 2000, pp. 669, 709–10; checked against Gautier 1985. | [note](../research/byz_thomas_hero_typika.md) |
+| **Elder Sister by lot** | The sisters name three; the lot chooses. | Kecharitomene [11], Thomas and Hero 2000, pp. 674–75. | [note](../research/byz_thomas_hero_typika.md) |
+| **Unbending Sisterhood** and Sister-Making | Same-faith opinion, shelter for the cast-out, a sister-making rite with no inheritance. | Rapp 2016, p. 232 (no legal standing); p. 216 (Maria of Amnia's proposed "sisterhood"); Macrides 1990, p. 110. | [note](../research/hist_rapp_brother_making.md) |
+| **Court offices**: Parakoimomene, Protovestiaria, Papias, Praiposita | Dukes and above may give the eunuch offices to daughters and eunuchs; any woman may be Praiposita. | Bury 1911, pp. 123–28; *Book of Ceremonies* II.24, R622–R624 (one rite for the woman and the eunuch chamberer); R711 (the empress's *protovestiaria*). | [note](../research/byz_bury_kletorologion.md) |
+| **Rescue the Daughters** | A war to free captive daughters and Marked men from a neighbour. | Liudprand, *Retribution* 6.6, p. 199 (the four *carzimasia*); Guilland 1943, p. 197 (Danielis's hundred eunuchs to Basil I). | [note](../research/byz_liudprand.md) |
+| **Cybele in Christian Clothes** (`tm_byz.0001`) | A bishop preaches against the Sisters; four answers, one per wing. | Trevett 1996, pp. 78, 154 (Montanus called Cybele's castrated priest). | [note](../research/byz_trevett_montanism.md) |
+| **The suppression ladder** (`tm_byz.0010–0012`) | Books, assemblies, then wills: adopted daughters lose their inheritance. | Trevett 1996, pp. 199, 228–29 (the codes against Montanists). | [note](../research/byz_trevett_montanism.md) |
+| Faster after **1081** | The ladder climbs faster under the Komnenoi. | Guilland 1943, pp. 230, 232; Ringrose 2003, p. 3. | [note](../research/byz_guilland_eunuques.md) |
+| **Seven Companions** of the Mother of Mothers | Up to seven named Companions. | Trevett 1996, pp. 211–14 (*koinonoi*, "companions"); pp. 185, 203 (seven prophesying virgins). | [note](../research/byz_trevett_montanism.md) |
+| Holy site: **Pepouza** (`b_sebaste`) | A ruined holy site of the prophetesses. | Trevett 1996, pp. 20, 232. The identification near Sebaste is outside the book and unverified. | [note](../research/byz_trevett_montanism.md) |
+| Holy site: **Kyzikos** | The Mother's priest in a veil; her virgin attendants. | Roller 1997, p. 544 (Soterides); Roller 1999, p. 335. | [note](../research/byz_roller_eunuch_priest.md) |
+| Holy site: **Constantinople** | Second eminent site. | Roller 1999, p. 334: Constantine took the Kyzikos Mother's statue to the city. | [note](../research/byz_roller_god_the_mother.md) |
+| Holy site: **Ankyra** | Galatian holy site. | Trevett 1996, pp. 210–11 (a "church of the patriarchs"); Betancourt 2020, p. 99 (Basil of Ancyra's ladder: women to men, men to angels). | [note](../research/byz_betancourt_intersectionality.md) |
+| Seat: **Dorylaion** | The Mother of Mothers' seat. | Roller 1999, p. 84; Trevett 1996, pp. 21, 172; *Book of Ceremonies*, App. A, R444 (the second army base on the road east). | [note](../research/byz_moffatt_tall_de_cerimoniis.md) |
+
+## How it plays
+
+**The start.** At 867 the county of Phrygia, with Dorylaion and Pessinus, is Kybeline and Dorleyaian. Theia Beatrike, the Mother of Mothers, an elder daughter of the knife, takes Phrygia as a vassal of the same liege and rules it as a theocracy. Her court starts with Marked young men. In the first year the faith chooses its House of the knife by event.
+
+**The gate.** A man of the faith can ask for the knife. The rite takes two days: blood and mourning on 24 March, then the knife and the name at the Hilaria. Under Aunt Bea's House a ruler can also take a violent prisoner into a three-year programme with a sponsor, whose "levers" events move him toward the knife at the end of the first year, or toward washout. Under Grandmother's House captives are cut and stay eunuchs. The Gift Alone takes only those who ask; it is the strongest doctrine over a long game, in piety, same-faith opinion and arrivals. Vanilla castration still makes ordinary eunuchs; only the faith's own rite makes daughters.
+
+**The line.** Daughters of the knife are infertile, so the faith lives by adoption. *Take as Daughter* accepts adults and writes the heir clause; *Foster as Daughter* brings a girl or woman into the House without making her an heir. *The Sisters Choose*, the shared elective law, lets the ruler, the faith's clergy and its vassals choose among born and adopted children, women of the faith on the council, and faithful vassals. Sisters' Houses belong to the county, not the family; each has a Protectress, an Elder Sister drawn by lot every five years, and strain that can split it into a daughter House.
+
+**The court.** Dorleyaian dukes and above can appoint daughters of the knife and eunuchs as Parakoimomene, Protovestiaria and Papias, and any woman as Praiposita.
+
+**Neighbours.** Under a lord of another Christian faith the old laws climb rung by rung: the books, then the assemblies, then the wills, faster after 1081. A bishop may preach that the Sisters are Cybele in Christian clothes, and the answer the player chooses depends on her wing. *Rescue the Daughters* frees captive daughters from a neighbour, and is closed to Grandmother's House.
+
+**Growth.** Each year a Marked character in Asia Minor or the Balkans may hear the call, more often with a daughter, a House or a holy site nearby. The faith is meant to grow slowly. In the project's observe runs it was the faith that struggled most: Phrygia was revoked or converted back in several runs, and it fell to a few dozen members. The theocracy and a pressed claim on Phrygia for the Mother House are the current answers. The author's stance is that it may struggle, so long as it stays playable.
+
+## What is attested and what is invented
+
+**Attested in the sources the project read.**
+- The Mother's cult around Dorylaion; the hereditary Attis priests of Pessinus and the slim evidence for eunuch priests there; the galli as adult, voluntary castrates; *Gallai* only in outsiders' poetry; the Roman Day of Blood and Hilaria.
+- Montanism in Phrygia, its women clergy, its *koinonoi*, and the codes that suppressed it.
+- Leo VI's Novels on adoption (26–27), castration on a physician's word (60) and three kinds of people (98); the *Kletorologion*'s eunuch offices; one rite for the empress's woman and the eunuch chamberer.
+- Child castration for court careers, the Verdun trade, and the decline from 1057 and 1081.
+- The Kecharitomene typikon's female line of protectresses, election by lot, and an enclosure "closed even to eunuchs themselves" (Thomas and Hero 2000, p. 710).
+- Aristotle's "female condition" and Galen's "third thing".
+
+**Reconstructed.** The two-day rite is the Roman cycle moved to Phrygia and set inside a Christian heresy; the Sisters know their Day of Blood comes from Rome's books, since Pessinus left none. The Protectress and the lot are the Kecharitomene rules applied to Houses of trans women; in the original, eunuchs ran the convent's estates and were kept out of it. The court offices are real Byzantine offices given to women the court would have called eunuchs. The Companions are the Montanist *koinonoi* with the top inverted: at Pepouza the patriarchate stayed male (Trevett 1996, p. 211); at Dorylaion it is a woman's.
+
+**Invented.** The faith itself: no source attests a sect at Dorylaion, or anywhere in Byzantium, that held castrated people to be women. No source shows a person assigned male living as a woman or nun in the Byzantine saints' Lives the project read (Talbot 1996; Betancourt 2020, p. 205, notes that trans women are "all but absent" from the record). The line from Pessinus through Pepouza to Dorylaion is the faith's claim, not history: Montanism was a Christian movement of cis women and men, and the bridge to 867 is unattested. The name is a pun on Dorley Hall, and the three Houses of the knife are taken from Alyson Greaves's serial *The Sisters of Dorley*, not from Byzantium. Aunt Bea's rehabilitative knife has no period precedent at all. Theia Beatrike, the Mother of Mothers and her Houses are the mod's own. Where the faith claims a historical person, Heortasius of Appia or the archangel's Phrygian past, it does so in its own voice; this page does not endorse the claim.
+
+## Sources
+
+### Primary sources in translation
+- Aristotle. *Generation of Animals*. Trans. Arthur Platt. In *The Works of Aristotle*, vol. V. Oxford, 1912. [note](../research/byz_aristotle_generation_animals.md)
+- Constantine Porphyrogennetos. *The Book of Ceremonies*. Trans. Ann Moffatt and Maxeme Tall. Byzantina Australiensia 18. 2012. [note](../research/byz_moffatt_tall_de_cerimoniis.md)
+- Galen. *On Semen* (*De semine*). Greek text (Kühn IV); the notes' renderings are our own and should be checked against De Lacy's translation (CMG V 3,1, 1992). [note](../research/byz_galen_on_semen.md)
+- Gautier, Paul (ed. and trans.). 1985. "Le typikon de la Théotokos Kécharitôménè." *Revue des études byzantines* 43: 5–165. [note](../research/byz_thomas_hero_typika.md)
+- Liudprand of Cremona. *The Complete Works*. Trans. Paolo Squatriti. Catholic University of America Press, 2007. [note](../research/byz_liudprand.md)
+- Paul of Aegina. *The Seven Books*, vol. II. Trans. Francis Adams. Sydenham Society, 1846. [note](../research/byz_paul_aegina_castration.md)
+- Talbot, Alice-Mary (ed.). 1996. *Holy Women of Byzantium: Ten Saints' Lives in English Translation*. Dumbarton Oaks. [note](../research/byz_talbot_holy_women.md)
+- Thomas, John, and Angela Constantinides Hero (eds.). 2000. *Byzantine Monastic Foundation Documents*. 5 vols. Dumbarton Oaks. [note](../research/byz_thomas_hero_typika.md)
+
+### Scholarship
+- Betancourt, Roland. 2020. *Byzantine Intersectionality: Sexuality, Gender, and Race in the Middle Ages*. Princeton University Press. [note](../research/byz_betancourt_intersectionality.md)
+- Burns, Krishni. 2025. *Bringing Their Mother Home: Roman Multiculturalism and the Mother of the Gods*. University of Michigan Press. [note](../research/byz_burns_mother_home.md)
+- Bury, J. B. 1911. *The Imperial Administrative System in the Ninth Century, with a Revised Text of the Kletorologion of Philotheos*. British Academy. [note](../research/byz_bury_kletorologion.md)
+- Guilland, Rodolphe. 1943. "Les eunuques dans l'Empire byzantin." *Études byzantines* 1: 197–238. [note](../research/byz_guilland_eunuques.md)
+- King, Helen. 2013. *The One-Sex Body on Trial: The Classical and Early Modern Evidence*. Ashgate. [note](../research/byz_king_one_sex_body.md)
+- Latham, Jacob. 2012. "'Fabulous Clap-Trap': Roman Masculinity, the Cult of Magna Mater, and Literary Constructions of the *galli* at Rome." *Journal of Religion* 92.1: 84–122. [note](../research/byz_latham_galli.md)
+- Macrides, R. J. 1990. "Kinship by Arrangement: The Case of Adoption." *Dumbarton Oaks Papers* 44: 109–118. [note](../research/byz_macrides_adoption.md)
+- Neville, Leonora. 2019. *Byzantine Gender*. Past Imperfect. Arc Humanities Press. [note](../research/hist_neville_byzantine_gender.md)
+- Rapp, Claudia. 2016. *Brother-Making in Late Antiquity and Byzantium: Monks, Laymen, and Christian Ritual*. Oxford University Press. [note](../research/hist_rapp_brother_making.md)
+- Ringrose, Kathryn M. 2003. *The Perfect Servant: Eunuchs and the Social Construction of Gender in Byzantium*. University of Chicago Press. [note](../research/byz_ringrose_perfect_servant.md)
+- Roller, Lynn E. 1997. "The Ideology of the Eunuch Priest." *Gender & History* 9.3: 542–559. [note](../research/byz_roller_eunuch_priest.md)
+- Roller, Lynn E. 1999. *In Search of God the Mother: The Cult of Anatolian Cybele*. University of California Press. [note](../research/byz_roller_god_the_mother.md)
+- Sidéris, Georges. 2010. "Les eunuques de Byzance (IVe–XIIe siècle) : de la société de cour à la société urbaine." In Élisabeth Malamut (ed.), *Dynamiques sociales au Moyen Âge*, 89–116. Presses universitaires de Provence. [note](../research/byz_sideris_eunuques_societe.md)
+- Sidéris, Georges. 2013. "Sur l'origine des anges eunuques à Byzance." In Constantin Zuckerman (ed.), *Constructing the Seventh Century*, Travaux et Mémoires 17: 539–558. [note](../research/byz_sideris_anges_eunuques.md)
+- Tougher, Shaun. 2008. *The Eunuch in Byzantine History and Society*. Routledge. [note](../research/hist_tougher_eunuch_byzantine.md)
+- Tougher, Shaun (ed.). 2002. *Eunuchs in Antiquity and Beyond*. Classical Press of Wales and Duckworth. (Chapters by Lightfoot and Gaul cited above.) [note](../research/byz_tougher_eunuchs_antiquity_beyond.md)
+- Trevett, Christine. 1996. *Montanism: Gender, Authority and the New Prophecy*. Cambridge University Press. [note](../research/byz_trevett_montanism.md)
+
+### Theory
+- Bhatt, Talia. 2025. *Trans/Rad/Fem: Essays on Transfeminism, Book 1*. Self-published. ("The Third Sex.") [note](../research/book_bhatt_third_sex.md)
+- Raha, Nat, and Mijke van der Drift. 2024. *Trans Femme Futures: Abolitionist Ethics for Transfeminist Worlds*. Pluto Press. [note](../research/book_raha_vdd_trans_femme_futures.md)

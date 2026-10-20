@@ -358,6 +358,55 @@ tm_kahal_pilgrimage_effect = {
 	}
 }
 
+# The way home: Marked members and daughters of the faith with no court (pool characters, who wander and are cleared)
+# come to the faith's home court. That is the holder of the seat if they are of the faith, else the ruler of the faith
+# with most members at court, else the seat's lord, at whose court the faith has lived. Like the pilgrimage to the
+# kahal, it is counted as `pilgrims`. Scope: none (tm_yearly_growth). $FAITH$ a faith, $SEAT$ the seat county title.
+tm_homecoming_effect = {
+	clear_saved_scope = tm_home_court
+	clear_saved_scope = tm_homecomer
+	ordered_ruler = {
+		faith_filter = $FAITH$
+		limit = { is_imprisoned = no }
+		order_by = {
+			value = 0
+			if = { limit = { any_held_title = { this = $SEAT$ } } add = 1000 }
+			every_courtier = {
+				limit = { faith = $FAITH$ }
+				add = 10
+			}
+			add = sub_realm_size
+		}
+		save_scope_as = tm_home_court
+	}
+	if = {
+		limit = { NOT = { exists = scope:tm_home_court } }
+		$SEAT$.holder ?= { save_scope_as = tm_home_court }
+	}
+	if = {
+		limit = { exists = scope:tm_home_court }
+		every_living_character = {
+			limit = {
+				faith = $FAITH$
+				is_adult = yes
+				is_pool_character = yes
+				is_imprisoned = no
+				OR = {
+					has_trait = tm_transgender
+					tm_is_daughter_trigger = yes
+					has_variable = tm_declared
+				}
+			}
+			random = {
+				chance = 20
+				save_scope_as = tm_homecomer
+				scope:tm_home_court = { add_courtier = scope:tm_homecomer }
+				tm_track_effect = { FAITH = $FAITH$ WHAT = pilgrims }
+			}
+		}
+	}
+}
+
 # Two Marked young men of the faith at a seat court, so the courtier rite has seekers from the start.
 tm_seed_marked_courtiers_effect = {
 	while = {

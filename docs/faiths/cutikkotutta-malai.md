@@ -1,0 +1,152 @@
+# Cūṭikkoṭutta Mālai
+*the garland worn and given* · [Back to the README](../../README.md#cūṭikkoṭutta-mālai)
+
+Cūṭikkoṭutta Mālai, the Worn Garland, is a current of Tamil devotion inside Hinduism, seated on the temple street of Kanchipuram. It takes its name from Āṇṭāḷ's epithet, "she who gave what she had worn", and its bride from the Vaiṣṇava poets. It takes its daughters, its rite and its women's song from Śiva's temples. Medieval Tamil poets, men among them, sang to the god in a girl's voice, and medieval commentators explained why. No source shows a man who lived as a woman on that basis. The Garland holds that the voice meant what it said, and the page below separates what the sources show from what the faith builds on them.
+
+In game the name is spelled *Cūtikkotutta Mālai*, and Āṇṭāḷ and Mārkaḻi appear as *Āntāl* and *Mārkazhi*. The interface font has no dotted letters. This page uses full diacritics.
+
+## At a glance
+
+| | |
+|---|---|
+| **Setting and start** | Tamil country, from the 867 start. Āṇṭāḷ is a recent saint (c. 850), Nammāḻvār is a century or more old, and the hymn canon is not yet compiled. |
+| **Seat and holy sites** | Kanchipuram (seat, eminent), Srirangam (eminent), Thanjavur, Madurai. |
+| **Culture** | No culture of its own. It lives in Hindu courts of the south; the Kanchipuram seed takes the county's culture. |
+| **How one becomes a daughter** | *Keep the Pāvai Vow*: a month-long vow in Mārkaḻi (December or January), kept with the women of the court. It ends with a staff touched to her head and a name. |
+| **How the line continues** | The temple street: a daughter holds a share, recorded in stone, and names the one who will hold it after her (*Take as Daughter*). |
+| **How it meets the world** | Gifts in stone: gold to the temple buys an inscription and lasting piety. Hindu lords of other faiths are asked to rule on its daughters, and pandits answer with Ilā. |
+| **Main sources** | Orr 2000 and 2013 (temple women); *South Indian Inscriptions* 2 no. 66; Venkatesan 2010 and Dehejia 1990 (Āṇṭāḷ); Hardy 1983; Goodall 2018 (the staff rite); the *Mahābhārata* (Bhaṅgāśvana); Ramanujan 1973, 1981, 1982; Bhatt 2025. |
+
+## The historical setting
+
+**The poets.** Twelve Vaiṣṇava poets, the Āḻvārs, sang in Tamil between about 600 and 900 (Dehejia 1990, p. 2). Hardy's working chronology puts Nammāḻvār in the 7th or early 8th century and Tirumaṅkai in the later 8th, at Kanchi under the Pallava king Nandivarman II. That is the only Āḻvār date tied to a known king (Hardy 1983, pp. 264–67). Āṇṭāḷ, the one woman among them, composed the *Tiruppāvai* most probably around 850 (Dehejia 1990, pp. 2–3). In roughly a quarter of Nammāḻvār's *Tiruvāymoḻi* the poet speaks as a lovesick girl, or as her mother or friend (Carman and Narayanan 1989, p. 98; Narayanan 1994, p. 3). The Śaiva side has the same voice: Appar, in the 7th century, sings as a girl "mad for Him" (Prentiss 1999, pp. 53–54).
+
+**The commentators.** From the 12th century the Śrīvaiṣṇava teachers explained the girl. Piḷḷāṉ, writing between 1100 and 1150, calls her the poet's "guise", yet narrates whole decads with the poet as "she" (Carman and Narayanan 1989, pp. xi, 96, 99). In the 13th century Periyavāccāṉ Piḷḷai wrote that the other Āḻvārs "had to assume the guise of women" (Venkatesan 2010, p. 32). The *Ācāryahṛdayam* gives the rule: "In knowledge, his own words; in love, a woman's words" (Ramanujan 1981, p. 153). The *Īṭu* commentary on *Tiruvāymoḻi* 1.4 goes furthest: before the Lord the devotee "loses his own male nature and will wear the dress of a woman" (Hardy 1983, p. 563). Hardy argues the commentators misread poems whose girl is a body, not a soul (pp. 270 n. 91, 368).
+
+**Kannada.** The bride also appears on the Śaiva side. Basavaṇṇa (d. c. 1166/68) wears "these men's clothes only for you", is sometimes man and sometimes woman, and says he will be the devotees' bride (Ramanujan 1973, vacana 703). Mahādēviyakka calls Śiva the master for whom all men are wives (vacana 68). Harihara, early in the 13th century, sums up the saint's relation to god as "the devotee is wife, the liṅga husband", and stages Basavaṇṇa's initiation as a temple wedding with Nandi officiating (Ben-Herut 2018, pp. 85–88). Basavaṇṇa later married two women (p. 87). In period the bride was a devotional role, a rite or a reading, and not a life.
+
+**Āṇṭāḷ and the garland.** Her poems never tell the garland story. Hagiography does: she wore the god's garland before it was offered, her father found out and withheld it, and the god told him in a dream that he wanted the worn one (Venkatesan 2010, p. 4; Govindacharya 1902, pp. 45–47). The earliest witness is a laudatory verse attributed to Uyyakoṇṭār, of the mid-10th century, praising her as the one who gave the lord of Araṅkam the garland she had worn (Venkatesan 2010, p. 223; Dehejia 1990, p. 11). An inscription of 1126 names a garden at Srirangam after her (Dehejia 1990, p. 13). Her father then called her *cūṭi-koṭutta-nācciyār*, "lady who gave what she had worn" (Dehejia 1990, p. 8; Ramanujan 1981, p. 148 n. 5). In the hagiography's ending she climbs onto the god's couch at Srirangam and disappears (Dehejia 1990, pp. 8–9). Orr notes that South Indian myth offers no model of a woman who marries the god "while continuing to dwell in the world" (Orr 2000, ch. 6 n. 11, pp. 258–59). Shulman finds the same for Śiva's human brides (Shulman 1980, p. 162).
+
+**The vow.** The *pāvai nōṉpu* was kept by unmarried girls in Mārkaḻi, mid-December to mid-January. They rose before dawn, bathed, kept abstentions (no ghee or milk, no flowers or kohl, no harsh words) and gave alms (Venkatesan 2010, pp. 11–12, 88; Dehejia 1990, p. 43). In *Tiruppāvai* 6–15 the girls wake each friend at her threshold (Venkatesan 2010, pp. 20, 94), and the *pāvai* itself was probably a sand image of a goddess (Hardy 1983, pp. 414 n. 1, 416). The vow crossed sects: Māṇikkavācakar's Śaiva *Tiruvempāvai* shares the genre, and a Jain *pāvai* verse may predate Āṇṭāḷ (Venkatesan 2010, p. 19; Dehejia 1990, p. 17).
+
+**The temple women.** Orr read every Tamil inscription of 850–1300 she could find. Of 820, 304 refer to temple women, and their main recorded role is donor, not dancer: 133 of the 304 record their gifts (Orr 2000, pp. 34, 66). They did not marry, so their wealth stayed under their own control, and they grew more numerous and richer in the 12th and 13th centuries while other women faded from the record (pp. 46, 67–73, 161–63). One of their titles was *tēvaṉār makaḷ*, "daughter of God". It appears in 24 inscriptions, seventeen of them from 850–985, all at temples of Śiva (pp. 52, 59). Another was *talaikkōli*, "she of the illustrious staff" (pp. 60–61). In 1213 at Tirupampuram, a temple woman was granted the singing of the seventh verse of the *Tiruvempāvai* in Mārkaḻi, for her and her descendants. It is the only hymn named in the inscriptions as sung by women (pp. 17–18, 108). No inscription has a woman singing the Vaiṣṇava hymns, which were men's (p. 108). "Marriage to God" is unknown before a 17th-century manuscript (pp. 73, 156).
+
+**Thanjavur.** Around 1014 Rājarāja I moved four hundred temple women from temples across the Chola country, Śaiva and Vaiṣṇava, to his new temple at Thanjavur. Each woman got a numbered house on a temple street and one share, the produce of one *veli* of land, a hundred *kalam* of paddy a year. If she died or left, the share went to her "nearest relations" who would "do the work" (*SII* 2 no. 66, ¶1). Orr calls the settlement exceptional and, in the end, unsuccessful (Orr 2000, pp. 80–82, 161, 163–64).
+
+**The staff.** A 12th-century Śaiva ritual text, the *Uttara-Kāmika*, calls the women who dance in Śiva's temple daughters of Rudra. In its rite Śiva borrows his watchman Nandin's staff, touches each woman on the head, and gives her a name and a title meaning "she who was touched on the head with the staff". Goodall shows this is a literal translation of the Tamil *talaikkōl* (Goodall 2018, pp. 110–12). Kersenboom traces the staff back to the dancer Mātavi's debut in the *Cilappatikāram*, c. 450 (Kersenboom-Story 1987, pp. 28, 181–82).
+
+**Kanchipuram.** It is the only temple-women centre attested through the whole period, with Śaiva and Vaiṣṇava temples alike (Orr 2000, pp. 139–40). In 758 a Pallava queen's Śiva temple there listed fifteen named women on its staff (Orr 2013, Text A). Tirumaṅkai sang its Viṣṇu temple (Orr 2013, ¶11), and a 13th-century endowment at its Varadarāja temple maintained "women who sing before the Lord" (Narayanan 1994, p. 55). Inscriptions of Śiva's, Viṣṇu's and Jain temples share one form and vocabulary (Orr 2013, ¶¶2–3, 26).
+
+**The era.** Raids reached Srirangam in about 1311 and 1323; its worship lapsed for fifty-nine years and Vijayanagara restored the image in 1371 (Narayanan 1994, pp. 83–84). After 1300, kings poured wealth into temples and temple women stopped giving (Orr 2000, pp. 174–77).
+
+## What the faith holds
+
+**That the voice meant what it said.** The commentators called the girl a guise. The Garland inverts them: the guise was the truth (Venkatesan 2010, p. 32; Carman and Narayanan 1989, p. 96). It sides with Hardy's reading that the poets' girl was a body, sweating and weeping, and not a soul (Hardy 1983, p. 368). From the *Īṭu* it takes the line that before the Lord the devotee "will wear the dress of a woman" (p. 563). It refuses the *Īṭu*'s definition of a woman as total dependence (p. 564). With Ramanujan it says that in the saints' legends, "before God all men are women" (Ramanujan 1982, p. 324). Ramanujan drew that pattern from undated legends, and the faith cites it as such.
+
+**That a daughter is known by her love.** Piḷḷāṉ glosses a friend's words about the girl in the poem: "we know that it is our friend by her exceeding love" (Carman and Narayanan 1989, p. 76). The Garland takes this as its rule of recognition. A woman is known by her mother and her friend, not by a birth or a sign. Venkatesan observes that the male poets surround their heroine with witnesses to vouch for her, while Āṇṭāḷ's heroine needs none (Venkatesan 2007, p. 22). In the faith the witnesses belong to the crossing, not to her womanhood afterwards.
+
+**Its scripture: Bhaṅgāśvana.** In the *Mahābhārata* a king is turned into a woman by a lake, bears a hundred sons, and is offered by Indra whichever state she chooses. She answers, "I desire to remain a woman, O Sakra" (Ganguli, Anuśāsana Parva sec. XII). The text gives pleasure as her reason, a frame Shulman reads as male hostility to sexuality (Shulman 1980, p. 418 n. 39). The faith leads instead with her own words and with the sons she bore as a woman. Indra had called her change a punishment, then admitted he had done her good.
+
+**Against the third thing.** Ilā gives the faith a genealogy: "Ila was both his mother and father" (Ganguli, Ādi Parva sec. LXXV). In the longer tellings Ilā is half a woman by the month, with forgetting, and every version ends with her made a man again by gods, priests or goddesses (Doniger 1999, pp. 271–78). The Garland reads Ilā as the one who was cured against her nature, and names the half-and-half state a cage. This follows Bhatt's argument that third-sexing is how a hierarchy files away those it will not call women (Bhatt 2025). Doniger and Zwilling and Sweet make the same point from the texts. Hindus recognised a third sex without approving of it, and the *napuṃsaka* was "mainly regarded with contempt, at best with wary tolerance" (Doniger 1999, pp. 279–80; Zwilling and Sweet 2000, p. 124).
+
+**Precedents claimed in its own voice.** The devotees say Kāraikkāl Ammaiyār is their pattern. In the *Periya Purāṇam* (c. 1135) she asks the Lord to remove the beauty she bore for a husband, is given the form she asked for, and is called "Mother" (Pechilis 2012, p. 202, vv. 49–50). Pechilis reads the change as chosen, and as keeping her a woman (pp. 88, 99). The faith claims the pattern of the story: the Lord changes a body when the devotee asks. It does not claim the saint. It also tells, as later tradition, of the sages who longed for Rāma and were reborn as cowherd women (Ramanujan 1981, pp. 152–53; Doniger 1999, p. 298).
+
+**Both temples.** The Garland answers to both: Śiva's temples gave it its daughters, and Viṣṇu's poets gave it the bride. A purely Vaiṣṇava faith would have the bride and the garland but no women in its temples. A purely Śaiva one would have daughters, a rite and a women's song but no bride: the Śaiva daughter is filial, and marriage to Śiva is later even in the ritual texts (Orr 2000, pp. 58–59, 108; Goodall 2018, pp. 125–27). At Kanchi, one temple tradition even has Viṣṇu give the goddess away at Śiva's wedding, though Shulman's witnesses for it are undated or 18th-century (Shulman 1980, pp. 172–73).
+
+**What it keeps alive.** Every human bride of the god in these myths merges with the image or dies (Shulman 1980, pp. 158–62). The Garland breaks that pattern on purpose. Its daughters stay in the world, own a share, and give.
+
+## From source to mechanic
+
+| Mechanic or event | What it does in game | Source and page | Research note |
+|---|---|---|---|
+| *Keep the Pāvai Vow* (decision) | Open only in December or January; costs 50 piety; once a year. A man of the Garland, or a Hindu man who is Marked or has declared, may take it. | Venkatesan 2010, pp. 11–12; Hardy 1983, p. 512 (the Mārkaḻi and Tai baths are separate rites) | [note](../research/ind_venkatesan_secret_garland.md) |
+| The companions | Up to five adult women of the court join, with an elder daughter of the Garland. Each one still in the vow at the end adds 8 to the success weight. | *Tiruppāvai* 6–15 (Venkatesan 2010, pp. 20, 86, 94); Hardy 1983, pp. 416, 513 | [note](../research/ind_hardy_viraha_bhakti.md) |
+| The waking (`tm_garland.0010`) | Wake them all (10 gold for sweets, one more companion), wake those who will come, or give up this Mārkaḻi. | Hardy 1983, pp. 416, 436 (two wakings: friends, then the god) | [note](../research/ind_hardy_viraha_bhakti.md) |
+| The song (`tm_garland.0011`) | Choose Śiva's *Tiruvempāvai* or Āṇṭāḷ's *Tiruppāvai*; the circle may lose one to the cold dawns (35%). | Orr 2000, pp. 17–18, 105–08; Venkatesan 2010, p. 19; Hardy 1983, p. 417 n. 14 | [note](../research/ind_orr_temple_women.md) |
+| The sand goddess (tenet text) | The girls shape a goddess of sand at the river. | Hardy 1983, pp. 414 n. 1, 416, 647 | [note](../research/ind_hardy_viraha_bhakti.md) |
+| The garland (`tm_garland.0012`) | Wear it before it is offered (+20 to success, 30% chance someone sees), or offer it as it came. | Venkatesan 2010, pp. 4, 223; Dehejia 1990, pp. 7–8, 11; Govindacharya 1902, pp. 45–47 | [note](../research/ind_dehejia_venkatesan_antal.md) |
+| The dream (`tm_garland.0013`) | The wedding dream is a sign, not the success: piety if she reads it so, stress if not. | *Nācciyār Tirumoḻi* 6–7 (Venkatesan 2010, p. 27; Dehejia 1990, pp. 95–97) | [note](../research/ind_venkatesan_secret_garland.md) |
+| The staff and the name (`tm_garland.0001`) | Base weight 25 against 60; +30 if Marked, +8 per companion, +20 if she wore the garland, +15 at Kanchipuram. On success she is re-embodied and becomes a Daughter of God. | Goodall 2018, pp. 110–12; Orr 2000, pp. 60–61; Kersenboom-Story 1987, p. 28 | [note](../research/ind_goodall_rudraganikas.md) |
+| "Daughter of God" (trait and clergy title) | The trait and the faith's priests are "Daughter of God". | Orr 2000, pp. 37, 52, 57–59 (*tēvaṉār makaḷ*) | [note](../research/ind_orr_temple_women.md) |
+| A name of the temple street (`tm_garland.0002`) | The women bring the drum asked for in the song; she takes a new name or keeps her own. | Hardy 1983, pp. 476–78 (the *paṟai* drum); Orr 2000, p. 148 (no name-giving rite is attested before the 15th century, so the naming is reconstruction) | [note](../research/ind_hardy_viraha_bhakti.md) |
+| The Temple Street (tenet) | +10 same-faith opinion, +5% income; adoption always allowed; *Take as Daughter* passes the line. | *SII* 2 no. 66, ¶1; Orr 2000, pp. 72, 75, 151, and ch. 3 n. 28, p. 228; Pechilis and Raj 2013, p. 54 (*putrikā*) | [note](../research/ind_tanjavur_inscription.md) |
+| A Name in Stone (`tm_garland.0020`) | Yearly 15% for a ruler of the Garland: 100 gold buys a lamp and a share cut in stone (+0.5 piety and +0.2 prestige a month for 20 years), or 30 gold buys an unrecorded gift. | Orr 2000, pp. 65–87 (gifts and deals, 75, 151); Dehejia 1990, pp. 161–65 (the 1453/54 endowment) | [note](../research/ind_orr_temple_women.md) |
+| A Pandit's Objection (`tm_garland.0030`) | A Hindu lord not of the Garland, with a daughter at court, is asked to rule: side with the pandit (piety), with Bhaṅgāśvana (her respect), or let the temple decide. | Doniger 1999, p. 277 (the Sahya telling); Ganguli, Anuśāsana sec. XII | [note](../research/ind_doniger_splitting.md) |
+| Hindu courts read a daughter | Hindu, Buddhist and Jain courts think less of daughters; the Garland's own members cancel it (+5, "A Soul Made Woman"). | Zwilling and Sweet 2000, pp. 102, 107, 121, 124 | [note](../research/sea_zwilling_sweet_third_sex.md) |
+| Seat at Kanchipuram | The county is seeded with the faith and a daughter sits at its lord's court; a patron of the temple street holds Candragiri, in the same duchy, as his vassal. +15 to the rite at Kanchipuram. | Orr 2000, pp. 139–40; Orr 2013, Text A, ¶11; Narayanan 1994, p. 55 | [note](../research/ind_orr_2013_anandakichenin.md) |
+| Srirangam (eminent holy site) | "Where the god was woken with song each morning by the ninth century, and where an inscription of 1126 names Āṇṭāḷ." | Hardy 1983, pp. 268, 436; Dehejia 1990, p. 13 | [note](../research/ind_dehejia_venkatesan_antal.md) |
+| Thanjavur (holy site) | "Four hundred women each a house and a share." | *SII* 2 no. 66, ¶¶1–402 | [note](../research/ind_tanjavur_inscription.md) |
+
+## How it plays
+
+**The gate.** The vow can be begun only in Mārkaḻi, so a seeker who misses the window waits a year. A courtier offered the rite by the growth engine waits for Mārkaḻi, checking monthly for up to a year. On beginning, the court is searched for an elder daughter of the Garland to walk with her; if there is none, an elder is created. Up to five women of the court join as companions. The rite runs as five events over about a month. What decides it is how many of the circle held to the end, with some weight for being Marked, for wearing the garland and for keeping the vow at Kanchipuram. The test is social. Other faiths' gates need a knifer, a trance or a solitary gestation. The Garland's needs friends. A failed vow is not a judgement on her: "the circle broke before the month was out. Next Mārkaḻi." On success she rises re-embodied, as in every faith of the mod, and may take a name of the temple street or keep the one she carries.
+
+**The line.** The Temple Street tenet makes adoption always possible and turns on *Take as Daughter*, which here accepts adults and girls who are not kin. A daughter is infertile after the rite, so the line runs through the women she names. The tenet also gives same-faith opinion and a little income, the share.
+
+**The world.** Each year a ruler of the Garland may be offered *A Name in Stone*: pay for a lamp and a share and have it cut in the temple wall, which marks her capital as a temple street. Hindu lords of other faiths who keep a daughter at court may face *A Pandit's Objection*. The rite also carries vanilla Bhakti, gender-equal doctrine, clergy of either sex, and accepted same-sex marriage.
+
+**Growth.** The Garland is meant to grow slowly, like other small faiths. Each year a Marked character in the Deccan and Tamil country who is of another faith may hear its call. The chance is 1% as a rumour and rises with contact: a member at court, a House in her county, a holy site in her duchy. Hindu Marked men and declared sisters may also keep the vow without converting first; success brings them into the faith. In the second observe run the Garland had 35 members and four counties by 1023; in the third, nine by 1060 (faith_design.md §14). In the fourth, by 1198, its people held six counties but it had no ruler and seven members. Since Kanchipuram is the Pallava capital, its lord keeps it; so a woman of the faith now holds Candragiri as his vassal from the start, and Marked members and daughters with no court may come home to hers. Both are still being tuned.
+
+## What is attested and what is invented
+
+**Attested in period.**
+- Men sang in a girl's voice in public cult, on both sides of the sectarian line (Carman and Narayanan 1989, p. 98; Prentiss 1999, pp. 53–54; Ramanujan 1973, vacana 703).
+- Commentators of the 12th and 13th centuries explained it, one saying the devotee puts on a woman's dress before the Lord (Hardy 1983, p. 563; Ramanujan 1981, p. 153).
+- Āṇṭāḷ's vow, the waking of the companions, the dream and its waking (Venkatesan 2010, pp. 11–27).
+- The garland legend as tradition, witnessed from the 10th century and in stone at Srirangam by 1126 (Venkatesan 2010, p. 223; Dehejia 1990, pp. 11, 13).
+- Temple women as unmarried donors with houses, shares and the title "daughter of God", singing the *Tiruvempāvai* in Mārkaḻi (Orr 2000, pp. 17–18, 52–59, 66–73; *SII* 2 no. 66).
+- The staff rite and the *talaikkōli* title (Goodall 2018, pp. 110–12; Orr 2000, pp. 60–61).
+- Bhaṅgāśvana's choice, in the *Mahābhārata* long before the period.
+
+**Reconstruction or invention.**
+- **A man living as a woman in these temples.** No source puts a man in a temple woman's role, or shows a man who lived as a woman because of the bhakti voice (Orr 2000; Ben-Herut 2018). The faith is built on that gap, and says so in its own description.
+- **The crossing of Śaiva and Vaiṣṇava devotion.** Shared inscriptional vocabulary supports it (Orr 2013, ¶¶2–3), but no medieval sect is known to have joined the two.
+- **The gate as a rite of change.** The vow, the garland, the dream and the staff are each attested. Joining them into one rite that changes a body is the mod's.
+- **Adoption on the temple street.** Thanjavur passed shares to "nearest relations" (*SII* 2 no. 66, ¶1). Orr says temple women "may have" inherited from mothers, and that adoption before 1300 is her guess (Orr 2000, p. 72; ch. 3 n. 28, p. 228). *Take as Daughter* is a marked reconstruction; the *putrikā*, the appointed daughter of the law books, is its nearest textual precedent (Pechilis and Raj 2013, p. 54).
+- **The faith's claims in its own voice**: that the guise was the truth, that Kāraikkāl Ammaiyār's change is its pattern, that every poet was a girl woken for the vow (after later commentators who identified the sleeping girls of the *Tiruppāvai* with the male poets, a reading Venkatesan calls anachronistic; Venkatesan 2010, p. 94). The narrator does not make these claims.
+- **Rules of the game.** The success weights, the 35% chance of losing a companion, and the Kanchipuram bonus are design, not history.
+
+**What it leaves out.**
+- Āṇṭāḷ is venerated, never cast as the faith's founder or as a trans figure. She was a woman. The faith claims her vow, not her person.
+- The temple women are not made trans, nor called dancing girls, courtesans or brides of God. "Marriage to God" is a 17th-century idea (Orr 2000, pp. 73, 156, 176–78). Goodall's courtesan frame and the slave categories in his texts are not used (Goodall 2018, pp. 95–96, 114–17).
+- The *araiyar*, hereditary male performers of the girl's part, are a living Brahmin office that excludes women (Venkatesan 2010, pp. 35, 38; Narayanan 1994, p. 123). They are not the faith's institution.
+- The faith has no link to hijra communities or to any modern temple-dedication tradition. The ethnography the project read on such traditions is modern, describes living people, and is kept apart (Merkle 2016, p. 368 n. 3).
+- No "God alone is male": Venkatesan states it as a principle but cites no dated passage (Venkatesan 2007, p. 18 n. 9).
+- No disappearance into the image as a success, and none of the poems' death-wish lines.
+- No Śrīvaiṣṇava, Vīraśaiva or devadāsī-descended community is presented as the faith. The narrator never calls the śaraṇas feminist (Ben-Herut 2018, pp. 113, 233–34).
+
+## Sources
+
+### Primary sources in translation
+
+- *Mahābhārata*, trans. Kisari Mohan Ganguli. 1883–96. *The Mahabharata of Krishna-Dwaipayana Vyasa*. Anuśāsana Parva sec. XII (Bhaṅgāśvana) and Ādi Parva sec. LXXV (Ilā). [note](../research/ind_mahabharata_bhangasvana_ila.md)
+- Hultzsch, E. (ed. and trans.). 1891–1913. *South Indian Inscriptions*, vol. 2: *Tamil Inscriptions in the Rajarajesvara Temple at Tanjavur*, nos. 66–68. Madras. [note](../research/ind_tanjavur_inscription.md)
+- Dehejia, Vidya. 1990. *Āṇṭāḷ and Her Path of Love: Poems of a Woman Saint from South India*. State University of New York Press. [note](../research/ind_dehejia_venkatesan_antal.md)
+- Venkatesan, Archana (trans.). 2010. *The Secret Garland: Āṇṭāḷ's Tiruppāvai and Nācciyār Tirumoḻi*. Oxford University Press. [note](../research/ind_venkatesan_secret_garland.md)
+- Ramanujan, A. K. (trans.). 1973. *Speaking of Śiva*. Penguin. [note](../research/ind_ramanujan_bhakti.md)
+- Ramanujan, A. K. (trans.). 1981. *Hymns for the Drowning: Poems for Viṣṇu by Nammāḻvār*. Princeton University Press. [note](../research/ind_ramanujan_bhakti.md)
+- Govindacharya, Alkondavilli. 1902. *The Holy Lives of the Azhvars, or The Dravida Saints*. Mysore. (Late hagiography, retold.) [note](../research/ind_govindacharya_azhvars.md)
+
+### Scholarship
+
+- Ben-Herut, Gil. 2018. *Śiva's Saints: The Origins of Devotion in Kannada according to Harihara's Ragaḷegaḷu*. Oxford University Press. [note](../research/ind_benherut_sivas_saints.md)
+- Carman, John, and Vasudha Narayanan. 1989. *The Tamil Veda: Piḷḷāṉ's Interpretation of the Tiruvāymoḻi*. University of Chicago Press. [note](../research/ind_carman_narayanan_tamil_veda.md)
+- Doniger, Wendy. 1999. *Splitting the Difference: Gender and Myth in Ancient Greece and India*. University of Chicago Press. [note](../research/ind_doniger_splitting.md)
+- Goodall, Dominic. 2018. "Rudragaṇikās: Courtesans in Śiva's Temple? Some Hitherto Neglected Sanskrit Sources." *Cracow Indological Studies* 20.1: 91–143. [note](../research/ind_goodall_rudraganikas.md)
+- Hardy, Friedhelm. 1983. *Viraha-Bhakti: The Early History of Kṛṣṇa Devotion in South India*. Oxford University Press. [note](../research/ind_hardy_viraha_bhakti.md)
+- Kersenboom-Story, Saskia C. 1987. *Nityasumaṅgalī: Devadasi Tradition in South India*. Motilal Banarsidass. [note](../research/ind_kersenboom_nityasumangali.md)
+- Merkle, Sarah. 2016. "Tying the Knot with the Dēvi: Gender Transgression in Regional and Trans-Regional Discourses." *Cracow Indological Studies* 18: 367–389. [note](../research/ind_merkle_tying_knot.md)
+- Narayanan, Vasudha. 1994. *The Vernacular Veda: Revelation, Recitation, and Ritual*. University of South Carolina Press. [note](../research/ind_narayanan_vernacular_veda.md)
+- Orr, Leslie C. 2000. *Donors, Devotees, and Daughters of God: Temple Women in Medieval Tamilnadu*. Oxford University Press. [note](../research/ind_orr_temple_women.md)
+- Orr, Leslie C. 2013. "Words for Worship: Tamil and Sanskrit in Medieval Temple Inscriptions." In Cox and Vergiani (eds.), *Bilingual Discourse and Cross-Cultural Fertilisation: Sanskrit and Tamil in Medieval India*. Institut français de Pondichéry. [note](../research/ind_orr_2013_anandakichenin.md)
+- Pechilis, Karen. 2012. *Interpreting Devotion: The Poetry and Legacy of a Female Bhakti Saint of India*. Routledge. [note](../research/ind_pechilis_karaikkal.md)
+- Pechilis, Karen, and Selva J. Raj (eds.). 2013. *South Asian Religions: Tradition and Today*. Routledge. [note](../research/ind_pechilis_karaikkal.md)
+- Prentiss, Karen Pechilis. 1999. *The Embodiment of Bhakti*. Oxford University Press. [note](../research/ind_prentiss_embodiment.md)
+- Ramanujan, A. K. 1982. "On Woman Saints." In Hawley and Wulff (eds.), *The Divine Consort: Rādhā and the Goddesses of India*, 316–324. Graduate Theological Union. [note](../research/ind_ramanujan_bhakti.md)
+- Shulman, David Dean. 1980. *Tamil Temple Myths: Sacrifice and Divine Marriage in the South Indian Śaiva Tradition*. Princeton University Press. [note](../research/ind_shulman_temple_myths.md)
+- Venkatesan, Archana. 2007. "A Woman's Kind of Love: Female Longing in the Tamil Alvar Poetry." *Journal of Hindu-Christian Studies* 20: 16–24. [note](../research/ind_dehejia_venkatesan_antal.md)
+- Zwilling, Leonard, and Michael J. Sweet. 2000. "The Evolution of Third-Sex Constructs in Ancient India: A Study in Ambiguity." In Leslie and McGee (eds.), *Invented Identities: The Interplay of Gender, Religion and Politics in India*, 99–132. Oxford University Press. [note](../research/sea_zwilling_sweet_third_sex.md)
+
+### Theory
+
+- Bhatt, Talia. 2025. *Trans/Rad/Fem: Essays on Transfeminism, Book 1*. Self-published. ("The Third Sex" and "Degendering and Regendering".) [note](../research/book_bhatt_third_sex.md)
