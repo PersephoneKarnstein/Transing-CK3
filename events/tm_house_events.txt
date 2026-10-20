@@ -61,9 +61,9 @@ tm_house.0010 = {
 			check_range_bounds = no
 			limit = {
 				tm_elder_sister_eligible_trigger = yes
-				NOT = {
-					exists = scope:tm_old_elder
-					this = scope:tm_old_elder
+				trigger_if = {							# the game checks both halves of a NOT, so guard the scope
+					limit = { exists = scope:tm_old_elder }
+					NOT = { this = scope:tm_old_elder }
 				}
 			}
 			order_by = {

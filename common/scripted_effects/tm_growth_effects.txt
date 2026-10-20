@@ -169,6 +169,11 @@ tm_sisters_call_effect = {
 tm_offer_courtier_rite_effect = {
 	set_variable = { name = tm_rite_offered value = yes years = 3 }
 	tm_track_effect = { FAITH = faith WHAT = offers }
+	trigger_event = tm_growth.0001			# so that root is the seeker: the rite effects compare against root
+}
+
+# Begins the faith's own chain for the seeker. Scope and root: the seeker (tm_growth.0001).
+tm_offer_begin_effect = {
 	if = {
 		limit = { rite ?= { rite_has_parameter = tm_seidr_gate } }
 		tm_seidr_begin_effect = yes

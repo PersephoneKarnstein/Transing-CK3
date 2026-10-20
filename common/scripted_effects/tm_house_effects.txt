@@ -142,9 +142,9 @@ tm_house_yearly_effect = {
 		# A lord of another faith: tolerate or close, once per lord.
 		limit = {
 			scope:tm_house_holder = { NOT = { rite ?= { rite_has_parameter = tm_sisters_faith } } }
-			NOT = {
-				has_variable = tm_house_tolerated_by
-				var:tm_house_tolerated_by = scope:tm_house_holder
+			trigger_if = {							# the game checks both halves of a NOT, so guard the variable
+				limit = { has_variable = tm_house_tolerated_by }
+				NOT = { var:tm_house_tolerated_by = scope:tm_house_holder }
 			}
 		}
 		scope:tm_house_holder = { trigger_event = tm_house.0050 }

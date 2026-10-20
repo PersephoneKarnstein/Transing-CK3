@@ -167,6 +167,7 @@ tm_adopt_daughter_interaction = {
 			rite ?= { rite_has_parameter = tm_adoptive_matriline }
 		}
 		scope:recipient = {
+			age < scope:actor.age				# the game refuses a parent younger than the child
 			OR = {
 				is_female = yes
 				has_trait = tm_transgender

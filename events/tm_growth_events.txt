@@ -1,0 +1,14 @@
+﻿namespace = tm_growth
+
+# Growth (docs/faith_design.md §14).
+#   0001  hidden: the rite offered to a courtier begins (tm_offer_courtier_rite_effect). Fired as an event so that
+#         root is the seeker: the yearly pulse that makes the offer has no character root.
+
+tm_growth.0001 = {
+	type = character_event
+	hidden = yes
+
+	immediate = {
+		tm_offer_begin_effect = yes
+	}
+}

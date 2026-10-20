@@ -20,8 +20,17 @@ HEADER = '''﻿# Adelphai Dorleyaiou — tracking for observe runs (docs/faith_d
 # tools/census_report.py reads them out of a save.
 
 # Adds one to a running total on a faith. $FAITH$ a faith scope, $WHAT$ one of the counters above.
+# change_variable fails on a variable not yet set, so the first count sets it.
 tm_track_effect = {
-\t$FAITH$ = { change_variable = { name = tm_n_$WHAT$ add = 1 } }
+\t$FAITH$ = {
+\t\tif = {
+\t\t\tlimit = { has_variable = tm_n_$WHAT$ }
+\t\t\tchange_variable = { name = tm_n_$WHAT$ add = 1 }
+\t\t}
+\t\telse = {
+\t\t\tset_variable = { name = tm_n_$WHAT$ value = 1 }
+\t\t}
+\t}
 }
 
 # A character made at game start for a seat: kept on a global list per seat (a dead character loses their own

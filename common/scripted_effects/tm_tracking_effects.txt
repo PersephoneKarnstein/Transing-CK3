@@ -9,8 +9,17 @@
 # tools/census_report.py reads them out of a save.
 
 # Adds one to a running total on a faith. $FAITH$ a faith scope, $WHAT$ one of the counters above.
+# change_variable fails on a variable not yet set, so the first count sets it.
 tm_track_effect = {
-	$FAITH$ = { change_variable = { name = tm_n_$WHAT$ add = 1 } }
+	$FAITH$ = {
+		if = {
+			limit = { has_variable = tm_n_$WHAT$ }
+			change_variable = { name = tm_n_$WHAT$ add = 1 }
+		}
+		else = {
+			set_variable = { name = tm_n_$WHAT$ value = 1 }
+		}
+	}
 }
 
 # A character made at game start for a seat: kept on a global list per seat (a dead character loses their own
