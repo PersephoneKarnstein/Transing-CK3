@@ -120,7 +120,7 @@ To update later, pull or re-download into the same folder. The launcher file doe
 Good first tests:
 
 - **Ruler Designer.** Do all six faiths and the Kybeline culture appear?
-- **The six rites.** As a Marked man, take each faith's decision: *Take the Knife*, *Ask a Völva to Sit for Me*, *Gestate the Jade Embryo*, *Keep the Fourteenth of Adar* (February or March only), *Keep the Pāvai Vow* (December or January only) and *Go to the Smith*.
+- **The six rites.** Play a Marked woman (the game still codes her as male) and take each faith's decision: *Take the Knife*, *Ask a Völva to Sit for Me*, *Gestate the Jade Embryo*, *Keep the Fourteenth of Adar* (February or March only), *Keep the Pāvai Vow* (December or January only) and *Go to the Smith*.
 - **Re-embodiment.** After a rite, do your titles, marriage, children, adoptive parents and skills carry over?
 - **Adoption.** Try *Take as Daughter* on a courtier, a ward and a guest.
 - **Arrivals and Houses.** Found a Sisters' House. Over a long reign, do Marked travellers, cast-out women and friends of the House arrive? Does the House choose an Elder Sister, and split when it is strained? Give the county to a ruler of another faith and see whether they close it.
@@ -162,7 +162,7 @@ The Sisters are nostalgic for a sect almost nobody remembers: the Mother's galli
 
 *Working name.* A Germanic pagan faith of Scandinavia and Anglo-Saxon England. It takes its name from *bædling*, a word of uncertain meaning that the Old English Canons of Theodore set apart from "other men" in their canons on sex between men; one glossary puts it beside *effeminati*, and the glossaries also keep *bæddel*. It joins that word to *seiðr* and *ergi*.
 
-In the north the sanctioned crossing ran toward manhood. A man who went the other way was called *ragr*, yet Icelandic law outlawed not him but whoever said the word, and the man so named could kill the speaker. The Bædlings keep the other road. In the north the law let vagrants be castrated without penalty, and men unmanned their enemies; it was never a rite, so this faith does not use the knife.
+In the north the sanctioned crossing ran toward manhood. Anyone the law counted a man who went the other way was called *ragr*, yet Icelandic law outlawed not the one so called but whoever said the word, and the one so named could kill the speaker. The Bædlings keep the other road. In the north the law let vagrants be castrated without penalty, and men unmanned their enemies; it was never a rite, so this faith does not use the knife.
 
 - **The gate: seiðr.** *Ask a Völva to Sit for Me* is a three-day rite, like a wedding, built on the seeress in *Eiríks saga rauða*:
   - **The völva comes.** She is given the high seat and a feast.
@@ -228,7 +228,7 @@ The rabbis divide the eunuch made "by the hands of heaven" from the one made "by
 
 *Working name.* A current of Tamil devotion inside Hinduism that crosses Śiva's temples and Viṣṇu's, seated on the temple street of Kanchipuram. The bride and the worn garland come from the Vaiṣṇava poets; the "daughter of God" and the women's song from Śiva's temples, whose inscriptions share one vocabulary with Viṣṇu's.
 
-Tamil poets, men among them, sang to the god as girls in love from the seventh century; a Kannada Śaiva poet of the twelfth asked to be the devotees' bride, and a thirteenth-century commentator wrote that before God the devotee "loses his own male nature and will wear the dress of a woman". In period this was a rite or a reading. The Garland holds that it was a life. Its scripture is King Bhaṅgāśvana of the Mahābhārata, turned into a woman, who was offered her old body back and said, "I desire to remain a woman." Chola temples called their women "daughters of God" and gave them houses and shares on the temple street; no record shows a man among them, so the Garland is a reconstruction, and says so.
+Tamil poets, men among them, sang to the god as girls in love from the seventh century; a Kannada Śaiva poet of the twelfth asked to be the devotees' bride, and a thirteenth-century commentator wrote that before God the devotee "loses his own male nature and will wear the dress of a woman". In period this was a rite or a reading. The Garland holds that it was a life. Its scripture is King Bhaṅgāśvana of the Mahābhārata, turned into a woman, who was offered her old body back and said, "I desire to remain a woman." Chola temples called their women "daughters of God" and gave them houses and shares on the temple street; no record shows anyone assigned male among them, so the Garland is a reconstruction, and says so.
 
 - **The gate: the pāvai vow.** *Keep the Pāvai Vow* can only be taken in Mārkaḻi (December or January). It is a month-long vow kept with companions, the women of the court:
   - **The waking.** Before dawn she goes from door to door and wakes the girls of the street.
@@ -250,10 +250,10 @@ Tamil poets, men among them, sang to the god as girls in love from the seventh c
 
 *Working name.* A Mande faith inside the West African religion, seated at Kirina in Mali. In Mande speech *badenya*, mother-childness, is the bond of those who share a mother; *fadenya*, father-childness, the rivalry of those who share a father. Badenya takes the first as its law. Its god names replace the vanilla religion's, which come from Marcel Griaule's Dogon studies, since discredited.
 
-In the Sunjata tradition a woman named Tenenba claimed a hero she had not borne: "I have given birth to a child without getting pregnant." Twentieth-century Bamana sculptors told of a djinn that asks a life of the household, and of a man who gave his own manhood instead and called himself less than a man after. Badenya says she is not less. Ibn Baṭṭūṭa saw bird-masked bards before the king of Mali in 1352, and the line passed through a sister's son at Ghana and Walata. No source shows a man becoming a woman here before 1453; the faith is built on institutions that are attested, and says so.
+In the Sunjata tradition a woman named Tenenba claimed a hero she had not borne: "I have given birth to a child without getting pregnant." Twentieth-century Bamana sculptors told of a djinn that asks a life of the household, and of a sculptor who gave up their own manhood instead and was called, in the tale, less than a man after. Badenya says she is not less. Ibn Baṭṭūṭa saw bird-masked bards before the king of Mali in 1352, and the line passed through a sister's son at Ghana and Walata. No source shows anyone assigned male becoming a woman here before 1453; the faith is built on institutions that are attested, and says so.
 
 - **The gate: the crossing.** *Go to the Smith*. She is "hot", as the Mande say of one between states, until the word cools her:
-  - **The smith's bargain.** The djinn asks a life of her house; she gives her own manhood instead. The djinn returns once, a year later, for a second price.
+  - **The smith's bargain.** The djinn asks a life of her house; she gives instead the manhood she was assigned. The djinn returns once, a year later, for a second price.
   - **My mother's child.** A woman of her family or the court must claim her, and she pays bracelets for her crossing. If no woman will, she waits.
   - **The word that cools.** A jeli speaks her name before the lord, her claiming mother's name before it. Paid well, it is praise; paid badly, it may be a joke the court remembers.
 - **The line.** Through a sister or a daughter. When a daughter dies, her blood kin may come for her body and her birth name; the House would bury her under her own.
@@ -268,7 +268,7 @@ In the Sunjata tradition a woman named Tenenba claimed a hero she had not borne:
 
 ## Shared mechanics
 
-- **Marked by the Mother.** A rare trait for men who are trans women before any rite. You can filter for it in the Character Finder to find people to recruit and adopt.
+- **Marked by the Mother.** A rare trait marking trans women before any rite, eggs who do not know it yet among them; the game still codes them as male. You can filter for it in the Character Finder to find people to recruit and adopt.
 - **Re-embodiment.** After a rite, the daughter continues in a female body with the same face. Her titles, marriage, children, parents, adoptive parents, skills and lifestyle experience carry over. Re-embodied daughters are infertile. A game rule turns this off.
 - **Take as Daughter.** Each faith's own adoption. Unlike vanilla adoption it accepts adults, and it ignores the rules that block children with landed relatives.
 - **Declare Before Witnesses.** A Marked sister can take a daughter's name before any rite. The rite changes her body, not her name, and a failed or delayed rite never takes the name back.
