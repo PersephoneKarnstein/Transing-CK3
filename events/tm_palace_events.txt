@@ -1,0 +1,166 @@
+﻿namespace = tm_palace
+
+# The palace and the society (docs/TODO.md, "Stage 2 inputs from the China reading"; faith_design.md; docs/faiths/yutai-dao.md).
+# A daughter of the Way under a throne with Chinese-style or meritocratic government is offered a post in the palace's inner
+# offices, the eunuchs' side of the court. Office is the price of inclusion (Raha and van der Drift 2024; research/
+# book_raha_vdd_trans_femme_futures.md row 17): it gives power, and the throne that gives it can take it back with the
+# holder's estates. The temple society gives less and keeps what it holds.
+# Sources: the inner offices kept the eunuch register, adopted across names, sons and daughters both (Rideout 1949, pp. 55-56;
+# So 2000, pp. 150-55); the censor Meng Zhaotu, 881: "the realm is ... not of the Northern Office", drowned for it (So 2000,
+# p. 143); the purge of 903 and the governors who hid their army supervisors (So 2000, pp. 161, 170); confiscation came with
+# disgrace (So 2000, pp. 200, 477). The register filing her as a eunuch is the faith's polemic, not the narrator's claim
+# (research/cn_rideout_tang_eunuchs.md §1.7).
+#   0001  the inner offices write: take the seal, stay with the society, or take it and keep the books apart
+#   0002  a memorial from the scholar-officials, three to six years on
+#   0003  the palace emptied (903-904, under a celestial throne)
+# Root = the daughter. scope:tm_palace_throne = her top liege. Started from tm_palace_yearly (tm_palace_on_actions.txt).
+
+# The inner offices write. Root = the daughter.
+tm_palace.0001 = {
+	type = character_event
+	title = tm_palace.0001.t
+	desc = tm_palace.0001.desc
+	theme = intrigue
+	left_portrait = { character = root animation = personality_rational }
+	right_portrait = { character = scope:tm_palace_throne animation = personality_honorable }
+
+	trigger = {
+		exists = scope:tm_palace_throne
+		NOT = { has_variable = tm_palace_office }
+	}
+
+	option = {	# Take the seal
+		name = tm_palace.0001.a
+		tm_palace_take_office_effect = yes
+		tm_palace_estates_to_crown_effect = yes
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = ambitious }
+			modifier = { add = -20 has_trait = content }
+		}
+	}
+	option = {	# Stay with the society
+		name = tm_palace.0001.b
+		add_piety = 50
+		every_held_title = {
+			limit = { tier = tier_county has_variable = tm_house }
+			change_variable = { name = tm_house_strain add = -1 }
+		}
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = content }
+		}
+	}
+	option = {	# Take it, and keep the society's books apart
+		name = tm_palace.0001.c
+		trigger = { intrigue >= 10 }
+		tm_palace_take_office_effect = yes
+		random_list = {
+			50 = {
+				modifier = { add = { value = intrigue multiply = 2 } }
+				desc = tm_palace.0001.c.kept
+			}
+			50 = {
+				desc = tm_palace.0001.c.found
+				add_prestige = -50
+				tm_palace_estates_to_crown_effect = yes
+			}
+		}
+		ai_chance = {
+			base = 20
+			modifier = { add = 20 has_trait = deceitful }
+		}
+	}
+}
+
+# A memorial from the scholar-officials. Root = the daughter, in office.
+tm_palace.0002 = {
+	type = character_event
+	title = tm_palace.0002.t
+	desc = tm_palace.0002.desc
+	theme = intrigue
+	left_portrait = { character = root animation = worry }
+
+	trigger = { has_variable = tm_palace_office }
+
+	option = {	# The commanders will answer for me
+		name = tm_palace.0002.a
+		random_list = {
+			60 = {
+				desc = tm_palace.0002.a.kept
+				add_prestige = 25
+			}
+			40 = {
+				desc = tm_palace.0002.a.lost
+				tm_palace_lose_office_effect = yes
+				add_prestige = -100
+				every_held_title = {
+					limit = { tier = tier_county has_variable = tm_house }
+					change_variable = { name = tm_house_strain add = 2 }
+				}
+			}
+		}
+		ai_chance = { base = 40 }
+	}
+	option = {	# Give back the seal
+		name = tm_palace.0002.b
+		tm_palace_lose_office_effect = yes
+		add_piety = 50
+		every_held_title = {
+			limit = { tier = tier_county has_variable = tm_house }
+			change_variable = { name = tm_house_strain add = -1 }
+		}
+		ai_chance = { base = 30 }
+	}
+	option = {	# Pay the censor's clerk
+		name = tm_palace.0002.c
+		trigger = { gold >= 100 }
+		remove_short_term_gold = 100
+		ai_chance = { base = 30 }
+	}
+}
+
+# The palace emptied, 903. Root = the daughter, in office under a celestial throne.
+tm_palace.0003 = {
+	type = character_event
+	title = tm_palace.0003.t
+	desc = tm_palace.0003.desc
+	theme = dread
+	left_portrait = { character = root animation = fear }
+
+	trigger = { has_variable = tm_palace_office }
+
+	immediate = { tm_palace_lose_office_effect = yes }
+
+	option = {	# Go to the sisters
+		name = tm_palace.0003.a
+		add_piety = 25
+		if = {
+			limit = { is_ruler = no }
+			tm_send_on_effect = { EXCLUDE = root.top_liege }
+		}
+		ai_chance = { base = 50 }
+	}
+	option = {	# Ask a governor to hide me
+		name = tm_palace.0003.b
+		trigger = { gold >= 50 }
+		remove_short_term_gold = 50
+		add_prestige = -25
+		ai_chance = { base = 30 }
+	}
+	option = {	# Keep the seal and wait
+		name = tm_palace.0003.c
+		random_list = {
+			50 = {
+				desc = tm_palace.0003.c.hurt
+				add_trait = wounded_1
+				add_stress = 30
+			}
+			50 = {
+				desc = tm_palace.0003.c.spared
+				add_stress = 15
+			}
+		}
+		ai_chance = { base = 20 }
+	}
+}

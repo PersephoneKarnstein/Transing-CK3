@@ -1,0 +1,265 @@
+﻿namespace = tm_kahal
+
+# Ha-Nehpakhot: the family and the women's synagogue (docs/TODO.md, third Judaism reading).
+#   0019  hidden: a daughter of the Turning; a kinsman or kinswoman is chosen to decide
+#   0001  the prayer book: the kin decides. A Judeo-Provençal women's siddur, Leeds MS Roth 32, was a wedding
+#         gift copied near Avignon; its title page adapts Rebecca's blessing to "my sister, may you become
+#         thousands of myriads" (Gen 24:60), read by Baricci as a brother's gift (Baricci 2023, pp. 64–65;
+#         research/jud_kahn_three_blessings.md §2.1, §6). Its morning blessings include "qui fis me fenna", "who
+#         made me a woman" (Baricci 2023, p. 66). Such books were given as wedding gifts; this gift is fiction.
+#   0002  the prayer book: she opens it
+#   0009  hidden: the Days of Awe are awaited (Tishri, here September or October)
+#   0010  the women at the door: women keeping their days stood outside the synagogue, a custom praised but not
+#         required (Marienberg 2004, pp. 7, 10); the women's prayer leader stood at the opening and repeated the
+#         prayer aloud (Grossman, Pious and Rebellious, ch. 8 §4; research/jud_grossman_pious_rebellious.md §4.2).
+#         The evidence is Ashkenazi, so the custom is the sect's own, "from the Rhine". She stands with them:
+#         the text never sets her against women in their days.
+# The kin's choice is the kin's own. A refusal costs the daughter nothing and is asked again in ten years.
+
+# ---------------------------------------------------------------------------------------------------
+# Hidden. Root = the daughter. Picks the kin who will decide, a sibling first.
+tm_kahal.0019 = {
+	type = character_event
+	hidden = yes
+
+	trigger = {
+		is_alive = yes
+		NOT = { has_variable = tm_kahal_book_received }
+		any_close_family_member = { tm_kahal_book_giver_trigger = yes }
+	}
+
+	immediate = {
+		save_scope_as = tm_book_sister
+		random_close_family_member = {
+			limit = { tm_kahal_book_giver_trigger = yes }
+			weight = {
+				base = 1
+				modifier = { add = 4 is_sibling_of = root }
+			}
+			save_scope_as = tm_book_giver
+		}
+		scope:tm_book_giver ?= {
+			trigger_event = { id = tm_kahal.0001 days = { 7 30 } }
+		}
+	}
+}
+
+# The prayer book. Root = the kin. scope:tm_book_sister = the daughter.
+tm_kahal.0001 = {
+	type = character_event
+	title = tm_kahal.0001.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:tm_book_sister = { has_variable = tm_kahal_wedding } }
+				desc = tm_kahal.0001.desc_wedding
+			}
+			desc = tm_kahal.0001.desc
+		}
+	}
+	theme = faith
+	left_portrait = { character = scope:tm_book_sister animation = personality_rational }
+	right_portrait = { character = root animation = thinking }
+
+	trigger = {
+		exists = scope:tm_book_sister
+		scope:tm_book_sister = {
+			is_alive = yes
+			NOT = { has_variable = tm_kahal_book_received }
+		}
+	}
+
+	option = {	# Have a scribe copy it, and write "my sister" on the title page
+		name = tm_kahal.0001.a
+		trigger = { gold >= 25 }
+		remove_short_term_gold = 25
+		add_piety = 15
+		add_opinion = { target = scope:tm_book_sister modifier = friendliness_opinion opinion = 10 }
+		scope:tm_book_sister = {
+			set_variable = tm_kahal_book_received
+			trigger_event = { id = tm_kahal.0002 days = { 10 30 } }
+		}
+		ai_chance = {
+			base = 30
+			modifier = { add = 30 opinion = { target = scope:tm_book_sister value >= 25 } }
+			modifier = { add = 20 has_trait = compassionate }
+			modifier = { add = 20 faith = scope:tm_book_sister.faith }
+		}
+	}
+	option = {	# Copy out the blessing myself, in my own hand
+		name = tm_kahal.0001.b
+		add_piety = 10
+		add_opinion = { target = scope:tm_book_sister modifier = friendliness_opinion opinion = 10 }
+		scope:tm_book_sister = {
+			set_variable = tm_kahal_book_received
+			set_variable = { name = tm_kahal_book_hand value = yes days = 90 }
+			trigger_event = { id = tm_kahal.0002 days = { 10 30 } }
+		}
+		ai_chance = {
+			base = 20
+			modifier = { add = 20 opinion = { target = scope:tm_book_sister value >= 25 } }
+			modifier = { add = 10 has_trait = compassionate }
+		}
+	}
+	option = {	# Not this year
+		name = tm_kahal.0001.c
+		set_variable = { name = tm_kahal_book_declined value = yes years = 10 }
+		ai_chance = {
+			base = 30
+			modifier = { add = 40 opinion = { target = scope:tm_book_sister value < 0 } }
+			modifier = { add = 20 has_trait = zealous NOT = { faith = scope:tm_book_sister.faith } }
+			modifier = { factor = 0.2 faith = scope:tm_book_sister.faith }
+		}
+	}
+}
+
+# She opens it. Root = the daughter. scope:tm_book_giver = the kin.
+tm_kahal.0002 = {
+	type = character_event
+	title = tm_kahal.0002.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { has_variable = tm_kahal_book_hand }
+				desc = tm_kahal.0002.desc_hand
+			}
+			triggered_desc = {
+				trigger = { is_sibling_of = scope:tm_book_giver }
+				desc = tm_kahal.0002.desc_sibling
+			}
+			desc = tm_kahal.0002.desc
+		}
+	}
+	theme = faith
+	left_portrait = { character = root animation = happiness }
+	right_portrait = { character = scope:tm_book_giver animation = happiness }
+
+	trigger = { exists = scope:tm_book_giver }
+
+	immediate = {
+		remove_variable = tm_kahal_wedding
+		add_character_modifier = tm_kahal_prayer_book_modifier
+		add_opinion = { target = scope:tm_book_giver modifier = tm_kahal_book_opinion }
+	}
+
+	option = {	# Say the blessing from it, aloud and with the Name
+		name = tm_kahal.0002.a
+		add_piety = 25
+		add_stress = -20
+	}
+	option = {	# Write back to say I will keep it all my life
+		name = tm_kahal.0002.b
+		add_stress = -20
+		scope:tm_book_giver = {
+			add_opinion = { target = root modifier = friendliness_opinion opinion = 15 }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Hidden. Root = the daughter. Waits for the Days of Awe, checking monthly for a year at most.
+tm_kahal.0009 = {
+	type = character_event
+	hidden = yes
+
+	immediate = {
+		if = {
+			limit = {
+				OR = {
+					current_month = 9
+					current_month = 10
+				}
+			}
+			remove_variable = tm_kahal_awe_wait
+			trigger_event = { id = tm_kahal.0010 days = { 1 20 } }
+		}
+		else_if = {
+			limit = { NOT = { has_variable = tm_kahal_awe_wait } }		# change_variable fails on an unset variable
+			set_variable = { name = tm_kahal_awe_wait value = 1 }
+			trigger_event = { id = tm_kahal.0009 days = 30 }
+		}
+		else_if = {
+			limit = { var:tm_kahal_awe_wait < 12 }
+			change_variable = { name = tm_kahal_awe_wait add = 1 }
+			trigger_event = { id = tm_kahal.0009 days = 30 }
+		}
+		else = {
+			remove_variable = tm_kahal_awe_wait
+		}
+	}
+}
+
+# The women at the door. Root = the daughter.
+tm_kahal.0010 = {
+	type = character_event
+	title = tm_kahal.0010.t
+	desc = tm_kahal.0010.desc
+	theme = faith
+	left_portrait = { character = root animation = personality_compassionate }
+	lower_right_portrait = scope:tm_door_woman
+
+	trigger = {
+		is_alive = yes
+		is_imprisoned = no
+		tm_kahal_door_trigger = yes
+	}
+
+	immediate = {
+		if = {
+			limit = { is_ruler = yes }
+			save_scope_as = tm_door_court
+		}
+		else = {
+			employer = { save_scope_as = tm_door_court }
+		}
+		scope:tm_door_court = {
+			if = {
+				limit = { tm_kahal_door_woman_trigger = yes }
+				add_to_list = tm_door_women
+			}
+			every_courtier = {
+				limit = { tm_kahal_door_woman_trigger = yes }
+				add_to_list = tm_door_women
+			}
+		}
+		random_in_list = {
+			list = tm_door_women
+			save_scope_as = tm_door_woman
+		}
+	}
+
+	option = {	# Stand at the door and give them the prayer
+		name = tm_kahal.0010.a
+		add_piety = 30
+		add_character_modifier = { modifier = tm_kahal_door_modifier years = 1 }
+		every_in_list = {
+			list = tm_door_women
+			add_opinion = { target = root modifier = tm_kahal_door_opinion }
+		}
+		ai_chance = {
+			base = 50
+			modifier = { add = 20 has_trait = zealous }
+			modifier = { add = 10 has_trait = gregarious }
+		}
+	}
+	option = {	# Stand outside with them
+		name = tm_kahal.0010.b
+		add_stress = -25
+		every_in_list = {
+			list = tm_door_women
+			add_opinion = { target = root modifier = friendliness_opinion opinion = 5 }
+		}
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = compassionate }
+			modifier = { add = 20 stress >= 50 }
+		}
+	}
+	option = {	# Go in: it is the men's business to rule on this
+		name = tm_kahal.0010.c
+		ai_chance = {
+			base = 10
+			modifier = { add = 20 has_trait = shy }
+		}
+	}
+}

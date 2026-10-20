@@ -1,0 +1,31 @@
+﻿# Crusader Dolls — the palace and the society (tm_palace_events.txt)
+
+# She takes a post in the palace's inner offices. Scope: the daughter.
+tm_palace_take_office_effect = {
+	set_variable = tm_palace_office
+	add_character_modifier = { modifier = tm_palace_office_modifier }
+	scope:tm_palace_throne ?= {
+		add_opinion = { target = root modifier = grateful_opinion opinion = 15 }
+	}
+	trigger_event = { id = tm_palace.0002 days = { 1095 2190 } }
+}
+
+# The throne's gift binds its holder's estates: her Houses lose their name-panels, and the magistrate comes to count them
+# (tm_yutai.0010). Scope: the daughter.
+tm_palace_estates_to_crown_effect = {
+	custom_tooltip = tm_palace_estates_tt
+	if = {
+		limit = { any_held_title = { tier = tier_county has_variable = tm_house } }
+		every_held_title = {
+			limit = { tier = tier_county has_variable = tm_house_named }
+			remove_variable = tm_house_named
+		}
+		trigger_event = { id = tm_yutai.0010 days = { 180 720 } }
+	}
+}
+
+# She leaves the palace, or is put out of it. Scope: the daughter.
+tm_palace_lose_office_effect = {
+	remove_variable = tm_palace_office
+	remove_character_modifier = tm_palace_office_modifier
+}

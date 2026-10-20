@@ -1,0 +1,91 @@
+﻿# Crusader Dolls — a bookmark at 867 showing the playable heads of the six faiths, so players can find them.
+# Ha-Nehpakhot has no landed head at the start, so it is not shown (an unlanded start is planned).
+# The leaders made by the start script are historical characters in history/characters/tm_characters.txt; Steinn of
+# Gotland and Xun of Shazhou are vanilla characters the start script converts. Portraits: run
+# dump_bookmark_portraits in a game started at this bookmark and copy the files into common/bookmark_portraits.
+# Art: the tab is the user's; the map (user's) is built from the game's own flatmap (gfx/map/terrain/flat_maps/flatmap.dds), with
+# West Africa as an inset, as the vanilla 867 adventurers map does. Positions sit beside each highlight.
+
+bm_867_crusader_dolls = {
+	start_date = 867.1.1
+	is_playable = yes
+	group = bm_group_867
+
+	weight = { value = -1 }		# never the default bookmark
+
+	# Theia Beatrike, Mother of Mothers (Adelphai Dorleyaiou). ID: tm_theia_beatrike
+	character = {
+		name = "bookmark_tm_theia_beatrike"
+		type = female
+		birth = 813.1.1
+		title = d_tm_mother_house
+		government = theocracy_government
+		culture = kybeline
+		religion = transbian_maximalism
+		difficulty = "BOOKMARK_CHARACTER_DIFFICULTY_HARD"
+		history_id = tm_theia_beatrike
+		position = { 819 525 }
+		animation = personality_compassionate
+	}
+
+	# Steinn, count of Gotland (Bædling). ID: 41267
+	character = {
+		name = "bookmark_tm_steinn"
+		type = male
+		birth = 841.1.1
+		title = c_gutland
+		government = tribal_government
+		culture = norse
+		religion = tm_baeddel
+		difficulty = "BOOKMARK_CHARACTER_DIFFICULTY_MEDIUM"
+		history_id = 41267
+		position = { 571 265 }
+		animation = personality_bold
+	}
+
+	# Xun, duke of Guasha at Dunhuang (Yutai Dao). ID: 304191
+	character = {
+		name = "bookmark_tm_xun"
+		type = male
+		birth = 840.1.1
+		title = d_guasha
+		government = meritocratic_government
+		fallback_government = feudal_government
+		culture = han
+		religion = tm_yutai
+		difficulty = "BOOKMARK_CHARACTER_DIFFICULTY_MEDIUM"
+		history_id = 304191
+		position = { 1309 529 }
+		animation = personality_rational
+	}
+
+	# Cantiradevi, countess of Candragiri (Cutikkotutta Malai). ID: tm_garland_cantiradevi
+	character = {
+		name = "bookmark_tm_cantiradevi"
+		type = female
+		birth = 838.1.1
+		title = c_candragiri
+		government = feudal_government
+		culture = tamil
+		religion = tm_garland
+		difficulty = "BOOKMARK_CHARACTER_DIFFICULTY_HARD"
+		history_id = tm_garland_cantiradevi
+		position = { 1181 884 }
+		animation = personality_zealous
+	}
+
+	# Djeneba, countess of Kirina (Badenya). ID: tm_badenya_djeneba
+	character = {
+		name = "bookmark_tm_djeneba"
+		type = female
+		birth = 837.1.1
+		title = c_sibi_mali
+		government = tribal_government
+		culture = malinke
+		religion = tm_badenya
+		difficulty = "BOOKMARK_CHARACTER_DIFFICULTY_HARD"
+		history_id = tm_badenya_djeneba
+		position = { 310 760 }
+		animation = personality_honorable
+	}
+}

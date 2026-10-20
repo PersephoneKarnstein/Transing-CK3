@@ -1,0 +1,32 @@
+﻿# Crusader Dolls — the flyting: the faults her charges name, checked against his real traits (events/tm_flyting_events.txt).
+# Her charges are cowardice, oath-breaking, wrongs to kin and drink: never a feminising barb (Evans and Hancock, row 5).
+
+tm_flyt_craven_trigger = {
+	OR = {
+		has_trait = craven
+		has_trait = shy
+	}
+}
+
+tm_flyt_oathbreaker_trigger = {
+	OR = {
+		has_trait = deceitful
+		has_trait = fickle
+		has_trait = disloyal
+	}
+}
+
+tm_flyt_kinslayer_trigger = {
+	OR = {
+		has_trait = kinslayer_1
+		has_trait = kinslayer_2
+		has_trait = kinslayer_3
+	}
+}
+
+tm_flyt_drunkard_trigger = {
+	OR = {
+		has_trait = drunkard
+		has_trait = gluttonous
+	}
+}

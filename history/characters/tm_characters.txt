@@ -1,0 +1,46 @@
+﻿# Crusader Dolls — historical characters for the 867 bookmark (common/bookmarks/bookmarks/tm_bookmarks.txt).
+# A bookmark can only show a character with a history id, so the leaders the start script used to create are
+# defined here. The script still gives them their titles (tm_on_game_start), and still creates a stand-in at a later
+# start date, when these have died. Deaths are set so that they are gone by 1066. They are not historical people.
+
+# Theia Beatrike, Mother of Mothers: "Aunt Bea", an elder daughter of the knife (Adelphai Dorleyaiou).
+tm_theia_beatrike = {
+	name = "tm_name_theia_beatrike"
+	female = yes
+	culture = kybeline
+	religion = transbian_maximalism
+	trait = tm_daughter_of_the_knife
+	trait = education_learning_4
+	trait = compassionate
+	trait = patient
+	trait = just
+	learning = 18
+	diplomacy = 12
+	stewardship = 9
+	intrigue = 11
+	martial = 4
+	813.1.1 = { birth = yes }
+	895.1.1 = { death = yes }
+}
+
+# Cantiradevi, a patron of the temple street of Kanchipuram, holds Candragiri for its Pallava lord (the Worn Garland).
+tm_garland_cantiradevi = {
+	name = "CantirA_dE_vi"
+	female = yes
+	culture = tamil
+	religion = tm_garland
+	trait = education_stewardship_2
+	838.1.1 = { birth = yes }
+	905.1.1 = { death = yes }
+}
+
+# Djeneba holds Kirina for its lord (Badenya).
+tm_badenya_djeneba = {
+	name = "Djeneba"
+	female = yes
+	culture = malinke
+	religion = tm_badenya
+	trait = education_stewardship_2
+	837.1.1 = { birth = yes }
+	905.1.1 = { death = yes }
+}

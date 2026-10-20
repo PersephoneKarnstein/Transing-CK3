@@ -1,0 +1,60 @@
+﻿# Crusader Dolls — the flyting: hostile courtiers in northern and English halls may open a word-battle against a
+# Bædling they take for unmanly (events/tm_flyting_events.txt). Appended to the vanilla yearly pulse; the effect is
+# our own on_action, so vanilla's is untouched.
+yearly_global_pulse = {
+	on_actions = { tm_yearly_flyting }
+}
+
+tm_yearly_flyting = {
+	effect = {
+		every_living_character = {
+			limit = {
+				is_adult = yes
+				is_imprisoned = no
+				rite ?= { rite_has_parameter = tm_seidr_gate }
+				NOT = { has_variable = tm_flyt_recent }
+				NOT = { has_variable = tm_flyt_round }
+				OR = {
+					tm_is_daughter_trigger = yes
+					has_trait = tm_transgender
+					has_variable = tm_declared
+				}
+			}
+			random = {
+				chance = 8
+				clear_saved_scope = tm_flyter
+				save_scope_as = tm_flyt_target
+				if = {
+					limit = { is_ruler = yes }
+					save_scope_as = tm_flyt_court
+				}
+				else = {
+					employer ?= { save_scope_as = tm_flyt_court }
+				}
+				scope:tm_flyt_court ?= {
+					random_courtier = {
+						limit = {
+							is_adult = yes
+							is_imprisoned = no
+							NOT = { this = scope:tm_flyt_target }
+							NOT = { rite ?= { rite_has_parameter = tm_seidr_gate } }
+							culture = {
+								OR = {
+									has_cultural_pillar = heritage_north_germanic
+									has_cultural_pillar = heritage_west_germanic
+								}
+							}
+							opinion = { target = scope:tm_flyt_target value <= 0 }
+						}
+						save_scope_as = tm_flyter
+					}
+				}
+				if = {
+					limit = { exists = scope:tm_flyter }
+					set_variable = { name = tm_flyt_challenged value = yes }
+					trigger_event = tm_flyting.0001
+				}
+			}
+		}
+	}
+}

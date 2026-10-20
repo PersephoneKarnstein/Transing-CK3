@@ -46,28 +46,39 @@ tm_on_game_start = {
 				}
 			}
 
-			# Theia Beatrike, Mother of Mothers: "Aunt Bea", an elder daughter of the knife.
-			create_character = {
-				after_creation = { tm_register_seed_effect = { SEAT = phrygia } }
-				name = tm_name_theia_beatrike
-				gender = female
-				age = 54
-				culture = culture:kybeline
-				faith = faith:transbian_maximalism
-				dynasty = none
-				location = title:c_phrygia.title_province
-				random_traits = no
-				trait = tm_daughter_of_the_knife
-				trait = education_learning_4
-				trait = compassionate
-				trait = patient
-				trait = just
-				learning = 18
-				diplomacy = 12
-				stewardship = 9
-				intrigue = 11
-				martial = 4
-				save_scope_as = tm_beatrike
+			# Theia Beatrike, Mother of Mothers: "Aunt Bea", an elder daughter of the knife. At 867 she is the
+			# historical character of the bookmark (history/characters/tm_characters.txt); at a later start, a stand-in.
+			character:tm_theia_beatrike ?= {
+				if = {
+					limit = { is_alive = yes }
+					save_scope_as = tm_beatrike
+					tm_register_seed_effect = { SEAT = phrygia }
+				}
+			}
+			if = {
+				limit = { NOT = { exists = scope:tm_beatrike } }
+				create_character = {
+					after_creation = { tm_register_seed_effect = { SEAT = phrygia } }
+					name = tm_name_theia_beatrike
+					gender = female
+					age = 54
+					culture = culture:kybeline
+					faith = faith:transbian_maximalism
+					dynasty = none
+					location = title:c_phrygia.title_province
+					random_traits = no
+					trait = tm_daughter_of_the_knife
+					trait = education_learning_4
+					trait = compassionate
+					trait = patient
+					trait = just
+					learning = 18
+					diplomacy = 12
+					stewardship = 9
+					intrigue = 11
+					martial = 4
+					save_scope_as = tm_beatrike
+				}
 			}
 			create_title_and_vassal_change = {
 				type = created
@@ -278,6 +289,12 @@ tm_on_game_start = {
 			}
 			# Kanchipuram is the Pallava capital, so its lord keeps it. A patron of the temple street holds Candragiri, in
 			# the same duchy, as his vassal: a landed court of the faith (user, 2026-10-20). The Marked young men are hers.
+			character:tm_garland_cantiradevi ?= {		# the bookmark's countess (history/characters/tm_characters.txt)
+				if = {
+					limit = { is_alive = yes is_landed = no }
+					save_scope_as = tm_foothold_preset
+				}
+			}
 			tm_seed_foothold_effect = { COUNTY = title:c_candragiri FAITH = faith:tm_garland SEAT = kanchipuram }
 			if = {
 				limit = { scope:tm_foothold_host ?= { faith = faith:tm_garland } }
@@ -289,6 +306,12 @@ tm_on_game_start = {
 			}
 
 			# Badenya keeps Kirina (Sibi); a jelimuso who crossed sits at the court that holds it (tm_seed_foothold_effect).
+			character:tm_badenya_djeneba ?= {		# the bookmark's countess (history/characters/tm_characters.txt)
+				if = {
+					limit = { is_alive = yes is_landed = no }
+					save_scope_as = tm_foothold_preset
+				}
+			}
 			tm_seed_foothold_effect = { COUNTY = title:c_sibi_mali FAITH = faith:tm_badenya SEAT = kirina }
 			scope:tm_foothold_host ?= { save_scope_as = tm_kirina_lord }
 			if = {
@@ -804,6 +827,8 @@ tm_yearly_growth = {
 		}
 		# The pilgrimage to the kahal (tm_kahal_pilgrimage_effect): Marked young Jews come to the seat to be taken in.
 		tm_kahal_pilgrimage_effect = yes
+		# The kahal keeps its children (tm_kahal_keeps_children_effect): a guardian of another faith may not convert them.
+		tm_kahal_keeps_children_effect = yes
 		# The way home (tm_homecoming_effect): Marked members and daughters with no court come to the faith's home court.
 		tm_homecoming_effect = { FAITH = faith:tm_baeddel SEAT = title:c_gutland }
 		tm_homecoming_effect = { FAITH = faith:tm_garland SEAT = title:c_kanchipuram }

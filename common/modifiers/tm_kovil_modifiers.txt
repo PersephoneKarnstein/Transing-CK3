@@ -1,0 +1,24 @@
+﻿# Crusader Dolls — honours of the temple's deal (tm_kovil.0001; Orr 2000, pp. 74–75, 151). Held for life and passed
+# to her daughter (tm_kovil_pass_on_effect).
+
+# A verse of the Tiruvempāvai to sing in Mārkaḻi (NK 134, 1213; Orr pp. 17–18).
+tm_kovil_verse_modifier = {
+	icon = piety_positive
+	monthly_piety = 0.3
+	stress_loss_mult = 0.1
+}
+
+# The flywhisk beside the god in procession (Orr pp. 74–75).
+tm_kovil_flywhisk_modifier = {
+	icon = prestige_positive
+	monthly_prestige = 0.3
+	diplomacy = 1
+}
+
+# The first house in the temple quarter (ARE 29 of 1940–41; Orr p. 151).
+tm_kovil_first_house_modifier = {
+	icon = prestige_positive
+	monthly_prestige = 0.3
+	monthly_piety = 0.3
+	stewardship = 1
+}

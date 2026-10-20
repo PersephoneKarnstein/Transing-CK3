@@ -1,0 +1,16 @@
+﻿# Crusader Dolls — the New Roof (tm_newroof_events.txt).
+
+# A daughter of Badenya not yet gathered into an age-set under a new roof.
+tm_newroof_new_daughter_trigger = {
+	faith = faith:tm_badenya
+	tm_is_daughter_trigger = yes
+	NOT = { has_variable = tm_roofed }
+}
+
+# A ruler whose court (or who herself) has such a daughter. Scope: the ruler.
+tm_newroof_court_trigger = {
+	OR = {
+		tm_newroof_new_daughter_trigger = yes
+		any_courtier = { tm_newroof_new_daughter_trigger = yes }
+	}
+}

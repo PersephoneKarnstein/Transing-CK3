@@ -1,0 +1,190 @@
+﻿namespace = tm_byzr
+
+# Events from the Byzantine reading (docs/TODO.md, "Stage 2 inputs from the Byzantine reading").
+#   0001  Liudprand's four children (949). In 949 Liudprand of Cremona, envoy of Berengar II, gave Constantine VII
+#         breastplates, shields, cups "and four carzimasia slaves, to this emperor the most precious of all these
+#         things": children cut by the merchants of Verdun, who sold them into Spain for the profit (Liudprand,
+#         Retribution 6.6, p. 199; research/byz_liudprand.md). Most court eunuchs were cut before puberty, some at
+#         seven (Ringrose 2003, p. 61; research/byz_ringrose_perfect_servant.md). The Sisters answer with ransom and
+#         adoption; the cutting is never shown, and no child is given a rite or a name (Gift Alone: only those who
+#         later ask). Under Grandmother's House the House claims them as daughters, and the text lets the cost show.
+#   0010  The Emperor halts at Dorylaion. Dorylaion was the second aplekton (army camp) on the road east, after
+#         Malagina (De Cerimoniis, App. A, R444), an Opsikion city with imperial herds (Nesbitt and Oikonomides
+#         1996, no. 71.22, p. 124); the Emperor greets a theme's officers "How are you, my children?" (App. C, R483).
+#         See research/byz_moffatt_tall_de_cerimoniis.md, row 6.
+#   0011  The chamber asks for a daughter. The palace kept offices for eunuchs (Bury 1911, pp. 121, 124-28) and
+#         used them for their "inability to form biological families" (Squatriti on Liudprand, Embassy 29, n. 58).
+#         Raha and van der Drift's warning: office is the price of inclusion (research/book_raha_vdd_trans_femme_futures.md).
+
+# Liudprand's four children. Root = the Mother of Mothers, or the greatest ruler of the faith.
+# scope:tm_byzr_emperor = the holder of the Empire of the Romans, if any.
+tm_byzr.0001 = {
+	type = character_event
+	title = tm_byzr.0001.t
+	desc = tm_byzr.0001.desc
+	theme = faith
+	left_portrait = { character = root animation = worry }
+	right_portrait = { character = scope:tm_byzr_emperor animation = personality_honorable }
+
+	option = {	# Gift Alone: ransom them and raise them; only those who ask, when grown
+		name = tm_byzr.0001.a
+		trigger = {
+			rite ?= { rite_has_doctrine = tm_knife_gift_alone }
+			gold >= 150
+		}
+		remove_short_term_gold = 150
+		tm_byzr_ransom_children_effect = yes
+		add_piety = 100
+		ai_chance = { base = 100 }
+	}
+	option = {	# Aunt Bea's House: ransom them, a sponsor for each
+		name = tm_byzr.0001.b
+		trigger = {
+			rite ?= { rite_has_doctrine = tm_knife_aunt_bea }
+			gold >= 150
+		}
+		remove_short_term_gold = 150
+		tm_byzr_ransom_children_effect = yes
+		add_prestige = 75
+		ai_chance = { base = 100 }
+	}
+	option = {	# Grandmother's House: take them, and call them daughters
+		name = tm_byzr.0001.c
+		trigger = {
+			rite ?= { rite_has_doctrine = tm_knife_grandmother }
+			gold >= 150
+		}
+		remove_short_term_gold = 150
+		tm_byzr_ransom_children_effect = yes
+		add_dread = 10
+		add_piety = 50
+		ai_chance = { base = 100 }
+	}
+	option = {	# Petition the Emperor to give them up
+		name = tm_byzr.0001.d
+		trigger = { exists = scope:tm_byzr_emperor }
+		add_prestige = -100
+		random_list = {
+			30 = {
+				desc = tm_byzr.0001.d.granted
+				tm_byzr_ransom_children_effect = yes
+				scope:tm_byzr_emperor = { add_opinion = { target = root modifier = angry_opinion opinion = -10 } }
+			}
+			70 = {
+				desc = tm_byzr.0001.d.refused
+				add_stress = 15
+			}
+		}
+		ai_chance = { base = 20 }
+	}
+	option = {	# The palace is out of reach
+		name = tm_byzr.0001.e
+		add_stress = 20
+		ai_chance = { base = 5 }
+	}
+}
+
+# The Emperor halts at Dorylaion. Root = the ruler of the faith who holds Phrygia.
+# scope:tm_byzr_emperor = the Emperor, at war, whose realm holds Phrygia.
+tm_byzr.0010 = {
+	type = character_event
+	title = tm_byzr.0010.t
+	desc = tm_byzr.0010.desc
+	theme = war
+	left_portrait = { character = root animation = personality_rational }
+	right_portrait = { character = scope:tm_byzr_emperor animation = personality_bold }
+
+	trigger = { exists = scope:tm_byzr_emperor }
+
+	option = {	# Host the army
+		name = tm_byzr.0010.a
+		trigger = { gold >= 75 }
+		remove_short_term_gold = 75
+		add_prestige = 50
+		scope:tm_byzr_emperor = { add_opinion = { target = root modifier = grateful_opinion opinion = 20 } }
+		# The chamber notices who keeps the House.
+		if = {
+			limit = {
+				any_courtier = { has_trait = tm_daughter_of_the_knife is_adult = yes is_imprisoned = no }
+			}
+			random = {
+				chance = 60
+				random_courtier = {
+					limit = { has_trait = tm_daughter_of_the_knife is_adult = yes is_imprisoned = no }
+					save_scope_as = tm_byzr_daughter
+				}
+				trigger_event = { id = tm_byzr.0011 days = 3 }
+			}
+		}
+		ai_chance = { base = 60 }
+	}
+	option = {	# Petition the Emperor against the heresy laws
+		name = tm_byzr.0010.b
+		trigger = { has_variable = tm_suppression }
+		add_prestige = -50
+		random_list = {
+			40 = {
+				desc = tm_byzr.0010.b.granted
+				remove_variable = tm_suppression
+				scope:tm_byzr_emperor = { add_opinion = { target = root modifier = respect_opinion opinion = 10 } }
+			}
+			60 = {
+				desc = tm_byzr.0010.b.refused
+				scope:tm_byzr_emperor = { add_opinion = { target = root modifier = angry_opinion opinion = -10 } }
+			}
+		}
+		ai_chance = { base = 30 }
+	}
+	option = {	# Keep the daughters in the Houses until the army has gone
+		name = tm_byzr.0010.c
+		add_stress = 10
+		add_piety = 25
+		ai_chance = { base = 30 }
+	}
+}
+
+# The chamber asks for a daughter. Root = the ruler who hosted the army. scope:tm_byzr_daughter = a daughter of the
+# knife at her court; scope:tm_byzr_emperor = the Emperor.
+tm_byzr.0011 = {
+	type = character_event
+	title = tm_byzr.0011.t
+	desc = tm_byzr.0011.desc
+	theme = court
+	left_portrait = { character = scope:tm_byzr_daughter animation = personality_rational }
+	right_portrait = { character = root animation = worry }
+
+	trigger = {
+		exists = scope:tm_byzr_daughter
+		exists = scope:tm_byzr_emperor
+		scope:tm_byzr_daughter = { is_alive = yes is_courtier_of = root }
+	}
+
+	option = {	# Let her choose
+		name = tm_byzr.0011.a
+		random_list = {
+			50 = {
+				desc = tm_byzr.0011.a.goes
+				modifier = { add = 30 scope:tm_byzr_daughter = { has_trait = ambitious } }
+				modifier = { add = 20 scope:tm_byzr_daughter = { has_trait = greedy } }
+				modifier = { add = -30 scope:tm_byzr_daughter = { has_trait = content } }
+				scope:tm_byzr_daughter = { add_prestige = 100 }
+				scope:tm_byzr_emperor = {
+					add_courtier = scope:tm_byzr_daughter
+					add_opinion = { target = root modifier = grateful_opinion opinion = 15 }
+				}
+			}
+			50 = {
+				desc = tm_byzr.0011.a.stays
+				scope:tm_byzr_daughter = { add_opinion = { target = root modifier = respect_opinion opinion = 15 } }
+			}
+		}
+		ai_chance = { base = 70 }
+	}
+	option = {	# She is a woman, not a eunuch
+		name = tm_byzr.0011.b
+		add_prestige = 25
+		scope:tm_byzr_emperor = { add_opinion = { target = root modifier = angry_opinion opinion = -10 } }
+		scope:tm_byzr_daughter = { add_opinion = { target = root modifier = grateful_opinion opinion = 20 } }
+		ai_chance = { base = 30 }
+	}
+}

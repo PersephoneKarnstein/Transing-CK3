@@ -1,0 +1,57 @@
+﻿# Crusader Dolls — the New Roof: every seventh dry season (tm_newroof_events.txt).
+
+yearly_global_pulse = {
+	on_actions = {
+		tm_newroof_yearly
+	}
+}
+
+# Every seven years from game start, each court with daughters of Badenya not yet under a roof holds one. The pulse
+# runs at the turn of the year; the event comes in the dry season, two to four months on (Jansen 2002, p. 47: the
+# new age-set gathers when the rains have stopped). The host is the court's ruler if of the faith; otherwise the
+# eldest woman of the faith there (a daughter first), as the House keeps its roof under any lord.
+tm_newroof_yearly = {
+	effect = {
+		if = {
+			limit = { NOT = { has_global_variable = tm_next_new_roof } }
+			set_global_variable = { name = tm_next_new_roof value = { value = current_year add = 7 } }
+		}
+		else_if = {
+			limit = { current_year >= global_var:tm_next_new_roof }
+			set_global_variable = { name = tm_next_new_roof value = { value = current_year add = 7 } }
+			every_ruler = {
+				limit = {
+					is_imprisoned = no
+					tm_newroof_court_trigger = yes
+				}
+				save_scope_as = tm_roof_court
+				if = {
+					limit = { faith = faith:tm_badenya }
+					trigger_event = { id = tm_newroof.0001 days = { 60 120 } }
+				}
+				else = {
+					clear_saved_scope = tm_roof_doyenne
+					ordered_courtier = {
+						limit = {
+							faith = faith:tm_badenya
+							is_adult = yes
+							is_imprisoned = no
+							OR = {
+								is_female = yes
+								tm_is_daughter_trigger = yes
+							}
+						}
+						order_by = {
+							value = age
+							if = { limit = { tm_is_daughter_trigger = yes } add = 100 }
+						}
+						save_scope_as = tm_roof_doyenne
+					}
+					scope:tm_roof_doyenne ?= {
+						trigger_event = { id = tm_newroof.0001 days = { 60 120 } }
+					}
+				}
+			}
+		}
+	}
+}

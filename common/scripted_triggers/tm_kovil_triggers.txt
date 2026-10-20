@@ -1,0 +1,18 @@
+﻿# Crusader Dolls — the temple's deal (events/tm_kovil_events.txt).
+
+# A daughter of the Garland who could be offered the temple's deal. Scope: a character.
+tm_kovil_candidate_trigger = {
+	is_adult = yes
+	is_imprisoned = no
+	faith = faith:tm_garland
+	tm_is_daughter_trigger = yes
+	NOT = { has_variable = tm_kovil_honor }
+}
+
+# Could take up her mother's honour: a living woman of the Garland with none of her own. Scope: a child.
+tm_kovil_heir_trigger = {
+	is_alive = yes
+	is_female = yes
+	faith = faith:tm_garland
+	NOT = { has_variable = tm_kovil_honor }
+}

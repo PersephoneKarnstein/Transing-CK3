@@ -1,0 +1,171 @@
+﻿namespace = tm_kovil
+
+# The temple's deal: a gift to the temple, given for an honour "to her and her descendants" (Orr 2000).
+# In the Tamil inscriptions of 1070–1300, women of the temple gave gold or land and were granted honours in
+# return: a verse of a hymn to sing, the flywhisk or a place near the god in procession, the first house in the
+# temple quarter. Ten of the twenty-one such grants are hereditary (Orr 2000, pp. 74–75, 151). At Tirupampuram in
+# 1213 a temple woman received "the seventh verse of Tiruvempavai at the Tiruvatirai festival in the month of
+# Markali", for her and her descendants (NK 134; Orr pp. 17–18). The Tiruvempāvai is the one hymn the inscriptions
+# give to women singers (p. 108). Temple men almost never made such deals (pp. 75–76).
+# The temple women of the record are not daughters of the Garland and the narrator does not make them so;
+# the Garland takes their deals as its own way of holding a place (tenet The Temple Street).
+#   0001  the temple offers a deal: a verse, the flywhisk, or the first house; who pays
+#   0009  hidden: a verse-holder waits for Mārkaḻi
+#   0002  the seventh verse, sung at Tiruvātirai in Mārkaḻi
+#   0003  the honour passes on her death to her daughter (born or taken)
+# Root = the ruler of the court (0001); the honour-holder (0002, 0003, 0009).
+# scope:tm_kovil_woman = the daughter of the Garland offered the deal (may be root). scope:tm_kovil_mother = the dead holder.
+
+# The temple's deal. Root = the ruler; scope:tm_kovil_woman = a daughter of the Garland at her court, or herself.
+tm_kovil.0001 = {
+	type = character_event
+	title = tm_kovil.0001.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:tm_kovil_woman = root }
+				desc = tm_kovil.0001.desc_self
+			}
+			desc = tm_kovil.0001.desc
+		}
+	}
+	theme = faith
+	left_portrait = { character = scope:tm_kovil_woman animation = happiness }
+
+	trigger = {
+		exists = scope:tm_kovil_woman
+		scope:tm_kovil_woman = {
+			is_alive = yes
+			tm_kovil_candidate_trigger = yes
+			OR = {
+				this = root
+				employer ?= root
+			}
+		}
+	}
+
+	option = {	# A verse of the Tiruvempāvai, hers to sing in Mārkaḻi
+		name = tm_kovil.0001.a
+		trigger = { gold >= 50 }
+		remove_short_term_gold = 50
+		scope:tm_kovil_woman = { tm_kovil_grant_effect = { HONOR = verse } }
+		tm_kovil_patron_effect = yes
+		ai_chance = { base = 40 }
+	}
+	option = {	# The flywhisk beside the god in procession
+		name = tm_kovil.0001.b
+		trigger = { gold >= 50 }
+		remove_short_term_gold = 50
+		scope:tm_kovil_woman = { tm_kovil_grant_effect = { HONOR = flywhisk } }
+		tm_kovil_patron_effect = yes
+		ai_chance = { base = 25 }
+	}
+	option = {	# The first house in the temple quarter
+		name = tm_kovil.0001.c
+		trigger = { gold >= 120 }
+		remove_short_term_gold = 120
+		scope:tm_kovil_woman = { tm_kovil_grant_effect = { HONOR = first_house } }
+		tm_kovil_patron_effect = yes
+		capital_county ?= { set_variable = { name = tm_temple_street value = yes } }
+		ai_chance = { base = 10 }
+	}
+	option = {	# She gives from her own purse
+		name = tm_kovil.0001.d
+		trigger = {
+			NOT = { scope:tm_kovil_woman = root }
+			scope:tm_kovil_woman = { gold >= 50 }
+		}
+		scope:tm_kovil_woman = {
+			remove_short_term_gold = 50
+			tm_kovil_grant_effect = { HONOR = verse }
+		}
+		ai_chance = { base = 30 }
+	}
+	option = {	# Not this year
+		name = tm_kovil.0001.e
+		if = {
+			limit = { NOT = { scope:tm_kovil_woman = root } }
+			scope:tm_kovil_woman = { add_opinion = { target = root modifier = disappointed_opinion opinion = -10 } }
+		}
+		ai_chance = { base = 15 }
+	}
+}
+
+# The seventh verse. Root = the holder of the verse, in Mārkaḻi.
+tm_kovil.0002 = {
+	type = character_event
+	title = tm_kovil.0002.t
+	desc = tm_kovil.0002.desc
+	theme = faith
+	left_portrait = { character = root animation = happiness }
+
+	trigger = {
+		var:tm_kovil_honor ?= flag:verse
+		is_imprisoned = no
+	}
+
+	option = {	# Sing it
+		name = tm_kovil.0002.a
+		add_piety = 15
+		add_stress = -10
+	}
+	option = {	# Let her daughter sing it with her
+		name = tm_kovil.0002.b
+		trigger = {
+			any_child = { tm_kovil_heir_trigger = yes }
+		}
+		random_child = {
+			limit = { tm_kovil_heir_trigger = yes }
+			add_opinion = { target = root modifier = respect_opinion opinion = 15 }
+		}
+		add_piety = 10
+	}
+
+	after = {
+		trigger_event = { id = tm_kovil.0009 days = { 300 1000 } }
+	}
+}
+
+# The honour passes to her daughter. Root = the heir; scope:tm_kovil_mother = the dead holder.
+tm_kovil.0003 = {
+	type = character_event
+	title = tm_kovil.0003.t
+	desc = tm_kovil.0003.desc
+	theme = faith
+	left_portrait = { character = root animation = grief }
+
+	trigger = { exists = scope:tm_kovil_mother }
+
+	option = {
+		name = tm_kovil.0003.a
+		add_piety = 10
+	}
+}
+
+# Hidden: a holder of the verse waits for Mārkaḻi. Re-fires monthly, a year at most.
+tm_kovil.0009 = {
+	type = character_event
+	hidden = yes
+
+	trigger = { var:tm_kovil_honor ?= flag:verse }
+
+	immediate = {
+		if = {
+			limit = { tm_is_markali_trigger = yes }
+			remove_variable = tm_kovil_wait
+			trigger_event = tm_kovil.0002
+		}
+		else_if = {
+			limit = { NOT = { var:tm_kovil_wait ?= 12 } }
+			if = {
+				limit = { NOT = { has_variable = tm_kovil_wait } }
+				set_variable = { name = tm_kovil_wait value = 0 }
+			}
+			change_variable = { name = tm_kovil_wait add = 1 }
+			trigger_event = { id = tm_kovil.0009 days = 30 }
+		}
+		else = {
+			remove_variable = tm_kovil_wait
+		}
+	}
+}

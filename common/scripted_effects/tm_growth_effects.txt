@@ -358,6 +358,38 @@ tm_kahal_pilgrimage_effect = {
 	}
 }
 
+# The kahal keeps its children. An AI ruler who gives a child of the sect a guardian of his own faith picks the
+# "convert faith" education by default (vanilla 00_education_interactions.txt), so every child raised at a Christian
+# court grew up Christian: the Arles household was gone within a generation in three observe runs. A guardian outside
+# the sect may still teach her, but not convert her. A player's own choice stands. Scope: none (tm_yearly_growth).
+tm_kahal_keeps_children_effect = {
+	every_living_character = {
+		limit = {
+			is_adult = no
+			faith = faith:tm_nehpakhot
+			NOT = { employer ?= { is_ai = no } }
+		}
+		save_scope_as = tm_kahal_child
+		every_relation = {
+			type = guardian
+			limit = {
+				is_ai = yes
+				NOT = { faith = faith:tm_nehpakhot }
+				has_relation_flag = {
+					target = scope:tm_kahal_child
+					relation = ward
+					flag = convert_faith
+				}
+			}
+			remove_relation_flag = {
+				target = scope:tm_kahal_child
+				relation = ward
+				flag = convert_faith
+			}
+		}
+	}
+}
+
 # The way home: Marked members and daughters of the faith with no court (pool characters, who wander and are cleared)
 # come to the faith's home court. That is the holder of the seat if they are of the faith, else the ruler of the faith
 # with most members at court, else the seat's lord, at whose court the faith has lived. Like the pilgrimage to the
@@ -429,6 +461,7 @@ tm_seed_marked_courtiers_effect = {
 # and a count under a liege cannot march on a kingdom (a converted independent lord's line formed Scandinavia in one
 # observe run, and held Mali in another). Otherwise the lord keeps it and the faith lives at their court.
 # Saves scope:tm_foothold_host, the court the faith's seed characters should join.
+# If the caller saved scope:tm_foothold_preset (a bookmark character), she is the vassal instead of a new woman.
 # $COUNTY$ a county title, $FAITH$ a faith, $SEAT$ the seat's name (tm_register_seed_effect).
 tm_seed_foothold_effect = {
 	clear_saved_scope = tm_foothold_lord		# the effect runs once per seat: earlier seats' scopes must not carry over
@@ -446,16 +479,27 @@ tm_seed_foothold_effect = {
 				NOT = { capital_county ?= $COUNTY$ }
 			}
 		}
-		create_character = {
-			gender = female
-			age = { 24 34 }
-			culture = $COUNTY$.culture
-			faith = $FAITH$
-			dynasty = generate
-			employer = scope:tm_foothold_lord
-			trait = education_stewardship_2
-			save_scope_as = tm_foothold_count
-			after_creation = { tm_register_seed_effect = { SEAT = $SEAT$ } }
+		# The bookmark's historical countess, if the caller saved her as scope:tm_foothold_preset; else a new woman.
+		if = {
+			limit = { exists = scope:tm_foothold_preset }
+			scope:tm_foothold_preset = {
+				save_scope_as = tm_foothold_count
+				tm_register_seed_effect = { SEAT = $SEAT$ }
+			}
+			scope:tm_foothold_lord = { add_courtier = scope:tm_foothold_count }
+		}
+		else = {
+			create_character = {
+				gender = female
+				age = { 24 34 }
+				culture = $COUNTY$.culture
+				faith = $FAITH$
+				dynasty = generate
+				employer = scope:tm_foothold_lord
+				trait = education_stewardship_2
+				save_scope_as = tm_foothold_count
+				after_creation = { tm_register_seed_effect = { SEAT = $SEAT$ } }
+			}
 		}
 		create_title_and_vassal_change = {
 			type = granted
@@ -488,4 +532,5 @@ tm_seed_foothold_effect = {
 	else = {
 		$COUNTY$ = { set_variable = { name = tm_seat_branch value = flag:unheld } }
 	}
+	clear_saved_scope = tm_foothold_preset
 }

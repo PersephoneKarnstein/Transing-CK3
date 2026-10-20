@@ -1,0 +1,57 @@
+﻿# Crusader Dolls — the temple's deal (events/tm_kovil_events.txt).
+
+yearly_playable_pulse = {
+	on_actions = {
+		tm_kovil_yearly
+	}
+}
+
+on_death = {
+	on_actions = {
+		tm_kovil_on_death
+	}
+}
+
+# A Hindu court with a daughter of the Garland may be offered the temple's deal. The inscriptions record such deals
+# from 1070 to 1300 (Orr 2000, pp. 74–75); earlier and later they are rarer here, not absent.
+tm_kovil_yearly = {
+	trigger = {
+		faith ?= { religion = religion:hinduism_religion }
+		OR = {
+			tm_kovil_candidate_trigger = yes
+			any_courtier = { tm_kovil_candidate_trigger = yes }
+		}
+	}
+	effect = {
+		random = {
+			chance = 4
+			modifier = {
+				add = 8
+				current_year >= 1070
+				current_year < 1300
+			}
+			if = {
+				limit = { tm_kovil_candidate_trigger = yes }
+				save_scope_as = tm_kovil_woman
+			}
+			else = {
+				random_courtier = {
+					limit = { tm_kovil_candidate_trigger = yes }
+					save_scope_as = tm_kovil_woman
+				}
+			}
+			trigger_event = { id = tm_kovil.0001 days = { 1 300 } }
+		}
+	}
+}
+
+# The honour passes to her daughter. A body she left at re-embodiment passes nothing: she lives on.
+tm_kovil_on_death = {
+	trigger = {
+		has_variable = tm_kovil_honor
+		NOT = { has_variable = tm_reborn }
+	}
+	effect = {
+		tm_kovil_pass_on_effect = yes
+	}
+}

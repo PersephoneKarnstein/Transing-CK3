@@ -87,11 +87,13 @@ Women held real power at this court: Sulaymān's chief wife, Qāsā, shared the 
 
 **Feasts and funerals.** Each year a daughter of the House may be called to a naming feast. She serves at her first three, then may host one for 25 gold and five years' prestige. When a daughter dies, her lord decides whether the House buries her. Burial by the House earns piety and the respect of daughters at court. Giving her to her blood kin earns a little prestige and their resentment.
 
+**The New Roof.** Every seventh dry season a court of the faith puts a new roof on its house. The daughters who crossed since the last roof are gathered into one age-set, whose name is told first and shouted when the roof is on (Jansen 2002, pp. 45–47, 52). The host pays for the roof, or lets the court's offerings be called aloud with each giver's name (p. 51); either way the set's members stand together for seven years. It is built on Mande house and age-set practice, not on the Kamabolon of Kangaba, and the seven-yearly roof as the faith's own is a reconstruction.
+
 **Growth.** The shared call reaches West Africa: each year a Marked person of another faith there may join Badenya, more likely with a member or a House nearby. In one test run a converted lord's line took Mali in 967 and Badenya ruled thirteen kingdoms; a faith this small should grow slowly, so Kirina now starts as a county and a court, not a converted lord. In a later run Badenya fell to one member in the 970s and recovered to 39 by the 1000s.
 
 **Neighbours.** Most of the faith's neighbours are Muslim. Under the shared rules, Islamic courts value a daughter as a trusted servant and think less of her as a ruler. That reaction leans partly on Leo Africanus's Fez of the early 16th century, where, as Davis reads him, people Leo calls men, in women's dress, cooked for the army and lamented the dead but were barred from the mosques (Davis 2006, chs. 4 and 7). The Maliki jurist at the mansa's court is the hostile voice. Jewish and Indic reactions apply as for every faith.
 
-**Designed, not yet built.** A seven-yearly "New Roof" that gathers new daughters into an age-set, after Mande re-roofing and age-set practice but not the Kamabolon's rites (Jansen 2002, pp. 45–47, 52); a refuge at the rock of Koulikoro, which from 1819 to about 1930 sheltered runaways of either sex fleeing a master or a spouse (Bulman et al. 2023, ch. 2, p. 63), without its shrine; and a warm misreading by the Orisha faith, which would see a daughter as a bride of the god (Matory 2005, pp. 7, 216–217).
+**Designed, not yet built.** A refuge at the rock of Koulikoro, which from 1819 to about 1930 sheltered runaways of either sex fleeing a master or a spouse (Bulman et al. 2023, ch. 2, p. 63), without its shrine; and a warm misreading by the Orisha faith, which would see a daughter as a bride of the god (Matory 2005, pp. 7, 216–217).
 
 ## What is attested and what is invented
 

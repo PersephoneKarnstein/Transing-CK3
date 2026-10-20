@@ -81,9 +81,11 @@ How far to trust this scene is disputed. It was written down in the early thirte
 
 **The line.** Daughters bear no children, so the hall continues by fostering and adoption. A woman who knows the songs should teach them to her wards, since a known singer is the largest single bonus at the platform. *Take as Daughter*, *Declare Before Witnesses*, Sisters' Houses and *The Sisters Choose* work as for every faith (see [Shared mechanics](../../README.md#shared-mechanics)).
 
+**The flyting.** A Bædling can challenge anyone to a flyting, and hostile courtiers in northern and English halls challenge her. It runs three rounds of charge and answer, scored as Clover reads the genre: an accurate charge wins, an untrue one rebounds, and the best defence concedes the fact and fights over its meaning (Clover 1980). Against *ragr* the strongest answer is to own the word (Meulengracht Sørensen 1983, p. 18). Stakes rise with witnesses and double at the June thing, as *Grágás* doubles them at the Assembly. A lady of the hall may end it with the cup, as Wealhþeow does after the Unferþ flyting (Damico 1984, p. 10).
+
 **Growth.** Each year a Marked character of another faith in Scandinavia, Britain or the eastern Baltic may hear the call and join, more likely with a member or a House nearby. Courtiers who are Marked, eunuchs or declared sisters may begin the rite on their own. The faith is meant to grow slowly. Members with no court, if Marked or daughters, may come home to the faith's court. Gotland's count is converted at the start, as Shazhou's is: the island is the faith's own. In one test run that count's line founded a Scandinavian empire; the start was then made a minority one, and in the next runs the faith never held land. The converted count is back, to be tuned if it blooms again (faith_design.md §14).
 
-**Neighbours.** Christian, Jewish, Islamic and Indic courts react to daughters as described in the README. Planned for a later stage, and not yet built: insult duels on the flyting pattern, feud and settlement, the outlawry tiers of *Grágás*, landless war-bands, *Spring the Cell*, the sorcery law's era arc and Wulfstan's sermon as English reaction text.
+**Neighbours.** Christian, Jewish, Islamic and Indic courts react to daughters as described in the README. Planned for a later stage, and not yet built: feud and settlement, the níð-pole, the outlawry tiers of *Grágás*, landless war-bands, *Spring the Cell*, the sorcery law's era arc and Wulfstan's sermon as English reaction text.
 
 ## What is attested and what is invented
 

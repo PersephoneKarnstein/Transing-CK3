@@ -1,0 +1,137 @@
+﻿namespace = tm_newroof
+
+# The New Roof (Badenya; docs/faiths/badenya.md, "Designed, not yet built"; design in research/waf_jansen_kangaba_griots.md §4.6).
+# Every seventh dry season a court of the faith puts a new roof on its house, and the daughters who crossed since the
+# last roof are gathered into one age-set, whose name is shouted when the roof is on.
+# Built on Mande house and village practice, not on the Kamabolon of Kangaba, a living and guarded sanctuary whose
+# rites the mod does not use. Sources: in the dry season the walls are re-plastered and the yard swept, and a new
+# age-set is installed after the village is cleaned; the set's name is announced first and shouted at the end
+# (Jansen 2002, pp. 45–47, 52); an old woman at the entrance cries the blessing, and offerings are called aloud with
+# the giver's name (p. 51); the stranger is the guest "whose wishes come first" (Jansen 1996, p. 26); the potter's clay
+# from a termite mound (Jansen 2018, p. 9). The seven-yearly roof as the faith's is a reconstruction.
+#   0001  the new roof: the host (the court's ruler if of Badenya, else the eldest woman of the faith there) decides
+#   0002  under one roof: each daughter of the new set
+# Root = the host. scope:tm_roof_court = the ruler whose court it is (may be root). Started by tm_newroof_yearly.
+
+# The new roof. Root = the host.
+tm_newroof.0001 = {
+	type = character_event
+	title = tm_newroof.0001.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { any_in_list = { list = tm_roof_set count >= 2 } }
+				desc = tm_newroof.0001.desc
+			}
+			desc = tm_newroof.0001.desc_one
+		}
+		first_valid = {
+			triggered_desc = { trigger = { var:tm_roof_set_name ?= flag:stranger } desc = tm_newroof.name.stranger }
+			triggered_desc = { trigger = { var:tm_roof_set_name ?= flag:clay } desc = tm_newroof.name.clay }
+			triggered_desc = { trigger = { var:tm_roof_set_name ?= flag:cool } desc = tm_newroof.name.cool }
+			triggered_desc = { trigger = { var:tm_roof_set_name ?= flag:sweep } desc = tm_newroof.name.sweep }
+			desc = tm_newroof.name.mother
+		}
+	}
+	theme = faith
+	left_portrait = { character = root animation = happiness }
+	right_portrait = { character = scope:tm_roof_member_shown animation = personality_rational }
+
+	trigger = {
+		exists = scope:tm_roof_court
+		scope:tm_roof_court = { tm_newroof_court_trigger = yes }
+	}
+
+	immediate = {
+		scope:tm_roof_court = {
+			if = {
+				limit = { tm_newroof_new_daughter_trigger = yes }
+				add_to_list = tm_roof_set
+			}
+			every_courtier = {
+				limit = { tm_newroof_new_daughter_trigger = yes }
+				add_to_list = tm_roof_set
+			}
+		}
+		random_in_list = {
+			list = tm_roof_set
+			save_scope_as = tm_roof_member_shown
+		}
+		# The set's name is announced first (Jansen 2002, p. 46).
+		random_list = {
+			20 = { set_variable = { name = tm_roof_set_name value = flag:stranger days = 60 } }
+			20 = { set_variable = { name = tm_roof_set_name value = flag:clay days = 60 } }
+			20 = { set_variable = { name = tm_roof_set_name value = flag:cool days = 60 } }
+			20 = { set_variable = { name = tm_roof_set_name value = flag:sweep days = 60 } }
+			20 = { set_variable = { name = tm_roof_set_name value = flag:mother days = 60 } }
+		}
+	}
+
+	option = {	# Put the new roof on at my own cost
+		name = tm_newroof.0001.a
+		trigger = { gold >= 50 }
+		remove_short_term_gold = 50
+		add_prestige = 75
+		tm_newroof_gather_effect = yes
+		every_in_list = {
+			list = tm_roof_set
+			limit = { NOT = { this = root } }
+			add_opinion = { target = root modifier = tm_raised_our_roof_opinion years = 7 }
+		}
+		ai_chance = { base = 60 }
+	}
+	option = {	# Let the court bring offerings, and call each one aloud
+		name = tm_newroof.0001.b
+		add_prestige = 25
+		tm_newroof_gather_effect = yes
+		scope:tm_roof_court = {
+			every_courtier = {
+				limit = {
+					is_adult = yes
+					NOT = { is_in_list = tm_roof_set }
+					NOT = { this = root }
+					gold >= 10
+					opinion = { target = root value >= 0 }
+				}
+				remove_short_term_gold = 10
+				save_scope_as = tm_roof_giver
+				every_in_list = {
+					list = tm_roof_set
+					add_opinion = { target = scope:tm_roof_giver modifier = tm_gave_at_roof_opinion years = 7 }
+				}
+			}
+		}
+		ai_chance = { base = 35 }
+	}
+	option = {	# Not this dry season
+		name = tm_newroof.0001.c
+		every_in_list = {
+			list = tm_roof_set
+			limit = { NOT = { this = root } }
+			add_opinion = { target = root modifier = tm_roof_put_off_opinion years = 3 }
+		}
+		ai_chance = { base = 5 }
+	}
+}
+
+# Under one roof. Root = a daughter of the new set.
+tm_newroof.0002 = {
+	type = character_event
+	title = tm_newroof.0002.t
+	desc = {
+		desc = tm_newroof.0002.desc
+		first_valid = {
+			triggered_desc = { trigger = { var:tm_roof_set_name ?= flag:stranger } desc = tm_newroof.name.stranger }
+			triggered_desc = { trigger = { var:tm_roof_set_name ?= flag:clay } desc = tm_newroof.name.clay }
+			triggered_desc = { trigger = { var:tm_roof_set_name ?= flag:cool } desc = tm_newroof.name.cool }
+			triggered_desc = { trigger = { var:tm_roof_set_name ?= flag:sweep } desc = tm_newroof.name.sweep }
+			desc = tm_newroof.name.mother
+		}
+	}
+	theme = faith
+	left_portrait = { character = root animation = happiness }
+
+	option = {
+		name = tm_newroof.0002.a
+	}
+}

@@ -1,0 +1,21 @@
+﻿# Crusader Dolls — the New Roof (tm_newroof_events.txt).
+
+# Two daughters gathered into the same age-set.
+tm_age_mate_opinion = {
+	opinion = 20
+}
+
+# The host put the new roof on at her own cost.
+tm_raised_our_roof_opinion = {
+	opinion = 15
+}
+
+# The giver's offering was called aloud at the new roof, with her name, "so that you bless her" (Jansen 2002, p. 51).
+tm_gave_at_roof_opinion = {
+	opinion = 10
+}
+
+# The host put the new roof off for another dry season.
+tm_roof_put_off_opinion = {
+	opinion = -10
+}

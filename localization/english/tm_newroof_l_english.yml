@@ -1,0 +1,23 @@
+﻿l_english:
+ ### The New Roof (Badenya) ###
+ tm_newroof.0001.t:0 "The New Roof"
+ tm_newroof.0001.desc:0 "The rains have stopped for good. The young women have plastered the walls and swept the yard, and this is the seventh dry season: the house gets a new roof. The daughters who crossed since the last roof will be gathered under it into one set, as age-mates, whatever their years. Its name is told first and shouted when the roof is on, and the eldest woman of the House sits at the door to cry the blessing."
+ tm_newroof.0001.desc_one:0 "The rains have stopped for good. The young women have plastered the walls and swept the yard, and this is the seventh dry season: the house gets a new roof. Only one daughter has crossed since the last roof. She will be a set of one, and the next roof will find her sisters. Her set's name is told first and shouted when the roof is on, and the eldest woman of the House sits at the door to cry the blessing."
+ tm_newroof.name.stranger:0 "\n\nThis set will be called Strangers First: the stranger is the guest whose wishes come first."
+ tm_newroof.name.clay:0 "\n\nThis set will be called the Termite Clay, for the mound the djinn turned to clay for the first potter."
+ tm_newroof.name.cool:0 "\n\nThis set will be called the Cooled Word, for the word that cooled each of them."
+ tm_newroof.name.sweep:0 "\n\nThis set will be called Those Who Swept the Yard."
+ tm_newroof.name.mother:0 "\n\nThis set will be called Our Mothers' Hands: everything is in your mother's hands."
+ tm_newroof.0001.a:0 "Put the new roof on at my own cost."
+ tm_newroof.0001.b:0 "Let the court bring offerings, and call each one aloud."
+ tm_newroof.0001.c:0 "Not this dry season."
+ tm_newroof.0002.t:0 "Under One Roof"
+ tm_newroof.0002.desc:0 "The roof is on. When it was done we ran out of the yard together, shouting our set's name, and everyone came to touch the new roof for the blessing. Whoever crossed with me is my age-mate now. We will stand together until the next roof, and after."
+ tm_newroof.0002.a:0 "My age-mates."
+
+ tm_same_roof_modifier:0 "Same Roof"
+ tm_same_roof_modifier_desc:0 "This character was gathered into an age-set of daughters under a new roof. Her age-mates stand with her."
+ tm_age_mate_opinion:0 "My Age-Mate"
+ tm_raised_our_roof_opinion:0 "Raised Our Roof"
+ tm_gave_at_roof_opinion:0 "Gave at Our Roof"
+ tm_roof_put_off_opinion:0 "Put Off Our Roof"

@@ -1,0 +1,49 @@
+﻿# Crusader Dolls — the temple's deal (events/tm_kovil_events.txt; Orr 2000, pp. 74–75, 151).
+
+# Grant an honour of the temple. Scope: the daughter. $HONOR$ = verse, flywhisk or first_house.
+tm_kovil_grant_effect = {
+	set_variable = { name = tm_kovil_honor value = flag:$HONOR$ }
+	add_character_modifier = { modifier = tm_kovil_$HONOR$_modifier }
+	if = {
+		limit = { var:tm_kovil_honor = flag:verse }
+		trigger_event = { id = tm_kovil.0009 days = 30 }
+	}
+}
+
+# The patron who paid for another's honour. Scope: the ruler.
+tm_kovil_patron_effect = {
+	if = {
+		limit = { NOT = { scope:tm_kovil_woman = root } }
+		add_piety = 20
+		scope:tm_kovil_woman = { add_opinion = { target = root modifier = grateful_opinion opinion = 20 } }
+	}
+}
+
+# On her death the honour passes "to her descendants": her eldest living daughter of the Garland, born or taken.
+# Scope: the dead holder.
+tm_kovil_pass_on_effect = {
+	save_scope_as = tm_kovil_mother
+	ordered_child = {
+		limit = { tm_kovil_heir_trigger = yes }
+		order_by = age
+		save_scope_as = tm_kovil_heir
+	}
+	if = {
+		limit = { exists = scope:tm_kovil_heir }
+		scope:tm_kovil_heir = {
+			if = {
+				limit = { scope:tm_kovil_mother = { var:tm_kovil_honor ?= flag:verse } }
+				tm_kovil_grant_effect = { HONOR = verse }
+			}
+			else_if = {
+				limit = { scope:tm_kovil_mother = { var:tm_kovil_honor ?= flag:flywhisk } }
+				tm_kovil_grant_effect = { HONOR = flywhisk }
+			}
+			else_if = {
+				limit = { scope:tm_kovil_mother = { var:tm_kovil_honor ?= flag:first_house } }
+				tm_kovil_grant_effect = { HONOR = first_house }
+			}
+			trigger_event = { id = tm_kovil.0003 days = 3 }
+		}
+	}
+}

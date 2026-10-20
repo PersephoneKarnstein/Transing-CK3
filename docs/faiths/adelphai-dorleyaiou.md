@@ -92,6 +92,8 @@ The law forbade making eunuchs and tolerated buying them. Leo VI's Novel 60 soft
 
 **Neighbours.** Under a lord of another Christian faith the old laws climb rung by rung: the books, then the assemblies, then the wills, faster after 1081. A bishop may preach that the Sisters are Cybele in Christian clothes, and the answer the player chooses depends on her wing. *Rescue the Daughters* frees captive daughters from a neighbour, and is closed to Grandmother's House.
 
+**Four children and an army.** In 949 Liudprand of Cremona gave the Emperor four *carzimasia*, children cut by the merchants of Verdun, as "the most precious" of his gifts (*Retribution* 6.6, p. 199). The Mother of Mothers can ransom them, and each knife House answers in its own way; none of the children is given a rite or a name. Dorylaion was an army camp on the road east (*De Cerimoniis*, App. A), so when the Emperor goes to war his army may halt at the Mother House. His chamber may ask for a daughter, offering a rank and a salary, and would count her a eunuch.
+
 **Growth.** Each year a Marked character in Asia Minor or the Balkans may hear the call, more often with a daughter, a House or a holy site nearby. The faith is meant to grow slowly. In the project's observe runs it was the faith that struggled most: Phrygia was revoked or converted back in several runs, and it fell to a few dozen members. The theocracy and a pressed claim on Phrygia for the Mother House are the current answers. The author's stance is that it may struggle, so long as it stays playable.
 
 ## What is attested and what is invented

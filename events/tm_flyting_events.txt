@@ -1,0 +1,436 @@
+﻿namespace = tm_flyting
+
+# The flyting: a word-battle in three rounds, for the Bædlings (docs/TODO.md, stage 2 inputs from the Norse reading).
+# Sources: Clover 1980 (one genre; Claim, Defense, Counterclaim; "not the most flamboyant provocations ... but the most
+# accurate ones", p. 454; "they argue interpretations, not facts", p. 458; the loser falls silent, p. 465; a lady of
+# the hall ends it with the cup, n. 72) in research/norse_clover_unferth_flyting.md. Meulengracht Sørensen 1983 (argr
+# "can only be applied to a man", p. 18) in research/norse_meulengracht_sorensen_unmanly_man.md. Grágás K §237–38 and
+# Add. §423 (words for words with no witnesses; doubled stakes at the Assembly; the three words) in
+# research/norse_gragas_laws.md. Damico 1984 (the queen's first cup after the Unferth flyting, p. 10) in
+# research/norse_damico_wealhtheow_valkyrie.md. Evans and Hancock row 5 (her charges are never feminising barbs) in
+# research/norse_evans_hancock_masculinities.md.
+#   0001  the opening: who speaks first, and where (alone, the hall, or the thing in June)
+#   0010  a round: his charge, her answer or her own charge (three rounds)
+#   0020  the end: the last word, silence, or the cup
+# Root = the Bædling. scope:tm_flyter = her opponent. Scores: var tm_flyt_me / tm_flyt_them; tm_flyt_gain = his
+# points this round, which a defence takes back. var tm_flyt_stakes: 0.5 alone, 1 in the hall, 2 at the thing.
+
+# The opening. Root = the Bædling.
+tm_flyting.0001 = {
+	type = character_event
+	title = tm_flyting.0001.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { has_variable = tm_flyt_challenged }
+				desc = tm_flyting.0001.desc.challenged
+			}
+			desc = tm_flyting.0001.desc.challenger
+		}
+		first_valid = {
+			triggered_desc = {
+				trigger = { var:tm_flyt_stakes >= 2 }
+				desc = tm_flyting.0001.desc.thing
+			}
+			triggered_desc = {
+				trigger = { var:tm_flyt_stakes >= 1 }
+				desc = tm_flyting.0001.desc.hall
+			}
+			desc = tm_flyting.0001.desc.alone
+		}
+	}
+	theme = unfriendly
+	left_portrait = { character = root animation = anger }
+	right_portrait = { character = scope:tm_flyter animation = disapproval }
+
+	trigger = { exists = scope:tm_flyter }
+
+	immediate = {
+		set_variable = { name = tm_flyt_me value = 0 }
+		set_variable = { name = tm_flyt_them value = 0 }
+		set_variable = { name = tm_flyt_round value = 1 }
+		# Witnesses and venue (Grágás: no witnesses, words for words; the Assembly doubles).
+		if = {
+			limit = {
+				location ?= { any_character_in_location = { count >= 5 } }
+				current_month = 6
+				culture = { has_cultural_pillar = heritage_north_germanic }
+			}
+			set_variable = { name = tm_flyt_stakes value = 2 }
+		}
+		else_if = {
+			limit = { location ?= { any_character_in_location = { count >= 5 } } }
+			set_variable = { name = tm_flyt_stakes value = 1 }
+		}
+		else = {
+			set_variable = { name = tm_flyt_stakes value = 0.5 }
+		}
+	}
+
+	option = {	# Answer
+		name = tm_flyting.0001.a
+		trigger_event = { id = tm_flyting.0010 days = 1 }
+		ai_chance = { base = 100 }
+	}
+	option = {	# Say nothing
+		name = tm_flyting.0001.b
+		trigger = { has_variable = tm_flyt_challenged }
+		add_prestige = -25
+		add_stress = 10
+		tm_flyting_clear_effect = yes
+		ai_chance = { base = 5 }
+	}
+	option = {	# Think better of it
+		name = tm_flyting.0001.c
+		trigger = { NOT = { has_variable = tm_flyt_challenged } }
+		tm_flyting_clear_effect = yes
+		ai_chance = { base = 0 }
+	}
+}
+
+# A round. He makes his charge; she defends or charges in turn. Root = the Bædling.
+tm_flyting.0010 = {
+	type = character_event
+	title = tm_flyting.0010.t
+	desc = {
+		desc = tm_flyting.0010.desc.score
+		first_valid = {
+			triggered_desc = {
+				trigger = { var:tm_flyt_charge = flag:ragr }
+				desc = tm_flyting.0010.desc.ragr
+			}
+			triggered_desc = {
+				trigger = { var:tm_flyt_charge = flag:daughter }
+				desc = tm_flyting.0010.desc.daughter
+			}
+			triggered_desc = {
+				trigger = { var:tm_flyt_charge = flag:craven }
+				desc = tm_flyting.0010.desc.craven
+			}
+			triggered_desc = {
+				trigger = { var:tm_flyt_charge = flag:kin }
+				desc = tm_flyting.0010.desc.kin
+			}
+			desc = tm_flyting.0010.desc.idle
+		}
+	}
+	theme = unfriendly
+	left_portrait = { character = root animation = anger }
+	right_portrait = { character = scope:tm_flyter animation = scheme }
+
+	trigger = { exists = scope:tm_flyter }
+
+	immediate = {
+		# His charge. The word and "your father's daughter" are thrown at those he takes for unmanly; the rest are
+		# true or false of her as her traits say.
+		random_list = {
+			40 = {
+				trigger = {
+					OR = {
+						has_trait = tm_transgender
+						tm_is_daughter_trigger = yes
+						has_variable = tm_declared
+						has_trait = eunuch_1
+						has_trait = beardless_eunuch
+					}
+				}
+				set_variable = { name = tm_flyt_charge value = flag:ragr }
+				set_variable = { name = tm_flyt_true value = flag:yes }
+			}
+			25 = {
+				trigger = {
+					OR = {
+						has_trait = tm_transgender
+						tm_is_daughter_trigger = yes
+						has_variable = tm_declared
+					}
+				}
+				set_variable = { name = tm_flyt_charge value = flag:daughter }
+				set_variable = { name = tm_flyt_true value = flag:yes }
+			}
+			10 = {
+				modifier = { add = 40 has_trait = craven }
+				set_variable = { name = tm_flyt_charge value = flag:craven }
+				if = {
+					limit = { has_trait = craven }
+					set_variable = { name = tm_flyt_true value = flag:yes }
+				}
+				else = { set_variable = { name = tm_flyt_true value = flag:no } }
+			}
+			5 = {
+				modifier = {
+					add = 40
+					OR = { has_trait = kinslayer_1 has_trait = kinslayer_2 has_trait = kinslayer_3 }
+				}
+				set_variable = { name = tm_flyt_charge value = flag:kin }
+				if = {
+					limit = { OR = { has_trait = kinslayer_1 has_trait = kinslayer_2 has_trait = kinslayer_3 } }
+					set_variable = { name = tm_flyt_true value = flag:yes }
+				}
+				else = { set_variable = { name = tm_flyt_true value = flag:no } }
+			}
+			15 = {
+				modifier = { add = 25 has_trait = lazy }
+				set_variable = { name = tm_flyt_charge value = flag:idle }
+				if = {
+					limit = { has_trait = lazy }
+					set_variable = { name = tm_flyt_true value = flag:yes }
+				}
+				else = { set_variable = { name = tm_flyt_true value = flag:no } }
+			}
+		}
+		# What his charge scores: an accurate one lands, an excessive one barely does; a speaker scores more.
+		if = {
+			limit = { var:tm_flyt_true = flag:yes }
+			set_variable = { name = tm_flyt_gain value = 2 }
+		}
+		else = {
+			set_variable = { name = tm_flyt_gain value = 1 }
+		}
+		if = {
+			limit = { scope:tm_flyter = { diplomacy >= 12 } }
+			change_variable = { name = tm_flyt_gain add = 1 }
+		}
+		change_variable = { name = tm_flyt_them add = var:tm_flyt_gain }
+	}
+
+	option = {	# Own the word
+		name = tm_flyting.0010.own
+		trigger = {
+			OR = {
+				var:tm_flyt_charge = flag:ragr
+				var:tm_flyt_charge = flag:daughter
+			}
+		}
+		custom_tooltip = tm_flyting.0010.own.tt
+		change_variable = { name = tm_flyt_them subtract = var:tm_flyt_gain }
+		change_variable = { name = tm_flyt_me add = 2 }
+		if = {
+			limit = { tm_is_daughter_trigger = yes }
+			change_variable = { name = tm_flyt_me add = 1 }
+		}
+		add_stress = -5
+		ai_chance = { base = 100 }
+	}
+	option = {	# That may be, but
+		name = tm_flyting.0010.concede
+		trigger = {
+			var:tm_flyt_true = flag:yes
+			NOR = {
+				var:tm_flyt_charge = flag:ragr
+				var:tm_flyt_charge = flag:daughter
+			}
+		}
+		custom_tooltip = tm_flyting.0010.concede.tt
+		change_variable = { name = tm_flyt_them subtract = var:tm_flyt_gain }
+		change_variable = { name = tm_flyt_me add = 1 }
+		if = {
+			limit = { learning >= { value = 20 subtract = diplomacy } }
+			change_variable = { name = tm_flyt_me add = 1 }
+		}
+		ai_chance = { base = 80 }
+	}
+	option = {	# It is not even true
+		name = tm_flyting.0010.false
+		trigger = { var:tm_flyt_true = flag:no }
+		custom_tooltip = tm_flyting.0010.false.tt
+		change_variable = { name = tm_flyt_them subtract = var:tm_flyt_gain }
+		change_variable = { name = tm_flyt_them subtract = 1 }
+		ai_chance = { base = 90 }
+	}
+	option = {	# Charge: a coward
+		name = tm_flyting.0010.craven
+		custom_tooltip = tm_flyting.0010.charge.tt
+		tm_flyting_charge_effect = { FAULT = tm_flyt_craven_trigger }
+		ai_chance = {
+			base = 5
+			modifier = { add = 60 scope:tm_flyter = { tm_flyt_craven_trigger = yes } }
+		}
+	}
+	option = {	# Charge: an oath-breaker
+		name = tm_flyting.0010.oath
+		custom_tooltip = tm_flyting.0010.charge.tt
+		tm_flyting_charge_effect = { FAULT = tm_flyt_oathbreaker_trigger }
+		ai_chance = {
+			base = 5
+			modifier = { add = 60 scope:tm_flyter = { tm_flyt_oathbreaker_trigger = yes } }
+		}
+	}
+	option = {	# Charge: he wronged his own kin
+		name = tm_flyting.0010.kin
+		custom_tooltip = tm_flyting.0010.charge.tt
+		tm_flyting_charge_effect = { FAULT = tm_flyt_kinslayer_trigger }
+		ai_chance = {
+			base = 5
+			modifier = { add = 60 scope:tm_flyter = { tm_flyt_kinslayer_trigger = yes } }
+		}
+	}
+	option = {	# Charge: a drunkard and a glutton
+		name = tm_flyting.0010.drink
+		custom_tooltip = tm_flyting.0010.charge.tt
+		tm_flyting_charge_effect = { FAULT = tm_flyt_drunkard_trigger }
+		ai_chance = {
+			base = 5
+			modifier = { add = 60 scope:tm_flyter = { tm_flyt_drunkard_trigger = yes } }
+		}
+	}
+	option = {	# Curse him
+		name = tm_flyting.0010.curse
+		change_variable = { name = tm_flyt_me add = 1 }
+		add_dread = 5
+		ai_chance = { base = 10 }
+	}
+	option = {	# Fall silent
+		name = tm_flyting.0010.silent
+		set_variable = { name = tm_flyt_round value = 3 }
+		change_variable = { name = tm_flyt_them add = 10 }
+		ai_chance = { base = 0 }
+	}
+
+	after = {
+		if = {
+			limit = { var:tm_flyt_round < 3 }
+			change_variable = { name = tm_flyt_round add = 1 }
+			trigger_event = { id = tm_flyting.0010 days = 1 }
+		}
+		else = {
+			trigger_event = { id = tm_flyting.0020 days = 1 }
+		}
+	}
+}
+
+# The end. Whoever has the last word wins; the other falls silent. A lady of the hall may pour the cup and end it
+# as a draw. Root = the Bædling.
+tm_flyting.0020 = {
+	type = character_event
+	title = tm_flyting.0020.t
+	desc = {
+		desc = tm_flyting.0010.desc.score
+		first_valid = {
+			triggered_desc = {
+				trigger = { var:tm_flyt_me > var:tm_flyt_them }
+				desc = tm_flyting.0020.desc.win
+			}
+			triggered_desc = {
+				trigger = { var:tm_flyt_me < var:tm_flyt_them }
+				desc = tm_flyting.0020.desc.lose
+			}
+			desc = tm_flyting.0020.desc.draw
+		}
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:tm_cup_lady }
+				desc = tm_flyting.0020.desc.cup
+			}
+			desc = tm_flyting.0020.desc.nocup
+		}
+	}
+	theme = unfriendly
+	left_portrait = { character = root animation = personality_bold }
+	right_portrait = { character = scope:tm_flyter animation = shame }
+	lower_left_portrait = scope:tm_cup_lady
+
+	trigger = { exists = scope:tm_flyter }
+
+	immediate = {
+		# The lady of the hall: the lord's wife, the lord herself, or a woman of the faith at that court.
+		if = {
+			limit = { is_ruler = yes }
+			save_scope_as = tm_flyt_hall
+		}
+		else = {
+			employer ?= { save_scope_as = tm_flyt_hall }
+		}
+		scope:tm_flyt_hall ?= {
+			if = {
+				limit = {
+					primary_spouse ?= {
+						is_female = yes
+						is_adult = yes
+						NOT = { this = root }
+						NOT = { this = scope:tm_flyter }
+					}
+				}
+				primary_spouse = { save_scope_as = tm_cup_lady }
+			}
+			else_if = {
+				limit = {
+					is_female = yes
+					NOT = { this = root }
+					NOT = { this = scope:tm_flyter }
+				}
+				save_scope_as = tm_cup_lady
+			}
+			else = {
+				random_courtier = {
+					limit = {
+						is_female = yes
+						is_adult = yes
+						NOT = { this = root }
+						NOT = { this = scope:tm_flyter }
+						rite ?= { rite_has_parameter = tm_seidr_gate }
+					}
+					save_scope_as = tm_cup_lady
+				}
+			}
+		}
+	}
+
+	option = {	# The last word
+		name = tm_flyting.0020.win
+		trigger = { var:tm_flyt_me > var:tm_flyt_them }
+		add_prestige = { value = 60 multiply = var:tm_flyt_stakes }
+		add_stress = -10
+		add_character_modifier = { modifier = tm_last_word_modifier years = 5 }
+		scope:tm_flyter = {
+			add_prestige = { value = -30 multiply = root.var:tm_flyt_stakes }
+			add_character_modifier = { modifier = tm_fell_silent_modifier years = 5 }
+			add_opinion = { target = root modifier = humiliated_opinion opinion = -20 }
+		}
+		if = {
+			limit = { var:tm_flyt_stakes >= 2 }
+			custom_tooltip = tm_flyting.0020.thing.tt
+		}
+		ai_chance = { base = 100 }
+	}
+	option = {	# Fall silent
+		name = tm_flyting.0020.lose
+		trigger = { var:tm_flyt_me < var:tm_flyt_them }
+		add_prestige = { value = -30 multiply = var:tm_flyt_stakes }
+		add_stress = 15
+		add_character_modifier = { modifier = tm_fell_silent_modifier years = 5 }
+		scope:tm_flyter = {
+			add_prestige = { value = 40 multiply = root.var:tm_flyt_stakes }
+		}
+		ai_chance = { base = 10 }
+	}
+	option = {	# Neither falls silent
+		name = tm_flyting.0020.draw
+		trigger = { var:tm_flyt_me = var:tm_flyt_them }
+		add_prestige = { value = 15 multiply = var:tm_flyt_stakes }
+		scope:tm_flyter = {
+			add_prestige = { value = 15 multiply = root.var:tm_flyt_stakes }
+			add_opinion = { target = root modifier = respect_opinion opinion = 10 }
+		}
+		ai_chance = { base = 50 }
+	}
+	option = {	# Take the cup
+		name = tm_flyting.0020.cup
+		trigger = { exists = scope:tm_cup_lady }
+		custom_tooltip = tm_flyting.0020.cup.tt
+		add_opinion = { target = scope:tm_cup_lady modifier = grateful_opinion opinion = 15 }
+		scope:tm_flyter = {
+			add_opinion = { target = scope:tm_cup_lady modifier = grateful_opinion opinion = 15 }
+			add_opinion = { target = root modifier = respect_opinion opinion = 10 }
+		}
+		scope:tm_cup_lady = { add_prestige = 25 }
+		ai_chance = {
+			base = 20
+			modifier = { add = 100 var:tm_flyt_me < var:tm_flyt_them }
+		}
+	}
+
+	after = {
+		tm_flyting_clear_effect = yes
+	}
+}

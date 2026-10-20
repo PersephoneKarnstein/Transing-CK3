@@ -1,0 +1,19 @@
+﻿# Crusader Dolls — the New Roof (tm_newroof_events.txt).
+
+# Gather the daughters in list tm_roof_set into one age-set: marked as roofed, the Same Roof modifier, mutual
+# age-mate opinion, the set's name, and the notice to each. Scope: the host (root of tm_newroof.0001).
+tm_newroof_gather_effect = {
+	every_in_list = {
+		list = tm_roof_set
+		set_variable = { name = tm_roofed value = yes }
+		set_variable = { name = tm_roof_set_name value = root.var:tm_roof_set_name years = 7 }
+		add_character_modifier = { modifier = tm_same_roof_modifier years = 7 }
+		save_scope_as = tm_roof_member
+		every_in_list = {
+			list = tm_roof_set
+			limit = { NOT = { this = scope:tm_roof_member } }
+			add_opinion = { target = scope:tm_roof_member modifier = tm_age_mate_opinion years = 7 }
+		}
+		trigger_event = { id = tm_newroof.0002 days = 1 }
+	}
+}

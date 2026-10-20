@@ -1,0 +1,67 @@
+﻿# Crusader Dolls — Ha-Nehpakhot's family and women's synagogue (events/tm_kahal_events.txt).
+# Appends to vanilla on_actions through on_actions lists only, so vanilla's own effects are kept.
+
+yearly_global_pulse = {
+	on_actions = { tm_kahal_yearly }
+}
+
+on_marriage = {
+	on_actions = { tm_kahal_on_marriage }
+}
+
+# Daughters of the Turning are few, and most are courtiers, whom the playable pulse never reaches.
+tm_kahal_yearly = {
+	effect = {
+		every_living_character = {
+			limit = {
+				has_trait = tm_daughter_of_the_turning
+				is_adult = yes
+				is_imprisoned = no
+			}
+			# The women at the door, in the Days of Awe.
+			random = {
+				chance = 25
+				trigger_event = { id = tm_kahal.0009 days = { 1 30 } }
+			}
+			# The prayer book, from her own kin.
+			if = {
+				limit = { NOT = { has_variable = tm_kahal_book_received } }
+				random = {
+					chance = 6
+					trigger_event = { id = tm_kahal.0019 days = { 1 300 } }
+				}
+			}
+		}
+	}
+}
+
+# Such books were wedding gifts: a daughter of the Turning who marries is likelier to be sent one.
+# Root = the major partner; scope:spouse = the minor partner.
+tm_kahal_on_marriage = {
+	effect = {
+		if = {
+			limit = {
+				has_trait = tm_daughter_of_the_turning
+				NOT = { has_variable = tm_kahal_book_received }
+			}
+			set_variable = { name = tm_kahal_wedding value = yes years = 1 }
+			random = {
+				chance = 50
+				trigger_event = { id = tm_kahal.0019 days = { 7 60 } }
+			}
+		}
+		scope:spouse = {
+			if = {
+				limit = {
+					has_trait = tm_daughter_of_the_turning
+					NOT = { has_variable = tm_kahal_book_received }
+				}
+				set_variable = { name = tm_kahal_wedding value = yes years = 1 }
+				random = {
+					chance = 50
+					trigger_event = { id = tm_kahal.0019 days = { 7 60 } }
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,12 @@
+﻿# Crusader Dolls — Ha-Nehpakhot's family and women's synagogue (events/tm_kahal_events.txt).
+
+# Her own kin sent her a prayer book (tm_kahal.0002).
+tm_kahal_book_opinion = {
+	opinion = 30
+}
+
+# She stood at the door and gave the women the prayer (tm_kahal.0010).
+tm_kahal_door_opinion = {
+	opinion = 15
+	years = 5
+}

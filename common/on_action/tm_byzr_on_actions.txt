@@ -1,0 +1,68 @@
+﻿# Crusader Dolls — events from the Byzantine reading (events/tm_byzr_events.txt).
+
+yearly_global_pulse = {
+	on_actions = { tm_byzr_yearly_global }
+}
+
+yearly_playable_pulse = {
+	on_actions = { tm_byzr_yearly_playable }
+}
+
+# Liudprand's four children (949): once, to the Mother of Mothers if she is of the faith, else to the greatest
+# ruler of the faith. Starts after 952 never see it.
+tm_byzr_yearly_global = {
+	trigger = {
+		current_date >= 949.1.1
+		current_date < 953.1.1
+		NOT = { has_global_variable = tm_byzr_carzimasia_seen }
+	}
+	effect = {
+		clear_saved_scope = tm_byzr_mother
+		clear_saved_scope = tm_byzr_emperor
+		if = {
+			limit = { title:d_tm_mother_house.holder ?= { faith = faith:transbian_maximalism } }
+			title:d_tm_mother_house.holder = { save_scope_as = tm_byzr_mother }
+		}
+		else = {
+			ordered_ruler = {
+				faith_filter = faith:transbian_maximalism
+				order_by = {
+					value = highest_held_title_tier
+					multiply = 1000
+					add = sub_realm_size
+				}
+				save_scope_as = tm_byzr_mother
+			}
+		}
+		if = {
+			limit = { exists = scope:tm_byzr_mother }
+			set_global_variable = tm_byzr_carzimasia_seen
+			title:e_byzantium.holder ?= { save_scope_as = tm_byzr_emperor }
+			scope:tm_byzr_mother = { trigger_event = { id = tm_byzr.0001 days = { 200 300 } } }	# the embassy reached the City in autumn
+		}
+	}
+}
+
+# The Emperor halts at Dorylaion: a ruler of the faith holding Phrygia, inside the Emperor's realm, while he is at war.
+tm_byzr_yearly_playable = {
+	trigger = {
+		rite ?= { rite_has_parameter = tm_day_of_blood_active }
+		any_held_title = { this = title:c_phrygia }
+		NOT = { has_variable = tm_byzr_halt_cooldown }
+		exists = title:e_byzantium.holder
+		title:e_byzantium.holder = {
+			is_at_war = yes
+			NOT = { this = root }
+			NOT = { faith = root.faith }
+		}
+		top_liege = title:e_byzantium.holder
+	}
+	effect = {
+		random = {
+			chance = 20
+			set_variable = { name = tm_byzr_halt_cooldown value = yes years = 10 }
+			title:e_byzantium.holder = { save_scope_as = tm_byzr_emperor }
+			trigger_event = { id = tm_byzr.0010 days = { 1 120 } }
+		}
+	}
+}

@@ -62,7 +62,7 @@ Built: shared daughter trigger and per-faith daughter traits; Bæddel faith (Got
 - [ ] "Six Housewives" compurgation; women's suits carried by a friend of the House; dress clause needs a powerful prosecutor (Mitchell; Jochens)
 - [ ] Pour the Cup: end a flyting / first cup / inheritance toast at the high seat (Damico; Evans & Hancock)
 - [ ] Events: "They Say He Keeps Seiðmenn" (Tolley); "Weave the Warding Shirt" (Jochens); English reaction text, Wulfstan 1014 (Damico)
-- [ ] Insult duel: 3 rounds, charges checked against real traits, owning the word strongest, stakes by witnesses and venue (Lögberg doubles); Raise the Níð-Pole scheme (Clover; Meulengracht Sørensen; Grágás)
+- [x] Insult duel: 3 rounds, charges checked against real traits, owning the word strongest, stakes by witnesses and venue (Lögberg doubles); Raise the Níð-Pole scheme (Clover; Meulengracht Sørensen; Grágás)
 - [ ] Feud ledger, Offer Bót compensation, fostering to seal a settlement (Miller)
 - [ ] Outlawry: lesser (life-ring, three homes, three summers) and full; reprieve by killing outlaws; three endings (Grágás; Ahola)
 - [ ] Dress clause as a Christian-era / law pressure; covers weapon-bearing women (Grágás)
@@ -80,7 +80,8 @@ Built: shared daughter trigger and per-faith daughter traits; Bæddel faith (Got
 - [ ] Islamic triggered opinion (parameter islamic_syncretic_recipient on the observer); tm_isl.0001 / 0002
 
 ## Stage 2 inputs from the Byzantine reading
-- [ ] Events: Liudprand's four boys (949) rescue-and-adopt; Ignatios returns as patriarch (867); Tarsus boy-train with options per knife house; the Emperor halts at Dorylaion (Opsikion); Steward at the Gate; Psellos's "feminine nature" (c. 1066); Athos closed to eunuchs (1083)
+- [x] Liudprand's four children (949) and the Emperor halts at Dorylaion (`tm_byzr`)
+- [ ] Events: Ignatios returns as patriarch (867); Tarsus boy-train with options per knife house; Steward at the Gate; Psellos's "feminine nature" (c. 1066); Athos closed to eunuchs (1083)
 - [ ] Abbasid event pack: the jester, the beard plucked overnight, the barber sent to humiliate a prince (Rowson)
 - [ ] Galenic splinter rite: Theophylact's *In Defence of Eunuchs* as its book
 - [ ] Verify the Galen renderings in byz_galen_on_semen.md against De Lacy (CMG V 3,1)
@@ -132,8 +133,8 @@ Built: shared daughter trigger and per-faith daughter traits; Bæddel faith (Got
 - [ ] Revel date variant; the women's synagogue options; Before the Baylons with the 1401 council; *fisica* event 0031; Provençal blessing; new names
 
 ## Stage 2 inputs from the third Judaism reading
-- [ ] "The Women at the Door": she brings the prayer to the women standing outside the synagogue (Grossman; Marienberg)
-- [ ] The brother's prayer book: a family-acceptance event after Leeds MS Roth 32, a wedding gift from a brother
+- [x] "The Women at the Door": she brings the prayer to the women standing outside the synagogue (Grossman; Marienberg)
+- [x] The brother's prayer book: a family-acceptance event after Leeds MS Roth 32, a wedding gift from a brother
 - [ ] A rival takes her case to the Christian bailiff: a fine, or the patron's protection (Assis; Shatzmiller)
 - [ ] "A seat below": buy a seat in the women's synagogue (Arles 1452: three seats for 9½ florins)
 - [ ] Carnival before Purim (Arles 1433): the abbot of youth demands the *pelote*; pay, appeal to the seneschal, or defy (Christian harassment and a lord's protection; never Jewish wrongdoing)
@@ -162,4 +163,21 @@ Built: shared daughter trigger and per-faith daughter traits; Bæddel faith (Got
 - [ ] Bæddel: níð insult duels; landless war-band play; Rescue the Daughters as a raid; Christian outlawry pressure.
 - [ ] Jade Embryo: daughter faction against scholar-officials in celestial and meritocratic governments; temple societies keep estates from crown confiscation; omen events.
 - [ ] Adelphai Dorleyaiou: daughters in court offices; era decay of tolerance after 1066; Aristotelian and Galenic council fight; the founding charter as a house legacy.
+
+## Stage 2, first pass (added 2026-10-20, untested in-game)
+One feature per faith, each in its own files; scenarios in TO-TEST.md §J.
+- [ ] Bædling flyting (`tm_flyting`): interaction, yearly hostile challenges, three rounds, stakes, the cup. Not built: Raise the Níð-Pole, feud ledger.
+- [ ] Liudprand's four children and the Emperor at Dorylaion (`tm_byzr`)
+- [ ] Yutai palace offices (`tm_palace`): the offer, the censor's memorial, the 903 purge. Not built: a full faction.
+- [ ] Ha-Nehpakhot prayer book and women at the door (`tm_kahal`); the kahal keeps its children (`tm_kahal_keeps_children_effect`)
+- [ ] Mālai temple's deal (`tm_kovil`)
+- [ ] Badenya New Roof (`tm_newroof`)
+
+## Bookmark (added 2026-10-20)
+- [x] `bm_867_crusader_dolls`: five heads; Theia Beatrike and the Candragiri and Kirina countesses moved to history characters
+- [x] Tab art (user's stained-glass shark, 2026-10-20); the start button and the info-panel backdrop are cut from it
+- [x] Map and highlights (draft): cropped from the game's own flatmap, highlights from the province map; replace or paint over as wanted, then adjust `position` in tm_bookmarks.txt
+- [ ] Portraits: replace the five placeholder files in `common/bookmark_portraits/` with `dump_bookmark_portraits` output
+- [ ] Coats of arms for Steinn's and Xun's houses (the bookmark omits their houses: vanilla defines no CoA for dynasties 825 and 2003011)
+- [ ] Ha-Nehpakhot: an unlanded start (Roads to Power) so the sect can join the bookmark
 

@@ -1,0 +1,8 @@
+﻿# Crusader Dolls — the New Roof (tm_newroof_events.txt).
+
+# She was gathered into an age-set under a new roof: the set stands together for seven years.
+tm_same_roof_modifier = {
+	icon = prestige_positive
+	diplomacy = 1
+	stress_loss_mult = 0.1
+}

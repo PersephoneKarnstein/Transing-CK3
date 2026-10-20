@@ -1,0 +1,28 @@
+﻿l_english:
+ ### Liudprand's four children (tm_byzr.0001) ###
+ tm_byzr.0001.t:0 "Four Children for the Emperor"
+ tm_byzr.0001.desc:0 "Word comes up the road from the City. An envoy of the king of Italy, a deacon of Cremona named Liudprand, has given the Emperor breastplates, gilded shields, silver cups and four children. The Greeks call such a child a carzimasium: a child cut by the merchants of Verdun, who carry them to Spain for the profit. The envoy judged them the gift the Emperor would prize most, and he was right. They are in the palace now, in the keeping of the chamber.\n\nThe chamber was given them. It will sell what it was given."
+ tm_byzr.0001.a:0 "Buy them free and raise them. If one asks for a name when she is grown, she will have it. No one will ask it of them."
+ tm_byzr.0001.b:0 "Buy them free, and give each child a sponsor in the House."
+ tm_byzr.0001.c:0 "Take them, and call them daughters. No one asked them. No one asked them before, either."
+ tm_byzr.0001.d:0 "Petition the Emperor. The court calls its eunuchs angels, and buys them as boys."
+ tm_byzr.0001.d.granted:0 "The Emperor gives them up, and does not forget who asked."
+ tm_byzr.0001.d.refused:0 "The chamber keeps its gifts."
+ tm_byzr.0001.e:0 "The palace is out of our reach."
+
+ ### The Emperor halts at Dorylaion (tm_byzr.0010) ###
+ tm_byzr.0010.t:0 "The Emperor Halts at Dorylaion"
+ tm_byzr.0010.desc:0 "Dorylaion is the second camp on the road east, after Malagina. The Emperor's army comes up out of Bithynia, the herds of Phrygia are driven in to meet it, and the whole court halts below the city: the generals, the guard, and the eunuchs of the chamber, who keep the Emperor's tent as they keep his palace.\n\nThe Emperor greets the officers of the theme as he always does: "How are you, my children?" Then his chamberlain asks who keeps the Houses."
+ tm_byzr.0010.a:0 "Feed the army and open the Houses. Let him see us."
+ tm_byzr.0010.b:0 "Ask him, while he is in a good mood, to call off the bishops."
+ tm_byzr.0010.b.granted:0 "The Emperor has a war to fight. He sends word to the bishops to let the Houses be."
+ tm_byzr.0010.b.refused:0 "The Emperor hears the petition out, and says nothing."
+ tm_byzr.0010.c:0 "Keep the daughters inside until the army has gone."
+
+ ### The chamber asks (tm_byzr.0011) ###
+ tm_byzr.0011.t:0 "The Chamber Asks"
+ tm_byzr.0011.desc:0 "The Emperor's chamberlain has seen [tm_byzr_daughter.GetName] among the Sisters. The chamber is always short of hands it can trust, he says: no family, no heirs, no faction. He would take her into the Emperor's service, with a rank, a salary and the keys of a door.\n\nHe would count her a eunuch. He says it as a kindness."
+ tm_byzr.0011.a:0 "It is her life. Let her choose."
+ tm_byzr.0011.a.goes:0 "[tm_byzr_daughter.GetName] goes with the army. The palace will call her what it likes."
+ tm_byzr.0011.a.stays:0 "[tm_byzr_daughter.GetName] tells him she has a House, and she is staying in it."
+ tm_byzr.0011.b:0 "She is a woman, not a eunuch. Tell him no."

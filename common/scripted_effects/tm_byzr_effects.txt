@@ -1,0 +1,50 @@
+﻿# Crusader Dolls — effects for the events from the Byzantine reading (events/tm_byzr_events.txt).
+
+# The four children Liudprand gave the Emperor in 949, brought to root's court and adopted. They are children and
+# eunuchs, and the game codes them as male; none is given a rite or a new name. Under the Gift Alone and
+# Grandmother's House, root adopts them. Under Aunt Bea's House each has a sponsor: a woman of the faith at court
+# at least sixteen years older, a daughter first, adopts her charge; failing one, root does.
+# Their culture is that of Verdun's county, where the merchants worked (Liudprand, Retribution 6.6); the source
+# does not say where the children were from. Scope: root (the ruler who ransoms them).
+tm_byzr_ransom_children_effect = {
+	save_scope_as = tm_byzr_house
+	while = {
+		count = 4
+		clear_saved_scope = tm_byzr_sponsor
+		create_character = {
+			age = { 7 11 }
+			gender = male
+			trait = eunuch_1
+			faith = scope:tm_byzr_house.faith
+			culture = title:b_verdun.county.culture
+			dynasty = none
+			employer = scope:tm_byzr_house
+			save_temporary_scope_as = tm_byzr_child
+		}
+		if = {
+			limit = { scope:tm_byzr_house = { rite ?= { rite_has_doctrine = tm_knife_aunt_bea } } }
+			scope:tm_byzr_house = {
+				ordered_courtier = {
+					limit = {
+						is_female = yes
+						is_adult = yes
+						faith = scope:tm_byzr_house.faith
+						age >= { value = scope:tm_byzr_child.age add = 16 }
+					}
+					order_by = {
+						value = age
+						if = { limit = { tm_is_daughter_trigger = yes } add = 100 }
+					}
+					save_scope_as = tm_byzr_sponsor
+				}
+			}
+		}
+		if = {
+			limit = { exists = scope:tm_byzr_sponsor }
+			adopt_effect = { CHILD = scope:tm_byzr_child ADOPTER = scope:tm_byzr_sponsor }
+		}
+		else = {
+			adopt_effect = { CHILD = scope:tm_byzr_child ADOPTER = scope:tm_byzr_house }
+		}
+	}
+}

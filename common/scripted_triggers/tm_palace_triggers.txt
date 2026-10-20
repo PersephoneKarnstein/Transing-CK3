@@ -1,0 +1,17 @@
+﻿# Crusader Dolls — the palace and the society (tm_palace_events.txt)
+
+# A daughter of the Way whose throne has inner offices to offer. Scope: the character.
+tm_palace_daughter_trigger = {
+	tm_is_daughter_trigger = yes
+	faith = faith:tm_yutai
+	is_adult = yes
+	is_imprisoned = no
+	exists = top_liege
+	NOT = { this = top_liege }
+	top_liege = {
+		OR = {
+			has_government = celestial_government
+			has_government = meritocratic_government
+		}
+	}
+}

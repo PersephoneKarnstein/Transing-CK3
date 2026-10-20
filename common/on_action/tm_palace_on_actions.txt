@@ -1,0 +1,38 @@
+﻿# Crusader Dolls — the palace and the society (tm_palace_events.txt). Appends to vanilla's yearly_global_pulse.
+yearly_global_pulse = {
+	on_actions = { tm_palace_yearly }
+}
+
+tm_palace_yearly = {
+	effect = {
+		every_living_character = {
+			limit = { tm_palace_daughter_trigger = yes }
+			save_scope_as = tm_palace_daughter
+			top_liege = { save_scope_as = tm_palace_throne }
+			# The purge of 903 (So 2000, p. 161): only under a celestial throne, and only for those in office.
+			if = {
+				limit = {
+					has_variable = tm_palace_office
+					current_date >= 903.1.1
+					current_date < 905.1.1
+					top_liege = { has_government = celestial_government }
+					NOT = { has_character_flag = tm_palace_purge_seen }
+				}
+				add_character_flag = tm_palace_purge_seen
+				trigger_event = { id = tm_palace.0003 days = { 1 300 } }
+			}
+			# The inner offices write: about once in twenty years, never twice in fifteen.
+			else_if = {
+				limit = {
+					NOT = { has_variable = tm_palace_office }
+					NOT = { has_variable = tm_palace_offered }
+				}
+				random = {
+					chance = 5
+					set_variable = { name = tm_palace_offered value = yes years = 15 }
+					trigger_event = { id = tm_palace.0001 days = { 1 300 } }
+				}
+			}
+		}
+	}
+}

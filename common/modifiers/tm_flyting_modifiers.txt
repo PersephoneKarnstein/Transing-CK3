@@ -1,0 +1,15 @@
+﻿# Crusader Dolls — the flyting (events/tm_flyting_events.txt)
+
+# She had the last word (Clover 1980, p. 465: "having the last word is equivalent to winning").
+tm_last_word_modifier = {
+	icon = social_positive
+	diplomacy = 1
+	monthly_prestige = 0.5
+}
+
+# Fell silent in a flyting: "the more silent" afterwards, as Unferth was (Clover 1980, p. 465).
+tm_fell_silent_modifier = {
+	icon = social_negative
+	diplomacy = -1
+	monthly_prestige = -0.5
+}

@@ -59,6 +59,11 @@
 
 *Crusader Dolls* adds six faiths built around trans women to Crusader Kings III. (The repository is *Transing-CK3*; the mod is *Crusader Dolls* in the launcher; the Byzantine faith is *Adelphai Dorleyaiou*.) Each is grounded in a different historical setting and plays differently. Their tenets come from contemporary transfeminist writing: baedelism, third-wave transfeminism and transgender Marxism. A history pass then gives each a veneer of plausibility in its own place and period.
 
+<p align="center">
+  <img src="docs/images/bookmark.jpg" alt="The Crusader Dolls bookmark on CK3's 867 start screen: a stained-glass shark tab among the bookmark tabs, a painted map from the Baltic to India with Steinn at Gotland, Theia Beatrike at Dorylaion, Xun at Dunhuang, Cantirâdêvi at Candragiri and Djeneba of Kirina in a West Africa inset, and Theia's info panel open on the right" width="100%">
+  <br><em>The Crusader Dolls bookmark at 867 (portraits are placeholders).</em>
+</p>
+
 The six faiths answer the same three questions in different ways:
 
 | Faith | How one becomes a daughter | How the line continues | How it meets the world | Home |
@@ -111,7 +116,7 @@ The mod is in alpha. Most of it has never run in a real campaign, and we need pe
    path="C:/Users/you/Documents/Transing-CK3"
    ```
 4. **Enable it.** Open the Paradox launcher, go to *Playsets*, add **Crusader Dolls** to a playset, and make that playset active.
-5. **Start a new game.** In the Ruler Designer you can choose the Kybeline culture and any of the six faiths. You can also convert to one in a normal game.
+5. **Start a new game.** At 867, the **Crusader Dolls** bookmark lists the heads of five of the faiths: Theia Beatrike at Dorylaion, Steinn of Gotland, Xun of Dunhuang, Cantirâdêvi of Candragiri and Djeneba of Kirina. Ha-Nehpakhot has no landed head at the start; its women are at the court of the count of Venaissin, at Arles. In the Ruler Designer you can choose the Kybeline culture and any of the six faiths. You can also convert to one in a normal game.
 
 To update later, pull or re-download into the same folder. The launcher file does not need to change.
 
@@ -151,6 +156,7 @@ The Sisters are nostalgic for a sect almost nobody remembers: the Mother's galli
 - **The world.** The *Rescue the Daughters* war frees captive daughters from a neighbour. A bishop may preach that the Sisters are "Cybele in Christian clothes", and under a lord of another Christian faith the old laws against heretics climb rung by rung, faster after the Komnenian turn of 1081: the books burned, the assemblies banned, and, under a Byzantine lord, the wills voided.
 - **Tenets.** Day of Blood, Daughters Chosen Not Born, and Unbending Sisterhood.
 - **Head of faith.** The Mother of Mothers, Theia Beatrike, an elder daughter seated at Dorylaion, with up to seven Companions, as the Montanist prophetesses had theirs.
+- **The Emperor's road.** In 949 the Mother of Mothers can ransom the four child eunuchs Liudprand gave the Emperor, each knife House in its own way. When the Emperor goes to war his army may halt at Dorylaion, and his chamber may ask for a daughter, whom it would count a eunuch.
 - **Holy sites.** Dorylaion and Constantinople, Kyzikos, Ankyra, and ruined Pepouza.
 - **The schism to come.** The main rite is Aristotelian: the cut body changes into the female condition. A planned Galenic splinter is the rite that agrees with the Emperor: the cut are "a third thing, neither". The Aristotelians call that "the old cage with a new name."
 
@@ -173,6 +179,7 @@ In the north the sanctioned crossing ran toward manhood. Anyone the law counted 
 - **The line.** The hall's daughters are fostered, sworn and adopted. Two may bind themselves as sisters by the old oath.
 - **The world.** A martial faith. The skalds fill Valhöll with dead men; the Bædlings say the Allfather's true host has none, and point to the shield-maidens at Brávellir. English courts call valkyries witches. The hall raids to bring its daughters home, and its clergy fight. The faith's devil is Níðhöggr, the malice-striker: its enemy is *níð* itself, the slander shouted at the thing.
 - **Tenets.** Seiðr Unmans, Óðinn's Host, and Daughters of the Hall.
+- **The flyting.** Three rounds of charge and answer: a true charge wins, a false one rebounds, and against *ragr* the strongest answer is to own the word. Stakes double at the June thing, and a lady of the hall can end it with the cup.
 - **Holy sites.** Uppsala, Trondheim, York and Kyiv. Kyiv sits on the Varangian road south toward Dorylaion.
 
 **Read more:** [the full overview of Bædling](docs/faiths/baedling.md), with its history, sources and mechanics, cited to the page.
@@ -193,6 +200,7 @@ Daoist inner alchemy teaches that an adept nurtures a holy embryo for ten months
 - **The line.** Under Song law a daughter, born or adopted, keeps a sonless house; the magistrate takes only what a house with no daughter leaves. The faith's temple and burial societies pay dues at every birth and death, keep a righteous store that lends at interest, and petition the throne for a name-panel that protects their Houses from confiscation. Waves of confiscation grow after the Yuan conquest.
 - **The world.** A courtly faith of intrigue and stewardship. Prodigies are reported in the prefectures, and a king of the Way can ordain a woman by special edict, as the Song court once ordained a bearded woman. Buddhist neighbours read a daughter as a man reborn a woman for an old sin. A planned palace faction will contend with the scholar-officials.
 - **Tenets.** The Jade Embryo, Rectified Names, and Temple Societies.
+- **The palace offices.** Under a celestial or meritocratic throne the eunuchs' side of the court may offer a daughter a post: power, at the cost of her Houses' name-panels, a censor's memorial, and the purge of 903.
 - **Holy sites.** The Mogao caves, Mount Longhu, Mount Qingcheng and the Southern Marchmount (Mount Heng in Hunan), the holy women's mountain.
 
 **Read more:** [the full overview of Yutai Dao](docs/faiths/yutai-dao.md), with its history, sources and mechanics, cited to the page.
@@ -215,6 +223,7 @@ The rabbis divide the eunuch made "by the hands of heaven" from the one made "by
 - **The line.** Womanhood is what she keeps: the three women's commandments Kalonymus wished for (the days of separation, the portion of the dough, the Sabbath lamp). One whose days do not come keeps them as the *zekenah*, the old woman past them, keeps them. An elder can teach the prayer to one who will need it, and the women spin together by moonlight.
 - **The world.** A learned, landless faith. A lord of any faith with a daughter of the Turning at court may commission a translation from Arabic, as Robert of Naples employed Kalonymus, and take her people under protection; or licence her as a *fisica*, a physician, as Provençal women physicians were licensed. Jewish lords are asked to rule whether what came forth male is male. Jewish characters think less of daughters of every faith; the Nehpakhot think more.
 - **Tenets.** The Turning, The Three Lamps, and Legalism.
+- **Family and door.** Her own kin may send her a prayer book with Rebecca's blessing, "my sister", or decline at no cost to her; in the Days of Awe she may give the prayer to the women at the door. The kahal keeps its children: a guardian of another faith may teach them but not convert them.
 - **Holy sites.** Arles, Jerusalem (whose county holds Hebron and Leah's tomb), Narbonne, Montpellier, and Hamadan, the tomb of Esther and Mordecai.
 - **What it leaves out.** The old charge that medieval Jews ran the slave and eunuch trade is a historiographic motif, not a finding (Phelan 2023), so no Jewish character in the mod trades in slaves or eunuchs. The faith is not seated in Khazaria, and the narrator never says the Talmud recognised "six genders": those are legal categories for bodies, mostly intersex ones, and only a character may claim them. Nor does it use any of the medieval Christian tropes about Jewish bodies (the "male menses", the bloody flux) or the accusations about Purim.
 
@@ -239,6 +248,7 @@ Tamil poets, men among them, sang to the god as girls in love from the seventh c
 - **The line.** A share on the temple street, recorded in stone; a daughter names the one who will hold it after her.
 - **The world.** A name in stone: gold given to the temple buys an inscription and lasting piety. Orthodox pandits answer with Ilā, the king turned woman who was turned back in every telling.
 - **Tenets.** The Pāvai Vow, The Temple Street, and Bhakti.
+- **The temple's deal.** As temple women did in the inscriptions of 1070–1300, a daughter may buy a hereditary honour with a gift: a verse to sing in Mārkaḻi, the flywhisk, or the first house. It passes to her eldest daughter.
 - **Holy sites.** Kanchipuram, Srirangam, Thanjavur and Madurai.
 - **What it leaves out.** No link to hijra communities; Āṇṭāḷ is venerated, never cast as founder or a trans figure; temple women are not "brides of God" (a 17th-century idea) or courtesans.
 
@@ -259,6 +269,7 @@ In the Sunjata tradition a woman named Tenenba claimed a hero she had not borne:
 - **The line.** Through a sister or a daughter. When a daughter dies, her blood kin may come for her body and her birth name; the House would bury her under her own.
 - **The world.** Naming feasts: a daughter first serves at others', then hosts her own while a jeli speaks for her. This texture comes from contemporary West African studies and is marked as reconstruction; the faith borrows roles, never the identity of any living community.
 - **Tenets.** The Crossing, Mother's Children, and Ancestor Worship.
+- **The New Roof.** Every seventh dry season a court of the faith re-roofs its house and gathers the daughters who crossed since the last roof into a named age-set.
 - **Holy sites.** Kirina, Niani, Awkar, Walata and Do.
 - **What it leaves out.** No Ṣàngó priests, *'yan daudu*, *góor-jigéen*, *woubi* or *sasso* are mapped onto it; no Griaule cosmology; none of the Kangaba sanctuary's rites.
 
@@ -288,9 +299,10 @@ In the Sunjata tradition a woman named Tenenba claimed a hero she had not borne:
 - [x] Sisters' Houses, Declare Before Witnesses, The Sisters Choose
 - [x] Bædling and Yutai Dao: faiths, tenets and gates
 - [x] Re-embodiment, Take as Daughter, arrivals
-- [ ] Bædling: insult duels, feud and settlement, outlawry and landless war-bands, Spring the Cell
-- [ ] Jade Embryo: the palace faction, temple societies against confiscation, omen events
-- [ ] Adelphai Dorleyaiou: the Galenic splinter rite; events from the reading (Liudprand's boys, Ignatios, the Tarsus boy-train, the Emperor at Dorylaion)
+- [x] One stage-2 feature per faith: the Bædling flyting; Liudprand's four children and the Emperor at Dorylaion; the Way's palace offices; the prayer book and the women at the door; the temple's deal; the New Roof
+- [ ] Bædling: feud and settlement, outlawry and landless war-bands, Spring the Cell
+- [ ] Yutai Dao: a full palace faction against the scholar-officials
+- [ ] Adelphai Dorleyaiou: the Galenic splinter rite; more events from the reading (Ignatios, the Tarsus boy-train)
 - [ ] Flavour achievement events, the Pope first
 - [ ] Commissioned art for faith icons, traits and events
 

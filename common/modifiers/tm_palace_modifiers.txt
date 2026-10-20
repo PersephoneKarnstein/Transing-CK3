@@ -1,0 +1,10 @@
+﻿# Crusader Dolls — the palace and the society (tm_palace_events.txt)
+
+# A post in the palace's inner offices: power the throne can take back.
+tm_palace_office_modifier = {
+	icon = intrigue_positive
+	diplomacy = 1
+	intrigue = 2
+	monthly_prestige = 0.5
+	stress_gain_mult = 0.1
+}

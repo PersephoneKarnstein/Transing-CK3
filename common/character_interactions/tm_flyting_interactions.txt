@@ -1,0 +1,32 @@
+﻿# Crusader Dolls — the flyting (events/tm_flyting_events.txt). A Bædling opens a word-battle against anyone.
+
+tm_flyting_interaction = {
+	interface_priority = 40
+	icon = icon_scheme_fabricate_hook
+	category = interaction_category_hostile
+	desc = tm_flyting_interaction_desc
+	cooldown_against_recipient = { years = 3 }
+
+	is_shown = {
+		NOT = { scope:actor = scope:recipient }
+		scope:actor = { rite ?= { rite_has_parameter = tm_seidr_gate } }
+		scope:recipient = { is_adult = yes }
+	}
+
+	is_valid_showing_failures_only = {
+		scope:actor = {
+			is_imprisoned = no
+			NOT = { has_variable = tm_flyt_round }
+		}
+		scope:recipient = { is_imprisoned = no }
+	}
+
+	auto_accept = yes
+
+	on_accept = {
+		scope:recipient = { save_scope_as = tm_flyter }
+		scope:actor = { trigger_event = tm_flyting.0001 }
+	}
+
+	ai_will_do = { base = 0 }
+}

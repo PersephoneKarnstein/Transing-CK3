@@ -1,0 +1,31 @@
+﻿# Crusader Dolls — the flyting (events/tm_flyting_events.txt)
+
+# Her charge against him. A true charge lands, and a speaker drives it home; an untrue one rebounds ("random and
+# excessive", Clover 1980, p. 454). $FAULT$ is a scripted trigger (tm_flyting_triggers.txt), true when the charge fits
+# him. Root = the Bædling.
+tm_flyting_charge_effect = {
+	if = {
+		limit = { scope:tm_flyter = { $FAULT$ = yes } }
+		change_variable = { name = tm_flyt_me add = 2 }
+		if = {
+			limit = { diplomacy >= 12 }
+			change_variable = { name = tm_flyt_me add = 1 }
+		}
+	}
+	else = {
+		change_variable = { name = tm_flyt_me subtract = 1 }
+	}
+}
+
+# Clear the flyting's state from her. Root = the Bædling.
+tm_flyting_clear_effect = {
+	remove_variable = tm_flyt_me
+	remove_variable = tm_flyt_them
+	remove_variable = tm_flyt_round
+	remove_variable = tm_flyt_stakes
+	remove_variable = tm_flyt_charge
+	remove_variable = tm_flyt_true
+	remove_variable = tm_flyt_gain
+	remove_variable = tm_flyt_challenged
+	set_variable = { name = tm_flyt_recent value = yes years = 3 }
+}
