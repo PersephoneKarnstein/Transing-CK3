@@ -13,7 +13,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <img src="docs/images/logo.png" alt="Logo" width="96" height="96">
+  <img src="docs/images/banner.png" alt="The Crusader Kings III logo with KINGS scribbled out in pink and Dolls written beneath, beside a crowned woman in a great helm and ermine cloak, hand resting on a toy shark" width="100%">
 
   <h3 align="center">Transing CK3</h3>
   <p align="center">
