@@ -216,7 +216,7 @@ The rabbis divide the eunuch made "by the hands of heaven" from the one made "by
 
 ## Cūṭikkoṭutta Mālai
 
-*Cūṭikkoṭutta Mālai* is "the garland worn and given": Āṇṭāḷ's father named her *cūṭikkoṭutta nācciyār*, "the lady who gave what she had worn" (Dehejia p. 8; Govindacharya pp. 46–47; Ramanujan p. 148 n. 5). In English the faith is the Worn Garland.
+*Cūṭikkoṭutta Mālai* is "the garland worn and given": Āṇṭāḷ's father named her *cūṭikkoṭutta nācciyār*, "the lady who gave what she had worn" (Dehejia p. 8; Govindacharya pp. 46–47; Ramanujan p. 148 n. 5). In English the faith is the Worn Garland. In game it is spelled *Cūtikkotutta Mālai*: the interface font has no dotted letters.
 
 *Working name.* A current of Tamil devotion inside Hinduism that crosses Śiva's temples and Viṣṇu's, seated on the temple street of Kanchipuram. The bride and the worn garland come from the Vaiṣṇava poets; the "daughter of God" and the women's song from Śiva's temples, whose inscriptions share one vocabulary with Viṣṇu's.
 
