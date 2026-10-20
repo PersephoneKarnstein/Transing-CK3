@@ -1,4 +1,4 @@
-﻿# Adelphai Dorleyaiou — the Sisters' Houses. Design: research/book_raha_vdd_trans_femme_futures.md rows 1, 5, 19.
+﻿# Crusader Dolls — the Sisters' Houses. Design: research/book_raha_vdd_trans_femme_futures.md rows 1, 5, 19.
 # A House is a set of variables on a county title:
 #   tm_house            the House stands here
 #   tm_house_strain     0+; rises when too few hands or the lord is at war, falls with care; at 6 it splits

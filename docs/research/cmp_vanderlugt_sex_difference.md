@@ -47,7 +47,7 @@ Two debates, framed as a continuation of Cadden's *Meanings of Sex Difference*.
 | 4 | Theologians harsh, canonists neutral. | 104, 113 | Two Catholic voices for events: the **canonist** (registers, applies Huguccio, asks for an oath) and the **theologian** (calls her *confusio*, "an abomination"). Pairs with the reading list's three tiers. |
 | 5 | Ordination barred "propter populi scandalum". | n. 42 | A Catholic daughter can be a nun, never a priest. Fine as is. A daughter of the Gift Alone house seeking to stay a priest meets this line. |
 | 6 | Dates: 1170s to early 1200s; interest then fades. | 111 | Same window as DeVun's scholastic turn (`cmp_wingard_trans_middle_ages.md`). The canonist event should be most likely c. 1170–1250. |
-| 7 | Hugh of Saint-Cher: the hermaphrodite rises in the sex nature intended. | n. 29 | A theologian's comfort or threat. In a Dorleyist voice it supports the Aristotelian line: the body is restored to what it was meant to be. In a Catholic voice it means "you will rise a man". Two readings of one doctrine, good for a debate event. |
+| 7 | Hugh of Saint-Cher: the hermaphrodite rises in the sex nature intended. | n. 29 | A theologian's comfort or threat. In a Dorleyaian voice it supports the Aristotelian line: the body is restored to what it was meant to be. In a Catholic voice it means "you will rise a man". Two readings of one doctrine, good for a debate event. |
 | 8 | Lilith and the androgynous Adam came to the schools as Jewish traditions, met through informants and converts. | 105–106, nn. 10, 17 | Relevant to *Ha-Nehpakhot*: see §4. |
 
 ## 3. Corrections to current docs

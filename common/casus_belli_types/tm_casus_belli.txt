@@ -1,4 +1,4 @@
-﻿# Adelphai Dorleyaiou — Rescue the Daughters (design lock §0; user 2026-10-14). Single county.
+﻿# Crusader Dolls — Rescue the Daughters (design lock §0; user 2026-10-14). Single county.
 # Spec: game/common/casus_belli_types/_casus_belli.info. Template: minor_religious_war (00_religious_war.txt),
 # pared down. Victory takes the county and frees every marked man, novice or daughter the defender holds.
 tm_rescue_daughters_cb = {

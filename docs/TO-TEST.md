@@ -57,9 +57,9 @@ Scenarios for playtesters. Each one sets up a situation on purpose, so that a si
 ## 0. Smoke test (everyone, five minutes)
 
 **0.1 Load.** Start the 867 bookmark.
-- In the faith screen, check that *Dorleyism*, *Bædling*, *Yutai Dao*, *Ha-Nehpakhot*, *Cūṭikkoṭutta Mālai* (the Worn Garland) and *Badenya* all exist with their icons and holy sites. Ha-Nehpakhot sits under Judaism, the Worn Garland under Hinduism, and Badenya under the West African religion.
+- In the faith screen, check that *Adelphai Dorleyaiou*, *Bædling*, *Yutai Dao*, *Ha-Nehpakhot*, *Cūṭikkoṭutta Mālai* (the Worn Garland) and *Badenya* all exist with their icons and holy sites. Ha-Nehpakhot sits under Judaism, the Worn Garland under Hinduism, and Badenya under the West African religion.
 - Check the holy sites:
-  - **Dorleyism:** Dorylaion, Constantinople, Kyzikos, Ankyra, Pepouza.
+  - **Adelphai Dorleyaiou:** Dorylaion, Constantinople, Kyzikos, Ankyra, Pepouza.
   - **Bædling:** Uppsala, Trondheim, York, Kyiv.
   - **Yutai Dao:** Mogao, Longhu, Qingcheng, the Southern Marchmount (Mount Heng in Hunan).
   - **The Worn Garland:** Kanchipuram, Srirangam, Thanjavur, Madurai.
@@ -87,7 +87,7 @@ Scenarios for playtesters. Each one sets up a situation on purpose, so that a si
 
 ---
 
-## A. Dorleyism
+## A. Adelphai Dorleyaiou
 
 **A1. The two-day knife rite.** Play Theia's Phrygia, or design a Dorleyite ruler. Then `add_trait tm_transgender` on yourself and `piety 500`.
 - Take *Take the Knife*.
@@ -315,7 +315,7 @@ Start a new 867 game, pick any ruler, type `observe`, and run at full speed to a
 This shows whether the AI ever uses the rites, Houses, fostering, Companions, the elective law and the court offices. It also catches errors that only show up after decades.
 
 **This is now the most important test.** The first observe run (867–986) found the faiths dying out, and the growth engine is new and untuned (`docs/faith_design.md` §14). Please:
-- send the last save (an autosave is fine; saves must be plain text, so keep *compressed saves* off and don't play ironman). Every 10 years each faith takes a census and keeps it in the save by decade: members, daughters, Marked, landed members and counties, and running totals of joins by the call (and how many were rulers), kahal joins, kahal matches, rites offered, daughters raised, deaths, and pool characters the game cleared. The characters made at game start for each seat are kept on lists too, and each foothold seat records how it started (a vassal of the faith, the lord's court, or no holder). One late save holds the whole run. To read it yourself: `python3 tools/census_report.py "<save>.ck3"`. These numbers are what the rates will be tuned on;
+- send the last save (an autosave is fine; saves must be plain text, so keep *compressed saves* off and don't play ironman). Every 10 years each faith takes a census and keeps it in the save by decade: members, daughters, Marked, landed members and counties, and running totals of joins by the call (and how many were rulers), kahal joins, kahal matches, pilgrims to the kahal, rites offered, daughters raised, deaths, and pool characters the game cleared. The characters made at game start for each seat are kept on lists too, and each foothold seat records how it started (a vassal of the faith, the lord's court, or no holder). One late save holds the whole run. To read it yourself: `python3 tools/census_report.py "<save>.ck3"`. These numbers are what the rates will be tuned on;
 - note whether any faith **booms** (hundreds of members, or many counties) as well as whether any dies;
 - check Phrygia at the end: is it still Dorleyite, and is the Mother of Mothers a theocracy? If Byzantium took it, does the Mother House holder have a claim on it?
 - check that Arles has Ha-Nehpakhot courtiers at the count of Venaissin's court.

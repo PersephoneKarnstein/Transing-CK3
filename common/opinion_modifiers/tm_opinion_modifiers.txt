@@ -1,4 +1,4 @@
-﻿# Adelphai Dorleyaiou — opinion modifiers
+﻿# Crusader Dolls — opinion modifiers
 
 # How Islamic observers read a daughter: in law a castrated man, to the jesters a mukhannath
 # (research/hist_sanders_khuntha.md, isl_rowson_*.md). Applied by triggered_opinion on the daughter traits.

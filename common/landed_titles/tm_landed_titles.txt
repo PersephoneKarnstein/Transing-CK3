@@ -1,4 +1,4 @@
-﻿# Adelphai Dorleyaiou — head-of-faith title (landless, like d_coptic_papacy / d_yungdrung_bon).
+﻿# Crusader Dolls — head-of-faith title (landless, like d_coptic_papacy / d_yungdrung_bon).
 @always_primary_score = 1000	# file-local in vanilla, so redefined here
 
 d_tm_mother_house = {

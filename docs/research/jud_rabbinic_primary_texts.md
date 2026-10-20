@@ -59,7 +59,7 @@ Read from a text extraction kept outside the repo. Citations are by the texts' o
 **Design use.**
 - **Reaction only.** A Jewish court meeting a beardless member with a soft voice reaches for the *seris ḥammah* category: a man, born so, with a better legal standing than a man cut by human hand.
 - Do **not** turn these signs into a mechanic that "proves" a character a woman. That would be the third-sexing the mod avoids.
-- The by-heaven / by-man distinction is the one that matters against Dorleyism's knife (see §7).
+- The by-heaven / by-man distinction is the one that matters against Adelphai Dorleyaiou's knife (see §7).
 
 ## 4. Berakhot 60a — Dinah turned in the womb
 
@@ -115,7 +115,7 @@ Read from a text extraction kept outside the repo. Citations are by the texts' o
 **Design use.**
 - **A hard wall.** No Jewish-adjacent gate may use the knife (16:10) or the potion (16:12). The sect's Turning is prayer, name and garment only.
 - **16:13 extends the wall to commissioning.** A Rabbinic character may not even *ask* a Dorleyite (gentile) to cut. So no event where a Jewish member travels to the Sisters for the knife. If such an event exists for other faiths, block it for Jewish faiths, or give it a "this would make you a *seris adam* and bar you from the congregation" warning.
-- **Reaction to Dorleyism.** A Rabbinic court sees a daughter of the knife as a man maimed by human hand (16:9): barred from marrying a native-born Jewish woman, and the cutter liable to lashes. This is already finding 1 of the reading list, now confirmed against the text.
+- **Reaction to Adelphai Dorleyaiou.** A Rabbinic court sees a daughter of the knife as a man maimed by human hand (16:9): barred from marrying a native-born Jewish woman, and the cutter liable to lashes. This is already finding 1 of the reading list, now confirmed against the text.
 - **Avoid** any event in which a Jewish character castrates anyone. That is both a halakhic impossibility for a pious character and the antisemitic motif (`jud_phelan_slave_trade_motif.md`).
 
 ## 8. Shulḥan Arukh OḤ 696:8 with Isserles — what is permitted on Purim

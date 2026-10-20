@@ -4,5 +4,5 @@ tags={
 	"Culture"
 	"Religion"
 }
-name="Adelphai Dorleyaiou"
+name="Crusader Dolls"
 supported_version="1.20.*"

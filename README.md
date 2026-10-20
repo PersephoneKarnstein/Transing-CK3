@@ -15,9 +15,9 @@
 <div align="center">
   <img src="docs/images/banner.png" alt="The Crusader Kings III logo with KINGS scribbled out in pink and Dolls written beneath, beside a crowned woman in a great helm and ermine cloak, hand resting on a toy shark" width="100%">
 
-  <h3 align="center">Transing CK3</h3>
+  <h3 align="center">Crusader Dolls</h3>
   <p align="center">
-    <em>Adelphai Dorleyaiou</em>, the Sisters of Dorylaion: six trans-women-centred faiths for Crusader Kings III.
+    Six trans-women-centred faiths for Crusader Kings III.
     <br />
     <a href="#playtesters-wanted"><strong>Help playtest »</strong></a>
     <br />
@@ -40,7 +40,7 @@
         <li><a href="#what-to-test-and-how-to-report">What to test and how to report</a></li>
       </ul>
     </li>
-    <li><a href="#dorleyism-the-sisters-of-dorylaion">Dorleyism: the Sisters of Dorylaion</a></li>
+    <li><a href="#adelphai-dorleyaiou-the-sisters-of-dorylaion">Adelphai Dorleyaiou: the Sisters of Dorylaion</a></li>
     <li><a href="#bædling-the-high-seat">Bædling: the High Seat</a></li>
     <li><a href="#yutai-dao">Yutai Dao</a></li>
     <li><a href="#ha-nehpakhot-the-women-who-were-turned">Ha-Nehpakhot: the women who were turned</a></li>
@@ -57,13 +57,13 @@
 
 ## About the project
 
-This mod adds six faiths built around trans women to Crusader Kings III. Each is grounded in a different historical setting and plays differently. Their tenets come from contemporary transfeminist writing: baedelism, third-wave transfeminism and transgender Marxism. A history pass then gives each a veneer of plausibility in its own place and period.
+*Crusader Dolls* adds six faiths built around trans women to Crusader Kings III. (The repository is *Transing-CK3*; the mod is *Crusader Dolls* in the launcher; the Byzantine faith is *Adelphai Dorleyaiou*.) Each is grounded in a different historical setting and plays differently. Their tenets come from contemporary transfeminist writing: baedelism, third-wave transfeminism and transgender Marxism. A history pass then gives each a veneer of plausibility in its own place and period.
 
 The six faiths answer the same three questions in different ways:
 
 | Faith | How one becomes a daughter | How the line continues | How it meets the world | Home |
 |---|---|---|---|---|
-| **Dorleyism** | The knife, as a sacrament with a sponsor | A founding charter passes land to adopted daughters | Refuge, intake and church politics | Dorylaion, Phrygia |
+| **Adelphai Dorleyaiou** | The knife, as a sacrament with a sponsor | A founding charter passes land to adopted daughters | Refuge, intake and church politics | Dorylaion, Phrygia |
 | **Bædling** | Seiðr: a völva goes into trance for the seeker | The hall's fostered, sworn and adopted daughters | Outlawry, raiding and insult duels | Gotland |
 | **Yutai Dao** (the Way of the Jade Embryo) | Ten months' inner gestation of one's own body | Adopted heirs, and temple societies that hold property in common | Palace factions against the scholar-officials | Dunhuang, at the Mogao caves |
 | **Ha-Nehpakhot** | The Turning: a prayer said aloud at Purim | The women of the lamp, and the three women's commandments | The baylons' licence or their shunning; patronage by translating or medicine | The Jewish street of Arles |
@@ -110,7 +110,7 @@ The mod is in alpha. Most of it has never run in a real campaign, and we need pe
    ```
    path="C:/Users/you/Documents/Transing-CK3"
    ```
-4. **Enable it.** Open the Paradox launcher, go to *Playsets*, add **Adelphai Dorleyaiou** to a playset, and make that playset active.
+4. **Enable it.** Open the Paradox launcher, go to *Playsets*, add **Crusader Dolls** to a playset, and make that playset active.
 5. **Start a new game.** In the Ruler Designer you can choose the Kybeline culture and any of the six faiths. You can also convert to one in a normal game.
 
 To update later, pull or re-download into the same folder. The launcher file does not need to change.
@@ -136,9 +136,9 @@ When something breaks, [open an issue](https://github.com/PersephoneKarnstein/Tr
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Dorleyism: the Sisters of Dorylaion
+## Adelphai Dorleyaiou: the Sisters of Dorylaion
 
-*Adelphai Dorleyaiou.* A Christian heresy in Byzantine Anatolia, centred on the house at Dorylaion. The name is a pun on Dorley Hall.
+*Adelphai Dorleyaiou*, "the Sisters of Dorylaion." A Christian heresy in Byzantine Anatolia, centred on the house at Dorylaion. The name is a pun on Dorley Hall.
 
 The Sisters are nostalgic for a sect almost nobody remembers: the Mother's galli of Phrygia, whom they call *gallae*. They say the house at Pessinus never closed, and they remember it kinder than it was; Pessinus in fact belonged to priests titled Attis who passed the office from father to son. In their own voice they claim a line from Pessinus through the prophetesses of Pepouza, the women-led Montanist church of Phrygia, to Dorylaion. What they refuse is what the Byzantine court offers instead. "The court calls its eunuchs angels," they say, "and buys them as boys." The Emperor's law counts three kinds of people: men, women and eunuchs. The Sisters hold that one who takes the knife rises a daughter, not a third thing.
 
@@ -264,7 +264,7 @@ In the Sunjata tradition a woman named Tenenba claimed a hero she had not borne:
 - **The Sisters Choose.** An elective succession law: the ruler, the faith's clergy and its vassals choose an heir from among the ruler's born and adopted children, the women of the faith on the council, and the faithful vassals.
 - **Jewish and Indic neighbours.** Jewish courts think less of a daughter of any faith ("what came forth male is male"), and a Jewish lord may be asked to rule on one at court; the Nehpakhot cancel it. Buddhist, Hindu and Jain courts read a daughter of the knife as a castrated man and think much less of her, and a daughter of the other gates as a man become a woman, which they mind less.
 - **Islamic neighbours.** Islamic courts value a daughter as a trusted servant and think less of her as a ruler: their jesters may mock a daughter who rules, while an Islamic lord may come to trust one in his household.
-- **The call.** Each year a Marked character of another faith may join the nearest of the six: Byzantium and Anatolia to Dorleyism, the North and the Baltic to the Bædlings, China and the Tarim to the Jade Embryo, the Jewish faiths to Ha-Nehpakhot, the Deccan and Tamil country to the Worn Garland, and West Africa to Badenya. A Sisters' House nearby, or a daughter at court, makes it likelier. Courtiers who are Marked, eunuchs or declared sisters may begin their faith's rite on their own, and a ruler with no heir of her faith looks for a daughter to take.
+- **The call.** Each year a Marked character of another faith may join the nearest of the six: Byzantium and Anatolia to Adelphai Dorleyaiou, the North and the Baltic to the Bædlings, China and the Tarim to the Jade Embryo, the Jewish faiths to Ha-Nehpakhot, the Deccan and Tamil country to the Worn Garland, and West Africa to Badenya. A Sisters' House nearby, or a daughter at court, makes it likelier. Courtiers who are Marked, eunuchs or declared sisters may begin their faith's rite on their own, and a ruler with no heir of her faith looks for a daughter to take.
 - **Arrivals.** Each year a Marked traveller, a woman turned out for bearing no children, or (where there is a House) a friend of the House may come to the court of a ruler of these faiths. Turning someone away sends them on to the next House.
 - **Same-sex marriage.** All six faiths allow it, whatever the game rule says.
 
@@ -272,13 +272,13 @@ In the Sunjata tradition a woman named Tenenba claimed a hero she had not borne:
 
 ## Roadmap
 
-- [x] Dorleyism: faith, culture, the three houses of the knife, the Dorley prisoner path
+- [x] Adelphai Dorleyaiou: faith, culture, the three houses of the knife, the Dorley prisoner path
 - [x] Sisters' Houses, Declare Before Witnesses, The Sisters Choose
 - [x] Bædling and Yutai Dao: faiths, tenets and gates
 - [x] Re-embodiment, Take as Daughter, arrivals
 - [ ] Bædling: insult duels, feud and settlement, outlawry and landless war-bands, Spring the Cell
 - [ ] Jade Embryo: the palace faction, temple societies against confiscation, omen events
-- [ ] Dorleyism: the Galenic splinter rite; events from the reading (Liudprand's boys, Ignatios, the Tarsus boy-train, the Emperor at Dorylaion)
+- [ ] Adelphai Dorleyaiou: the Galenic splinter rite; events from the reading (Liudprand's boys, Ignatios, the Tarsus boy-train, the Emperor at Dorylaion)
 - [ ] Flavour achievement events, the Pope first
 - [ ] Commissioned art for faith icons, traits and events
 

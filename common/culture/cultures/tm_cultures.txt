@@ -1,4 +1,4 @@
-﻿# Adelphai Dorleyaiou — the Kybeline culture
+﻿# Crusader Dolls — the Kybeline culture
 # Spec: game/common/culture/cultures/_cultures.info. Design: docs/faith_design.md §7.
 # A Greek-speaking Anatolian offshoot (parent: greek). Appears in the Ruler Designer culture picker.
 

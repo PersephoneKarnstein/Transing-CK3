@@ -115,7 +115,7 @@ This supplements `comparanda_south_se_asia.md`, which judged South Asia a "poor 
 
 #### Candidate A (recommended): *The Worn Garland* (working name; Tamil *Cūṭikkoṭutta*, "she who gave the garland she had worn", Āṇṭāḷ's epithet)
 
-- **Family.** A new faith in `hinduism_religion`, a Vaiṣṇava bhakti heresy. It could instead be a sect of vanilla `vaishnava_faith` through a rite. A new faith is safer: it reads as invented, like Dorleyism, rather than as a claim about Śrīvaiṣṇavism.
+- **Family.** A new faith in `hinduism_religion`, a Vaiṣṇava bhakti heresy. It could instead be a sect of vanilla `vaishnava_faith` through a rite. A new faith is safer: it reads as invented, like Adelphai Dorleyaiou, rather than as a claim about Śrīvaiṣṇavism.
 - **Premise.**
   - The Āḻvārs sang as women. The commentators said every soul is a woman before the Lord. The *araiyar* danced the girl's part, and the temple streets held unmarried "daughters of God" who owned land.
   - The Garland takes the voice at its word: a man who sings the girl's part long enough, and is answered, becomes the Lord's bride in body.
@@ -384,7 +384,7 @@ Evidence grades: **PERIOD** = attested in a source from 867–1453 · **BACK** =
    - Zärʾa Yaʿəqob's palace order lists the *Jân Darabâ* among the officers of the inner enclosure, carrying wax torches by day (Perruchon 1893 pp. 32–34). Perruchon's note glosses the term as "à la fois un eunuque en titre et une sorte de chambellan", citing d'Abbadie's *Dictionnaire* (19th c.), col. 804 (p. 32 n. 2).
    - Under Bäʾedä Maryam, "the Jân Darabâ named Mâtêwos" wakes the king at midnight to announce that Queen Romna has borne a son (p. 155). The office links the king and the queen's household.
    - Whether the medieval holders were in fact castrated is *unverified*. Al-ʿUmarī (already listed) says the Amḥara ruler banned castration and that eunuchs were cut outside his realm at Washlū and brought through Hadiya.
-   - **Reaction:** an Ethiopian court that imports eunuchs, gives them a title, and bans the knife at home. It respects the office and refuses the knife, much as the 2026 Dorleyism notes have Byzantium do. A Horn faith built on eunuchs would **duplicate Dorleyism**, so leave this to reaction.
+   - **Reaction:** an Ethiopian court that imports eunuchs, gives them a title, and bans the knife at home. It respects the office and refuses the knife, much as the 2026 Adelphai Dorleyaiou notes have Byzantium do. A Horn faith built on eunuchs would **duplicate Adelphai Dorleyaiou**, so leave this to reaction.
 
 5. **Hagiography: only female-to-male crossing is praised (FtM, reaction only). Women's double monasteries and a whole movement of persecuted nuns are now documented. (PERIOD)**
    - The Ethiopic Synaxarium carries Hilaria, whom the brethren nickname "Hilarion the eunuch" because she is beardless (Ermakova 2022, item 12, p. 197). Clugnet 1905 (item 4) prints the Ethiopic Life of Marina, who lived as a monk (from BnF MS éth. 128; page in Clugnet *unverified*). **FtM.**
@@ -402,7 +402,7 @@ Evidence grades: **PERIOD** = attested in a source from 867–1453 · **BACK** =
      - Medieval Arabic writers report succession to the king's sister's son (Tsakos 2021, item 22).
      - A letter from an eparch's daughter shows elite women writing in Old Nubian (van Gerven Oei and Tsakos 2018, item 23).
      - No gender-crossing or eunuch scholarship was found.
-     - A late-Christian Nubian refuge (Dotawo at Qasr Ibrim) would only be a weaker Dorleyism.
+     - A late-Christian Nubian refuge (Dotawo at Qasr Ibrim) would only be a weaker Adelphai Dorleyaiou.
    - **Oromo and Cushitic religion:**
      - Waaqa and the *qaallu* (with the female *qaallitti*) are documented from the 16th c. on: *Futūḥ al-Ḥabasha*'s "Wara Qallu" is the first datable trace.
      - The *gadaa* material is LATER (Asmarom Legesse 1973, Knutsson 1967).
@@ -490,7 +490,7 @@ Evidence grades: **PERIOD** = attested in a source from 867–1453 · **BACK** =
 
 #### Candidate C (not recommended): a Nubian refuge at Qasr Ibrim/Dotawo
 
-- Christian, late, besieged, with succession to the sister's son. It has no gender-crossing evidence and plays like Dorleyism. Use Nubia for reaction only (Miaphysite, like the Copts).
+- Christian, late, besieged, with succession to the sister's son. It has no gender-crossing evidence and plays like Adelphai Dorleyaiou. Use Nubia for reaction only (Miaphysite, like the Copts).
 
 ### 3. Reading list
 
@@ -657,7 +657,7 @@ Grades used: **PERIOD** = attested in a source written 867–1453; **BACK** = pl
      - He gives the pejorative *cèmusonin* ("little manwoman"), the category *cètèmusotè* ("not male not female", used of homosexuals and hermaphrodites), and the insult "exchange your pants for my loincloth" (pp. 1–2).
      - Joking kinship lets an older sister's husband call his wife's younger brother "my wife" (pp. 4–5). The maternal uncle *bènkè* is "male mother" (p. 4). Childbirth is "women's war", and those who die of it are buried as warriors (p. 5).
      - *Badenya* ("mother-childness") and *sinjiya* ("breastmilkhood") are the hidden transcript preferred over patrilineal *fadenya* (p. 2).
-   - Caveat for the design: in Brett-Smith the feminisation is a *price* (depletion, impotence, loss of wives and children), not a desired becoming. A faith may reclaim it ("the djinn took what I wished gone"), but the narrator must not present Bamana smiths as trans women. Nor should it adopt *cètèmusotè* ("not male not female") as the daughter's identity. That is the "third thing" that Dorleyism's Aristotelians already refuse.
+   - Caveat for the design: in Brett-Smith the feminisation is a *price* (depletion, impotence, loss of wives and children), not a desired becoming. A faith may reclaim it ("the djinn took what I wished gone"), but the narrator must not present Bamana smiths as trans women. Nor should it adopt *cètèmusotè* ("not male not female") as the daughter's identity. That is the "third thing" that Adelphai Dorleyaiou's Aristotelians already refuse.
 
 4. **Yoruba "wives of the god" are real, but they are LATER for this mod and living religion.**
    - Matory's *Sex and the Empire That Is No More* (1994; 2nd ed. 2005) is fieldwork from the 1980s at Igboho and Ọ̀yọ́. It treats the Ọ̀yọ́ empire's royal possession cults of Ṣàngó and Yemọja, where every devotee, man or woman, is a bride of the god. Its chapter 6 is "Re-dressing Gender".
@@ -986,7 +986,7 @@ In 1.20, faiths are defined in `common/religion/faith_types/00_faith_types.txt` 
    - There is no gender material for the Philippines before 1521. The pre-1453 record is the Laguna Copperplate (900 CE; Postma 1992) and Chinese trade accounts (Chao Ju-kua c. 1225–80, in B&R vol. 34). These attest polities and trade, not religion or gender.
 
 4. **Every candidate requires back-projection or invention. The three differ in *what kind* of risk they carry.**
-   - **Java: in-period, but invented.** The category is in period, but defined by deficiency. A faith would invent the rite, like Dorleyism. No living community's name is taken, but modern *kedi* is a slur-adjacent word for *banci* (bab.la gloss "hermaphrodite … wadam, banci").
+   - **Java: in-period, but invented.** The category is in period, but defined by deficiency. A faith would invent the rite, like Adelphai Dorleyaiou. No living community's name is taken, but modern *kedi* is a slur-adjacent word for *banci* (bab.la gloss "hermaphrodite … wadam, banci").
    - **Bugis: best-described, highest risk.** The best-described ritual office (regalia, white blood, the trance-death *irebba*, the language of the gods). Direct witnesses date from 1545. It is a **living, persecuted community**: Operasi Tobat in the 1960s, and the eTropic 2024 and Song 2019 studies of present-day bissu. Its scholarship is split between Andaya's "outside male and female" and Davies's "five genders". Building a game faith on it is the clearest case of what Bhatt and the brief warn against.
    - **Visayan: medium risk, back-projected.** Evidence from 1521–1685 is projected back 70–650 years. A revival "babaylan" spirituality exists among Filipino and Filipino-American groups, so the risk is moderate. The third-gender risk is low if the faith follows Brewer and Ngu: the qualifying condition is womanhood and femininity.
 
@@ -1087,7 +1087,7 @@ In 1.20, faiths are defined in `common/religion/faith_types/00_faith_types.txt` 
 - *Role and rite invented.*
 
 **Risks.**
-- The only in-period datum is a deficiency category, and the faith is wholly invented on top of it. Like Dorleyism, the narrator must say so.
+- The only in-period datum is a deficiency category, and the faith is wholly invented on top of it. Like Adelphai Dorleyaiou, the narrator must say so.
 - Modern *kedi* and *banci* are slurs.
 - Weaker gameplay distinctness.
 - The literary precedent (Arjuna) returns to manhood.

@@ -1,4 +1,4 @@
-﻿# Adelphai Dorleyaiou (working name: Transbian Maximalism) — faith
+﻿# Crusader Dolls — the faith Adelphai Dorleyaiou (its key, transbian_maximalism, is the old working name)
 # Spec: game/common/religion/faith_types/_faith_types.info
 # Pattern: vanilla `adamites` (a Christian heresy with its own scripted main rite).
 # Design: docs/faith_design.md §1–4. This is the Byzantine interpretation; other cultural

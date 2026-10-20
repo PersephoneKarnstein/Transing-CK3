@@ -1,4 +1,4 @@
-﻿# Adelphai Dorleyaiou — character interactions
+﻿# Crusader Dolls — character interactions
 
 # The Dorley path (Aunt Bea's House): take a violent prisoner into the programme.
 # Template: vanilla castrate_interaction (00_prison_interactions.txt). Docs: docs/dorley_precedent.md.

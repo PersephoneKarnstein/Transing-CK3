@@ -1,4 +1,4 @@
-﻿# Adelphai Dorleyaiou — how the faiths grow (docs/faith_design.md §14).
+﻿# Crusader Dolls — how the faiths grow (docs/faith_design.md §14).
 # A 119-year observe run (867–986) left the four faiths with 81 living members between them: nothing drew anyone in,
 # only rulers could start a rite, and the AI never adopted. These effects are the growth engine.
 
@@ -242,6 +242,120 @@ tm_kahal_match_effect = {
 		marry = scope:tm_match_spouse
 	}
 	tm_track_effect = { FAITH = faith:tm_nehpakhot WHAT = matches }
+}
+
+# The pilgrimage to the kahal. The sect exists for its daughters, but a Marked son is born to about one family in a
+# hundred: one household cannot raise enough of its own, and in observe runs it went generations with none. So word
+# goes along the roads Jews travelled (Provence, Sepharad, Ashkenaz, the Radhanite routes) and a Marked young Jew comes
+# to the seat to be taken in. An elder woman of the sect, a daughter first, adopts him into her house; the courtier
+# rite (tm_offer_courtier_rite_effect) may offer the Turning in time. A larger kahal is known further, so draws more.
+# Members of the sect living away from the kahal may also come home to it. Scope: none (tm_yearly_growth).
+tm_kahal_pilgrimage_effect = {
+	clear_saved_scope = tm_kahal_court
+	clear_saved_scope = tm_pilgrim_home
+	clear_saved_scope = tm_pilgrim
+	clear_saved_scope = tm_pilgrim_mother
+	# The kahal: the court where most of the sect live.
+	every_living_character = {
+		limit = { faith = faith:tm_nehpakhot exists = employer }
+		employer = { add_to_temporary_list = tm_kahal_courts }
+	}
+	ordered_in_list = {
+		list = tm_kahal_courts
+		order_by = {
+			value = 0
+			every_courtier = {
+				limit = { faith = faith:tm_nehpakhot }
+				add = 1
+			}
+		}
+		save_scope_as = tm_kahal_court
+	}
+	if = {
+		limit = { exists = scope:tm_kahal_court }
+		# A pilgrim from the wider Jewry.
+		random = {
+			chance = 10
+			modifier = { add = 5 scope:tm_kahal_court = { any_courtier = { count >= 10 faith = faith:tm_nehpakhot } } }
+			modifier = { add = 5 scope:tm_kahal_court = { any_courtier = { count >= 20 faith = faith:tm_nehpakhot } } }
+			modifier = { add = 10 scope:tm_kahal_court = { any_courtier = { count >= 40 faith = faith:tm_nehpakhot } } }
+			random_living_character = {
+				limit = {
+					faith.religion = religion:judaism_religion
+					NOT = { faith = faith:tm_nehpakhot }
+				}
+				save_scope_as = tm_pilgrim_home
+			}
+			if = {
+				limit = { exists = scope:tm_pilgrim_home }
+				create_character = {
+					gender = male
+					age = { 16 26 }
+					culture = scope:tm_pilgrim_home.culture
+					faith = faith:tm_nehpakhot
+					dynasty = none
+					trait = tm_transgender
+					employer = scope:tm_kahal_court
+					save_scope_as = tm_pilgrim
+				}
+			}
+			else = {
+				create_character = {
+					gender = male
+					age = { 16 26 }
+					culture = scope:tm_kahal_court.culture
+					faith = faith:tm_nehpakhot
+					dynasty = none
+					trait = tm_transgender
+					employer = scope:tm_kahal_court
+					save_scope_as = tm_pilgrim
+				}
+			}
+			scope:tm_kahal_court = {
+				ordered_courtier = {
+					limit = {
+						is_female = yes
+						faith = faith:tm_nehpakhot
+						age >= { value = scope:tm_pilgrim.age add = 16 }
+					}
+					order_by = {
+						value = age
+						if = { limit = { tm_is_daughter_trigger = yes } add = 100 }
+					}
+					save_scope_as = tm_pilgrim_mother
+				}
+			}
+			if = {
+				limit = { exists = scope:tm_pilgrim_mother }
+				adopt_effect = {
+					CHILD = scope:tm_pilgrim
+					ADOPTER = scope:tm_pilgrim_mother
+				}
+			}
+			tm_track_effect = { FAITH = faith:tm_nehpakhot WHAT = pilgrims }
+		}
+		# Members of the sect living away come home.
+		every_living_character = {
+			limit = {
+				faith = faith:tm_nehpakhot
+				is_adult = yes
+				is_ruler = no
+				is_imprisoned = no
+				OR = {
+					has_trait = tm_transgender
+					tm_is_daughter_trigger = yes
+				}
+				NOT = { employer ?= scope:tm_kahal_court }
+				NOT = { this = scope:tm_kahal_court }
+			}
+			random = {
+				chance = 10
+				save_scope_as = tm_pilgrim
+				scope:tm_kahal_court = { add_courtier = scope:tm_pilgrim }
+				tm_track_effect = { FAITH = faith:tm_nehpakhot WHAT = pilgrims }
+			}
+		}
+	}
 }
 
 # Two Marked young men of the faith at a seat court, so the courtier rite has seekers from the start.

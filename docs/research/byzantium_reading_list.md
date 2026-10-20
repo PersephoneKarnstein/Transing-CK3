@@ -1,4 +1,4 @@
-# Dorleyism: Byzantium, Pessinus and Islam reading list
+# Adelphai Dorleyaiou: Byzantium, Pessinus and Islam reading list
 
 This list deepens the README bibliography "Byzantium, Islam and the eunuch traditions" for the Byzantine faith, *Adelphai Dorleyaiou*. The section has nine works already read: Ayalon 1999, Marmon 1995, Neil & Garland 2013, Neville 2019, Rapp 2016, Rowson 1991, Sanders 1991, Tougher 2008 and Tougher 2013. They are not repeated here. Five works were cited but not read: Ayalon 1979, Kuefler, Messis, Mullett and Ringrose. Roller 1999 was cited in the notes. These six are listed below with full details so they can be read.
 

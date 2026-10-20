@@ -1,4 +1,4 @@
-﻿# Adelphai Dorleyaiou — on_action hooks.
+﻿# Crusader Dolls — on_action hooks.
 # Vanilla's on_game_start_after_lobby has its own `effect` (which a second definition would replace) and
 # no character scope. So we only append our own on_action to its `on_actions` list (lists merge) and do
 # the work in tm_on_game_start_after_lobby, iterating players explicitly.
@@ -523,7 +523,7 @@ tm_yearly_playable = {
 				capital_county = { tm_found_house_effect = yes }
 			}
 		}
-		# Dorleyism in the Byzantine world (tm_byzantine_events.txt).
+		# Adelphai Dorleyaiou in the Byzantine world (tm_byzantine_events.txt).
 		if = {
 			limit = { rite ?= { rite_has_parameter = tm_day_of_blood_active } }
 			random = {
@@ -789,6 +789,8 @@ tm_yearly_growth = {
 				tm_kahal_match_effect = yes
 			}
 		}
+		# The pilgrimage to the kahal (tm_kahal_pilgrimage_effect): Marked young Jews come to the seat to be taken in.
+		tm_kahal_pilgrimage_effect = yes
 		# The kahal: a Jew at a court where the sect is two or more may join it. A sect within Judaism keeps its families,
 		# and their children are born into it; this is how it renews itself, not by the Marked alone.
 		every_living_character = {

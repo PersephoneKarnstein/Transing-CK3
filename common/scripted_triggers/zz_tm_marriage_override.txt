@@ -1,4 +1,4 @@
-﻿# Adelphai Dorleyaiou — OVERRIDES vanilla allowed_to_marry_same_sex_trigger (00_marriage_triggers.txt).
+﻿# Crusader Dolls — OVERRIDES vanilla allowed_to_marry_same_sex_trigger (00_marriage_triggers.txt).
 # Vanilla allows same-sex marriage only when the game rule accepted_same_sex_marriage is on AND the rite
 # accepts homosexuality. The Sisters' rite marries women to women regardless of the game rule.
 # Named zz_ so it loads after vanilla. Keep the vanilla branch intact for compatibility.

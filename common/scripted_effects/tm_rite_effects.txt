@@ -1,4 +1,4 @@
-﻿# Adelphai Dorleyaiou — raising a daughter. Scope: the character being raised.
+﻿# Crusader Dolls — raising a daughter. Scope: the character being raised.
 # Every faith's gate ends here; only the trait and the naming event differ.
 #   TRAIT  = tm_daughter_of_the_knife / tm_daughter_of_seidr / tm_daughter_of_the_embryo / tm_daughter_of_the_turning
 #   RENAME = the faith's naming event (tm_knife.0002 / tm_seidr.0002 / tm_embryo.0002)
@@ -52,7 +52,7 @@ tm_rise_daughter_effect = {
 	}
 }
 
-# The knife itself (Dorleyism).
+# The knife itself (Adelphai Dorleyaiou).
 tm_take_the_knife_effect = {
 	tm_rise_daughter_effect = { TRAIT = tm_daughter_of_the_knife RENAME = tm_knife.0002 }
 }

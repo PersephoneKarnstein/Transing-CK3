@@ -1,4 +1,4 @@
-﻿# Adelphai Dorleyaiou — the Dorley programme. Scope: the new novice.
+﻿# Crusader Dolls — the Dorley programme. Scope: the new novice.
 
 tm_begin_programme_effect = {
 	save_scope_as = tm_novice

@@ -1,4 +1,4 @@
-﻿# Transbian Maximalism — scripted effects
+﻿# Crusader Dolls — scripted effects
 # DRAFT, untested in-game. Every effect, trigger and event target below was checked against the
 # script_docs output for CK3 1.20.1 (docs/script_docs/*.log, generated 2026-10-14):
 #   - there is NO effect that changes a living character's sex (only set_sexuality / set_pregnancy_gender), hence the re-embodiment route;
@@ -171,7 +171,7 @@ tm_reembody_as_woman_effect = {
 				set_realm_capital = scope:tm_old_capital
 			}
 			if = {
-				limit = { exists = scope:tm_old_primary }
+				limit = { scope:tm_old_primary ?= { holder ?= scope:tm_new_body } }	# a barony may have gone elsewhere
 				set_primary_title_to = scope:tm_old_primary
 			}
 		}

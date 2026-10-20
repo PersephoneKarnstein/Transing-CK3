@@ -1,4 +1,4 @@
-﻿# Adelphai Dorleyaiou — core tenets
+﻿# Crusader Dolls — core tenets
 # Spec: game/common/religion/tenet_types/_tenet_types.info
 # Exclusive to the Sisters and their offshoots: shown only to faiths already carrying tm_day_of_blood_active.
 # Icons reuse vanilla tenet icons until custom art exists.

@@ -1,4 +1,4 @@
-﻿# Adelphai Dorleyaiou — title succession laws.
+﻿# Crusader Dolls — title succession laws.
 # The Sisters Choose: an elective law for the Sisters' faiths. CK3 needs an heir, and adoption stays the
 # succession engine; this law lets the House's women and the realm's vassals choose among the daughters
 # instead (Raha & van der Drift, research/book_raha_vdd_trans_femme_futures.md row 3).

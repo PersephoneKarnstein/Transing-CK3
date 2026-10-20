@@ -88,7 +88,7 @@ Across the volume the Eddic gender system has three parts. Men are measured by h
 | 19 | The knife is "only a rare Varangian import". Hostile text on women's magic. | Seiðr met "consistent fear and loathing" and "severe legal penalties". Mutilation reads as "symbolic castration" (McKinnell pp. 207–08). | **No change, confirms** Gade row 7 and Meulengracht row 12. |
 | 20 | Bæddel aesthetics on Gotland (Wade row 10 warns against a "pure north"). | The essays place the poems in a connected world: an English-composed lay with Old Saxon names (McKinnell pp. 198–200), shared OE–Norse charms (Harris), Irish and Indian analogues (Svava). | **Confirms Wade row 10.** Name the connections in text: Yorkshire, the Ardre stone on Gotland, Irish kingship rites. |
 
-**Relevance overall:** high for the völva and seiðr gate, flyting and hostile text. It is moderate for valkyries, because Svava's reading is speculative. It is low for succession apart from Hyndla. There is nothing for Dorleyism or the Chinese faith.
+**Relevance overall:** high for the völva and seiðr gate, flyting and hostile text. It is moderate for valkyries, because Svava's reading is speculative. It is low for succession apart from Hyndla. There is nothing for Adelphai Dorleyaiou or the Chinese faith.
 
 ## 3. Quotable lines for in-game text (in-world paraphrases, not attributed to the essayists)
 

@@ -47,11 +47,11 @@ Citations were checked on 2026-10-19 against Crossref, Open Library, Unpaywall a
    - **Design use:** a Catholic court can *register* a daughter. It will not accept that she *changed*. A Catholic bishop's response should be "swear to one sex and keep it", not prosecution. Rolker dates the harsher court practice, which conflated anatomy, sex change and sexual deviance, to the sixteenth century (abstract, p. 178; pp. 209–219), which falls outside the game's dates.
 2. **Self-castration made a man irregular for the clergy, while eunuchs cut by others were admitted.**
    - Nicaea canon 1 entered Gratian as D.55 c.7 (NPNF note; item 3). It removes from ministry anyone who "in sound health has castrated himself", but it admits men made eunuchs "by barbarians, or by their masters".
-   - **Design use:** a Latin canonist would turn Dorleyism's Houses upside down. Grandmother's House captives are blameless and could even be clergy. The women of Gift Alone, who asked for the knife, are the guilty ones.
+   - **Design use:** a Latin canonist would turn Adelphai Dorleyaiou's Houses upside down. Grandmother's House captives are blameless and could even be clergy. The women of Gift Alone, who asked for the knife, are the guilty ones.
    - This makes a good hostile Catholic event: "the knife you chose bars you from the altar; the knife you suffered does not."
 3. **Aquinas forbids cross-dressing *because the pagans did it for their gods*.**
    - ST II-II q.169 a.2 ad 3 (item 2): wearing the other sex's clothes is "in itself sinful". Deuteronomy forbade it "because the Gentiles used to practice this change of attire for the purpose of idolatrous superstition". It is excused only by necessity, such as hiding from enemies or having no other clothes.
-   - **Design use:** this is the Latin text behind the bishop's line "Cybele in Christian clothes". A Catholic theologian would read Dorleyism as a revival of exactly the idolatry the precept was aimed at. The "necessity" exception offers a mild-path opinion that Catholic characters can hold.
+   - **Design use:** this is the Latin text behind the bishop's line "Cybele in Christian clothes". A Catholic theologian would read Adelphai Dorleyaiou as a revival of exactly the idolatry the precept was aimed at. The "necessity" exception offers a mild-path opinion that Catholic characters can hold.
 4. **The church praised crossings toward manhood and had no category for crossings the other way.** (The first two examples are female-to-male cases, used here as reaction data only.)
    - Hotchkiss (item 9) counts dozens of saints assigned female at birth who lived as monks. Mills (item 8) shows Eugenia's trial at Vézelay (c. 1120–40) carved on a pilgrimage church.
    - Rykener, London 1394 (items 10–11), was recorded by the mayor's court as "John" and treated through the categories of prostitution and sodomy. Wingard (item 7) summarises the case for reading her as a persistent woman named Eleanor.
@@ -70,7 +70,7 @@ Citations were checked on 2026-10-19 against Crossref, Open Library, Unpaywall a
   - A heresy could take that oath and open it to anyone ("the bishop of Turin let her choose"). That would make it a declaration rite rather than a body-changing one.
   - It is better used as **flavour for Declare Before Witnesses under Catholic lords**. Susa sits in the Piedmont, inside the diocese of Turin. Whether CK3 has Susa as its own county or only as a barony is *unverified in the game files*.
 - **If a Latin faith is ever wanted**, the least bad frame is a Beguine-style lay women's network in the Low Countries or the Rhineland (Liège, Cologne), branded heretical "Free Spirit" in the fourteenth century.
-  - It would work as Houses, not a gate, and would most likely need to borrow the Dorleyist or Bædling rite.
+  - It would work as Houses, not a gate, and would most likely need to borrow the Dorleyaian or Bædling rite.
   - **Risks:**
     - It would be an invention with no trans-feminine evidence behind it.
     - It would repeat the "secret matriarchal heresy" trope.
@@ -182,7 +182,7 @@ Found before the scope change and checked on Crossref. None was downloaded.
 
 ## Medieval Judaism
 
-Area slug: `judaism`. Covers rabbinic and Karaite Judaism in Ashkenaz, Sepharad, Provence, Italy, the Islamic world (Geniza), Byzantium and Khazaria, for **reaction** (how Jewish characters and courts would meet Dorleyism, Bædling and the Way) and **expansion** (could a Jewish or Jewish-adjacent trans-feminine current be a fourth faith).
+Area slug: `judaism`. Covers rabbinic and Karaite Judaism in Ashkenaz, Sepharad, Provence, Italy, the Islamic world (Geniza), Byzantium and Khazaria, for **reaction** (how Jewish characters and courts would meet Adelphai Dorleyaiou, Bædling and the Way) and **expansion** (could a Jewish or Jewish-adjacent trans-feminine current be a fourth faith).
 
 Nothing Jewish was in the README bibliography before this search. The only Jewish items already in `docs/research/` are incidental (Karras E64–E68 and others; Ayalon on Pechina; Wiesner #33). They are not repeated here.
 
@@ -353,7 +353,7 @@ Downloads are in `docs/research/sources_pending/comparanda/judaism/`, with sourc
     - Use: *expansion* (negative). The thesis that the feminine is reintegrated into the masculine, which is why Kabbalah is a poor ground for a female-ward faith. See also Wolfson 1997, "Tiqqun ha-Shekhinah", *History of Religions* 36.4: 289–332 (DOI 10.1086/463475), on Luzzatto (18th c., late).
     - P2 · Library · Not downloaded.
 19. **Green, Arthur.** 2002. "Shekhinah, the Virgin Mary, and the Song of Songs: Reflections on a Kabbalistic Symbol in Its Historical Context." *AJS Review* 26.1: 1–52. DOI 10.1017/s0364009402000016.
-    - Use: *reaction* (Christian–Jewish contact in Provence and Castile). It ties the feminine Shekhinah to the 12th–13th-century Marian cult, which could link a Provençal current to Dorleyism's Mother. *Counterpoint:* Abrams, Daniel, 2004, *ha-Guf ha-Elohi ha-nashi ba-Kabbalah* [The Female Body of God in Kabbalistic Literature], Jerusalem: Magnes, ISBN 965-493-203-2 (Hebrew).
+    - Use: *reaction* (Christian–Jewish contact in Provence and Castile). It ties the feminine Shekhinah to the 12th–13th-century Marian cult, which could link a Provençal current to Adelphai Dorleyaiou's Mother. *Counterpoint:* Abrams, Daniel, 2004, *ha-Guf ha-Elohi ha-nashi ba-Kabbalah* [The Female Body of God in Kabbalistic Literature], Jerusalem: Magnes, ISBN 965-493-203-2 (Hebrew).
     - P2 · Library · Not downloaded.
 20. **Scholem, Gershom.** "Gilgul." In *Encyclopaedia Judaica* (2nd ed., 2007), reproduced on encyclopedia.com.
     - Use: *expansion* (negative and dating). Transmigration from the *Bahir* (late 12th c.). The early Kabbalists tied it to "offenses against procreation and sexual transgressions". A male soul in a female body "resulting in sterility" belongs to later debate. Lurianic material (Vital, *Sha'ar ha-Gilgulim*) is 16th c.: flag it as late.
@@ -473,7 +473,7 @@ Checks: citations were checked against Crossref, Open Library, archive.org, publ
   - No gender crossing is attested.
   - Romantic neo-pagan reconstruction (Rodnovery) is close by.
 
-**Candidate B: an urban Rhineland house of sisters, beguine-like, labelled "Free Spirit". Best fit for the evidence; overlaps Dorleyism.**
+**Candidate B: an urban Rhineland house of sisters, beguine-like, labelled "Free Spirit". Best fit for the evidence; overlaps Adelphai Dorleyaiou.**
 - *Seat:* Cologne (`c_cologne`), with Strasbourg (`c_strassburg`), Speyer (`c_speyer`), Worms (`c_worms`), Würzburg (`c_wurzburg`) and Lübeck (`c_lubeck`). The reaction cases (Lübeck, Konstanz/Rottweil, Speyer, Worms) cluster in these towns.
 - *Gate idea:* a second naming, a rebaptism with a woman's name before the house. This inverts the attested 1527 Worms *Umtaufung* (rebaptism), where a person petitioned the episcopal court to be renamed and was granted it (Rolker, item 1, p. 212). The inversion is design; the procedure is real.
 - *Structure:*
@@ -481,7 +481,7 @@ Checks: citations were checked against Crossref, Open Library, archive.org, publ
   - a ready-made persecution ladder: the Council of Vienne decrees *Cum de quibusdam mulieribus* and *Ad nostrum* (issued 1311, promulgated 1317; Deane, item 9), and Strasbourg after 1317;
   - Carolina art. 116 (1532, after the game window) shows where the law was heading.
 - *Risks:*
-  - It is a second Christian heresy beside Dorleyism.
+  - It is a second Christian heresy beside Adelphai Dorleyaiou.
   - The "Free Spirit" may be largely an inquisitors' construct (Lerner, item 10), so the faith should own the label as slander, the way the Bædlings own *ragr*.
   - No beguine source attests male-to-female crossing.
 
@@ -503,7 +503,7 @@ Checks: citations were checked against Crossref, Open Library, archive.org, publ
 
 **Recommendation.**
 - If the fourth faith must be pagan and fill the map gap, take A. Be frank in the README that the gate is invented on a real oracle.
-- If it may be Christian, B carries the strongest regional evidence. Its reaction ladder writes itself, but it needs a clear doctrinal line against Dorleyism: no knife, the name rather than the body.
+- If it may be Christian, B carries the strongest regional evidence. Its reaction ladder writes itself, but it needs a clear doctrinal line against Adelphai Dorleyaiou: no knife, the name rather than the body.
 - The region's best immediate value is as *reaction* content for the existing three faiths:
   - an HRE rung "burned in her dress";
   - a Rus' rung "penance for mumming";
@@ -751,7 +751,7 @@ Checked 2026-10-19 against Crossref, Unpaywall, Open Library, publisher or repos
 **Sub-regions judged a poor fit:**
 - **Sahel and Hausaland:** no pre-1453 gender-crossing evidence. Bori and 'yan daudu are LATER.
 - **Ethiopia and Nubia:** the emperor banned castration, and no male-to-female tradition was found.
-- **Fatimid and Mamluk Egypt:** a strong eunuch elite, but Dorleyism already covers the eunuch-court niche, and Tolino rejects a third-gender reading. Better used as reaction: Fatimid courts would respect a daughter's service, as eunuchs were respected, and Mamluk moralists would mock her.
+- **Fatimid and Mamluk Egypt:** a strong eunuch elite, but Adelphai Dorleyaiou already covers the eunuch-court niche, and Tolino rejects a third-gender reading. Better used as reaction: Fatimid courts would respect a daughter's service, as eunuchs were respected, and Mamluk moralists would mock her.
 
 **Reaction summary by faith.** Each line gives a suggested opinion and modifier direction.
 - **Sunni Maliki (al-Andalus, Maghrib, Sahel):** hostile. Expulsion of *hāwī*, and stoning for liwāṭ in Mālik's view. The *khunthā* is accommodated but only by assignment. Items 1–5.
@@ -968,7 +968,7 @@ Checks were made on 2026-10-19 against the Crossref and OpenAlex APIs, Open Libr
 - It would be a Buddhist heresy that takes Vin III.35 at face value and refuses the commentary's karmic reading.
   - Gate: *waking changed*, a dream rite in the rains retreat.
   - Seat: Anurādhapura (b_anuradhapura) before 1017, or Pagan (c_pagan).
-- This is the best-*sourced* option in the region, but it has no historical community behind it. Like Dorleyism, it would be an invented heresy.
+- This is the best-*sourced* option in the region, but it has no historical community behind it. Like Adelphai Dorleyaiou, it would be an invented heresy.
 - Risk: Buddhist law presumes sex change happens *to* you. A rite of asking cuts against the text. That tension could be the faith's doctrine.
 
 **Island Southeast Asia: the only real candidate.**

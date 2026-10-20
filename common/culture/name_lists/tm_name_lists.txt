@@ -1,4 +1,4 @@
-﻿# Kybeline name list — Adelphai Dorleyaiou
+﻿# Kybeline name list — Crusader Dolls
 # Spec: game/common/culture/name_lists/_name_lists.info. Structure copied from vanilla name_list_greek (00_byzantine.txt).
 # Kybeline children are born male or female as normal; male names are the vanilla Greek stock.
 # Daughters of the knife take a new feminine name after the rite, so female_names carries the vanilla

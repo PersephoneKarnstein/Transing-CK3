@@ -1,4 +1,4 @@
-﻿# Adelphai Dorleyaiou — cosmetic feminisation (Route 1 in docs/model_swap.md).
+﻿# Crusader Dolls — cosmetic feminisation (Route 1 in docs/model_swap.md).
 # Spec: game/gfx/portraits/trait_portrait_modifiers/_trait_modifier.info
 # Softens masculine face morphs on a body the engine still treats as male. Values are first guesses:
 # modify_multiply scales the existing gene strength, so 0.6 dampens rather than replaces, keeping

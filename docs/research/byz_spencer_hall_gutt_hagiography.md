@@ -20,7 +20,7 @@
 | Epi | van Dijk, "Beyond Binaries", 267–80 | Reflection | Not read |
 | App | Terminology, Language, and Usage Guide, 281–330 | Glossary | Style sheet; one conflict (below) |
 
-**Relevance, candidly.** The volume is almost entirely Latin-West and almost entirely trans-masculine or genderqueer. Its only Byzantine chapter (Szabo) is about a castrated *man* read as a man; its Eastern-saint chapters (Wright, Ogden, Bychowski) are about people assigned female. None of its chapters treats a person assigned male living as a woman or nun. Its use for Dorleyism is method, vocabulary, and a strong in-period figure (Ignatios).
+**Relevance, candidly.** The volume is almost entirely Latin-West and almost entirely trans-masculine or genderqueer. Its only Byzantine chapter (Szabo) is about a castrated *man* read as a man; its Eastern-saint chapters (Wright, Ogden, Bychowski) are about people assigned female. None of its chapters treats a person assigned male living as a woman or nun. Its use for Adelphai Dorleyaiou is method, vocabulary, and a strong in-period figure (Ignatios).
 
 ## 1. The argument in brief
 

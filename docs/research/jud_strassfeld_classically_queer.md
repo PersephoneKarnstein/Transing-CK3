@@ -96,7 +96,7 @@ None of these is a recognition of trans women. Each is a hook that the sect, not
 1. **"By the hands of heaven"** (bYevamot 80b, p. 136).
    - The rabbis themselves divide bodies made by heaven, the "natural" ones (p. 137), from bodies made by human hands.
    - A no-knife sect can claim this in its own voice: *we are turned by Heaven's hand, as Dinah was; what a knife makes is a seris adam, and him the verse shuts out*.
-   - This gives the no-knife rule a reason taken from the tradition's own grammar, and it sets the sect against Dorleyism on the knife.
+   - This gives the no-knife rule a reason taken from the tradition's own grammar, and it sets the sect against Adelphai Dorleyaiou on the knife.
 2. **The aylonit's unrecognisable voice** (p. 118 and n. 187).
    - In one manuscript the rabbis' own sign list describes a woman not recognisable as woman or man.
    - The sect could take the *aylonit*, not the *androginos*, as its legal ancestor, since she is the one *female* category. Lev reads her as derived from the male eunuch (p. 250), which suits a sect of women turned from male.
@@ -155,7 +155,7 @@ None of these is a recognition of trans women. Each is a hook that the sect, not
   - Loc idea (rabbi character): *"In our law she is a seris adam, made by a man's hand. What Heaven has not made, a knife cannot."*
 - **Jurisdiction.**
   - Gentile Dorleyites are outside halakha. The reaction is classificatory distance: a small opinion malus, never persecution.
-  - Real consequences only fall on a **Jewish** character who joins Dorleyism or is cut. Such a character:
+  - Real consequences only fall on a **Jewish** character who joins Adelphai Dorleyaiou or is cut. Such a character:
     - may not marry a born Israelite (Deut. 23:2 as read in the Bavli, p. 102), but may marry a convert or freedwoman *as a man* (mYevamot 8:2, p. 64);
     - if a *kohen*, keeps the heave-offering privilege, though his wife may not eat it if they have had sex since the cutting (pp. 59-63);
     - for levirate, follows Akiva: performs *chalitzah* (p. 72).

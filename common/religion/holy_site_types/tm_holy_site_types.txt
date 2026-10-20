@@ -1,4 +1,4 @@
-﻿# Adelphai Dorleyaiou — holy sites
+﻿# Crusader Dolls — holy sites
 # Spec: game/common/religion/holy_site_types/_holy_site_types.info
 # Loc: holy_site_<key>_name / holy_site_<key>_effects
 

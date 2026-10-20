@@ -82,7 +82,10 @@ tm_arrival.0002 = {
 	}
 	option = {	# Stay as my daughter
 		name = tm_arrival.0002.c
-		trigger = { rite ?= { rite_has_parameter = tm_adoptive_matriline } }
+		trigger = {
+			rite ?= { rite_has_parameter = tm_adoptive_matriline }
+			age > scope:tm_new_daughter.age		# a parent can't be younger than her child
+		}
 		if = {
 			limit = { NOT = { scope:tm_new_daughter = { is_courtier_of = root } } }
 			add_courtier = scope:tm_new_daughter
@@ -143,7 +146,10 @@ tm_arrival.0003 = {
 	}
 	option = {	# Shelter her as my daughter
 		name = tm_arrival.0003.b
-		trigger = { rite ?= { rite_has_parameter = tm_adoptive_matriline } }
+		trigger = {
+			rite ?= { rite_has_parameter = tm_adoptive_matriline }
+			age > scope:tm_cast_out.age		# a parent can't be younger than her child
+		}
 		add_courtier = scope:tm_cast_out
 		adopt_effect = {
 			CHILD = scope:tm_cast_out

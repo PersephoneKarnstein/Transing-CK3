@@ -1,4 +1,4 @@
-﻿# Adelphai Dorleyaiou — Sister-Making (custom relation; design lock, user 2026-10-14).
+﻿# Crusader Dolls — Sister-Making (custom relation; design lock, user 2026-10-14).
 # Modelled on adelphopoiesis (docs/research/hist_rapp_brother_making.md): no inheritance effect, a
 # public bond of mutual obligation ranked by the faith above marriage.
 tm_sister = {

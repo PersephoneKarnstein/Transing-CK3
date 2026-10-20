@@ -1,4 +1,4 @@
-﻿# Adelphai Dorleyaiou — main rite
+﻿# Crusader Dolls — main rite
 # Spec: game/common/religion/rite_types/_rite_types.info
 # Pattern: vanilla `adamites` / `paulician_rite`. Doctrines here override christianity_religion's baseline
 # in the same group. Design: docs/faith_design.md §3–4.

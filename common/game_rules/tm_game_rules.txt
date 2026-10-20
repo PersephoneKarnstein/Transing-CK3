@@ -1,4 +1,4 @@
-﻿# Adelphai Dorleyaiou — game rules. Spec: game/common/game_rules/_game_rules.info
+﻿# Crusader Dolls — game rules. Spec: game/common/game_rules/_game_rules.info
 
 # Whether a daughter of the knife is re-embodied as an engine-female character (true female model;
 # loses memories, secrets, hooks and schemes; character ID changes) or keeps her body with cosmetic

@@ -175,7 +175,7 @@ Baseline: **mildly positive** toward a daughter of any faith (suggest +5). The f
 | Daughter's gate | Orisha reading | Suggested line (courtier's voice) |
 |---|---|---|
 | Any, generic | A bride of a god, for a season | "In our towns a man may wear the wrapper for the god and take it off for his wives." Her answer (option text): "I do not take it off." |
-| The knife (Dorleyism) | A palace officer made by cutting | "Where kings keep cut men, they keep them close and trust them." Keep it neutral; no "Baba". Johnson records Ilari calling every eunuch "father" (p. 60), a misgendering the mod should not voice approvingly. |
+| The knife (Adelphai Dorleyaiou) | A palace officer made by cutting | "Where kings keep cut men, they keep them close and trust them." Keep it neutral; no "Baba". Johnson records Ilari calling every eunuch "father" (p. 60), a misgendering the mod should not voice approvingly. |
 | The völva's seat (Bædlings) | One who has been "mounted" | "Whose horse were you, when you sat and saw?" She: "No one rode me. I looked." This marks the difference between possession and seeing. |
 | The embryo (Jade Embryo) | A head newly made | "They say the heads of the living are fired in heaven like pots. Yours was fired again." Myth of Àjàlá the potter (p. 145). Generic; no named òrìṣà. |
 | The Turning (Ha-Nehpakhot) | A change of body by heaven's hand | "Heaven turns what it likes." Do **not** cite Orompoto in period (c. 1560, a 1980s telling; FtM). |

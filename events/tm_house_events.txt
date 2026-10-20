@@ -96,7 +96,11 @@ tm_house.0010 = {
 	}
 	option = {	# Thank the one who served before
 		name = tm_house.0010.b
-		trigger = { exists = scope:tm_old_elder NOT = { scope:tm_old_elder = scope:tm_new_elder } }
+		trigger = {
+			exists = scope:tm_old_elder
+			NOT = { scope:tm_old_elder = scope:tm_new_elder }
+			NOT = { scope:tm_old_elder = root }		# the holder herself served: no thanks to give
+		}
 		scope:tm_old_elder = {
 			add_stress = -30
 			add_opinion = { target = root modifier = grateful_opinion opinion = 20 }

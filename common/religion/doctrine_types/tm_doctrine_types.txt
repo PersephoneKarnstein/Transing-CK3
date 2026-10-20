@@ -1,4 +1,4 @@
-﻿# Adelphai Dorleyaiou — doctrines
+﻿# Crusader Dolls — doctrines
 # Spec: game/common/religion/doctrine_types/_doctrine_types.info
 # Parameters are read by the faith's own script (interactions, events); none are engine-special.
 # Icons reuse vanilla doctrine icons until custom art exists.

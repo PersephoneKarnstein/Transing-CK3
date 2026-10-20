@@ -1,4 +1,4 @@
-﻿# Adelphai Dorleyaiou — static modifiers
+﻿# Crusader Dolls — static modifiers
 
 # Ten months' inner gestation of the jade embryo (tm_embryo_events.txt).
 tm_gestating_modifier = {

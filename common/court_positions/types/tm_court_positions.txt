@@ -1,4 +1,4 @@
-﻿# Adelphai Dorleyaiou — court offices for Dorleyite rulers (duke and above).
+﻿# Crusader Dolls — court offices for Dorleyite rulers (duke and above).
 # The Byzantine court reserved offices for eunuchs (Philotheos' Kletorologion, 899: research/byz_bury_kletorologion.md;
 # byz_guilland_eunuques.md; byz_ringrose_perfect_servant.md) and appointed women to the empress's chamber with the same
 # rite and words as a male koubikoularios (byz_moffatt_tall_de_cerimoniis.md). The Sisters keep the offices and give
