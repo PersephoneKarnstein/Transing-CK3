@@ -6,6 +6,7 @@
 # Theia Beatrike, Mother of Mothers: "Aunt Bea", an elder daughter of the knife (Adelphai Dorleyaiou).
 tm_theia_beatrike = {
 	name = "tm_name_theia_beatrike"
+	dna = tm_theia_beatrike_dna		# Welcome to Dorley Hall: dark brown hair, grey-green eyes (common/dna_data/tm_dna.txt)
 	female = yes
 	culture = kybeline
 	religion = transbian_maximalism
@@ -19,7 +20,7 @@ tm_theia_beatrike = {
 	stewardship = 9
 	intrigue = 11
 	martial = 4
-	813.1.1 = { birth = yes }
+	823.1.1 = { birth = yes }		# in her forties at the start, as described
 	895.1.1 = { death = yes }
 }
 

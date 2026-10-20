@@ -177,7 +177,7 @@ One feature per faith, each in its own files; scenarios in TO-TEST.md §J.
 - [x] `bm_867_crusader_dolls`: five heads; Theia Beatrike and the Candragiri and Kirina countesses moved to history characters
 - [x] Tab art (user's stained-glass shark, 2026-10-20); the start button and the info-panel backdrop are cut from it
 - [x] Map and highlights (draft): cropped from the game's own flatmap, highlights from the province map; replace or paint over as wanted, then adjust `position` in tm_bookmarks.txt
-- [ ] Portraits: replace the five placeholder files in `common/bookmark_portraits/` with `dump_bookmark_portraits` output
+- [x] Portraits dumped in game (2026-10-20). Theia Beatrike has fixed DNA (common/dna_data/tm_dna.txt): 44 at the start, dark brown hair, grey-green eyes, as Welcome to Dorley Hall describes her; the others are left to game defaults (user)
 - [ ] Coats of arms for Steinn's and Xun's houses (the bookmark omits their houses: vanilla defines no CoA for dynasties 825 and 2003011)
 - [ ] Ha-Nehpakhot: an unlanded start (Roads to Power) so the sect can join the bookmark
 

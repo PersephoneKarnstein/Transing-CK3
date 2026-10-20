@@ -61,7 +61,7 @@ tm_on_game_start = {
 					after_creation = { tm_register_seed_effect = { SEAT = phrygia } }
 					name = tm_name_theia_beatrike
 					gender = female
-					age = 54
+					age = 44
 					culture = culture:kybeline
 					faith = faith:transbian_maximalism
 					dynasty = none

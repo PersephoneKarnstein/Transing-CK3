@@ -61,7 +61,7 @@
 
 <p align="center">
   <img src="docs/images/bookmark.jpg" alt="The Crusader Dolls bookmark on CK3's 867 start screen: a stained-glass shark tab among the bookmark tabs, a painted map from the Baltic to India with Steinn at Gotland, Theia Beatrike at Dorylaion, Xun at Dunhuang, Cantirâdêvi at Candragiri and Djeneba of Kirina in a West Africa inset, and Theia's info panel open on the right" width="100%">
-  <br><em>The Crusader Dolls bookmark at 867 (portraits are placeholders).</em>
+  <br><em>The Crusader Dolls bookmark at 867 (an early build, with stand-in portraits).</em>
 </p>
 
 The six faiths answer the same three questions in different ways:
