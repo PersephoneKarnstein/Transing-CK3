@@ -673,9 +673,15 @@ tm_on_death_track = {
 		}
 	}
 	effect = {
+		# Pool characters are made and cleared by the thousand in a faith's counties ("disappearance"): count them
+		# apart, or they swamp the deaths of people who lived at a court.
 		if = {
-			limit = { rite ?= { rite_has_parameter = tm_sisters_faith } }
+			limit = { rite ?= { rite_has_parameter = tm_sisters_faith } is_pool_character = no }
 			tm_track_effect = { FAITH = faith WHAT = deaths }
+		}
+		else_if = {
+			limit = { rite ?= { rite_has_parameter = tm_sisters_faith } }
+			tm_track_effect = { FAITH = faith WHAT = pool_deaths }
 		}
 		if = {
 			limit = { has_variable = tm_seed }

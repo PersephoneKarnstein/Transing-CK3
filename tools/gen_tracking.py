@@ -6,7 +6,7 @@ Run from the repo root: python3 tools/gen_tracking.py
 """
 FAITHS = ['transbian_maximalism', 'tm_baeddel', 'tm_yutai', 'tm_nehpakhot', 'tm_garland', 'tm_badenya']
 METRICS = ['members', 'daughters', 'marked', 'rulers', 'counties']         # counted at each census
-COUNTERS = ['joins', 'ruler_joins', 'kahal_joins', 'offers', 'rises', 'deaths']  # running totals (tm_track_effect)
+COUNTERS = ['joins', 'ruler_joins', 'kahal_joins', 'offers', 'rises', 'deaths', 'pool_deaths']  # running totals (tm_track_effect)
 DECADES = range(860, 1460, 10)
 
 HEADER = '''﻿# Adelphai Dorleyaiou — tracking for observe runs (docs/faith_design.md §14). Writes nothing the player sees.
@@ -15,7 +15,8 @@ HEADER = '''﻿# Adelphai Dorleyaiou — tracking for observe runs (docs/faith_d
 # Every 10 years (tm_yearly_growth) each of the six faiths takes a census and keeps it on the faith, one variable per
 # decade so a single late save holds the whole run: tm_c<decade>_<what>, e.g. tm_c0890_members. <what> is
 #   members, daughters, marked, rulers (landed members), counties: counted at that census;
-#   joins, ruler_joins, kahal_joins, offers, rises, deaths: running totals since game start (tm_track_effect).
+#   joins, ruler_joins, kahal_joins, offers, rises, deaths, pool_deaths: running totals since game start
+#   (tm_track_effect); pool_deaths are pool characters cleared by the game, deaths everyone else.
 # Worldwide totals of Marked characters and daughters go to global variables tm_c<decade>_marked / _daughters.
 # tools/census_report.py reads them out of a save.
 

@@ -28,9 +28,15 @@ tm_rise_daughter_effect = {
 	}
 	if = {
 		limit = { has_game_rule = tm_reembodiment_on }
+		# Read before the old body dies: a dead character holds no variables.
+		clear_saved_scope = tm_was_declared
+		if = {
+			limit = { has_variable = tm_declared }
+			save_scope_value_as = { name = tm_was_declared value = yes }
+		}
 		tm_reembody_as_woman_effect = yes
 		if = {
-			limit = { scope:tm_old_body = { has_variable = tm_declared } }
+			limit = { exists = scope:tm_was_declared }
 			scope:tm_new_body = {
 				change_first_name = { template_character = scope:tm_old_body }
 				set_variable = tm_declared

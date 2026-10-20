@@ -28,7 +28,12 @@ tm_hipukh.0009 = {
 			tm_turning_begin_effect = yes
 		}
 		else_if = {
-			limit = { NOT = { var:tm_adar_wait ?= 12 } }
+			limit = { NOT = { has_variable = tm_adar_wait } }		# change_variable fails on an unset variable
+			set_variable = { name = tm_adar_wait value = 1 }
+			trigger_event = { id = tm_hipukh.0009 days = 30 }
+		}
+		else_if = {
+			limit = { var:tm_adar_wait < 12 }
 			change_variable = { name = tm_adar_wait add = 1 }
 			trigger_event = { id = tm_hipukh.0009 days = 30 }
 		}
