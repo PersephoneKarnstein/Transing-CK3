@@ -2,13 +2,41 @@
 # A 119-year observe run (867–986) left the four faiths with 81 living members between them: nothing drew anyone in,
 # only rulers could start a rite, and the AI never adopted. These effects are the growth engine.
 
-# A Marked character of another faith hears of the Sisters and may join the nearest faith of the six.
-# Scope: the character. Called yearly from tm_yearly_growth (tm_on_actions.txt).
+# A Marked character of another faith hears of the Sisters and may join one of the six. The call travels by contact:
+# members at court, members nearby, the faith holding land in the realm, a House, a holy site. With none of these it is
+# a rumour (1% a year). A larger faith has more members in more places, so it reaches more people; the ceiling is the
+# number of Marked characters alive, since daughters bear no children. Scope: the character. Called yearly from
+# tm_yearly_growth (tm_on_actions.txt).
 tm_sisters_call_effect = {
-	# The nearest faith, by the character's own faith and where they live.
+	# Saved scopes outlive one character in the yearly loop: clear them, or the last character's faith carries over.
+	clear_saved_scope = tm_call_faith
+	save_scope_as = tm_call_seeker			# root is the pulse, not her
+	# Which faith: one met at court first; then the faith of her own religion or region.
 	if = {
+		limit = {
+			employer ?= {
+				OR = {
+					AND = { NOT = { this = scope:tm_call_seeker } rite ?= { rite_has_parameter = tm_sisters_faith } }
+					any_courtier = { NOT = { this = scope:tm_call_seeker } rite ?= { rite_has_parameter = tm_sisters_faith } }
+				}
+			}
+		}
+		employer = {
+			if = {
+				limit = { NOT = { this = scope:tm_call_seeker } rite ?= { rite_has_parameter = tm_sisters_faith } }
+				faith = { save_scope_as = tm_call_faith }
+			}
+			else = {
+				random_courtier = {
+					limit = { NOT = { this = scope:tm_call_seeker } rite ?= { rite_has_parameter = tm_sisters_faith } }
+					faith = { save_scope_as = tm_call_faith }
+				}
+			}
+		}
+	}
+	else_if = {
 		limit = { rite ?= { rite_has_parameter = jewish_syncretic_recipient } }
-		save_scope_value_as = { name = tm_call_target value = flag:nehpakhot }
+		faith:tm_nehpakhot = { save_scope_as = tm_call_faith }
 	}
 	else_if = {
 		limit = {
@@ -19,7 +47,7 @@ tm_sisters_call_effect = {
 				}
 			}
 		}
-		save_scope_value_as = { name = tm_call_target value = flag:dorleyism }
+		faith:transbian_maximalism = { save_scope_as = tm_call_faith }
 	}
 	else_if = {
 		limit = {
@@ -31,7 +59,7 @@ tm_sisters_call_effect = {
 				}
 			}
 		}
-		save_scope_value_as = { name = tm_call_target value = flag:baeddel }
+		faith:tm_baeddel = { save_scope_as = tm_call_faith }
 	}
 	else_if = {
 		limit = {
@@ -42,27 +70,65 @@ tm_sisters_call_effect = {
 				}
 			}
 		}
-		save_scope_value_as = { name = tm_call_target value = flag:yutai }
+		faith:tm_yutai = { save_scope_as = tm_call_faith }
 	}
 	else_if = {
 		limit = { location ?= { geographical_region = world_india_deccan } }
-		save_scope_value_as = { name = tm_call_target value = flag:garland }
+		faith:tm_garland = { save_scope_as = tm_call_faith }
 	}
 	else_if = {
 		limit = { location ?= { geographical_region = world_africa_west } }
-		save_scope_value_as = { name = tm_call_target value = flag:badenya }
+		faith:tm_badenya = { save_scope_as = tm_call_faith }
 	}
 	if = {
-		limit = { exists = scope:tm_call_target }
+		limit = { exists = scope:tm_call_faith }
 		random = {
-			chance = 2
-			modifier = {								# she already serves at a Sisters' court
+			chance = 1									# a rumour only
+			modifier = {								# a member at her court, or her lord
 				add = 8
-				employer ?= { rite ?= { rite_has_parameter = tm_sisters_faith } }
+				employer ?= {
+					OR = {
+						AND = { NOT = { this = scope:tm_call_seeker } faith = scope:tm_call_faith }
+						any_courtier = { NOT = { this = scope:tm_call_seeker } faith = scope:tm_call_faith }
+					}
+				}
+			}
+			modifier = {								# three or more
+				add = 4
+				employer ?= { any_courtier = { count >= 3 NOT = { this = scope:tm_call_seeker } faith = scope:tm_call_faith } }
+			}
+			modifier = {								# a member living in her county, at another court
+				add = 4
+				location ?= {
+					county ?= {
+						any_county_province = {
+							any_character_in_location = {
+								NOT = { employer ?= scope:tm_call_seeker.employer }
+								faith = scope:tm_call_faith
+							}
+						}
+					}
+				}
+			}
+			modifier = {								# the faith holds land in her realm
+				add = 4
+				top_liege ?= { any_realm_county = { faith = scope:tm_call_faith } }
 			}
 			modifier = {								# a Sisters' House in her county
 				add = 5
 				location ?= { county ?= { has_variable = tm_house } }
+			}
+			modifier = {								# a holy site of the faith in her duchy
+				add = 3
+				location ?= {
+					county ?= {
+						duchy ?= {
+							any_de_jure_county = {
+								any_county_province = { barony ?= { is_holy_site_of = scope:tm_call_faith } }
+							}
+						}
+					}
+				}
 			}
 			modifier = {								# a daughter of any faith at her court
 				add = 3
@@ -72,34 +138,23 @@ tm_sisters_call_effect = {
 				add = 4
 				has_variable = tm_declared
 			}
-			modifier = {								# rulers turn more slowly: a realm's faith goes with them
+			modifier = {								# a count turns slowly: her county's faith goes with her
 				factor = 0.25
 				is_ruler = yes
+				highest_held_title_tier <= tier_county
 			}
-			if = {
-				limit = { scope:tm_call_target = flag:nehpakhot }
-				set_character_faith = faith:tm_nehpakhot
+			modifier = {								# a duke, king or emperor more slowly still, and at a cost
+				factor = 0.05
+				highest_held_title_tier >= tier_duchy
 			}
-			else_if = {
-				limit = { scope:tm_call_target = flag:dorleyism }
-				set_character_faith = faith:transbian_maximalism
-			}
-			else_if = {
-				limit = { scope:tm_call_target = flag:baeddel }
-				set_character_faith = faith:tm_baeddel
-			}
-			else_if = {
-				limit = { scope:tm_call_target = flag:garland }
-				set_character_faith = faith:tm_garland
-			}
-			else_if = {
-				limit = { scope:tm_call_target = flag:badenya }
-				set_character_faith = faith:tm_badenya
-			}
-			else = {
-				set_character_faith = faith:tm_yutai
-			}
+			set_character_faith = scope:tm_call_faith
 			add_stress = -20
+			if = {
+				limit = { highest_held_title_tier >= tier_duchy }
+				every_vassal = {
+					add_opinion = { target = scope:tm_call_seeker modifier = tm_liege_joined_sisters_opinion }
+				}
+			}
 		}
 	}
 }
@@ -176,5 +231,65 @@ tm_seed_marked_courtiers_effect = {
 			dynasty = none
 			trait = tm_transgender
 		}
+	}
+}
+
+# A seat county at game start. The county takes the faith. If its lord holds other counties and this is not their
+# capital, the county goes to a member of the faith as the lord's vassal: a landed foothold whose own chaplain keeps it,
+# and a count under a liege cannot march on a kingdom (a converted independent lord's line formed Scandinavia in one
+# observe run, and held Mali in another). Otherwise the lord keeps it and the faith lives at their court.
+# Saves scope:tm_foothold_host, the court the faith's seed characters should join.
+# $COUNTY$ a county title, $FAITH$ a faith.
+tm_seed_foothold_effect = {
+	clear_saved_scope = tm_foothold_lord		# the effect runs once per seat: earlier seats' scopes must not carry over
+	clear_saved_scope = tm_foothold_count
+	clear_saved_scope = tm_foothold_host
+	$COUNTY$ = {
+		set_county_faith = $FAITH$
+		holder ?= { save_scope_as = tm_foothold_lord }
+	}
+	if = {
+		limit = {
+			exists = scope:tm_foothold_lord
+			scope:tm_foothold_lord = {
+				any_held_title = { tier = tier_county count >= 2 }
+				NOT = { capital_county ?= $COUNTY$ }
+			}
+		}
+		create_character = {
+			gender = female
+			age = { 24 34 }
+			culture = $COUNTY$.culture
+			faith = $FAITH$
+			dynasty = generate
+			employer = scope:tm_foothold_lord
+			trait = education_stewardship_2
+			save_scope_as = tm_foothold_count
+		}
+		create_title_and_vassal_change = {
+			type = granted
+			save_scope_as = change
+			add_claim_on_loss = no
+		}
+		$COUNTY$ = {
+			change_title_holder = {
+				holder = scope:tm_foothold_count
+				change = scope:change
+				government_base = scope:tm_foothold_lord
+			}
+			every_in_de_jure_hierarchy = {
+				limit = { tier = tier_barony holder ?= scope:tm_foothold_lord }
+				change_title_holder = {
+					holder = scope:tm_foothold_count
+					change = scope:change
+				}
+			}
+		}
+		resolve_title_and_vassal_change = scope:change
+		scope:tm_foothold_count = { save_scope_as = tm_foothold_host }
+	}
+	else_if = {
+		limit = { exists = scope:tm_foothold_lord }
+		scope:tm_foothold_lord = { save_scope_as = tm_foothold_host }
 	}
 }

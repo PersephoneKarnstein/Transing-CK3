@@ -48,3 +48,11 @@ tm_buried_under_old_name_opinion = {
 	opinion = -30
 	years = 15
 }
+
+# A duke, king or emperor who answers the Sisters' call: a lord who changes faith on the word of a few courtiers
+# (tm_sisters_call_effect). Decays over about 12 years.
+tm_liege_joined_sisters_opinion = {
+	opinion = -30
+	decaying = yes
+	monthly_change = 0.2
+}
