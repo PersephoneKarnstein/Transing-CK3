@@ -15,7 +15,7 @@ import sys
 FAITHS = {
     'transbian_maximalism': 'Dorleyism',
     'tm_baeddel': 'Bædling',
-    'tm_yutai': 'Jade Embryo',
+    'tm_yutai': 'Yutai Dao',
     'tm_nehpakhot': 'Ha-Nehpakhot',
     'tm_garland': 'Worn Garland',
     'tm_badenya': 'Badenya',

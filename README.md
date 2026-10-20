@@ -42,7 +42,7 @@
     </li>
     <li><a href="#dorleyism-the-sisters-of-dorylaion">Dorleyism: the Sisters of Dorylaion</a></li>
     <li><a href="#bædling-the-high-seat">Bædling: the High Seat</a></li>
-    <li><a href="#the-way-of-the-jade-embryo">The Way of the Jade Embryo</a></li>
+    <li><a href="#yutai-dao">Yutai Dao</a></li>
     <li><a href="#ha-nehpakhot-the-women-who-were-turned">Ha-Nehpakhot: the women who were turned</a></li>
     <li><a href="#the-worn-garland">The Worn Garland</a></li>
     <li><a href="#badenya-the-mothers-children">Badenya: the Mother's Children</a></li>
@@ -65,7 +65,7 @@ The six faiths answer the same three questions in different ways:
 |---|---|---|---|---|
 | **Dorleyism** | The knife, as a sacrament with a sponsor | A founding charter passes land to adopted daughters | Refuge, intake and church politics | Dorylaion, Phrygia |
 | **Bædling** | Seiðr: a völva goes into trance for the seeker | The hall's fostered, sworn and adopted daughters | Outlawry, raiding and insult duels | Gotland |
-| **Way of the Jade Embryo** | Ten months' inner gestation of one's own body | Adopted heirs, and temple societies that hold property in common | Palace factions against the scholar-officials | Dunhuang, at the Mogao caves |
+| **Yutai Dao** (the Way of the Jade Embryo) | Ten months' inner gestation of one's own body | Adopted heirs, and temple societies that hold property in common | Palace factions against the scholar-officials | Dunhuang, at the Mogao caves |
 | **Ha-Nehpakhot** | The Turning: a prayer said aloud at Purim | The women of the lamp, and the three women's commandments | The baylons' licence or their shunning; patronage by translating or medicine | The Jewish street of Arles |
 | **The Worn Garland** | The pāvai vow, kept through Mārkaḻi with companions; the staff and a name | A share on the temple street, recorded in stone | Temple endowments; orthodox pandits | The temple street of Kanchipuram |
 | **Badenya** | A smith's bargain, a woman's claim, and a jeli's word that cools | Through a sister or daughter; the House buries its own | Praise and satire; the smiths' power; naming feasts | Kirina, in Mali |
@@ -175,9 +175,9 @@ In the north the sanctioned crossing ran toward manhood. A man who went the othe
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## The Way of the Jade Embryo
+## Yutai Dao
 
-*Working name.* A Daoist faith of Tang China, seated at Dunhuang beneath the Mogao caves, where Daoist priestesses were ordained in the eighth century. In 867 the town's Daoist abbeys stand dark after Tibetan rule; relighting the Shenquan Abbey is the faith's first project.
+*Working name.* *Yutai Dao* (玉胎道) is "the Way of the Jade Embryo", in pinyin as the game writes its Chinese faiths (Zhengyi, Shangqing). *Yutai* is the faith's own coinage: inner alchemy speaks of a holy embryo (*shengtai* 聖胎) or an embryo of the Dao (*daotai* 道胎), never a jade one. A Daoist faith of Tang China, seated at Dunhuang beneath the Mogao caves, where Daoist priestesses were ordained in the eighth century. In 867 the town's Daoist abbeys stand dark after Tibetan rule; relighting the Shenquan Abbey is the faith's first project.
 
 Daoist inner alchemy teaches that an adept nurtures a holy embryo for ten months until it is born from her and becomes her true self. In the faith's own telling, Lord Lao once took the shape of Mother Li and sheltered in his own womb, and the masters say a man must reach a state of pregnancy before he becomes pure yang. The Way stops there, at the mother: its adepts are born as themselves. The palace counts the cut among its men and would count these women among them too. The Way answers with Confucius's rectification of names. A daughter named before witnesses is a daughter, and any eunuch who seeks the same is received as a sister. Its high god is the Queen Mother of the West, under whom the Tang master Du Guangting ranked every woman who attains the Way.
 
@@ -272,7 +272,7 @@ In the Sunjata tradition a woman named Tenenba claimed a hero she had not borne:
 
 - [x] Dorleyism: faith, culture, the three houses of the knife, the Dorley prisoner path
 - [x] Sisters' Houses, Declare Before Witnesses, The Sisters Choose
-- [x] Bædling and the Way of the Jade Embryo: faiths, tenets and gates
+- [x] Bædling and Yutai Dao: faiths, tenets and gates
 - [x] Re-embodiment, Take as Daughter, arrivals
 - [ ] Bædling: insult duels, feud and settlement, outlawry and landless war-bands, Spring the Cell
 - [ ] Jade Embryo: the palace faction, temple societies against confiscation, omen events

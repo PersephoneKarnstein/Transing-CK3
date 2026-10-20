@@ -57,11 +57,11 @@ Scenarios for playtesters. Each one sets up a situation on purpose, so that a si
 ## 0. Smoke test (everyone, five minutes)
 
 **0.1 Load.** Start the 867 bookmark.
-- In the faith screen, check that *Dorleyism*, *Bædling*, *Way of the Jade Embryo*, *Ha-Nehpakhot*, *the Worn Garland* and *Badenya* all exist with their icons and holy sites. Ha-Nehpakhot sits under Judaism, the Worn Garland under Hinduism, and Badenya under the West African religion.
+- In the faith screen, check that *Dorleyism*, *Bædling*, *Yutai Dao*, *Ha-Nehpakhot*, *the Worn Garland* and *Badenya* all exist with their icons and holy sites. Ha-Nehpakhot sits under Judaism, the Worn Garland under Hinduism, and Badenya under the West African religion.
 - Check the holy sites:
   - **Dorleyism:** Dorylaion, Constantinople, Kyzikos, Ankyra, Pepouza.
   - **Bædling:** Uppsala, Trondheim, York, Kyiv.
-  - **Way of the Jade Embryo:** Mogao, Longhu, Qingcheng, the Southern Marchmount (Mount Heng in Hunan).
+  - **Yutai Dao:** Mogao, Longhu, Qingcheng, the Southern Marchmount (Mount Heng in Hunan).
   - **The Worn Garland:** Kanchipuram, Srirangam, Thanjavur, Madurai.
   - **Badenya:** Kirina, Niani, Awkar, Walata, Do. Its god names should be Ala, the ancestors and the bush spirits, never Amma or the Nummo.
   - **Ha-Nehpakhot:** Arles, Jerusalem, Narbonne, Montpellier, Hamadan. Hover each and read its text: Arles should mention the women's synagogue and the lamp alms; Narbonne the *nasi* who held land "under no lord"; Montpellier "from Lunel to Montpellier".
@@ -71,7 +71,7 @@ Scenarios for playtesters. Each one sets up a situation on purpose, so that a si
 - Phrygia should be Dorleyite and held by Theia Beatrike, the Mother of Mothers, with three Elder Sisters at her court.
 - **Seats (Gotland, Kanchipuram, Kirina).** Each county should follow its faith. If its lord holds other counties and it is not their capital, it should be held by a new woman of the faith, the lord's vassal, with the seed characters at her court. Otherwise the lord keeps it, in their own faith, with the seed characters at their court. Note which happened at each seat.
 - **Bædling:** Gotland, with a völva and two Marked young men.
-- Shazhou should follow the Way of the Jade Embryo, with a nüguan (a Daoist nun) at court.
+- Shazhou should follow Yutai Dao, with a nüguan (a Daoist nun) at court.
 - **The Worn Garland:** Kanchipuram, with a daughter of God and two Marked young men.
 - **Badenya:** Sibi (Kirina), with a daughter of the House and two Marked young men.
 - **Ha-Nehpakhot holds no land.** In the Character Finder, filter for the trait *Daughter of the Turning*: an elder (50–65) should be living unlanded in Arles (county of Venaissin). Filter for Ha-Nehpakhot: two Marked young men should be there too, and a household: a physician, his wife and three children, of their own dynasty. Hover the county of Venaissin in debug mode: it should carry the variable `tm_kahal`. Screenshot both.
@@ -179,7 +179,7 @@ Design a Bædling ruler, or play Gotland (if its count is not Bædling, `run tm_
 
 ---
 
-## C. Way of the Jade Embryo
+## C. Yutai Dao (the Way of the Jade Embryo)
 
 Play Shazhou, or design a ruler of the Way. Then `add_trait tm_transgender` on yourself and `piety 500`.
 
