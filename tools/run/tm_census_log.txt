@@ -1,3 +1,4 @@
 ﻿# Run from the console:  run tm_census_log.txt
-# Writes the four faiths' counts (members, daughters, Marked, counties) to debug.log now. Search debug.log for tm_census_log.
+# Takes the census now and keeps it on each faith for this decade (tm_tracking_effects.txt). Save, then run
+# tools/census_report.py on the save to read it.
 tm_census_log_effect = yes

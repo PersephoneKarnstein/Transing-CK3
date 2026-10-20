@@ -149,6 +149,11 @@ tm_sisters_call_effect = {
 			}
 			set_character_faith = scope:tm_call_faith
 			add_stress = -20
+			tm_track_effect = { FAITH = scope:tm_call_faith WHAT = joins }
+			if = {
+				limit = { is_ruler = yes }
+				tm_track_effect = { FAITH = scope:tm_call_faith WHAT = ruler_joins }
+			}
 			if = {
 				limit = { highest_held_title_tier >= tier_duchy }
 				every_vassal = {
@@ -163,6 +168,7 @@ tm_sisters_call_effect = {
 # so without this a courtier could never rise. Uses the same event chains as the decisions. Scope: the seeker.
 tm_offer_courtier_rite_effect = {
 	set_variable = { name = tm_rite_offered value = yes years = 3 }
+	tm_track_effect = { FAITH = faith WHAT = offers }
 	if = {
 		limit = { rite ?= { rite_has_parameter = tm_seidr_gate } }
 		tm_seidr_begin_effect = yes
@@ -192,32 +198,6 @@ tm_offer_courtier_rite_effect = {
 	}
 }
 
-# Counts of each faith's living members, daughters and Marked, written to debug.log. Scope: none (global).
-tm_census_log_effect = {
-	save_scope_value_as = { name = tm_census_dorleyism value = { value = 0 every_living_character = { limit = { faith = faith:transbian_maximalism } add = 1 } } }
-	save_scope_value_as = { name = tm_census_baeddel value = { value = 0 every_living_character = { limit = { faith = faith:tm_baeddel } add = 1 } } }
-	save_scope_value_as = { name = tm_census_yutai value = { value = 0 every_living_character = { limit = { faith = faith:tm_yutai } add = 1 } } }
-	save_scope_value_as = { name = tm_census_nehpakhot value = { value = 0 every_living_character = { limit = { faith = faith:tm_nehpakhot } add = 1 } } }
-	save_scope_value_as = { name = tm_census_garland value = { value = 0 every_living_character = { limit = { faith = faith:tm_garland } add = 1 } } }
-	save_scope_value_as = { name = tm_census_badenya value = { value = 0 every_living_character = { limit = { faith = faith:tm_badenya } add = 1 } } }
-	save_scope_value_as = { name = tm_census_daughters value = { value = 0 every_living_character = { limit = { tm_is_daughter_trigger = yes } add = 1 } } }
-	save_scope_value_as = { name = tm_census_marked value = { value = 0 every_living_character = { limit = { has_trait = tm_transgender } add = 1 } } }
-	save_scope_value_as = { name = tm_census_counties value = { value = 0 every_county = { limit = { OR = { faith = faith:transbian_maximalism faith = faith:tm_baeddel faith = faith:tm_yutai faith = faith:tm_nehpakhot faith = faith:tm_garland faith = faith:tm_badenya } } add = 1 } } }
-	# debug_log writes only when the game runs with -debug_mode, so the counts are also kept in the save (variables={ } near the top).
-	set_global_variable = { name = tm_census_dorleyism value = scope:tm_census_dorleyism }
-	set_global_variable = { name = tm_census_baeddel value = scope:tm_census_baeddel }
-	set_global_variable = { name = tm_census_yutai value = scope:tm_census_yutai }
-	set_global_variable = { name = tm_census_nehpakhot value = scope:tm_census_nehpakhot }
-	set_global_variable = { name = tm_census_garland value = scope:tm_census_garland }
-	set_global_variable = { name = tm_census_badenya value = scope:tm_census_badenya }
-	set_global_variable = { name = tm_census_daughters value = scope:tm_census_daughters }
-	set_global_variable = { name = tm_census_marked value = scope:tm_census_marked }
-	set_global_variable = { name = tm_census_counties value = scope:tm_census_counties }
-	set_global_variable = { name = tm_census_year value = current_year }
-	debug_log = "tm_census_log"
-	debug_log_scopes = yes
-}
-
 # Two Marked young men of the faith at a seat court, so the courtier rite has seekers from the start.
 tm_seed_marked_courtiers_effect = {
 	while = {
@@ -230,6 +210,7 @@ tm_seed_marked_courtiers_effect = {
 			employer = $HOST$
 			dynasty = none
 			trait = tm_transgender
+			after_creation = { tm_register_seed_effect = { SEAT = $SEAT$ } }
 		}
 	}
 }
@@ -239,7 +220,7 @@ tm_seed_marked_courtiers_effect = {
 # and a count under a liege cannot march on a kingdom (a converted independent lord's line formed Scandinavia in one
 # observe run, and held Mali in another). Otherwise the lord keeps it and the faith lives at their court.
 # Saves scope:tm_foothold_host, the court the faith's seed characters should join.
-# $COUNTY$ a county title, $FAITH$ a faith.
+# $COUNTY$ a county title, $FAITH$ a faith, $SEAT$ the seat's name (tm_register_seed_effect).
 tm_seed_foothold_effect = {
 	clear_saved_scope = tm_foothold_lord		# the effect runs once per seat: earlier seats' scopes must not carry over
 	clear_saved_scope = tm_foothold_count
@@ -265,6 +246,7 @@ tm_seed_foothold_effect = {
 			employer = scope:tm_foothold_lord
 			trait = education_stewardship_2
 			save_scope_as = tm_foothold_count
+			after_creation = { tm_register_seed_effect = { SEAT = $SEAT$ } }
 		}
 		create_title_and_vassal_change = {
 			type = granted
@@ -287,9 +269,14 @@ tm_seed_foothold_effect = {
 		}
 		resolve_title_and_vassal_change = scope:change
 		scope:tm_foothold_count = { save_scope_as = tm_foothold_host }
+		$COUNTY$ = { set_variable = { name = tm_seat_branch value = flag:vassal } }	# read by tools/census_report.py
 	}
 	else_if = {
 		limit = { exists = scope:tm_foothold_lord }
 		scope:tm_foothold_lord = { save_scope_as = tm_foothold_host }
+		$COUNTY$ = { set_variable = { name = tm_seat_branch value = flag:lord } }
+	}
+	else = {
+		$COUNTY$ = { set_variable = { name = tm_seat_branch value = flag:unheld } }
 	}
 }

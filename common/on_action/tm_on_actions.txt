@@ -48,6 +48,7 @@ tm_on_game_start = {
 
 			# Theia Beatrike, Mother of Mothers: "Aunt Bea", an elder daughter of the knife.
 			create_character = {
+				after_creation = { tm_register_seed_effect = { SEAT = phrygia } }
 				name = tm_name_theia_beatrike
 				gender = female
 				age = 54
@@ -85,6 +86,7 @@ tm_on_game_start = {
 			while = {
 				count = 3
 				create_character = {
+					after_creation = { tm_register_seed_effect = { SEAT = phrygia } }
 					gender = female
 					age = { 30 55 }
 					culture = culture:kybeline
@@ -97,11 +99,12 @@ tm_on_game_start = {
 			}
 
 			# The northern faith keeps Gotland; a völva sits at the court that holds it (tm_seed_foothold_effect).
-			tm_seed_foothold_effect = { COUNTY = title:c_gutland FAITH = faith:tm_baeddel }
+			tm_seed_foothold_effect = { COUNTY = title:c_gutland FAITH = faith:tm_baeddel SEAT = gotland }
 			scope:tm_foothold_host ?= { save_scope_as = tm_gutland_count }
 			if = {
 				limit = { exists = scope:tm_gutland_count }
 				create_character = {
+					after_creation = { tm_register_seed_effect = { SEAT = gotland } }
 					gender = female
 					age = { 40 60 }
 					culture = scope:tm_gutland_count.culture
@@ -115,7 +118,7 @@ tm_on_game_start = {
 
 			if = {
 				limit = { exists = scope:tm_gutland_count }
-				tm_seed_marked_courtiers_effect = { HOST = scope:tm_gutland_count FAITH = faith:tm_baeddel }
+				tm_seed_marked_courtiers_effect = { HOST = scope:tm_gutland_count FAITH = faith:tm_baeddel SEAT = gotland }
 			}
 
 			# The Way of the Jade Embryo keeps Dunhuang (Shazhou, with the Mogao caves); a nüguan at court.
@@ -129,6 +132,7 @@ tm_on_game_start = {
 			if = {
 				limit = { exists = scope:tm_shazhou_count }
 				create_character = {
+					after_creation = { tm_register_seed_effect = { SEAT = shazhou } }
 					gender = female
 					age = { 40 60 }
 					culture = scope:tm_shazhou_count.culture
@@ -142,7 +146,7 @@ tm_on_game_start = {
 
 			if = {
 				limit = { exists = scope:tm_shazhou_count }
-				tm_seed_marked_courtiers_effect = { HOST = scope:tm_shazhou_count FAITH = faith:tm_yutai }
+				tm_seed_marked_courtiers_effect = { HOST = scope:tm_shazhou_count FAITH = faith:tm_yutai SEAT = shazhou }
 			}
 
 			# Ha-Nehpakhot hold no land: the women of the lamp in the Jewish street of Arles, under its lord. Kalonymus
@@ -152,6 +156,7 @@ tm_on_game_start = {
 				holder ?= { save_scope_as = tm_arles_lord }
 			}
 			create_character = {
+				after_creation = { tm_register_seed_effect = { SEAT = arles } }
 				gender = female
 				age = { 50 65 }
 				culture = title:c_venaissin.culture
@@ -167,6 +172,7 @@ tm_on_game_start = {
 			while = {
 				count = 2
 				create_character = {
+					after_creation = { tm_register_seed_effect = { SEAT = arles } }
 					gender = male
 					age = { 18 30 }
 					culture = title:c_venaissin.culture
@@ -192,6 +198,7 @@ tm_on_game_start = {
 			# who join are few, so without families the sect dies with its first generation (it was extinct by 1042 in an
 			# observe run). Their children are born into it.
 			create_character = {
+				after_creation = { tm_register_seed_effect = { SEAT = arles } }
 				gender = male
 				age = { 30 40 }
 				culture = title:c_venaissin.culture
@@ -203,6 +210,7 @@ tm_on_game_start = {
 				save_scope_as = tm_arles_father
 			}
 			create_character = {
+				after_creation = { tm_register_seed_effect = { SEAT = arles } }
 				gender = female
 				age = { 24 32 }
 				culture = title:c_venaissin.culture
@@ -215,6 +223,7 @@ tm_on_game_start = {
 			while = {
 				count = 3
 				create_character = {
+					after_creation = { tm_register_seed_effect = { SEAT = arles } }
 					age = { 2 12 }
 					gender_female_chance = 50
 					father = scope:tm_arles_father
@@ -237,11 +246,12 @@ tm_on_game_start = {
 			}
 
 			# The Worn Garland: the temple street of Kanchipuram (tm_seed_foothold_effect).
-			tm_seed_foothold_effect = { COUNTY = title:c_kanchipuram FAITH = faith:tm_garland }
+			tm_seed_foothold_effect = { COUNTY = title:c_kanchipuram FAITH = faith:tm_garland SEAT = kanchipuram }
 			scope:tm_foothold_host ?= { save_scope_as = tm_kanchi_lord }
 			if = {
 				limit = { exists = scope:tm_kanchi_lord }
 				create_character = {
+					after_creation = { tm_register_seed_effect = { SEAT = kanchipuram } }
 					gender = female
 					age = { 40 60 }
 					culture = title:c_kanchipuram.culture
@@ -251,15 +261,16 @@ tm_on_game_start = {
 					trait = tm_daughter_of_the_garland
 					trait = education_diplomacy_3
 				}
-				tm_seed_marked_courtiers_effect = { HOST = scope:tm_kanchi_lord FAITH = faith:tm_garland }
+				tm_seed_marked_courtiers_effect = { HOST = scope:tm_kanchi_lord FAITH = faith:tm_garland SEAT = kanchipuram }
 			}
 
 			# Badenya keeps Kirina (Sibi); a jelimuso who crossed sits at the court that holds it (tm_seed_foothold_effect).
-			tm_seed_foothold_effect = { COUNTY = title:c_sibi_mali FAITH = faith:tm_badenya }
+			tm_seed_foothold_effect = { COUNTY = title:c_sibi_mali FAITH = faith:tm_badenya SEAT = kirina }
 			scope:tm_foothold_host ?= { save_scope_as = tm_kirina_lord }
 			if = {
 				limit = { exists = scope:tm_kirina_lord }
 				create_character = {
+					after_creation = { tm_register_seed_effect = { SEAT = kirina } }
 					gender = female
 					age = { 40 60 }
 					culture = scope:tm_kirina_lord.culture
@@ -269,7 +280,7 @@ tm_on_game_start = {
 					trait = tm_daughter_of_the_house
 					trait = education_diplomacy_3
 				}
-				tm_seed_marked_courtiers_effect = { HOST = scope:tm_kirina_lord FAITH = faith:tm_badenya }
+				tm_seed_marked_courtiers_effect = { HOST = scope:tm_kirina_lord FAITH = faith:tm_badenya SEAT = kirina }
 			}
 
 			# Historical characters are not "randomly created", so the 1% seed never rolls for them.
@@ -337,7 +348,7 @@ tm_on_game_start = {
 			scope:tm_beatrike = {
 				change_government = theocracy_government
 			}
-			tm_seed_marked_courtiers_effect = { HOST = scope:tm_beatrike FAITH = faith:transbian_maximalism }
+			tm_seed_marked_courtiers_effect = { HOST = scope:tm_beatrike FAITH = faith:transbian_maximalism SEAT = phrygia }
 		}
 	}
 }
@@ -635,6 +646,33 @@ on_death = {
 	}
 }
 
+# Tracking: a member of the six dies (not a body left behind by re-embodiment); a seed's death is kept on a list.
+on_death = {
+	on_actions = {
+		tm_on_death_track
+	}
+}
+
+tm_on_death_track = {
+	trigger = {
+		NOT = { has_variable = tm_reborn }
+		OR = {
+			rite ?= { rite_has_parameter = tm_sisters_faith }
+			has_variable = tm_seed
+		}
+	}
+	effect = {
+		if = {
+			limit = { rite ?= { rite_has_parameter = tm_sisters_faith } }
+			tm_track_effect = { FAITH = faith WHAT = deaths }
+		}
+		if = {
+			limit = { has_variable = tm_seed }
+			add_to_global_variable_list = { name = tm_seeds_dead target = this }
+		}
+	}
+}
+
 tm_on_death_badenya = {
 	trigger = {
 		has_trait = tm_daughter_of_the_house
@@ -733,6 +771,7 @@ tm_yearly_growth = {
 			random = {
 				chance = 4
 				set_character_faith = faith:tm_nehpakhot
+				tm_track_effect = { FAITH = faith:tm_nehpakhot WHAT = kahal_joins }
 			}
 		}
 		# The Mother House never forgets Phrygia: if the county leaves the faith, the Mother of Mothers holds a claim.
@@ -743,7 +782,7 @@ tm_yearly_growth = {
 			}
 			title:d_tm_mother_house.holder = { add_pressed_claim = title:c_phrygia }
 		}
-		# Census for tuning: every 25 years, the counts go to debug.log (search "tm_census_log", -debug_mode only) and to global variables tm_census_* in the save.
+		# Census for tuning: every 10 years, kept on each faith by decade (tm_tracking_effects.txt; tools/census_report.py reads a save).
 		if = {
 			limit = {
 				OR = {
@@ -751,7 +790,7 @@ tm_yearly_growth = {
 					current_year >= global_var:tm_next_census
 				}
 			}
-			set_global_variable = { name = tm_next_census value = { value = current_year add = 25 } }
+			set_global_variable = { name = tm_next_census value = { value = current_year add = 10 } }
 			tm_census_log_effect = yes
 		}
 	}

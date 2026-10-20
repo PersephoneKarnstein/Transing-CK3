@@ -29,7 +29,7 @@ Scenarios for playtesters. Each one sets up a situation on purpose, so that a si
 | `tm_pavai_now.txt` | Starts the pāvai vow (the Worn Garland), skipping the Mārkaḻi window |
 | `tm_crossing_now.txt` | Starts the crossing (Badenya) |
 | `tm_growth_now.txt` | Runs one year of the growth engine now (the call, and the rite offered to courtiers) |
-| `tm_census_log.txt` | Stores the six faiths' counts now as global variables `tm_census_*`, and writes them to `debug.log` (search `tm_census_log`) |
+| `tm_census_log.txt` | Takes the census now and keeps it on each faith for this decade (read it with `tools/census_report.py`) |
 | `tm_join_baeddel.txt` | Makes you a Bædling (for playing Gotland) |
 | `tm_join_badenya.txt` | Makes you Badenya (for playing Kirina) |
 
@@ -315,7 +315,7 @@ Start a new 867 game, pick any ruler, type `observe`, and run at full speed to a
 This shows whether the AI ever uses the rites, Houses, fostering, Companions, the elective law and the court offices. It also catches errors that only show up after decades.
 
 **This is now the most important test.** The first observe run (867–986) found the faiths dying out, and the growth engine is new and untuned (`docs/faith_design.md` §14). Please:
-- send a save from each quarter-century (an autosave is fine). Every 25 years the counts (members of each faith, daughters, Marked, counties) are stored in the save as global variables `tm_census_*`, with `tm_census_year`. If the game runs with `-debug_mode` they also go to `debug.log` (search `tm_census_log`). These numbers are what the rates will be tuned on;
+- send the last save (an autosave is fine; saves must be plain text, so keep *compressed saves* off and don't play ironman). Every 10 years each faith takes a census and keeps it in the save by decade: members, daughters, Marked, landed members and counties, and running totals of joins by the call (and how many were rulers), kahal joins, rites offered, daughters raised and deaths. The characters made at game start for each seat are kept on lists too, and each foothold seat records how it started (a vassal of the faith, the lord's court, or no holder). One late save holds the whole run. To read it yourself: `python3 tools/census_report.py "<save>.ck3"`. These numbers are what the rates will be tuned on;
 - note whether any faith **booms** (hundreds of members, or many counties) as well as whether any dies;
 - check Phrygia at the end: is it still Dorleyite, and is the Mother of Mothers a theocracy? If Byzantium took it, does the Mother House holder have a claim on it?
 - check that Arles has Ha-Nehpakhot courtiers at the count of Venaissin's court.

@@ -12,6 +12,7 @@ tm_rise_daughter_effect = {
 	if = { limit = { has_trait = beardless_eunuch } remove_trait = beardless_eunuch }
 	add_trait = $TRAIT$
 	add_piety = 50
+	tm_track_effect = { FAITH = faith WHAT = rises }
 	if = {
 		limit = { has_trait = tm_transgender }
 		add_stress = -100				# relief: the rite answers what the Mother marked
