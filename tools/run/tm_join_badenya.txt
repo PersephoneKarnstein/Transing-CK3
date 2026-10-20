@@ -1,0 +1,3 @@
+﻿# Run from the console:  run tm_join_badenya.txt
+# Makes you Badenya (the lord of Kirina no longer starts in the faith).
+set_character_faith = faith:tm_badenya

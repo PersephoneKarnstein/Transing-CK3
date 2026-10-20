@@ -96,13 +96,11 @@ tm_on_game_start = {
 				}
 			}
 
-			# The northern faith keeps Gotland; a völva sits at its count's court.
+			# The northern faith keeps Gotland; a völva sits at its count's court. The county keeps the faith; its count need not:
+			# a converted count's line formed Sweden in 900 and Scandinavia in 914 in a 1023 observe run.
 			title:c_gutland = {
 				set_county_faith = faith:tm_baeddel
-				holder ?= {
-					set_character_faith = faith:tm_baeddel
-					save_scope_as = tm_gutland_count
-				}
+				holder ?= { save_scope_as = tm_gutland_count }
 			}
 			if = {
 				limit = { exists = scope:tm_gutland_count }
@@ -213,13 +211,11 @@ tm_on_game_start = {
 				tm_seed_marked_courtiers_effect = { HOST = scope:tm_kanchi_lord FAITH = faith:tm_garland }
 			}
 
-			# Badenya keeps Kirina (Sibi); a jelimuso who crossed sits at its lord's court.
+			# Badenya keeps Kirina (Sibi); a jelimuso who crossed sits at its lord's court. The county keeps the faith; its lord
+			# need not: a converted lord's line held Mali, Songhay and Kanem by 1023 in an observe run.
 			title:c_sibi_mali = {
 				set_county_faith = faith:tm_badenya
-				holder ?= {
-					set_character_faith = faith:tm_badenya
-					save_scope_as = tm_kirina_lord
-				}
+				holder ?= { save_scope_as = tm_kirina_lord }
 			}
 			if = {
 				limit = { exists = scope:tm_kirina_lord }
@@ -686,7 +682,7 @@ tm_yearly_growth = {
 			}
 			title:d_tm_mother_house.holder = { add_pressed_claim = title:c_phrygia }
 		}
-		# Census for tuning: every 25 years, the counts go to debug.log (search "tm_census_log").
+		# Census for tuning: every 25 years, the counts go to debug.log (search "tm_census_log", -debug_mode only) and to global variables tm_census_* in the save.
 		if = {
 			limit = {
 				OR = {

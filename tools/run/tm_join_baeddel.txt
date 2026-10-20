@@ -1,0 +1,3 @@
+﻿# Run from the console:  run tm_join_baeddel.txt
+# Makes you a Bædling (the count of Gotland no longer starts in the faith).
+set_character_faith = faith:tm_baeddel

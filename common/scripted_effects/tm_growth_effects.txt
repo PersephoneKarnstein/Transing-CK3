@@ -148,6 +148,17 @@ tm_census_log_effect = {
 	save_scope_value_as = { name = tm_census_daughters value = { value = 0 every_living_character = { limit = { tm_is_daughter_trigger = yes } add = 1 } } }
 	save_scope_value_as = { name = tm_census_marked value = { value = 0 every_living_character = { limit = { has_trait = tm_transgender } add = 1 } } }
 	save_scope_value_as = { name = tm_census_counties value = { value = 0 every_county = { limit = { OR = { faith = faith:transbian_maximalism faith = faith:tm_baeddel faith = faith:tm_yutai faith = faith:tm_nehpakhot faith = faith:tm_garland faith = faith:tm_badenya } } add = 1 } } }
+	# debug_log writes only when the game runs with -debug_mode, so the counts are also kept in the save (variables={ } near the top).
+	set_global_variable = { name = tm_census_dorleyism value = scope:tm_census_dorleyism }
+	set_global_variable = { name = tm_census_baeddel value = scope:tm_census_baeddel }
+	set_global_variable = { name = tm_census_yutai value = scope:tm_census_yutai }
+	set_global_variable = { name = tm_census_nehpakhot value = scope:tm_census_nehpakhot }
+	set_global_variable = { name = tm_census_garland value = scope:tm_census_garland }
+	set_global_variable = { name = tm_census_badenya value = scope:tm_census_badenya }
+	set_global_variable = { name = tm_census_daughters value = scope:tm_census_daughters }
+	set_global_variable = { name = tm_census_marked value = scope:tm_census_marked }
+	set_global_variable = { name = tm_census_counties value = scope:tm_census_counties }
+	set_global_variable = { name = tm_census_year value = current_year }
 	debug_log = "tm_census_log"
 	debug_log_scopes = yes
 }

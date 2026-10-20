@@ -29,7 +29,9 @@ Scenarios for playtesters. Each one sets up a situation on purpose, so that a si
 | `tm_pavai_now.txt` | Starts the pāvai vow (the Worn Garland), skipping the Mārkaḻi window |
 | `tm_crossing_now.txt` | Starts the crossing (Badenya) |
 | `tm_growth_now.txt` | Runs one year of the growth engine now (the call, and the rite offered to courtiers) |
-| `tm_census_log.txt` | Writes the six faiths' counts to `debug.log` now (search `tm_census_log`) |
+| `tm_census_log.txt` | Stores the six faiths' counts now as global variables `tm_census_*`, and writes them to `debug.log` (search `tm_census_log`) |
+| `tm_join_baeddel.txt` | Makes you a Bædling (for playing Gotland) |
+| `tm_join_badenya.txt` | Makes you Badenya (for playing Kirina) |
 
 **Vanilla console commands you'll use:**
 - `add_trait <trait> <id>` and `remove_trait <trait> <id>`
@@ -67,10 +69,10 @@ Scenarios for playtesters. Each one sets up a situation on purpose, so that a si
 
 **0.2 Starting presence.**
 - Phrygia should be Dorleyite and held by Theia Beatrike, the Mother of Mothers, with three Elder Sisters at her court.
-- Gotland should be Bædling, with a völva at court.
+- Gotland should be Bædling, with a völva and two Marked young men at court. Its count keeps their own faith.
 - Shazhou should follow the Way of the Jade Embryo, with a nüguan (a Daoist nun) at court.
 - **The Worn Garland:** the county of Kanchipuram should follow it (its lord need not), with a daughter of God and two Marked young men at the lord's court.
-- **Badenya:** Sibi (Kirina) should follow it, county and lord, with a daughter of the House and two Marked young men at court.
+- **Badenya:** the county of Sibi (Kirina) should follow it (its lord need not), with a daughter of the House and two Marked young men at the lord's court.
 - **Ha-Nehpakhot holds no land.** In the Character Finder, filter for the trait *Daughter of the Turning*: an elder (50–65) should be living unlanded in Arles (county of Venaissin). Filter for Ha-Nehpakhot: two Marked young men should be there too. Hover the county of Venaissin in debug mode: it should carry the variable `tm_kahal`. Screenshot both.
 - Hover over Theia's portrait and screenshot the debug tooltip.
 
@@ -140,7 +142,7 @@ Check that the Gift Alone gives more piety and better opinion from your own fait
 
 ## B. Bædling
 
-Play Gotland, or design a Bædling ruler. Then `add_trait tm_transgender` on yourself, `piety 500` and `gold 500`.
+Design a Bædling ruler (Gotland's count no longer starts in the faith), or play Gotland and `run tm_join_baeddel.txt`. Then `add_trait tm_transgender` on yourself, `piety 500` and `gold 500`.
 
 **B1. The full rite, in the best case.** Keep the starting völva at court, and add a woman who knows the warding songs. Any daughter of the high seat knows them; `run tm_make_sisters.txt` gives you two.
 - Take *Ask a Völva to Sit for Me*.
@@ -312,7 +314,7 @@ Start a new 867 game, pick any ruler, type `observe`, and run at full speed to a
 This shows whether the AI ever uses the rites, Houses, fostering, Companions, the elective law and the court offices. It also catches errors that only show up after decades.
 
 **This is now the most important test.** The first observe run (867–986) found the faiths dying out, and the growth engine is new and untuned (`docs/faith_design.md` §14). Please:
-- send `debug.log` and search it for `tm_census_log`: the counts are written every 25 years (members of each faith, daughters, Marked, counties). These numbers are what the rates will be tuned on;
+- send a save from each quarter-century (an autosave is fine). Every 25 years the counts (members of each faith, daughters, Marked, counties) are stored in the save as global variables `tm_census_*`, with `tm_census_year`. If the game runs with `-debug_mode` they also go to `debug.log` (search `tm_census_log`). These numbers are what the rates will be tuned on;
 - note whether any faith **booms** (hundreds of members, or many counties) as well as whether any dies;
 - check Phrygia at the end: is it still Dorleyite, and is the Mother of Mothers a theocracy? If Byzantium took it, does the Mother House holder have a claim on it?
 - check that Arles has Ha-Nehpakhot courtiers at the count of Venaissin's court.
@@ -435,7 +437,7 @@ Play the lord of Kanchipuram, or design a Worn Garland ruler in Tamil country. `
 
 ## I. Badenya
 
-Play the lord of Sibi (Kirina), or design a Badenya ruler in Mali. `add_trait tm_transgender`, `gold 500`, `prestige 500`. Have a mother, sister or aunt alive, or a woman at court who likes you (opinion 10+).
+Design a Badenya ruler in Mali, or play the lord of Sibi (Kirina) and `run tm_join_badenya.txt`. `add_trait tm_transgender`, `gold 500`, `prestige 500`. Have a mother, sister or aunt alive, or a woman at court who likes you (opinion 10+).
 
 **I1. The crossing, best case.** Take *Go to the Smith*.
 - **Expect:** "The Smith's Bargain" (give your manhood), about a week later "My Mother's Child" (a named woman claims you), then "The Word That Cools" (pay the jeli well), then the naming (Sogolon, Kolonkan, Tenenba and others).
