@@ -44,7 +44,7 @@
     <li><a href="#bædling-the-high-seat">Bædling: the High Seat</a></li>
     <li><a href="#yutai-dao">Yutai Dao</a></li>
     <li><a href="#ha-nehpakhot-the-women-who-were-turned">Ha-Nehpakhot: the women who were turned</a></li>
-    <li><a href="#the-worn-garland">The Worn Garland</a></li>
+    <li><a href="#cūṭikkoṭutta-mālai">Cūṭikkoṭutta Mālai</a></li>
     <li><a href="#badenya-the-mothers-children">Badenya: the Mother's Children</a></li>
     <li><a href="#shared-mechanics">Shared mechanics</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
@@ -67,7 +67,7 @@ The six faiths answer the same three questions in different ways:
 | **Bædling** | Seiðr: a völva goes into trance for the seeker | The hall's fostered, sworn and adopted daughters | Outlawry, raiding and insult duels | Gotland |
 | **Yutai Dao** (the Way of the Jade Embryo) | Ten months' inner gestation of one's own body | Adopted heirs, and temple societies that hold property in common | Palace factions against the scholar-officials | Dunhuang, at the Mogao caves |
 | **Ha-Nehpakhot** | The Turning: a prayer said aloud at Purim | The women of the lamp, and the three women's commandments | The baylons' licence or their shunning; patronage by translating or medicine | The Jewish street of Arles |
-| **The Worn Garland** | The pāvai vow, kept through Mārkaḻi with companions; the staff and a name | A share on the temple street, recorded in stone | Temple endowments; orthodox pandits | The temple street of Kanchipuram |
+| **Cūṭikkoṭutta Mālai** (the Worn Garland) | The pāvai vow, kept through Mārkaḻi with companions; the staff and a name | A share on the temple street, recorded in stone | Temple endowments; orthodox pandits | The temple street of Kanchipuram |
 | **Badenya** | A smith's bargain, a woman's claim, and a jeli's word that cools | Through a sister or daughter; the House buries its own | Praise and satire; the smiths' power; naming feasts | Kirina, in Mali |
 
 What the mod is not:
@@ -214,7 +214,9 @@ The rabbis divide the eunuch made "by the hands of heaven" from the one made "by
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## The Worn Garland
+## Cūṭikkoṭutta Mālai
+
+*Cūṭikkoṭutta Mālai* is "the garland worn and given": Āṇṭāḷ's father named her *cūṭikkoṭutta nācciyār*, "the lady who gave what she had worn" (Dehejia p. 8; Govindacharya pp. 46–47; Ramanujan p. 148 n. 5). In English the faith is the Worn Garland.
 
 *Working name.* A current of Tamil devotion inside Hinduism that crosses Śiva's temples and Viṣṇu's, seated on the temple street of Kanchipuram. The bride and the worn garland come from the Vaiṣṇava poets; the "daughter of God" and the women's song from Śiva's temples, whose inscriptions share one vocabulary with Viṣṇu's.
 

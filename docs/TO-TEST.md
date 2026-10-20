@@ -57,7 +57,7 @@ Scenarios for playtesters. Each one sets up a situation on purpose, so that a si
 ## 0. Smoke test (everyone, five minutes)
 
 **0.1 Load.** Start the 867 bookmark.
-- In the faith screen, check that *Dorleyism*, *Bædling*, *Yutai Dao*, *Ha-Nehpakhot*, *the Worn Garland* and *Badenya* all exist with their icons and holy sites. Ha-Nehpakhot sits under Judaism, the Worn Garland under Hinduism, and Badenya under the West African religion.
+- In the faith screen, check that *Dorleyism*, *Bædling*, *Yutai Dao*, *Ha-Nehpakhot*, *Cūṭikkoṭutta Mālai* (the Worn Garland) and *Badenya* all exist with their icons and holy sites. Ha-Nehpakhot sits under Judaism, the Worn Garland under Hinduism, and Badenya under the West African religion.
 - Check the holy sites:
   - **Dorleyism:** Dorylaion, Constantinople, Kyzikos, Ankyra, Pepouza.
   - **Bædling:** Uppsala, Trondheim, York, Kyiv.

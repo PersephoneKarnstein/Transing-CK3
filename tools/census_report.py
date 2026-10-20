@@ -17,7 +17,7 @@ FAITHS = {
     'tm_baeddel': 'Bædling',
     'tm_yutai': 'Yutai Dao',
     'tm_nehpakhot': 'Ha-Nehpakhot',
-    'tm_garland': 'Worn Garland',
+    'tm_garland': 'Mālai',
     'tm_badenya': 'Badenya',
 }
 SEATS = {
