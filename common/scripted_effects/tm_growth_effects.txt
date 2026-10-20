@@ -203,6 +203,47 @@ tm_offer_begin_effect = {
 	}
 }
 
+# The kahal's match. Ha-Nehpakhot holds no land and lives at Christian courts, where no other Jews are; Jewish
+# communities arranged their own marriages, and the wider Jewry of Provence is not modelled as characters. An unmarried
+# adult of the sect is matched with a Jewish spouse from outside the courts, who joins the sect and the court; their
+# children are born into it. Without this the sect died out in every observe run. Scope: the unmarried member.
+tm_kahal_match_effect = {
+	clear_saved_scope = tm_match_seeker		# called in a loop: the last match must not carry over
+	clear_saved_scope = tm_match_spouse
+	save_scope_as = tm_match_seeker
+	if = {
+		limit = { exists = employer }
+		create_character = {
+			opposite_gender = scope:tm_match_seeker
+			age = { 18 30 }
+			culture = scope:tm_match_seeker.culture
+			faith = faith:tm_nehpakhot
+			dynasty = none
+			employer = scope:tm_match_seeker.employer
+			save_scope_as = tm_match_spouse
+		}
+	}
+	else = {
+		create_character = {
+			opposite_gender = scope:tm_match_seeker
+			age = { 18 30 }
+			culture = scope:tm_match_seeker.culture
+			faith = faith:tm_nehpakhot
+			dynasty = none
+			location = scope:tm_match_seeker.location
+			save_scope_as = tm_match_spouse
+		}
+	}
+	if = {
+		limit = { is_female = yes }
+		marry_matrilineal = scope:tm_match_spouse	# her house, her line
+	}
+	else = {
+		marry = scope:tm_match_spouse
+	}
+	tm_track_effect = { FAITH = faith:tm_nehpakhot WHAT = matches }
+}
+
 # Two Marked young men of the faith at a seat court, so the courtier rite has seekers from the start.
 tm_seed_marked_courtiers_effect = {
 	while = {

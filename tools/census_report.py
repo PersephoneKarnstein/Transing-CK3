@@ -25,7 +25,7 @@ SEATS = {
     'arles': 'c_venaissin', 'kanchipuram': 'c_kanchipuram', 'kirina': 'c_sibi_mali',
 }
 METRICS = ['members', 'daughters', 'marked', 'rulers', 'counties']
-COUNTERS = ['joins', 'ruler_joins', 'kahal_joins', 'offers', 'rises', 'deaths', 'pool_deaths']
+COUNTERS = ['joins', 'ruler_joins', 'kahal_joins', 'matches', 'offers', 'rises', 'deaths', 'pool_deaths']
 
 TOKEN = re.compile(r'"[^"]*"|[{}=]|[^\s{}=]+')
 
@@ -169,14 +169,14 @@ def main(path):
     for tag, name in FAITHS.items():
         v = faith_vars.get(tag, {})
         print(f'== {name} ==')
-        print('decade  members daught marked rulers counties | per decade: joins ruler kahal offers rises deaths  pool')
+        print('decade  members daught marked rulers counties | per decade: joins ruler kahal match offers rises deaths  pool')
         prev = {c: 0 for c in COUNTERS}
         for d in decades:
             row = [int(v.get(f'tm_c{d:04d}_{m}', 0) or 0) for m in METRICS]
             cum = {c: int(v.get(f'tm_c{d:04d}_{c}', 0) or 0) for c in COUNTERS}
             inc = [cum[c] - prev[c] for c in COUNTERS]
             prev = cum
-            print(f'{d}s  {row[0]:7} {row[1]:6} {row[2]:6} {row[3]:6} {row[4]:8} |  {inc[0]:10} {inc[1]:5} {inc[2]:5} {inc[3]:6} {inc[4]:5} {inc[5]:6} {inc[6]:5}')
+            print(f'{d}s  {row[0]:7} {row[1]:6} {row[2]:6} {row[3]:6} {row[4]:8} |  {inc[0]:10} {inc[1]:5} {inc[2]:5} {inc[3]:5} {inc[4]:6} {inc[5]:5} {inc[6]:6} {inc[7]:5}')
         print()
     if decades:
         print('Worldwide: ' + ', '.join(

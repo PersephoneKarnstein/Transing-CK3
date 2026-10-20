@@ -769,6 +769,26 @@ tm_yearly_growth = {
 				tm_offer_courtier_rite_effect = yes
 			}
 		}
+		# The kahal's match (tm_kahal_match_effect): an unmarried adult of the sect may be matched within the community.
+		every_living_character = {
+			limit = {
+				faith = faith:tm_nehpakhot
+				is_adult = yes
+				age <= 40
+				is_ruler = no
+				is_imprisoned = no
+				is_married = no
+				is_betrothed = no
+				tm_is_daughter_trigger = no			# a daughter bears no children; she keeps her own life
+				NOT = { has_trait = tm_transgender }	# nor is a Marked young man matched to a wife
+				NOT = { has_trait = celibate }
+				fertility > 0
+			}
+			random = {
+				chance = 15
+				tm_kahal_match_effect = yes
+			}
+		}
 		# The kahal: a Jew at a court where the sect is two or more may join it. A sect within Judaism keeps its families,
 		# and their children are born into it; this is how it renews itself, not by the Marked alone.
 		every_living_character = {
