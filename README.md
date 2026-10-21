@@ -356,20 +356,33 @@ Works the research for this mod read, in full or in named chapters. Works it onl
 Click a heading to expand it.
 
 <details>
-<summary><strong>Transfeminist theory and trans studies</strong> (10 works)</summary>
+<summary><strong>Transfeminist theory and trans studies</strong> (23 works)</summary>
 
+- Aizura, Aren Z., Trystan Cotten, Carsten Balzer/Carla LaGata, Marcia Ochoa, and Salvador Vidal-Ortiz (eds.). 2014. "Decolonizing the Transgender Imaginary." Special issue, *TSQ: Transgender Studies Quarterly* 1.3. (Both introductions read in full; the other pieces skimmed.)
 - Bettcher, Talia Mae. 2013. "Evil Deceivers and Make-Believers: On Transphobic Violence and the Politics of Illusion." In Stryker and Aizura (eds.), *The Transgender Studies Reader 2*.
+- betts, edxi, NZ Suékama, and g, moderated by Ren-yo Hwang. 2024. "Black Transfeminist Anarchism." Roundtable. *TSQ: Transgender Studies Quarterly* 11.1: 34–65.
 - Bhatt, Talia. 2025. *Trans/Rad/Fem: Essays on Transfeminism, Book 1*. Self-published.
+- Bhatt, Talia. 2026. *Brown/Trans/Les*. Self-published.
+- Cavanagh, Sheila L. (ed.). 2017. "Transpsychoanalytics." Special issue, *TSQ: Transgender Studies Quarterly* 4.3–4: 323–683. (Introduction and eight items read in full; the rest by abstract.)
+- Chu, Andrea Long. 2017. "The Wrong Wrong Body: Notes on Trans Phenomenology." Book review. *TSQ: Transgender Studies Quarterly* 4.1: 141–152.
 - Chu, Andrea Long. 2019. *Females*. Verso.
+- Currah, Paisley, and Susan Stryker (eds.). 2014. "Postposttranssexual: Key Concepts for a Twenty-First-Century Transgender Studies." *TSQ: Transgender Studies Quarterly* 1.1–2. (The introduction and 41 of the 86 keyword essays read in full.)
+- DiPietro, Pedro Javier. 2016. "Of Huachafería, Así, and M'e Mati: Decolonizing Transing Methodologies." *TSQ: Transgender Studies Quarterly* 3.1–2: 65–73.
+- Dutta, Aniruddha, and Raina Roy. 2014. "Decolonizing Transgender in India: Some Reflections." *TSQ: Transgender Studies Quarterly* 1.3: 320–337.
 - Gleeson, Jules Joanne, and Elle O'Rourke (eds.). 2021. *Transgender Marxism*. Pluto Press. (Read in full: introduction, 14 chapters and Jordy Rosenberg's afterword.)
+- Khan, Faris A. 2016. "Khwaja Sira Activism: The Politics of Gender Ambiguity in Pakistan." *TSQ: Transgender Studies Quarterly* 3.1–2: 158–164.
+- Lane, Riki. 2016. "Reading Trans Biology as a Feminist Sociologist." *TSQ: Transgender Studies Quarterly* 3.1–2: 185–191.
 - Raha, Nat, and Mijke van der Drift. 2024. *Trans Femme Futures: Abolitionist Ethics for Transfeminist Worlds*. Pluto Press.
+- Roy, Jeff. 2016. "Translating Hijra into Transgender: Performance and *Pehchān* in India's Trans-Hijra Communities." *TSQ: Transgender Studies Quarterly* 3.3–4: 412–432.
+- Serano, Julia. 2007–2026. Essays on her blog (juliaserano.blogspot.com, including LiveJournal reposts), on Medium (juliaserano.medium.com) and on Substack. (About 100 of some 311 posts read in full or in large part; the rest triaged by title.)
 - Serano, Julia. 2016 [2007]. *Whipping Girl: A Transsexual Woman on Sexism and the Scapegoating of Femininity*. 2nd ed. Seal Press.
+- Silva, Joseli Maria, and Marcio Jose Ornat. 2016. "Transfeminism and Decolonial Thought: The Contribution of Brazilian Travestis." Trans. Sean Stroud. *TSQ: Transgender Studies Quarterly* 3.1–2: 220–227.
 - Stryker, Susan. 2026. *Transgender History: A Resource for Today's Struggle—and Tomorrow's*. 3rd ed. Seal Press.
 - Stryker, Susan, and Aren Z. Aizura (eds.). 2013. *The Transgender Studies Reader 2*. Routledge.
 - Stryker, Susan, and Dylan McCarthy Blackston (eds.). 2022. *The Transgender Studies Reader Remix*. Routledge.
 - Stryker, Susan, and Stephen Whittle (eds.). 2006. *The Transgender Studies Reader*. Routledge.
 
-Cited in the notes, not read: Bhatt, Talia, *Brown/Trans/Les* (2026); Feinberg, Leslie, *Transgender Warriors* (in the Remix bibliography); Koyama, Emi, *The Transfeminist Manifesto* (2001); Lewis, Sophie, *Abolish the Family* (Verso 2022); O'Brien, M. E., *Family Abolition* (Pluto 2023).
+Cited in the notes, not read: Feinberg, Leslie, *Transgender Warriors* (in the Remix bibliography); Koyama, Emi, *The Transfeminist Manifesto* (2001); Lewis, Sophie, *Abolish the Family* (Verso 2022); O'Brien, M. E., *Family Abolition* (Pluto 2023).
 
 </details>
 
@@ -413,17 +426,18 @@ Cited in the notes, not read: Kuefler, *The Manly Eunuch* (2001); Messis, *Les e
 </details>
 
 <details>
-<summary><strong>Islamic comparanda</strong> (10 works)</summary>
+<summary><strong>Islamic comparanda</strong> (11 works)</summary>
 
+- Almarri, Saqer A. 2016. "'You Have Made Her a Man among Men': Translating the Khuntha's Anatomy in Fatimid Jurisprudence." *TSQ: Transgender Studies Quarterly* 3.3–4: 578–586.
 - Ayalon, David. 1999. *Eunuchs, Caliphs and Sultans: A Study in Power Relationships*. Jerusalem: Magnes Press.
 - Davis, Natalie Zemon. 2006. *Trickster Travels: A Sixteenth-Century Muslim between Worlds*. Hill and Wang.
 - de la Puente, Cristina. 2023. "Al-Ḥakam I in the Andalusi Sources: His Slaves, Eunuchs, and Concubines." *Slavery & Abolition* 44.4: 593–615.
 - El-Azhari, Taef. 2019. *Queens, Eunuchs and Concubines in Islamic History, 661–1257*. Edinburgh University Press.
 - Marmon, Shaun. 1995. *Eunuchs and Sacred Boundaries in Islamic Society*. Oxford University Press.
-- Rowson, Everett K. 1991. "The Categorization of Gender and Sexual Irregularity in Medieval Arabic Vice Lists." In Julia Epstein and Kristina Straub (eds.), *Body Guards: The Cultural Politics of Gender Ambiguity*, 50–79. Routledge.
-- Rowson, Everett K. 1991. "The Effeminates of Early Medina." *Journal of the American Oriental Society* 111.4: 671–693.
 - Rowson, Everett K. 2003. "Gender Irregularity as Entertainment: Institutionalized Transvestism at the Caliphal Court in Medieval Baghdad." In Sharon Farmer and Carol Braun Pasternack (eds.), *Gender and Difference in the Middle Ages*, 45–72. University of Minnesota Press.
 - Rowson, Everett K. 2008. "Homoerotic Liaisons among the Mamluk Elite in Late Medieval Egypt and Syria." In Babayan and Najmabadi (eds.), *Islamicate Sexualities: Translations across Temporal Geographies of Desire*, 204–238. Harvard University Press.
+- Rowson, Everett K. 1991. "The Categorization of Gender and Sexual Irregularity in Medieval Arabic Vice Lists." In Julia Epstein and Kristina Straub (eds.), *Body Guards: The Cultural Politics of Gender Ambiguity*, 50–79. Routledge.
+- Rowson, Everett K. 1991. "The Effeminates of Early Medina." *Journal of the American Oriental Society* 111.4: 671–693.
 - Sanders, Paula. 1991. "Gendering the Ungendered Body: Hermaphrodites in Medieval Islamic Law." In Nikki R. Keddie and Beth Baron (eds.), *Women in Middle Eastern History: Shifting Boundaries in Sex and Gender*, 74–95. Yale University Press.
 
 Cited in the notes, not read: Ayalon, David, "On the Eunuchs in Islam," *Jerusalem Studies in Arabic and Islam* 1 (1979): 67–124; El-Rouayheb, *Before Homosexuality*; Babayan and Najmabadi (eds.), *Islamicate Sexualities*.
@@ -510,7 +524,7 @@ Primary texts read through Sefaria: Mishnah and Tosefta Bikkurim; Babylonian Tal
 </details>
 
 <details>
-<summary><strong>Medieval trans studies</strong> (14 works)</summary>
+<summary><strong>Medieval trans studies</strong> (15 works)</summary>
 
 The 2019 *Medieval Feminist Forum* special issue on medieval trans feminism, edited by M. W. Bychowski and Dorothy Kim, and three later surveys and re-readings.
 
@@ -522,11 +536,12 @@ The 2019 *Medieval Feminist Forum* special issue on medieval trans feminism, edi
 - Henningsen, Kadin. 2019. "'Calling [herself] Eleanor': Gender Labor and Becoming a Woman in the Rykener Case." *Medieval Feminist Forum* 55.1: 249–266.
 - Karras, Ruth Mazo, and Tom Linkinen. 2016. "John/Eleanor Rykener Revisited." In Doggett and O'Sullivan (eds.), *Founding Feminisms in Medieval Studies: Essays in Honor of E. Jane Burns*, 111–121. D. S. Brewer.
 - Kim, Dorothy, and M. W. Bychowski. 2019. "Visions of Medieval Trans Feminism: An Introduction." *Medieval Feminist Forum* 55.1: 6–41.
+- Libby, C. 2023. "Wondrous Bodies: Trans Epistemology and Nonbinary Saints." *WSQ: Women's Studies Quarterly* 51.3–4: 156–169.
 - Lumbley, Coral. 2019. "Imperatrix, Domina, Rex: Conceptualizing the Female King in Twelfth-Century England." *Medieval Feminist Forum* 55.1: 64–99.
 - McGucken, Stephenie. 2019. "Vice & Virtue As Woman?: The Iconography of Gender Identity in the Late Anglo-Saxon Psychomachia Illustrations." *Medieval Feminist Forum* 55.1: 42–63.
 - Nestel, Meghan. 2019. "A Space of Her Own: Genderfluidity and Negotiation in *The Life of Christina of Markyate*." *Medieval Feminist Forum* 55.1: 100–134.
-- Watt, Caitlin G. 2019. "'Car vallés sui et nient mescine': Trans Heroism and Literary Masculinity in *Le Roman de Silence*." *Medieval Feminist Forum* 55.1: 135–173.
 - van der Lugt, Maaike. 2010. "Sex Difference in Medieval Theology and Canon Law: A Tribute to Joan Cadden." *Medieval Feminist Forum* 46.1: 101–121.
+- Watt, Caitlin G. 2019. "'Car vallés sui et nient mescine': Trans Heroism and Literary Masculinity in *Le Roman de Silence*." *Medieval Feminist Forum* 55.1: 135–173.
 - Wingard, Tess. 2023. "The Trans Middle Ages: Incorporating Transgender and Intersex Studies into the History of Medieval Sexuality." *English Historical Review* 138.593: 933–951.
 
 </details>
