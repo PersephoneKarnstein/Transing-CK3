@@ -8,7 +8,7 @@ Badenya is a Mande faith inside the game's West African religion, seated at Kiri
 | | |
 |---|---|
 | **Setting and start** | The western Sahel and the upper Niger, from 867. Ghana still stands, Mali is not yet an empire, and the Sunjata tradition sets Kirina's battle around 1233 (Gomez 2018, ch. 5). |
-| **Seat and holy sites** | Kirina (the county of Sibi), with Niani as the second eminent site. Also Awkar (Ghana), Walata and Do. |
+| **Seat and holy sites** | Kirina (the county of Sibi), with Niani as the second eminent site. At a start from 1040 to 1075 the seat is Ghana's royal grove-town (Awkar), since al-Bakrī (1068) has the king of Malal converted. There the faith lives among women at the king's court, and the county keeps its own faith; from 1076 it is Kirina again, under its Muslim lord, who keeps the county (see [later starts](../later_starts.md)). Also Awkar (Ghana), Walata and Do. |
 | **Culture** | Mande. The seat's first members take the culture of the county or of the court that holds it. |
 | **How one becomes a daughter** | *Go to the Smith*. She makes the smith's bargain and is "hot" until a woman claims her as her mother's child and a jeli speaks her name. Then the word cools her. |
 | **How the line continues** | Through a sister or a daughter. A woman may claim a child she did not bear, and adopted daughters inherit as daughters of the blood. The House buries its own. |

@@ -1,0 +1,68 @@
+﻿# Crusader Dolls — scripted localization.
+
+# Who judges a daughter of the Turning in the Jewish street (tm_hipukh.0003), by date. The sources:
+#   - an organised community at Arles from the early 11th century, but no named office (Ben-Shalom 2024, p. 25):
+#     before 1215, "the worthies of the street";
+#   - the archbishop's ordinance of 1215: three rectors chosen each year at Sukkot (Ben-Shalom pp. 27–28; Gross
+#     1897, p. 77);
+#   - the rectors "later became the baylons" (Ben-Shalom p. 28). The earliest dated baylon in the project's sources is
+#     Bendig Aym, 1386 (Ben-Shalom p. 69), so "baylons" from 1386;
+#   - the council of the street, with its councillors, is first attested in October 1401 (Stouff 2014, "Chrétiens et
+#     juifs" §10).
+# See docs/research/jud_benshalom_provence_languedoc.md and jud_stouff_gross_arles.md. Usage:
+# [ROOT.Char.Custom('tm_kahal_judges')] mid-sentence, ..._cap to open a sentence, ..._title in the event title.
+tm_kahal_judges = {
+	type = character
+	text = {
+		trigger = { current_date >= 1401.1.1 }
+		localization_key = tm_kahal_judges_council
+	}
+	text = {
+		trigger = { current_date >= 1386.1.1 }
+		localization_key = tm_kahal_judges_baylons
+	}
+	text = {
+		trigger = { current_date >= 1215.1.1 }
+		localization_key = tm_kahal_judges_rectors
+	}
+	text = {
+		localization_key = tm_kahal_judges_worthies
+		fallback = yes
+	}
+}
+
+tm_kahal_judges_cap = {
+	type = character
+	text = {
+		trigger = { current_date >= 1401.1.1 }
+		localization_key = tm_kahal_judges_council_cap
+	}
+	text = {
+		trigger = { current_date >= 1386.1.1 }
+		localization_key = tm_kahal_judges_baylons_cap
+	}
+	text = {
+		trigger = { current_date >= 1215.1.1 }
+		localization_key = tm_kahal_judges_rectors_cap
+	}
+	text = {
+		localization_key = tm_kahal_judges_worthies_cap
+		fallback = yes
+	}
+}
+
+tm_kahal_judges_title = {
+	type = character
+	text = {
+		trigger = { current_date >= 1386.1.1 }
+		localization_key = tm_kahal_judges_baylons_title
+	}
+	text = {
+		trigger = { current_date >= 1215.1.1 }
+		localization_key = tm_kahal_judges_rectors_title
+	}
+	text = {
+		localization_key = tm_kahal_judges_worthies_title
+		fallback = yes
+	}
+}

@@ -5,7 +5,7 @@
 # decade so a single late save holds the whole run: tm_c<decade>_<what>, e.g. tm_c0890_members. <what> is
 #   members, daughters, marked, rulers (landed members), counties: counted at that census;
 #   joins, ruler_joins, kahal_joins, matches, offers, rises, deaths, pool_deaths, pilgrims: running totals since game start
-#   (tm_track_effect); pool_deaths are pool characters cleared by the game, deaths everyone else.
+#   (tm_track_effect); pool_deaths are characters the game cleared away (pool characters, or "disappearance"), deaths everyone else.
 # Worldwide totals of Marked characters and daughters go to global variables tm_c<decade>_marked / _daughters.
 # tools/census_report.py reads them out of a save.
 

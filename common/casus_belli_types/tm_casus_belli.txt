@@ -1,6 +1,12 @@
 ﻿# Crusader Dolls — Rescue the Daughters (design lock §0; user 2026-10-14). Single county.
 # Spec: game/common/casus_belli_types/_casus_belli.info. Template: minor_religious_war (00_religious_war.txt),
-# pared down. Victory takes the county and frees every marked man, novice or daughter the defender holds.
+# pared down.
+# Two causes (user 2026-10-21: captives alone were too rare for the war ever to be declared):
+#   - a county where daughters, novices or Marked women of the attacker's faith live under a lord of another faith
+#     (tm_county_shelters_daughters_trigger). Daughters cluster at a few courts, so this is not a war on everyone;
+#   - the defender holds such a woman prisoner (any neighbouring county of the defender's).
+# Victory takes the county; the women of the attacker's faith living there, and every captive the defender holds,
+# come to the attacker's court.
 tm_rescue_daughters_cb = {
 	icon = minor_religious_war
 	group = religious
@@ -19,7 +25,10 @@ tm_rescue_daughters_cb = {
 	allowed_against_character = {
 		NOT = { scope:defender.faith = scope:attacker.faith }
 		scope:defender = {
-			any_prisoner = { tm_captive_daughter_trigger = yes }
+			OR = {
+				any_prisoner = { tm_captive_daughter_trigger = yes }
+				any_realm_county = { tm_county_shelters_daughters_trigger = { FAITH = scope:attacker.faith } }
+			}
 		}
 	}
 
@@ -38,12 +47,29 @@ tm_rescue_daughters_cb = {
 				}
 			}
 		}
+		OR = {
+			scope:target = { tm_county_shelters_daughters_trigger = { FAITH = scope:attacker.faith } }
+			scope:defender = { any_prisoner = { tm_captive_daughter_trigger = yes } }
+		}
 	}
 
 	on_invalidated_desc = { desc = tm_rescue_daughters_cb_invalidated_desc }
 	on_invalidated = { }
+	# Only when nobody is left to rescue: one woman still in the county is enough to carry on.
 	should_invalidate = {
 		NOT = { scope:defender = { any_prisoner = { tm_captive_daughter_trigger = yes } } }
+		NOT = {
+			any_in_list = {
+				list = target_titles
+				any_county_province = {
+					any_character_in_location = {
+						faith = scope:attacker.faith
+						is_ruler = no
+						tm_captive_daughter_trigger = yes
+					}
+				}
+			}
+		}
 	}
 
 	cost = {
@@ -52,6 +78,20 @@ tm_rescue_daughters_cb = {
 
 	on_victory_desc = { desc = tm_rescue_daughters_cb_victory_desc }
 	on_victory = {
+		# Gather the women of the attacker's faith in the county before the county changes hands.
+		every_in_list = {
+			list = target_titles
+			every_county_province = {
+				every_character_in_location = {
+					limit = {
+						faith = scope:attacker.faith
+						is_ruler = no
+						tm_captive_daughter_trigger = yes
+					}
+					add_to_list = tm_rescued
+				}
+			}
+		}
 		create_title_and_vassal_change = {
 			type = conquest_holy_war
 			save_scope_as = change
@@ -70,9 +110,16 @@ tm_rescue_daughters_cb = {
 		scope:defender = {
 			every_prisoner = {
 				limit = { tm_captive_daughter_trigger = yes }
-				release_from_prison = yes
-				scope:attacker = { add_courtier = prev }
+				add_to_list = tm_rescued
 			}
+		}
+		every_in_list = {
+			list = tm_rescued
+			if = {
+				limit = { is_imprisoned = yes }
+				release_from_prison = yes
+			}
+			scope:attacker = { add_courtier = prev }
 		}
 		scope:attacker = {
 			add_piety = 200

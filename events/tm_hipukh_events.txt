@@ -13,7 +13,7 @@
 #   0011  the revel: from 1323 the young men put on the woman's dress for the joke; she keeps it on
 #   0001  the prayer: "turn me from male to female", said aloud
 #   0002  the name, on Shushan Purim
-#   0003  before the baylons: the dress has outlived Purim
+#   0003  before the street's judges (worthies, rectors or baylons, by date): the dress has outlived Purim
 # Root = the seeker. scope:tm_zekenah = the elder among the women of the lamp; scope:tm_host = whose court it is.
 
 # Hidden: a courtier offered the Turning waits for Adar (tm_offer_courtier_rite_effect). Re-fires monthly, a year at most.
@@ -233,8 +233,10 @@ tm_hipukh.0002 = {
 	}
 }
 
-# Before the baylons. The rabbis only grumble at the Purim dress (permission is Minz and Isserles, 16th c.); now she
-# wears it after Purim, and the baylons and council of the street must answer. Root = the daughter.
+# Before the street's judges. The rabbis only grumble at the Purim dress (permission is Minz and Isserles, 16th c.); now
+# she wears it after Purim, and the street must answer. Who judges depends on the date (tm_kahal_judges in
+# common/customizable_localization/tm_custom_loc.txt): the worthies before 1215, the archbishop's three rectors from
+# 1215, the baylons from 1386 (earliest dated in our sources), with the council from 1401. Root = the daughter.
 tm_hipukh.0003 = {
 	type = character_event
 	title = tm_hipukh.0003.t
@@ -244,7 +246,11 @@ tm_hipukh.0003 = {
 				trigger = { scope:tm_council_women = yes }
 				desc = tm_hipukh.0003.desc_council
 			}
-			desc = tm_hipukh.0003.desc
+			triggered_desc = {						# the young men's Purim dress is first attested in Even Bohan (1322-23)
+				trigger = { current_date >= 1323.1.1 }
+				desc = tm_hipukh.0003.desc
+			}
+			desc = tm_hipukh.0003.desc_early		# before it, she alone wore one (as in tm_hipukh.0011.desc_early)
 		}
 	}
 

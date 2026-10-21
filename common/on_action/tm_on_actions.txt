@@ -36,13 +36,19 @@ tm_on_game_start = {
 			limit = { NOT = { has_global_variable = tm_setup_done } }
 			set_global_variable = { name = tm_setup_done value = yes }
 
-			# Phrygia (Dorylaion, Pessinus) keeps the old faith; its count's house converts with it.
-			title:c_phrygia = {
-				set_county_culture = culture:kybeline
-				set_county_faith = faith:transbian_maximalism
-				holder ?= {
-					set_culture = culture:kybeline
-					set_character_faith = faith:transbian_maximalism
+			# Phrygia (Dorylaion, Pessinus) keeps the old faith; its count's house converts with it. Only before 1080:
+			# after Manzikert Dorylaion lay empty for about a century, and Manuel I rebuilt it only in 1175 (Kinnamos;
+			# docs/research/later_starts/adelphai_1178_house_in_exile.md). In vanilla 1178 Phrygia's count is John Doukas,
+			# a historical figure the mod must not convert or make a daughter. From 1080 the Mother House is in exile.
+			if = {
+				limit = { current_date < 1080.1.1 }
+				title:c_phrygia = {
+					set_county_culture = culture:kybeline
+					set_county_faith = faith:transbian_maximalism
+					holder ?= {
+						set_culture = culture:kybeline
+						set_character_faith = faith:transbian_maximalism
+					}
 				}
 			}
 
@@ -109,30 +115,18 @@ tm_on_game_start = {
 				}
 			}
 
-			# The northern faith keeps Gotland; a völva sits at the court that holds it (tm_seed_foothold_effect).
-			tm_seed_foothold_effect = { COUNTY = title:c_gutland FAITH = faith:tm_baeddel SEAT = gotland }
-			scope:tm_foothold_host ?= { save_scope_as = tm_gutland_count }
-			# The island is the faith's own: its count is converted, as Shazhou's is (user, 2026-10-20). In the second
-			# observe run this line went on to create Scandinavia; tune it if it blooms again.
-			title:c_gutland.holder ?= { set_character_faith = faith:tm_baeddel }
+			# The northern faith's seat, by date (docs/later_starts.md). Gotland until the island turns Christian, by
+			# c. 1050 in Guta saga (in vanilla 1066 it is a Catholic republic). Then Åland, whose vanilla count Olaf is
+			# Norse pagan, under the Svealand of Erik "the Heathen", while the Uppsala cult lasts (Adam of Bremen, c. 1075;
+			# vanilla's Uppland is pagan to 1090). Later the faith holds no land. At 867 Gotland's count is converted,
+			# as Shazhou's is (user, 2026-10-20); in the second observe run that line went on to create Scandinavia.
 			if = {
-				limit = { exists = scope:tm_gutland_count }
-				create_character = {
-					after_creation = { tm_register_seed_effect = { SEAT = gotland } }
-					gender = female
-					age = { 40 60 }
-					culture = scope:tm_gutland_count.culture
-					faith = faith:tm_baeddel
-					employer = scope:tm_gutland_count
-					dynasty = none
-					trait = tm_daughter_of_seidr
-					trait = education_learning_3
-				}
+				limit = { current_date < 1050.1.1 }
+				tm_seed_baeddel_seat_effect = { COUNTY = title:c_gutland SEAT = gotland }
 			}
-
-			if = {
-				limit = { exists = scope:tm_gutland_count }
-				tm_seed_marked_courtiers_effect = { HOST = scope:tm_gutland_count FAITH = faith:tm_baeddel SEAT = gotland }
+			else_if = {
+				limit = { current_date < 1090.1.1 }
+				tm_seed_baeddel_seat_effect = { COUNTY = title:c_aland SEAT = aland }
 			}
 
 			# The Way of the Jade Embryo keeps Dunhuang (Shazhou, with the Mogao caves); a nüguan at court.
@@ -287,8 +281,9 @@ tm_on_game_start = {
 					trait = education_diplomacy_3
 				}
 			}
-			# Kanchipuram is the Pallava capital, so its lord keeps it. A patron of the temple street holds Candragiri, in
-			# the same duchy, as his vassal: a landed court of the faith (user, 2026-10-20). The Marked young men are hers.
+			# Kanchipuram's lord keeps it: at 867 it is the Pallava capital; in vanilla 1066 a Telugu Yadava count holds
+			# it, and in 1178 the Chola king. A patron of the temple street holds Candragiri, in the same duchy, as his
+			# vassal: a landed court of the faith (user, 2026-10-20). The Marked courtiers are hers.
 			character:tm_garland_cantiradevi ?= {		# the bookmark's countess (history/characters/tm_characters.txt)
 				if = {
 					limit = { is_alive = yes is_landed = no }
@@ -305,29 +300,26 @@ tm_on_game_start = {
 				tm_seed_marked_courtiers_effect = { HOST = scope:tm_kanchi_lord FAITH = faith:tm_garland SEAT = kanchipuram }
 			}
 
-			# Badenya keeps Kirina (Sibi); a jelimuso who crossed sits at the court that holds it (tm_seed_foothold_effect).
+			# Badenya's seat, by date (docs/later_starts.md). Kirina at 867. From 1040 Kirina's court is Muslim (al-Bakri,
+			# 1068: the king of Malal converted and broke the idols), while Ghana keeps its royal grove-town, al-Ghaba
+			# (Awkar), so the faith sits there until Ghana's people convert (al-Zuhri: 469/1076-77, not a conquest;
+			# Conrad and Fisher 1982-83). From 1076 it is back among the villages of Kirina, under a Muslim lord.
 			character:tm_badenya_djeneba ?= {		# the bookmark's countess (history/characters/tm_characters.txt)
 				if = {
 					limit = { is_alive = yes is_landed = no }
 					save_scope_as = tm_foothold_preset
 				}
 			}
-			tm_seed_foothold_effect = { COUNTY = title:c_sibi_mali FAITH = faith:tm_badenya SEAT = kirina }
-			scope:tm_foothold_host ?= { save_scope_as = tm_kirina_lord }
 			if = {
-				limit = { exists = scope:tm_kirina_lord }
-				create_character = {
-					after_creation = { tm_register_seed_effect = { SEAT = kirina } }
-					gender = female
-					age = { 40 60 }
-					culture = scope:tm_kirina_lord.culture
-					faith = faith:tm_badenya
-					employer = scope:tm_kirina_lord
-					dynasty = none
-					trait = tm_daughter_of_the_house
-					trait = education_diplomacy_3
-				}
-				tm_seed_marked_courtiers_effect = { HOST = scope:tm_kirina_lord FAITH = faith:tm_badenya SEAT = kirina }
+				limit = { current_date >= 1040.1.1 current_date < 1076.1.1 }
+				clear_saved_scope = tm_foothold_preset
+				# Ghana's royal county keeps its own faith: the faith lives among the women at the king's court, not as
+				# the religion of Ghana's people (docs/research/later_starts/badenya_ghana_1066.md).
+				save_scope_value_as = { name = tm_foothold_courtiers_only value = yes }
+				tm_seed_badenya_seat_effect = { COUNTY = title:c_awkar SEAT = awkar }
+			}
+			else = {
+				tm_seed_badenya_seat_effect = { COUNTY = title:c_sibi_mali SEAT = kirina }
 			}
 
 			# Historical characters are not "randomly created", so the 1% seed never rolls for them.
@@ -347,11 +339,14 @@ tm_on_game_start = {
 			# Theia Beatrike also takes Phrygia, the seat, as a vassal of the same liege; the old count
 			# becomes a daughter of the knife (cosmetic: no re-embodiment at game start). In 867 he also
 			# holds Prusa and stays landed there; if he held nothing else he joins Beatrike's court.
-			title:c_phrygia = {
-				holder ?= {
-					save_scope_as = tm_old_count
-					# top liege, not liege: Beatrike heads a duchy-tier title, so she cannot be a duke's vassal
-					top_liege ?= { save_scope_as = tm_old_liege }
+			if = {
+				limit = { current_date < 1080.1.1 }	# see the note on Phrygia above
+				title:c_phrygia = {
+					holder ?= {
+						save_scope_as = tm_old_count
+						# top liege, not liege: Beatrike heads a duchy-tier title, so she cannot be a duke's vassal
+						top_liege ?= { save_scope_as = tm_old_liege }
+					}
 				}
 			}
 			if = {
@@ -693,6 +688,51 @@ on_death = {
 	}
 }
 
+# Raised in the faith (user 2026-10-21): a child born to a member of the six, and kept at that parent's court, is
+# brought up in the parent's faith, as children of an ethnoreligion are. In the 1135 observe run the faiths that grew
+# (Yutai Dao, Badenya) were mostly born into; the rest were converts whose land passed to heirs of other faiths
+# (Gotland went to the count's Finnish pagan daughter in 895). The mother is asked first. Root = the child.
+on_birth_child = {
+	on_actions = {
+		tm_on_birth_raised_in_faith
+	}
+}
+
+tm_on_birth_raised_in_faith = {
+	trigger = {
+		NOT = { rite ?= { rite_has_parameter = tm_sisters_faith } }
+	}
+	effect = {
+		if = {
+			limit = {
+				exists = scope:mother
+				scope:mother = {
+					rite ?= { rite_has_parameter = tm_sisters_faith }
+					OR = {
+						NOT = { exists = root.employer }
+						root.employer = this
+						AND = { exists = employer root.employer = employer }
+					}
+				}
+			}
+			set_character_faith = scope:mother.faith
+		}
+		else_if = {
+			limit = {
+				exists = scope:father
+				scope:father = {
+					rite ?= { rite_has_parameter = tm_sisters_faith }
+					OR = {
+						root.employer ?= this
+						AND = { exists = employer root.employer ?= employer }
+					}
+				}
+			}
+			set_character_faith = scope:father.faith
+		}
+	}
+}
+
 # Tracking: a member of the six dies (not a body left behind by re-embodiment); a seed's death is kept on a list.
 on_death = {
 	on_actions = {
@@ -709,10 +749,14 @@ tm_on_death_track = {
 		}
 	}
 	effect = {
-		# Pool characters are made and cleared by the thousand in a faith's counties ("disappearance"): count them
-		# apart, or they swamp the deaths of people who lived at a court.
+		# The game makes and clears characters by the thousand ("disappearance"): pool characters in a faith's counties,
+		# and in China exam candidates and the like. Count them apart, or they swamp the deaths of people who lived.
 		if = {
-			limit = { rite ?= { rite_has_parameter = tm_sisters_faith } is_pool_character = no }
+			limit = {
+				rite ?= { rite_has_parameter = tm_sisters_faith }
+				is_pool_character = no
+				NOT = { death_reason = death_disappearance }
+			}
 			tm_track_effect = { FAITH = faith WHAT = deaths }
 		}
 		else_if = {
@@ -830,7 +874,10 @@ tm_yearly_growth = {
 		# The kahal keeps its children (tm_kahal_keeps_children_effect): a guardian of another faith may not convert them.
 		tm_kahal_keeps_children_effect = yes
 		# The way home (tm_homecoming_effect): Marked members and daughters with no court come to the faith's home court.
-		tm_homecoming_effect = { FAITH = faith:tm_baeddel SEAT = title:c_gutland }
+		if = {	# the seat chosen at game start; none after the Uppsala cult ends
+			limit = { has_global_variable = tm_baeddel_seat }
+			tm_homecoming_effect = { FAITH = faith:tm_baeddel SEAT = global_var:tm_baeddel_seat }
+		}
 		tm_homecoming_effect = { FAITH = faith:tm_garland SEAT = title:c_kanchipuram }
 		# The kahal: a Jew at a court where the sect is two or more may join it. A sect within Judaism keeps its families,
 		# and their children are born into it; this is how it renews itself, not by the Marked alone.

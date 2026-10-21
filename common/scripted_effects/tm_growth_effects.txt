@@ -474,7 +474,10 @@ tm_seed_foothold_effect = {
 	clear_saved_scope = tm_foothold_count
 	clear_saved_scope = tm_foothold_host
 	$COUNTY$ = {
-		set_county_faith = $FAITH$
+		if = {
+			limit = { NOT = { exists = scope:tm_foothold_courtiers_only } }	# the caller asked that the people keep their faith
+			set_county_faith = $FAITH$
+		}
 		holder ?= { save_scope_as = tm_foothold_lord }
 	}
 	if = {
@@ -484,6 +487,7 @@ tm_seed_foothold_effect = {
 				any_held_title = { tier = tier_county count >= 2 }
 				NOT = { capital_county ?= $COUNTY$ }
 			}
+			NOT = { exists = scope:tm_foothold_lord_only }	# the caller asked that the holder keep the county
 		}
 		# The bookmark's historical countess, if the caller saved her as scope:tm_foothold_preset; else a new woman.
 		if = {
@@ -539,4 +543,64 @@ tm_seed_foothold_effect = {
 		$COUNTY$ = { set_variable = { name = tm_seat_branch value = flag:unheld } }
 	}
 	clear_saved_scope = tm_foothold_preset
+	clear_saved_scope = tm_foothold_lord_only
+	clear_saved_scope = tm_foothold_courtiers_only
+}
+
+# The northern faith's seat at game start (tm_on_game_start picks the county by date): a völva at the court that holds
+# it, and two Marked courtiers. The holder is converted only if already of the faith's own religion (a pagan count),
+# never a Christian one: in vanilla 1066 Gotland is a Catholic republic. $COUNTY$ the seat, $SEAT$ its tracking name.
+tm_seed_baeddel_seat_effect = {
+	tm_seed_foothold_effect = { COUNTY = $COUNTY$ FAITH = faith:tm_baeddel SEAT = $SEAT$ }
+	scope:tm_foothold_host ?= { save_scope_as = tm_baeddel_count }
+	$COUNTY$.holder ?= {
+		if = {
+			limit = { faith.religion = faith:tm_baeddel.religion }
+			set_character_faith = faith:tm_baeddel
+		}
+	}
+	if = {
+		limit = { exists = scope:tm_baeddel_count }
+		create_character = {
+			after_creation = { tm_register_seed_effect = { SEAT = $SEAT$ } }
+			gender = female
+			age = { 40 60 }
+			culture = scope:tm_baeddel_count.culture
+			faith = faith:tm_baeddel
+			employer = scope:tm_baeddel_count
+			dynasty = none
+			trait = tm_daughter_of_seidr
+			trait = education_learning_3
+		}
+		tm_seed_marked_courtiers_effect = { HOST = scope:tm_baeddel_count FAITH = faith:tm_baeddel SEAT = $SEAT$ }
+	}
+	set_global_variable = { name = tm_baeddel_seat value = $COUNTY$ }	# the homecoming's seat (tm_yearly_growth)
+}
+
+# Badenya's seat at game start (tm_on_game_start picks the county by date): a daughter of the House at the court that
+# holds it, and two Marked courtiers. After 1040 the holder keeps the county: in vanilla, Kirina's lord is Muslim
+# from 1040 (al-Bakri says the king of Malal converted), Ghana's king holds Awkar, and in 1178 Kirina's lord is the
+# challenge character Maghan Kon Fatta, whom the mod must leave alone. $COUNTY$ the seat, $SEAT$ its tracking name.
+tm_seed_badenya_seat_effect = {
+	if = {
+		limit = { current_date >= 1040.1.1 }
+		save_scope_value_as = { name = tm_foothold_lord_only value = yes }
+	}
+	tm_seed_foothold_effect = { COUNTY = $COUNTY$ FAITH = faith:tm_badenya SEAT = $SEAT$ }
+	scope:tm_foothold_host ?= { save_scope_as = tm_badenya_lord }
+	if = {
+		limit = { exists = scope:tm_badenya_lord }
+		create_character = {
+			after_creation = { tm_register_seed_effect = { SEAT = $SEAT$ } }
+			gender = female
+			age = { 40 60 }
+			culture = scope:tm_badenya_lord.culture
+			faith = faith:tm_badenya
+			employer = scope:tm_badenya_lord
+			dynasty = none
+			trait = tm_daughter_of_the_house
+			trait = education_diplomacy_3
+		}
+		tm_seed_marked_courtiers_effect = { HOST = scope:tm_badenya_lord FAITH = faith:tm_badenya SEAT = $SEAT$ }
+	}
 }

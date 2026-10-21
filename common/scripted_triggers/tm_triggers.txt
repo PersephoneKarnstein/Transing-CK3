@@ -28,6 +28,20 @@ tm_captive_daughter_trigger = {
 	}
 }
 
+# A county (scope) where daughters, novices or Marked women of $FAITH$ live under a lord of another faith: two or more
+# in one of its provinces, so a lone traveller passing through is not a cause for war. Rescue the Daughters.
+tm_county_shelters_daughters_trigger = {
+	holder ?= { NOT = { faith = $FAITH$ } }
+	any_county_province = {
+		any_character_in_location = {
+			count >= 2
+			faith = $FAITH$
+			is_ruler = no
+			tm_captive_daughter_trigger = yes
+		}
+	}
+}
+
 # Any daughter, whichever gate she came through (knife, seiðr, embryo, the Turning).
 tm_is_daughter_trigger = {
 	OR = {

@@ -21,8 +21,9 @@ FAITHS = {
     'tm_badenya': 'Badenya',
 }
 SEATS = {
-    'phrygia': 'c_phrygia', 'gotland': 'c_gutland', 'shazhou': 'c_shazhou',
+    'phrygia': 'c_phrygia', 'gotland': 'c_gutland', 'aland': 'c_aland', 'shazhou': 'c_shazhou',
     'arles': 'c_venaissin', 'kanchipuram': 'c_kanchipuram', 'candragiri': 'c_candragiri', 'kirina': 'c_sibi_mali',
+    'awkar': 'c_awkar',
 }
 METRICS = ['members', 'daughters', 'marked', 'rulers', 'counties']
 COUNTERS = ['joins', 'ruler_joins', 'kahal_joins', 'matches', 'offers', 'rises', 'deaths', 'pool_deaths', 'pilgrims']
