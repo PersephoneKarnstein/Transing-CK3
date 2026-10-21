@@ -6,3 +6,4 @@ tags={
 }
 name="Crusader Dolls"
 supported_version="1.20.*"
+picture="thumbnail.png"
