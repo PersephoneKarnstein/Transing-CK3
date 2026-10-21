@@ -19,13 +19,21 @@ tm_knife.0001 = {
 
 	option = {	# Let my blood fall with theirs
 		name = tm_knife.0001.a
-		add_stress = 10
 		trigger_event = { id = tm_knife.0004 days = 2 }
 		ai_chance = { base = 90 }
 	}
 	option = {	# Not this spring
 		name = tm_knife.0001.b
-		add_piety = 50			# refund half the decision cost
+		# Rule 23 (round 2): stepping back costs nothing extra. Refund what the decision cost (tm_take_the_knife_decision);
+		# a courtier offered the rite (tm_offer_courtier_rite_effect, tm_rite_offered) paid nothing.
+		if = {
+			limit = { NOT = { has_variable = tm_rite_offered } }
+			if = {
+				limit = { has_personal_tenet_flag = tm_personal_knife_half_cost }
+				add_piety = 50
+			}
+			else = { add_piety = 100 }
+		}
 		ai_chance = { base = 10 }
 	}
 }
@@ -41,6 +49,10 @@ tm_knife.0004 = {
 		animation = personality_zealous
 	}
 
+	# Writing rule T9 (round 2; research/book_nirta_marginal_bodies.md row 5): no gate asks an oath of permanence.
+	# .a "Never." answers the knifer's question: "I will never repent", so she takes the knife. It is the old liturgy's
+	# answer, not a vow that binds her later. .b "Not today." is stepping back, and is honoured equally: no loss, the
+	# road stays open, and nothing in any text calls it failure.
 	option = {	# I will not repent
 		name = tm_knife.0004.a
 		tm_take_the_knife_effect = yes
@@ -48,7 +60,16 @@ tm_knife.0004 = {
 	}
 	option = {	# Not today
 		name = tm_knife.0004.b
-		add_piety = 50
+		# Rule 23 (round 2): stepping back costs nothing extra. Refund what the decision cost (tm_take_the_knife_decision);
+		# a courtier offered the rite (tm_offer_courtier_rite_effect, tm_rite_offered) paid nothing.
+		if = {
+			limit = { NOT = { has_variable = tm_rite_offered } }
+			if = {
+				limit = { has_personal_tenet_flag = tm_personal_knife_half_cost }
+				add_piety = 50
+			}
+			else = { add_piety = 100 }
+		}
 		ai_chance = { base = 5 }
 	}
 }

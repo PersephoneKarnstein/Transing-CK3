@@ -80,9 +80,12 @@ What the mod is not:
 - **No antagonist.** It does not add a hostile "anti-trans" nation or stage an allegorical clash of superpowers. It adds the faiths, and vanilla Christendom, the Caliphate and the Tang court react as they would.
 - **Not trans men.** Trans-masculine content is out of scope. Someone else is very welcome to make it.
 - **Vanilla castration still works as before.** Castrating someone with the base game's interaction does not turn them into a daughter.
-- **Not anyone's ancestors.** The six faiths are inventions. Their settings and sources are real, but no living community is presented as a faith, and the mod does not claim that any historical people believed these things.
 
+> [!NOTE]
 > **Content note.** The mod deals with castration, with a penal path that transitions violent prisoners (the "Dorley precedent", after Alyson Greaves's *Welcome to Dorley Hall*), and with the transmisogyny of medieval law and custom. Event text is written without gore, but the subject matter is there.
+
+> [!IMPORTANT]  
+> **These faiths are fiction.** All six are invented for a game. Their places, institutions and texts are drawn from historical scholarship, and the bibliography below lists it, but no *known* historical people held these beliefs. Some, like the Byzantine Sisters' heresy, sit close enough to the record that someone might once have believed something like them, but we cannot know that, and the mod does not claim it. Nothing here is a claim about anyone's real ancestry. The mod does not present any living community, such as hijra, khwaja sira, bissu or two-spirit people, as one of its faiths or as a forerunner of a modern movement. Where a faith in the game claims a historical figure or a past people as its own, that is the faith speaking in character, not the mod making a historical argument.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -150,7 +153,7 @@ The Sisters are nostalgic for a sect almost nobody remembers: the Mother's galli
 
 - **The gate: the knife.** *Take the Knife* takes two days, as the Mother's festival did: blood and mourning on the Day of Blood (24 March), then the knife, the knifer's question and a new name at the Hilaria, the festival of joy. Each faith picks one of three houses for who may be cut:
   - **Grandmother's House:** any captive, man or boy, in the old cruel way. She called them eunuchs, not daughters: unmanning them was the point.
-  - **Aunt Bea's House:** only grown men proven violent, each under a sponsor who walked the same road, with a washout path for those who will not change. It holds that every woman it makes is a woman, claims no law for it, and admits that it keeps cells.
+  - **Aunt Bea's House:** its cells take only grown men proven violent, each under a sponsor who walked the same road, with a washout path for those who will not change. A Marked or declared woman held prisoner is never put in the cells: the House welcomes her, frees her, and offers her the knife as her own choice. It holds that every woman who leaves its cells is a woman, claims no law for it, and admits that it keeps cells.
   - **Gift Alone:** only grown women who ask. "Even the Mother of God was asked." "A gift you cannot refuse is not a gift." The strongest doctrine over a long game.
 - **The line.** Daughters choose their heirs rather than breed them. A woman of the House can foster a daughter, who belongs but does not inherit, or take her as a daughter with the written clause that makes her an heir. Each House has a Protectress from the founder's female line, as the convent charters passed protection of a convent "in perpetuity", and its sisters name three for Elder Sister and let the lot decide.
 - **The court.** Dukes and above can appoint daughters of the knife and eunuchs to the offices the Byzantine court reserved for its eunuchs: Parakoimomene, Protovestiaria and Papias. Any woman can be Praiposita of the empress's chamber.
@@ -281,7 +284,7 @@ In the Sunjata tradition a woman named Tenenba claimed a hero she had not borne:
 
 ## Shared mechanics
 
-- **Marked by the Mother.** A rare trait marking trans women before any rite, eggs who do not know it yet among them; the game still codes them as male. You can filter for it in the Character Finder to find people to recruit and adopt.
+- **Marked by the Mother.** A rare trait for trans women before any rite, including some who have not yet said so; the game still codes them as male. You can filter for it in the Character Finder to find people to recruit and adopt.
 - **Re-embodiment.** After a rite, the daughter continues in a female body with the same face. Her titles, marriage, children, parents, adoptive parents, skills and lifestyle experience carry over. Re-embodied daughters are infertile. A game rule turns this off.
 - **Take as Daughter.** Each faith's own adoption. Unlike vanilla adoption it accepts adults, and it ignores the rules that block children with landed relatives.
 - **Declare Before Witnesses.** A Marked sister can take a daughter's name before any rite. The rite changes her body, not her name, and a failed or delayed rite never takes the name back.
@@ -294,10 +297,14 @@ In the Sunjata tradition a woman named Tenenba claimed a hero she had not borne:
 - **Same-sex marriage.** All six faiths allow it, whatever the game rule says.
 - **Rescue the Daughters.** Every faith can wage it (Adelphai Dorleyaiou only under Aunt Bea's House or Gift Alone): a holy war on a neighbouring county where two or more daughters, novices or Marked women of the attacker's faith live under a lord of another faith, or whose lord holds one prisoner. On victory each woman freed chooses whether to join the attacker's court or go home, and the attacker gains piety for each.
 - **Raised in the faith.** A child born to a member of the six, at that parent's court, is brought up in the parent's faith, the mother's first.
-- **Set Down the Name.** A declared sister can set her name down at any time, with no penalty from her faith, and declare again later.
+- **Set Down the Name.** A declared sister can set her name down at any time, with no penalty from her faith, and declare again later. Stepping back from any gate costs nothing beyond what was spent, and is refunded.
+- **Sister-Making.** A daughter can swear sisterhood with any adult of her faith who is Marked, declared or of a House. The bond carries no inheritance; it brings the seeker into the House, counts as her sponsor at her gate, and helps the call reach her.
+- **Keep Quiet in This Land.** Under a lord of another faith, a ruling daughter may choose to keep quiet: hostile events come half as often, and she does not stand as her House's Elder Sister. She can speak aloud again at any time.
+- **Refugees carry the faith.** Sisters sent on from a closed House carry the faith to the county that takes them in, which hears the call more readily for ten years. When a House is ordered closed, its sisters may also try to stay.
 - **Teach Her the Answers.** A daughter can coach a seeker for a gate with an outside examiner (the Jade Embryo's clergy, the street's judges, the temple staff, the jeli), which raises her odds; an examiner may suspect she was taught.
 - **Marriage.** A daughter's spouse becomes a friend of the House, and hostile kin and courtiers think less of them. When a husband becomes a daughter, the marriage stands unless either chooses to leave; vanilla faiths annul it.
 - **The hostile world.** Rumours about a House's daughters, which the lord can silence, let run or disprove (the child said to be taken is always found, never with the House); records that disagree about her (the church register, the tax roll and the House book); questions in hall; the court's "marvel" and the abbess who keeps a monk-saint's feast; the qadi's ruling and the women's quarters; the women's hour at the baths. Hostility rises when a hostile faith's fervour is low and eases when it is secure.
+- **Flavour events.** A game rule sets how often a character can receive the mod's flavour events: at most one every two years, one a year (the default), or one every six months. Rites and gates are not counted.
 - **Life.** Small moments (the novice years, a stranger who calls her *lady*, the old likeness, a name of her own), family (a mother who wants grandchildren, kin who mourn a son who was never lost, kin who would bury her under her birth name), Houses that grow respectable and are asked to shut their door, and a rare intersex birth whose child chooses at sixteen.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -356,8 +363,9 @@ Works the research for this mod read, in full or in named chapters. Works it onl
 Click a heading to expand it.
 
 <details>
-<summary><strong>Transfeminist theory and trans studies</strong> (23 works)</summary>
+<summary><strong>Transfeminist theory and trans studies</strong> (28 works)</summary>
 
+- Adair, Cassius, Cameron Awkward-Rich, and Amy Marvin. 2020. "Before Trans Studies." *TSQ: Transgender Studies Quarterly* 7.3: 306–320.
 - Aizura, Aren Z., Trystan Cotten, Carsten Balzer/Carla LaGata, Marcia Ochoa, and Salvador Vidal-Ortiz (eds.). 2014. "Decolonizing the Transgender Imaginary." Special issue, *TSQ: Transgender Studies Quarterly* 1.3. (Both introductions read in full; the other pieces skimmed.)
 - Bettcher, Talia Mae. 2013. "Evil Deceivers and Make-Believers: On Transphobic Violence and the Politics of Illusion." In Stryker and Aizura (eds.), *The Transgender Studies Reader 2*.
 - betts, edxi, NZ Suékama, and g, moderated by Ren-yo Hwang. 2024. "Black Transfeminist Anarchism." Roundtable. *TSQ: Transgender Studies Quarterly* 11.1: 34–65.
@@ -370,8 +378,12 @@ Click a heading to expand it.
 - DiPietro, Pedro Javier. 2016. "Of Huachafería, Así, and M'e Mati: Decolonizing Transing Methodologies." *TSQ: Transgender Studies Quarterly* 3.1–2: 65–73.
 - Dutta, Aniruddha, and Raina Roy. 2014. "Decolonizing Transgender in India: Some Reflections." *TSQ: Transgender Studies Quarterly* 1.3: 320–337.
 - Gleeson, Jules Joanne, and Elle O'Rourke (eds.). 2021. *Transgender Marxism*. Pluto Press. (Read in full: introduction, 14 chapters and Jordy Rosenberg's afterword.)
+- Heaney, Emma (ed.). 2024. *Feminism against Cisness*. Asterisk series. Duke University Press.
 - Khan, Faris A. 2016. "Khwaja Sira Activism: The Politics of Gender Ambiguity in Pakistan." *TSQ: Transgender Studies Quarterly* 3.1–2: 158–164.
 - Lane, Riki. 2016. "Reading Trans Biology as a Feminist Sociologist." *TSQ: Transgender Studies Quarterly* 3.1–2: 185–191.
+- Lavery, Grace. 2020. "Egg Theory's Early Style." *TSQ: Transgender Studies Quarterly* 7.3: 383–398.
+- Nirta, Caterina. 2018. *Marginal Bodies, Trans Utopias*. Routledge. (Introduction, conclusion and chapters 2 and 4 read in full.)
+- Pfeil, Cello Latini. 2020. "For Trans Emancipation: Transsexuality and Anarchism." Trans. from *Revista Estudos Libertários* (UFRJ). The Anarchist Library.
 - Raha, Nat, and Mijke van der Drift. 2024. *Trans Femme Futures: Abolitionist Ethics for Transfeminist Worlds*. Pluto Press.
 - Roy, Jeff. 2016. "Translating Hijra into Transgender: Performance and *Pehchān* in India's Trans-Hijra Communities." *TSQ: Transgender Studies Quarterly* 3.3–4: 412–432.
 - Serano, Julia. 2007–2026. Essays on her blog (juliaserano.blogspot.com, including LiveJournal reposts), on Medium (juliaserano.medium.com) and on Substack. (About 100 of some 311 posts read in full or in large part; the rest triaged by title.)
@@ -480,7 +492,7 @@ Cited in the notes, not read: Ayalon, David, "On the Eunuchs in Islam," *Jerusal
 </details>
 
 <details>
-<summary><strong>Medieval Judaism</strong> (32 works)</summary>
+<summary><strong>Medieval Judaism</strong> (34 works)</summary>
 
 For Ha-Nehpakhot, and for how Jewish courts answer every faith's daughters. The open-access English of Kalonymus's prayer (Open Siddur, CC BY-SA) was a reading aid only; every line in the mod is rendered afresh from the public-domain Hebrew.
 
@@ -498,10 +510,12 @@ For Ha-Nehpakhot, and for how Jewish courts answer every faith's daughters. The 
 - Grossman, Avraham. 2004. *Pious and Rebellious: Jewish Women in Medieval Europe*. Trans. Jonathan Chipman. Brandeis University Press.
 - Guerson, Alexandra, and Dana Wessell Lightfoot. 2019. "Crises and Community: Catalan Jewish Women and Conversas in Girona, 1391–1420." *Tamid* 14: 91–130.
 - Hildenfinger, Paul. 1900–1904. "Documents relatifs aux Juifs d'Arles." *Revue des études juives* 41: 62–97; 47: 221–242; 48: 48–81, 265–272.
+- Hornsby, Teresa J., and Ken Stone (eds.). 2011. *Bible Trouble: Queer Reading at the Boundaries of Biblical Scholarship*. Semeia Studies 67. Society of Biblical Literature. (Introduction and five chapters read in full.)
 - Horowitz, Elliott. 2006. *Reckless Rites: Purim and the Legacy of Jewish Violence*. Princeton University Press.
 - Kahn, Yoel H. 2011. *The Three Blessings: Boundaries, Censorship, and Identity in Jewish Liturgy*. Oxford University Press.
 - Kalonymus ben Kalonymus. c. 1322. *Even Boḥan*. Lemberg, 1865.
 - Lev, Sarra. 2024. *And the Sages Did Not Know: Early Rabbinic Approaches to Intersex*. University of Pennsylvania Press.
+- Macwilliam, Stuart. 2011. *Queer Theory and the Prophetic Marriage Metaphor in the Hebrew Bible*. BibleWorld. Equinox; reissued Routledge, 2014. (Introduction, conclusion and the central chapters read.)
 - Marienberg, Evyatar. 2004. "Menstruation in Sacred Spaces: Medieval and Early-Modern Jewish Women in the Synagogue." *Nordisk Judaistik* 25.1: 7–16.
 - Neis, Rafael Rachel. 2023. *When a Human Gives Birth to a Raven: Rabbis and the Reproduction of Species*. University of California Press (Luminos).
 - Phelan, Joseph. 2023. "The Jewish 'Monopoly' of the Slave Trade in the Early Middle Ages: The Origins of an Enduring Historical Motif." *Patterns of Prejudice* 57.3: 161–174.
@@ -654,44 +668,40 @@ Primary texts read in translation: the *Mahābhārata* (trans. Ganguli), for Bha
 </details>
 
 <details>
-<summary><strong>West Africa</strong> (32 works)</summary>
+<summary><strong>West Africa</strong> (33 works)</summary>
 
 For Badenya. The medieval and epic sources first; then contemporary studies, used only for the faith's everyday texture and marked as reconstruction.
 
 - Austen, Ralph A. (ed.). 1999. *In Search of Sunjata: The Mande Oral Epic as History, Literature and Performance*. Indiana University Press. (Including David C. Conrad, "Mooning Armies and Mothering Heroes".)
-- Brett-Smith, Sarah C. 1994. *The Making of Bamana Sculpture: Creativity and Gender*. Cambridge University Press.
-- Bulman, Stephen, Stephen Belcher and Valentin Vydrin (eds.). 2023. *Corpus of Early Accounts of the Sunjata Epic, 1889–1959*. Oxford University Press for the British Academy.
-- Conrad, David C. (ed. and trans.), and Djanka Tassey Condé. 2004. *Sunjata: A West African Epic of the Mande Peoples*. Hackett.
-- Gomez, Michael A. 2018. *African Dominion: A New History of Empire in Early and Medieval West Africa*. Princeton University Press.
-- Jansen, Jan. 1996. "The Younger Brother and the Stranger: In Search of a Status Discourse for Mande." *Cahiers d'études africaines* 36 (144): 659–688.
-- Jansen, Jan. 1996. "'Elle connaît tout le Mande': A Tribute to the Griotte Siramori Diabate." *Research in African Literatures*.
-- Jansen, Jan. 2002. *Les secrets du Manding : les récits du sanctuaire Kamabolon de Kangaba (Mali)*. Research School CNWS.
-- Jansen, Jan. 2018. "Beyond the Mali Empire: A New Paradigm for the Sunjata Epic." *International Journal of African Historical Studies* 51.2: 317–340.
-- Johnson, Samuel. 1921. *The History of the Yorubas*. Routledge.
-- Koné, Kassim. 2004. "When Male Becomes Female and Female Becomes Male in Mande." *Wagadu* 1.
-- Matory, J. Lorand. 2003. "Gendered Agendas: The Secrets Scholars Keep about Yorùbá-Atlantic Religion." *Gender & History* 15.3: 409–439.
-- Matory, J. Lorand. 2005. *Sex and the Empire That Is No More: Gender and the Politics of Metaphor in Oyo Yoruba Religion*. 2nd ed. Berghahn.
-- Niane, D. T. 1965. *Sundiata: An Epic of Old Mali*. Trans. G. D. Pickett. Longman.
-- Schulz, Dorothea E. 2002. "'The World Is Made by Talk': Female Fans, Popular Music, and New Forms of Public Sociality in Urban Mali." *Cahiers d'études africaines* 168: 797–829.
-- van Beek, Walter E. A. 1991. "Dogon Restudied: A Field Evaluation of the Work of Marcel Griaule." *Current Anthropology* 32.2: 139–167.
-
-Primary sources read in translation: Ibn Baṭṭūṭa, *Voyages*, vol. 4 (trans. Defrémery and Sanguinetti); Ibn Khaldūn, *Histoire des Berbères*, vol. 2 (trans. de Slane); al-Saʿdī, *Tarikh es-Soudan* (trans. Houdas).
-
-*Contemporary West Africa:*
-
 - Bertolt, Boris. 2020. "Les ambiguïtés de la question homosexuelle au Sénégal." *Cahiers d'études africaines* 239.
+- Brett-Smith, Sarah C. 1994. *The Making of Bamana Sculpture: Creativity and Gender*. Cambridge University Press.
 - Broqua, Christophe. 2010. "La socialisation du désir homosexuel masculin à Bamako." *Civilisations* 59.1: 37–58.
 - Broqua, Christophe. 2012. "Les formes sociales de l'homosexualité masculine à Bamako dans une perspective comparée." *Politique et Sociétés*.
 - Broqua, Christophe. 2017. "Góor-jigéen : la resignification négative d'une catégorie entre genre et sexualité (Sénégal)." *Socio* 9: 163–183.
 - Broqua, Christophe, and Joseph Larmarange. 2022. "Seriously Accounting for Local Categories: Gendered Sexual Orientation among 'Men Who Have Sex with Men' in Côte d'Ivoire." SocArXiv.
+- Bulman, Stephen, Stephen Belcher and Valentin Vydrin (eds.). 2023. *Corpus of Early Accounts of the Sunjata Epic, 1889–1959*. Oxford University Press for the British Academy.
+- Conrad, David C. (ed. and trans.), and Djanka Tassey Condé. 2004. *Sunjata: A West African Epic of the Mande Peoples*. Hackett.
 - Gaudio, Rudolf Pell. 2009. *Allah Made Us: Sexual Outlaws in an Islamic African City*. Wiley-Blackwell.
 - Geoffrion, Karine. 2013. "'I Wish Our Gender Could Be Dual': Male Femininities in Ghanaian University Students." *Cahiers d'études africaines* 209–210: 417–443.
+- Gomez, Michael A. 2018. *African Dominion: A New History of Empire in Early and Medieval West Africa*. Princeton University Press.
+- Jansen, Jan. 1996. "'Elle connaît tout le Mande': A Tribute to the Griotte Siramori Diabate." *Research in African Literatures*.
+- Jansen, Jan. 1996. "The Younger Brother and the Stranger: In Search of a Status Discourse for Mande." *Cahiers d'études africaines* 36 (144): 659–688.
+- Jansen, Jan. 2002. *Les secrets du Manding : les récits du sanctuaire Kamabolon de Kangaba (Mali)*. Research School CNWS.
+- Jansen, Jan. 2018. "Beyond the Mali Empire: A New Paradigm for the Sunjata Epic." *International Journal of African Historical Studies* 51.2: 317–340.
+- Johnson, Samuel. 1921. *The History of the Yorubas*. Routledge.
+- Koné, Kassim. 2004. "When Male Becomes Female and Female Becomes Male in Mande." *Wagadu* 1.
 - Larmarange, Joseph, and Christophe Broqua. 2023. "Orientation sexuelle et identité de genre : quelles catégories d'enquête en Afrique subsaharienne ?" INED.
-- M'Baye, Babacar. 2019. "Afropolitan Sexual and Gender Identities in Colonial Senegal." *Humanities* 8.4: 166.
 - Mackin, Atim. 2026. "Les woubis et les travestis de Côte d'Ivoire dans les médias." *Convergences francophones* 9.2: 14–23.
+- Matory, J. Lorand. 2003. "Gendered Agendas: The Secrets Scholars Keep about Yorùbá-Atlantic Religion." *Gender & History* 15.3: 409–439.
+- Matory, J. Lorand. 2005. *Sex and the Empire That Is No More: Gender and the Politics of Metaphor in Oyo Yoruba Religion*. 2nd ed. Berghahn.
+- M'Baye, Babacar. 2019. "Afropolitan Sexual and Gender Identities in Colonial Senegal." *Humanities* 8.4: 166.
+- Niane, D. T. 1965. *Sundiata: An Epic of Old Mali*. Trans. G. D. Pickett. Longman.
 - Niang, Cheikh Ibrahima, et al. 2002. *Meeting the Sexual Health Needs of Men Who Have Sex with Men in Senegal*. Horizons Final Report, Population Council.
 - Otu, Kwame Edwin. 2022. *Amphibious Subjects: Sasso and the Contested Politics of Queer Self-Making in Neoliberal Ghana*. University of California Press (Luminos).
+- Oyěwùmí, Oyèrónkẹ́. 1997. *The Invention of Women: Making an African Sense of Western Gender Discourses*. University of Minnesota Press.
 - Pierce, Steven. 2016. "'Nigeria Can Do without Such Perverts'." *Comparative Studies of South Asia, Africa and the Middle East* 36.1: 3–20.
+- Schulz, Dorothea E. 2002. "'The World Is Made by Talk': Female Fans, Popular Music, and New Forms of Public Sociality in Urban Mali." *Cahiers d'études africaines* 168: 797–829.
+- van Beek, Walter E. A. 1991. "Dogon Restudied: A Field Evaluation of the Work of Marcel Griaule." *Current Anthropology* 32.2: 139–167.
 
 </details>
 
@@ -711,15 +721,17 @@ Cited in the notes, not read: Davies, Sharyn Graham, *Challenging Gender Norms: 
 </details>
 
 <details>
-<summary><strong>General and comparative history</strong> (10 works)</summary>
+<summary><strong>General and comparative history</strong> (12 works)</summary>
 
 - Adkins, Evelyn. 2020. "The Politics of Transgender Representation in Apuleius' *Golden Ass* and *Loukios, or the Ass*." In Surtees and Dyer (eds.), *Exploring Gender Diversity in the Ancient World*, 157–168.
-- Álvarez-Pedrosa, Juan Antonio (ed.). 2021. *Sources of Slavic Pre-Christian Religion*. Brill.
-- Álvarez-Pedrosa, Juan Antonio, and Enrique Santos Marinas. 2023. *Rituals in Slavic Pre-Christian Religion: Festivals, Banqueting, and Divination*. Arc Humanities Press.
 - Betancourt, Roland. 2021. "Where Are All the Trans Women in Byzantium?" In LaFleur, Raskolnikov and Kłosowska (eds.), *Trans Historical*.
+- Federici, Silvia. 2004. *Caliban and the Witch: Women, the Body and Primitive Accumulation*. Autonomedia. (Chapter 1 and the witch-hunt chapter read in full.)
+- Ford, Richard Thompson. 2021. *Dress Codes: How the Laws of Fashion Made History*. Simon & Schuster. (Introduction and chapters 1–4 and 14 read in full.)
 - Krass, Andreas. 2012. "Saying It with Flowers: Post-Foucauldian Literary History and the Poetics of Taboo in a Premodern German Love Song." In Spector, Puff and Herzog (eds.), *After The History of Sexuality: German Genealogies With and Beyond Foucault*, 63–75. Berghahn.
 - LaFleur, Greta, Masha Raskolnikov, and Anna Kłosowska (eds.). 2021. *Trans Historical: Gender Plurality Before the Modern*. Cornell University Press.
 - Levin, Eve. 1989. *Sex and Society in the World of the Orthodox Slavs, 900–1700*. Cornell University Press.
+- Álvarez-Pedrosa, Juan Antonio, and Enrique Santos Marinas. 2023. *Rituals in Slavic Pre-Christian Religion: Festivals, Banqueting, and Divination*. Arc Humanities Press.
+- Álvarez-Pedrosa, Juan Antonio (ed.). 2021. *Sources of Slavic Pre-Christian Religion*. Brill.
 - Puff, Helmut. 2012. "After the History of (Male) Homosexuality." In Spector, Puff and Herzog (eds.), *After The History of Sexuality*, 17–30. Berghahn.
 - Surtees, Allison, and Jennifer Dyer (eds.). 2020. *Exploring Gender Diversity in the Ancient World*. Edinburgh University Press.
 - Wiesner-Hanks, Merry E. 2011. *Gender in History: Global Perspectives*. 2nd ed. Wiley-Blackwell.

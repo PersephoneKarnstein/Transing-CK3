@@ -31,7 +31,6 @@ tm_seidr.0010 = {
 	}
 	option = {	# Not this winter
 		name = tm_seidr.0010.c
-		add_stress = 10
 	}
 }
 
@@ -119,6 +118,7 @@ tm_seidr.0001 = {
 		name = tm_seidr.0001.a
 		random_list = {
 			40 = {
+				modifier = { add = 15 any_relation = { type = tm_sister tm_is_daughter_trigger = yes } }	# her sworn sister stands as her sponsor (round 2, T21)
 				modifier = { add = 30 OR = { has_trait = tm_transgender has_variable = tm_declared } }	# Marked, or named before witnesses (§16 rule 8)
 				modifier = { add = 20 has_personal_tenet_flag = tm_personal_seidr_easier }
 				modifier = { add = 15 has_variable = tm_seidr_feast }
@@ -153,7 +153,7 @@ tm_seidr.0001 = {
 				send_interface_toast = {
 					type = event_toast_effect_bad
 					title = tm_seidr.0001.a.failure
-					add_stress = 15
+					add_stress = 5
 				}
 				tm_seidr_clear_effect = yes
 			}

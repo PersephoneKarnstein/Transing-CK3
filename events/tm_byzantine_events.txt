@@ -25,6 +25,13 @@ tm_byz.0001 = {
 		add_dread = 10
 		add_piety = 25
 	}
+	option = {	# A learned Sister: every monk who reads the Song speaks as the Bride (round 2, T33;
+				# research/book_hornsby_stone_bible_trouble.md row 3). The Fathers' Bride-voice is a reading practice,
+				# not a claim that they were women; Origen (3rd c.) is period-true.
+		name = tm_byz.0001.e
+		trigger = { learning >= 12 }
+		add_piety = 50
+	}
 	option = {	# We are Christians, and we will say so as often as we must
 		name = tm_byz.0001.d
 		add_piety = -25

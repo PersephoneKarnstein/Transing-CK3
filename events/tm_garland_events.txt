@@ -33,7 +33,6 @@ tm_garland.0010 = {
 	}
 	option = {	# Not this Mārkaḻi
 		name = tm_garland.0010.c
-		add_stress = 10
 		tm_pavai_clear_effect = yes
 	}
 }
@@ -141,6 +140,7 @@ tm_garland.0001 = {
 		name = tm_garland.0001.a
 		random_list = {
 			25 = {
+				modifier = { add = 15 any_relation = { type = tm_sister tm_is_daughter_trigger = yes } }	# her sworn sister stands as her sponsor (round 2, T21)
 				modifier = { add = 30 OR = { has_trait = tm_transgender has_variable = tm_declared } }	# Marked, or named before witnesses (§16 rule 8)
 				modifier = { add = 15 has_character_modifier = tm_taught_answers_modifier }	# Teach Her the Answers (tm_mech_interactions.txt)
 				modifier = {							# the circle that held
@@ -166,7 +166,7 @@ tm_garland.0001 = {
 				send_interface_toast = {
 					type = event_toast_effect_bad
 					title = tm_garland.0001.a.failure
-					add_stress = 10
+					add_stress = 5
 				}
 				tm_pavai_clear_effect = yes
 			}

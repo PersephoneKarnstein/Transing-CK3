@@ -38,6 +38,14 @@ tm_sisters_call_effect = {
 			}
 		}
 	}
+	else_if = {	# a sworn sister's faith (round 2, T21): she counts as one met at court
+		limit = { any_relation = { type = tm_sister rite ?= { rite_has_parameter = tm_sisters_faith } NOT = { faith = faith:tm_nehpakhot } } }
+		random_relation = {
+			type = tm_sister
+			limit = { rite ?= { rite_has_parameter = tm_sisters_faith } NOT = { faith = faith:tm_nehpakhot } }
+			faith = { save_scope_as = tm_call_faith }
+		}
+	}
 	else_if = {	# Rabbanite Jews only: not Samaritans, Karaites, Kabarists or the Beta Israel (tm_fixes_triggers.txt)
 		limit = { tm_rabbanite_jew_trigger = yes }
 		faith:tm_nehpakhot = { save_scope_as = tm_call_faith }
@@ -144,6 +152,15 @@ tm_sisters_call_effect = {
 			modifier = {								# a daughter of any faith at her court
 				add = 3
 				employer ?= { any_courtier = { tm_is_daughter_trigger = yes } }
+			}
+			modifier = {								# a sworn sister of the faith, wherever she lives (round 2, T21)
+				add = 4
+				any_relation = { type = tm_sister faith = scope:tm_call_faith }
+			}
+			modifier = {								# the user's "accepting place" (round 2, T29): sisters sent on from
+				add = 3								# a closed House settled in her county in the last ten years
+				exists = scope:tm_call_county
+				scope:tm_call_county = { has_variable = tm_refugee_carried }
 			}
 			modifier = {								# she has already declared her name
 				add = 4

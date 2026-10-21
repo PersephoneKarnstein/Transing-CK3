@@ -65,7 +65,13 @@ tm_dorley.0010 = {
 tm_dorley.0100 = {
 	type = character_event
 	title = tm_dorley.0100.t
-	desc = tm_dorley.0100.desc
+	desc = {
+		desc = tm_dorley.0100.desc
+		triggered_desc = {			# the sponsor's own turning (round 2, T34; research/book_hornsby_stone_bible_trouble.md row 1)
+			trigger = { NOT = { scope:tm_sponsor = root } }
+			desc = tm_dorley.0100.desc_sponsor
+		}
+	}
 	theme = faith
 	left_portrait = { character = scope:tm_novice animation = personality_rational }
 	right_portrait = { character = scope:tm_sponsor animation = happiness }
@@ -81,6 +87,7 @@ tm_dorley.0100 = {
 			release_from_prison = yes
 			tm_take_the_knife_effect = yes
 		}
+		tm_dorley_sponsor_reward_effect = { RISEN = scope:tm_novice }
 	}
 	option = {	# ...and adopt her
 		name = tm_dorley.0100.b
@@ -91,6 +98,7 @@ tm_dorley.0100 = {
 		}
 		adopt_effect = { CHILD = scope:tm_adoptee ADOPTER = root }
 		scope:tm_adoptee = { tm_take_the_knife_effect = yes }
+		tm_dorley_sponsor_reward_effect = { RISEN = scope:tm_adoptee }
 	}
 }
 

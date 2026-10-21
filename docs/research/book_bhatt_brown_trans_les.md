@@ -167,7 +167,7 @@ All lines below are **paraphrases** for localisation, not quotes, unless marked.
 | Our source or framing | Where | How ch. 4-5 hits it | Action |
 |---|---|---|---|
 | Oyěwùmí, *The Invention of Women* | `south_reading_list.md` #17; `book_stryker_history.md` "Yoruba Female-Husband Heritage" | The central target of ch. 5 | Do not use. Matory (`waf_matory_oyo.md`) already agrees. |
-| Bakare-Yusuf's review | `south_reading_list.md` #17 gives 2003, *African Identities* 1.1 | Bhatt dates it 2000 (ch. 5, l.462) | Date conflict: check before citing. Do not resolve from either note alone. |
+| Bakare-Yusuf's review | `south_reading_list.md` #17 gives 2003, *African Identities* 1.1 | Bhatt dates it 2000 (ch. 5, l.462) | **Resolved 2026-10-21:** 2003. Crossref gives *African Identities* 1.1 (April 2003): 119–140 (`book_oyewumi_invention_of_women.md` §3). Bhatt's 2000 is an error. |
 | Lugones, "The Coloniality of Gender" (with Gunn Allen) | `book_tsr_remix.md` ch. 12 and rows 2, 8-10 | Ch. 5, l.429-445 | Mark rows "do not use". |
 | Joya material (Miranda, colonial Spanish record) | beliefs **H26, H27, H30**; H27 calls exclusive ritual office "the strongest third-gender pattern" | Third-sexing read off colonial and anthropological records | H26 (daughters born among every people) can stand as theology. Reword H27's rationale away from "third-gender pattern". H30 ("more robust than the women") is a colonial chronicler's line; drop or mark hostile. |
 | Hijra as precedent in the plausibility matrix | beliefs **B3**, **B5**, **E1**, row (e) of §G | The Nanda line of ethnography Bhatt rejects in both books | Fine as research context; never as in-game precedent. The Garland already says "no hijra link". |

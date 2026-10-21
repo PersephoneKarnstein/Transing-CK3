@@ -47,7 +47,14 @@ tm_hipukh.0009 = {
 tm_hipukh.0010 = {
 	type = character_event
 	title = tm_hipukh.0010.t
-	desc = tm_hipukh.0010.desc
+	desc = {
+		desc = tm_hipukh.0010.desc
+		triggered_desc = {	# she has waited an Adar already: Esther's twelve months and Hegai (Esth. 2:3, 2:8-9, 2:12; round 2,
+							# T33; research/book_hornsby_stone_bible_trouble.md row 6). Flavour in the elder's voice.
+			trigger = { has_variable = tm_turning_prayers }
+			desc = tm_hipukh.0010.desc_esther
+		}
+	}
 	theme = faith
 	left_portrait = { character = scope:tm_zekenah animation = personality_rational }
 	right_portrait = { character = root animation = worry }
@@ -66,7 +73,6 @@ tm_hipukh.0010 = {
 	}
 	option = {	# Not this Adar
 		name = tm_hipukh.0010.c
-		add_stress = 10
 		tm_turning_clear_effect = yes
 	}
 }
@@ -105,7 +111,6 @@ tm_hipukh.0011 = {
 	}
 	option = {	# Refuse the dress
 		name = tm_hipukh.0011.c
-		add_stress = 15
 		tm_turning_clear_effect = yes
 	}
 }
@@ -122,6 +127,17 @@ tm_hipukh.0001 = {
 			}
 			desc = tm_hipukh.0001.desc
 		}
+		triggered_desc = {	# Jer. 20:7 for one who would not take the bride found for her (round 2, T33;
+							# research/book_macwilliam_prophetic_marriage.md row 2). Unmarried and unbetrothed past twenty
+							# stands in for the refusal, which the game does not record.
+			trigger = {
+				is_male = yes
+				age >= 20
+				is_married = no
+				NOT = { exists = betrothed }
+			}
+			desc = tm_hipukh.0001.desc_jeremiah
+		}
 	}
 	theme = faith
 	left_portrait = { character = scope:tm_zekenah animation = personality_zealous }
@@ -133,6 +149,7 @@ tm_hipukh.0001 = {
 		name = tm_hipukh.0001.a
 		random_list = {
 			30 = {
+				modifier = { add = 15 any_relation = { type = tm_sister tm_is_daughter_trigger = yes } }	# her sworn sister stands as her sponsor (round 2, T21)
 				modifier = { add = 30 OR = { has_trait = tm_transgender has_variable = tm_declared } }	# Marked, or named before witnesses (§16 rule 8)
 				modifier = { add = learning }
 				modifier = { add = scope:tm_zekenah.learning }
@@ -180,7 +197,7 @@ tm_hipukh.0001 = {
 				send_interface_toast = {
 					type = event_toast_effect_bad
 					title = tm_hipukh.0001.a.failure
-					add_stress = 10
+					add_stress = 5
 				}
 				tm_turning_clear_effect = yes
 				if = {
@@ -286,6 +303,26 @@ tm_hipukh.0003 = {
 			}
 		}
 	}
+	option = {	# A learned answer: the prophets called every man of Israel a bride (round 2, T33;
+				# research/book_macwilliam_prophetic_marriage.md row 1). Inside the Hebrew Bible and a Jewish dispute.
+		name = tm_hipukh.0003.e
+		trigger = { learning >= 12 }
+		random_list = {
+			45 = {
+				modifier = { add = { value = learning multiply = 2 } }
+				modifier = { add = 10 scope:tm_council_women = yes }
+				modifier = { add = 20 has_character_modifier = tm_taught_answers_modifier }	# Teach Her the Answers (tm_mech_interactions.txt)
+				desc = tm_hipukh.0003.e.win
+				add_prestige = 75
+				location ?= { county ?= { set_variable = { name = tm_worthies_licence value = yes years = 10 } } }
+			}
+			50 = {
+				desc = tm_hipukh.0003.e.lose
+				tm_turning_niddui_effect = yes
+				add_stress = 15
+			}
+		}
+	}
 	option = {	# Answer with the Touchstone: the young men put on the dress every Adar
 		name = tm_hipukh.0003.b
 		trigger = { current_date >= 1323.1.1 }
@@ -300,7 +337,6 @@ tm_hipukh.0003 = {
 	}
 	option = {	# Put the dress away until next Adar
 		name = tm_hipukh.0003.d
-		add_stress = 25
 	}
 }
 

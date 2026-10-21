@@ -22,6 +22,8 @@ tm_take_into_house_interaction = {
 				has_trait = tm_novice
 				has_trait = tm_washout
 				tm_is_daughter_trigger = yes	# vanilla is_eunuch_trigger does not see daughters
+				has_trait = tm_transgender		# Marked and declared prisoners are welcomed instead (tm_welcome_to_house_interaction)
+				has_variable = tm_declared
 			}
 		}
 	}
@@ -59,12 +61,115 @@ tm_take_into_house_interaction = {
 	}
 }
 
-# Sister-Making: two daughters bind themselves by the old rite.
+# Welcome Her to the House (user decision, round 2): the Dorley programme takes only men proven cruel. A Marked or
+# declared prisoner of a ruler whose rite keeps the knife is released, joins the court as one of the House, and is
+# offered the rite as her own choice (tm_offer_courtier_rite_effect: the knife's voluntary path, which she may decline).
+# No cells, no sponsor's probation, no washout. Under Grandmother's House, which keeps no voluntary rite, she is welcomed
+# and may declare before witnesses. If she keeps another faith, nothing is asked of her: the call (tm_sisters_call_effect)
+# reaches her through the members around her.
+tm_welcome_to_house_interaction = {
+	interface_priority = 32
+	icon = icon_scheme_befriend
+	category = interaction_category_prison
+	desc = tm_welcome_to_house_interaction_desc
+
+	is_shown = {
+		scope:actor = {
+			is_adult = yes
+			rite ?= {
+				OR = {
+					rite_has_parameter = tm_knife_voluntary			# Aunt Bea's House, the Gift Alone
+					rite_has_parameter = tm_knife_penal_any_prisoner	# Grandmother's House
+				}
+			}
+		}
+		scope:recipient = {
+			is_imprisoned_by = scope:actor
+			is_adult = yes
+			is_ruler = no				# she joins the court
+			tm_is_daughter_trigger = no
+			OR = {
+				has_trait = tm_transgender
+				has_variable = tm_declared
+			}
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		scope:recipient = {
+			custom_description = {
+				text = "currently_being_tortured"
+				NOT = { has_character_flag = is_being_tortured }
+			}
+		}
+	}
+
+	auto_accept = yes
+
+	on_accept = {
+		scope:recipient = {
+			release_from_prison = yes
+			add_opinion = { target = scope:actor modifier = grateful_opinion opinion = 30 }
+			if = {
+				limit = {
+					tm_house_member_trigger = no
+					NOT = { has_character_modifier = tm_house_friend_modifier }
+				}
+				add_character_modifier = { modifier = tm_house_friend_modifier }
+			}
+			if = {
+				limit = { has_trait = tm_novice }
+				remove_trait = tm_novice
+			}
+		}
+		scope:actor = {
+			add_courtier = scope:recipient
+			add_piety = 25
+		}
+		scope:recipient = {
+			if = {
+				limit = {
+					faith = scope:actor.faith
+					rite ?= { rite_has_parameter = tm_knife_voluntary }
+					is_male = yes
+				}
+				custom_tooltip = tm_welcome_to_house_interaction.offer.tt
+				tm_offer_courtier_rite_effect = yes
+			}
+			else = {
+				custom_tooltip = tm_welcome_to_house_interaction.guest.tt
+			}
+		}
+	}
+
+	ai_targets = { ai_recipients = prisoners }
+	ai_frequency = 12
+	is_available = {
+		rite ?= {
+			OR = {
+				rite_has_parameter = tm_knife_voluntary
+				rite_has_parameter = tm_knife_penal_any_prisoner
+			}
+		}
+	}
+	ai_will_do = {
+		base = 60
+		modifier = { add = 30 has_trait = compassionate }
+		modifier = { add = -20 has_trait = callous }
+		modifier = { add = -30 has_trait = sadistic }
+	}
+}
+
+# Sister-Making: a daughter binds herself by the old rite to a sister of her faith. Widened in round 2 (T21;
+# research/book_heaney_feminism_against_cisness.md §5 row 2): the other may be any adult of her faith who is a daughter,
+# Marked, declared, or of the House. An equal bond: no inheritance, no guardian. A sworn sister counts as a sponsor at
+# the other's gate (+15 in each gate's roll; a small reward when she rises: tm_after_gate_body_effect) and as a member
+# at court for the call (tm_sisters_call_effect).
 tm_sister_making_interaction = {
 	interface_priority = 60
 	icon = icon_scheme_befriend
 	category = interaction_category_friendly
-	desc = tm_sister_making_interaction_desc
+	desc = tm_sister_making_interaction_desc_r2
 
 	is_shown = {
 		NOT = { scope:actor = scope:recipient }
@@ -73,8 +178,14 @@ tm_sister_making_interaction = {
 			rite ?= { rite_has_parameter = tm_sister_making_allowed }
 		}
 		scope:recipient = {
-			tm_is_daughter_trigger = yes
+			is_adult = yes
 			faith = scope:actor.faith
+			OR = {
+				tm_is_daughter_trigger = yes
+				has_trait = tm_transgender
+				has_variable = tm_declared
+				tm_house_member_trigger = yes
+			}
 		}
 	}
 
@@ -95,6 +206,13 @@ tm_sister_making_interaction = {
 		scope:recipient = {
 			add_piety = 100
 			add_prestige = 50
+			if = {				# she is one of the House now
+				limit = {
+					tm_house_member_trigger = no
+					NOT = { has_character_modifier = tm_house_friend_modifier }
+				}
+				add_character_modifier = { modifier = tm_house_friend_modifier }
+			}
 		}
 	}
 

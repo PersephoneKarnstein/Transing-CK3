@@ -195,6 +195,7 @@ tm_reembody_as_woman_effect = {
 	# Other relations worth keeping.
 	scope:tm_old_body = {
 		every_relation = { type = friend	scope:tm_new_body = { set_relation_friend = prev } }
+		every_relation = { type = tm_sister	scope:tm_new_body = { set_relation_tm_sister = prev } }	# sworn sisters (round 2)
 		every_relation = { type = best_friend	scope:tm_new_body = { set_relation_best_friend = prev } }
 		every_relation = { type = rival	scope:tm_new_body = { set_relation_rival = prev } }
 		every_relation = { type = lover	scope:tm_new_body = { set_relation_lover = prev } }

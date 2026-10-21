@@ -31,7 +31,6 @@ tm_badenya.0010 = {
 		name = tm_badenya.0010.b
 		trigger = { gold >= 10 }
 		remove_short_term_gold = 10
-		add_stress = 10
 	}
 }
 
@@ -95,7 +94,7 @@ tm_badenya.0011 = {
 	option = {	# No one will claim me yet
 		name = tm_badenya.0011.c
 		trigger = { NOT = { exists = scope:tm_claimer } }
-		add_stress = 20
+		add_stress = 10						# not her choice; halved (round 2)
 		remove_character_modifier = tm_crossing_hot_modifier
 	}
 }
@@ -120,6 +119,7 @@ tm_badenya.0012 = {
 		name = tm_badenya.0012.b
 		random_list = {
 			50 = {
+				modifier = { add = 15 any_relation = { type = tm_sister tm_is_daughter_trigger = yes } }	# her sworn sister stands as her sponsor (round 2, T21)
 				modifier = { add = 25 has_character_modifier = tm_taught_answers_modifier }	# Teach Her the Answers (tm_mech_interactions.txt)
 				desc = tm_badenya.0012.b.praise
 				add_prestige = 25

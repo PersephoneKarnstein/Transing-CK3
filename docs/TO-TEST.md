@@ -492,3 +492,16 @@ Design: `faith_design.md` §16. With `-debug_mode`, event IDs show on each windo
 - **Intersex birth** (`tm_life.0040`, 2% per birth at a court of the six) and the choice at 16 (`tm_life.0041`): the sex the game uses never changes, and the child never gets the Marked trait.
 - **Saints**: at 867, the five foremothers show in the faith's saints list with tombs at Dorylaion, Ankyra, Kyzikos, Pepouza and Midaion.
 - **Marked rate** is 1.5% (was 1%): check `tm_census.txt` early and late in a run.
+
+## Round 2 (added 2026-10-21, untested in-game)
+
+- **Flavour budget**: game rule *Crusader Dolls Flavour Events* (rare / normal / frequent). With `-debug_mode`, hover a character for `tm_flavour_cooldown`.
+- **We Stay** (`tm_house.0051`, `0052`): order a House closed with a sister at court.
+- **Sister-Making** with a Marked, declared or House-member adult; check +15 at her gate and the sponsor reward when she rises.
+- **At Home in Her Body** modifier after any gate.
+- **Refugees**: close a House; the receiving county gets `tm_refugee_carried`.
+- **Dorley intake**: only violent men go to the cells; a Marked or declared prisoner gets *Welcome Her to the House*.
+- **Stepping back** from any gate refunds the cost and adds no stress.
+- **New events**: The Same Roof (`tm_house.0070`), I Simply Cannot (`tm_life.0035`), the frightened courtier (`tm_life.0090`), Elder in Years (variant in `tm_life.0050`), Ruled as a Man (`tm_world.0070`), The Confessor's Book (`tm_world.0060`, Catholic, 1000–1346), Women Without a Rule (`tm_world.0061`, from 1312), A Woman in the Line (`tm_world.0051`), the mask law (`tm_world.0080`, from 1325).
+- **Keep Quiet in This Land** (decision): hostile `tm_world` events halve; she can't be Elder Sister.
+- **Learned answers**: `tm_byz.0001` option e, `tm_hipukh.0003` option e (learning ≥ 12).

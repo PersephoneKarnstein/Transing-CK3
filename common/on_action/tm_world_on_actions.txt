@@ -2,10 +2,71 @@
 # Every chance here is small: these are flavour. A daughter touched by one of them is left alone for three years
 # (tm_world_mark_effect); a lord gets the Whispers at most once in eight years. Scapegoat pressure (item 27): each
 # chance rises when the hostile faith is shaken (fervor below 35) and halves when it is secure (above 75).
+# The flavour budget (build round 2): every event fired from the pulse checks tm_flavour_ready_trigger on the one who
+# receives it, and spends it (tm_flavour_spent_effect) when it fires. Because the blocks run in order, a character
+# who gets one of them this year cannot get a second. Follow-ups (0003, 0042, 0051) are exempt.
+# Keep Quiet in This Land (tm_world_keeps_quiet_trigger, Nirta row 6) halves every hostile chance for her.
 
 yearly_playable_pulse = {
 	on_actions = {
 		tm_world_yearly
+	}
+}
+
+# T26. Ruled as a Man: a daughter who held a county or more dies. Root = the dying daughter, who still holds her titles.
+on_death = {
+	on_actions = {
+		tm_world_on_death
+	}
+}
+
+tm_world_on_death = {
+	trigger = {
+		NOT = { has_variable = tm_reborn }		# a body left behind by re-embodiment is not a death
+		is_adult = yes
+		highest_held_title_tier >= tier_county
+		OR = {
+			tm_is_daughter_trigger = yes
+			has_variable = tm_declared
+		}
+	}
+	effect = {
+		save_scope_as = tm_world_ruler
+		primary_title = { save_scope_as = tm_world_ruler_title }
+		tm_world_pick_court_effect = yes
+		# Who keeps her memory: her heir if of the six faiths, else her liege if of the six; else no one does.
+		if = {
+			limit = {
+				primary_heir ?= {
+					rite ?= { rite_has_parameter = tm_sisters_faith }
+					tm_flavour_ready_trigger = yes
+				}
+			}
+			primary_heir = { save_scope_as = tm_world_keeper }
+		}
+		else_if = {
+			limit = {
+				is_independent_ruler = no
+				liege ?= {
+					rite ?= { rite_has_parameter = tm_sisters_faith }
+					tm_flavour_ready_trigger = yes
+				}
+			}
+			liege = { save_scope_as = tm_world_keeper }
+		}
+		if = {
+			limit = {
+				exists = scope:tm_world_keeper
+				exists = scope:tm_world_court
+			}
+			random = {
+				chance = 40
+				scope:tm_world_keeper = {
+					tm_flavour_spent_effect = yes
+					trigger_event = { id = tm_world.0070 days = { 60 240 } }
+				}
+			}
+		}
 	}
 }
 
@@ -15,6 +76,7 @@ tm_world_yearly = {
 		# by a courtier or vassal of another faith, about a daughter of the House at his court.
 		if = {
 			limit = {
+				tm_flavour_ready_trigger = yes
 				tm_holds_sisters_house_trigger = yes
 				NOT = { has_character_flag = tm_world_whispers_cd }
 				any_courtier = {
@@ -65,6 +127,11 @@ tm_world_yearly = {
 					factor = 0.5
 					scope:tm_world_speaker.faith = { tm_world_secure_faith_trigger = yes }
 				}
+				modifier = {
+					factor = 0.5
+					scope:tm_world_sister = { tm_world_keeps_quiet_trigger = yes }
+				}
+				tm_flavour_spent_effect = yes
 				add_character_flag = { flag = tm_world_whispers_cd years = 8 }
 				scope:tm_world_sister = { tm_world_mark_effect = yes }
 				# The tale is drawn from what the teller fears of her faith (tsq_transpsychoanalytics_2017.md row 2).
@@ -115,22 +182,86 @@ tm_world_yearly = {
 			}
 		}
 
+		# T28. The Confessor's Book (Federici row 5): a Catholic lord who keeps a House, 1000-1346. A priest reports the
+		# House's herb-woman. Rare: once in fifteen years at most.
+		if = {
+			limit = {
+				tm_flavour_ready_trigger = yes
+				current_date >= 1000.1.1
+				current_date < 1347.1.1
+				faith = faith:catholic
+				tm_holds_sisters_house_trigger = yes
+				NOT = { has_character_flag = tm_world_confessor_cd }
+			}
+			random = {
+				chance = 2
+				modifier = { add = 1 faith = { tm_world_strained_faith_trigger = yes } }
+				modifier = { factor = 0.5 faith = { tm_world_secure_faith_trigger = yes } }
+				tm_flavour_spent_effect = yes
+				add_character_flag = { flag = tm_world_confessor_cd years = 15 }
+				random_held_title = {
+					limit = { tier = tier_county has_variable = tm_house }
+					save_scope_as = tm_world_county
+				}
+				trigger_event = { id = tm_world.0060 days = { 1 300 } }
+			}
+		}
+
+		# T28. Women Without a Rule (Federici row 7): from 1312 (Vienne), a House in a county whose lord is Catholic or
+		# whose top liege is. Asked once of each House in thirty years.
+		if = {
+			limit = {
+				tm_flavour_ready_trigger = yes
+				current_date >= 1312.1.1
+				OR = {
+					faith = faith:catholic
+					top_liege = { faith = faith:catholic }
+				}
+				any_held_title = {
+					tier = tier_county
+					has_variable = tm_house
+					NOT = { has_variable = tm_world_rule_asked }
+					NOT = { has_variable = tm_world_under_rule }
+				}
+			}
+			random = {
+				chance = 2
+				modifier = { add = 1 top_liege.faith = { tm_world_strained_faith_trigger = yes } }
+				modifier = { factor = 0.5 top_liege.faith = { tm_world_secure_faith_trigger = yes } }
+				tm_flavour_spent_effect = yes
+				random_held_title = {
+					limit = {
+						tier = tier_county
+						has_variable = tm_house
+						NOT = { has_variable = tm_world_rule_asked }
+						NOT = { has_variable = tm_world_under_rule }
+					}
+					set_variable = { name = tm_world_rule_asked value = yes years = 30 }
+					save_scope_as = tm_world_county
+				}
+				trigger_event = { id = tm_world.0061 days = { 1 300 } }
+			}
+		}
+
 		# 37. The Court Wonders: a Christian lord of another faith with a daughter at court.
 		if = {
 			limit = {
+				tm_flavour_ready_trigger = yes
 				faith = { religion_tag = christianity_religion }
 				tm_world_hostile_court_trigger = yes
 				any_courtier = { tm_world_daughter_trigger = yes tm_world_rested_trigger = yes }
+			}
+			random_courtier = {
+				limit = { tm_world_daughter_trigger = yes tm_world_rested_trigger = yes }
+				save_scope_as = tm_world_daughter
 			}
 			random = {
 				chance = 3
 				modifier = { add = 2 faith = { tm_world_strained_faith_trigger = yes } }
 				modifier = { factor = 0.5 faith = { tm_world_secure_faith_trigger = yes } }
-				random_courtier = {
-					limit = { tm_world_daughter_trigger = yes tm_world_rested_trigger = yes }
-					save_scope_as = tm_world_daughter
-					tm_world_mark_effect = yes
-				}
+				modifier = { factor = 0.5 scope:tm_world_daughter = { tm_world_keeps_quiet_trigger = yes } }
+				tm_flavour_spent_effect = yes
+				scope:tm_world_daughter = { tm_world_mark_effect = yes }
 				trigger_event = { id = tm_world.0030 days = { 1 300 } }
 			}
 		}
@@ -144,20 +275,27 @@ tm_world_yearly = {
 				any_courtier = {
 					tm_world_daughter_trigger = yes
 					tm_world_rested_trigger = yes
+					tm_flavour_ready_trigger = yes
 					NOT = { has_character_flag = tm_world_quarters_asked }
 				}
+			}
+			save_scope_as = tm_world_household
+			random_courtier = {
+				limit = {
+					tm_world_daughter_trigger = yes
+					tm_world_rested_trigger = yes
+					tm_flavour_ready_trigger = yes
+					NOT = { has_character_flag = tm_world_quarters_asked }
+				}
+				save_scope_as = tm_world_quarters_daughter
 			}
 			random = {
 				chance = 3
 				modifier = { add = 2 faith = { tm_world_strained_faith_trigger = yes } }
 				modifier = { factor = 0.5 faith = { tm_world_secure_faith_trigger = yes } }
-				save_scope_as = tm_world_household
-				random_courtier = {
-					limit = {
-						tm_world_daughter_trigger = yes
-						tm_world_rested_trigger = yes
-						NOT = { has_character_flag = tm_world_quarters_asked }
-					}
+				modifier = { factor = 0.5 scope:tm_world_quarters_daughter = { tm_world_keeps_quiet_trigger = yes } }
+				scope:tm_world_quarters_daughter = {
+					tm_flavour_spent_effect = yes
 					tm_world_mark_effect = yes
 					add_character_flag = tm_world_quarters_asked
 					trigger_event = { id = tm_world.0041 days = { 1 300 } }
@@ -171,6 +309,7 @@ tm_world_yearly = {
 			limit = {
 				tm_world_daughter_trigger = yes
 				tm_world_rested_trigger = yes
+				tm_flavour_ready_trigger = yes
 				NOT = { has_character_flag = tm_world_copy_seen }
 				OR = {
 					tm_world_nehpakhot_daughter_trigger = yes
@@ -179,6 +318,7 @@ tm_world_yearly = {
 			}
 			random = {
 				chance = 3
+				tm_flavour_spent_effect = yes
 				tm_world_mark_effect = yes
 				add_character_flag = { flag = tm_world_copy_seen years = 20 }
 				trigger_event = { id = tm_world.0012 days = { 1 300 } }
@@ -189,6 +329,7 @@ tm_world_yearly = {
 				any_courtier = {
 					tm_world_daughter_trigger = yes
 					tm_world_rested_trigger = yes
+					tm_flavour_ready_trigger = yes
 					NOT = { has_character_flag = tm_world_copy_seen }
 					OR = {
 						tm_world_nehpakhot_daughter_trigger = yes
@@ -202,12 +343,14 @@ tm_world_yearly = {
 					limit = {
 						tm_world_daughter_trigger = yes
 						tm_world_rested_trigger = yes
+						tm_flavour_ready_trigger = yes
 						NOT = { has_character_flag = tm_world_copy_seen }
 						OR = {
 							tm_world_nehpakhot_daughter_trigger = yes
 							rite ?= { rite_has_parameter = tm_embryo_gate }
 						}
 					}
+					tm_flavour_spent_effect = yes
 					tm_world_mark_effect = yes
 					add_character_flag = { flag = tm_world_copy_seen years = 20 }
 					trigger_event = { id = tm_world.0012 days = { 1 300 } }
@@ -215,10 +358,45 @@ tm_world_yearly = {
 			}
 		}
 
+		# T32. The mask law (Ford row 6): from 1325, a daughter living in an Italian or Provencal city under a Catholic
+		# lord hears the commune's crier. Herself or a daughter of this court; the event goes to her. Once in twenty years.
+		if = {
+			limit = {
+				OR = {
+					tm_world_mask_law_trigger = yes
+					any_courtier = { tm_world_mask_law_trigger = yes }
+				}
+			}
+			if = {
+				limit = { tm_world_mask_law_trigger = yes }
+				save_scope_as = tm_world_masked
+			}
+			else = {
+				random_courtier = {
+					limit = { tm_world_mask_law_trigger = yes }
+					save_scope_as = tm_world_masked
+				}
+			}
+			random = {
+				chance = 3
+				modifier = { factor = 0.5 scope:tm_world_masked = { tm_world_keeps_quiet_trigger = yes } }
+				scope:tm_world_masked = {
+					tm_flavour_spent_effect = yes
+					tm_world_mark_effect = yes
+					add_character_flag = { flag = tm_world_mask_seen years = 20 }
+					location.county = { save_scope_as = tm_world_city }
+					trigger_event = { id = tm_world.0080 days = { 1 300 } }
+				}
+			}
+		}
+
 		# 34, 36, 37, 38, 42. A ruler of a Sisters' faith, herself a daughter or with one at court, and the world's court
 		# she must deal with (her liege of another faith, or a neighbour).
 		if = {
-			limit = { rite ?= { rite_has_parameter = tm_sisters_faith } }
+			limit = {
+				tm_flavour_ready_trigger = yes
+				rite ?= { rite_has_parameter = tm_sisters_faith }
+			}
 			tm_world_pick_daughter_effect = yes
 			tm_world_pick_court_effect = yes
 			if = {
@@ -230,6 +408,8 @@ tm_world_yearly = {
 					chance = 6
 					modifier = { add = 3 scope:tm_world_court.faith = { tm_world_strained_faith_trigger = yes } }
 					modifier = { factor = 0.5 scope:tm_world_court.faith = { tm_world_secure_faith_trigger = yes } }
+					modifier = { factor = 0.5 scope:tm_world_daughter = { tm_world_keeps_quiet_trigger = yes } }
+					tm_flavour_spent_effect = yes
 					random_list = {
 						15 = {	# 34. Many Ledgers: only the realm she lives in keeps her in its rolls
 							trigger = {
@@ -266,9 +446,13 @@ tm_world_yearly = {
 							scope:tm_world_daughter = { tm_world_mark_effect = yes }
 							trigger_event = { id = tm_world.0040 days = { 1 300 } }
 						}
-						15 = {	# 42. The Women's Hour: not for Ha-Nehpakhot (no mikveh)
+						15 = {	# 42. The Women's Hour: not for Ha-Nehpakhot (no mikveh), and not where a townswoman
+								# has opened the hour (T30a, tm_world.0051)
 							trigger = {
-								scope:tm_world_daughter = { tm_world_nehpakhot_daughter_trigger = no }
+								scope:tm_world_daughter = {
+									tm_world_nehpakhot_daughter_trigger = no
+									location.county = { NOT = { has_variable = tm_world_women_hour_open } }
+								}
 								scope:tm_world_court = {
 									OR = {
 										faith = { religion_tag = christianity_religion }

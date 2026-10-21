@@ -12,3 +12,18 @@ tm_reembodiment = {
 	tm_reembodiment_off = {
 	}
 }
+
+# How often a character may receive a flavour event from the mod's packs (the hostile world, life, House flavour and
+# later packs). Rites, gates and events the player starts by decision or interaction are not counted. One shared
+# cooldown per character (tm_flavour_ready_trigger / tm_flavour_spent_effect), so the packs compete for one slot.
+tm_flavour_rate = {
+	categories = { flavor }
+	default = tm_flavour_rate_normal
+
+	tm_flavour_rate_rare = {
+	}
+	tm_flavour_rate_normal = {
+	}
+	tm_flavour_rate_frequent = {
+	}
+}

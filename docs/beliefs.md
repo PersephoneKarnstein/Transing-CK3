@@ -9,6 +9,7 @@ Running list of beliefs drawn from the research, each mapped to a CK3 slot. Sour
 | **BT** | `book_bhatt_brown_trans_les.md` (Talia Bhatt, *Brown/Trans/Les*, 2026; design proposals there, not yet applied) |
 | **SB** | `serano_blog_essays.md` (Julia Serano's blog and Medium essays, 2007–2026; design proposals there, not yet applied) |
 | **TQ** | `tsq_*.md`, `wsq_libby_wondrous_bodies.md` (TSQ articles and issues: Keywords 2014, Decolonizing 2014, Transpsychoanalytics 2017, and single articles; design proposals there, not yet applied) |
+| **TR** | transreads.org books (2026-10-21): `book_heaney_feminism_against_cisness.md`, `book_oyewumi_invention_of_women.md`, `book_federici_caliban_witch.md`, `book_nirta_marginal_bodies.md`, `book_hornsby_stone_bible_trouble.md`, `book_macwilliam_prophetic_marriage.md`, `book_ford_dress_codes.md`, `tsq_lavery_egg_theory.md`, `pfeil_trans_anarchism.md`, `tsq_adair_before_trans_studies.md`, `transreads_triage.md` (proposals there, not yet applied) |
 | **CH** | `book_bhatt_chu.md` part II (Andrea Long Chu, *Females*) |
 | **ST** | `book_stryker_history.md` (Stryker, *Transgender History*) |
 | **T1** | `book_tsr_1_2.md` (Transgender Studies Reader vol. 1; the PDF does not contain vol. 2) |
@@ -82,7 +83,7 @@ Design frame from the user (2026-10-13): random "transgender" trait; ritual cast
 |---|---|---|---|---|---|
 | E1 | Only women may be priestesses; the faith keeps the fight, not a lost honour ("We were never honoured. We made ourselves heard."; reworded 2026-10-21 after Bhatt; was "remembers we were oracles"). **Separatism.** | `doctrine_clerical_gender_female_only` (with castrated men counting as women) | BD, 3W | BH#2 "Oracles of the Unmanned" | **S** — strongest row in every matrix: abbess + eunuch clergy + hijra/bissu/bori priestess give a women-plus-castrates clergy a firm veneer. Trans-*inclusive* women's space needs doctrine (d) to carry it |
 | E2 | All dissidents from the heterosexual regime are one congregation. | `tenet_communal_identity` | 3W, GEN | BH#11; ST "We Unite Around Our Oppression"; T1#6 | **M** — guild/ocak/college of the caste (köçek houses, galli colleges) |
-| E3 | Never hide what you are; stealth is dishonour, visibility a festival. | Rite tenet (new) "Read Aloud" / "Visible Before God" | GEN, BD | T1#1,#21,#29; ST | **M** — galli were loudly visible; medieval passing cases (Rykener, Céspedes) were punished when read |
+| E3 | Never hide what you are before the sisters; visibility is a festival. **(Settled 2026-10-21 with H25 as her own choice, inside and outside: "stealth is dishonour" dropped. Built as the decision Keep Quiet in This Land, `tm_world_decisions.txt`.)** | Rite tenet (new) "Read Aloud" / "Visible Before God" | GEN, BD | T1#1,#21,#29; ST | **M** — galli were loudly visible; medieval passing cases (Rykener, Céspedes) were punished when read |
 | E4 | Anger at injustice is holy; complacency the sin. | Virtues `wrathful`; sins `craven`, `content` | 3W, GEN | BH#14; T1#13 | **M** — wrath is a vice in all period faiths; keep as the faith's inversion |
 | E5 | Do not rank oppressions; no purges of the "impure". Counterweight to intra-queer hostility. | Faith doctrine / pluralism | GEN | T1#10,#22 | **W→M** — intra-queer hostility is modern content; medieval fault lines exist (castrated vs intact, passing vs mixing). Implement as a schism (Proclaimer/Abolisher) |
 | E6 | Holy war may be declared on realms whose law makes women property. | `doctrine_pluralism_fundamentalist` toward male-dominated faiths; hostility overrides | 3W | BH#13 | **M** — heresy framing is how the faith *will* be treated; its own holy war is the fiction |
@@ -274,7 +275,7 @@ Tags: **W-B** `web_baedelism.md`, **W-3** `web_third_wave_transfeminism.md`, **W
 ### New tensions surfaced
 
 7. **Penal castration.** B8 (Chu: force is feminizing; castrate captives) vs H24 (the knife is a gift, never a sentence). **User decision (2026-10-14): yes, lampshaded as "the Dorley precedent"** (Alyson Greaves, *The Sisters of Dorley*): castration of a *selected* violent man as rehabilitation under a sponsor, with an older crueller regime as the foil and a washout path for failures. Implemented as an early-campaign three-way choice (Grandmother's House / Aunt Bea's House / The Gift Alone); see `docs/dorley_precedent.md`. History sides with the practice (captive eunuchs) and with the faith's dissent (Nicaea), so the two-regime structure is also the honest one.
-8. **Visibility vs the veil.** E3 (Read Aloud) vs H25 (No Shame in the Veil). Resolve as two rites or as inside/outside: visible among sisters, veiled before enemies (W-3#22 "Against Plausible Histories").
+8. **Visibility vs the veil.** E3 (Read Aloud) vs H25 (No Shame in the Veil). Resolve as two rites or as inside/outside: visible among sisters, veiled before enemies (W-3#22 "Against Plausible Histories"). **Resolved 2026-10-21:** inside/outside, chosen per daughter (Keep Quiet in This Land; Nirta row 6). No piety either way.
 9. **TMA/TME estates vs "cis is not a caste".** H3 vs H38. Natural schism line, alongside Proclaimer/Abolisher.
 
 ---

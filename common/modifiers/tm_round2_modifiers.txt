@@ -1,0 +1,9 @@
+﻿# Crusader Dolls — round 2 character modifiers.
+
+# At Home in Her Body (round 2, T22; research/book_heaney_feminism_against_cisness.md §5 row 3b): after any gate, a
+# small lasting reward that is hers, not the faith's. Not fertility: daughters stay infertile.
+tm_at_home_in_her_body_modifier = {
+	icon = health_positive
+	stress_gain_mult = -0.1
+	health = 0.1
+}

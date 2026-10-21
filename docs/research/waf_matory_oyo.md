@@ -174,7 +174,7 @@ Baseline: **mildly positive** toward a daughter of any faith (suggest +5). The f
 
 | Daughter's gate | Orisha reading | Suggested line (courtier's voice) |
 |---|---|---|
-| Any, generic | A bride of a god, for a season | "In our towns a man may wear the wrapper for the god and take it off for his wives." Her answer (option text): "I do not take it off." |
+| Any, generic | A bride of a god, for a season | **[Revised 2026-10-21 after Oyěwùmí; the old line read the priests as cross-dressing, which the scholars dispute.]** "Among us every new devotee is the god's bride, whatever the body." Her answer (option text): "I am no god's bride. I am a woman." |
 | The knife (Adelphai Dorleyaiou) | A palace officer made by cutting | "Where kings keep cut men, they keep them close and trust them." Keep it neutral; no "Baba". Johnson records Ilari calling every eunuch "father" (p. 60), a misgendering the mod should not voice approvingly. |
 | The völva's seat (Bædlings) | One who has been "mounted" | "Whose horse were you, when you sat and saw?" She: "No one rode me. I looked." This marks the difference between possession and seeing. |
 | The embryo (Jade Embryo) | A head newly made | "They say the heads of the living are fired in heaven like pots. Yours was fired again." Myth of Àjàlá the potter (p. 145). Generic; no named òrìṣà. |
@@ -182,7 +182,7 @@ Baseline: **mildly positive** toward a daughter of any faith (suggest +5). The f
 | The garland (Worn Garland) | A bride of a god, literally | The closest match and the riskiest. Line: "Your god takes brides as ours do." She: "Yours gives them back. Mine kept me." |
 | The sung name (Badenya) | A name given before a king | "In Ọ̀yọ́ the king names his servants for his will. Your bards named you for yours." This keeps Johnson's line (p. 61) and Matory's ilari names (p. 11) as contrast. |
 
-- **Modifier:** `tm_orisha_iyawo_reading` (+5, "Read as a bride of the god"). Tooltip in the narrator's voice: "An outsider's reading. Among the Yoruba, *ìyàwó* names a new initiand of either sex; male priests remain men (Matory 1994, pp. 7, 216–217)."
+- **Modifier:** `tm_orisha_iyawo_reading` (+5, "Read as a bride of the god"). Tooltip in the narrator's voice (revised 2026-10-21): "An outsider's reading. *Ìyàwó* names a devotee of either sex; scholars dispute what it means (Matory 1994; Oyěwùmí 1997)."
 - **Yemọja-style priestesses** (any Orisha clergy who are women, at a Badenya daughter's court) get an extra +5 toward Badenya alone: "You were claimed by a mother. That is a stronger thing than a husband." This rests on Matory pp. 146–148, 174–175. Flag it as 20th-century fieldwork.
 
 ### Reaction lines: Oyo-type courts (a ruler of the Orisha faith holding `c_oyo`)

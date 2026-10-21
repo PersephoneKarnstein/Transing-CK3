@@ -133,6 +133,16 @@ tm_send_on_effect = {
 		limit = { is_courtier = yes }
 		move_to_pool = yes
 	}
+	# The refugee carries the faith (round 2, T29; research/book_federici_caliban_witch.md row 3). This is the
+	# user's "accepting place": as people pushed out of one land settle where they are let live, a sister sent on
+	# from a House makes the county she reaches know the faith. For ten years the county where she ends up (a court
+	# or the road) gives +3 to the call (tm_sisters_call_effect). Contact, not size: it keeps the §14 rule.
+	if = {
+		limit = { tm_house_member_trigger = yes }
+		location ?= {
+			county ?= { set_variable = { name = tm_refugee_carried value = yes years = 10 } }
+		}
+	}
 }
 
 # The yearly life of one House. Scope: the county. scope:tm_house_holder = its holder.
@@ -146,6 +156,7 @@ tm_house_yearly_effect = {
 				limit = { has_variable = tm_house_tolerated_by }
 				NOT = { var:tm_house_tolerated_by = scope:tm_house_holder }
 			}
+			NOT = { has_variable = tm_house_holding }		# the sisters are holding the House against him (tm_house.0051)
 		}
 		scope:tm_house_holder = { trigger_event = tm_house.0050 }
 	}
@@ -220,18 +231,47 @@ tm_house_yearly_effect = {
 				scope:tm_house_holder = { trigger_event = tm_house.0020 }
 			}
 		}
-		else = {
+		else_if = {
+			# Flavour: the shared budget (tm_budget_triggers.txt; round 2). The Elder Sister, strain and splitting
+			# above are the House's mechanics and do not check it.
+			limit = { scope:tm_house_holder = { tm_flavour_ready_trigger = yes } }
 			random = {
 				chance = 15
-				scope:tm_house_holder = { trigger_event = tm_house.0040 }
+				scope:tm_house_holder = {
+					tm_flavour_spent_effect = yes
+					trigger_event = tm_house.0040
+				}
 			}
 		}
 		# The same door (Bhatt row 3, Serano row 19): a woman the world has put out asks to come in. Separate from the
 		# events above, and rarer.
-		random = {
-			chance = 8
-			modifier = { add = -4 var:tm_house_strain >= 4 }		# a House near splitting takes in fewer
-			scope:tm_house_holder = { trigger_event = { id = tm_house.0065 days = { 1 300 } } }
+		if = {
+			limit = { scope:tm_house_holder = { tm_flavour_ready_trigger = yes } }
+			random = {
+				chance = 8
+				modifier = { add = -4 var:tm_house_strain >= 4 }		# a House near splitting takes in fewer
+				scope:tm_house_holder = {
+					tm_flavour_spent_effect = yes
+					trigger_event = { id = tm_house.0065 days = { 1 300 } }
+				}
+			}
+		}
+		# The Same Roof (round 2, T30b; research/book_nirta_marginal_bodies.md row 4): a newcomer will not sleep or
+		# bathe beside a daughter. Rare.
+		if = {
+			limit = {
+				scope:tm_house_holder = {
+					tm_flavour_ready_trigger = yes
+					any_courtier = { tm_is_daughter_trigger = yes is_adult = yes is_imprisoned = no }
+				}
+			}
+			random = {
+				chance = 3
+				scope:tm_house_holder = {
+					tm_flavour_spent_effect = yes
+					trigger_event = { id = tm_house.0070 days = { 1 300 } }
+				}
+			}
 		}
 	}
 }

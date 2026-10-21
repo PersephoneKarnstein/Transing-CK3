@@ -1,0 +1,15 @@
+﻿# Crusader Dolls — the flavour budget (tm_budget_triggers.txt). Scope: the character who receives the event.
+# The rate is the game rule tm_flavour_rate: rare = one every two years, normal = one a year, frequent = one every six months.
+tm_flavour_spent_effect = {
+	if = {
+		limit = { has_game_rule = tm_flavour_rate_rare }
+		set_variable = { name = tm_flavour_cooldown value = yes days = 730 }
+	}
+	else_if = {
+		limit = { has_game_rule = tm_flavour_rate_frequent }
+		set_variable = { name = tm_flavour_cooldown value = yes days = 182 }
+	}
+	else = {
+		set_variable = { name = tm_flavour_cooldown value = yes days = 365 }
+	}
+}

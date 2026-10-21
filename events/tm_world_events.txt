@@ -20,6 +20,20 @@
 #   0041  Those Without Desire: a place in the women's rooms as one "without desire" (38)
 #   0042  she insists she is a woman: the household answers (38)
 #   0050  the Women's Hour at the baths (42). Never for Ha-Nehpakhot: no mikveh scene without a source.
+#         Name the Purse (T23): the keeper's petition carries a seal.
+#   0051  A Woman in the Line (T30a): follow-up to "go back with the sisters"; a townswoman speaks for her
+#   0060  The Confessor's Book (T28): a Latin lord with a House, 1000-1346; the herb-woman and the penitential
+#   0061  Women Without a Rule (T28): a House under a Catholic lord, from 1312 (Vienne)
+#   0070  Ruled as a Man (T26): a chronicler of another faith writes a dead daughter-ruler down as regent or "manly"
+#   0080  the mask law (T32): an Italian or Provencal commune, from 1325
+#
+# Round 2 voices (T13-T18). Two more shapes beside unpersoning and exposing (§16 rule 3):
+#   the stranger's custom  the court denies that daughters ever lived among its own people (Oyewumi row 5)
+#   the modesty plea       exclusion spoken as protecting other women (Nirta row 3): bath keepers, stewards, abbesses.
+#                          The narrator never endorses it, and no text says the women were in any danger.
+# and the Orthodox tag "the dualist" (Federici rows 1-2): the Sisters lumped with Paulicians, or from c. 950 under
+# Bulgarian and Serbian lords the Bogomils' class charge. An accuser's charge only: the narrator never links the
+# Sisters to either sect, and the Adelphai are never written as dualists.
 #
 # Scopes. scope:tm_world_daughter = the daughter (root in 0012 and 0041). scope:tm_world_court = the world's court
 # (her liege of another faith, or a neighbour). scope:tm_world_speaker = the one who speaks against her.
@@ -53,7 +67,22 @@ tm_world.0001 = {
 			triggered_desc = { trigger = { scope:tm_world_rumour = flag:baths } desc = tm_world.0001.desc_baths }
 			desc = tm_world.0001.desc_ear
 		}
-		desc = tm_world.0001.desc_end
+		# Chrysostom's "little women" (gynaikaria, after 2 Tim. 3:6), aimed at the man who keeps the House, not at the
+		# sister (Hornsby row 4). Inner family; unpersoning of the man. Only an Orthodox teller, only to a man who is not
+		# himself Marked, declared or a daughter.
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:tm_world_speaker = { tm_world_orthodox_trigger = yes }
+					is_male = yes
+					tm_is_daughter_trigger = no
+					NOT = { has_trait = tm_transgender }
+					NOT = { has_variable = tm_declared }
+				}
+				desc = tm_world.0001.desc_chrysostom
+			}
+			desc = tm_world.0001.desc_end
+		}
 	}
 	theme = intrigue
 	left_portrait = { character = scope:tm_world_sister animation = worry }
@@ -293,6 +322,14 @@ tm_world.0010 = {
 #   contagion   he condemns her as a danger to other men (inner; exposing). "Contagion" is his word only (rule 10).
 #   mutilation  he diagnoses the rites as making monsters (trace; unpersoning)
 #   madness     he misnames her mind: a demon, a jinn, a fox spirit, or plain sickness by his faith (inner; unpersoning)
+# Round 2 variants, each with the faith's answer as option a:
+#   regret      (mutilation kind) "she will regret it, and who will mend her then?" (Pfeil row 3; kept clear of
+#               self-harm). Answer: "Then let me regret my own life." Trace family; unpersoning.
+#   stoic       (madness kind; Christian courts) a line from Musonius Rufus, the Stoic: a man may not be seen to be a
+#               woman (Hornsby row 7). Birth family; unpersoning.
+#   lust        (madness kind; the Jade Embryo only) "not a wish but a hidden lust, and the slowness is the proof"
+#               (Lavery row 5; Schreber and Freud are not named). Answer: "The embryo takes years. That is why it is
+#               real." Inner family; exposing.
 tm_world.0011 = {
 	type = character_event
 	title = tm_world.0011.t
@@ -305,6 +342,9 @@ tm_world.0011 = {
 			triggered_desc = { trigger = { scope:tm_world_physic = flag:lure } desc = tm_world.0011.desc_lure }
 			triggered_desc = { trigger = { scope:tm_world_physic = flag:contagion } desc = tm_world.0011.desc_contagion }
 			triggered_desc = { trigger = { scope:tm_world_physic = flag:mutilation } desc = tm_world.0011.desc_mutilation }
+			triggered_desc = { trigger = { scope:tm_world_physic = flag:regret } desc = tm_world.0011.desc_regret }
+			triggered_desc = { trigger = { scope:tm_world_physic = flag:stoic } desc = tm_world.0011.desc_stoic }
+			triggered_desc = { trigger = { scope:tm_world_physic = flag:lust } desc = tm_world.0011.desc_lust }
 			triggered_desc = {
 				trigger = { scope:tm_world_court = { faith = { religion_tag = christianity_religion } } }
 				desc = tm_world.0011.desc_madness_demon
@@ -325,10 +365,19 @@ tm_world.0011 = {
 
 	immediate = {
 		random_list = {
-			25 = { save_scope_value_as = { name = tm_world_physic value = flag:lure } }
-			25 = { save_scope_value_as = { name = tm_world_physic value = flag:contagion } }
-			25 = { save_scope_value_as = { name = tm_world_physic value = flag:mutilation } }
-			25 = { save_scope_value_as = { name = tm_world_physic value = flag:madness } }
+			20 = { save_scope_value_as = { name = tm_world_physic value = flag:lure } }
+			20 = { save_scope_value_as = { name = tm_world_physic value = flag:contagion } }
+			20 = { save_scope_value_as = { name = tm_world_physic value = flag:mutilation } }
+			20 = { save_scope_value_as = { name = tm_world_physic value = flag:madness } }
+			15 = { save_scope_value_as = { name = tm_world_physic value = flag:regret } }
+			15 = {
+				trigger = { scope:tm_world_court = { faith = { religion_tag = christianity_religion } } }
+				save_scope_value_as = { name = tm_world_physic value = flag:stoic }
+			}
+			30 = {
+				trigger = { scope:tm_world_daughter = { rite ?= { rite_has_parameter = tm_embryo_gate } } }
+				save_scope_value_as = { name = tm_world_physic value = flag:lust }
+			}
 		}
 	}
 
@@ -339,7 +388,23 @@ tm_world.0011 = {
 	}
 
 	option = {	# Answer him in writing
-		name = tm_world.0011.a
+		name = {
+			trigger = { scope:tm_world_physic = flag:regret }
+			text = tm_world.0011.a_regret
+		}
+		name = {
+			trigger = { scope:tm_world_physic = flag:lust }
+			text = tm_world.0011.a_lust
+		}
+		name = {
+			trigger = {
+				NOR = {
+					scope:tm_world_physic = flag:regret
+					scope:tm_world_physic = flag:lust
+				}
+			}
+			text = tm_world.0011.a
+		}
 		scope:tm_world_daughter = {
 			add_prestige = 15
 			add_stress = 5
@@ -419,6 +484,23 @@ tm_world.0012 = {
 #           Islamic or (vanilla) Jewish speaker. Birth family; exposing shape. Body question.
 #   body    "born to do the taking; silk does not change it" (van Anders via the Keywords note). Trace; exposing. Body.
 #   origin  "How did this come about?": the court marks her (Serano row 1), and offers its causes. Inner; unpersoning.
+# Round 2 questions (T13-T16), chosen by the speaker's faith and the date:
+#   dualist   Orthodox speaker, any date: "Paulicians in a woman's veil; they curse the marriage bed as the devil's"
+#             (Federici row 1). The dualist tag; birth family; exposing. The Adelphai answer in their own voice.
+#   class     Orthodox speaker at a Bulgarian or Serbian court, from c. 950: the Bogomils' class charge, "they teach
+#             servants to refuse their lords" (Federici row 2, after Cosmas). The dualist tag, class variant; a charge
+#             against the House, not the body. The House may take in the servant who ran to it.
+#   crow      Orthodox speaker, from 900: Lucian's crow, neither dove nor raven (Hornsby row 5). Birth; unpersoning.
+#             Answer: "A crow is a bird. I am a woman."
+#   heretic   Catholic speaker. Split at 1347 (Federici row 4, her dating): before, the ascetic ("they scorn the
+#             marriage bed, as the heretics do"; birth; exposing); from 1347, the waste ("the land wants hands, and
+#             they sow none"; inner; unpersoning). Before 1123 this leans on the preachers, not on canon law (T10).
+#   paint     Catholic speaker: Tertullian on face paint, "God did not paint your face" (Ford row 7). Birth; exposing.
+#   stranger  a Sahel court, or a speaker of no Abrahamic faith: "a stranger's custom; our grandmothers never heard
+#             of it" (Oyewumi row 5). The stranger's custom shape; birth family.
+# Call It Necessity (T32; Ford row 2): at a Catholic court from 1150 the chaplain may offer to call her dress a
+# disguise worn in need (Hildegard); from 1270 a jurist offers it, and the court's ease is stronger (Aquinas). It
+# eases the court and costs her: the excuse calls her a man in disguise (unpersoning). She may refuse it.
 tm_world.0020 = {
 	type = character_event
 	title = tm_world.0020.t
@@ -444,7 +526,33 @@ tm_world.0020 = {
 			}
 			triggered_desc = { trigger = { scope:tm_world_question = flag:rib } desc = tm_world.0020.desc_rib_christian }
 			triggered_desc = { trigger = { scope:tm_world_question = flag:body } desc = tm_world.0020.desc_body }
+			triggered_desc = { trigger = { scope:tm_world_question = flag:dualist } desc = tm_world.0020.desc_dualist }
+			triggered_desc = { trigger = { scope:tm_world_question = flag:class } desc = tm_world.0020.desc_class }
+			triggered_desc = { trigger = { scope:tm_world_question = flag:crow } desc = tm_world.0020.desc_crow }
+			triggered_desc = {
+				trigger = {
+					scope:tm_world_question = flag:heretic
+					current_date >= 1347.1.1
+				}
+				desc = tm_world.0020.desc_waste
+			}
+			triggered_desc = { trigger = { scope:tm_world_question = flag:heretic } desc = tm_world.0020.desc_heretic }
+			triggered_desc = { trigger = { scope:tm_world_question = flag:paint } desc = tm_world.0020.desc_paint }
+			triggered_desc = { trigger = { scope:tm_world_question = flag:stranger } desc = tm_world.0020.desc_stranger }
 			desc = tm_world.0020.desc_origin
+		}
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					exists = scope:tm_world_necessity
+					current_date >= 1270.1.1
+				}
+				desc = tm_world.0020.desc_necessity_jurist
+			}
+			triggered_desc = {
+				trigger = { exists = scope:tm_world_necessity }
+				desc = tm_world.0020.desc_necessity_chaplain
+			}
 		}
 		first_valid = {
 			triggered_desc = { trigger = { scope:tm_world_daughter = root } desc = tm_world.0020.desc_end_self }
@@ -486,6 +594,33 @@ tm_world.0020 = {
 			}
 		}
 		if = {
+			limit = { scope:tm_world_speaker = { tm_world_orthodox_trigger = yes } }
+			random_list = {
+				30 = { save_scope_value_as = { name = tm_world_question value = flag:rib } }
+				10 = { save_scope_value_as = { name = tm_world_question value = flag:body } }
+				10 = { save_scope_value_as = { name = tm_world_question value = flag:origin } }
+				25 = { save_scope_value_as = { name = tm_world_question value = flag:dualist } }
+				25 = {
+					trigger = { scope:tm_world_court = { tm_world_bogomil_land_trigger = yes } }
+					save_scope_value_as = { name = tm_world_question value = flag:class }
+				}
+				15 = {
+					trigger = { current_date >= 900.1.1 }
+					save_scope_value_as = { name = tm_world_question value = flag:crow }
+				}
+			}
+		}
+		else_if = {
+			limit = { scope:tm_world_speaker = { faith = faith:catholic } }
+			random_list = {
+				30 = { save_scope_value_as = { name = tm_world_question value = flag:rib } }
+				10 = { save_scope_value_as = { name = tm_world_question value = flag:body } }
+				10 = { save_scope_value_as = { name = tm_world_question value = flag:origin } }
+				25 = { save_scope_value_as = { name = tm_world_question value = flag:heretic } }
+				15 = { save_scope_value_as = { name = tm_world_question value = flag:paint } }
+			}
+		}
+		else_if = {
 			limit = {
 				scope:tm_world_speaker = {
 					OR = {
@@ -499,12 +634,31 @@ tm_world.0020 = {
 				50 = { save_scope_value_as = { name = tm_world_question value = flag:rib } }
 				25 = { save_scope_value_as = { name = tm_world_question value = flag:body } }
 				25 = { save_scope_value_as = { name = tm_world_question value = flag:origin } }
+				25 = {
+					trigger = {
+						scope:tm_world_speaker = { faith = { religion_tag = islam_religion } }
+						scope:tm_world_court = { tm_world_sahel_trigger = yes }
+					}
+					save_scope_value_as = { name = tm_world_question value = flag:stranger }
+				}
 			}
 		}
 		else = {
 			random_list = {
-				50 = { save_scope_value_as = { name = tm_world_question value = flag:body } }
-				50 = { save_scope_value_as = { name = tm_world_question value = flag:origin } }
+				35 = { save_scope_value_as = { name = tm_world_question value = flag:body } }
+				35 = { save_scope_value_as = { name = tm_world_question value = flag:origin } }
+				30 = { save_scope_value_as = { name = tm_world_question value = flag:stranger } }
+			}
+		}
+		# Call It Necessity: a Catholic court from 1150, offered half the time.
+		if = {
+			limit = {
+				current_date >= 1150.1.1
+				scope:tm_world_court = { faith = faith:catholic }
+			}
+			random = {
+				chance = 50
+				save_scope_value_as = { name = tm_world_necessity value = yes }
 			}
 		}
 		# A sister or friend of the House at her court, who could answer for her.
@@ -548,8 +702,47 @@ tm_world.0020 = {
 		scope:tm_world_daughter = { add_stress = 10 }
 		ai_chance = { base = 30 }
 	}
-	option = {	# Object, before them all
-		name = tm_world.0020.b
+	option = {	# Object, before them all (and, where the court offers necessity, refuse it)
+		name = {
+			trigger = { exists = scope:tm_world_necessity }
+			text = tm_world.0020.b_necessity
+		}
+		name = {
+			trigger = {
+				NOT = { exists = scope:tm_world_necessity }
+				scope:tm_world_question = flag:crow
+			}
+			text = tm_world.0020.b_crow
+		}
+		name = {
+			trigger = {
+				NOT = { exists = scope:tm_world_necessity }
+				scope:tm_world_question = flag:dualist
+				scope:tm_world_daughter = { rite ?= { rite_has_parameter = tm_day_of_blood_active } }
+			}
+			text = tm_world.0020.b_dualist
+		}
+		name = {
+			trigger = {
+				NOT = { exists = scope:tm_world_necessity }
+				scope:tm_world_question = flag:heretic
+			}
+			text = tm_world.0020.b_heretic
+		}
+		name = {
+			trigger = {
+				NOT = { exists = scope:tm_world_necessity }
+				NOR = {
+					scope:tm_world_question = flag:crow
+					scope:tm_world_question = flag:heretic
+					AND = {
+						scope:tm_world_question = flag:dualist
+						scope:tm_world_daughter = { rite ?= { rite_has_parameter = tm_day_of_blood_active } }
+					}
+				}
+			}
+			text = tm_world.0020.b
+		}
 		scope:tm_world_daughter = { add_prestige = 20 }
 		scope:tm_world_speaker = { add_opinion = { target = scope:tm_world_daughter modifier = tm_world_objected_opinion } }
 		ai_chance = { base = 30 }
@@ -591,11 +784,53 @@ tm_world.0020 = {
 			OR = {
 				scope:tm_world_question = flag:rib
 				scope:tm_world_question = flag:body
+				scope:tm_world_question = flag:paint
 			}
 		}
 		scope:tm_world_daughter = { add_stress = -5 }
 		scope:tm_world_speaker = { add_opinion = { target = scope:tm_world_daughter modifier = tm_world_refused_question_opinion } }
 		ai_chance = { base = 30 }
+	}
+	option = {	# The class charge: the House takes in the servant who ran to it (Federici row 2)
+		name = tm_world.0020.e
+		trigger = {
+			scope:tm_world_question = flag:class
+			OR = {
+				tm_holds_sisters_house_trigger = yes
+				scope:tm_world_daughter = { tm_house_member_trigger = yes }
+			}
+		}
+		scope:tm_world_court = { add_opinion = { target = root modifier = tm_world_took_servant_opinion } }
+		scope:tm_world_daughter = { add_prestige = 10 }
+		ai_chance = { base = 20 }
+	}
+	option = {	# Call it necessity: the court eases, and it calls her a man in disguise (T32)
+		name = {
+			trigger = { current_date >= 1270.1.1 }
+			text = tm_world.0020.f_jurist
+		}
+		name = {
+			trigger = { current_date < 1270.1.1 }
+			text = tm_world.0020.f_chaplain
+		}
+		trigger = { exists = scope:tm_world_necessity }
+		scope:tm_world_daughter = { add_stress = 10 }
+		if = {
+			limit = { current_date >= 1270.1.1 }
+			scope:tm_world_court = {
+				add_opinion = { target = scope:tm_world_daughter modifier = tm_world_necessity_opinion opinion = 20 }
+			}
+		}
+		else = {
+			scope:tm_world_court = {
+				add_opinion = { target = scope:tm_world_daughter modifier = tm_world_necessity_opinion opinion = 10 }
+			}
+		}
+		ai_chance = {
+			base = 20
+			modifier = { add = 20 has_trait = craven }
+			modifier = { factor = 0.5 has_trait = brave }
+		}
 	}
 }
 
@@ -819,6 +1054,8 @@ tm_world.0040 = {
 # paraphrased, not quoted; Altinay via tsq_keywords_2014.md §3 row 10). The place is safe and files her as no woman:
 # admission as a third thing is a cage (Bhatt). The steward's line: birth family; unpersoning shape. Islamic hostility
 # here is no heavier than the Christian (the abbess) or the Jewish (tm_hipukh.0040).
+# Name the Purse (T23): the steward's order carries the seal of the household's chaplain (its imam or jurist). She
+# may name him before the household: he loses face and dislikes her, and the steward may drop the matter.
 tm_world.0041 = {
 	type = character_event
 	title = tm_world.0041.t
@@ -827,7 +1064,20 @@ tm_world.0041 = {
 	left_portrait = { character = root animation = thinking }
 	right_portrait = { character = scope:tm_world_household animation = personality_rational }
 
-	immediate = { save_scope_as = tm_world_daughter }
+	immediate = {
+		save_scope_as = tm_world_daughter
+		scope:tm_world_household = {
+			cp:councillor_court_chaplain ?= {
+				if = {
+					limit = {
+						is_alive = yes
+						NOT = { this = root }
+					}
+					save_scope_as = tm_world_patron
+				}
+			}
+		}
+	}
 
 	trigger = {
 		exists = scope:tm_world_household
@@ -854,9 +1104,27 @@ tm_world.0041 = {
 			modifier = { add = 10 has_trait = stubborn }
 		}
 	}
+	option = {	# Name the Purse: ask whose seal is on the order
+		name = tm_world.0041.c
+		trigger = { exists = scope:tm_world_patron }
+		scope:tm_world_patron = {
+			add_prestige = -15
+			add_opinion = { target = root modifier = tm_world_named_purse_opinion }
+		}
+		random_list = {
+			40 = { add_stress = -10 }		# the steward lets the matter drop
+			60 = { add_stress = 5 }			# the order stands, and she keeps out of the rooms
+		}
+		ai_chance = {
+			base = 15
+			modifier = { add = 15 has_trait = vengeful }
+			modifier = { add = 10 has_trait = arrogant }
+		}
+	}
 }
 
-# She insists she is a woman. Root = the Islamic lord; scope:tm_world_daughter.
+# She insists she is a woman. Root = the Islamic lord; scope:tm_world_daughter. The steward's warning is the modesty
+# plea (Nirta row 3): "I keep the women's rooms for the women's sake, not against her." Birth family; modesty plea.
 tm_world.0042 = {
 	type = character_event
 	title = tm_world.0042.t
@@ -902,8 +1170,14 @@ tm_world.0042 = {
 # Root = a ruler of a Sisters' faith; scope:tm_world_daughter (never of Ha-Nehpakhot: no mikveh version);
 # scope:tm_world_court = a Christian or Islamic court, in whose lands the bathhouse stands. The keeper bars her from
 # the women's hour (tsq_transpsychoanalytics_2017.md row 3; Elliot and Lyons's bath scene). The keeper's line,
-# "She came in a veil to look at us bathing": trace family; exposing shape. The period's bath customs for women are
-# not checked against a source (the note flags it), so the text stays general: a town bath, a women's hour.
+# "She came in a veil to look at us bathing": trace family; exposing shape; and the modesty plea (Nirta row 3), with
+# her second line, "the women must have one place where no one looks at them". The narrator never endorses it. The
+# period's bath customs for women are not checked against a source (the note flags it), so the text stays general.
+# The keeper is a matron of the court's own faith: never a woman of a minority (a Jewish matron, a Muslim woman under a
+# Christian lord) as the face of the court's hostility (Heaney row 5).
+# Name the Purse (T23): her petition carries a seal, the court chaplain's if there is one, else the lord's. Naming it
+# costs the patron face; the keeper may drop the matter.
+# Go back with the sisters: a townswoman may speak for her in one to three years (T30a, tm_world.0051).
 tm_world.0050 = {
 	type = character_event
 	title = tm_world.0050.t
@@ -911,6 +1185,11 @@ tm_world.0050 = {
 		first_valid = {
 			triggered_desc = { trigger = { scope:tm_world_daughter = root } desc = tm_world.0050.desc_self }
 			desc = tm_world.0050.desc
+		}
+		desc = tm_world.0050.desc_modesty
+		triggered_desc = {
+			trigger = { exists = scope:tm_world_patron }
+			desc = tm_world.0050.desc_seal
 		}
 	}
 	theme = unfriendly
@@ -943,6 +1222,29 @@ tm_world.0050 = {
 			}
 			save_scope_value_as = { name = tm_world_has_sisters value = yes }
 		}
+		# Who paid: the seal on the keeper's petition.
+		scope:tm_world_court = {
+			if = {
+				limit = {
+					exists = cp:councillor_court_chaplain
+					cp:councillor_court_chaplain = {
+						is_alive = yes
+						NOT = { this = root }
+						NOT = { this = scope:tm_world_daughter }
+					}
+				}
+				cp:councillor_court_chaplain = { save_scope_as = tm_world_patron }
+			}
+			else_if = {
+				limit = {
+					NOT = { this = root }
+					NOT = { this = scope:tm_world_daughter }
+				}
+				save_scope_as = tm_world_patron
+			}
+		}
+		# The town where the bath stands.
+		scope:tm_world_daughter.location.county = { save_scope_as = tm_world_bath_county }
 	}
 
 	trigger = {
@@ -962,6 +1264,11 @@ tm_world.0050 = {
 		random_list = {
 			60 = { scope:tm_world_daughter = { add_stress = -10 } }		# the keeper does not bar them all
 			40 = { scope:tm_world_daughter = { add_stress = 5 } }
+		}
+		# A Woman in the Line (T30a): the follow-up comes in one to three years.
+		if = {
+			limit = { exists = scope:tm_world_bath_county }
+			trigger_event = { id = tm_world.0051 days = { 365 1095 } }
 		}
 		ai_chance = { base = 40 }
 	}
@@ -986,5 +1293,347 @@ tm_world.0050 = {
 			50 = { scope:tm_world_daughter = { add_stress = 5 } }
 		}
 		ai_chance = { base = 15 }
+	}
+	option = {	# Name the Purse
+		name = tm_world.0050.e
+		trigger = { exists = scope:tm_world_patron }
+		scope:tm_world_patron = {
+			add_prestige = -20
+			add_opinion = { target = root modifier = tm_world_named_purse_opinion }
+		}
+		random_list = {
+			50 = { scope:tm_world_daughter = { add_stress = -10 } }		# the keeper lets the matter drop
+			50 = { scope:tm_world_daughter = { add_stress = 5 } }
+		}
+		ai_chance = {
+			base = 15
+			modifier = { add = 15 has_trait = vengeful }
+		}
+	}
+}
+
+# A Woman in the Line (T30a; Nirta row 2). Root = the ruler who chose "go back with the sisters" in 0050;
+# scope:tm_world_daughter; scope:tm_world_bath_county. A follow-up, so it is outside the flavour budget. What changes a
+# room is everyday presence, not a ruling from above: a townswoman who bathed beside them speaks for her. If she is
+# heard, the hour stays open in that county for ten years (tm_world_women_hour_open), and 0050 is not drawn there.
+tm_world.0051 = {
+	type = character_event
+	title = tm_world.0051.t
+	desc = {
+		first_valid = {
+			triggered_desc = { trigger = { scope:tm_world_daughter = root } desc = tm_world.0051.desc_self }
+			desc = tm_world.0051.desc
+		}
+		first_valid = {
+			triggered_desc = { trigger = { exists = scope:tm_world_heard } desc = tm_world.0051.desc_heard }
+			desc = tm_world.0051.desc_unheard
+		}
+	}
+	theme = friendly
+	left_portrait = { character = scope:tm_world_daughter animation = happiness }
+
+	trigger = {
+		exists = scope:tm_world_daughter
+		exists = scope:tm_world_bath_county
+		scope:tm_world_daughter = { is_alive = yes }
+	}
+
+	immediate = {
+		random_list = {
+			65 = {
+				save_scope_value_as = { name = tm_world_heard value = yes }
+				scope:tm_world_bath_county = {
+					set_variable = { name = tm_world_women_hour_open value = yes years = 10 }
+				}
+			}
+			35 = {}
+		}
+	}
+
+	option = {	# Thank her, and stand in the line again next week
+		name = tm_world.0051.a
+		scope:tm_world_daughter = {
+			if = {
+				limit = { exists = scope:tm_world_heard }
+				add_stress = -15
+			}
+			else = {
+				add_stress = -5
+			}
+		}
+		ai_chance = { base = 100 }
+	}
+}
+
+######################################################################
+# T28. The Confessor's Book, and Women Without a Rule
+######################################################################
+
+# The Confessor's Book (Federici row 5). Root = a Catholic lord who keeps a House, 1000-1346; scope:tm_world_county.
+# A priest brings his penitential: the House's herb-woman gives herbs "so that women do not conceive", which his book
+# calls maleficium and sets ten years' penance for, but judges more gently in a poor woman driven by hunger (Burchard,
+# via Noonan). Before 1123 Latin hostility leans on the Penitentials, as here (T10). No herb is named, its use is
+# never described, and no penance is shown on the body. A charge against the House, not against a daughter.
+tm_world.0060 = {
+	type = character_event
+	title = tm_world.0060.t
+	desc = tm_world.0060.desc
+	theme = faith
+
+	trigger = {
+		exists = scope:tm_world_county
+		scope:tm_world_county = { has_variable = tm_house }
+		faith = faith:catholic
+	}
+
+	option = {	# Cite the book's own mercy for the poor: the herb-woman stays
+		name = tm_world.0060.a
+		add_piety = -15
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = compassionate }
+		}
+	}
+	option = {	# Pay the penance in alms
+		name = tm_world.0060.b
+		trigger = { gold >= 25 }
+		remove_short_term_gold = 25
+		ai_chance = {
+			base = 30
+			modifier = { add = 10 has_trait = generous }
+		}
+	}
+	option = {	# Forbid the herbs
+		name = tm_world.0060.c
+		add_piety = 10
+		scope:tm_world_county = { tm_world_strain_house_effect = yes }
+		ai_chance = {
+			base = 30
+			modifier = { add = 30 has_trait = zealous }
+		}
+	}
+}
+
+# Women Without a Rule (Federici row 7). Root = the lord who holds the House's county, from 1312, himself Catholic or
+# under a Catholic top liege; scope:tm_world_county. The bishop cites Vienne (1312), which condemned women who lived in
+# common under no approved rule. The narrator never calls the Houses beguinages. Options: take a rule the bishop knows
+# (the House stays, under the rule: tm_world_under_rule); refuse (strain); or pay for a protector's word.
+tm_world.0061 = {
+	type = character_event
+	title = tm_world.0061.t
+	desc = tm_world.0061.desc
+	theme = faith
+
+	trigger = {
+		exists = scope:tm_world_county
+		scope:tm_world_county = {
+			has_variable = tm_house
+			holder = root
+		}
+	}
+
+	option = {	# Take a rule the bishop knows
+		name = tm_world.0061.a
+		scope:tm_world_county = { set_variable = tm_world_under_rule }
+		custom_tooltip = tm_world.0061.a.tt
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 faith = faith:catholic }
+		}
+	}
+	option = {	# Refuse: the House lives as it has lived
+		name = tm_world.0061.b
+		scope:tm_world_county = {
+			tm_world_strain_house_effect = yes
+			tm_world_strain_house_effect = yes
+		}
+		if = {
+			limit = { faith = faith:catholic }
+			add_piety = -25
+		}
+		ai_chance = {
+			base = 30
+			modifier = { add = 30 rite ?= { rite_has_parameter = tm_sisters_faith } }
+		}
+	}
+	option = {	# Pay for a protector's word
+		name = {
+			trigger = { is_independent_ruler = no }
+			text = tm_world.0061.c_liege
+		}
+		name = {
+			trigger = { is_independent_ruler = yes }
+			text = tm_world.0061.c
+		}
+		trigger = { gold >= 50 }
+		remove_short_term_gold = 50
+		if = {
+			limit = { is_independent_ruler = no }
+			liege = { add_opinion = { target = root modifier = tm_world_house_protection_opinion } }
+		}
+		ai_chance = { base = 20 }
+	}
+}
+
+######################################################################
+# T26. Ruled as a Man
+######################################################################
+
+# Ruled as a Man (Oyewumi row 1). Root = the keeper of her memory: the dead daughter's heir if of the six faiths, else
+# her liege of the six (on_death, tm_world_on_action). scope:tm_world_ruler = the dead daughter; scope:tm_world_ruler_title
+# = her primary title; scope:tm_world_court = a court of another faith (her liege or a neighbour). A chronicler of that
+# court writes her down as a regent, or as "manly". The chronicler's lines: "she held the seat as a regent, until a man
+# could take it" (birth family; unpersoning) and "she ruled well, for she had a man's heart" (a demotion dressed as
+# praise; birth family; unpersoning). The faith's own text never calls her manly; it answers "they wrote her as a
+# regent; we sang her as a queen".
+tm_world.0070 = {
+	type = character_event
+	title = tm_world.0070.t
+	desc = {
+		desc = tm_world.0070.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:tm_world_court = {
+						faith = { religion_tag = islam_religion }
+						tm_world_sahel_trigger = yes
+					}
+				}
+				desc = tm_world.0070.desc_maliki
+			}
+			triggered_desc = {
+				trigger = { scope:tm_world_court = { faith = { religion_tag = islam_religion } } }
+				desc = tm_world.0070.desc_islamic
+			}
+			triggered_desc = {
+				trigger = {
+					scope:tm_world_court = {
+						faith = { religion_tag = christianity_religion }
+						tm_world_greek_church_trigger = yes
+					}
+				}
+				desc = tm_world.0070.desc_greek
+			}
+			triggered_desc = {
+				trigger = { scope:tm_world_court = { faith = { religion_tag = christianity_religion } } }
+				desc = tm_world.0070.desc_latin
+			}
+			desc = tm_world.0070.desc_other
+		}
+		first_valid = {
+			triggered_desc = { trigger = { exists = scope:tm_world_regent } desc = tm_world.0070.desc_regent }
+			desc = tm_world.0070.desc_heart
+		}
+	}
+	theme = death
+	left_portrait = { character = root animation = sadness }
+
+	immediate = {
+		random = {
+			chance = 50
+			save_scope_value_as = { name = tm_world_regent value = yes }
+		}
+	}
+
+	trigger = {
+		exists = scope:tm_world_ruler
+		exists = scope:tm_world_ruler_title
+		exists = scope:tm_world_court
+	}
+
+	option = {	# The House keeps its own record of her reign
+		name = tm_world.0070.a
+		trigger = {
+			OR = {
+				tm_holds_sisters_house_trigger = yes
+				tm_house_member_trigger = yes
+			}
+		}
+		add_prestige = 20
+		ai_chance = { base = 40 }
+	}
+	option = {	# Pay the singers to keep her name
+		name = {
+			trigger = { rite ?= { rite_has_parameter = tm_crossing_gate } }
+			text = tm_world.0070.b_jeli
+		}
+		name = {
+			trigger = { rite ?= { rite_has_parameter = tm_seidr_gate } }
+			text = tm_world.0070.b_skald
+		}
+		name = {
+			trigger = { rite ?= { rite_has_parameter = tm_garland_gate } }
+			text = tm_world.0070.b_temple
+		}
+		name = {
+			trigger = {
+				NOR = {
+					rite ?= { rite_has_parameter = tm_crossing_gate }
+					rite ?= { rite_has_parameter = tm_seidr_gate }
+					rite ?= { rite_has_parameter = tm_garland_gate }
+				}
+			}
+			text = tm_world.0070.b
+		}
+		trigger = { gold >= 25 }
+		remove_short_term_gold = 25
+		add_prestige = 35
+		ai_chance = { base = 30 }
+	}
+	option = {	# Let it stand
+		name = tm_world.0070.c
+		ai_chance = { base = 30 }
+	}
+}
+
+######################################################################
+# T32. The mask law
+######################################################################
+
+# The mask law (Ford row 6). Root = a daughter living in an Italian or Provencal city under a Catholic lord, from 1325;
+# scope:tm_world_city = the county. The commune's crier reads the law (after Florence 1325): no one may go masked, nor
+# change his dress for the other sex. Purely Christian city law: the text names no faith's rite as its target, and makes
+# no play on "turning". The crier's line: birth family; unpersoning shape.
+tm_world.0080 = {
+	type = character_event
+	title = tm_world.0080.t
+	desc = tm_world.0080.desc
+	theme = realm
+	left_portrait = { character = root animation = worry }
+
+	trigger = {
+		exists = scope:tm_world_city
+		tm_world_daughter_trigger = yes
+	}
+
+	option = {	# Leave the city for a season
+		name = tm_world.0080.a
+		add_prestige = -10
+		add_stress = -5
+		ai_chance = { base = 30 }
+	}
+	option = {	# Keep to the house
+		name = tm_world.0080.b
+		add_stress = 10
+		ai_chance = {
+			base = 25
+			modifier = { add = 20 has_trait = shy }
+		}
+	}
+	option = {	# Pay the fine
+		name = tm_world.0080.c
+		trigger = { gold >= 20 }
+		remove_short_term_gold = 20
+		ai_chance = { base = 25 }
+	}
+	option = {	# Go out, and be cited before the court
+		name = tm_world.0080.d
+		add_prestige = 20
+		add_stress = 10
+		ai_chance = {
+			base = 20
+			modifier = { add = 20 has_trait = brave }
+			modifier = { add = 10 has_trait = stubborn }
+		}
 	}
 }

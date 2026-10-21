@@ -427,7 +427,10 @@ tm_life.0032 = {
 tm_life.0033 = {
 	type = character_event
 	title = tm_life.0033.t
-	desc = tm_life.0033.desc
+	desc = {
+		desc = tm_life.0033.desc
+		desc = tm_life.0033.desc_always		# "you were always one of us" (round 2, T25; research/tsq_lavery_egg_theory.md row 4)
+	}
 	theme = faith
 	left_portrait = { character = root animation = personality_rational }
 
@@ -444,6 +447,65 @@ tm_life.0033 = {
 		add_stress = -10
 		add_piety = 10
 		ai_chance = { base = 50 }
+	}
+	option = {	# I was not waiting. I was living. (No stat difference from the other answers.)
+		name = tm_life.0033.c
+		add_stress = -10
+		add_piety = 10
+		ai_chance = { base = 30 }
+	}
+}
+
+# I Simply Cannot (round 2, T25; research/tsq_lavery_egg_theory.md row 3). An adult Marked character of the six who has
+# not declared counts the reasons it cannot be done. No text calls her afraid, false or in denial; no answer costs her.
+# Root = the Marked character (tm_life_cannot_trigger).
+tm_life.0035 = {
+	type = character_event
+	title = tm_life.0035.t
+	desc = {
+		desc = tm_life.0035.desc
+		triggered_desc = {
+			trigger = { age >= 35 }
+			desc = tm_life.0035.desc_age
+		}
+		triggered_desc = {
+			trigger = { is_married = yes }
+			desc = tm_life.0035.desc_wife
+		}
+		triggered_desc = {
+			trigger = { is_ruler = yes }
+			desc = tm_life.0035.desc_rank
+		}
+		desc = tm_life.0035.desc_end
+	}
+	theme = faith
+	left_portrait = { character = root animation = personality_rational }
+
+	trigger = { tm_life_cannot_trigger = yes }
+
+	immediate = {
+		random_courtier = {
+			limit = { tm_is_daughter_trigger = yes is_adult = yes is_imprisoned = no }
+			save_scope_as = tm_life_cannot_sister
+		}
+	}
+
+	option = {	# Put the thought away. It may come back.
+		name = tm_life.0035.a
+		ai_chance = { base = 70 }
+	}
+	option = {	# Talk with a sister
+		name = tm_life.0035.b
+		trigger = { exists = scope:tm_life_cannot_sister }
+		add_stress = -10
+		scope:tm_life_cannot_sister = { add_opinion = { target = root modifier = friendliness_opinion opinion = 10 } }
+		custom_tooltip = tm_life.0035.b.tt
+		ai_chance = { base = 20 }
+	}
+	option = {	# Declare before witnesses
+		name = tm_life.0035.c
+		trigger_event = tm_house.0001
+		ai_chance = { base = 10 }
 	}
 }
 
@@ -573,32 +635,88 @@ tm_life.0041 = {
 
 # ---------------------------------------------------------------------------------------------------
 # Badenya: "respect your elder". Root = a ruler of Badenya; scope:tm_life_senior; scope:tm_life_junior.
+# Round 2, T27 (research/book_oyewumi_invention_of_women.md row 2): a variant, "Elder in Years, Youngest in the House".
+# A woman past forty-five who crossed this year must serve a daughter of twenty-five who crossed long ago. In the variant
+# scope:tm_life_junior is the elder newcomer and scope:tm_life_senior the young senior. Rank by order of entry is a
+# reconstruction from Mande sources (seniority from the washing: research/waf_contemporary_gender.md §D), not from
+# Oyewumi's book. The faith's own answer favours courtesy.
 tm_life.0050 = {
 	type = character_event
 	title = tm_life.0050.t
-	desc = tm_life.0050.desc
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:tm_life_by_years }
+				desc = tm_life.0050.desc_by_years
+			}
+			desc = tm_life.0050.desc
+		}
+	}
 	theme = family
 	left_portrait = { character = scope:tm_life_junior animation = worry }
 	right_portrait = { character = scope:tm_life_senior animation = personality_rational }
 
 	trigger = {
-		any_courtier = { faith = faith:tm_badenya is_female = yes age >= 40 is_imprisoned = no }
-		any_courtier = { tm_is_daughter_trigger = yes faith = faith:tm_badenya age < 35 is_imprisoned = no }
+		OR = {
+			AND = {
+				any_courtier = { faith = faith:tm_badenya is_female = yes age >= 40 is_imprisoned = no }
+				any_courtier = { tm_is_daughter_trigger = yes faith = faith:tm_badenya age < 35 is_imprisoned = no }
+			}
+			AND = {
+				any_courtier = { tm_life_elder_newcomer_trigger = yes }
+				any_courtier = { tm_life_young_senior_trigger = yes }
+			}
+		}
 	}
 
 	immediate = {
-		random_courtier = {
-			limit = { faith = faith:tm_badenya is_female = yes age >= 40 is_imprisoned = no }
-			save_scope_as = tm_life_senior
+		if = {
+			limit = {
+				any_courtier = { tm_life_elder_newcomer_trigger = yes }
+				any_courtier = { tm_life_young_senior_trigger = yes }
+			}
+			if = {
+				limit = {
+					NAND = {
+						any_courtier = { faith = faith:tm_badenya is_female = yes age >= 40 is_imprisoned = no }
+						any_courtier = { tm_is_daughter_trigger = yes faith = faith:tm_badenya age < 35 is_imprisoned = no }
+					}
+				}
+				save_scope_value_as = { name = tm_life_by_years value = yes }
+			}
+			else = {
+				random = {
+					chance = 50
+					save_scope_value_as = { name = tm_life_by_years value = yes }
+				}
+			}
 		}
-		random_courtier = {
-			limit = { tm_is_daughter_trigger = yes faith = faith:tm_badenya age < 35 is_imprisoned = no }
-			save_scope_as = tm_life_junior
+		if = {
+			limit = { exists = scope:tm_life_by_years }
+			random_courtier = {
+				limit = { tm_life_young_senior_trigger = yes }
+				save_scope_as = tm_life_senior
+			}
+			random_courtier = {
+				limit = { tm_life_elder_newcomer_trigger = yes }
+				save_scope_as = tm_life_junior
+			}
+		}
+		else = {
+			random_courtier = {
+				limit = { faith = faith:tm_badenya is_female = yes age >= 40 is_imprisoned = no }
+				save_scope_as = tm_life_senior
+			}
+			random_courtier = {
+				limit = { tm_is_daughter_trigger = yes faith = faith:tm_badenya age < 35 is_imprisoned = no }
+				save_scope_as = tm_life_junior
+			}
 		}
 	}
 
 	option = {	# What she earned is hers: give it back
 		name = tm_life.0050.a
+		trigger = { NOT = { exists = scope:tm_life_by_years } }
 		scope:tm_life_senior = {
 			add_opinion = { target = root modifier = tm_life_rebuked_senior_opinion }
 		}
@@ -612,6 +730,7 @@ tm_life.0050 = {
 	}
 	option = {	# Let the women of the compound settle it
 		name = tm_life.0050.b
+		trigger = { NOT = { exists = scope:tm_life_by_years } }
 		random_list = {
 			60 = {
 				desc = tm_life.0050.b.settled
@@ -626,9 +745,41 @@ tm_life.0050 = {
 	}
 	option = {	# An elder's word stands
 		name = tm_life.0050.c
+		trigger = { NOT = { exists = scope:tm_life_by_years } }
 		add_piety = -15
 		scope:tm_life_junior = { add_stress = 20 }
 		ai_chance = { base = 10 }
+	}
+	# Elder in Years, Youngest in the House (round 2, T27).
+	option = {	# A seat by courtesy: the faith's own answer
+		name = tm_life.0050.e
+		trigger = { exists = scope:tm_life_by_years }
+		add_piety = 15
+		scope:tm_life_senior = {
+			add_prestige = 15
+			add_opinion = { target = scope:tm_life_junior modifier = tm_badenya_elder_by_years }
+		}
+		scope:tm_life_junior = {
+			add_prestige = 15
+			add_opinion = { target = scope:tm_life_senior modifier = tm_badenya_elder_by_years }
+		}
+		ai_chance = { base = 60 }
+	}
+	option = {	# The House's order holds: she serves
+		name = tm_life.0050.d
+		trigger = { exists = scope:tm_life_by_years }
+		scope:tm_life_junior = { add_stress = 20 }
+		ai_chance = { base = 25 }
+	}
+	option = {	# Let the senior insist on her place
+		name = tm_life.0050.f
+		trigger = { exists = scope:tm_life_by_years }
+		scope:tm_life_junior = { add_stress = 10 }
+		random_held_title = {
+			limit = { tier = tier_county has_variable = tm_house }
+			change_variable = { name = tm_house_strain add = 1 }
+		}
+		ai_chance = { base = 15 }
 	}
 }
 
@@ -785,5 +936,106 @@ tm_life.0080 = {
 		add_piety = 15
 		add_prestige = -10
 		ai_chance = { base = 50 }
+	}
+}
+
+
+# ---------------------------------------------------------------------------------------------------
+# The frightened courtier (round 2, T24; research/book_heaney_feminism_against_cisness.md §5 row 11). A courtier who loves
+# men, afraid under his own faith, denounces a daughter in hall to show he is no woman. The text shows the pressure on
+# him; he is not a villain type. Root = the ruler of the court; scope:tm_life_courtier; scope:tm_life_accused (may be root).
+tm_life.0090 = {
+	type = character_event
+	title = tm_life.0090.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:tm_life_accused = root }
+				desc = tm_life.0090.desc_self
+			}
+			desc = tm_life.0090.desc
+		}
+	}
+	theme = court
+	left_portrait = { character = scope:tm_life_courtier animation = anger }
+	right_portrait = { character = scope:tm_life_accused animation = personality_rational }
+
+	trigger = {
+		exists = scope:tm_life_courtier
+		exists = scope:tm_life_accused
+		scope:tm_life_courtier = { is_alive = yes is_courtier_of = root }
+		scope:tm_life_accused = { is_alive = yes }
+	}
+
+	immediate = {
+		scope:tm_life_accused = { add_opinion = { target = scope:tm_life_courtier modifier = tm_denounced_me_opinion } }
+	}
+
+	option = {	# She answers him, in hall
+		name = tm_life.0090.a
+		scope:tm_life_accused = { add_prestige = 15 }
+		scope:tm_life_courtier = { add_stress = 10 }
+		ai_chance = { base = 40 }
+	}
+	option = {	# Keep his secret anyway
+		name = tm_life.0090.b
+		add_piety = 10
+		scope:tm_life_courtier = { add_opinion = { target = root modifier = tm_kept_my_secret_opinion } }
+		if = {
+			limit = { NOT = { scope:tm_life_accused = root } }
+			scope:tm_life_courtier = { add_opinion = { target = scope:tm_life_accused modifier = tm_kept_my_secret_opinion } }
+		}
+		random = {			# he may come later to make amends: a follow-up, outside the flavour budget
+			chance = 50
+			custom_tooltip = tm_life.0090.b.tt
+			trigger_event = { id = tm_life.0091 days = { 365 730 } }
+		}
+		ai_chance = { base = 40 }
+	}
+	option = {	# Tell the hall what is said of him
+		name = tm_life.0090.c
+		add_prestige = 10
+		add_stress = 10
+		scope:tm_life_courtier = {
+			add_opinion = { target = root modifier = tm_exposed_me_opinion }
+			add_stress = 30
+			move_to_pool = yes
+		}
+		ai_chance = {
+			base = 20
+			modifier = { add = 20 has_trait = vengeful }
+			modifier = { add = -15 has_trait = compassionate }
+		}
+	}
+}
+
+# He comes to make amends. Root = the ruler; scope:tm_life_courtier; scope:tm_life_accused.
+tm_life.0091 = {
+	type = character_event
+	title = tm_life.0091.t
+	desc = tm_life.0091.desc
+	theme = court
+	left_portrait = { character = scope:tm_life_courtier animation = shame }
+	right_portrait = { character = scope:tm_life_accused animation = personality_rational }
+
+	trigger = {
+		exists = scope:tm_life_courtier
+		exists = scope:tm_life_accused
+		scope:tm_life_courtier = { is_alive = yes }
+		scope:tm_life_accused = { is_alive = yes }
+	}
+
+	option = {	# Take his hand
+		name = tm_life.0091.a
+		scope:tm_life_accused = {
+			remove_opinion = { target = scope:tm_life_courtier modifier = tm_denounced_me_opinion }
+			add_opinion = { target = scope:tm_life_courtier modifier = tm_made_amends_opinion }
+		}
+		scope:tm_life_courtier = { add_stress = -20 }
+		ai_chance = { base = 70 }
+	}
+	option = {	# Some things are not mended with a word
+		name = tm_life.0091.b
+		ai_chance = { base = 30 }
 	}
 }

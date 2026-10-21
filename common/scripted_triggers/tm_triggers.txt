@@ -9,7 +9,6 @@ tm_intake_eligible_trigger = {
 		has_trait = sadistic
 		has_trait = wrathful
 		has_trait = callous
-		has_trait = tm_transgender
 		any_secret = {
 			OR = {
 				secret_type = secret_murder
@@ -93,6 +92,7 @@ tm_house_member_trigger = {
 tm_elder_sister_eligible_trigger = {
 	is_adult = yes
 	is_imprisoned = no
+	NOT = { has_variable = tm_world_keep_quiet }	# keeping quiet in this land (tm_world_decisions.txt): not the House's voice
 	rite ?= { rite_has_parameter = tm_sisters_faith }
 	OR = {
 		is_female = yes

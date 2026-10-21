@@ -21,6 +21,15 @@ tm_embryo.0001 = {
 	}
 	option = {	# Not yet
 		name = tm_embryo.0001.b
+		# Rule 23 (round 2): refund what the decision cost; a courtier offered the rite paid nothing.
+		if = {
+			limit = { NOT = { has_variable = tm_rite_offered } }
+			if = {
+				limit = { has_personal_tenet_flag = tm_personal_embryo_easier }
+				add_piety = 25
+			}
+			else = { add_piety = 50 }
+		}
 	}
 }
 
@@ -40,6 +49,7 @@ tm_embryo.0010 = {
 		name = tm_embryo.0010.a
 		random_list = {
 			70 = {
+				modifier = { add = 15 any_relation = { type = tm_sister tm_is_daughter_trigger = yes } }	# her sworn sister stands as her sponsor (round 2, T21)
 				modifier = { add = { value = learning multiply = 2 } }
 				modifier = { add = 20 has_personal_tenet_flag = tm_personal_embryo_easier }
 				modifier = { add = 20 has_character_modifier = tm_taught_answers_modifier }	# Teach Her the Answers (tm_mech_interactions.txt)
@@ -48,7 +58,7 @@ tm_embryo.0010 = {
 			}
 			30 = {
 				desc = tm_embryo.trial_delayed
-				tm_embryo_delayed_effect = { EVENT = tm_embryo.0010 }
+				tm_embryo_delayed_effect = { EVENT = tm_embryo.0010 STRESS = 10 }
 			}
 		}
 	}
@@ -96,7 +106,7 @@ tm_embryo.0011 = {
 			}
 			25 = {
 				desc = tm_embryo.trial_delayed
-				tm_embryo_delayed_effect = { EVENT = tm_embryo.0011 }
+				tm_embryo_delayed_effect = { EVENT = tm_embryo.0011 STRESS = 10 }
 			}
 		}
 	}
@@ -114,7 +124,7 @@ tm_embryo.0011 = {
 			limit = { is_alive = yes }
 			add_opinion = { target = root modifier = grateful_opinion opinion = 20 }
 		}
-		tm_embryo_delayed_effect = { EVENT = tm_embryo.0011 }
+		tm_embryo_delayed_effect = { EVENT = tm_embryo.0011 STRESS = 0 }	# her own choice: no stress
 	}
 	option = {	# My guarantor answers for the house that shelters me
 		name = tm_embryo.0011.b

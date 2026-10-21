@@ -76,3 +76,57 @@ tm_world_strained_faith_trigger = {
 tm_world_secure_faith_trigger = {
 	fervor > 75
 }
+
+# Keep Quiet in This Land (tm_world_keep_quiet_decision; Nirta row 6): she has chosen to go unremarked before
+# strangers. Hostile tm_world events are half as likely to single her out.
+tm_world_keeps_quiet_trigger = {
+	has_variable = tm_world_keep_quiet
+}
+
+# An Orthodox court (the dualist and the crow, Federici row 1, Hornsby row 5).
+tm_world_orthodox_trigger = {
+	faith = faith:orthodox
+}
+
+# A Bulgarian or Serbian Orthodox court from c. 950, where Cosmas's class charge against the Bogomils can be heard
+# (Federici row 2). Scope: the court's ruler.
+tm_world_bogomil_land_trigger = {
+	current_date >= 950.1.1
+	faith = faith:orthodox
+	OR = {
+		culture = culture:bulgarian
+		culture = culture:serbian
+		top_liege = { has_title = title:k_bulgaria }
+		top_liege = { has_title = title:k_serbia }
+	}
+}
+
+# A Sahel or West African court, where the "stranger's custom" is a Maliki jurist's or an elder's line (Oyewumi row 5).
+tm_world_sahel_trigger = {
+	culture ?= {
+		OR = {
+			has_cultural_pillar = heritage_sahelian
+			has_cultural_pillar = heritage_senegambian
+			has_cultural_pillar = heritage_west_african
+		}
+	}
+}
+
+# A daughter living in an Italian or Provencal city under a Catholic lord, from 1325: the commune's mask law
+# (Ford row 6). Scope: the daughter.
+tm_world_mask_law_trigger = {
+	current_date >= 1325.1.1
+	tm_world_daughter_trigger = yes
+	tm_world_rested_trigger = yes
+	tm_flavour_ready_trigger = yes
+	NOT = { has_character_flag = tm_world_mask_seen }
+	location = {
+		culture ?= {
+			OR = {
+				has_cultural_pillar = heritage_latin
+				this = culture:occitan
+			}
+		}
+		county.holder ?= { faith = faith:catholic }
+	}
+}

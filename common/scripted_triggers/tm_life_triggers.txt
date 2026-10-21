@@ -72,3 +72,61 @@ tm_life_waiting_trigger = {
 		has_variable = tm_declared
 	}
 }
+
+# ---- Round 2 -------------------------------------------------------------------------------------------------------
+
+# A courtier who loves men, under a faith that calls it a crime or shuns it (tm_life.0090; round 2, T24;
+# research/book_heaney_feminism_against_cisness.md §5 row 11). Scope: the courtier.
+tm_life_frightened_courtier_trigger = {
+	is_male = yes
+	is_adult = yes
+	is_imprisoned = no
+	is_ruler = no
+	tm_is_daughter_trigger = no
+	NOT = { has_trait = tm_transgender }
+	NOT = { has_variable = tm_declared }
+	NOT = { rite ?= { rite_has_parameter = tm_sisters_faith } }
+	OR = {
+		has_sexuality = homosexual
+		has_sexuality = bisexual
+	}
+	faith = {
+		OR = {
+			has_doctrine = doctrine_homosexuality_crime
+			has_doctrine = doctrine_homosexuality_shunned
+		}
+	}
+}
+
+# Badenya, Elder in Years, Youngest in the House (tm_life.0050; round 2, T27; research/book_oyewumi_invention_of_women.md
+# row 2). A woman past forty-five who crossed in the last two years, and a young daughter who crossed long before her.
+tm_life_elder_newcomer_trigger = {
+	tm_is_daughter_trigger = yes
+	faith = faith:tm_badenya
+	age >= 45
+	has_variable = tm_newly_risen
+	is_imprisoned = no
+}
+tm_life_young_senior_trigger = {
+	tm_is_daughter_trigger = yes
+	faith = faith:tm_badenya
+	age < 35
+	NOT = { has_variable = tm_newly_risen }
+	is_imprisoned = no
+}
+
+# I Simply Cannot (tm_life.0035; round 2, T25; research/tsq_lavery_egg_theory.md row 3): an adult Marked character of
+# the six who has not declared and is on no road yet.
+tm_life_cannot_trigger = {
+	is_adult = yes
+	is_imprisoned = no
+	has_trait = tm_transgender
+	tm_is_daughter_trigger = no
+	rite ?= { rite_has_parameter = tm_sisters_faith }
+	NOR = {
+		has_variable = tm_declared
+		has_trait = tm_novice
+		has_variable = tm_embryo_active
+		has_variable = tm_pavai_companions
+	}
+}

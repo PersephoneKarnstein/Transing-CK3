@@ -223,7 +223,7 @@ Slot key: **RT** = rite/faith tenet; **FD** = faith doctrine; **CE** = culture e
 | **Keepers of the Archive** | CT | Scribes record the lives of the crossed; libraries of the faith are protected relics; burning them is a grave crime. | Hirschfeld's Institute burned 1933; Sullivan's archive; "That we have lived." | L903, L1411, L2313 (Ch. 2, Ch. 5, Epilogue) |
 | **Steppe Amazon Heritage** | HF | Flavor for a steppe heritage: women warriors and feminized priest-shamans; Greek neighbors call them barbarians. | Scythians/Amazons. | L677 (Ch. 2) |
 | **Kongo Prophetess Heritage** | HF | Flavor for West-Central African heritage: spirit-possessed gender-variant mediums and anti-colonial prophets. | Kimpa Vita; jin bandaas. | L681 (Ch. 2) |
-| **Yoruba Female-Husband Heritage** | HF | Flavor: female-bodied persons may be husbands; marriage law ignores anatomy. | Oyěwùmí on Yoruba. | L531 (Ch. 1) |
+| **Yoruba Female-Husband Heritage** **[DO NOT USE, 2026-10-21: misreading. In Oyěwùmí the female "husband" (*oko*) is a daughter of the lineage in relation to its in-marrying wives, a lineage rank, not a woman married to a wife (pp. 44–47, 175). See `book_oyewumi_invention_of_women.md` §4 and Bhatt row 19.]** | HF | Flavor: female-bodied persons may be husbands; marriage law ignores anatomy. | Oyěwùmí on Yoruba. | L531 (Ch. 1) |
 | **The Hermaphrodite Isle** | HF (utopian flavor / legend) | A legend of a floating island where "one gets twice the pleasure"; inspires explorers' adventure events. | Artus Thomas 1605; Hall's Viraginia. | L689 (Ch. 2) |
 
 ---

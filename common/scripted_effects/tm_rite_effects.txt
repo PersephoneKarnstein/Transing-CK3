@@ -10,16 +10,26 @@ tm_rise_daughter_effect = {
 	# A eunuch who seeks womanhood is a sister (Bhatt, faith_design.md §12): her eunuch trait gives way.
 	if = { limit = { has_trait = eunuch_1 } remove_trait = eunuch_1 }
 	if = { limit = { has_trait = beardless_eunuch } remove_trait = beardless_eunuch }
+	# Her sworn sisters stood beside her at the gate (round 2, T21/T34). Listed now: the relation does not pass to a new
+	# body (tm_reembody_as_woman_effect copies friends, not tm_sister).
+	every_relation = {
+		type = tm_sister
+		limit = { is_alive = yes }
+		add_to_list = tm_gate_sisters
+	}
 	add_trait = $TRAIT$
 	add_piety = 50
 	tm_track_effect = { FAITH = faith WHAT = rises }
 	if = {
-		limit = { has_trait = tm_transgender }
+		limit = {
+			OR = {
+				has_trait = tm_transgender
+				has_variable = tm_declared		# named before witnesses: a sister before the knife (rule 8)
+			}
+		}
 		add_stress = -100				# relief: the rite answers what the Mother marked
 	}
-	else = {
-		add_stress = 50
-	}
+	# No one else pays in stress for rising either (rule 22, round 2: no pain as proof).
 	# A sister already named before witnesses (tm_declare_decision) keeps that name; the gate changes her
 	# body, not her name. Otherwise New Personal History fires on whichever body survives the rite.
 	if = {
@@ -57,10 +67,45 @@ tm_rise_daughter_effect = {
 			has_game_rule = tm_reembodiment_on
 			exists = scope:tm_new_body
 		}
-		scope:tm_new_body = { tm_life_after_rite_effect = yes }
+		scope:tm_new_body = {
+			tm_life_after_rite_effect = yes
+			tm_after_gate_body_effect = yes
+		}
 	}
 	else = {
 		tm_life_after_rite_effect = yes
+		tm_after_gate_body_effect = yes
+	}
+}
+
+# After any gate, on whichever body survives the rite (round 2). Scope: the new daughter.
+tm_after_gate_body_effect = {
+	# T22, At Home in Her Body (research/book_heaney_feminism_against_cisness.md §5 row 3b): a small lasting reward
+	# that is hers, not the faith's.
+	if = {
+		limit = { NOT = { has_character_modifier = tm_at_home_in_her_body_modifier } }
+		add_character_modifier = { modifier = tm_at_home_in_her_body_modifier }
+	}
+	# T27: newly risen, for Elder in Years, Youngest in the House (tm_life.0050).
+	set_variable = { name = tm_newly_risen value = yes years = 2 }
+	# T21/T34: a sworn sister counts as her sponsor, and has her own small reward.
+	save_scope_as = tm_gate_daughter
+	every_in_list = {
+		list = tm_gate_sisters
+		tm_sponsor_reward_effect = { DAUGHTER = scope:tm_gate_daughter }
+		remove_from_list = tm_gate_sisters		# cleared, as vanilla does, in case several rise in one effect
+	}
+}
+
+# The sponsor's own reward when her daughter rises (round 2, T34; research/book_hornsby_stone_bible_trouble.md row 1):
+# her own turning as much as the daughter's. Scope: the sponsor. DAUGHTER = the new daughter.
+tm_sponsor_reward_effect = {
+	add_piety = 25
+	add_opinion = { target = $DAUGHTER$ modifier = tm_through_the_gate_opinion }
+	$DAUGHTER$ = { add_opinion = { target = prev modifier = tm_through_the_gate_opinion } }
+	send_interface_toast = {
+		type = event_toast_effect_good
+		title = tm_sponsor_reward_toast
 	}
 }
 
@@ -98,8 +143,9 @@ tm_rise_by_rite_effect = {
 
 # A trial of the jade embryo was interrupted from outside. Nothing is lost: the gestation waits and the
 # same trial comes round again (Serano: delay, never a reset). Scope: the adept. EVENT = the trial to repeat.
+# STRESS = 10 for a delay from outside, 0 when she chose it (nursing her parents, tm_embryo.0011.e); rule 22, round 2.
 tm_embryo_delayed_effect = {
-	add_stress = 25
+	add_stress = $STRESS$
 	remove_character_modifier = tm_gestating_modifier
 	add_character_modifier = { modifier = tm_gestating_modifier days = 300 }
 	trigger_event = { id = $EVENT$ days = { 60 90 } }
@@ -554,5 +600,26 @@ tm_badenya_rise_effect = {
 			set_variable = { name = tm_djinn_owed value = yes }
 			trigger_event = { id = tm_badenya.0015 days = { 330 400 } }
 		}
+	}
+}
+
+# The Dorley sponsor's reward (tm_dorley.0100), on whichever body survives the knife. Scope: any. RISEN = the novice
+# before the rite. A captor who sponsored her herself is rewarded by the rite already.
+tm_dorley_sponsor_reward_effect = {
+	if = {
+		limit = { exists = scope:tm_new_body }
+		scope:tm_new_body = { save_scope_as = tm_risen }
+	}
+	else = {
+		$RISEN$ = { save_scope_as = tm_risen }
+	}
+	if = {
+		limit = {
+			exists = scope:tm_sponsor
+			scope:tm_sponsor = { is_alive = yes }
+			NOT = { scope:tm_sponsor = root }
+			NOT = { scope:tm_sponsor = scope:tm_risen }
+		}
+		scope:tm_sponsor = { tm_sponsor_reward_effect = { DAUGHTER = scope:tm_risen } }
 	}
 }

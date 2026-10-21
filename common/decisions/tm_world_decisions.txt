@@ -1,0 +1,72 @@
+﻿# Crusader Dolls — decisions of the hostile-world pack (events/tm_world_events.txt).
+
+# T31. Keep Quiet in This Land (Nirta row 6). Settles beliefs.md conflict 8 (E3 "Read Aloud" against H25 "No Shame in
+# the Veil") as her own choice, inside and outside: aloud among sisters; before strangers, as she likes. A daughter or
+# declared sister who rules under a liege of another faith may choose to go unremarked before the world's courts. While
+# she does, every hostile tm_world event is half as likely to single her out (tm_world_keeps_quiet_trigger). Her faith
+# gives no piety and takes none, either way; she may speak aloud again whenever she likes (tm_world_speak_aloud_decision).
+tm_world_keep_quiet_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"		# placeholder; TODO event art
+	}
+	sort_order = 88
+
+	is_shown = {
+		tm_world_daughter_trigger = yes
+		NOT = { has_variable = tm_world_keep_quiet }
+		is_independent_ruler = no
+		liege ?= {
+			NOT = { this = root }
+			NOT = { faith = root.faith }
+		}
+	}
+
+	effect = {
+		set_variable = tm_world_keep_quiet
+		custom_tooltip = tm_world_keep_quiet_decision.tt
+	}
+
+	ai_check_interval = 120
+	ai_potential = {
+		tm_world_daughter_trigger = yes
+		NOT = { has_variable = tm_world_keep_quiet }
+	}
+	ai_will_do = {
+		base = 0
+		modifier = { add = 10 has_trait = craven }
+		modifier = { add = 10 has_trait = shy }
+		modifier = { add = 5 has_trait = paranoid }
+		modifier = { add = 5 stress_level >= 2 }
+		modifier = { factor = 0 has_trait = brave }
+		modifier = { factor = 0 has_trait = gregarious }
+	}
+}
+
+# Speak Aloud Again: she ends Keep Quiet in This Land. No cost, no reward.
+tm_world_speak_aloud_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"		# placeholder; TODO event art
+	}
+	sort_order = 88
+
+	is_shown = {
+		has_variable = tm_world_keep_quiet
+	}
+
+	effect = {
+		remove_variable = tm_world_keep_quiet
+		custom_tooltip = tm_world_speak_aloud_decision.tt
+	}
+
+	ai_check_interval = 120
+	ai_potential = { has_variable = tm_world_keep_quiet }
+	ai_will_do = {
+		base = 0
+		modifier = { add = 10 has_trait = brave }
+		modifier = { add = 10 is_independent_ruler = yes }
+		modifier = {
+			add = 10
+			liege ?= { faith = root.faith }
+		}
+	}
+}

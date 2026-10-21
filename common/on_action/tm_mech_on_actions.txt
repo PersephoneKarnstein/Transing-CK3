@@ -72,6 +72,8 @@ tm_mech_on_marriage = {
 	}
 }
 
+# The yearly pulse above holds mechanics only (contact, spouses, scapegoat pressure), so it does not check the flavour
+# budget; the release offer below does.
 # Item 30. Root = the released character; scope:imprisoner = who held them. Released prisoners are offered a place
 # among the friends of the House (Serano row 19). Not players, not rulers, not the Dorley washout (tm_dorley.0200
 # has its own path to the House's friends).
@@ -89,13 +91,17 @@ tm_mech_on_release_from_prison = {
 			is_alive = yes
 			rite ?= { rite_has_parameter = tm_sisters_faith }
 			tm_holds_sisters_house_trigger = yes
+			tm_flavour_ready_trigger = yes		# flavour budget (round 2): the imprisoner receives the event
 		}
 	}
 	effect = {
 		random = {
 			chance = 15
 			save_scope_as = tm_released
-			scope:imprisoner = { trigger_event = { id = tm_house.0061 days = { 3 10 } } }
+			scope:imprisoner = {
+				tm_flavour_spent_effect = yes
+				trigger_event = { id = tm_house.0061 days = { 3 10 } }
+			}
 		}
 	}
 }

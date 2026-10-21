@@ -274,7 +274,33 @@ tm_house.0050 = {
 					add_opinion = { target = root modifier = angry_opinion opinion = -40 }
 				}
 			}
-			tm_close_house_effect = yes
+		}
+		# We Stay (round 2, T20; research/book_heaney_feminism_against_cisness.md §5 row 1). The sisters answer the
+		# order: they go on (the default, and the AI's usual pick), or they hold the House for a season (tm_house.0051).
+		# The Elder Sister speaks for them if she is still here, else the sister the others listen to.
+		if = {
+			limit = {
+				scope:tm_house_county = {
+					has_variable = tm_elder_sister
+					var:tm_elder_sister = { is_alive = yes is_courtier_of = root is_imprisoned = no }
+				}
+			}
+			scope:tm_house_county.var:tm_elder_sister = { save_scope_as = tm_house_speaker }
+		}
+		else = {
+			ordered_courtier = {
+				limit = { tm_elder_sister_eligible_trigger = yes }
+				order_by = diplomacy
+				save_scope_as = tm_house_speaker
+			}
+		}
+		if = {
+			limit = { exists = scope:tm_house_speaker }
+			custom_tooltip = tm_house.0050.b.tt
+			scope:tm_house_speaker = { trigger_event = tm_house.0051 }
+		}
+		else = {
+			scope:tm_house_county = { tm_close_house_effect = yes }
 		}
 		ai_chance = {
 			base = 50
@@ -442,5 +468,186 @@ tm_house.0061 = {
 	option = {	# Go in peace
 		name = tm_house.0061.b
 		ai_chance = { base = 40 }
+	}
+}
+
+# We Stay (round 2, T20). The lord has ordered the House closed. Root = the sister who speaks for the House;
+# scope:tm_house_county; scope:tm_house_holder = the lord. Going on stays the default and the AI's usual pick: the odds
+# of staying are kept low, so this is a stand, not a way to grow. Nobody dies in this chain.
+tm_house.0051 = {
+	type = character_event
+	title = tm_house.0051.t
+	desc = tm_house.0051.desc
+	theme = faith
+	left_portrait = { character = root animation = personality_rational }
+	right_portrait = { character = scope:tm_house_holder animation = anger }
+
+	trigger = {
+		exists = scope:tm_house_county
+		exists = scope:tm_house_holder
+		scope:tm_house_county = { has_variable = tm_house }
+	}
+
+	option = {	# We go on to another House
+		name = tm_house.0051.a
+		scope:tm_house_county = { tm_close_house_effect = yes }
+		ai_chance = { base = 85 }
+	}
+	option = {	# We stay
+		name = tm_house.0051.b
+		custom_tooltip = tm_house.0051.b.tt
+		add_stress = 15
+		scope:tm_house_county = {
+			set_variable = { name = tm_house_holding value = yes days = 120 }
+			change_variable = { name = tm_house_strain add = 3 }		# heavy: no market, no alms, watchers at the gate
+			change_county_control = -20
+		}
+		scope:tm_house_holder = { trigger_event = { id = tm_house.0052 days = 90 } }
+		ai_chance = {
+			base = 10
+			modifier = { add = 10 has_trait = brave }
+			modifier = { add = 5 has_trait = stubborn }
+			modifier = { add = -5 scope:tm_house_county = { var:tm_house_strain >= 3 } }	# a House already worn thin goes
+			modifier = { factor = 0 has_trait = craven }
+		}
+	}
+}
+
+# A season on. Root = the lord; scope:tm_house_county; scope:tm_house_speaker; scope:tm_house_holder (= root).
+tm_house.0052 = {
+	type = character_event
+	title = tm_house.0052.t
+	desc = tm_house.0052.desc
+	theme = faith
+	left_portrait = { character = scope:tm_house_speaker animation = personality_rational }
+
+	trigger = {
+		exists = scope:tm_house_county
+		scope:tm_house_county = {
+			has_variable = tm_house
+			holder ?= { this = root }
+		}
+		exists = scope:tm_house_speaker
+	}
+
+	immediate = {
+		scope:tm_house_county = { remove_variable = tm_house_holding }
+	}
+
+	option = {	# Let them be
+		name = tm_house.0052.a
+		add_prestige = -50
+		scope:tm_house_county = { set_variable = { name = tm_house_tolerated_by value = root } }
+		scope:tm_house_speaker = { add_stress = -20 }
+		ai_chance = {
+			base = 30
+			modifier = { add = 30 has_trait = compassionate }
+			modifier = { add = 20 has_trait = content }
+			modifier = { add = -20 has_trait = zealous }
+		}
+	}
+	option = {	# Fine them, and let the House stand
+		name = tm_house.0052.b
+		add_gold = 40
+		scope:tm_house_county = {
+			set_variable = { name = tm_house_tolerated_by value = root }
+			change_variable = { name = tm_house_strain add = 2 }
+		}
+		scope:tm_house_speaker = { add_opinion = { target = root modifier = angry_opinion opinion = -20 } }
+		ai_chance = {
+			base = 40
+			modifier = { add = 30 has_trait = greedy }
+			modifier = { add = -20 has_trait = generous }
+		}
+	}
+	option = {	# Send men to clear it
+		name = tm_house.0052.c
+		scope:tm_house_county = {
+			change_county_control = -10
+			tm_close_house_effect = yes
+		}
+		scope:tm_house_speaker = { add_opinion = { target = root modifier = angry_opinion opinion = -40 } }
+		ai_chance = {
+			base = 30
+			modifier = { add = 30 has_trait = zealous }
+			modifier = { add = 20 has_trait = callous }
+			modifier = { add = -30 has_trait = compassionate }
+		}
+	}
+}
+
+# The Same Roof (round 2, T30b; research/book_nirta_marginal_bodies.md row 4). A widow newly come to the House will not
+# sleep or bathe beside a daughter. Rooms of women are policed hardest from inside, and newcomers bring the town's rules
+# with them. No option moves the daughter. From tm_house_yearly_effect (flavour budget). Root = the holder;
+# scope:tm_house_county.
+tm_house.0070 = {
+	type = character_event
+	title = tm_house.0070.t
+	desc = tm_house.0070.desc
+	theme = faith
+	left_portrait = { character = scope:tm_roof_widow animation = disgust }
+	right_portrait = { character = scope:tm_roof_daughter animation = personality_rational }
+
+	trigger = {
+		exists = capital_province
+		exists = scope:tm_house_county
+		scope:tm_house_county = { has_variable = tm_house }
+		any_courtier = { tm_is_daughter_trigger = yes is_adult = yes is_imprisoned = no }
+	}
+
+	immediate = {
+		random_courtier = {
+			limit = { tm_is_daughter_trigger = yes is_adult = yes is_imprisoned = no }
+			save_scope_as = tm_roof_daughter
+		}
+		random_list = {
+			60 = {
+				create_character = {
+					gender = female
+					age = { 30 55 }
+					culture = root.capital_county.culture
+					faith = root.faith
+					location = root.capital_province
+					save_scope_as = tm_roof_widow
+				}
+			}
+			40 = {						# a widow of the town's faith, come for the bed and the work
+				create_character = {
+					gender = female
+					age = { 30 55 }
+					culture = root.capital_county.culture
+					faith = root.capital_county.faith
+					location = root.capital_province
+					save_scope_as = tm_roof_widow
+				}
+			}
+		}
+	}
+
+	option = {	# She stays, and works beside her
+		name = tm_house.0070.a
+		add_courtier = scope:tm_roof_widow
+		add_piety = 10
+		scope:tm_roof_widow = {
+			add_stress = 20
+			add_opinion = { target = scope:tm_roof_daughter modifier = tm_same_roof_opinion }
+		}
+		scope:tm_roof_daughter = { add_opinion = { target = root modifier = respect_opinion opinion = 10 } }
+		ai_chance = { base = 50 }
+	}
+	option = {	# Send her on to another House, with provisions
+		name = tm_house.0070.b
+		trigger = { gold >= 10 }
+		remove_short_term_gold = 10
+		scope:tm_roof_widow = { tm_send_on_effect = { EXCLUDE = root } }
+		ai_chance = { base = 30 }
+	}
+	option = {	# A room of her own, at a cost
+		name = tm_house.0070.c
+		trigger = { gold >= 40 }
+		remove_short_term_gold = 40
+		add_courtier = scope:tm_roof_widow
+		scope:tm_house_county = { change_variable = { name = tm_house_strain add = 1 } }
+		ai_chance = { base = 20 }
 	}
 }

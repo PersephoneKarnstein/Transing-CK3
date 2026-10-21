@@ -50,3 +50,28 @@ tm_world_refused_ruling_opinion = {
 	opinion = -10
 	years = 5
 }
+
+# Name the Purse (tm_world.0050, 0041; Heaney row 5): she named the patron whose seal was on the petition.
+tm_world_named_purse_opinion = {
+	opinion = -15
+	years = 5
+}
+
+# The class charge (tm_world.0020, Federici row 2): the House took in a servant who ran from his lord's household.
+tm_world_took_servant_opinion = {
+	opinion = -10
+	years = 5
+}
+
+# Call It Necessity (tm_world.0020, Ford row 2): the court let her dress stand as a disguise worn in need. It eases
+# the court's view of her; it does not call her a woman. The value is set by the event (stronger from 1270).
+tm_world_necessity_opinion = {
+	opinion = 10
+	years = 5
+}
+
+# Women Without a Rule (tm_world.0061, Federici row 7): the lord paid a protector to keep the bishop off the House.
+tm_world_house_protection_opinion = {
+	opinion = 10
+	years = 5
+}

@@ -1,0 +1,7 @@
+﻿# Crusader Dolls — the flavour budget (user 2026-10-21: "I am a bit worried about burying the player in events").
+# Every flavour event from the packs checks this in its trigger (or before it is fired from a pulse), and its
+# immediate (or the firing effect) calls tm_flavour_spent_effect. Rites, gates, chains already under way, and events the
+# player starts by decision or interaction do not check it. Scope: the character who would receive the event.
+tm_flavour_ready_trigger = {
+	NOT = { has_variable = tm_flavour_cooldown }
+}

@@ -1,0 +1,81 @@
+﻿l_english:
+ # ---- Round 2 (life builder). Houses: We Stay (T20), The Same Roof (T30b)
+ tm_house.0050.b.tt:0 "The sisters will answer. They may go, or they may stay."
+ tm_house.0051.t:0 "The Order to Close"
+ tm_house.0051.desc:0 "[tm_house_holder.GetTitledFirstName] has ordered the House at [tm_house_county.GetName] closed. The sisters are to be gone by the next market day. Most Houses go when they are told, and find another door. But the sisters have asked me what we will do, and some of them do not want to go."
+ tm_house.0051.a:0 "We go on. There are other Houses."
+ tm_house.0051.b:0 "We stay."
+ tm_house.0051.b.tt:0 "The sisters hold the House for a season. The county's control falls, and the House is badly strained. In three months [tm_house_holder.GetFirstName] decides: let it be, fine it, or send men."
+ tm_house.0052.t:0 "They Did Not Leave"
+ tm_house.0052.desc:0 "A season has passed, and the House at [tm_house_county.GetName] is still open. The sisters did not leave. They keep the gate shut, sing the hours, and buy bread through a side door. [tm_house_speaker.GetFirstName] speaks for them, and she has not changed her answer. My stewards say the county talks of nothing else."
+ tm_house.0052.a:0 "Let them be. It is not worth the trouble."
+ tm_house.0052.b:0 "They pay a fine, and then they may stay."
+ tm_house.0052.c:0 "Send men to clear it."
+ tm_house.0070.t:0 "The Same Roof"
+ tm_house.0070.desc:0 "A widow, [tm_roof_widow.GetFirstName], came to the House last month. She works hard and asks for little. But she will not sleep in the same room as [tm_roof_daughter.GetFirstName], or bathe at the same hour. It is not right, she says, and every woman in her town would say the same.\n\nThe Elder Sister has already said that nobody moves [tm_roof_daughter.GetFirstName]. The question is what happens to the widow."
+ tm_house.0070.a:0 "She stays, and works beside [tm_roof_daughter.GetFirstName]."
+ tm_house.0070.b:0 "Send her on to another House, with bread for the road."
+ tm_house.0070.c:0 "Find her a room of her own. It will cost us."
+ tm_same_roof_opinion:0 "Shared a Roof"
+
+ # ---- Sister-Making widened (T21) and the sponsor's reward (T34)
+ tm_sister_making_interaction_desc_r2:0 "Ask [recipient.GetShortUIName] to be bound by the old rite: hands laid together, a kiss, and a shared cup. It makes no heirs, names no guardian, and asks nothing of the law. It is higher than marriage. A sworn sister stands beside the other at her gate, as a sponsor does, and is counted one of the House."
+ tm_through_the_gate_opinion:0 "Through the Gate Together"
+ tm_sponsor_reward_toast:0 "One I Stood Beside Has Risen"
+ tm_dorley.0100.desc_sponsor:0 "\n\n[tm_sponsor.GetFirstName] has stood beside her all year. "She asked what hindered her," [tm_sponsor.GetFirstName] says. "I found that nothing hindered me either.""
+
+ # ---- At Home in Her Body (T22)
+ tm_at_home_in_her_body_modifier:0 "At Home in Her Body"
+ tm_at_home_in_her_body_modifier_desc:0 "This character's body is her own, and she lives in it at ease."
+
+ # ---- Learned answers (T33)
+ tm_byz.0001.e:0 "Every monk who reads the Song speaks as the Bride. We only kept speaking."
+ tm_hipukh.0010.desc_esther:0 "\n\nThis is not my first Adar. [tm_zekenah.GetFirstName] reminds me that Esther, too, was made ready for twelve months before she went in to the king: six months with oil of myrrh, six with sweet spices. Hegai, the king's eunuch who kept the women, saw that she lacked nothing. A year is not so long, the elder says."
+ tm_hipukh.0001.desc_jeremiah:0 "\n\nMy kin keep finding me brides, and I keep refusing them. [tm_zekenah.GetFirstName] says that Jeremiah was told to take no wife, and still he said to God: "You enticed me, and I let myself be enticed.""
+ tm_hipukh.0003.e:0 "The prophets called every man of Israel a bride. I only answered."
+ tm_hipukh.0003.e.win:0 "[ROOT.Char.Custom('tm_kahal_judges_cap')] had no answer, and let it stand"
+ tm_hipukh.0003.e.lose:0 ""A parable is not a law. The prophet put no dress on Israel." [ROOT.Char.Custom('tm_kahal_judges_cap')] set you apart"
+
+ # ---- I Simply Cannot, and "I was not waiting" (T25)
+ tm_life.0033.desc_always:0 "\n\nA sister looks at it over my shoulder. "You were always one of us," she says kindly. "You were only waiting.""
+ tm_life.0033.c:0 "I was not waiting. I was living."
+ tm_life.0035.t:0 "I Simply Cannot"
+ tm_life.0035.desc:0 "Tonight I counted the reasons again, as I have before."
+ tm_life.0035.desc_age:0 " I am too old to begin now."
+ tm_life.0035.desc_wife:0 " There is my wife, and the life we have made together."
+ tm_life.0035.desc_rank:0 " There is my rank, and the hall, and what the hall would say."
+ tm_life.0035.desc_end:0 "\n\nIt is not that I do not want it. It is only that, for me, here, it cannot be done. I have counted it out, and the sum is the same."
+ tm_life.0035.a:0 "Put the thought away for now."
+ tm_life.0035.b:0 "Talk it over with [tm_life_cannot_sister.GetFirstName]."
+ tm_life.0035.b.tt:0 "A daughter may offer to teach her the answers for her gate."
+ tm_life.0035.c:0 "Enough counting. I will declare before witnesses."
+
+ # ---- Elder in Years, Youngest in the House (T27, Badenya)
+ tm_life.0050.desc_by_years:0 "[tm_life_junior.GetFirstName] has grey in her hair, and she crossed only this year. [tm_life_senior.GetFirstName] is young enough to be her daughter, but she crossed long ago, and in the House rank goes by order of entry. So it is [tm_life_junior.GetFirstName] who carries the water and serves at table, and [tm_life_senior.GetFirstName] who sits.\n\nThe faith keeps the line. It also says the line is there to keep order, not to shame a grown woman."
+ tm_life.0050.d:0 "The House's order holds. She serves, as every newcomer does."
+ tm_life.0050.e:0 "Ask [tm_life_senior.GetFirstName] to give her a seat by courtesy."
+ tm_life.0050.f:0 "Let [tm_life_senior.GetFirstName] insist on her place."
+ tm_badenya_elder_by_years:0 "A Seat by Courtesy"
+
+ # ---- The frightened courtier (T24)
+ tm_life.0090.t:0 "Said in Hall"
+ tm_life.0090.desc:0 "In hall today [tm_life_courtier.GetFirstName] stood up and called [tm_life_accused.GetFirstName] a thing, not a woman, loud enough for every table to hear. He has never spoken to her before.\n\nSome at court say quietly that [tm_life_courtier.GetFirstName] loves men. His faith calls that a sin to be punished. A man who is afraid of being named looks for someone else to name first."
+ tm_life.0090.desc_self:0 "In hall today [tm_life_courtier.GetFirstName] stood up and called me a thing, not a woman, loud enough for every table to hear. He has never spoken to me before.\n\nSome at court say quietly that he loves men. His faith calls that a sin to be punished. A man who is afraid of being named looks for someone else to name first."
+ tm_life.0090.a:0 "Answer him, before the hall."
+ tm_life.0090.b:0 "Keep his secret anyway."
+ tm_life.0090.b.tt:0 "He may come, in time, to make amends."
+ tm_life.0090.c:0 "Tell the hall what is said of him."
+ tm_life.0091.t:0 "Amends"
+ tm_life.0091.desc:0 "[tm_life_courtier.GetFirstName] came to [tm_life_accused.GetFirstName] today, alone. He said he was sorry for what he said in hall. He did not say why he said it, and he did not have to. He asked whether she would take his hand."
+ tm_life.0091.a:0 "Take his hand."
+ tm_life.0091.b:0 "Some things are not mended with a word."
+ tm_denounced_me_opinion:0 "Denounced Me in Hall"
+ tm_kept_my_secret_opinion:0 "Kept My Secret"
+ tm_exposed_me_opinion:0 "Exposed Me Before the Hall"
+ tm_made_amends_opinion:0 "Made Amends"
+
+ # ---- Welcome Her to the House (Dorley intake, round 2)
+ tm_welcome_to_house_interaction:0 "Welcome Her to the House"
+ tm_welcome_to_house_interaction_desc:0 "Open the cell. [recipient.GetShortUIName] is one the Mother has marked, and she is no prisoner of the House. She goes free, joins the court as one of the House, and is offered the rite, to take or to leave as she chooses. No cells, no keeper, no year of trial."
+ tm_welcome_to_house_interaction.offer.tt:0 "She is offered the rite. It is hers to take or to leave."
+ tm_welcome_to_house_interaction.guest.tt:0 "She stays as one of the House. Nothing is asked of her."
