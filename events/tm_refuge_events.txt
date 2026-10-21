@@ -192,3 +192,54 @@ tm_refuge.0011 = {
 		name = tm_refuge.0011.b
 	}
 }
+
+# Taken as a daughter by a woman of another faith (tm_adopt_daughter_interaction): she is asked to take her mother's.
+# Without this, an adopted heir of another faith carried the house's titles out of the faith. Root = the new daughter.
+tm_refuge.0020 = {
+	type = character_event
+	title = tm_refuge.0020.t
+	desc = tm_refuge.0020.desc
+	theme = faith
+	left_portrait = { character = root animation = thinking }
+	right_portrait = { character = scope:tm_new_mother animation = happiness }
+
+	trigger = {
+		exists = scope:tm_new_mother
+		scope:tm_new_mother = { is_alive = yes }
+		NOT = { faith = scope:tm_new_mother.faith }
+	}
+
+	option = {	# take her mother's faith
+		name = tm_refuge.0020.a
+		set_character_faith = scope:tm_new_mother.faith
+		scope:tm_new_mother = {
+			add_opinion = { target = root modifier = pleased_opinion opinion = 15 }
+			send_interface_toast = {
+				type = event_toast_effect_good
+				title = tm_refuge.0020.toast_a
+				left_icon = root
+			}
+		}
+		ai_chance = {
+			base = 70
+			modifier = { add = 30 has_trait = cynical }
+			modifier = { add = 20 faith.religion = scope:tm_new_mother.faith.religion }
+			modifier = { add = 20 opinion = { target = scope:tm_new_mother value >= 50 } }
+		}
+	}
+	option = {	# keep her own
+		name = tm_refuge.0020.b
+		scope:tm_new_mother = {
+			send_interface_toast = {
+				type = event_toast_effect_neutral
+				title = tm_refuge.0020.toast_b
+				left_icon = root
+			}
+		}
+		ai_chance = {
+			base = 30
+			modifier = { add = 60 has_trait = zealous }
+			modifier = { add = 20 is_ruler = yes }
+		}
+	}
+}

@@ -247,7 +247,7 @@ tm_kahal_match_effect = {
 # The pilgrimage to the kahal. The sect exists for its daughters, but a Marked son is born to about one family in a
 # hundred: one household cannot raise enough of its own, and in observe runs it went generations with none. So word
 # goes along the roads Jews travelled (Provence, Sepharad, Ashkenaz, the Radhanite routes) and a Marked young Jew comes
-# to the seat to be taken in. An elder woman of the sect, a daughter first, adopts him into her house; the courtier
+# to the seat to be taken in. An elder woman of the sect, a daughter first, adopts her into her house; the courtier
 # rite (tm_offer_courtier_rite_effect) may offer the Turning in time. A larger kahal is known further, so draws more.
 # Members of the sect living away from the kahal may also come home to it. Scope: none (tm_yearly_growth).
 tm_kahal_pilgrimage_effect = {
@@ -257,7 +257,10 @@ tm_kahal_pilgrimage_effect = {
 	clear_saved_scope = tm_pilgrim_mother
 	# The kahal: the court where most of the sect live.
 	every_living_character = {
-		limit = { faith = faith:tm_nehpakhot exists = employer }
+		limit = {
+			faith = faith:tm_nehpakhot
+			employer ?= { tm_settled_court_trigger = yes }
+		}
 		employer = { add_to_temporary_list = tm_kahal_courts }
 	}
 	ordered_in_list = {
@@ -399,7 +402,10 @@ tm_homecoming_effect = {
 	clear_saved_scope = tm_homecomer
 	ordered_ruler = {
 		faith_filter = $FAITH$
-		limit = { is_imprisoned = no }
+		limit = {
+			is_imprisoned = no
+			tm_settled_court_trigger = yes
+		}
 		order_by = {
 			value = 0
 			if = { limit = { any_held_title = { this = $SEAT$ } } add = 1000 }
@@ -439,7 +445,7 @@ tm_homecoming_effect = {
 	}
 }
 
-# Two Marked young men of the faith at a seat court, so the courtier rite has seekers from the start.
+# Two Marked young women of the faith (the game codes them as male) at a seat court, so the courtier rite has seekers from the start.
 tm_seed_marked_courtiers_effect = {
 	while = {
 		count = 2

@@ -236,3 +236,13 @@ tm_crossing_seeker_trigger = {
 		}
 	}
 }
+
+# A court a faith can make its home: not a mercenary company or a holy order. Companies raised in a county of the
+# faith take its faith, and in an observe run (867–1005) the largest Ha-Nehpakhot "court" became a mercenary band,
+# so the kahal's pilgrims went to the camp. Adventurers' camps still count. Scope: the court's ruler.
+tm_settled_court_trigger = {
+	NOR = {
+		government_has_flag = government_is_mercenary
+		government_has_flag = government_is_holy_order
+	}
+}

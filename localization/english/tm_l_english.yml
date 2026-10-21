@@ -225,6 +225,12 @@
  tm_refuge.0011.desc:0 "[tm_refuge_candidate.GetFirstName] has arrived. She has no house and no mother living, and the custom of the Sisters is plain: a house is the women who choose it."
  tm_refuge.0011.a:0 "Then I choose her. She is my daughter."
  tm_refuge.0011.b:0 "Let her settle in first."
+ tm_refuge.0020.t:0 "My Mother's Faith"
+ tm_refuge.0020.desc:0 "[tm_new_mother.GetFirstName] has taken me into her house as her daughter, and what she has is mine in time. Her faith is not mine. She has not made it a condition, but her house keeps the [tm_new_mother.GetFaith.GetName], and a daughter who means to keep the house had better keep its faith as well."
+ tm_refuge.0020.a:0 "Her house, her faith. I will learn it."
+ tm_refuge.0020.b:0 "I will be her daughter, and I will keep my own faith."
+ tm_refuge.0020.toast_a:0 "[ROOT.Char.GetFirstName] takes your faith"
+ tm_refuge.0020.toast_b:0 "[ROOT.Char.GetFirstName] keeps her own faith"
  tm_arrival.0002.c:0 "Stay with us, [tm_new_daughter.GetFirstName], as my daughter."
 
  # ---------------- Northern faith: Bædling ----------------

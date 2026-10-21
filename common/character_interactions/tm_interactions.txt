@@ -233,6 +233,13 @@ tm_adopt_daughter_interaction = {
 		scope:actor = {
 			add_piety = 25
 		}
+		# A daughter of another faith is asked to take her mother's. In an observe run (867–1005) a childless Mālai
+		# countess adopted a Badenya woman, who inherited the foothold, and the county left the faith.
+		if = {
+			limit = { NOT = { scope:recipient.faith = scope:actor.faith } }
+			scope:actor = { save_scope_as = tm_new_mother }
+			scope:recipient = { trigger_event = tm_refuge.0020 }
+		}
 	}
 
 	ai_accept = {
@@ -296,6 +303,10 @@ tm_adopt_daughter_interaction = {
 		modifier = {	# a sister of the faith
 			add = 15
 			scope:recipient.faith = scope:actor.faith
+		}
+		modifier = {	# a daughter of another faith may keep it (tm_refuge.0020)
+			add = -20
+			NOT = { scope:recipient.faith = scope:actor.faith }
 		}
 		modifier = {	# a niece or kinswoman keeps it in the family
 			add = 10
