@@ -65,6 +65,10 @@ tm_yutai.0010 = {
 	theme = stewardship
 	left_portrait = { character = root animation = worry }
 
+	# Scapegoat pressure (Transpsychoanalytics row 1): a hostile faith that is secure lets this pass some years
+	# (tm_mech_scapegoat_effect, common/scripted_effects/tm_mech_effects.txt).
+	trigger = { NOT = { has_variable = tm_scapegoat_calm } }
+
 	option = {	# Open the store to him
 		name = tm_yutai.0010.a
 		remove_short_term_gold = { value = gold multiply = 0.2 max = 100 min = 0 }

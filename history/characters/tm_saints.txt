@@ -1,0 +1,120 @@
+﻿# Crusader Dolls — the five foremothers of Adelphai Dorleyaiou, the faith's own saints.
+# Invented characters, not historical people: named after the women of Alyson Greaves's Welcome to Dorley Hall,
+# in Byzantine form (docs/faith_design.md §16; "Diana" keeps her own name, user 2026-10-21). All died before 867.
+# Lowborn, as vanilla's saints without a known house are. Their lives are in their epithets' _desc loc
+# (common/nicknames/tm_saints_nicknames.txt, localization/english/tm_saints_l_english.yml).
+# At the 867 start each is enshrined at a holy site of the faith, one saint per province, as vanilla does for
+# its own pre-start saints (common/scripted_effects/tm_saints_effects.txt). Fallback tomb: Midaion (province 5562),
+# the church barony of Phrygia.
+
+# Stephania, the First Mother: founded the House at Dorylaion; the first Mother of Mothers.
+tm_saint_stephania = {
+	name = "Stephania"
+	female = yes
+	culture = kybeline
+	religion = transbian_maximalism
+	trait = tm_daughter_of_the_knife
+	trait = education_learning_4
+	trait = brave
+	trait = compassionate
+	trait = just
+	698.1.1 = { birth = yes }
+	771.3.24 = {		# the Day of Blood
+		death = yes
+		give_nickname = tm_nick_the_first_mother
+		trait = saint
+		effect_even_if_dead = {
+			tm_saints_enshrine_effect = { PROVINCE = province:749 FALLBACK = province:5562 }	# Dorylaion
+		}
+	}
+}
+
+# Bethania the Bookbearer: carried the House's books out of Dorylaion; died in a governor's prison at Ankyra.
+tm_saint_bethania = {
+	name = "Bethania"
+	female = yes
+	culture = kybeline
+	religion = transbian_maximalism
+	trait = tm_daughter_of_the_knife
+	trait = education_learning_3
+	trait = brave
+	trait = stubborn
+	trait = honest
+	714.1.1 = { birth = yes }
+	752.12.1 = {
+		death = { death_reason = death_prison }
+		give_nickname = tm_nick_the_bookbearer
+		trait = saint
+		effect_even_if_dead = {
+			tm_saints_enshrine_effect = { PROVINCE = province:753 FALLBACK = province:5562 }	# Ankyra
+		}
+	}
+}
+
+# Diana of Kyzikos: founded the first daughter House, at Kyzikos under Dindymon.
+tm_saint_diana = {
+	name = "Diana"
+	female = yes
+	culture = kybeline
+	religion = transbian_maximalism
+	trait = tm_daughter_of_the_knife
+	trait = education_stewardship_3
+	trait = generous
+	trait = gregarious
+	trait = forgiving
+	741.1.1 = { birth = yes }
+	809.1.1 = {
+		death = yes
+		give_nickname = tm_nick_of_kyzikos
+		trait = saint
+		effect_even_if_dead = {
+			tm_saints_enshrine_effect = { PROVINCE = province:743 FALLBACK = province:5562 }	# Kyzikos
+		}
+	}
+}
+
+# Christina the Physician: taught the Houses to keep the knife clean; died tending the sick at ruined Pepouza.
+tm_saint_christina = {
+	name = "Christina"
+	female = yes
+	culture = kybeline
+	religion = transbian_maximalism
+	trait = tm_daughter_of_the_knife
+	trait = education_learning_3
+	trait = lifestyle_physician
+	trait = diligent
+	trait = compassionate
+	trait = calm
+	758.1.1 = { birth = yes }
+	826.9.1 = {
+		death = { death_reason = death_ill }
+		give_nickname = tm_nick_the_physician
+		trait = saint
+		effect_even_if_dead = {
+			tm_saints_enshrine_effect = { PROVINCE = province:5550 FALLBACK = province:5562 }	# Pepouza (b_sebaste)
+		}
+	}
+}
+
+# Philippa Who Walked Beside: walked the novice years beside many daughters, Theia Beatrike among them.
+# Her tomb is meant for Pessinus (5563); at 867 Pessinus has no holding, so she lies at Midaion.
+tm_saint_philippa = {
+	name = "Philippa"
+	female = yes
+	culture = kybeline
+	religion = transbian_maximalism
+	trait = tm_daughter_of_the_knife
+	trait = education_diplomacy_3
+	trait = patient
+	trait = compassionate
+	trait = humble
+	779.1.1 = { birth = yes }
+	849.1.1 = {
+		death = yes
+		give_nickname = tm_nick_who_walked_beside
+		trait = saint
+		effect_even_if_dead = {
+			tm_saints_enshrine_effect = { PROVINCE = province:5563 FALLBACK = province:5562 }	# Pessinus, else Midaion
+		}
+	}
+}

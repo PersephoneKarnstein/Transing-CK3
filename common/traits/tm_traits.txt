@@ -4,13 +4,14 @@
 # as placeholders so the game loads cleanly; delete each line once the custom .dds is in place.
 
 # The seed: "Marked by the Mother". Sisters are born of any womb. birth/random_creation require genetic = yes,
-# so the mark is technically genetic (recessive inheritance); at 1% the bloodline effect is negligible.
+# so the mark is technically genetic (recessive inheritance); at 1.5% the bloodline effect is negligible.
+# Raised from 1% to 1.5% (user, 2026-10-21): Marked and daughters stayed in single figures per faith in every run.
 # Visible on purpose: the vanilla Character Finder's trait filter can then find marked characters.
 tm_transgender = {
 	genetic = yes
 	valid_sex = male					# trans women only; trans-masculine content is out of scope (design lock §open questions)
-	birth = 1
-	random_creation = 1
+	birth = 1.5
+	random_creation = 1.5
 
 	same_opinion = 10					# t4t: the marked recognise one another
 	shown_in_ruler_designer = yes

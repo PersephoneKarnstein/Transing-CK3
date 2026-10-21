@@ -285,3 +285,162 @@ tm_house.0050 = {
 		}
 	}
 }
+
+# The same door (Bhatt row 3, Serano row 19): the reproductive order puts out barren wives, widows, captives and
+# women it calls disreputable together with the Marked, and the House takes them in by the same door.
+# From tm_house_yearly_effect. Root = the holder; scope:tm_house_county.
+tm_house.0065 = {
+	type = character_event
+	title = tm_house.0065.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:tm_door_kind = flag:widow }
+				desc = tm_house.0065.desc_widow
+			}
+			triggered_desc = {
+				trigger = { scope:tm_door_kind = flag:freed }
+				desc = tm_house.0065.desc_freed
+			}
+			triggered_desc = {
+				trigger = { scope:tm_door_kind = flag:prisoner }
+				desc = tm_house.0065.desc_prisoner
+			}
+			desc = tm_house.0065.desc_dancer
+		}
+	}
+	theme = faith
+	left_portrait = { character = scope:tm_door_woman animation = worry }
+
+	trigger = {
+		exists = capital_province
+		exists = scope:tm_house_county
+		scope:tm_house_county = { has_variable = tm_house }
+	}
+
+	immediate = {
+		random_list = {
+			30 = {
+				save_scope_value_as = { name = tm_door_kind value = flag:widow }
+				create_character = {
+					gender = female
+					age = { 30 55 }
+					culture = root.capital_county.culture
+					faith = root.faith
+					location = root.capital_province
+					save_scope_as = tm_door_woman
+				}
+			}
+			25 = {
+				save_scope_value_as = { name = tm_door_kind value = flag:freed }
+				create_character = {
+					gender = female
+					age = { 18 35 }
+					faith = root.faith
+					location = root.capital_province
+					save_scope_as = tm_door_woman
+				}
+			}
+			20 = {
+				save_scope_value_as = { name = tm_door_kind value = flag:prisoner }
+				create_character = {
+					gender = female
+					age = { 20 45 }
+					culture = root.capital_county.culture
+					faith = root.faith
+					location = root.capital_province
+					save_scope_as = tm_door_woman
+				}
+			}
+			25 = {
+				save_scope_value_as = { name = tm_door_kind value = flag:dancer }
+				create_character = {
+					gender = female
+					age = { 18 35 }
+					culture = root.capital_county.culture
+					faith = root.faith
+					location = root.capital_province
+					save_scope_as = tm_door_woman
+				}
+			}
+		}
+	}
+
+	option = {	# The same door
+		name = tm_house.0065.a
+		add_courtier = scope:tm_door_woman
+		add_piety = 10
+		scope:tm_door_woman = {
+			add_opinion = { target = root modifier = grateful_opinion opinion = 30 }
+		}
+		scope:tm_house_county = { change_variable = { name = tm_house_strain add = -1 } }
+		ai_chance = { base = 70 }
+	}
+	option = {	# ...and a mother
+		name = tm_house.0065.b
+		trigger = {
+			rite ?= { rite_has_parameter = tm_adoptive_matriline }
+			age > scope:tm_door_woman.age		# a parent can't be younger than her child
+		}
+		add_courtier = scope:tm_door_woman
+		adopt_effect = {
+			CHILD = scope:tm_door_woman
+			ADOPTER = root
+		}
+		scope:tm_door_woman = {
+			add_opinion = { target = root modifier = grateful_opinion opinion = 40 }
+		}
+		ai_chance = {
+			base = 10
+			modifier = { add = 30 NOT = { any_child = { is_alive = yes faith = root.faith } } }
+		}
+	}
+	option = {	# Another House
+		name = tm_house.0065.c
+		add_piety = -10
+		scope:tm_door_woman = { tm_send_on_effect = { EXCLUDE = root } }
+		ai_chance = { base = 20 }
+	}
+}
+
+# A prisoner let go from a cell of a lord who keeps a Sisters' House asks to stay with the House's friends
+# (Serano row 19). From tm_mech_on_release_from_prison. Root = the lord; scope:tm_released.
+tm_house.0061 = {
+	type = character_event
+	title = tm_house.0061.t
+	desc = tm_house.0061.desc
+	theme = faith
+	left_portrait = { character = scope:tm_released animation = worry }
+
+	trigger = {
+		exists = scope:tm_released
+		scope:tm_released = {
+			is_alive = yes
+			is_imprisoned = no
+			is_ruler = no
+		}
+	}
+
+	option = {	# Stay
+		name = tm_house.0061.a
+		add_courtier = scope:tm_released
+		scope:tm_released = {
+			if = {
+				limit = {
+					is_female = no
+					tm_is_daughter_trigger = no
+					NOT = { has_trait = tm_transgender }
+					NOT = { has_character_modifier = tm_house_friend_modifier }
+				}
+				add_character_modifier = { modifier = tm_house_friend_modifier }
+			}
+			add_opinion = { target = root modifier = grateful_opinion opinion = 25 }
+		}
+		add_piety = 10
+		ai_chance = { base = 60 }
+	}
+	option = {	# Go in peace
+		name = tm_house.0061.b
+		ai_chance = { base = 40 }
+	}
+}

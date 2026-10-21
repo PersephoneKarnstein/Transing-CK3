@@ -1,0 +1,430 @@
+﻿# Crusader Dolls — effects for the October 2026 mechanics (docs/faith_design.md §16, items 24–31).
+
+# ---------------------------------------------------------------------------------------------------
+# Item 25. Ease one lukewarm observer's view of one daughter. Scope: the observer (tm_mech_hostile_observer_trigger
+# and tm_mech_lukewarm_observer_trigger hold). scope:tm_eased_daughter = the daughter. CONTACT = yes when they share
+# a court. The trait penalty itself (common/traits/tm_traits.txt) never changes; this adds a counterweight to it.
+#   Islamic and Jewish observers: -10 from the trait, so half is 5.
+#   Indic and Buddhist observers: -5 (-15 for a daughter of the knife), so half is 2.5 (7.5).
+tm_mech_ease_observer_effect = {
+	save_temporary_scope_value_as = {
+		name = tm_half_penalty
+		value = {
+			value = 0
+			if = {
+				limit = { rite ?= { rite_has_parameter = islamic_syncretic_recipient } }
+				add = 10
+			}
+			else_if = {
+				limit = { rite ?= { rite_has_parameter = jewish_syncretic_recipient } }
+				add = 10
+			}
+			else_if = {
+				limit = { scope:tm_eased_daughter = { has_trait = tm_daughter_of_the_knife } }
+				add = 15
+			}
+			else = {
+				add = 5
+			}
+			multiply = 0.5
+		}
+	}
+	add_opinion = {
+		target = scope:tm_eased_daughter
+		modifier = tm_lukewarm_observer_opinion
+		opinion = scope:tm_half_penalty
+		years = 2
+	}
+	if = {
+		limit = {
+			always = $CONTACT$
+			has_variable = tm_contact_years
+		}
+		add_opinion = {
+			target = scope:tm_eased_daughter
+			modifier = tm_shared_court_opinion
+			opinion = {
+				value = scope:tm_half_penalty
+				multiply = var:tm_contact_years
+				divide = 5
+			}
+			years = 2
+		}
+	}
+}
+
+# Item 25, yearly. Scope: a ruler. Her court is the ruler and the ruler's adult courtiers.
+tm_mech_court_contact_effect = {
+	add_to_list = tm_contact_court
+	every_courtier = {
+		limit = { is_adult = yes }
+		add_to_list = tm_contact_court
+	}
+	if = {
+		limit = {
+			any_in_list = { list = tm_contact_court tm_is_daughter_trigger = yes }
+			any_in_list = {
+				list = tm_contact_court
+				tm_mech_hostile_observer_trigger = yes
+				tm_mech_lukewarm_observer_trigger = yes
+			}
+		}
+		# A year shared with daughters. Five years wear the doubt away.
+		every_in_list = {
+			list = tm_contact_court
+			limit = {
+				tm_mech_hostile_observer_trigger = yes
+				tm_mech_lukewarm_observer_trigger = yes
+			}
+			if = {
+				limit = { NOT = { has_variable = tm_contact_years } }
+				set_variable = { name = tm_contact_years value = 1 }
+			}
+			else_if = {
+				limit = { var:tm_contact_years < 5 }
+				change_variable = { name = tm_contact_years add = 1 }
+			}
+		}
+		every_in_list = {
+			list = tm_contact_court
+			limit = { tm_is_daughter_trigger = yes }
+			save_scope_as = tm_eased_daughter
+			every_in_list = {
+				list = tm_contact_court
+				limit = {
+					NOT = { this = scope:tm_eased_daughter }
+					tm_mech_hostile_observer_trigger = yes
+					tm_mech_lukewarm_observer_trigger = yes
+				}
+				tm_mech_ease_observer_effect = { CONTACT = yes }
+			}
+		}
+	}
+	# A daughter who rules: her liege sees her from a distance, so only the half applies.
+	if = {
+		limit = {
+			tm_is_daughter_trigger = yes
+			liege ?= {
+				NOT = { this = root }
+				tm_mech_hostile_observer_trigger = yes
+				tm_mech_lukewarm_observer_trigger = yes
+			}
+		}
+		save_scope_as = tm_eased_daughter
+		liege = { tm_mech_ease_observer_effect = { CONTACT = no } }
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Item 24. A woman freed by Rescue the Daughters chooses her road (Bhatt row 11). Scope: the freed woman, still
+# imprisoned if she was a captive. scope:tm_rescuer = the attacker; scope:tm_held_by = the defender.
+# The AI weighs her opinion of the attacker and her faith against her opinion of the court she lives at.
+tm_mech_rescue_choose_effect = {
+	save_scope_as = tm_freed
+	clear_saved_scope = tm_freed_home
+	if = {
+		limit = { exists = employer }
+		employer = { save_scope_as = tm_freed_home }
+	}
+	save_temporary_scope_value_as = {
+		name = tm_join_score
+		value = {
+			value = "opinion(scope:tm_rescuer)"
+			if = {
+				limit = { faith = scope:tm_rescuer.faith }
+				add = 25
+			}
+			if = {
+				limit = { exists = scope:tm_freed_home }
+				if = {
+					limit = { scope:tm_freed_home = scope:tm_held_by }
+					add = 25					# the court that held her, or let her be held
+				}
+				else_if = {
+					limit = { NOT = { scope:tm_freed_home = scope:tm_rescuer } }
+					subtract = "opinion(scope:tm_freed_home)"
+				}
+				if = {
+					limit = { NOT = { scope:tm_freed_home.faith = faith } }
+					add = 15
+				}
+			}
+			else = {
+				add = 50						# no home to go back to
+			}
+			if = {
+				limit = { is_imprisoned_by = scope:tm_held_by }
+				add = 25
+			}
+		}
+	}
+	if = {
+		limit = { is_imprisoned = yes }
+		release_from_prison = yes
+	}
+	if = {
+		limit = {
+			is_ruler = no
+			NOT = { is_courtier_of = scope:tm_rescuer }
+		}
+		if = {
+			limit = { is_ai = no }
+			trigger_event = tm_mech.0001
+		}
+		else_if = {
+			limit = { scope:tm_join_score > 0 }
+			scope:tm_rescuer = { add_courtier = scope:tm_freed }
+			add_opinion = { target = scope:tm_rescuer modifier = grateful_opinion opinion = 20 }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Item 31. A daughter's spouse: a friend of the House, and the target of hostile faiths' talk (Serano row 10).
+# Scope: the spouse. DAUGHTER = the daughter.
+tm_mech_spouse_of_daughter_effect = {
+	save_scope_as = tm_daughter_spouse
+	if = {
+		limit = {
+			tm_is_daughter_trigger = no
+			NOT = { has_character_modifier = tm_house_friend_modifier }
+		}
+		add_character_modifier = { modifier = tm_house_friend_modifier }
+	}
+	every_close_family_member = {
+		limit = { tm_mech_other_faith_observer_trigger = { DAUGHTER = $DAUGHTER$ } }
+		add_to_list = tm_spouse_watchers
+	}
+	liege ?= {
+		if = {
+			limit = { tm_mech_other_faith_observer_trigger = { DAUGHTER = $DAUGHTER$ } }
+			add_to_list = tm_spouse_watchers
+		}
+	}
+	employer ?= {
+		if = {
+			limit = { tm_mech_other_faith_observer_trigger = { DAUGHTER = $DAUGHTER$ } }
+			add_to_list = tm_spouse_watchers
+		}
+		every_courtier = {
+			limit = { tm_mech_other_faith_observer_trigger = { DAUGHTER = $DAUGHTER$ } }
+			add_to_list = tm_spouse_watchers
+		}
+	}
+	every_in_list = {
+		list = tm_spouse_watchers
+		limit = {
+			NOT = { this = scope:tm_daughter_spouse }
+			NOT = { this = $DAUGHTER$ }
+		}
+		add_opinion = {
+			target = scope:tm_daughter_spouse
+			modifier = tm_married_a_daughter_opinion
+			years = 15
+		}
+	}
+	if = {
+		limit = {
+			is_ai = no
+			any_in_list = { list = tm_spouse_watchers NOT = { this = scope:tm_daughter_spouse } }
+		}
+		send_interface_toast = {
+			type = event_toast_effect_neutral
+			title = tm_mech_married_a_daughter_toast
+			left_icon = scope:tm_daughter_spouse
+			desc = tm_mech_married_a_daughter_toast.tt
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Item 26. Grievances outlast the old register (Keywords row 3: the jurists let one choose, but not unmake the
+# choice). Called inside tm_reembody_as_woman_effect, after the new body exists and before the old one is retired.
+# Anyone near her, not of the six faiths, who thought worse of the old body than of the new keeps the difference.
+tm_mech_carry_grievances_effect = {
+	# Titles, vassals and court have already moved to the new body (step 7), so look from both.
+	scope:tm_new_body = {
+		liege ?= { add_to_list = tm_grievance_holders }
+		employer ?= {
+			add_to_list = tm_grievance_holders
+			every_courtier = { add_to_list = tm_grievance_holders }
+		}
+		every_courtier = { add_to_list = tm_grievance_holders }
+		every_vassal = { add_to_list = tm_grievance_holders }
+	}
+	scope:tm_old_body = {
+		every_close_family_member = { add_to_list = tm_grievance_holders }
+		liege ?= { add_to_list = tm_grievance_holders }
+		employer ?= {
+			add_to_list = tm_grievance_holders
+			every_courtier = { add_to_list = tm_grievance_holders }
+		}
+		every_courtier = { add_to_list = tm_grievance_holders }
+		every_vassal = { add_to_list = tm_grievance_holders }
+	}
+	every_in_list = {
+		list = tm_grievance_holders
+		limit = {
+			is_alive = yes
+			NOT = { this = scope:tm_old_body }
+			NOT = { this = scope:tm_new_body }
+			NOT = { rite ?= { rite_has_parameter = tm_sisters_faith } }
+			opinion = { target = scope:tm_old_body value < 0 }
+		}
+		save_temporary_scope_value_as = {
+			name = tm_grievance
+			value = {
+				value = "opinion(scope:tm_old_body)"
+				subtract = "opinion(scope:tm_new_body)"
+				max = 0
+				min = -50
+			}
+		}
+		if = {
+			limit = { scope:tm_grievance < -1 }
+			add_opinion = {
+				target = scope:tm_new_body
+				modifier = tm_binding_grievance_opinion
+				opinion = scope:tm_grievance
+			}
+		}
+	}
+}
+
+# Item 31. After re-embodiment the marriage stands unless either chooses to leave. Called inside
+# tm_reembody_as_woman_effect after the marriages have moved. Each spouse is a separate question.
+tm_mech_reembodied_marriages_effect = {
+	scope:tm_new_body = {
+		every_spouse = {
+			save_scope_as = tm_mech_spouse
+			scope:tm_new_body = { trigger_event = { id = tm_mech.0040 days = 7 } }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Item 28. Set Down the Name (Serano row 6). Scope: the sister. Ends the declaration only: her body, her House
+# and her faith's good opinion stay as they were, and she may declare again at any time, for free.
+tm_mech_set_down_name_effect = {
+	save_scope_as = tm_set_down
+	remove_variable = tm_declared
+	if = {
+		limit = { has_character_modifier = tm_declared_modifier }
+		remove_character_modifier = tm_declared_modifier
+	}
+	set_variable = tm_set_down_name			# a later declaration is free and earns no second reward (tm_declare_effect)
+	# She stays a friend of the House, whatever she is called.
+	if = {
+		limit = {
+			is_female = no
+			NOT = { has_trait = tm_transgender }
+			NOT = { has_character_modifier = tm_house_friend_modifier }
+		}
+		add_character_modifier = { modifier = tm_house_friend_modifier }
+	}
+	# The hostile faiths at hand are pleased with themselves.
+	liege ?= {
+		if = {
+			limit = { tm_mech_other_faith_observer_trigger = { DAUGHTER = scope:tm_set_down } }
+			add_to_list = tm_gloaters
+		}
+	}
+	employer ?= {
+		if = {
+			limit = { tm_mech_other_faith_observer_trigger = { DAUGHTER = scope:tm_set_down } }
+			add_to_list = tm_gloaters
+		}
+		every_courtier = {
+			limit = { tm_mech_other_faith_observer_trigger = { DAUGHTER = scope:tm_set_down } }
+			add_to_list = tm_gloaters
+		}
+	}
+	every_close_family_member = {
+		limit = { tm_mech_other_faith_observer_trigger = { DAUGHTER = scope:tm_set_down } }
+		add_to_list = tm_gloaters
+	}
+	every_in_list = {
+		list = tm_gloaters
+		limit = { NOT = { this = scope:tm_set_down } }
+		add_opinion = { target = scope:tm_set_down modifier = tm_set_down_name_opinion }
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Item 29. Teach Her the Answers. Scope: the seeker. scope:tm_answer_teacher = the daughter who teaches.
+tm_mech_teach_answers_effect = {
+	add_character_modifier = { modifier = tm_taught_answers_modifier years = 5 }
+	add_opinion = { target = scope:tm_answer_teacher modifier = grateful_opinion opinion = 15 }
+	add_learning_lifestyle_xp = 50
+	scope:tm_answer_teacher = { add_piety = 15 }
+	# Salah: the examiners distrust a seeker who knows what they will ask. Never a reason to refuse her.
+	random = {
+		chance = 10
+		trigger_event = { id = tm_mech.0030 days = { 60 240 } }
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Item 27. Scapegoat pressure (Transpsychoanalytics row 1: hostility to the "inside outsider" serves a shaky group's
+# need for unity). Scope: a ruler of the six faiths under a liege of another faith. When the liege's faith is
+# secure (fervor 70 or more), the hostile events below let her be half the years (tm_scapegoat_calm, read in their
+# triggers); when it is under strain (fervor under 30), each gets a second, small chance. The base chances stay
+# in common/on_action/tm_on_actions.txt. Hostile events: the heresy ladder (tm_byz.0010–0012), the magistrate's
+# inventory (tm_yutai.0010).
+tm_mech_scapegoat_effect = {
+	save_scope_as = tm_scapegoat_target
+	if = {
+		limit = {
+			liege ?= {
+				NOT = { this = scope:tm_scapegoat_target }
+				NOT = { faith = scope:tm_scapegoat_target.faith }
+				NOT = { rite ?= { rite_has_parameter = tm_sisters_faith } }
+			}
+		}
+		liege.faith = { save_scope_as = tm_hostile_faith }
+		if = {
+			limit = { scope:tm_hostile_faith = { fervor >= 70 } }
+			random = {
+				chance = 50
+				set_variable = { name = tm_scapegoat_calm value = yes years = 1 }
+			}
+		}
+		else_if = {
+			limit = { scope:tm_hostile_faith = { fervor < 30 } }
+			# The heresy ladder: same rungs and limits as tm_yearly_playable.
+			if = {
+				limit = {
+					rite ?= { rite_has_parameter = tm_day_of_blood_active }
+					liege = { faith = { religion_tag = christianity_religion } }
+					NOT = { var:tm_suppression ?= 3 }
+				}
+				random = {
+					chance = 3
+					if = {
+						limit = { NOT = { has_variable = tm_suppression } }
+						trigger_event = { id = tm_byz.0010 days = { 1 300 } }
+					}
+					else_if = {
+						limit = { var:tm_suppression = 1 }
+						trigger_event = { id = tm_byz.0011 days = { 1 300 } }
+					}
+					else_if = {
+						limit = { liege ?= { culture ?= { has_cultural_pillar = heritage_byzantine } } }
+						trigger_event = { id = tm_byz.0012 days = { 1 300 } }
+					}
+				}
+			}
+			# The magistrate's inventory.
+			if = {
+				limit = {
+					rite ?= { rite_has_parameter = tm_embryo_gate }
+					any_held_title = { tier = tier_county has_variable = tm_house NOT = { has_variable = tm_house_named } }
+				}
+				random = {
+					chance = 1
+					trigger_event = { id = tm_yutai.0010 days = { 1 300 } }
+				}
+			}
+		}
+	}
+}

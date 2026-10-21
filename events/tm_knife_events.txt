@@ -123,7 +123,6 @@ tm_knife.0002 = {
 	option = {	# Keep the old name for now
 		name = tm_knife.0002.c
 		trigger = { is_male = yes }
-		add_stress = 10
 	}
 }
 

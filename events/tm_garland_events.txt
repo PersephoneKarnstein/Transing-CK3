@@ -141,7 +141,8 @@ tm_garland.0001 = {
 		name = tm_garland.0001.a
 		random_list = {
 			25 = {
-				modifier = { add = 30 has_trait = tm_transgender }
+				modifier = { add = 30 OR = { has_trait = tm_transgender has_variable = tm_declared } }	# Marked, or named before witnesses (§16 rule 8)
+				modifier = { add = 15 has_character_modifier = tm_taught_answers_modifier }	# Teach Her the Answers (tm_mech_interactions.txt)
 				modifier = {							# the circle that held
 					has_variable = tm_pavai_companions
 					add = { value = var:tm_pavai_companions multiply = 8 }
@@ -193,7 +194,6 @@ tm_garland.0002 = {
 	option = {
 		name = tm_garland.0002.c
 		trigger = { is_male = yes }
-		add_stress = 10
 	}
 }
 

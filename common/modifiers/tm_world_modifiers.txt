@@ -1,0 +1,24 @@
+﻿# Crusader Dolls — modifiers of the hostile-world events (events/tm_world_events.txt).
+
+# The House's counter-record: a physician wrote that she calls herself no woman, and the House wrote down what she
+# said (Bhatt, Brown/Trans/Les ch. 8; book note §5 row 6). Other events may read it as a defence in a later
+# suppression; it does nothing else.
+tm_world_counter_record_modifier = {
+	icon = learning_positive
+	monthly_prestige = 0.1
+	stress_gain_mult = -0.05
+}
+
+# A corrected copy: the copyist wrote her in the masculine, and the women keep a copy that says "she"
+# (tsq_keywords_2014.md §3 row 12).
+tm_world_corrected_copy_modifier = {
+	icon = learning_positive
+	monthly_prestige = 0.1
+}
+
+# Placed in the women's rooms as an attendant "without desire": safe, and filed as no woman
+# (tsq_keywords_2014.md §3 row 10).
+tm_world_without_desire_modifier = {
+	icon = stress_negative
+	stress_gain_mult = 0.05
+}

@@ -1,0 +1,14 @@
+﻿# Crusader Dolls — houses, family and small moments (events/tm_life_events.txt).
+
+# The House kept its door open to the street (tm_life.0001).
+tm_life_open_door_modifier = {
+	icon = piety_positive
+	monthly_piety = 0.2
+}
+
+# What she earned serving at the naming feast is hers (tm_life.0051).
+tm_life_own_earnings_modifier = {
+	icon = stewardship_positive
+	stewardship = 1
+	stress_gain_mult = -0.05
+}

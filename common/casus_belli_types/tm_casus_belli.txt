@@ -5,8 +5,8 @@
 #   - a county where daughters, novices or Marked women of the attacker's faith live under a lord of another faith
 #     (tm_county_shelters_daughters_trigger). Daughters cluster at a few courts, so this is not a war on everyone;
 #   - the defender holds such a woman prisoner (any neighbouring county of the defender's).
-# Victory takes the county; the women of the attacker's faith living there, and every captive the defender holds,
-# come to the attacker's court.
+# Victory takes the county and frees the women of the attacker's faith living there and every captive the defender
+# holds; each chooses whether to join the attacker's court or go home. Piety for each woman freed.
 tm_rescue_daughters_cb = {
 	icon = minor_religious_war
 	group = religious
@@ -113,16 +113,21 @@ tm_rescue_daughters_cb = {
 				add_to_list = tm_rescued
 			}
 		}
+		# Each woman freed chooses her road (Bhatt row 11): the attacker's court, or home. The AI weighs her
+		# opinion of the attacker and her faith against the court she lives at (tm_mech_rescue_choose_effect).
+		scope:attacker = { save_scope_as = tm_rescuer }
+		scope:defender = { save_scope_as = tm_held_by }
 		every_in_list = {
 			list = tm_rescued
-			if = {
-				limit = { is_imprisoned = yes }
-				release_from_prison = yes
-			}
-			scope:attacker = { add_courtier = prev }
+			tm_mech_rescue_choose_effect = yes
 		}
+		# No piety for the war itself: piety for each woman freed, up to twelve.
 		scope:attacker = {
-			add_piety = 200
+			add_piety = {
+				value = list_size:tm_rescued
+				multiply = 25
+				max = 300
+			}
 			add_prestige = 100
 		}
 	}

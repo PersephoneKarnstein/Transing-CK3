@@ -180,8 +180,8 @@ tm_praiposita_court_trigger = {
 	}
 }
 
-# Could keep the fourteenth of Adar and pray to be turned: of Ha-Nehpakhot, or of another Jewish faith and
-# Marked (the Turning converts her). Eunuchs may come too: a eunuch who seeks womanhood is a sister.
+# Could keep the fourteenth of Adar and pray to be turned: of Ha-Nehpakhot, or a Rabbanite Jew of another faith
+# and Marked or declared (the Turning converts her). Eunuchs may come too: a eunuch who seeks womanhood is a sister.
 tm_turning_seeker_trigger = {
 	is_male = yes
 	is_adult = yes
@@ -190,7 +190,7 @@ tm_turning_seeker_trigger = {
 	OR = {
 		rite ?= { rite_has_parameter = tm_turning_gate }
 		AND = {
-			rite ?= { rite_has_parameter = jewish_syncretic_recipient }
+			tm_rabbanite_jew_trigger = yes		# a Rabbanite Jew (tm_fixes_triggers.txt): Purim as the rabbis keep it
 			OR = {
 				has_trait = tm_transgender
 				has_variable = tm_declared

@@ -1,0 +1,287 @@
+﻿# Crusader Dolls — daughters in a hostile world (events/tm_world_events.txt).
+# Every chance here is small: these are flavour. A daughter touched by one of them is left alone for three years
+# (tm_world_mark_effect); a lord gets the Whispers at most once in eight years. Scapegoat pressure (item 27): each
+# chance rises when the hostile faith is shaken (fervor below 35) and halves when it is secure (above 75).
+
+yearly_playable_pulse = {
+	on_actions = {
+		tm_world_yearly
+	}
+}
+
+tm_world_yearly = {
+	effect = {
+		# 33. Whispers, and the child-lifter rumour. Any lord who keeps a Sisters' House, of any faith; the tale is told
+		# by a courtier or vassal of another faith, about a daughter of the House at his court.
+		if = {
+			limit = {
+				tm_holds_sisters_house_trigger = yes
+				NOT = { has_character_flag = tm_world_whispers_cd }
+				any_courtier = {
+					tm_world_daughter_trigger = yes
+					tm_house_member_trigger = yes
+					tm_world_rested_trigger = yes
+				}
+				OR = {
+					any_courtier = { is_adult = yes tm_world_hostile_court_trigger = yes }
+					any_vassal = { tm_world_hostile_court_trigger = yes }
+				}
+			}
+			random_courtier = {
+				limit = {
+					tm_world_daughter_trigger = yes
+					tm_house_member_trigger = yes
+					tm_world_rested_trigger = yes
+				}
+				save_scope_as = tm_world_sister
+			}
+			random_held_title = {
+				limit = {
+					tier = tier_county
+					has_variable = tm_house
+				}
+				save_scope_as = tm_world_county
+			}
+			if = {
+				limit = { any_courtier = { is_adult = yes tm_world_hostile_court_trigger = yes } }
+				random_courtier = {
+					limit = { is_adult = yes tm_world_hostile_court_trigger = yes }
+					save_scope_as = tm_world_speaker
+				}
+			}
+			else = {
+				random_vassal = {
+					limit = { tm_world_hostile_court_trigger = yes }
+					save_scope_as = tm_world_speaker
+				}
+			}
+			random = {
+				chance = 3
+				modifier = {
+					add = 2
+					scope:tm_world_speaker.faith = { tm_world_strained_faith_trigger = yes }
+				}
+				modifier = {
+					factor = 0.5
+					scope:tm_world_speaker.faith = { tm_world_secure_faith_trigger = yes }
+				}
+				add_character_flag = { flag = tm_world_whispers_cd years = 8 }
+				scope:tm_world_sister = { tm_world_mark_effect = yes }
+				# The tale is drawn from what the teller fears of her faith (tsq_transpsychoanalytics_2017.md row 2).
+				scope:tm_world_sister = {
+					if = {
+						limit = { rite ?= { rite_has_parameter = tm_seidr_gate } }
+						save_scope_value_as = { name = tm_world_rumour value = flag:seidr }
+					}
+					else_if = {
+						limit = { rite ?= { rite_has_parameter = tm_embryo_gate } }
+						save_scope_value_as = { name = tm_world_rumour value = flag:palace }
+					}
+					else_if = {
+						limit = { tm_world_nehpakhot_daughter_trigger = yes }
+						save_scope_value_as = { name = tm_world_rumour value = flag:feast }
+					}
+					else_if = {
+						limit = { rite ?= { rite_has_parameter = tm_garland_gate } }
+						save_scope_value_as = { name = tm_world_rumour value = flag:garland }
+					}
+					else_if = {
+						limit = { rite ?= { rite_has_parameter = tm_crossing_gate } }
+						save_scope_value_as = { name = tm_world_rumour value = flag:draught }
+					}
+					else_if = {
+						limit = { rite ?= { rite_has_parameter = tm_day_of_blood_active } }
+						save_scope_value_as = { name = tm_world_rumour value = flag:baths }
+					}
+					else = {
+						save_scope_value_as = { name = tm_world_rumour value = flag:ear }
+					}
+				}
+				random_list = {
+					70 = { trigger_event = { id = tm_world.0001 days = { 1 300 } } }
+					30 = {
+						# Never in a Grandmother's House realm (tm_world_grandmother_trigger) and never about a daughter of
+						# Ha-Nehpakhot (tm_world_nehpakhot_daughter_trigger).
+						trigger = {
+							tm_world_grandmother_trigger = no
+							scope:tm_world_sister = {
+								tm_world_grandmother_trigger = no
+								tm_world_nehpakhot_daughter_trigger = no
+							}
+						}
+						trigger_event = { id = tm_world.0002 days = { 1 300 } }
+					}
+				}
+			}
+		}
+
+		# 37. The Court Wonders: a Christian lord of another faith with a daughter at court.
+		if = {
+			limit = {
+				faith = { religion_tag = christianity_religion }
+				tm_world_hostile_court_trigger = yes
+				any_courtier = { tm_world_daughter_trigger = yes tm_world_rested_trigger = yes }
+			}
+			random = {
+				chance = 3
+				modifier = { add = 2 faith = { tm_world_strained_faith_trigger = yes } }
+				modifier = { factor = 0.5 faith = { tm_world_secure_faith_trigger = yes } }
+				random_courtier = {
+					limit = { tm_world_daughter_trigger = yes tm_world_rested_trigger = yes }
+					save_scope_as = tm_world_daughter
+					tm_world_mark_effect = yes
+				}
+				trigger_event = { id = tm_world.0030 days = { 1 300 } }
+			}
+		}
+
+		# 38. Those Without Desire: an Islamic household offers a daughter at court a place in the women's rooms.
+		# Asked once of each daughter. The event goes to her; if she insists she is a woman, the lord answers (0042).
+		if = {
+			limit = {
+				faith = { religion_tag = islam_religion }
+				tm_world_hostile_court_trigger = yes
+				any_courtier = {
+					tm_world_daughter_trigger = yes
+					tm_world_rested_trigger = yes
+					NOT = { has_character_flag = tm_world_quarters_asked }
+				}
+			}
+			random = {
+				chance = 3
+				modifier = { add = 2 faith = { tm_world_strained_faith_trigger = yes } }
+				modifier = { factor = 0.5 faith = { tm_world_secure_faith_trigger = yes } }
+				save_scope_as = tm_world_household
+				random_courtier = {
+					limit = {
+						tm_world_daughter_trigger = yes
+						tm_world_rested_trigger = yes
+						NOT = { has_character_flag = tm_world_quarters_asked }
+					}
+					tm_world_mark_effect = yes
+					add_character_flag = tm_world_quarters_asked
+					trigger_event = { id = tm_world.0041 days = { 1 300 } }
+				}
+			}
+		}
+
+		# 34. The copyist: a daughter of Ha-Nehpakhot or of the Jade Embryo, herself or at any lord's court. The event goes
+		# to her: for Ha-Nehpakhot it stays inside the community, with no lord in it (tsq_keywords_2014.md §5).
+		if = {
+			limit = {
+				tm_world_daughter_trigger = yes
+				tm_world_rested_trigger = yes
+				NOT = { has_character_flag = tm_world_copy_seen }
+				OR = {
+					tm_world_nehpakhot_daughter_trigger = yes
+					rite ?= { rite_has_parameter = tm_embryo_gate }
+				}
+			}
+			random = {
+				chance = 3
+				tm_world_mark_effect = yes
+				add_character_flag = { flag = tm_world_copy_seen years = 20 }
+				trigger_event = { id = tm_world.0012 days = { 1 300 } }
+			}
+		}
+		else_if = {
+			limit = {
+				any_courtier = {
+					tm_world_daughter_trigger = yes
+					tm_world_rested_trigger = yes
+					NOT = { has_character_flag = tm_world_copy_seen }
+					OR = {
+						tm_world_nehpakhot_daughter_trigger = yes
+						rite ?= { rite_has_parameter = tm_embryo_gate }
+					}
+				}
+			}
+			random = {
+				chance = 2
+				random_courtier = {
+					limit = {
+						tm_world_daughter_trigger = yes
+						tm_world_rested_trigger = yes
+						NOT = { has_character_flag = tm_world_copy_seen }
+						OR = {
+							tm_world_nehpakhot_daughter_trigger = yes
+							rite ?= { rite_has_parameter = tm_embryo_gate }
+						}
+					}
+					tm_world_mark_effect = yes
+					add_character_flag = { flag = tm_world_copy_seen years = 20 }
+					trigger_event = { id = tm_world.0012 days = { 1 300 } }
+				}
+			}
+		}
+
+		# 34, 36, 37, 38, 42. A ruler of a Sisters' faith, herself a daughter or with one at court, and the world's court
+		# she must deal with (her liege of another faith, or a neighbour).
+		if = {
+			limit = { rite ?= { rite_has_parameter = tm_sisters_faith } }
+			tm_world_pick_daughter_effect = yes
+			tm_world_pick_court_effect = yes
+			if = {
+				limit = {
+					exists = scope:tm_world_daughter
+					exists = scope:tm_world_court
+				}
+				random = {
+					chance = 6
+					modifier = { add = 3 scope:tm_world_court.faith = { tm_world_strained_faith_trigger = yes } }
+					modifier = { factor = 0.5 scope:tm_world_court.faith = { tm_world_secure_faith_trigger = yes } }
+					random_list = {
+						15 = {	# 34. Many Ledgers: only the realm she lives in keeps her in its rolls
+							trigger = {
+								exists = scope:tm_world_court_is_liege
+								scope:tm_world_daughter = { NOT = { has_character_flag = tm_world_ledgers_seen } }
+							}
+							scope:tm_world_daughter = {
+								tm_world_mark_effect = yes
+								add_character_flag = { flag = tm_world_ledgers_seen years = 20 }
+							}
+							trigger_event = { id = tm_world.0010 days = { 1 300 } }
+						}
+						15 = {	# 34. The physician's record
+							trigger = {
+								scope:tm_world_daughter = { NOT = { has_character_flag = tm_world_physician_seen } }
+							}
+							scope:tm_world_daughter = {
+								tm_world_mark_effect = yes
+								add_character_flag = { flag = tm_world_physician_seen years = 15 }
+							}
+							trigger_event = { id = tm_world.0011 days = { 1 300 } }
+						}
+						25 = {	# 36. Questions in hall
+							scope:tm_world_daughter = { tm_world_mark_effect = yes }
+							trigger_event = { id = tm_world.0020 days = { 1 300 } }
+						}
+						15 = {	# 37. The abbess's feast: Greek and Latin convents only
+							trigger = { scope:tm_world_court = { tm_world_chalcedonian_trigger = yes } }
+							scope:tm_world_daughter = { tm_world_mark_effect = yes }
+							trigger_event = { id = tm_world.0031 days = { 1 300 } }
+						}
+						15 = {	# 38. The qadi's ruling
+							trigger = { scope:tm_world_court = { faith = { religion_tag = islam_religion } } }
+							scope:tm_world_daughter = { tm_world_mark_effect = yes }
+							trigger_event = { id = tm_world.0040 days = { 1 300 } }
+						}
+						15 = {	# 42. The Women's Hour: not for Ha-Nehpakhot (no mikveh)
+							trigger = {
+								scope:tm_world_daughter = { tm_world_nehpakhot_daughter_trigger = no }
+								scope:tm_world_court = {
+									OR = {
+										faith = { religion_tag = christianity_religion }
+										faith = { religion_tag = islam_religion }
+									}
+								}
+							}
+							scope:tm_world_daughter = { tm_world_mark_effect = yes }
+							trigger_event = { id = tm_world.0050 days = { 1 300 } }
+						}
+					}
+				}
+			}
+		}
+	}
+}

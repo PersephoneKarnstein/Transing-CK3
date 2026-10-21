@@ -1,0 +1,249 @@
+﻿# Crusader Dolls — the seats and their charter (docs/faith_design.md §16, "Collapse fixes", approved by user 2026-10-21).
+# In observe runs the five small faiths lost their seats two ways: the county passed by inheritance to an heir of
+# another faith (Gotland), or the liege revoked it (Phrygia, 925). These effects answer both.
+
+# The seats, as tools/census_report.py lists them. Each faith's seat county, for $EFFECT$ = { COUNTY FAITH }.
+tm_for_each_seat_effect = {
+	$EFFECT$ = { COUNTY = title:c_phrygia FAITH = faith:transbian_maximalism }
+	$EFFECT$ = { COUNTY = title:c_gutland FAITH = faith:tm_baeddel }
+	$EFFECT$ = { COUNTY = title:c_aland FAITH = faith:tm_baeddel }
+	$EFFECT$ = { COUNTY = title:c_shazhou FAITH = faith:tm_yutai }
+	$EFFECT$ = { COUNTY = title:c_venaissin FAITH = faith:tm_nehpakhot }
+	$EFFECT$ = { COUNTY = title:c_kanchipuram FAITH = faith:tm_garland }
+	$EFFECT$ = { COUNTY = title:c_candragiri FAITH = faith:tm_garland }
+	$EFFECT$ = { COUNTY = title:c_sibi_mali FAITH = faith:tm_badenya }
+	$EFFECT$ = { COUNTY = title:c_awkar FAITH = faith:tm_badenya }
+}
+
+# ---------------------------------------------------------------------------------------------------
+# FIX B: the seat to a member. When a holder of the faith dies holding its seat and the county's heir is not of the
+# faith, the seat passes to a member: her daughter (by birth or adoption), else a daughter or House member at her
+# court, else any adult of the faith at her court. Only the seat county and the baronies she holds in it; the rest
+# of her realm passes as the game decides. Done in on_death, while she still holds her titles (as the re-embodiment
+# in tm_scripted_effects.txt moves titles before the old body dies).
+#
+# Why not set_designated_heir: in 1.20 it takes only a direct child, and it names her heir to every title she holds,
+# not only the seat; a member at court who is not her child could never be chosen.
+#
+# Never taken from a player: not if the county's heir is a player, and if she is a player herself, only when she
+# holds other land, so that her heir still has a realm to play.
+# Scope and root: the dying holder (tm_seat_on_death in tm_seat_on_actions.txt).
+tm_seat_on_death_effect = {
+	save_scope_as = tm_seat_holder
+	tm_for_each_seat_effect = { EFFECT = tm_seat_pass_effect }
+	clear_saved_scope = tm_seat_holder
+}
+
+tm_seat_pass_effect = {
+	if = {
+		limit = {
+			faith = $FAITH$
+			$COUNTY$ = { holder ?= scope:tm_seat_holder }
+			NOT = { $COUNTY$.current_heir ?= { faith = $FAITH$ } }
+			NOT = { $COUNTY$.current_heir ?= { is_ai = no } }
+			trigger_if = {
+				limit = { is_ai = no }
+				any_held_title = {
+					tier >= tier_county
+					is_landless_type_title = no
+					NOT = { this = $COUNTY$ }
+				}
+			}
+		}
+		clear_saved_scope = tm_seat_heir
+		# 1. Her daughter, by birth or adoption; a grown one first.
+		ordered_child = {
+			limit = {
+				tm_seat_candidate_trigger = { FAITH = $FAITH$ }
+				OR = {
+					is_female = yes
+					tm_is_daughter_trigger = yes
+					has_trait = tm_transgender
+				}
+			}
+			order_by = {
+				value = age
+				if = { limit = { is_adult = yes } add = 1000 }
+			}
+			save_scope_as = tm_seat_heir
+		}
+		# 2. A daughter or member of a House at her court; a daughter first.
+		if = {
+			limit = { NOT = { exists = scope:tm_seat_heir } }
+			ordered_courtier = {
+				limit = {
+					tm_seat_candidate_trigger = { FAITH = $FAITH$ }
+					is_adult = yes
+					OR = {
+						tm_is_daughter_trigger = yes
+						tm_house_member_trigger = yes
+					}
+				}
+				order_by = {
+					value = stewardship
+					add = diplomacy
+					if = { limit = { tm_is_daughter_trigger = yes } add = 100 }
+				}
+				save_scope_as = tm_seat_heir
+			}
+		}
+		# 3. Any adult of the faith at her court.
+		if = {
+			limit = { NOT = { exists = scope:tm_seat_heir } }
+			ordered_courtier = {
+				limit = {
+					tm_seat_candidate_trigger = { FAITH = $FAITH$ }
+					is_adult = yes
+				}
+				order_by = {
+					value = stewardship
+					add = diplomacy
+				}
+				save_scope_as = tm_seat_heir
+			}
+		}
+		if = {
+			limit = { exists = scope:tm_seat_heir }
+			if = {	# a player hears of it before she dies
+				limit = { is_ai = no }
+				send_interface_message = {
+					type = event_generic_neutral
+					title = tm_seat_passed_msg
+					desc = tm_seat_passed_msg_desc
+					left_icon = scope:tm_seat_heir
+					right_icon = $COUNTY$
+				}
+			}
+			create_title_and_vassal_change = {
+				type = granted
+				save_scope_as = tm_seat_change
+				add_claim_on_loss = no
+			}
+			$COUNTY$ = {
+				change_title_holder = {
+					holder = scope:tm_seat_heir
+					change = scope:tm_seat_change
+					government_base = scope:tm_seat_holder
+				}
+				every_in_de_jure_hierarchy = {
+					limit = { tier = tier_barony holder ?= scope:tm_seat_holder }
+					change_title_holder = {
+						holder = scope:tm_seat_heir
+						change = scope:tm_seat_change
+					}
+				}
+			}
+			# Her liege: the dying holder's liege, so the seat stays where it was in the realm. If the holder was
+			# independent and keeps other land, the new countess is her vassal, and so her heir's. If the seat was all
+			# she held, the new countess is independent as she was.
+			if = {
+				limit = { exists = liege }
+				scope:tm_seat_heir = {
+					change_liege = {
+						liege = scope:tm_seat_holder.liege
+						change = scope:tm_seat_change
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					any_held_title = {
+						tier >= tier_county
+						is_landless_type_title = no
+						NOT = { this = $COUNTY$ }
+					}
+				}
+				scope:tm_seat_heir = {
+					change_liege = {
+						liege = scope:tm_seat_holder
+						change = scope:tm_seat_change
+					}
+				}
+			}
+			else = {
+				scope:tm_seat_heir = { becomes_independent = { change = scope:tm_seat_change } }
+			}
+			resolve_title_and_vassal_change = scope:tm_seat_change
+			$COUNTY$ = { set_variable = { name = tm_seat_passed value = scope:tm_seat_heir } }	# for save inspection
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The charter. A seat revoked from a holder of its faith by a liege of another faith: the revoker loses piety and
+# prestige, and every member of the faith in the revoker's realm, the holder among them, and the faith's head (for
+# the Adelphai, the Mother of Mothers) think the worse of the revoker. It is not forbidden. The AI's revoke weights
+# are in vanilla code and script this mod does not override, so the AI is discouraged only by what follows: members
+# in its realm and a head of faith who hold it against the revoker.
+# Scope and root: the old holder (on_title_lost); scope:title, scope:new_holder from the engine.
+tm_charter_on_title_lost_effect = {
+	tm_for_each_seat_effect = { EFFECT = tm_charter_breach_effect }
+}
+
+tm_charter_breach_effect = {
+	if = {
+		limit = {
+			scope:title = $COUNTY$
+			faith = $FAITH$
+			NOT = { scope:new_holder = { faith = $FAITH$ } }
+		}
+		save_scope_as = tm_charter_holder
+		scope:new_holder = { save_scope_as = tm_charter_revoker }
+		scope:tm_charter_revoker = {
+			send_interface_message = {
+				type = event_generic_bad
+				title = tm_charter_broken_msg
+				desc = tm_charter_broken_msg_desc
+				left_icon = scope:tm_charter_holder
+				right_icon = $COUNTY$
+				add_piety = major_piety_loss
+				add_prestige = major_prestige_loss
+			}
+		}
+		every_living_character = {
+			limit = {
+				faith = $FAITH$
+				NOT = { this = scope:tm_charter_revoker }
+				OR = {
+					target_is_liege_or_above = scope:tm_charter_revoker
+					employer ?= {
+						OR = {
+							this = scope:tm_charter_revoker
+							target_is_liege_or_above = scope:tm_charter_revoker
+						}
+					}
+				}
+			}
+			add_to_temporary_list = tm_charter_aggrieved
+		}
+		$FAITH$.religious_head ?= {
+			if = {
+				limit = {
+					NOT = { this = scope:tm_charter_revoker }
+					NOT = { is_in_list = tm_charter_aggrieved }
+				}
+				add_to_temporary_list = tm_charter_aggrieved
+			}
+		}
+		if = {	# the Mother House, for the Adelphai seat
+			limit = { scope:title = title:c_phrygia }
+			title:d_tm_mother_house.holder ?= {
+				if = {
+					limit = {
+						faith = $FAITH$
+						NOT = { this = scope:tm_charter_revoker }
+						NOT = { is_in_list = tm_charter_aggrieved }
+					}
+					add_to_temporary_list = tm_charter_aggrieved
+				}
+			}
+		}
+		every_in_list = {
+			list = tm_charter_aggrieved
+			add_opinion = {
+				target = scope:tm_charter_revoker
+				modifier = tm_charter_broken_opinion
+			}
+		}
+	}
+}

@@ -1,0 +1,70 @@
+﻿# Crusader Dolls — interactions for the October 2026 mechanics (docs/faith_design.md §16).
+
+# Item 29. Teach Her the Answers (Bhatt row 5, Transpsychoanalytics row 10). Trans women passed the clinicians'
+# criteria hand to hand; what the gatekeepers hoard is the sisters' to share. A daughter who came through a gate with
+# an outside examiner tells a seeker bound for the same gate what they ask: the censor and the clergy roll (jade
+# embryo), the street's judges (the Turning), the temple staff (the pavai vow), the jeli (the crossing). Her liege
+# may ask it of her on the seeker's behalf. The seeker gains tm_taught_answers_modifier for five years, which the
+# gates' odds read. A small chance the examiners suspect coaching (tm_mech.0030); it never blocks a gate.
+tm_teach_answers_interaction = {
+	interface_priority = 54
+	icon = icon_scheme_befriend
+	category = interaction_category_friendly
+	desc = tm_teach_answers_interaction_desc
+
+	is_shown = {
+		NOT = { scope:actor = scope:recipient }
+		scope:recipient = {
+			tm_mech_answer_seeker_trigger = yes
+			NOT = { has_character_modifier = tm_taught_answers_modifier }
+		}
+		OR = {
+			scope:actor = { tm_mech_can_teach_answers_trigger = { SEEKER = scope:recipient } }
+			scope:actor = {
+				is_ruler = yes
+				any_courtier = {
+					NOT = { this = scope:recipient }
+					tm_mech_can_teach_answers_trigger = { SEEKER = scope:recipient }
+				}
+			}
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		scope:actor = { is_imprisoned = no }
+		scope:recipient = { is_imprisoned = no }
+	}
+
+	auto_accept = yes
+
+	on_accept = {
+		if = {
+			limit = { scope:actor = { tm_mech_can_teach_answers_trigger = { SEEKER = scope:recipient } } }
+			scope:actor = { save_scope_as = tm_answer_teacher }
+		}
+		else = {
+			scope:actor = {
+				random_courtier = {
+					limit = {
+						NOT = { this = scope:recipient }
+						tm_mech_can_teach_answers_trigger = { SEEKER = scope:recipient }
+					}
+					save_scope_as = tm_answer_teacher
+				}
+			}
+		}
+		if = {
+			limit = { exists = scope:tm_answer_teacher }
+			scope:recipient = { tm_mech_teach_answers_effect = yes }
+		}
+	}
+
+	ai_targets = { ai_recipients = courtiers }
+	ai_targets = { ai_recipients = family }
+	ai_frequency = 36
+	ai_will_do = {
+		base = 40
+		modifier = { add = 30 scope:recipient = { has_trait = tm_transgender } }
+		modifier = { add = 20 scope:actor = { has_trait = compassionate } }
+	}
+}

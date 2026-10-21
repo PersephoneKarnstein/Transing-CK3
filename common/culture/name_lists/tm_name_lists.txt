@@ -89,6 +89,7 @@ name_list_kybeline = {
 		# Attested holy women, empresses and foundresses
 		3 = {
 			Beatrike					# the starting head of faith, Theia Beatrike (mod lore; not from a report)
+			Bethania Diana Christina	# the foremothers, after Welcome to Dorley Hall (history/characters/tm_saints.txt; mod lore)
 			Marina						# Mary/Marinos, transvestite saint: hist_trans_historical.md (P49), hist_questions_gender_byzantium.md
 			Matrona						# Matrona of Perge: hist_trans_historical.md, hist_questions_gender_byzantium.md
 			Olympias Kassia Febronia Theopiste Martina Elisabet	# holy women and rulers: hist_questions_gender_byzantium.md

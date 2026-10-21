@@ -1,0 +1,20 @@
+﻿# Crusader Dolls — the seat to a member (docs/faith_design.md §16, "Collapse fixes"; tm_seat_effects.txt).
+
+on_death = {
+	on_actions = {
+		tm_seat_on_death
+	}
+}
+
+# A holder of one of the six faiths dies holding a seat county: if its heir is not of her faith, it passes to a member.
+# on_death fires while she still holds her titles (vanilla death.txt reads her primary_heir here).
+tm_seat_on_death = {
+	trigger = {
+		is_ruler = yes
+		NOT = { has_variable = tm_reborn }
+		rite ?= { rite_has_parameter = tm_sisters_faith }
+	}
+	effect = {
+		tm_seat_on_death_effect = yes
+	}
+}

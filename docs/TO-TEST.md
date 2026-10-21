@@ -475,3 +475,20 @@ Start the observe run only after these files are in place: new script files are 
 - Theia, Cantirâdêvi and Djeneba are now historical characters (`history/characters/tm_characters.txt`); the start script hands them their titles. Check that Theia holds the Mother House and Phrygia under the Emperor as a theocracy, that both countesses are vassals of their lords, and that the start at 1066 or 1178 still makes stand-ins (the historical ones are dead by then).
 - **Portraits (needs you, once):** start a game at this bookmark with the console enabled, run `dump_bookmark_portraits`, and copy the five `bookmark_tm_*.txt` files it writes (in the CK3 user folder) over the placeholders in `common/bookmark_portraits/`. The placeholders are vanilla portraits copied so the bookmark screen does not crash.
 
+
+## October reading revisions (added 2026-10-21, untested in-game)
+
+Design: `faith_design.md` §16. With `-debug_mode`, event IDs show on each window; fire any event with `event <id>`.
+
+- **Rescue the Daughters**: win the war and check each freed woman goes to your court or home by her own choice (a player-controlled woman gets `tm_mech.0001`), and piety is 25 per woman, capped at 300.
+- **Set Down the Name** (decision, declared sisters): no faith penalty; Declare Before Witnesses is offered again; hostile kin get "Set Down Her Name".
+- **Teach Her the Answers** (interaction): the seeker gets `tm_taught_answers_modifier`; the embryo, Turning, pāvai and crossing rolls rise; `tm_mech.0030` (examiner suspects coaching) sometimes follows.
+- **Marriage**: marry a daughter; the spouse becomes a friend of the House. Re-embody a married man: `tm_mech.0040` then `tm_mech.0041` for the spouse; a vanilla-faith spouse hears the annulment line.
+- **Re-embodiment grievances**: someone who disliked the old body keeps "An Old Grievance, Still Held".
+- **Dorley washout** (`tm_dorley.0200`): execution only under Grandmother's House; release sends the novice to the friends of the House.
+- **Houses**: "The Same Door" (`tm_house.0065`), the released prisoner (`tm_house.0061`), The House Grows Respectable (`tm_life.0001`, a House 25 years old).
+- **Hostile world** (`tm_world.0001–0050`): Whispers and the child-lifter tale (never for Ha-Nehpakhot or Grandmother's House realms), Many Ledgers, the physician's record, the copyist, A Question in Hall, The Court Wonders, the Abbess's Feast, the Qadi's Ruling (Sunni and Shi'i voices; al-Nu'man only after 960), Those Without Desire, The Women's Hour.
+- **Life** (`tm_life.*`): novice and declared waiting moments; "lady"; The Old Likeness and A Name of Her Own about one and two months after a rite; grandchildren; mourning; burial under the birth name; Kin, People or Sisters; the Badenya senior mother and the feast server's earnings; the Garland companions and the barred seeker; foot-binding (Yutai, from 1200 only); the expansion sermon (first duchy per faith).
+- **Intersex birth** (`tm_life.0040`, 2% per birth at a court of the six) and the choice at 16 (`tm_life.0041`): the sex the game uses never changes, and the child never gets the Marked trait.
+- **Saints**: at 867, the five foremothers show in the faith's saints list with tombs at Dorylaion, Ankyra, Kyzikos, Pepouza and Midaion.
+- **Marked rate** is 1.5% (was 1%): check `tm_census.txt` early and late in a run.

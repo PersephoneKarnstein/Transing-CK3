@@ -1,0 +1,42 @@
+﻿# Crusader Dolls — decisions for the October 2026 mechanics (docs/faith_design.md §16).
+
+# Item 28. Set Down the Name (Serano row 6). Transition is a trial; people stop for many reasons, most of them
+# pressure from outside, and some later take it up again. The faith owes them support, not suspicion. A sister
+# named before witnesses (tm_declare_decision) may set the declaration down at any time: no penalty from the faith,
+# House friendship kept, and Declare Before Witnesses is open again at once, for free. It ends a declaration, never a
+# re-embodiment. The AI weighs the pressures Serano names: a hostile liege, prison, stress, a hostile-faith spouse.
+tm_set_down_name_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"		# placeholder; TODO event art
+	}
+	sort_order = 89
+
+	is_shown = {
+		tm_mech_can_set_down_name_trigger = yes
+	}
+
+	effect = {
+		custom_tooltip = tm_set_down_name_decision.tt
+		trigger_event = tm_mech.0020
+	}
+
+	ai_check_interval = 60
+	ai_potential = { tm_mech_can_set_down_name_trigger = yes }
+	ai_will_do = {
+		base = 0
+		modifier = { add = 5 is_imprisoned = yes }
+		modifier = { add = 5 stress_level >= 2 }
+		modifier = {
+			add = 5
+			liege ?= {
+				NOT = { this = root }
+				NOT = { rite ?= { rite_has_parameter = tm_sisters_faith } }
+			}
+		}
+		modifier = {
+			add = 5
+			any_spouse = { NOT = { rite ?= { rite_has_parameter = tm_sisters_faith } } }
+		}
+		modifier = { factor = 0.5 has_trait = tm_transgender }
+	}
+}

@@ -1,0 +1,37 @@
+﻿# Crusader Dolls — houses, family and small moments (events/tm_life_events.txt).
+
+# The House kept its door open to the street daughters against the patron's asking (tm_life.0001).
+tm_life_door_kept_open_opinion = {
+	opinion = -15
+	years = 5
+}
+
+# The House shut its door to the street daughters at the patron's asking (tm_life.0001).
+tm_life_door_shut_for_me_opinion = {
+	opinion = 15
+	years = 5
+}
+
+# A street daughter whose House shut its door to women like her (tm_life.0001).
+tm_life_door_shut_opinion = {
+	opinion = -25
+	years = 10
+}
+
+# Kin who wanted to bury her under her birth name, and were refused (tm_life.0012).
+tm_life_kept_from_kin_opinion = {
+	opinion = -10
+	years = 5
+}
+
+# A senior of the House rebuked for taking what a junior earned (tm_life.0050).
+tm_life_rebuked_senior_opinion = {
+	opinion = -10
+	years = 5
+}
+
+# A neighbour's preacher said the faith has gone too far (tm_life.0080). Decays.
+tm_life_gone_too_far_opinion = {
+	opinion = -10
+	years = 10
+}

@@ -1,0 +1,49 @@
+﻿# Crusader Dolls — triggers for the collapse fixes (docs/faith_design.md §16, "Collapse fixes").
+
+# A Rabbanite Jew: of a Jewish faith that keeps rabbinic law (the Talmud, the rabbis' Purim). Ha-Nehpakhot is a sect of
+# Provençal Rabbanite Jews, so only they join its kahal, come to it as pilgrims, or hear its call. Rabbinic Judaism
+# (with its mystical rite, Merkabah) and the Jews of Malabar, who kept rabbinic law, count. Samaritans, Karaites (who
+# reject rabbinic law and the Talmud's authority), Kabarists and the Beta Israel (Haymanot, who knew neither) do not.
+# Scope: a character.
+tm_rabbanite_jew_trigger = {
+	OR = {
+		faith = faith:rabbinic_faith
+		faith = faith:malabarism
+	}
+}
+
+# The call's reach. A county where a member of $FAITH$ lives, not counting $EXCLUDE$ (the seeker's own county, which the
+# call counts on its own). Scope: a county title.
+tm_call_county_has_member_trigger = {
+	NOT = { this = $EXCLUDE$ }
+	any_county_province = {
+		any_character_in_location = { faith = $FAITH$ }
+	}
+}
+
+# A member of $FAITH$ lives within three counties of this one (not in $EXCLUDE$). Scope: a county title.
+tm_call_member_nearby_trigger = {
+	any_neighboring_county = {
+		OR = {
+			tm_call_county_has_member_trigger = { FAITH = $FAITH$ EXCLUDE = $EXCLUDE$ }
+			any_neighboring_county = {
+				OR = {
+					tm_call_county_has_member_trigger = { FAITH = $FAITH$ EXCLUDE = $EXCLUDE$ }
+					any_neighboring_county = {
+						tm_call_county_has_member_trigger = { FAITH = $FAITH$ EXCLUDE = $EXCLUDE$ }
+					}
+				}
+			}
+		}
+	}
+}
+
+# The seat passes to a member (tm_seat_effects.txt): she may take it. Not the dying holder, not landed elsewhere, free,
+# and not a body left behind by a re-embodiment. Scope: a character. $FAITH$ the seat's faith.
+tm_seat_candidate_trigger = {
+	faith = $FAITH$
+	NOT = { this = scope:tm_seat_holder }
+	is_ruler = no
+	is_imprisoned = no
+	NOT = { has_variable = tm_reborn }
+}

@@ -117,13 +117,27 @@ tm_dorley.0200 = {
 	option = {	# Keep him in the cells
 		name = tm_dorley.0200.a
 	}
-	option = {	# Let him go, and let him be watched
-		name = tm_dorley.0200.b
+	# Serano row 7: someone who leaves the path is owed care, not a watcher. He goes to the House's friends.
+	option = {	# Let him go to the friends of the House
+		name = tm_dorley.0200.b_friends
 		scope:tm_novice = { release_from_prison = yes }
-		add_piety = -25
+		if = {
+			limit = { tm_holds_sisters_house_trigger = yes }
+			add_courtier = scope:tm_novice
+		}
+		else = {
+			scope:tm_novice = { tm_send_on_effect = { EXCLUDE = root } }
+		}
+		scope:tm_novice = {
+			if = {
+				limit = { NOT = { has_character_modifier = tm_house_friend_modifier } }
+				add_character_modifier = { modifier = tm_house_friend_modifier }
+			}
+		}
 	}
-	option = {	# There is nothing left to save
+	option = {	# There is nothing left to save: Grandmother's House only (Serano row 7)
 		name = tm_dorley.0200.c
+		trigger = { rite ?= { rite_has_doctrine = tm_knife_grandmother } }
 		scope:tm_novice = { death = { death_reason = death_execution killer = root } }
 		add_dread = 10
 		add_piety = -50

@@ -119,7 +119,7 @@ tm_seidr.0001 = {
 		name = tm_seidr.0001.a
 		random_list = {
 			40 = {
-				modifier = { add = 30 has_trait = tm_transgender }
+				modifier = { add = 30 OR = { has_trait = tm_transgender has_variable = tm_declared } }	# Marked, or named before witnesses (§16 rule 8)
 				modifier = { add = 20 has_personal_tenet_flag = tm_personal_seidr_easier }
 				modifier = { add = 15 has_variable = tm_seidr_feast }
 				modifier = { add = 30 has_variable = tm_seidr_song_known }
@@ -205,7 +205,6 @@ tm_seidr.0002 = {
 	option = {
 		name = tm_seidr.0002.c
 		trigger = { is_male = yes }
-		add_stress = 10
 	}
 }
 

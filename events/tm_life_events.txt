@@ -1,0 +1,789 @@
+﻿namespace = tm_life
+
+# Houses, family, small moments and faith-specific events (faith_design.md §16, items 35, 39–41, 43, 44).
+# Hooks: common/on_action/tm_life_on_actions.txt.
+#   0001  The House Grows Respectable: a House a generation old is asked to shut out the street daughters (Keywords row 5)
+#   0010  a mother asks for grandchildren (Bhatt row 10)
+#   0011  Mourning the One Who Is Here (Transpsychoanalytics row 12)
+#   0012  kin would bury her under her birth name, unless the House intervenes (Keywords row 7b; every faith but Badenya,
+#         which has tm_badenya.0030)
+#   0020  Kin, people or sisters? (Bhatt row 9)
+#   0030  the novice years: nothing happens (Chu row 2)
+#   0031  a sister named before witnesses waits (Chu row 2)
+#   0032  a stranger calls her lady (Serano row 16)
+#   0033  The Old Likeness (Transpsychoanalytics row 6)
+#   0034  a name of her own (Transpsychoanalytics row 7)
+#   0040  a birth the midwife could not read; the faith refuses knife and binding (Keywords row 11)
+#   0041  the choice kept for the child, at sixteen
+#   0050  Badenya: a senior takes what a junior earned; the faith sides with the junior (Bhatt row 17)
+#   0051  Badenya: the serving daughter keeps what she earned at the naming feast (Roy row 1)
+#   0060  the Worn Garland: the companions before the god (Bhatt row 16a)
+#   0061  the Worn Garland: a seeker whose people may not walk the temple street (Bhatt row 16b)
+#   0070  Yutai Dao: binding among the palace women, from 1200 (Bhatt row 13; dated from Wiesner pp. 98–99)
+#   0080  the expansion sermon: "they have gone too far" (Serano row 17)
+
+# ---------------------------------------------------------------------------------------------------
+# The House Grows Respectable. Root = the holder; scope:tm_house_county = the House.
+tm_life.0001 = {
+	type = character_event
+	title = tm_life.0001.t
+	desc = tm_life.0001.desc
+	theme = faith
+	left_portrait = { character = scope:tm_life_patron animation = personality_rational }
+	right_portrait = { character = scope:tm_life_street animation = worry }
+
+	trigger = {
+		exists = scope:tm_house_county
+		scope:tm_house_county = { has_variable = tm_house }
+		any_courtier = { tm_is_daughter_trigger = yes is_adult = yes NOT = { exists = house } }
+		any_courtier = { tm_house_member_trigger = yes is_female = yes is_adult = yes exists = house }
+	}
+
+	immediate = {
+		random_courtier = {
+			limit = { tm_house_member_trigger = yes is_female = yes is_adult = yes exists = house }
+			weight = {
+				base = 1
+				modifier = { add = 3 has_trait = arrogant }
+				modifier = { add = 2 highest_held_title_tier >= tier_barony }
+			}
+			save_scope_as = tm_life_highborn
+		}
+		random_courtier = {
+			limit = { tm_is_daughter_trigger = yes is_adult = yes NOT = { exists = house } }
+			save_scope_as = tm_life_street
+		}
+		# The patron: the House's Protectress if she is someone else, then the holder's liege, then the high-born sister.
+		scope:tm_house_county = {
+			if = {
+				limit = {
+					has_variable = tm_house_protectress
+					var:tm_house_protectress = {
+						is_alive = yes
+						NOT = { this = root }
+					}
+				}
+				var:tm_house_protectress = { save_scope_as = tm_life_patron }
+			}
+		}
+		if = {
+			limit = {
+				NOT = { exists = scope:tm_life_patron }
+				exists = liege
+			}
+			liege = { save_scope_as = tm_life_patron }
+		}
+		if = {
+			limit = { NOT = { exists = scope:tm_life_patron } }
+			scope:tm_life_highborn = { save_scope_as = tm_life_patron }
+		}
+	}
+
+	option = {	# The door stays open
+		name = tm_life.0001.a
+		scope:tm_life_patron = {
+			add_opinion = { target = root modifier = tm_life_door_kept_open_opinion }
+		}
+		add_piety = 25
+		add_character_modifier = { modifier = tm_life_open_door_modifier years = 5 }
+		every_courtier = {
+			limit = { tm_is_daughter_trigger = yes NOT = { exists = house } }
+			add_opinion = { target = root modifier = respect_opinion opinion = 10 }
+		}
+		ai_chance = {
+			base = 70
+			modifier = { add = 20 has_trait = compassionate }
+			modifier = { add = 10 has_trait = just }
+			modifier = { add = -20 has_trait = arrogant }
+		}
+	}
+	option = {	# Shut it to the street, as they ask
+		name = tm_life.0001.b
+		scope:tm_life_patron = {
+			add_opinion = { target = root modifier = tm_life_door_shut_for_me_opinion }
+		}
+		scope:tm_house_county = { change_variable = { name = tm_house_strain add = 2 } }
+		every_courtier = {
+			limit = { tm_is_daughter_trigger = yes NOT = { exists = house } }
+			add_opinion = { target = root modifier = tm_life_door_shut_opinion }
+		}
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = arrogant }
+			modifier = { add = 10 has_trait = ambitious }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Owe me grandchildren. Root = a sister of the faith; scope:tm_life_kin = her mother.
+tm_life.0010 = {
+	type = character_event
+	title = tm_life.0010.t
+	desc = tm_life.0010.desc
+	theme = family
+	left_portrait = { character = scope:tm_life_kin animation = personality_rational }
+	right_portrait = { character = scope:tm_life_candidate animation = happiness }
+
+	trigger = {
+		mother ?= { is_alive = yes }
+	}
+
+	immediate = {
+		mother = { save_scope_as = tm_life_kin }
+		random_courtier = {
+			limit = { tm_life_daughter_candidate_trigger = { ADOPTER = root } }
+			weight = {
+				base = 1
+				modifier = { add = 3 tm_is_daughter_trigger = yes }
+				modifier = { add = 2 NOT = { exists = house } }
+				modifier = { add = 2 faith = root.faith }
+			}
+			save_scope_as = tm_life_candidate
+		}
+	}
+
+	option = {	# Take her as my daughter
+		name = tm_life.0010.a
+		trigger = {
+			exists = scope:tm_life_candidate
+			rite ?= { rite_has_parameter = tm_adoptive_matriline }
+		}
+		tm_life_take_as_daughter_effect = { CHILD = scope:tm_life_candidate }
+		scope:tm_life_kin = { add_opinion = { target = root modifier = friendliness_opinion opinion = 15 } }
+		ai_chance = { base = 40 }
+	}
+	option = {	# Foster her
+		name = tm_life.0010.b
+		trigger = {
+			exists = scope:tm_life_candidate
+			rite ?= { rite_has_parameter = tm_adoptive_matriline }
+		}
+		tm_life_foster_effect = { CHILD = scope:tm_life_candidate }
+		scope:tm_life_kin = { add_opinion = { target = root modifier = friendliness_opinion opinion = 5 } }
+		ai_chance = { base = 30 }
+	}
+	option = {	# I owe no one a child
+		name = tm_life.0010.c
+		add_stress = -10
+		scope:tm_life_kin = { add_opinion = { target = root modifier = disappointed_opinion opinion = -10 } }
+		ai_chance = { base = 30 }
+	}
+}
+
+# Mourning the One Who Is Here. Root = the daughter; scope:tm_life_kin = a parent or sibling who grieves.
+tm_life.0011 = {
+	type = character_event
+	title = tm_life.0011.t
+	desc = tm_life.0011.desc
+	theme = family
+	left_portrait = { character = root animation = personality_rational }
+	right_portrait = { character = scope:tm_life_kin animation = grief }
+
+	trigger = {
+		any_close_family_member = {
+			is_alive = yes
+			is_adult = yes
+			NOT = { rite ?= { rite_has_parameter = tm_sisters_faith } }
+		}
+	}
+
+	immediate = {
+		random_close_family_member = {
+			limit = {
+				is_alive = yes
+				is_adult = yes
+				NOT = { rite ?= { rite_has_parameter = tm_sisters_faith } }
+			}
+			weight = {
+				base = 1
+				modifier = { add = 3 is_parent_of = root }
+			}
+			save_scope_as = tm_life_kin
+		}
+	}
+
+	option = {	# Let them grieve, and stay near
+		name = tm_life.0011.a
+		add_stress = -5
+		scope:tm_life_kin = { add_opinion = { target = root modifier = friendliness_opinion opinion = 10 } }
+		ai_chance = { base = 40 }
+	}
+	option = {	# Ask the House to speak with them
+		name = tm_life.0011.b
+		random_list = {
+			50 = {
+				desc = tm_life.0011.b.heard
+				scope:tm_life_kin = { add_opinion = { target = root modifier = respect_opinion opinion = 20 } }
+			}
+			50 = {
+				desc = tm_life.0011.b.not_yet
+			}
+		}
+		ai_chance = { base = 30 }
+	}
+	option = {	# Keep my distance a while
+		name = tm_life.0011.c
+		add_stress = -10
+		ai_chance = { base = 30 }
+	}
+}
+
+# The House buries its own, in every faith. Root = her lord; scope:tm_dead_daughter; scope:tm_life_kin = her blood kin.
+tm_life.0012 = {
+	type = character_event
+	title = tm_life.0012.t
+	desc = tm_life.0012.desc
+	theme = death
+	left_portrait = { character = root animation = grief }
+	right_portrait = { character = scope:tm_life_kin animation = personality_rational }
+
+	trigger = {
+		exists = scope:tm_dead_daughter
+		exists = scope:tm_life_kin
+	}
+
+	option = {	# Pay the kin, and bury her under her own name
+		name = tm_life.0012.a
+		trigger = { gold >= 25 }
+		remove_short_term_gold = 25
+		add_piety = 20
+		every_courtier = {
+			limit = { tm_is_daughter_trigger = yes }
+			add_opinion = { target = root modifier = respect_opinion opinion = 10 }
+		}
+		ai_chance = { base = 40 }
+	}
+	option = {	# A sister speaks with the kin
+		name = tm_life.0012.b
+		random_list = {
+			60 = {
+				desc = tm_life.0012.b.heard
+				add_piety = 20
+				every_courtier = {
+					limit = { tm_is_daughter_trigger = yes }
+					add_opinion = { target = root modifier = respect_opinion opinion = 10 }
+				}
+			}
+			40 = {
+				desc = tm_life.0012.b.taken
+				add_stress = 10
+			}
+		}
+		ai_chance = { base = 30 }
+	}
+	option = {	# The House buries her, whatever her kin say
+		name = tm_life.0012.c
+		add_piety = 30
+		scope:tm_life_kin = { add_opinion = { target = root modifier = tm_life_kept_from_kin_opinion } }
+		every_courtier = {
+			limit = { tm_is_daughter_trigger = yes }
+			add_opinion = { target = root modifier = respect_opinion opinion = 10 }
+		}
+		ai_chance = { base = 20 }
+	}
+	option = {	# Let her blood kin take her
+		name = tm_life.0012.d
+		add_prestige = 15
+		every_courtier = {
+			limit = { tm_is_daughter_trigger = yes }
+			add_opinion = { target = root modifier = tm_buried_under_old_name_opinion }
+		}
+		ai_chance = { base = 10 }
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Kin, people or sisters? Root = a daughter of Ha-Nehpakhot, Badenya or the Garland under a lord of another faith.
+# No answer is punished.
+tm_life.0020 = {
+	type = character_event
+	title = tm_life.0020.t
+	desc = tm_life.0020.desc
+	theme = family
+	left_portrait = { character = root animation = personality_rational }
+	right_portrait = { character = scope:tm_life_asker animation = personality_rational }
+
+	trigger = {
+		tm_life_minority_daughter_trigger = yes
+	}
+
+	immediate = {
+		liege_or_court_owner = {
+			save_scope_as = tm_life_lord
+			random_courtier = {
+				limit = {
+					is_adult = yes
+					NOT = { this = root }
+					NOT = { rite ?= { rite_has_parameter = tm_sisters_faith } }
+				}
+				save_scope_as = tm_life_asker
+			}
+		}
+		if = {
+			limit = { NOT = { exists = scope:tm_life_asker } }
+			scope:tm_life_lord = { save_scope_as = tm_life_asker }
+		}
+	}
+
+	option = {	# To my kin
+		name = tm_life.0020.a
+		add_stress = -10
+		every_close_family_member = {
+			limit = { is_alive = yes }
+			add_opinion = { target = root modifier = friendliness_opinion opinion = 5 }
+		}
+		ai_chance = { base = 25 }
+	}
+	option = {	# To my people
+		name = tm_life.0020.b
+		add_piety = 15
+		ai_chance = { base = 25 }
+	}
+	option = {	# I am hers who calls me sister
+		name = tm_life.0020.c
+		add_stress = -15
+		ai_chance = { base = 35 }
+	}
+	option = {	# To this court
+		name = tm_life.0020.d
+		scope:tm_life_lord = { add_opinion = { target = root modifier = respect_opinion opinion = 10 } }
+		ai_chance = { base = 15 }
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The novice years. Root = the holder; scope:tm_life_novice. Plain on purpose: most of the road is waiting.
+tm_life.0030 = {
+	type = character_event
+	title = tm_life.0030.t
+	desc = {
+		random_valid = {
+			desc = tm_life.0030.desc_shoes
+			desc = tm_life.0030.desc_late
+			desc = tm_life.0030.desc_spring
+		}
+	}
+	theme = faith
+	left_portrait = { character = scope:tm_life_novice animation = personality_rational }
+
+	trigger = {
+		exists = scope:tm_life_novice
+		scope:tm_life_novice = { is_alive = yes has_trait = tm_novice }
+	}
+
+	option = {
+		name = tm_life.0030.a
+		scope:tm_life_novice = { add_stress = -10 }
+	}
+	option = {
+		name = tm_life.0030.b
+		trigger = { gold >= 5 }
+		remove_short_term_gold = 5
+		scope:tm_life_novice = {
+			add_stress = -10
+			add_opinion = { target = root modifier = friendliness_opinion opinion = 5 }
+		}
+	}
+}
+
+# A sister named before witnesses waits for her rite. Root = the sister.
+tm_life.0031 = {
+	type = character_event
+	title = tm_life.0031.t
+	desc = {
+		random_valid = {
+			desc = tm_life.0031.desc_hem
+			desc = tm_life.0031.desc_asked
+			desc = tm_life.0031.desc_nothing
+		}
+	}
+	theme = faith
+	left_portrait = { character = root animation = personality_rational }
+
+	trigger = { tm_life_waiting_trigger = yes }
+
+	option = {
+		name = tm_life.0031.a
+		add_stress = -10
+	}
+}
+
+# A stranger calls her lady. Root = the sister.
+tm_life.0032 = {
+	type = character_event
+	title = tm_life.0032.t
+	desc = tm_life.0032.desc
+	theme = faith
+	left_portrait = { character = root animation = happiness }
+
+	option = {
+		name = tm_life.0032.a
+		add_stress = -15
+	}
+}
+
+# The Old Likeness. Root = the daughter. Both answers are honoured; there is no way back, and none is asked for.
+tm_life.0033 = {
+	type = character_event
+	title = tm_life.0033.t
+	desc = tm_life.0033.desc
+	theme = faith
+	left_portrait = { character = root animation = personality_rational }
+
+	trigger = { tm_is_daughter_trigger = yes }
+
+	option = {	# Seal it and keep it with the House's things
+		name = tm_life.0033.a
+		add_stress = -10
+		add_piety = 10
+		ai_chance = { base = 50 }
+	}
+	option = {	# Burn it, with my sisters beside me
+		name = tm_life.0033.b
+		add_stress = -10
+		add_piety = 10
+		ai_chance = { base = 50 }
+	}
+}
+
+# A name of her own, beside the one she was given. Root = the daughter or declared sister.
+tm_life.0034 = {
+	type = character_event
+	title = tm_life.0034.t
+	desc = tm_life.0034.desc
+	theme = faith
+	left_portrait = { character = root animation = happiness }
+
+	immediate = {
+		mother ?= {
+			if = {
+				limit = { is_female = yes }
+				save_scope_as = tm_life_foremother
+			}
+			mother ?= { save_scope_as = tm_life_grandmother }
+		}
+		if = {
+			limit = { NOT = { exists = scope:tm_life_grandmother } }
+			father ?= {
+				mother ?= { save_scope_as = tm_life_grandmother }
+			}
+		}
+		random_relation = {
+			type = friend
+			limit = { is_female = yes }
+			save_scope_as = tm_life_friend
+		}
+	}
+
+	option = {	# My mother's name
+		name = tm_life.0034.a
+		trigger = { exists = scope:tm_life_foremother }
+		change_first_name = { template_character = scope:tm_life_foremother }
+		add_prestige = 10
+	}
+	option = {	# My grandmother's name
+		name = tm_life.0034.b
+		trigger = { exists = scope:tm_life_grandmother }
+		change_first_name = { template_character = scope:tm_life_grandmother }
+		add_prestige = 10
+	}
+	option = {	# The name of a friend who stood by me
+		name = tm_life.0034.c
+		trigger = { exists = scope:tm_life_friend }
+		change_first_name = { template_character = scope:tm_life_friend }
+		scope:tm_life_friend = { add_opinion = { target = root modifier = friendliness_opinion opinion = 20 } }
+	}
+	option = {	# The name I carry
+		name = tm_life.0034.d
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# A birth the midwife could not read. Root = the ruler of the court; scope:tm_life_child; scope:tm_life_mother.
+# The faith refuses the knife and the binding. The child is never Marked: this is not the Mother's mark and not a gate.
+tm_life.0040 = {
+	type = character_event
+	title = tm_life.0040.t
+	desc = tm_life.0040.desc
+	theme = family
+	left_portrait = { character = scope:tm_life_mother animation = worry }
+	right_portrait = { character = scope:tm_life_child }
+
+	trigger = {
+		exists = scope:tm_life_child
+		scope:tm_life_child = { is_alive = yes }
+	}
+
+	option = {	# Cover the cradle; the child will choose
+		name = tm_life.0040.a
+		scope:tm_life_child = { set_variable = tm_life_child_chooses }
+		add_piety = 10
+		scope:tm_life_mother = {
+			if = {
+				limit = { NOT = { this = root } }
+				add_opinion = { target = root modifier = grateful_opinion opinion = 15 }
+			}
+		}
+		ai_chance = { base = 60 }
+	}
+	option = {	# Cover the cradle, and send away whoever came to stare
+		name = tm_life.0040.b
+		scope:tm_life_child = { set_variable = tm_life_child_chooses }
+		add_piety = 10
+		add_prestige = 10
+		ai_chance = { base = 40 }
+	}
+}
+
+# The choice kept for the child, at sixteen. Root = the young person. The sex the game uses does not change; the
+# faiths' own roads stay open.
+tm_life.0041 = {
+	type = character_event
+	title = tm_life.0041.t
+	desc = tm_life.0041.desc
+	theme = family
+	left_portrait = { character = root animation = personality_rational }
+
+	immediate = {
+		remove_variable = tm_life_child_chooses
+	}
+
+	option = {	# What they wrote is right
+		name = tm_life.0041.a
+		add_stress = -10
+		ai_chance = { base = 80 }
+	}
+	option = {	# I am a woman
+		name = tm_life.0041.b
+		trigger = { is_male = yes }
+		set_variable = tm_life_chose_woman
+		add_stress = -10
+		custom_tooltip = tm_life.0041.b.tt
+		ai_chance = { base = 10 }
+	}
+	option = {	# I am a man
+		name = tm_life.0041.c
+		trigger = { is_female = yes }
+		set_variable = tm_life_chose_man
+		add_stress = -10
+		ai_chance = { base = 10 }
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Badenya: "respect your elder". Root = a ruler of Badenya; scope:tm_life_senior; scope:tm_life_junior.
+tm_life.0050 = {
+	type = character_event
+	title = tm_life.0050.t
+	desc = tm_life.0050.desc
+	theme = family
+	left_portrait = { character = scope:tm_life_junior animation = worry }
+	right_portrait = { character = scope:tm_life_senior animation = personality_rational }
+
+	trigger = {
+		any_courtier = { faith = faith:tm_badenya is_female = yes age >= 40 is_imprisoned = no }
+		any_courtier = { tm_is_daughter_trigger = yes faith = faith:tm_badenya age < 35 is_imprisoned = no }
+	}
+
+	immediate = {
+		random_courtier = {
+			limit = { faith = faith:tm_badenya is_female = yes age >= 40 is_imprisoned = no }
+			save_scope_as = tm_life_senior
+		}
+		random_courtier = {
+			limit = { tm_is_daughter_trigger = yes faith = faith:tm_badenya age < 35 is_imprisoned = no }
+			save_scope_as = tm_life_junior
+		}
+	}
+
+	option = {	# What she earned is hers: give it back
+		name = tm_life.0050.a
+		scope:tm_life_senior = {
+			add_opinion = { target = root modifier = tm_life_rebuked_senior_opinion }
+		}
+		scope:tm_life_junior = {
+			add_gold = 15
+			add_stress = -15
+			add_opinion = { target = root modifier = grateful_opinion opinion = 20 }
+		}
+		add_piety = 20
+		ai_chance = { base = 60 }
+	}
+	option = {	# Let the women of the compound settle it
+		name = tm_life.0050.b
+		random_list = {
+			60 = {
+				desc = tm_life.0050.b.settled
+				scope:tm_life_junior = { add_gold = 15 add_stress = -10 }
+			}
+			40 = {
+				desc = tm_life.0050.b.not_settled
+				scope:tm_life_junior = { add_stress = 10 }
+			}
+		}
+		ai_chance = { base = 30 }
+	}
+	option = {	# An elder's word stands
+		name = tm_life.0050.c
+		add_piety = -15
+		scope:tm_life_junior = { add_stress = 20 }
+		ai_chance = { base = 10 }
+	}
+}
+
+# Badenya: after the naming feast, the gifts are counted. Root = the daughter who served.
+tm_life.0051 = {
+	type = character_event
+	title = tm_life.0051.t
+	desc = tm_life.0051.desc
+	theme = family
+	left_portrait = { character = root animation = happiness }
+
+	option = {	# Keep what I earned
+		name = tm_life.0051.a
+		add_gold = 15
+		add_character_modifier = { modifier = tm_life_own_earnings_modifier years = 3 }
+		ai_chance = { base = 70 }
+	}
+	option = {	# Give the elder a share, as a gift
+		name = tm_life.0051.b
+		add_gold = 5
+		add_prestige = 15
+		ai_chance = { base = 30 }
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The Worn Garland: the companions before the god. Root = a daughter of the Garland.
+tm_life.0060 = {
+	type = character_event
+	title = tm_life.0060.t
+	desc = tm_life.0060.desc
+	theme = faith
+	left_portrait = { character = root animation = happiness }
+
+	option = {	# Go out with them before dawn
+		name = tm_life.0060.a
+		add_stress = -15
+		ai_chance = { base = 50 }
+	}
+	option = {	# Sing at the temple with them
+		name = tm_life.0060.b
+		add_piety = 15
+		ai_chance = { base = 50 }
+	}
+}
+
+# The Worn Garland: a seeker whose people may not walk the temple street. Root = a ruler of the Garland.
+# The temple street is not free of the temple's rules, and the text says so (Bhatt row 16b). Period words only.
+tm_life.0061 = {
+	type = character_event
+	title = tm_life.0061.t
+	desc = tm_life.0061.desc
+	theme = faith
+	left_portrait = { character = scope:tm_life_seeker animation = worry }
+
+	trigger = { exists = capital_province }
+
+	immediate = {
+		create_character = {
+			gender = male						# the sex the game uses; she is a woman, and Marked
+			age = { 18 30 }
+			culture = root.capital_county.culture
+			faith = root.faith
+			location = root.capital_province
+			dynasty = none
+			trait = tm_transgender
+			save_scope_as = tm_life_seeker
+		}
+	}
+
+	option = {	# The circle takes her, and walks the temple street with her
+		name = tm_life.0061.a
+		add_courtier = scope:tm_life_seeker
+		add_piety = 40
+		add_prestige = -50
+		scope:tm_life_seeker = { add_opinion = { target = root modifier = grateful_opinion opinion = 30 } }
+		ai_chance = { base = 35 }
+	}
+	option = {	# The circle takes her, and keeps the vow with her outside the wall
+		name = tm_life.0061.b
+		add_courtier = scope:tm_life_seeker
+		add_piety = 15
+		scope:tm_life_seeker = { add_opinion = { target = root modifier = grateful_opinion opinion = 15 } }
+		ai_chance = { base = 45 }
+	}
+	option = {	# The temple's rule stands
+		name = tm_life.0061.c
+		add_piety = -15
+		add_prestige = 10
+		add_stress = 10
+		ai_chance = { base = 20 }
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Yutai Dao: binding among the palace women. Root = a daughter of the Way at a court under a celestial throne, from 1200.
+# The Way punishes neither answer.
+tm_life.0070 = {
+	type = character_event
+	title = tm_life.0070.t
+	desc = tm_life.0070.desc
+	theme = court
+	left_portrait = { character = root animation = worry }
+
+	option = {	# Bind, to pass the palace gate
+		name = tm_life.0070.a
+		add_prestige = 25
+		add_stress = 20
+		ai_chance = { base = 50 }
+	}
+	option = {	# Refuse
+		name = tm_life.0070.b
+		add_prestige = -15
+		add_stress = -5
+		ai_chance = { base = 50 }
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The expansion sermon. Root = the ruler of the six who has just gained a duchy; scope:tm_life_neighbour = a neighbouring
+# ruler of another faith; scope:tm_life_preacher = that faith's head, the neighbour's chaplain, or the neighbour.
+# Text and opinion only: there is no brake on growth.
+tm_life.0080 = {
+	type = character_event
+	title = tm_life.0080.t
+	desc = tm_life.0080.desc
+	theme = faith
+	left_portrait = { character = scope:tm_life_preacher animation = personality_zealous }
+
+	trigger = {
+		exists = scope:tm_life_preacher
+		exists = scope:tm_life_neighbour
+	}
+
+	immediate = {
+		scope:tm_life_neighbour = {
+			add_opinion = { target = root modifier = tm_life_gone_too_far_opinion }
+		}
+		if = {
+			limit = { NOT = { scope:tm_life_preacher = scope:tm_life_neighbour } }
+			scope:tm_life_preacher = {
+				add_opinion = { target = root modifier = tm_life_gone_too_far_opinion }
+			}
+		}
+	}
+
+	option = {	# Let them preach
+		name = tm_life.0080.a
+		add_stress = 5
+		ai_chance = { base = 50 }
+	}
+	option = {	# Answer from our own pulpits
+		name = tm_life.0080.b
+		add_piety = 15
+		add_prestige = -10
+		ai_chance = { base = 50 }
+	}
+}

@@ -1,0 +1,35 @@
+﻿# Crusader Dolls — opinion modifiers for the October 2026 mechanics (docs/faith_design.md §16).
+
+# Item 25: hostile observers come in kinds (Serano row 3). Zealous observers keep the full trait penalty
+# (common/traits/tm_traits.txt), and it never fades. Cynical or content observers near a daughter take half of it:
+# this cancels the other half. The value is set when applied (tm_mech_ease_observer_effect); refreshed yearly.
+tm_lukewarm_observer_opinion = {
+	opinion = 5
+}
+
+# ...and the half they keep wears away while they share a court with daughters, over about five years.
+# Value set when applied, from the observer's var:tm_contact_years.
+tm_shared_court_opinion = {
+	opinion = 1
+}
+
+# Item 26: a grievance held against her before her re-embodiment is still held after it. The jurists of the
+# observer's faith treat the rite as binding; the grievance stays with the woman. Value set when applied
+# (tm_reembody_as_woman_effect); it fades as grievances do.
+tm_binding_grievance_opinion = {
+	opinion = -5
+	decaying = yes
+	monthly_change = 0.25
+}
+
+# Item 31: married a daughter. Hostile faiths' view of her spouse (Serano row 10).
+tm_married_a_daughter_opinion = {
+	opinion = -5
+}
+
+# Item 28: she set down the name. Hostile faiths are pleased with themselves (Serano row 6).
+tm_set_down_name_opinion = {
+	opinion = 10
+	decaying = yes
+	monthly_change = 0.2
+}

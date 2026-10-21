@@ -323,7 +323,7 @@ tm_on_game_start = {
 			}
 
 			# Historical characters are not "randomly created", so the 1% seed never rolls for them.
-			# Mark ~1% of living adult men at the start, as the trait's random_creation does for later ones.
+			# Mark ~1.5% of living adult men at the start, as the trait's random_creation does for later ones.
 			every_living_character = {
 				limit = {
 					is_male = yes
@@ -331,7 +331,7 @@ tm_on_game_start = {
 					NOT = { has_trait = tm_transgender }
 				}
 				random = {
-					chance = 1
+					chance = 1.5
 					add_trait = tm_transgender
 				}
 			}
@@ -751,11 +751,16 @@ tm_on_death_track = {
 	effect = {
 		# The game makes and clears characters by the thousand ("disappearance"): pool characters in a faith's counties,
 		# and in China exam candidates and the like. Count them apart, or they swamp the deaths of people who lived.
+		# A death counts if she had a court or was a ruler. (death_reason can't be read here: in on_death the character
+		# is still alive, and error.log says so for every death.)
 		if = {
 			limit = {
 				rite ?= { rite_has_parameter = tm_sisters_faith }
 				is_pool_character = no
-				NOT = { death_reason = death_disappearance }
+				OR = {
+					is_ruler = yes
+					exists = employer
+				}
 			}
 			tm_track_effect = { FAITH = faith WHAT = deaths }
 		}
@@ -879,15 +884,14 @@ tm_yearly_growth = {
 			tm_homecoming_effect = { FAITH = faith:tm_baeddel SEAT = global_var:tm_baeddel_seat }
 		}
 		tm_homecoming_effect = { FAITH = faith:tm_garland SEAT = title:c_kanchipuram }
-		# The kahal: a Jew at a court where the sect is two or more may join it. A sect within Judaism keeps its families,
+		# The kahal: a Rabbanite Jew at a court where the sect is two or more may join it. A sect within Judaism keeps its families,
 		# and their children are born into it; this is how it renews itself, not by the Marked alone.
 		every_living_character = {
 			limit = {
 				is_adult = yes
 				is_ruler = no
 				is_imprisoned = no
-				faith.religion = religion:judaism_religion
-				NOT = { faith = faith:tm_nehpakhot }
+				tm_rabbanite_jew_trigger = yes		# not Samaritans, Karaites, Kabarists or the Beta Israel (tm_fixes_triggers.txt)
 				employer ?= {
 					OR = {
 						any_courtier = { count >= 2 faith = faith:tm_nehpakhot }

@@ -6,6 +6,9 @@ Running list of beliefs drawn from the research, each mapped to a CK3 slot. Sour
 |---|---|
 | **TM** | `book_transgender_marxism.md` (Gleeson & O'Rourke anthology) |
 | **BH** | `book_bhatt_chu.md` part I (Talia Bhatt, *Trans/Rad/Fem*) |
+| **BT** | `book_bhatt_brown_trans_les.md` (Talia Bhatt, *Brown/Trans/Les*, 2026; design proposals there, not yet applied) |
+| **SB** | `serano_blog_essays.md` (Julia Serano's blog and Medium essays, 2007–2026; design proposals there, not yet applied) |
+| **TQ** | `tsq_*.md`, `wsq_libby_wondrous_bodies.md` (TSQ articles and issues: Keywords 2014, Decolonizing 2014, Transpsychoanalytics 2017, and single articles; design proposals there, not yet applied) |
 | **CH** | `book_bhatt_chu.md` part II (Andrea Long Chu, *Females*) |
 | **ST** | `book_stryker_history.md` (Stryker, *Transgender History*) |
 | **T1** | `book_tsr_1_2.md` (Transgender Studies Reader vol. 1; the PDF does not contain vol. 2) |
@@ -77,7 +80,7 @@ Design frame from the user (2026-10-13): random "transgender" trait; ritual cast
 
 | # | Belief | CK3 slot / vanilla template | Movement | Sources | Plaus. |
 |---|---|---|---|---|---|
-| E1 | Only women may be priestesses; the faith "remembers we were oracles". **Separatism.** | `doctrine_clerical_gender_female_only` (with castrated men counting as women) | BD, 3W | BH#2 "Oracles of the Unmanned" | **S** — strongest row in every matrix: abbess + eunuch clergy + hijra/bissu/bori priestess give a women-plus-castrates clergy a firm veneer. Trans-*inclusive* women's space needs doctrine (d) to carry it |
+| E1 | Only women may be priestesses; the faith keeps the fight, not a lost honour ("We were never honoured. We made ourselves heard."; reworded 2026-10-21 after Bhatt; was "remembers we were oracles"). **Separatism.** | `doctrine_clerical_gender_female_only` (with castrated men counting as women) | BD, 3W | BH#2 "Oracles of the Unmanned" | **S** — strongest row in every matrix: abbess + eunuch clergy + hijra/bissu/bori priestess give a women-plus-castrates clergy a firm veneer. Trans-*inclusive* women's space needs doctrine (d) to carry it |
 | E2 | All dissidents from the heterosexual regime are one congregation. | `tenet_communal_identity` | 3W, GEN | BH#11; ST "We Unite Around Our Oppression"; T1#6 | **M** — guild/ocak/college of the caste (köçek houses, galli colleges) |
 | E3 | Never hide what you are; stealth is dishonour, visibility a festival. | Rite tenet (new) "Read Aloud" / "Visible Before God" | GEN, BD | T1#1,#21,#29; ST | **M** — galli were loudly visible; medieval passing cases (Rykener, Céspedes) were punished when read |
 | E4 | Anger at injustice is holy; complacency the sin. | Virtues `wrathful`; sins `craven`, `content` | 3W, GEN | BH#14; T1#13 | **M** — wrath is a vice in all period faiths; keep as the faith's inversion |
@@ -91,12 +94,12 @@ Design frame from the user (2026-10-13): random "transgender" trait; ritual cast
 
 | # | Belief | CK3 slot / vanilla template | Movement | Sources | Plaus. |
 |---|---|---|---|---|---|
-| F1 | In the beginning all were undivided; the cutting into man and woman was the Fall. | Creation myth; Gnosticism-style tenet | TMx | TM#20 "Before the Binary" | **S** — Plato's androgyne, Hermaphroditus cosmogony, Gnostic undivided Adam |
+| F1 | **[Not for a main voice, 2026-10-21]** In the beginning all were undivided; the cutting into man and woman was the Fall. Only an esoteric or hostile-labelled wing may say this (faith_design §16 rule 2). | Creation myth; Gnosticism-style tenet | TMx | TM#20 "Before the Binary" | **S** — Plato's androgyne, Hermaphroditus cosmogony, Gnostic undivided Adam |
 | F2 | The Great Mother and her castrated priestesses (Cybele/Attis framing). | Deity loc keys; HighGodName etc. | ST, GEN | ST "Galli of the Great Mother" | **S** — Cybele/Attis/Syrian Goddess; but no source bridges c.250–867, so the faith must claim *survival* or *revival* |
 | F3 | "Cyborg, not goddess": crafted bodies over a pure natural order. Tension with F2. | Anti-`tenet_sanctity_of_nature` stance; flavour | TMx, GEN | TM#21; T1#30 | **W** — anti-nature stance is modern; keep as theology of "the Mother's art over Nature" |
 | F4 | The world is a roll of dice; chance is courted. | `tenet_astrology`-style "The Aleatrix" | TMx | TM#18 | **M** — astrology/omens period-true; aleatory framing modern |
 | F5 | Mediums hosting a differently gendered spirit serve as prophets. | Rite tenet (new) "Possessed by the Other Spirit" | ST | ST | **S** — spirit-possessed gender-variant mediums attested widely (jin bandaas, bori, shamans) |
-| F6 | Bearded saints and silent knights are venerated (Wilgefortis, *Roman de Silence*). | Rite tenet (new); saint flavour | ST | ST | **S** — Wilgefortis/Ontcommer, Roman de Silence, Marinos, Thecla |
+| F6 | **[Revised 2026-10-21 after Libby]** The Church honours women who lived as monks (Marinos, Euphrosyne, Pelagia) and curses those who came down: the Sisters name the double standard, and keep their own canon of foremothers (faith_design §16). Wilgefortis is a 14th-century legend and the *Roman de Silence* is Latin and late; neither is used in 867. | Rite tenet (new); saint flavour | ST | ST | **S** — Wilgefortis/Ontcommer, Roman de Silence, Marinos, Thecla |
 | F7 | Male gods are honoured only as lovers and healers, never conquerors. | Pantheon loc | GEN | T1#27 | **M** — Dionysus/Attis as gentle consort gods |
 | F8 | Heraldry of the underground: the old mole, dice, stars. | CoA / nickname flavour | TMx | TM#28 | ? |
 | F9 | A founding Prophet (Wittig role) whose words are code, not law. | Faith flavour | 3W | BH#28 | **M** — foundress-prophetess has precedents (Guglielma, Kimpa Vita, Hutchinson) |
@@ -225,11 +228,11 @@ Tags: **W-B** `web_baedelism.md`, **W-3** `web_third_wave_transfeminism.md`, **W
 |---|---|---|---|---|---|
 | H1 | Transmisogyny is the structural core of patriarchy; a wrong to a daughter is a wrong to a woman. | Core rite tenet "The Root of Wrong"; crime doctrine "Transmisogyny Is Misogyny" | BD, 3W | W-B#1,#2,#4; W-3#30 | **W** — modern theory; in-world as the faith's cosmology of the Fall (cf. F1) |
 | H2 | Womanhood as defection from the male class: any adult may lay down manhood before the Mother. Manhood is a class one can leave. | Rite tenet "The Refusal"; `doctrine_gender_female_dominated` with one open door | 3W, BD | W-3#1,#9; W-B#24 | **S** — rite fixes legal sex (G-b); al-Jahiz on eunuchs' transfer (G-d) |
-| H3 | Touched / Untouched (TMA/TME) as two legal estates; the Untouched may not hold the altar. | Faith doctrine (two estates) | BD | W-B#5,#6; W-3#8 | **M** — medieval estates are period; this cut is modern. Carry it as the faith's law |
+| H3 | **[Never a law, 2026-10-21 after Serano]** Touched / Untouched (TMA/TME) as two legal estates; the Untouched may not hold the altar. At most the doctrine of a breakaway rite. | Faith doctrine (two estates) | BD | W-B#5,#6; W-3#8 | **M** — medieval estates are period; this cut is modern. Carry it as the faith's law |
 | H4 | The daughters speak first; decentre the rest. | Faith doctrine (council priority) | BD | W-B#3,#7 | **M** |
 | H5 | Trans lesbian separatism: own hall, bed and law; men barred from the hall. | Culture tradition "Lezsep" + `doctrine_clerical_gender_female_only`; hostility | BD | W-B#10,#16; W-3#8 | **M** — convent/beguine form strong (G-f); trans-inclusive version carried by (G-d) |
 | H6 | t4t as a vow: two daughters who swear share the last draught; blessed above all unions. | Rite tenet "Vow of the Last Vial" / "Cybelean Love" | BD, 3W | W-B#11; W-3#11 | **M** — sworn-sisterhood/adelphopoiia hooks (G-i, m) |
-| H7 | Desire for men is the regime's wound; a daughter who takes a husband is pitied. | Marriage/opinion doctrine | BD, 3W | W-B#12; W-3#10 | **W** — political lesbianism modern; convent-as-refuge is the veneer |
+| H7 | **[Revised 2026-10-21 after Bhatt, *Brown/Trans/Les* ch. 7]** The House does not ask whom she loves; it builds what needs no husband. No penalty for a daughter or sister who marries a man. (Was: desire for men is the regime's wound; a daughter who takes a husband is pitied.) | Marriage/opinion doctrine | BD, 3W | W-B#12; W-3#10 | **W** — political lesbianism modern; convent-as-refuge is the veneer |
 | H8 | Masculinity is power not dress; women in mail are women. | `martial_custom_female_only`/`_equal`; tradition | BD | W-B#13 | **M** (E8) |
 | H9 | Love the sister you loathe: quarrels never carried before outsiders; shelter owed whatever the grudge. | Rite tenet (communal identity variant) "Unbending Sisterhood" | BD, 3W | W-B#15; W-3#7 | **M** — guild/ocak solidarity (G-a) |
 | H10 | The hard foremothers' books were ours all along (second wave read as transfeminist). | Ancestor veneration flavour "The Old Mothers Were Ours" / "The Foremothers" | BD, 3W | W-B#17,#18; W-3#21 | **M** — foundress-prophetess precedents (F9) |
@@ -237,10 +240,10 @@ Tags: **W-B** `web_baedelism.md`, **W-3** `web_third_wave_transfeminism.md`, **W
 | H12 | Changing the flesh, not the name, is what frightens kings; the body is the deed. | Rite tenet (sacred modification) | BD | W-B#21,#22,#27 | **S** (G-j) |
 | H13 | The third *political* sex: those who cannot or will not breed; the faith counts them women, the world counts them eunuchs. | Contested special doctrine | 3W | W-B#25; W-3#3,#4,#18 | **S** — this is exactly the attested third estate (G-a) plus the faith's step (G-d) |
 | H14 | The poison and the draught: testosterone poison, estrogen quasi-sacred; dosing against will owed blood-price. | Culture tradition "Herb-Wives" | BD | W-B#26; W-3#16 | **M** — herb-wives period; no HRT. Mare's-urine legend disputed even in-group |
-| H15 | Crack the egg: a priestess may speak privately with any courtier; some leave as daughters. | Character interaction (clergy proselytism) "The Contagion" | BD, 3W | W-B#28; W-3#24 | **M** — conversion by preaching is period; frame as heresy's spread |
+| H15 | Crack the egg: a priestess may speak privately with any courtier; some leave as daughters. | Character interaction (clergy proselytism); **never named "The Contagion"** (hostile word only, 2026-10-21) | BD, 3W | W-B#28; W-3#24 | **M** — conversion by preaching is period; frame as heresy's spread |
 | H16 | Unpersoning and social death as sacrament; the daughter who has died a thousand times is holiest. | Rite tenet "The Thousand Deaths" | BD | W-B#29 | **M** — martyrdom/kenosis language is period |
 | H17 | Public call-outs of a daughter are scapegoat rituals; leaders of the stoning bear the stain. | Crime doctrine | BD | W-B#31 | **W→M** — stage as schism (G-k) |
-| H18 | We have always existed: gallae, bædlings, eunuch-priestesses as foremothers; the Church that burned them is the hereditary enemy. | Heritage flavour; ancestor veneration; hostility toward Christian faiths | BD, 3W | W-B#32, §4.7-4.8; W-3#25,#27,#28 | **S** for the lineage claim, **W** for continuity (no source bridges 250–867; claim survival or revival) |
+| H18 | We have always existed, and always fought (2026-10-21: the fight kept, not an honour lost): gallae, bædlings, eunuch-priestesses as foremothers; the Church that burned them is the hereditary enemy. | Heritage flavour; ancestor veneration; hostility toward Christian faiths | BD, 3W | W-B#32, §4.7-4.8; W-3#25,#27,#28 | **S** for the lineage claim, **W** for continuity (no source bridges 250–867; claim survival or revival) |
 | H19 | Day of Blood: each spring novices take the knife, die as the god and rise as daughters. Two rival readings = two sects. | Core rite tenet (calendar rite) | BD, 3W | W-B§4.5; W-3#2 | **M→S east** (G-c) |
 | H20 | The Mother is barren; she is protector, not progenitor. | HighGod loc keys | BD, 3W | W-B§4.3; W-3#4 | **S** — Cybele material |
 | H21 | Begging sisters: honoured in the temple, poor in the street; fortune-telling and dance. | Culture tradition (clergy income) | BD, 3W | W-B§4.1; W-3#29 | **S** — best-attested galli trait (G-h) |
@@ -249,17 +252,17 @@ Tags: **W-B** `web_baedelism.md`, **W-3** `web_third_wave_transfeminism.md`, **W
 | H24 | The knife is a gift, never a sentence: castrating a captive is kinslaying of the Mother. **Conflicts with B8.** | Doctrine forbidding penal castration | BD | W-B§4.6 | **W** — penal/slave castration *is* the period source of eunuchs; the faith's refusal is its dissent |
 | H25 | No shame in the veil: concealment before enemies is sacred cunning. **Conflicts with E3.** | Faith doctrine "Disguise is Virtue" | 3W (Bettcher) | T2#7 | **S** — Rykener, Céspedes survived by it |
 | H26 | Sisters are born of any womb: the Goddess sows daughters among every people. Theology for the random trait. | Faith doctrine "Daughterhood by Recognition" | GEN | T2#2 (joya emergence) | **S** — joya, bissu, baylan emergence narratives |
-| H27 | Keepers of the threshold: only the cut and the crone may wash the dead. | Rite tenet (exclusive funerary office) | GEN | T2#4 (Miranda on joyas) | **S** — exclusive ritual office is the strongest third-gender pattern |
+| H27 | **[Flagged: rests on Miranda's joyas, a colonial record; confirmed 2026-10-21 by Bhatt and the TSQ Decolonizing issue. Do not build.]** Keepers of the threshold: only the cut and the crone may wash the dead. | Rite tenet (exclusive funerary office) | GEN | T2#4 (Miranda on joyas) | **S** — exclusive ritual office is the strongest third-gender pattern |
 | H28 | Renaming is rebirth: renamed before fifty witnesses, the old name buried as a corpse. | Rite tenet / tradition | GEN | T2#11 (Rivera's ceremony) | **S** — monastic name-taking |
 | H29 | The sisterhood's school: veterans teach dress, voice and bearing. | Culture tradition (education) | GEN | T2#26 (dansho school) | **S** — guild apprenticeship (G-g) |
-| H30 | A cut daughter may be taken as wife by a chief, "more robust than the women". | Marriage custom | GEN | T2#25 (joya wives) | **S** on the colonial record; weak on-map |
+| H30 | **[Flagged, do not build (2026-10-21), as H27.]** A cut daughter may be taken as wife by a chief, "more robust than the women". | Marriage custom | GEN | T2#25 (joya wives) | **S** on the colonial record; weak on-map |
 | H31 | The body is common land: hormone, herb and knife belong to all sisters. | `tenet_communal_possessions` reflavoured | TMx | T2#13 (Preciado gender-copyleft); W-M | **M** (G-h) |
 | H32 | No worth in labour: the idle, the ill, the whore and the prisoner are as holy as the steward. | Doctrine against the "productive body" | TMx | T2#14 (Irving) | **M** — mendicant ideal |
 | H33 | Abolish the heir: the dead sister's goods return to the house. | Succession/tradition "Common Inheritance" | TMx | T2#15 (Bassichis, Lee & Spade); W-M | **W** (G-h) — monastic reversion of goods is the veneer |
 | H34 | Trickle up: justice begins with the lowest sister. | `ethos_egalitarian` | TMx | T2#16 | **M** |
 | H35 | Our dead are not your coin: no lord may raise a shrine over a murdered sister to buy virtue. | Funeral doctrine | GEN | T2#20 | **M** — relic politics inverted |
 | H36 | Against the pure: take what the world gives and bend it. | Doctrine forbidding ascetic purity | TMx | T2#22 (O'Brien) | **M** |
-| H37 | Man, woman and homosexual are also inventions. | Doctrine "Categories Are Idols" | GEN | T2#24 | **W** — modern; keep as esoteric tenet |
+| H37 | Man, woman and homosexual are also inventions. **No main faith answers a hostile cleric this way; the answer is "she is a woman" (2026-10-21).** | Doctrine "Categories Are Idols" | GEN | T2#24 | **W** — modern; keep as esoteric tenet |
 | H38 | Cis is not a caste: the line between them and us is thin as a tincture. | Tolerant ethos toward non-trans | 3W | T2#28; W-3 critics | **M** |
 | H39 | Innate before the rite: the trait exists from birth and raises the chance of seeking the Refusal; the rite recognises, it does not create. | Design rule for the "transgender" trait | 3W | W-3#31 | — |
 | H40 | Transition as loss of value to patriarchal reproduction (sterility as the price and the point). | Core logic linking castration, barrenness and adoption | TMx, 3W | W-M§2.2; W-3#18 | **S** — the faith's childless clergy *must* adopt (G-g) |

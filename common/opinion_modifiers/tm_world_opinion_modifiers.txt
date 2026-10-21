@@ -1,0 +1,52 @@
+﻿# Crusader Dolls — opinions of the hostile-world events (events/tm_world_events.txt).
+
+# Whispers (tm_world.0001): the lord silenced a teller of tales, or let the tale run about a sister of the House.
+tm_world_silenced_opinion = {
+	opinion = -10
+	years = 5
+}
+tm_world_let_run_opinion = {
+	opinion = -15
+	years = 5
+}
+
+# A hostile court (tm_world.0020): she objected to a question, or would not answer one about her body.
+tm_world_objected_opinion = {
+	opinion = -15
+	years = 5
+}
+tm_world_refused_question_opinion = {
+	opinion = -10
+	years = 5
+}
+# A sister or friend of the House answered for her.
+tm_world_answered_for_her_opinion = {
+	opinion = 15
+	years = 10
+}
+
+# The Court Wonders (tm_world.0030): the lord showed her to his guests as a marvel, or called her a demon's deceit.
+tm_world_shown_opinion = {
+	opinion = -15
+	years = 10
+}
+tm_world_called_deceit_opinion = {
+	opinion = -30
+	years = 15
+}
+
+# Those Without Desire (tm_world.0042): the lord housed her among the women as a woman, or kept her out.
+tm_world_housed_as_woman_opinion = {
+	opinion = 20
+	years = 10
+}
+tm_world_kept_out_opinion = {
+	opinion = -15
+	years = 10
+}
+
+# The Qadi's Ruling (tm_world.0040): her lord refused to have her hair cut and her robe re-wrapped.
+tm_world_refused_ruling_opinion = {
+	opinion = -10
+	years = 5
+}

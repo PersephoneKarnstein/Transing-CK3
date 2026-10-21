@@ -1,0 +1,5 @@
+﻿# Crusader Dolls — the seats' charter (tm_charter_on_actions.txt): the revoker took a seat from a holder of its faith.
+tm_charter_broken_opinion = {
+	opinion = -40
+	years = 20
+}

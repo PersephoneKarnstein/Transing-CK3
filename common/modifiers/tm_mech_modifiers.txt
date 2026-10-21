@@ -1,0 +1,15 @@
+﻿# Crusader Dolls — static modifiers for the October 2026 mechanics (docs/faith_design.md §16).
+
+# Teach Her the Answers (tm_teach_answers_interaction): a daughter who passed an outside examiner has told the
+# seeker what they ask and what they want to hear. The gates' odds read this modifier.
+tm_taught_answers_modifier = {
+	icon = learning_positive
+	learning = 1
+	stress_gain_mult = -0.05
+}
+
+# Word went round that she was coached (tm_mech.0030). It never blocks a gate.
+tm_suspected_coaching_modifier = {
+	icon = stress_negative
+	stress_gain_mult = 0.1
+}

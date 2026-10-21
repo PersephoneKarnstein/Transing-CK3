@@ -120,6 +120,7 @@ tm_badenya.0012 = {
 		name = tm_badenya.0012.b
 		random_list = {
 			50 = {
+				modifier = { add = 25 has_character_modifier = tm_taught_answers_modifier }	# Teach Her the Answers (tm_mech_interactions.txt)
 				desc = tm_badenya.0012.b.praise
 				add_prestige = 25
 			}
@@ -153,7 +154,6 @@ tm_badenya.0002 = {
 	option = {
 		name = tm_badenya.0002.c
 		trigger = { is_male = yes }
-		add_stress = 10
 	}
 }
 

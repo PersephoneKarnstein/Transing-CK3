@@ -1,0 +1,467 @@
+﻿# Crusader Dolls — houses, family and small moments (events/tm_life_events.txt).
+
+yearly_playable_pulse = {
+	on_actions = {
+		tm_life_yearly
+	}
+}
+
+quarterly_playable_pulse = {
+	on_actions = {
+		tm_life_quarterly
+	}
+}
+
+on_death = {
+	on_actions = {
+		tm_life_on_death
+	}
+}
+
+on_birth_child = {
+	on_actions = {
+		tm_life_on_birth
+	}
+}
+
+on_16th_birthday = {
+	on_actions = {
+		tm_life_on_16th_birthday
+	}
+}
+
+on_title_gain = {
+	on_actions = {
+		tm_life_on_title_gain
+	}
+}
+
+on_game_start = {
+	on_actions = {
+		tm_life_on_game_start
+	}
+}
+
+# Faiths of the six whose rulers already hold a duchy at the start have had their sermon (tm_life.0080).
+tm_life_on_game_start = {
+	effect = {
+		every_ruler = {
+			limit = {
+				highest_held_title_tier >= tier_duchy
+				rite ?= { rite_has_parameter = tm_sisters_faith }
+			}
+			add_to_global_variable_list = { name = tm_life_sermon_faiths target = faith }
+		}
+	}
+}
+
+tm_life_yearly = {
+	trigger = {
+		is_imprisoned = no
+		tm_settled_court_trigger = yes
+	}
+	effect = {
+		# ---- Houses -------------------------------------------------------------------------------------------
+		# Each House counts its years. A House older than a generation (25 years) may be asked to grow respectable.
+		every_held_title = {
+			limit = {
+				tier = tier_county
+				has_variable = tm_house
+			}
+			if = {
+				limit = { has_variable = tm_life_house_years }
+				change_variable = { name = tm_life_house_years add = 1 }
+			}
+			else = {
+				set_variable = { name = tm_life_house_years value = 1 }
+			}
+		}
+		if = {
+			limit = {
+				tm_life_sisters_court_trigger = yes
+				any_held_title = {
+					tier = tier_county
+					has_variable = tm_house
+					var:tm_life_house_years >= 25
+					NOT = { has_variable = tm_life_respectable_asked }
+				}
+				any_courtier = { tm_is_daughter_trigger = yes is_adult = yes NOT = { exists = house } }
+				any_courtier = { tm_house_member_trigger = yes is_female = yes is_adult = yes exists = house }
+			}
+			random = {
+				chance = 20
+				random_held_title = {
+					limit = {
+						tier = tier_county
+						has_variable = tm_house
+						var:tm_life_house_years >= 25
+						NOT = { has_variable = tm_life_respectable_asked }
+					}
+					set_variable = tm_life_respectable_asked
+					save_scope_as = tm_house_county
+				}
+				trigger_event = { id = tm_life.0001 days = { 1 300 } }
+			}
+		}
+
+		# ---- Family -------------------------------------------------------------------------------------------
+		# A mother asks for grandchildren (every ten years at most).
+		if = {
+			limit = {
+				tm_life_owes_grandchildren_trigger = yes
+				NOT = { has_variable = tm_life_grandchildren_cd }
+			}
+			random = {
+				chance = 10
+				set_variable = { name = tm_life_grandchildren_cd value = yes years = 10 }
+				trigger_event = { id = tm_life.0010 days = { 1 300 } }
+			}
+		}
+		# Kin grieve a son who was never lost (once).
+		if = {
+			limit = {
+				tm_is_daughter_trigger = yes
+				NOT = { has_variable = tm_life_mourned }
+				any_close_family_member = {
+					is_alive = yes
+					is_adult = yes
+					NOT = { rite ?= { rite_has_parameter = tm_sisters_faith } }
+				}
+			}
+			random = {
+				chance = 8
+				set_variable = tm_life_mourned
+				trigger_event = { id = tm_life.0011 days = { 1 300 } }
+			}
+		}
+		# Kin, people or sisters? Every five years at most, for her or for a daughter at her court.
+		if = {
+			limit = {
+				tm_life_minority_daughter_trigger = yes
+				NOT = { has_variable = tm_life_belong_cd }
+			}
+			random = {
+				chance = 20
+				set_variable = { name = tm_life_belong_cd value = yes years = 5 }
+				trigger_event = { id = tm_life.0020 days = { 1 300 } }
+			}
+		}
+		if = {
+			limit = {
+				any_courtier = {
+					tm_life_minority_daughter_trigger = yes
+					NOT = { has_variable = tm_life_belong_cd }
+				}
+			}
+			random = {
+				chance = 15
+				random_courtier = {
+					limit = {
+						tm_life_minority_daughter_trigger = yes
+						NOT = { has_variable = tm_life_belong_cd }
+					}
+					set_variable = { name = tm_life_belong_cd value = yes years = 5 }
+					trigger_event = { id = tm_life.0020 days = { 1 300 } }
+				}
+			}
+		}
+
+		# ---- Small moments ------------------------------------------------------------------------------------
+		# The novice years: nothing happens, and it is shown.
+		if = {
+			limit = { any_courtier = { has_trait = tm_novice is_imprisoned = no } }
+			random = {
+				chance = 25
+				random_courtier = {
+					limit = { has_trait = tm_novice is_imprisoned = no }
+					save_scope_as = tm_life_novice
+				}
+				trigger_event = { id = tm_life.0030 days = { 1 300 } }
+			}
+		}
+		# A sister named before witnesses waits for her rite.
+		if = {
+			limit = {
+				tm_life_waiting_trigger = yes
+				has_variable = tm_declared
+			}
+			random = {
+				chance = 20
+				trigger_event = { id = tm_life.0031 days = { 1 300 } }
+			}
+		}
+		# A stranger calls her "lady" (once).
+		if = {
+			limit = {
+				NOT = { has_variable = tm_life_lady_done }
+				rite ?= { rite_has_parameter = tm_sisters_faith }
+				OR = {
+					tm_is_daughter_trigger = yes
+					has_variable = tm_declared
+					has_variable = tm_embryo_active
+					has_variable = tm_pavai_companions
+				}
+			}
+			random = {
+				chance = 12
+				set_variable = tm_life_lady_done
+				trigger_event = { id = tm_life.0032 days = { 1 300 } }
+			}
+		}
+		# The old likeness (once, after her rite).
+		if = {
+			limit = {
+				tm_is_daughter_trigger = yes
+				NOT = { has_variable = tm_life_likeness_done }
+			}
+			random = {
+				chance = 15
+				set_variable = tm_life_likeness_done
+				trigger_event = { id = tm_life.0033 days = { 1 300 } }
+			}
+		}
+		# A name of her own (once). The naming events themselves are not ours to change: this comes after them.
+		if = {
+			limit = {
+				OR = {
+					tm_is_daughter_trigger = yes
+					has_variable = tm_declared
+				}
+				NOT = { has_variable = tm_life_own_name_done }
+			}
+			random = {
+				chance = 15
+				set_variable = tm_life_own_name_done
+				trigger_event = { id = tm_life.0034 days = { 1 300 } }
+			}
+		}
+
+		# ---- Faith-specific -----------------------------------------------------------------------------------
+		# Badenya: a senior mother takes what a junior daughter earned (every ten years at most).
+		if = {
+			limit = {
+				faith = faith:tm_badenya
+				NOT = { has_variable = tm_life_seniority_cd }
+				any_courtier = {
+					faith = faith:tm_badenya
+					is_female = yes
+					age >= 40
+					is_imprisoned = no
+				}
+				any_courtier = {
+					tm_is_daughter_trigger = yes
+					faith = faith:tm_badenya
+					age < 35
+					is_imprisoned = no
+				}
+			}
+			random = {
+				chance = 8
+				set_variable = { name = tm_life_seniority_cd value = yes years = 10 }
+				trigger_event = { id = tm_life.0050 days = { 1 300 } }
+			}
+		}
+		# The Worn Garland: the companions of the vow (every five years at most).
+		if = {
+			limit = {
+				has_trait = tm_daughter_of_the_garland
+				NOT = { has_variable = tm_life_companions_cd }
+			}
+			random = {
+				chance = 12
+				set_variable = { name = tm_life_companions_cd value = yes years = 5 }
+				trigger_event = { id = tm_life.0060 days = { 1 300 } }
+			}
+		}
+		# The Worn Garland: a seeker whose people may not walk the temple street (once per ruler).
+		if = {
+			limit = {
+				faith = faith:tm_garland
+				NOT = { has_variable = tm_life_barred_seeker_done }
+				exists = capital_province
+			}
+			random = {
+				chance = 4
+				set_variable = tm_life_barred_seeker_done
+				trigger_event = { id = tm_life.0061 days = { 1 300 } }
+			}
+		}
+		# Yutai Dao: binding spreads among the women of the Song elite. Wiesner, Gender in History ch. 4 pp. 98–99
+		# (research/hist_wiesner_gender_in_history.md row 44): begun c. 1000 among court entertainers, entrenched by
+		# 1200; Despeux & Kohn p. 65 (research/cn_despeux_kohn_women_daoism.md). From 1200 only, under a celestial throne.
+		if = {
+			limit = {
+				current_year >= 1200
+				faith = faith:tm_yutai
+				top_liege ?= { has_government = celestial_government }
+				OR = {
+					AND = {
+						tm_is_daughter_trigger = yes
+						NOT = { has_variable = tm_life_binding_done }
+					}
+					any_courtier = {
+						tm_is_daughter_trigger = yes
+						faith = faith:tm_yutai
+						is_adult = yes
+						NOT = { has_variable = tm_life_binding_done }
+					}
+				}
+			}
+			random = {
+				chance = 6
+				if = {
+					limit = {
+						tm_is_daughter_trigger = yes
+						NOT = { has_variable = tm_life_binding_done }
+					}
+					set_variable = tm_life_binding_done
+					trigger_event = { id = tm_life.0070 days = { 1 300 } }
+				}
+				else = {
+					random_courtier = {
+						limit = {
+							tm_is_daughter_trigger = yes
+							faith = faith:tm_yutai
+							is_adult = yes
+							NOT = { has_variable = tm_life_binding_done }
+						}
+						set_variable = tm_life_binding_done
+						trigger_event = { id = tm_life.0070 days = { 1 300 } }
+					}
+				}
+			}
+		}
+	}
+}
+
+# Badenya: after she has served at a naming feast (tm_badenya.0020 gives tm_feast_server_modifier for a year),
+# the gifts are counted, and what she earned is hers. Once per feast year.
+tm_life_quarterly = {
+	trigger = {
+		has_character_modifier = tm_feast_server_modifier
+		NOT = { has_variable = tm_life_feast_counted }
+	}
+	effect = {
+		set_variable = { name = tm_life_feast_counted value = yes days = 360 }
+		trigger_event = { id = tm_life.0051 days = { 1 30 } }
+	}
+}
+
+# Kin bury a daughter under her birth name unless the House intervenes. Every faith but Badenya, whose own event
+# (tm_badenya.0030, tm_on_death_badenya) already does this. A body left at re-embodiment is not a death.
+tm_life_on_death = {
+	trigger = {
+		tm_is_daughter_trigger = yes
+		NOT = { has_trait = tm_daughter_of_the_house }
+		NOT = { has_variable = tm_reborn }
+		any_close_family_member = {
+			is_alive = yes
+			is_adult = yes
+			NOT = { rite ?= { rite_has_parameter = tm_sisters_faith } }
+		}
+		OR = {
+			employer ?= { rite ?= { rite_has_parameter = tm_sisters_faith } }
+			AND = {
+				NOT = { exists = employer }
+				liege ?= { rite ?= { rite_has_parameter = tm_sisters_faith } }
+			}
+		}
+	}
+	effect = {
+		save_scope_as = tm_dead_daughter
+		random_close_family_member = {
+			limit = {
+				is_alive = yes
+				is_adult = yes
+				NOT = { rite ?= { rite_has_parameter = tm_sisters_faith } }
+			}
+			save_scope_as = tm_life_kin
+		}
+		if = {
+			limit = { exists = employer }
+			employer = { trigger_event = tm_life.0012 }
+		}
+		else = {
+			liege = { trigger_event = tm_life.0012 }
+		}
+	}
+}
+
+# A birth the midwife could not read, at a court of the six. Rare (2%: the faiths' populations are small). Root = the child.
+tm_life_on_birth = {
+	trigger = {
+		exists = scope:mother
+		OR = {
+			scope:mother = {
+				is_ruler = yes
+				tm_life_sisters_court_trigger = yes
+			}
+			scope:mother.liege_or_court_owner ?= { tm_life_sisters_court_trigger = yes }
+		}
+	}
+	effect = {
+		random = {
+			chance = 2
+			save_scope_as = tm_life_child
+			scope:mother = { save_scope_as = tm_life_mother }
+			if = {
+				limit = { scope:mother = { is_ruler = yes tm_life_sisters_court_trigger = yes } }
+				scope:mother = { trigger_event = { id = tm_life.0040 days = 3 } }
+			}
+			else = {
+				scope:mother.liege_or_court_owner = { trigger_event = { id = tm_life.0040 days = 3 } }
+			}
+		}
+	}
+}
+
+# The choice kept for the child at birth (tm_life.0040) is hers, or his, at sixteen.
+tm_life_on_16th_birthday = {
+	trigger = {
+		has_variable = tm_life_child_chooses
+	}
+	effect = {
+		trigger_event = { id = tm_life.0041 days = 2 }
+	}
+}
+
+# The expansion sermon: the first time a ruler of one of the six faiths gains a duchy, a neighbouring head of faith
+# (or a neighbour's court chaplain) preaches that they have gone too far. Once per faith; text and opinion only.
+# (research/serano_blog_essays.md design row 17.)
+tm_life_on_title_gain = {
+	trigger = {
+		exists = scope:title
+		scope:title = { tier = tier_duchy }
+		rite ?= { rite_has_parameter = tm_sisters_faith }
+		NOT = {
+			is_target_in_global_variable_list = { name = tm_life_sermon_faiths target = root.faith }
+		}
+		any_neighboring_top_liege_realm_owner = {
+			NOT = { rite ?= { rite_has_parameter = tm_sisters_faith } }
+		}
+	}
+	effect = {
+		add_to_global_variable_list = { name = tm_life_sermon_faiths target = root.faith }
+		random_neighboring_top_liege_realm_owner = {
+			limit = { NOT = { rite ?= { rite_has_parameter = tm_sisters_faith } } }
+			weight = {
+				base = 1
+				modifier = { add = 3 exists = faith.religious_head }
+				modifier = { add = 2 has_trait = zealous }
+			}
+			save_scope_as = tm_life_neighbour
+		}
+		if = {
+			limit = { exists = scope:tm_life_neighbour.faith.religious_head }
+			scope:tm_life_neighbour.faith.religious_head = { save_scope_as = tm_life_preacher }
+		}
+		else_if = {
+			limit = { exists = scope:tm_life_neighbour.cp:councillor_court_chaplain }
+			scope:tm_life_neighbour.cp:councillor_court_chaplain = { save_scope_as = tm_life_preacher }
+		}
+		else = {
+			scope:tm_life_neighbour = { save_scope_as = tm_life_preacher }
+		}
+		trigger_event = { id = tm_life.0080 days = { 30 90 } }
+	}
+}

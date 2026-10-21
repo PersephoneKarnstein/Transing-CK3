@@ -1,0 +1,101 @@
+﻿# Crusader Dolls — on_action hooks for the October 2026 mechanics (docs/faith_design.md §16). Lists merge with
+# vanilla's and with tm_on_actions.txt.
+
+yearly_playable_pulse = {
+	on_actions = { tm_mech_yearly_playable }
+}
+
+on_marriage = {
+	on_actions = { tm_mech_on_marriage }
+}
+
+on_release_from_prison = {
+	on_actions = { tm_mech_on_release_from_prison }
+}
+
+tm_mech_yearly_playable = {
+	effect = {
+		# Item 25: contact wears down the doubt of cynical and content observers who share a court with daughters.
+		if = {
+			limit = {
+				OR = {
+					tm_is_daughter_trigger = yes
+					any_courtier = { tm_is_daughter_trigger = yes }
+				}
+			}
+			tm_mech_court_contact_effect = yes
+			# Item 31: spouses of daughters married before these rules (or at game start) are friends of the House too.
+			if = {
+				limit = { tm_is_daughter_trigger = yes }
+				every_spouse = {
+					limit = {
+						tm_is_daughter_trigger = no
+						NOT = { has_character_modifier = tm_house_friend_modifier }
+					}
+					add_character_modifier = { modifier = tm_house_friend_modifier }
+				}
+			}
+			every_courtier = {
+				limit = { tm_is_daughter_trigger = yes }
+				every_spouse = {
+					limit = {
+						tm_is_daughter_trigger = no
+						NOT = { has_character_modifier = tm_house_friend_modifier }
+					}
+					add_character_modifier = { modifier = tm_house_friend_modifier }
+				}
+			}
+		}
+		# Item 27: scapegoat pressure.
+		if = {
+			limit = {
+				is_landed = yes
+				rite ?= { rite_has_parameter = tm_sisters_faith }
+			}
+			tm_mech_scapegoat_effect = yes
+		}
+	}
+}
+
+# Item 31. Root = the major partner; scope:spouse = the minor partner. Also fires for the marriages that
+# tm_reembody_as_woman_effect carries over, which is wanted: the new body is a daughter.
+tm_mech_on_marriage = {
+	effect = {
+		if = {
+			limit = { tm_is_daughter_trigger = yes }
+			scope:spouse = { tm_mech_spouse_of_daughter_effect = { DAUGHTER = root } }
+		}
+		if = {
+			limit = { scope:spouse = { tm_is_daughter_trigger = yes } }
+			tm_mech_spouse_of_daughter_effect = { DAUGHTER = scope:spouse }
+		}
+	}
+}
+
+# Item 30. Root = the released character; scope:imprisoner = who held them. Released prisoners are offered a place
+# among the friends of the House (Serano row 19). Not players, not rulers, not the Dorley washout (tm_dorley.0200
+# has its own path to the House's friends).
+tm_mech_on_release_from_prison = {
+	trigger = {
+		is_ai = yes
+		is_adult = yes
+		is_ruler = no
+		NOR = {
+			has_trait = tm_washout
+			has_trait = tm_novice
+		}
+		exists = scope:imprisoner
+		scope:imprisoner = {
+			is_alive = yes
+			rite ?= { rite_has_parameter = tm_sisters_faith }
+			tm_holds_sisters_house_trigger = yes
+		}
+	}
+	effect = {
+		random = {
+			chance = 15
+			save_scope_as = tm_released
+			scope:imprisoner = { trigger_event = { id = tm_house.0061 days = { 3 10 } } }
+		}
+	}
+}

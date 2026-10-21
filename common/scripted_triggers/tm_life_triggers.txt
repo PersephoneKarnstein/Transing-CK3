@@ -1,0 +1,74 @@
+﻿# Crusader Dolls — houses, family and small moments (events/tm_life_events.txt).
+
+# A daughter of Ha-Nehpakhot, Badenya or the Worn Garland whose lord (liege or employer) keeps another faith.
+# "Kin, people or sisters?" (tm_life.0020; research/book_bhatt_brown_trans_les.md §5 row 9).
+tm_life_minority_daughter_trigger = {
+	tm_is_daughter_trigger = yes
+	is_adult = yes
+	is_imprisoned = no
+	OR = {
+		faith = faith:tm_nehpakhot
+		faith = faith:tm_badenya
+		faith = faith:tm_garland
+	}
+	liege_or_court_owner ?= {
+		NOT = { faith = prev.faith }
+	}
+}
+
+# A sister of any of the six who could be asked for grandchildren: a daughter, or a woman of the faith with no
+# living child. Scope: the character asked. (tm_life.0010; Bhatt row 10.)
+tm_life_owes_grandchildren_trigger = {
+	is_adult = yes
+	rite ?= { rite_has_parameter = tm_sisters_faith }
+	OR = {
+		tm_is_daughter_trigger = yes
+		is_female = yes
+	}
+	NOT = { any_child = { is_alive = yes } }
+	mother ?= {
+		is_alive = yes
+		is_adult = yes
+		is_imprisoned = no
+		NOT = { rite ?= { rite_has_parameter = tm_sisters_faith } }
+	}
+}
+
+# A young woman at court whom the one asked could take as daughter or foster: the same terms as
+# tm_adopt_daughter_interaction and tm_foster_daughter_interaction. Scope: the candidate. ADOPTER = who takes her.
+tm_life_daughter_candidate_trigger = {
+	is_alive = yes
+	is_ruler = no
+	is_imprisoned = no
+	age < $ADOPTER$.age
+	OR = {
+		is_female = yes
+		has_trait = tm_transgender
+		tm_is_daughter_trigger = yes
+	}
+	NOT = { has_character_modifier = tm_fostered_modifier }
+	NOR = {
+		is_child_of = $ADOPTER$
+		is_parent_of = $ADOPTER$
+		is_spouse_of = $ADOPTER$
+		is_consort_of = $ADOPTER$
+		any_ancestor = { this = $ADOPTER$ }
+	}
+}
+
+# A ruler of one of the six faiths. Scope: the ruler.
+tm_life_sisters_court_trigger = {
+	rite ?= { rite_has_parameter = tm_sisters_faith }
+	tm_settled_court_trigger = yes
+}
+
+# Someone still on the road to her rite: a novice of the Dorley programme, or a sister named before witnesses who
+# has not yet risen (Chu, "a study in waiting": research/tsq_chu_wrong_wrong_body.md §3 row 2).
+tm_life_waiting_trigger = {
+	tm_is_daughter_trigger = no
+	is_imprisoned = no
+	OR = {
+		has_trait = tm_novice
+		has_variable = tm_declared
+	}
+}

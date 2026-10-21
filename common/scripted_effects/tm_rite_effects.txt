@@ -50,6 +50,18 @@ tm_rise_daughter_effect = {
 		limit = { NOT = { has_variable = tm_declared } }
 		trigger_event = { id = $RENAME$ days = 1 }
 	}
+	# The old likeness and a name of her own come after the rite itself (tm_life.0033, 0034; user 2026-10-21),
+	# on whichever body survives it.
+	if = {
+		limit = {
+			has_game_rule = tm_reembodiment_on
+			exists = scope:tm_new_body
+		}
+		scope:tm_new_body = { tm_life_after_rite_effect = yes }
+	}
+	else = {
+		tm_life_after_rite_effect = yes
+	}
 }
 
 # The knife itself (Adelphai Dorleyaiou).

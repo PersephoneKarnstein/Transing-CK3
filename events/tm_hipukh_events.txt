@@ -133,7 +133,7 @@ tm_hipukh.0001 = {
 		name = tm_hipukh.0001.a
 		random_list = {
 			30 = {
-				modifier = { add = 30 has_trait = tm_transgender }
+				modifier = { add = 30 OR = { has_trait = tm_transgender has_variable = tm_declared } }	# Marked, or named before witnesses (§16 rule 8)
 				modifier = { add = learning }
 				modifier = { add = scope:tm_zekenah.learning }
 				modifier = { add = 20 has_personal_tenet_flag = tm_personal_turning_easier }
@@ -229,7 +229,6 @@ tm_hipukh.0002 = {
 	option = {
 		name = tm_hipukh.0002.c
 		trigger = { is_male = yes }
-		add_stress = 10
 	}
 }
 
@@ -275,6 +274,7 @@ tm_hipukh.0003 = {
 			40 = {
 				modifier = { add = { value = learning multiply = 2 } }
 				modifier = { add = 10 scope:tm_council_women = yes }	# the women of the street sit in the council
+				modifier = { add = 20 has_character_modifier = tm_taught_answers_modifier }	# Teach Her the Answers (tm_mech_interactions.txt)
 				desc = tm_hipukh.0003.a.win
 				add_prestige = 75
 				location ?= { county ?= { set_variable = { name = tm_worthies_licence value = yes years = 10 } } }

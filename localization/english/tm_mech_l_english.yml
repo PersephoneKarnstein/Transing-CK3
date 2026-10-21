@@ -1,0 +1,73 @@
+﻿l_english:
+ # Item 24: Rescue the Daughters
+ tm_mech.0001.t:0 "Free to Choose"
+ tm_mech.0001.desc:0 "The war is over and the doors are open. [tm_rescuer.GetTitledFirstName] has sent word that there is a place at [tm_rescuer.GetHerHis] court for any woman who wants it. Nobody will hold it against me if I go home instead."
+ tm_mech.0001.a:0 "I will go with the ones who came for us."
+ tm_mech.0001.b:0 "I am going home."
+
+ # Item 28: Set Down the Name
+ tm_set_down_name_decision:0 "Set Down the Name"
+ tm_set_down_name_decision_desc:0 "I named myself before witnesses. I can set that down for now. The Sisters will not ask why, and the door stays open."
+ tm_set_down_name_decision_tooltip:0 "End your declaration. Your faith and your House think no less of you."
+ tm_set_down_name_decision_confirm:0 "Set it down"
+ tm_set_down_name_decision.tt:0 "You may declare again at any time, at no cost."
+ tm_mech.0020.t:0 "Setting Down the Name"
+ tm_mech.0020.desc:0 "I go to the Elder Sister and tell her I cannot carry the name just now. She does not ask why. She says that many women have stood where I stand, for many reasons, and that some came back to it and some did not. Either way I am still welcome at the House's table, and I can say the words again whenever I choose."
+ tm_mech.0020.desc_liege:0 "\n\nAt [ROOT.Char.GetLiege.GetFirstName]'s court the chaplain is pleased with himself. He tells anyone who will listen that the Sisters' spell has broken. He does not know me."
+ tm_mech.0020.a:0 "I set down the declaration. The name I keep."
+ tm_mech.0020.b:0 "I set it down, and answer to my father's name for now."
+ tm_mech.0020.c:0 "Not today."
+ tm_set_down_name_opinion:0 "Set Down Her Name"
+
+ # Item 29: Teach Her the Answers
+ tm_teach_answers_interaction:0 "Teach Her the Answers"
+ tm_teach_answers_interaction_desc:0 "Tell [recipient.GetFirstName] what the examiners at the gate will ask, and what they want to hear. It was passed to us hand to hand, and it is ours to pass on."
+ tm_taught_answers_modifier:0 "Taught the Answers"
+ tm_taught_answers_modifier_desc:0 "A daughter who came through the same gate has told this character what the examiners ask."
+ tm_suspected_coaching_modifier:0 "Suspected of Coaching"
+ tm_suspected_coaching_modifier_desc:0 "The examiners say this character only repeats what she was told."
+ tm_mech.0030.t:0 "Too Well Prepared"
+ tm_mech.0030.desc_embryo:0 "A clerk of the censor's office has been asking about me. He says that a real nun does not know the questions before they are put to her, and that someone in the guan has been coaching me. He will not strike me off the roll for it. He only wants it known that he is not fooled."
+ tm_mech.0030.desc_turning:0 "One of [ROOT.Char.Custom('tm_kahal_judges')] has been saying in the street that I answer like a pupil, word for word, and that some daughter of the lamp has taught me my lines. It changes nothing in the law. It is said to be heard."
+ tm_mech.0030.desc_pavai:0 "A man of the temple staff tells the priests that I know the vow too well, and that one of the Garland's daughters must have drilled me in it. Nobody takes the staff from me. He wants them to look at me twice."
+ tm_mech.0030.desc_crossing:0 "The jeli's people say that I have been coached, that I know what praise is wanted before it is asked for. A jeli says what a jeli likes. They will still speak my name."
+ tm_mech.0030.a:0 "Let them say it."
+ tm_mech.0030.b:0 "Next time I will answer in my own words."
+
+ # Item 25: hostile observers come in kinds
+ tm_lukewarm_observer_opinion:0 "Doubts, but Is No Zealot"
+ tm_shared_court_opinion:0 "Has Shared a Court with Daughters"
+ # Item 26
+ tm_binding_grievance_opinion:0 "An Old Grievance, Still Held"
+
+ # Item 30: the same door
+ tm_house.0065.t:0 "The Same Door"
+ tm_house.0065.desc_widow:0 "A widow has come to the House. When her husband died, his brothers took the house and the fields and told her to go back to her own people. Her own people had married her off to be rid of her. The Elder Sister says the House has a door for her too."
+ tm_house.0065.desc_freed:0 "The sisters have brought back a woman they bought free from the household that kept her as a slave. She does not speak our tongue well yet. She has asked to stay with them and learn their prayers."
+ tm_house.0065.desc_prisoner:0 "A woman has come to the House straight from a lord's prison. Whatever she was held for, it is over, and nobody outside will take her in. The Elder Sister says it is the same door."
+ tm_house.0065.desc_dancer:0 "A dancer from a lord's hall has come to the House. The court called her a disreputable woman as soon as she was too old to be called anything else. She asks for a bed and work, and nothing more."
+ tm_house.0065.a:0 "It is the same door. She is a sister here."
+ tm_house.0065.b:0 "She is a sister here, and my daughter."
+ tm_house.0065.c:0 "Tell her where the next House is."
+ tm_house.0061.t:0 "Out of the Cells"
+ tm_house.0061.desc:0 "[tm_released.GetFirstName] has been let out of my prison with nowhere to go. The friends of the House have offered a place among them: work, a bed, and people who do not ask what came before."
+ tm_house.0061.a:0 "Stay with the friends of the House."
+ tm_house.0061.b:0 "Go in peace."
+
+ # Item 31: spouses
+ tm_married_a_daughter_opinion:0 "Married a Daughter"
+ tm_mech_married_a_daughter_toast:0 "Married a Daughter"
+ tm_mech_married_a_daughter_toast.tt:0 "Some at court of other faiths think less of [tm_daughter_spouse.GetFirstName] now. A chaplain says no blessing will hold over such a match."
+ tm_mech.0040.t:0 "The Marriage Stands"
+ tm_mech.0040.desc:0 "I came back from the gate married. The Sisters say that a marriage made before is not undone by what I am now, unless one of us chooses to undo it. [tm_mech_spouse.GetFirstName] has not said anything yet. I can at least say what I want."
+ tm_mech.0040.a:0 "We are still married, if [tm_mech_spouse.GetFirstName] will have it."
+ tm_mech.0040.b:0 "It is better that we part, kindly."
+ tm_mech.0041.t:0 "Still Married"
+ tm_mech.0041.desc_faith:0 "[tm_mech_daughter.GetFirstName] has come back from the gate and wants us to stay married. Our faith says the marriage stands, and nobody at the House thinks I was deceived or wronged. If I want to leave, I may leave, and nobody will shame either of us."
+ tm_mech.0041.desc_annul:0 "[tm_mech_daughter.GetFirstName] has come back from the gate and wants us to stay married. The priests of my faith say the rite ended the marriage, and that I have been robbed of a spouse. I was not robbed of anything. I still have to decide what to do."
+ tm_mech.0041.a:0 "We stay married."
+ tm_mech.0041.b:0 "I will go, and there is no shame in it for either of us."
+ tm_mech.0041.c:0 "I stay, and I will keep her faith with her."
+
+ # Item 32: the Dorley washout
+ tm_dorley.0200.b_friends:0 "Release [tm_novice.GetFirstName] to the friends of the House."

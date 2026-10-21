@@ -226,6 +226,13 @@ tm_house_yearly_effect = {
 				scope:tm_house_holder = { trigger_event = tm_house.0040 }
 			}
 		}
+		# The same door (Bhatt row 3, Serano row 19): a woman the world has put out asks to come in. Separate from the
+		# events above, and rarer.
+		random = {
+			chance = 8
+			modifier = { add = -4 var:tm_house_strain >= 4 }		# a House near splitting takes in fewer
+			scope:tm_house_holder = { trigger_event = { id = tm_house.0065 days = { 1 300 } } }
+		}
 	}
 }
 
@@ -233,9 +240,14 @@ tm_house_yearly_effect = {
 tm_declare_effect = {
 	set_variable = tm_declared
 	add_character_modifier = { modifier = tm_declared_modifier }
-	add_prestige = 25
+	# Taking the name up again after setting it down (tm_set_down_name_decision) is free, with no cooldown, and
+	# earns nothing a second time.
 	if = {
-		limit = { has_trait = tm_transgender }
-		add_stress = -50
+		limit = { NOT = { has_variable = tm_set_down_name } }
+		add_prestige = 25
+		if = {
+			limit = { has_trait = tm_transgender }
+			add_stress = -50
+		}
 	}
 }

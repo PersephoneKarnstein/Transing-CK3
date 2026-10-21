@@ -44,6 +44,10 @@ tm_byz.0010 = {
 	theme = faith
 	left_portrait = { character = root animation = worry }
 
+	# Scapegoat pressure (Transpsychoanalytics row 1): a hostile faith that is secure lets this pass some years
+	# (tm_mech_scapegoat_effect, common/scripted_effects/tm_mech_effects.txt).
+	trigger = { NOT = { has_variable = tm_scapegoat_calm } }
+
 	immediate = { set_variable = { name = tm_suppression value = 1 } }
 
 	option = {	# Copy them first
@@ -79,6 +83,10 @@ tm_byz.0011 = {
 	theme = faith
 	left_portrait = { character = root animation = worry }
 
+	# Scapegoat pressure (Transpsychoanalytics row 1): a hostile faith that is secure lets this pass some years
+	# (tm_mech_scapegoat_effect, common/scripted_effects/tm_mech_effects.txt).
+	trigger = { NOT = { has_variable = tm_scapegoat_calm } }
+
 	immediate = { set_variable = { name = tm_suppression value = 2 } }
 
 	option = {	# Meet in secret
@@ -108,6 +116,10 @@ tm_byz.0012 = {
 	desc = tm_byz.0012.desc
 	theme = faith
 	left_portrait = { character = root animation = anger }
+
+	# Scapegoat pressure (Transpsychoanalytics row 1): a hostile faith that is secure lets this pass some years
+	# (tm_mech_scapegoat_effect, common/scripted_effects/tm_mech_effects.txt).
+	trigger = { NOT = { has_variable = tm_scapegoat_calm } }
 
 	immediate = { set_variable = { name = tm_suppression value = 3 } }
 

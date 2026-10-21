@@ -1,0 +1,55 @@
+﻿# Crusader Dolls — houses, family and small moments (events/tm_life_events.txt).
+
+# Take as Daughter from an event: the same effect as tm_adopt_daughter_interaction's on_accept, at the
+# interaction's cost for one's own courtier (50 prestige). Scope: the one adopting. CHILD = the new daughter.
+tm_life_take_as_daughter_effect = {
+	add_prestige = -50
+	$CHILD$ = {
+		if = {
+			limit = { has_character_modifier = tm_fostered_modifier }
+			remove_character_modifier = tm_fostered_modifier
+			remove_variable = tm_fostered_by
+		}
+	}
+	adopt_effect = {
+		CHILD = $CHILD$
+		ADOPTER = this
+	}
+	$CHILD$ = {
+		add_opinion = { target = prev modifier = grateful_opinion opinion = 30 }
+	}
+	add_piety = 25
+	if = {
+		limit = { NOT = { $CHILD$.faith = faith } }
+		save_scope_as = tm_new_mother
+		$CHILD$ = { trigger_event = tm_refuge.0020 }
+	}
+}
+
+# Foster as Daughter from an event: the same effect as tm_foster_daughter_interaction's on_accept (25 prestige).
+# Scope: the one fostering. CHILD = the foster-daughter.
+tm_life_foster_effect = {
+	add_prestige = -25
+	save_scope_as = tm_life_fosterer
+	$CHILD$ = {
+		add_character_modifier = { modifier = tm_fostered_modifier }
+		set_variable = { name = tm_fostered_by value = scope:tm_life_fosterer }
+		add_opinion = { target = scope:tm_life_fosterer modifier = grateful_opinion opinion = 20 }
+	}
+	add_piety = 10
+}
+
+# After a gate's rite (tm_rise_daughter_effect): the old likeness a month on, and the offer of a name of her own two
+# months on. The done-flags stop the yearly pulse in tm_life_on_actions.txt from offering them again.
+tm_life_after_rite_effect = {
+	if = {
+		limit = { NOT = { has_variable = tm_life_likeness_done } }
+		set_variable = tm_life_likeness_done
+		trigger_event = { id = tm_life.0033 days = 30 }
+	}
+	if = {
+		limit = { NOT = { has_variable = tm_life_own_name_done } }
+		set_variable = tm_life_own_name_done
+		trigger_event = { id = tm_life.0034 days = 60 }
+	}
+}

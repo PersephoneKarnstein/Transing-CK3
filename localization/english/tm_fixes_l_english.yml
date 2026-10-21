@@ -1,0 +1,8 @@
+﻿l_english:
+ # The seat to a member (tm_seat_effects.txt)
+ tm_seat_passed_msg:0 "The Seat Stays with the Faith"
+ tm_seat_passed_msg_desc:0 "[tm_seat_holder.GetFirstName] leaves the seat of her faith to [tm_seat_heir.GetName], who keeps her faith, and not to an heir who does not."
+ # The charter (tm_charter_on_actions.txt)
+ tm_charter_broken_msg:0 "The Seat's Charter Broken"
+ tm_charter_broken_msg_desc:0 "You took the seat of a faith from [tm_charter_holder.GetName], who keeps that faith. Its people in your realm, and its head, will remember it."
+ tm_charter_broken_opinion:0 "Took the Seat of Our Faith"

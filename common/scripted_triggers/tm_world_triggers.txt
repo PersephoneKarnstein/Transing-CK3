@@ -1,0 +1,78 @@
+﻿# Crusader Dolls — daughters in a hostile world (events/tm_world_events.txt). Items 33, 34, 36, 37, 38, 42 of the
+# October-reading revisions (faith_design.md §16).
+
+# A daughter the world can single out: an adult daughter of any gate, or a declared sister. Not in a cell.
+tm_world_daughter_trigger = {
+	is_adult = yes
+	is_imprisoned = no
+	OR = {
+		tm_is_daughter_trigger = yes
+		has_variable = tm_declared
+	}
+}
+
+# Not hit by one of these events in the last three years (tm_world_mark_effect), so no daughter is spammed.
+tm_world_rested_trigger = {
+	NOT = { has_character_flag = tm_world_recent }
+}
+
+# A daughter of Ha-Nehpakhot. No mikveh scene and no child-lifter rumour is ever built for them: the first needs a
+# Judaism source (tsq_transpsychoanalytics_2017.md row 3), the second is the shape of the blood libel.
+tm_world_nehpakhot_daughter_trigger = {
+	OR = {
+		has_trait = tm_daughter_of_the_turning
+		rite ?= { rite_has_parameter = tm_turning_gate }
+	}
+}
+
+# A ruler (scope) whose court is the world's, not the Sisters': of no Sisters' faith.
+tm_world_hostile_court_trigger = {
+	NOT = { rite ?= { rite_has_parameter = tm_sisters_faith } }
+}
+
+# Grandmother's House: the one condemned way of the knife. Under it the child-lifter slander may be true in the
+# world (faith_design §16, decisions), so the child-lifter rumour is not drawn in its realms: the narrator never
+# confirms a rumour, and here it could not honestly deny one.
+tm_world_grandmother_trigger = {
+	rite ?= { rite_has_doctrine = tm_knife_grandmother }
+}
+
+# A Christian court of the Greek or Latin Church (the convents of the abbess event): Chalcedonian, Catholic or Orthodox.
+tm_world_chalcedonian_trigger = {
+	OR = {
+		faith = faith:christian_faith
+		faith = faith:catholic
+		faith = faith:orthodox
+	}
+}
+
+# The Greek voice of that Church (otherwise the Latin one).
+tm_world_greek_church_trigger = {
+	OR = {
+		rite = rite:byzantine_rite
+		faith = faith:orthodox
+		culture ?= { has_cultural_pillar = heritage_byzantine }
+	}
+}
+
+# Shi'i courts (Almarri row 1). Sunni and other Islamic courts take the Sunni voice.
+tm_world_shii_trigger = {
+	faith = faith:shia
+}
+
+# The Fatimid code may be named only after c. 960 (al-Qadi al-Numan, the Pillars), and only at an Isma'ili court.
+tm_world_pillars_trigger = {
+	current_date >= 960.1.1
+	OR = {
+		rite = rite:ismaili
+		rite = rite:hafizi
+	}
+}
+
+# Scapegoat pressure (item 27): the world's faith (scope) is shaken or secure.
+tm_world_strained_faith_trigger = {
+	fervor < 35
+}
+tm_world_secure_faith_trigger = {
+	fervor > 75
+}

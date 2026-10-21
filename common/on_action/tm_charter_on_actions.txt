@@ -1,0 +1,22 @@
+﻿# Crusader Dolls — the seats' charter (docs/faith_design.md §16, "Collapse fixes"; tm_seat_effects.txt).
+
+# root: the old holder; scope:title, scope:new_holder, scope:transfer_type (vanilla title_on_actions.txt).
+on_title_lost = {
+	on_actions = {
+		tm_charter_on_title_lost
+	}
+}
+
+# A seat revoked from a holder of its faith costs the revoker. Not forbidden; see tm_charter_on_title_lost_effect.
+tm_charter_on_title_lost = {
+	trigger = {
+		scope:transfer_type = flag:revoked
+		exists = scope:new_holder
+		NOT = { scope:new_holder = root }
+		rite ?= { rite_has_parameter = tm_sisters_faith }
+		scope:title = { tier = tier_county }
+	}
+	effect = {
+		tm_charter_on_title_lost_effect = yes
+	}
+}

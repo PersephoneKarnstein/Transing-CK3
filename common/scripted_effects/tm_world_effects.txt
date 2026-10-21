@@ -1,0 +1,73 @@
+﻿# Crusader Dolls — effects of the hostile-world events (events/tm_world_events.txt).
+
+# Scope: a daughter one of these events has just touched. No other of them touches her for three years.
+tm_world_mark_effect = {
+	add_character_flag = { flag = tm_world_recent years = 3 }
+}
+
+# Scope: a ruler of a Sisters' faith. Saves scope:tm_world_court, the world's court she must deal with: her liege if he
+# is of another faith, else her top liege, else (if she is independent, or her lieges are Sisters) a neighbouring
+# ruler of another faith. Saves nothing if there is none. scope:tm_world_court_is_liege is set when the court is
+# the realm she lives in.
+tm_world_pick_court_effect = {
+	if = {
+		limit = {
+			is_independent_ruler = no
+			liege ?= { tm_world_hostile_court_trigger = yes }
+		}
+		liege = { save_scope_as = tm_world_court }
+		save_scope_value_as = { name = tm_world_court_is_liege value = yes }
+	}
+	else_if = {
+		limit = {
+			is_independent_ruler = no
+			top_liege ?= { tm_world_hostile_court_trigger = yes }
+		}
+		top_liege = { save_scope_as = tm_world_court }
+		save_scope_value_as = { name = tm_world_court_is_liege value = yes }
+	}
+	else_if = {
+		limit = {
+			any_neighboring_top_liege_realm_owner = { tm_world_hostile_court_trigger = yes }
+		}
+		random_neighboring_top_liege_realm_owner = {
+			limit = { tm_world_hostile_court_trigger = yes }
+			save_scope_as = tm_world_court
+		}
+	}
+}
+
+# Scope: a ruler of a Sisters' faith. Saves scope:tm_world_daughter: herself if she is a daughter the world can
+# single out, else an adult daughter of her court. Saves nothing if there is none.
+tm_world_pick_daughter_effect = {
+	if = {
+		limit = {
+			tm_world_daughter_trigger = yes
+			tm_world_rested_trigger = yes
+		}
+		save_scope_as = tm_world_daughter
+	}
+	else_if = {
+		limit = {
+			any_courtier = {
+				tm_world_daughter_trigger = yes
+				tm_world_rested_trigger = yes
+			}
+		}
+		random_courtier = {
+			limit = {
+				tm_world_daughter_trigger = yes
+				tm_world_rested_trigger = yes
+			}
+			save_scope_as = tm_world_daughter
+		}
+	}
+}
+
+# Scope: the House's county, or none. A tale run loose strains the House.
+tm_world_strain_house_effect = {
+	if = {
+		limit = { has_variable = tm_house_strain }
+		change_variable = { name = tm_house_strain add = 1 }
+	}
+}

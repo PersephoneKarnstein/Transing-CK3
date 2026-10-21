@@ -1,0 +1,8 @@
+﻿# Crusader Dolls — epithets of the five foremothers of Adelphai Dorleyaiou (history/characters/tm_saints.txt).
+# Spec: game/common/nicknames/_nicknames.info. Each _desc carries the saint's short life, in the faith's voice.
+
+tm_nick_the_first_mother = {}
+tm_nick_the_bookbearer = {}
+tm_nick_of_kyzikos = {}
+tm_nick_the_physician = {}
+tm_nick_who_walked_beside = {}

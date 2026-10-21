@@ -1,0 +1,212 @@
+﻿namespace = tm_mech
+
+# Crusader Dolls — events for the October 2026 mechanics (docs/faith_design.md §16, items 24–31).
+
+# Item 24. Freed by Rescue the Daughters (tm_mech_rescue_choose_effect), a player chooses her road.
+# Root = the freed woman; scope:tm_rescuer = the attacker.
+tm_mech.0001 = {
+	type = character_event
+	title = tm_mech.0001.t
+	desc = tm_mech.0001.desc
+	theme = faith
+	left_portrait = { character = root animation = personality_rational }
+	right_portrait = { character = scope:tm_rescuer animation = happiness }
+
+	trigger = {
+		exists = scope:tm_rescuer
+		scope:tm_rescuer = { is_alive = yes }
+		is_ruler = no
+	}
+
+	option = {	# Join the court that freed me
+		name = tm_mech.0001.a
+		scope:tm_rescuer = { add_courtier = root }
+		add_opinion = { target = scope:tm_rescuer modifier = grateful_opinion opinion = 20 }
+	}
+	option = {	# Go home
+		name = tm_mech.0001.b
+	}
+}
+
+# Item 28. Set Down the Name (tm_set_down_name_decision). Root = the sister.
+tm_mech.0020 = {
+	type = character_event
+	title = tm_mech.0020.t
+	desc = {
+		desc = tm_mech.0020.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					liege ?= {
+						NOT = { this = root }
+						tm_mech_other_faith_observer_trigger = { DAUGHTER = root }
+					}
+				}
+				desc = tm_mech.0020.desc_liege
+			}
+		}
+	}
+	theme = faith
+	left_portrait = { character = root animation = personality_rational }
+
+	trigger = { tm_mech_can_set_down_name_trigger = yes }
+
+	option = {	# Set down the declaration; keep the name
+		name = tm_mech.0020.a
+		tm_mech_set_down_name_effect = yes
+		ai_chance = { base = 70 }
+	}
+	option = {	# Set it down, and answer to my father's name for now
+		name = tm_mech.0020.b
+		trigger = {
+			exists = father
+			father = { is_male = yes }
+		}
+		change_first_name = { template_character = father }
+		tm_mech_set_down_name_effect = yes
+		ai_chance = { base = 30 }
+	}
+	option = {	# Not today
+		name = tm_mech.0020.c
+		ai_chance = { base = 0 }
+	}
+}
+
+# Item 29. Word goes round that the seeker was coached (Salah: clinicians distrusted patients who knew the theories).
+# Root = the seeker (tm_mech_teach_answers_effect). It never blocks a gate.
+tm_mech.0030 = {
+	type = character_event
+	title = tm_mech.0030.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { tm_mech_embryo_seeker_trigger = yes }
+				desc = tm_mech.0030.desc_embryo
+			}
+			triggered_desc = {
+				trigger = { tm_turning_seeker_trigger = yes }
+				desc = tm_mech.0030.desc_turning
+			}
+			triggered_desc = {
+				trigger = { tm_pavai_seeker_trigger = yes }
+				desc = tm_mech.0030.desc_pavai
+			}
+			desc = tm_mech.0030.desc_crossing
+		}
+	}
+	theme = learning
+	left_portrait = { character = root animation = worry }
+
+	trigger = { tm_is_daughter_trigger = no }
+
+	option = {	# Let them say it
+		name = tm_mech.0030.a
+		add_stress = 10
+		add_character_modifier = { modifier = tm_suspected_coaching_modifier years = 1 }
+		ai_chance = { base = 60 }
+	}
+	option = {	# Answer in my own words
+		name = tm_mech.0030.b
+		add_learning_lifestyle_xp = 25
+		add_stress = 20
+		ai_chance = { base = 40 }
+	}
+}
+
+# Item 31. After the gate, the marriage stands unless either chooses to leave (Keywords row 20, Transpsychoanalytics
+# row 4). First she is asked. Root = the re-embodied daughter; scope:tm_mech_spouse.
+tm_mech.0040 = {
+	type = character_event
+	title = tm_mech.0040.t
+	desc = tm_mech.0040.desc
+	theme = family
+	left_portrait = { character = root animation = personality_rational }
+	right_portrait = { character = scope:tm_mech_spouse animation = thinking }
+
+	trigger = {
+		exists = scope:tm_mech_spouse
+		scope:tm_mech_spouse = { is_alive = yes }
+		is_spouse_of = scope:tm_mech_spouse
+	}
+
+	option = {	# We are still married
+		name = tm_mech.0040.a
+		save_scope_as = tm_mech_daughter
+		scope:tm_mech_spouse = { trigger_event = { id = tm_mech.0041 days = 3 } }
+		ai_chance = {
+			base = 80
+			modifier = { add = -60 opinion = { target = scope:tm_mech_spouse value < -25 } }
+		}
+	}
+	option = {	# Part kindly
+		name = tm_mech.0040.b
+		divorce = scope:tm_mech_spouse
+		ai_chance = {
+			base = 10
+			modifier = { add = 40 opinion = { target = scope:tm_mech_spouse value < -25 } }
+		}
+	}
+}
+
+# Then the spouse. Of one of the six faiths, the faith keeps the marriage. Of another, the clergy say the rite
+# ended it; the text never makes the spouse her victim. Root = the spouse; scope:tm_mech_daughter.
+tm_mech.0041 = {
+	type = character_event
+	title = tm_mech.0041.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { rite ?= { rite_has_parameter = tm_sisters_faith } }
+				desc = tm_mech.0041.desc_faith
+			}
+			desc = tm_mech.0041.desc_annul
+		}
+	}
+	theme = family
+	left_portrait = { character = scope:tm_mech_daughter animation = happiness }
+	right_portrait = { character = root animation = thinking }
+
+	trigger = {
+		exists = scope:tm_mech_daughter
+		scope:tm_mech_daughter = { is_alive = yes }
+		is_spouse_of = scope:tm_mech_daughter
+	}
+
+	option = {	# Stay married
+		name = tm_mech.0041.a
+		if = {
+			limit = { NOT = { rite ?= { rite_has_parameter = tm_sisters_faith } } }
+			add_piety = -25				# against the clergy's ruling
+		}
+		scope:tm_mech_daughter = {
+			add_opinion = { target = root modifier = grateful_opinion opinion = 20 }
+		}
+		ai_chance = {
+			base = 50
+			modifier = { add = 30 opinion = { target = scope:tm_mech_daughter value >= 25 } }
+			modifier = { add = -30 has_trait = zealous NOT = { rite ?= { rite_has_parameter = tm_sisters_faith } } }
+		}
+	}
+	option = {	# Leave, without shame on either
+		name = tm_mech.0041.b
+		divorce = scope:tm_mech_daughter
+		ai_chance = {
+			base = 30
+			modifier = { add = 40 opinion = { target = scope:tm_mech_daughter value < 0 } }
+			modifier = { add = 30 has_trait = zealous NOT = { rite ?= { rite_has_parameter = tm_sisters_faith } } }
+		}
+	}
+	option = {	# Stay, and keep her faith with her
+		name = tm_mech.0041.c
+		trigger = { NOT = { faith = scope:tm_mech_daughter.faith } }
+		set_character_faith = scope:tm_mech_daughter.faith
+		scope:tm_mech_daughter = {
+			add_opinion = { target = root modifier = grateful_opinion opinion = 30 }
+		}
+		ai_chance = {
+			base = 10
+			modifier = { add = 20 has_trait = cynical }
+			modifier = { add = -10 has_trait = zealous }
+		}
+	}
+}

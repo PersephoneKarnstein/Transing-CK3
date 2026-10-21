@@ -1,0 +1,47 @@
+﻿# Crusader Dolls — the five foremothers of Adelphai Dorleyaiou (history/characters/tm_saints.txt).
+#
+# Vanilla gives its pre-start saints their tombs from the saint's own history entry: at the death date,
+# effect_even_if_dead calls pam_canonize_saint_effect with PRESET = yes (game/history/characters/saints.txt,
+# frankish.txt, greek.txt). That registers the saint on the faith (add_saint, with its burial province and the
+# engine's relic charges) and adds the poi_buried_saint travel point. Vanilla does not gate this on the DLC, and
+# no relic artifact exists at start: relics are drawn later through the canonization decisions, which are gated
+# (has_pam_dlc_trigger). We do the same, but only at the 867 start (design brief), only for a saint of the faith,
+# and only into a province that has a holding and no saint yet (pam_province_is_free_burial_site_trigger; one
+# saint per province). If neither province is free, she is still put on the faith's list, without a tomb.
+#
+# Root: the dead saint. PROVINCE: her tomb. FALLBACK: a second province if the first is taken or has no holding.
+tm_saints_enshrine_effect = {
+	if = {
+		limit = {
+			game_start_date < 868.1.1
+			exists = faith:transbian_maximalism
+			faith = faith:transbian_maximalism
+		}
+		if = {
+			limit = { $PROVINCE$ = { pam_province_is_free_burial_site_trigger = yes } }
+			pam_canonize_saint_effect = {
+				CANONIZER = root
+				CANDIDATE = root
+				CONSECRATION_PROVINCE = $PROVINCE$
+				PRESET = yes
+			}
+		}
+		else_if = {
+			limit = { $FALLBACK$ = { pam_province_is_free_burial_site_trigger = yes } }
+			pam_canonize_saint_effect = {
+				CANONIZER = root
+				CANDIDATE = root
+				CONSECRATION_PROVINCE = $FALLBACK$
+				PRESET = yes
+			}
+		}
+		else = {
+			faith = {
+				if = {
+					limit = { NOT = { has_saint_character = root } }
+					add_saint = { character = root }
+				}
+			}
+		}
+	}
+}

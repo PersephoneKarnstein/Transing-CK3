@@ -187,6 +187,11 @@ tm_reembody_as_woman_effect = {
 			scope:tm_new_body = { marry = prev }
 		}
 	}
+	# The marriage stands unless either chooses to leave (Keywords row 20, Transpsychoanalytics row 4): she and then
+	# each spouse are asked (tm_mech.0040, tm_mech.0041). A spouse of another faith hears that the clergy annul it.
+	tm_mech_reembodied_marriages_effect = yes
+	# Grievances outlast the old register: the rite is binding, so is what was held against her (Keywords row 3).
+	tm_mech_carry_grievances_effect = yes
 	# Other relations worth keeping.
 	scope:tm_old_body = {
 		every_relation = { type = friend	scope:tm_new_body = { set_relation_friend = prev } }

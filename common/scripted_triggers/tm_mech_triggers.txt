@@ -1,0 +1,93 @@
+﻿# Crusader Dolls — triggers for the October 2026 mechanics (items 25–31, docs/faith_design.md §16).
+
+# An observer whose faith's law sets it against daughters: the faiths whose observers take the trait opinion
+# penalties in common/traits/tm_traits.txt (Islamic, Indic and Buddhist, Jewish), minus the six faiths themselves.
+# Scope: the observer.
+tm_mech_hostile_observer_trigger = {
+	is_adult = yes
+	NOT = { rite ?= { rite_has_parameter = tm_sisters_faith } }
+	rite ?= {
+		OR = {
+			rite_has_parameter = islamic_syncretic_recipient
+			rite_has_parameter = eastern_syncretic_recipient
+			rite_has_parameter = jewish_syncretic_recipient
+		}
+		NOR = {
+			rite_has_parameter = tm_turning_gate
+			rite_has_parameter = tm_garland_gate
+		}
+	}
+}
+
+# A faith that is not one of the six and is not the daughter's own. Used for spouses and gloating.
+# Scope: the observer. DAUGHTER = the daughter (or the sister) they look at.
+tm_mech_other_faith_observer_trigger = {
+	is_adult = yes
+	NOT = { rite ?= { rite_has_parameter = tm_sisters_faith } }
+	NOT = { faith = $DAUGHTER$.faith }
+}
+
+# Doubts, but is not a zealot: takes half the penalty, and contact wears down the rest (Serano row 3).
+tm_mech_lukewarm_observer_trigger = {
+	NOT = { has_trait = zealous }
+	OR = {
+		has_trait = cynical
+		has_trait = content
+	}
+}
+
+# Could keep the gestation of the jade embryo (as tm_embryo_decision is_shown, plus is_imprisoned = no).
+tm_mech_embryo_seeker_trigger = {
+	is_male = yes
+	is_adult = yes
+	is_imprisoned = no
+	rite ?= { rite_has_parameter = tm_embryo_gate }
+	tm_is_daughter_trigger = no
+}
+
+# Someone the answers would help: Marked, named before witnesses, or a eunuch who seeks womanhood.
+tm_mech_answer_seeker_trigger = {
+	tm_is_daughter_trigger = no
+	OR = {
+		has_trait = tm_transgender
+		has_variable = tm_declared
+		has_trait = eunuch_1
+		has_trait = beardless_eunuch
+	}
+}
+
+# Teach Her the Answers: the teacher came through a gate with an outside examiner, and the seeker is bound for the
+# same gate. Scope: the teacher. SEEKER = the seeker.
+#   jade embryo: the censor and the clergy roll (tm_embryo.0010)
+#   the Turning: the street's judges (tm_hipukh.0003)
+#   the pavai vow: the temple staff (tm_garland.0001)
+#   the crossing: the jeli's word (tm_badenya.0012)
+tm_mech_can_teach_answers_trigger = {
+	is_adult = yes
+	is_imprisoned = no
+	OR = {
+		AND = {
+			has_trait = tm_daughter_of_the_embryo
+			$SEEKER$ = { tm_mech_embryo_seeker_trigger = yes }
+		}
+		AND = {
+			has_trait = tm_daughter_of_the_turning
+			$SEEKER$ = { tm_turning_seeker_trigger = yes }
+		}
+		AND = {
+			has_trait = tm_daughter_of_the_garland
+			$SEEKER$ = { tm_pavai_seeker_trigger = yes }
+		}
+		AND = {
+			has_trait = tm_daughter_of_the_house
+			$SEEKER$ = { tm_crossing_seeker_trigger = yes }
+		}
+	}
+}
+
+# Set Down the Name: a sister named before witnesses who has not gone through a gate. It ends a declaration,
+# never a re-embodiment.
+tm_mech_can_set_down_name_trigger = {
+	has_variable = tm_declared
+	tm_is_daughter_trigger = no
+}
