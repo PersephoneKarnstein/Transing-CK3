@@ -1,0 +1,177 @@
+﻿# Crusader Dolls — Bædling stage 2: Spring the Cell, outlawry, landless bands (docs/wave3/baedling.md).
+
+# A prisoner the Houses would spring: a daughter, novice or Marked woman (tm_captive_daughter_trigger), or a declared
+# sister. Any faith: the House takes in whoever walks out.
+tm_bae2_cell_prisoner_trigger = {
+	is_imprisoned = yes
+	OR = {
+		tm_captive_daughter_trigger = yes
+		has_variable = tm_declared
+	}
+}
+
+# May plot Spring the Cell: an adult of the six faiths, landed or not, free and capable.
+tm_bae2_cell_plotter_trigger = {
+	is_adult = yes
+	is_imprisoned = no
+	is_incapable = no
+	rite ?= { rite_has_parameter = tm_sisters_faith }
+}
+
+# Scope: a character holding at least one such prisoner, other than $PLOTTER$ herself.
+tm_bae2_cell_jailer_trigger = {
+	any_prisoner = {
+		tm_bae2_cell_prisoner_trigger = yes
+		NOT = { this = $PLOTTER$ }
+	}
+}
+
+# A county (scope) with a Sisters' House whose holder can take in a woman walking out of $JAILER$'s prison.
+tm_bae2_open_house_trigger = {
+	has_variable = tm_house
+	exists = holder
+	holder = {
+		NOT = { this = $JAILER$ }
+		is_imprisoned = no
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Outlawry (Grágás K §§51-55, §110; Ahola ch. 5; Miller ch. 7).
+
+# Under either sentence.
+tm_bae2_is_outlaw_trigger = {
+	OR = {
+		has_character_modifier = tm_bae2_lesser_outlaw_modifier
+		has_character_modifier = tm_bae2_full_outlaw_modifier
+	}
+}
+
+# A Bædling whom a hostile law would sue. Of the faith, adult, not a ruler (a sentence on a landed vassal would be a
+# revocation, which the mod leaves to vanilla), at the court of a Christian lord of Norse heritage, from 1100: the
+# Christian-law suits with outlawry or exile date from c. 1100 (Mitchell pp. 159-61, research/
+# norse_mitchell_witchcraft_magic.md), and the dress clause is Grágás (K §155, §254; research/norse_gragas_laws.md),
+# Christian-era law. Before 1100, and under pagan or English lords, the mod sources no such suit and fires none.
+# Who the suit finds: a seeress or a daughter of seiðr (the sorcery charge), or a daughter, Marked or declared woman,
+# or a woman who carries weapons (the dress clause names her: K §254).
+tm_bae2_outlawry_candidate_trigger = {
+	faith = faith:tm_baeddel
+	is_adult = yes
+	is_ruler = no
+	is_imprisoned = no
+	current_year >= 1100
+	NOT = { tm_bae2_is_outlaw_trigger = yes }
+	NOT = { has_variable = tm_bae2_outlawry_cooldown }
+	OR = {
+		tm_bae2_seidr_charge_trigger = yes
+		tm_bae2_dress_charge_trigger = yes
+	}
+	exists = employer
+	employer = {
+		religion = religion:christianity_religion
+		culture = { has_cultural_pillar = heritage_north_germanic }
+	}
+}
+
+# The sorcery charge: she sits as a seeress, or came to the hall by seiðr.
+tm_bae2_seidr_charge_trigger = {
+	OR = {
+		has_trait = tm_daughter_of_seidr
+		tm_knows_vardlokkur_trigger = yes
+	}
+}
+
+# The dress clause: a daughter, Marked or declared woman, or a woman who carries weapons.
+tm_bae2_dress_charge_trigger = {
+	OR = {
+		tm_is_daughter_trigger = yes
+		has_trait = tm_transgender
+		has_variable = tm_declared
+		AND = {
+			is_female = yes
+			OR = {
+				is_knight = yes
+				has_trait = shieldmaiden
+			}
+		}
+	}
+}
+
+# May lead a band: an outlaw of the faith, unlanded, adult, free.
+tm_bae2_band_leader_trigger = {
+	faith = faith:tm_baeddel
+	is_adult = yes
+	is_ruler = no
+	is_imprisoned = no
+	is_incapable = no
+	tm_bae2_is_outlaw_trigger = yes
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Landless bands of the six faiths (docs/wave3/baedling.md §3).
+
+# A landless adventurer (scope) of the six faiths.
+tm_bae2_faith_band_trigger = {
+	is_landed = no
+	government_has_flag = government_is_landless_adventurer
+	rite ?= { rite_has_parameter = tm_sisters_faith }
+}
+
+# A county (scope) a band of $FAITH$ would be welcomed home to, held by a lord of another faith: its people keep the
+# faith, or a Sisters' House stands there, or it is the faith's seat (the seats of tm_for_each_seat_effect).
+tm_bae2_welcoming_county_trigger = {
+	exists = holder
+	holder = { NOT = { faith = $FAITH$ } }
+	OR = {
+		faith = $FAITH$
+		has_variable = tm_house
+		tm_bae2_seat_of_trigger = { FAITH = $FAITH$ }
+	}
+}
+
+# The county (scope) is $FAITH$'s seat. Keep in step with tm_for_each_seat_effect (tm_seat_effects.txt).
+tm_bae2_seat_of_trigger = {
+	OR = {
+		AND = { this = title:c_phrygia $FAITH$ = faith:transbian_maximalism }
+		AND = { this = title:c_gutland $FAITH$ = faith:tm_baeddel }
+		AND = { this = title:c_aland $FAITH$ = faith:tm_baeddel }
+		AND = { this = title:c_shazhou $FAITH$ = faith:tm_yutai }
+		AND = { this = title:c_venaissin $FAITH$ = faith:tm_nehpakhot }
+		AND = { this = title:c_kanchipuram $FAITH$ = faith:tm_garland }
+		AND = { this = title:c_candragiri $FAITH$ = faith:tm_garland }
+		AND = { this = title:c_sibi_mali $FAITH$ = faith:tm_badenya }
+		AND = { this = title:c_awkar $FAITH$ = faith:tm_badenya }
+	}
+}
+
+# A county (scope) the band $BAND$ could answer: welcoming, within an adventurer's reach of her camp (vanilla's
+# ADVENTURER_DISTANCE_RESTRICTION, as ep3_laamp_diplo_range_trigger), held by someone she is not allied to, and, for
+# the AI, held by an AI lord no stronger than her band (no guaranteed success, but no hopeless wars).
+tm_bae2_hall_county_trigger = {
+	tm_bae2_welcoming_county_trigger = { FAITH = $BAND$.faith }
+	tm_bae2_hall_in_reach_trigger = { BAND = $BAND$ }
+	holder = {
+		NOT = { this = $BAND$ }
+		NOT = { is_allied_to = $BAND$ }
+		NOT = { is_at_war_with = $BAND$ }
+	}
+	trigger_if = {
+		limit = { $BAND$ = { is_ai = yes } }
+		holder = {
+			is_ai = yes
+			top_liege = { is_ai = yes }
+			current_military_strength < $BAND$.current_military_strength
+		}
+	}
+}
+
+# The county (scope) lies within an adventurer's reach of $BAND$'s camp.
+tm_bae2_hall_in_reach_trigger = {
+	exists = $BAND$.domicile.domicile_location
+	title_province = {
+		squared_distance = {
+			target = $BAND$.domicile.domicile_location
+			value < define:NTaskContract|ADVENTURER_DISTANCE_RESTRICTION
+		}
+	}
+}

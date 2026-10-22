@@ -1,0 +1,119 @@
+﻿# Crusader Dolls — Ha-Nehpakhot in the Maghreb and the Sahel (events/tm_hn3_events.txt; docs/wave3/ha-nehpakhot-maghreb.md).
+
+# The Decree of the Two Parties: a ruler of the sect in the Maghreb or the Sahel decrees that neither party of the
+# Jews shall ban the other (after al-Zahir's decree of 1030: Rustow ch. 8; Stillman p. 198). The same choice comes to
+# her by event when a daughter is shunned (tm_hn3.0020). It lasts her lifetime.
+tm_hn3_two_parties_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"		# placeholder; TODO event art
+	}
+	sort_order = 80
+
+	is_shown = {
+		faith = faith:tm_nehpakhot
+		is_landed = yes
+		tm_hn3_capital_in_west_trigger = yes
+		NOT = { has_variable = tm_hn3_two_parties }
+	}
+
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+	}
+
+	is_valid = {
+		custom_description = {
+			text = tm_hn3_two_parties_decision_needs_jews
+			OR = {
+				any_courtier = {
+					faith.religion = religion:judaism_religion
+					NOT = { faith = faith:tm_nehpakhot }
+				}
+				any_vassal = {
+					faith.religion = religion:judaism_religion
+					NOT = { faith = faith:tm_nehpakhot }
+				}
+			}
+		}
+	}
+
+	effect = {
+		custom_tooltip = tm_hn3_two_parties_decision_effect_tt
+		tm_hn3_two_parties_effect = yes
+	}
+
+	ai_check_interval = 120
+	ai_potential = {
+		any_courtier = { has_character_modifier = tm_niddui_modifier }
+	}
+	ai_will_do = {
+		base = 50
+		modifier = { add = 20 has_trait = just }
+		modifier = { add = -30 has_trait = zealous }
+	}
+}
+
+# They shall not be turned away: under the Almohads (1146-1229, era 3), a ruler of the sect in the Maghreb or the Sahel
+# receives a household that has come out of the Almohad lands. Hirschberg p. 195 (Maimonides' Epistle); refugees to
+# Dar'a, Cohen pp. 181-182. No persecution is shown or modelled.
+tm_hn3_refuge_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"		# placeholder; TODO event art
+	}
+	sort_order = 80
+	cooldown = { years = 10 }
+
+	is_shown = {
+		tm_hn3_refuge_ruler_trigger = yes
+	}
+
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+	}
+
+	effect = {
+		custom_tooltip = tm_hn3_refuge_decision_effect_tt
+		trigger_event = tm_hn3.0050
+	}
+
+	ai_check_interval = 60
+	ai_potential = {
+		tm_hn3_refuge_ruler_trigger = yes
+	}
+	ai_will_do = {
+		base = 60
+		modifier = { add = 20 has_trait = compassionate }
+	}
+}
+
+# The decorous hush: a ruler of the sect rules that no one at her court speaks a daughter's old name (Stroumsa p. 59).
+# Any region: it is the faith's own law.
+tm_hn3_hush_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"		# placeholder; TODO event art
+	}
+	sort_order = 80
+
+	is_shown = {
+		faith = faith:tm_nehpakhot
+		is_landed = yes
+		NOT = { has_variable = tm_hn3_hush }
+	}
+
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+	}
+
+	effect = {
+		custom_tooltip = tm_hn3_hush_decision_effect_tt
+		trigger_event = tm_hn3.0060
+	}
+
+	ai_check_interval = 120
+	ai_potential = {
+		any_courtier = { has_trait = tm_daughter_of_the_turning }
+	}
+	ai_will_do = {
+		base = 40
+		modifier = { add = 20 has_trait = compassionate }
+	}
+}

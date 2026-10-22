@@ -1,0 +1,153 @@
+﻿# Crusader Dolls — agents for Spring the Cell (common/schemes/scheme_types/tm_bae2_schemes.txt).
+# Spec (docs/TODO.md): Marked guards, faithful servants, friends of the House. Format: _agent_types.info;
+# skill weights and trait bonuses from vanilla agent_thug, agent_decoy and agent_footpad (1.20).
+
+# A Marked guard: a sword arm from among the Marked, the daughters, the declared or the faithful.
+tm_bae2_agent_guard = {
+	valid_agent_for_slot = {
+		OR = {
+			has_trait = tm_transgender
+			tm_is_daughter_trigger = yes
+			has_variable = tm_declared
+			tm_house_member_trigger = yes
+			faith = scope:owner.faith
+		}
+	}
+	contribution_type = success_chance_max
+	contribution = {
+		value = scheme_agent_general_bonuses_contribution_score_value
+		add = {
+			value = prowess
+			multiply = agent_3to1_3_skill_mult_value
+			ceiling = yes
+			max = agent_max_skill_value
+			desc = scheme_agent_aptitude.skill.prowess
+		}
+		add = {
+			value = intrigue
+			multiply = agent_3to1_1_skill_mult_value
+			ceiling = yes
+			max = agent_max_skill_value
+			desc = scheme_agent_aptitude.skill.intrigue
+		}
+		# One of the jailer's own guards, who knows the keys.
+		if = {
+			limit = { is_knight_of = scope:target }
+			add = {
+				value = agent_trait_bonus_t3_value
+				desc = tm_bae2_agent_inside_guard
+			}
+		}
+		if = {
+			limit = { has_trait = brave }
+			add = {
+				value = agent_trait_bonus_t2_value
+				desc = scheme_agent_aptitude.trait.brave
+			}
+		}
+		if = {
+			limit = { has_trait = craven }
+			add = {
+				value = agent_trait_malus_t2_value
+				desc = scheme_agent_aptitude.trait.craven
+			}
+		}
+		max = agent_scheme_contributor_max
+		min = agent_scheme_contributor_min
+	}
+}
+
+# A faithful servant in the jailer's house: anyone at his court, best one who owes him nothing.
+tm_bae2_agent_servant = {
+	valid_agent_for_slot = {
+		OR = {
+			is_courtier_of = scope:target
+			is_foreign_court_guest_of = scope:target
+			is_pool_guest_of = scope:target
+		}
+	}
+	contribution_type = secrecy
+	contribution = {
+		value = scheme_agent_general_bonuses_contribution_score_value
+		add = {
+			value = intrigue
+			multiply = agent_3to1_3_skill_mult_value
+			ceiling = yes
+			max = agent_max_skill_value
+			desc = scheme_agent_aptitude.skill.intrigue
+		}
+		add = {
+			value = stewardship
+			multiply = agent_3to1_1_skill_mult_value
+			ceiling = yes
+			max = agent_max_skill_value
+			desc = scheme_agent_aptitude.skill.stewardship
+		}
+		if = {
+			limit = {
+				OR = {
+					rite ?= { rite_has_parameter = tm_sisters_faith }
+					has_trait = tm_transgender
+				}
+			}
+			add = {
+				value = agent_trait_bonus_t3_value
+				desc = tm_bae2_agent_faithful
+			}
+		}
+		if = {
+			limit = { has_trait = compassionate }
+			add = {
+				value = agent_trait_bonus_t2_value
+				desc = scheme_agent_aptitude.trait.compassionate
+			}
+		}
+		if = {
+			limit = { has_trait = deceitful }
+			add = {
+				value = agent_trait_bonus_t1_value
+				desc = scheme_agent_aptitude.trait.deceitful
+			}
+		}
+		max = agent_scheme_contributor_max
+		min = agent_scheme_contributor_min
+	}
+}
+
+# A friend of the House: a House member, a man the House keeps as its friend, or a sworn sister.
+tm_bae2_agent_friend = {
+	valid_agent_for_slot = {
+		OR = {
+			tm_house_member_trigger = yes
+			has_character_modifier = tm_house_friend_modifier
+			has_relation_tm_sister = scope:owner
+		}
+	}
+	contribution_type = speed
+	contribution = {
+		value = scheme_agent_general_bonuses_contribution_score_value
+		add = {
+			value = diplomacy
+			multiply = agent_1to1_1_skill_mult_value
+			ceiling = yes
+			max = agent_max_skill_value
+			desc = scheme_agent_aptitude.skill.diplomacy
+		}
+		add = {
+			value = intrigue
+			multiply = agent_1to1_1_skill_mult_value
+			ceiling = yes
+			max = agent_max_skill_value
+			desc = scheme_agent_aptitude.skill.intrigue
+		}
+		if = {
+			limit = { has_relation_tm_sister = scope:owner }
+			add = {
+				value = agent_trait_bonus_t3_value
+				desc = tm_bae2_agent_sworn_sister
+			}
+		}
+		max = agent_scheme_contributor_max
+		min = agent_scheme_contributor_min
+	}
+}

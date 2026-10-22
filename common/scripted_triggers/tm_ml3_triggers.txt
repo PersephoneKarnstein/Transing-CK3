@@ -1,0 +1,66 @@
+﻿# Crusader Dolls — the Worn Garland, wave 4 (events/tm_ml3_events.txt; docs/wave4/garland.md).
+# Source: Hall, Trade and Statecraft in the Age of the Colas (1980); research/ind_hall_cola_trade.md.
+
+# A county with a market assembly (nagaram): a market town, which the game shows as a city holding in the county.
+# "Nagaram meant both the market quarter and the assembly that ran it" (Hall 1980, pp. 51–53). Scope: a county title.
+tm_ml3_nagaram_county_trigger = {
+	any_county_province = { has_holding_type = city_holding }
+}
+
+# A Hindu lord whose capital has a quarter that dwindled: low development, or a county out of hand (war, raids).
+# The Madras Museum Plates of Uttama Cola (970–85) resettle a quarter of Kanchipuram tax-free "in consideration of
+# their poverty" (Hall 1980, pp. 74, 91). Scope: the lord.
+tm_ml3_dwindled_lord_trigger = {
+	faith ?= { religion = religion:hinduism_religion }
+	current_year >= 970
+	exists = capital_county
+	capital_county = {
+		OR = {
+			development_level < 12
+			county_control < 60
+		}
+	}
+}
+
+# A band of the Worn Garland: a landless adventurer of the faith. Scope: the band's leader.
+tm_ml3_garland_band_trigger = {
+	government_has_flag = government_is_landless_adventurer
+	faith = faith:tm_garland
+	is_adult = yes
+	is_imprisoned = no
+}
+
+# A merchant's lord in the south who would hire a caravan guard: a landed Hindu or Jain ruler with a market town,
+# in the Deccan, Tamil country or Lanka (the Five Hundred's country; Hall 1980, pp. 141–54). Scope: the employer.
+tm_ml3_caravan_employer_trigger = {
+	is_landed = yes
+	is_adult = yes
+	is_imprisoned = no
+	OR = {
+		faith ?= { religion = religion:hinduism_religion }
+		faith ?= faith:jain_faith
+	}
+	capital_province ?= { geographical_region = world_india_deccan }
+	any_held_county = { tm_ml3_nagaram_county_trigger = yes }
+}
+
+# A ruler who could settle the band in a frontier market town by vanilla Negotiate Settlement: two counties or more,
+# and a county that is neither the capital nor the primary title. Scope: the ruler.
+tm_ml3_town_giver_trigger = {
+	is_landed = yes
+	is_alive = yes
+	is_at_war = no
+	any_held_county = { count >= 2 }
+	any_held_county = { tm_ml3_town_county_trigger = yes }
+}
+
+# A county its holder can give as a frontier market town. Scope: a county held by the giver.
+tm_ml3_town_county_trigger = {
+	tier = tier_county
+	exists = holder
+	NOT = { this = holder.capital_county }
+	NOT = { this = holder.primary_title }
+	is_head_of_faith = no
+	is_noble_family_title = no
+	NOT = { has_variable = adventurer_creation_reason }
+}

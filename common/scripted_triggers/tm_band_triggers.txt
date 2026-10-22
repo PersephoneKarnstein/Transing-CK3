@@ -1,0 +1,96 @@
+﻿# Crusader Dolls — landless bands of the six faiths, wave 4 (docs/wave4/bands.md): the Patent and the Robe, and
+# the Companions Choose. A "band" is tm_bae2_faith_band_trigger (wave 3): a landless adventurer of the six faiths.
+# Parameters are always saved scopes (never prev), so that nested scope changes cannot shift them.
+
+# ---------------------------------------------------------------------------------------------------
+# The Patent and the Robe
+
+# $LORD$ could settle a band on one of his counties, as vanilla Negotiate Settlement allows: landed, with at least two
+# counties of his own, not a camp, a herders' or an administrative realm (vanilla gives those a duchy or nothing),
+# free and able, and with a county to give.
+tm_band_patron_trigger = {
+	$LORD$ = {
+		is_landed = yes
+		is_imprisoned = no
+		is_incapable = no
+		NOR = {
+			government_has_flag = government_is_landless_adventurer
+			government_has_flag = government_is_nomadic
+			government_has_flag = government_is_administrative
+		}
+		any_held_county = { count >= 2 }
+		any_held_county = { tm_band_grantable_county_trigger = { LORD = $LORD$ } }
+	}
+}
+
+# A county (scope) that $LORD$ may grant: his own, not his capital or primary title, not a faith head's or a camp's
+# title (the limits of vanilla negotiate_settlement_interaction and ep3_negotiate_settlement_valid_county_trigger).
+tm_band_grantable_county_trigger = {
+	tier = tier_county
+	holder ?= $LORD$
+	NOR = {
+		this = $LORD$.capital_county
+		this = $LORD$.primary_title
+		is_head_of_faith = yes
+		has_variable = adventurer_creation_reason
+	}
+}
+
+# $BAND$ may be offered land by $LORD$: a band of the six faiths, at peace, not his nemesis, not exiled from his
+# lands (vanilla is_laamp_exiled_from_province_trigger), not a legitimist camp (vanilla gives those -300 to accept).
+tm_band_may_be_offered_trigger = {
+	$BAND$ = {
+		tm_bae2_faith_band_trigger = yes
+		is_adult = yes
+		is_imprisoned = no
+		is_at_war = no
+		NOR = {
+			this = $LORD$
+			has_realm_law = camp_purpose_legitimists
+			has_relation_nemesis = $LORD$
+		}
+	}
+	NOT = {
+		is_laamp_exiled_from_province_trigger = {
+			PROVINCE = $LORD$.capital_province
+			LAAMP = $BAND$
+		}
+	}
+}
+
+# The band (scope) has camped in one county for five years or more (counted by tm_band_yearly_patent).
+tm_band_camped_long_trigger = {
+	exists = var:tm_band_camp_county
+	exists = var:tm_band_camp_years
+	var:tm_band_camp_years >= 5
+	exists = domicile.domicile_location
+	domicile.domicile_location.county = var:tm_band_camp_county
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The Companions Choose (Tor pp. 109-111)
+
+# The band's leader (scope) is weak or failing: she can no longer lead, her skills at war, the purse and keeping
+# people together are poor, or the camp is in debt. Age alone is not a failing.
+tm_band_weak_leader_trigger = {
+	OR = {
+		is_incapable = yes
+		tm_band_leadership_value <= 15
+		gold < -50
+	}
+}
+
+# A companion (scope) who could take the band from $LEADER$: one of her camp officers, of the six faiths, adult, free
+# and able, not her rival, and clearly the better leader.
+tm_band_companion_trigger = {
+	is_adult = yes
+	is_imprisoned = no
+	is_incapable = no
+	is_ruler = no
+	is_courtier_of = $LEADER$
+	rite ?= { rite_has_parameter = tm_sisters_faith }
+	any_court_position_employer = { this = $LEADER$ }
+	NOT = { has_relation_rival = $LEADER$ }
+	tm_band_leadership_value >= 30
+	tm_band_leadership_value >= $LEADER$.tm_band_leadership_value_plus_ten
+}

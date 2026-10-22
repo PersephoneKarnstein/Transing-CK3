@@ -1,0 +1,36 @@
+﻿# Crusader Dolls — the Worn Garland, stage 2 (events/tm_ml2_events.txt).
+# A playable daughter of the Garland (a ruler, or landless) may give to the temple when she chooses. Courtiers are
+# offered the same event through their host's yearly pulse (tm_ml2_on_actions.txt).
+tm_ml2_gift_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"		# placeholder; TODO event art
+	}
+	sort_order = 85
+	cooldown = { years = 5 }
+
+	is_shown = {
+		faith = faith:tm_garland
+		tm_is_daughter_trigger = yes
+		is_adult = yes
+	}
+
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+		gold >= 30
+		exists = location.county
+	}
+
+	effect = {
+		trigger_event = tm_ml2.0010
+	}
+
+	ai_check_interval = 120
+	ai_potential = {
+		gold >= 100
+	}
+	ai_will_do = {
+		base = 10
+		modifier = { add = 15 has_trait = generous }
+		modifier = { add = -10 has_trait = greedy }
+	}
+}

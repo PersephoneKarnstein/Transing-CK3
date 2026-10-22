@@ -1,0 +1,97 @@
+﻿# Crusader Dolls — protection under Muslim and Orthodox lords, wave 4 (events/tm_fut_events.txt; docs/wave4/protection.md).
+# Two grants, both for honour and service, never for gold:
+#   Under Her Chivalry (Tor, Violent Order, pp. 244, 248-250, 257; research/isl_tor_violent_order.md §6, proposal 3)
+#   No Service in the Prince's Wars (Dollinger, The German Hansa, Document 3, pp. 381-382, cls. 10 and 32;
+#     research/norse_dollinger_hansa.md §7, proposal 3)
+
+# ---------------------------------------------------------------------------------------------------
+# Under Her Chivalry
+
+# Where and when the code may be called futuwwa in the text: Iran and Iraq (with the Jazira), before 1056. Tor's book
+# covers Iran and Iraq to the Saljuqs (§11 "Geography"; §12 "Post-1055 futuwwa"). Elsewhere and later the same
+# code is told in plain words, "a free man's word", and no fata appears. Scope: the lord.
+tm_fut_fata_land_trigger = {
+	current_date < 1056.1.1
+	capital_province ?= { geographical_region = world_persian_empire }
+}
+
+# The lord keeps the code: sworn in by the fityan of his town (tm_fut.0001), or he gave his word to one who put herself
+# under it (tm_fut.0011). Scope: the lord.
+tm_fut_keeps_code_trigger = {
+	OR = {
+		has_character_modifier = tm_fut_javanmard_modifier
+		has_character_modifier = tm_fut_free_word_modifier
+	}
+}
+
+# A Muslim lord who could give his word. Scope: the lord.
+tm_fut_lord_trigger = {
+	highest_held_title_tier >= tier_county
+	is_adult = yes
+	is_imprisoned = no
+	faith = { religion_tag = islam_religion }
+}
+
+# A daughter (or declared sister) of the six faiths at a Muslim court who is not yet under anyone's word. Scope: her.
+tm_fut_seeker_trigger = {
+	tm_world_daughter_trigger = yes
+	is_ruler = no
+	rite ?= { rite_has_parameter = tm_sisters_faith }
+	tm_fut_sheltered_trigger = no
+	NOT = { has_character_flag = tm_fut_asked_cd }
+}
+
+# She is under the word of a lord who still keeps the code, and lives at his court. Read by the guard proposed for the
+# hostile Islamic household event (tm_world.0041; see docs/wave4/protection.md). Scope: her.
+tm_fut_sheltered_trigger = {
+	has_variable = tm_fut_sheltered_by
+	var:tm_fut_sheltered_by = {
+		is_alive = yes
+		faith = { religion_tag = islam_religion }
+		tm_fut_keeps_code_trigger = yes
+	}
+	is_courtier_of = var:tm_fut_sheltered_by
+}
+
+# She is under the word of this lord. Scope: her. $LORD$: the lord.
+tm_fut_sheltered_by_trigger = {
+	tm_fut_sheltered_trigger = yes
+	var:tm_fut_sheltered_by = $LORD$
+}
+
+# One who may demand her: of no Sisters' faith, and never a Jewish character (the threat is never a Jewish character:
+# Ha-Nehpakhot guardrails; Tor note §11). Scope: the demander.
+tm_fut_demander_trigger = {
+	is_alive = yes
+	is_adult = yes
+	tm_world_hostile_court_trigger = yes
+	NOT = { religion = religion:judaism_religion }
+}
+
+# ---------------------------------------------------------------------------------------------------
+# No Service in the Prince's Wars
+
+# A lord of another faith who may grant the sect terms. Jewish lords are left out: they have their own ruling on a
+# daughter (tm_hipukh), and the grant is the treaty of a prince with strangers. Scope: the lord.
+tm_fut_terms_lord_trigger = {
+	highest_held_title_tier >= tier_county
+	is_adult = yes
+	is_imprisoned = no
+	NOT = { faith = faith:tm_nehpakhot }
+	NOT = { religion = religion:judaism_religion }
+}
+
+# A member of the sect's community at a court. Scope: the member.
+tm_fut_community_member_trigger = {
+	faith = faith:tm_nehpakhot
+	is_adult = yes
+	is_imprisoned = no
+	is_ruler = no
+}
+
+# A member living under terms her lord granted. Read by the guard proposed for the bailiff (tm_hn2_on_actions.txt;
+# see docs/wave4/protection.md). Scope: the member.
+tm_fut_under_terms_trigger = {
+	tm_fut_community_member_trigger = yes
+	employer ?= { has_variable = tm_fut_terms }
+}

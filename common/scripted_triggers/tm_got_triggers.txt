@@ -1,0 +1,162 @@
+﻿# Crusader Dolls — Gotland: Open Ports, the Island Changes Hands, the Peace of the Island (docs/wave4/gotland.md).
+# Source: Dollinger, The German Hansa (1970), research/norse_dollinger_hansa.md §§3, 4, 6 and proposals 1, 2, 5.
+
+# A Bædling band (scope): a landless adventurer of the faith, whatever her camp's purpose (mercenaries, brigands or
+# any other). Vanilla mercenary companies (hired titles) cannot take contracts, hold land or declare war, so they are
+# out.
+tm_got_band_trigger = {
+	faith = faith:tm_baeddel
+	tm_bae2_faith_band_trigger = yes
+}
+
+# A band (scope) that $LORD$'s licence can reach: a Bædling band whose camp is within an adventurer's reach of his
+# capital (vanilla ADVENTURER_DISTANCE_RESTRICTION, compared as tm_bae2_hall_in_reach_trigger does), not his enemy,
+# not already licensed.
+tm_got_band_near_lord_trigger = {
+	tm_got_band_trigger = yes
+	NOT = { this = $LORD$ }
+	NOT = { has_variable = tm_got_licence }
+	NOT = { is_at_war_with = $LORD$ }
+	exists = domicile.domicile_location
+	exists = $LORD$.capital_province
+	$LORD$.capital_province = {
+		squared_distance = {
+			target = prev.domicile.domicile_location
+			value < define:NTaskContract|ADVENTURER_DISTANCE_RESTRICTION
+		}
+	}
+}
+
+# A war (scope) that $LORD$ leads and is losing (the Mecklenburgers had lost Denmark, p. 78).
+tm_got_losing_war_trigger = {
+	is_war_leader = $LORD$
+	OR = {
+		AND = {
+			is_attacker = $LORD$
+			attacker_war_score <= -20
+		}
+		AND = {
+			is_defender = $LORD$
+			defender_war_score <= -20
+		}
+	}
+}
+
+# Holds a licence of Open Ports (scope: a band).
+tm_got_licensed_trigger = {
+	has_variable = tm_got_licence
+}
+
+# Held a licence lately: licensed now, or lapsed within ten years (the Brothers held Visby 1391-98, p. 80).
+tm_got_licensed_or_lapsed_trigger = {
+	OR = {
+		has_variable = tm_got_licence
+		has_variable = tm_got_lapsed
+	}
+}
+
+# An island county (scope): Gotland, Åland or Ösel by name, or any coastal county with no land neighbour. The second
+# test is a heuristic: it misses islands joined to land by a strait crossing (Zealand, Öland), which the game counts
+# as neighbours.
+tm_got_island_county_trigger = {
+	tier = tier_county
+	OR = {
+		this = title:c_gutland
+		this = title:c_aland
+		this = title:c_osel
+		this = title:c_bornholm
+		AND = {
+			is_coastal_county = yes
+			NOT = { any_neighboring_county = { always = yes } }
+		}
+	}
+}
+
+# An island the licensed band $BAND$ may seize (scope: a county): within reach of her camp, held by someone who is
+# neither she, nor her licensor or his realm, nor an ally; for the AI, held by an AI lord no stronger than her band.
+tm_got_seizable_island_trigger = {
+	tm_got_island_county_trigger = yes
+	exists = holder
+	tm_bae2_hall_in_reach_trigger = { BAND = $BAND$ }
+	holder = {
+		NOT = { this = $BAND$ }
+		NOT = { is_allied_to = $BAND$ }
+		trigger_if = {
+			limit = { exists = $BAND$.var:tm_got_licence }
+			NOT = { this = $BAND$.var:tm_got_licence }
+			NOT = { top_liege = $BAND$.var:tm_got_licence }
+		}
+	}
+	trigger_if = {
+		limit = { $BAND$ = { is_ai = yes } }
+		holder = {
+			is_ai = yes
+			top_liege = { is_ai = yes }
+			current_military_strength < $BAND$.current_military_strength
+		}
+	}
+}
+
+# A great power (scope) that may come to clear the island seat of the band $HOLDER$ (the Teutonic Order in 1398, p. 80;
+# any faith, any people): an independent AI king or emperor of another faith, in range, stronger, not her ally,
+# not her own liege.
+tm_got_clearing_power_trigger = {
+	is_ai = yes
+	is_adult = yes
+	is_imprisoned = no
+	is_independent_ruler = yes
+	highest_held_title_tier >= tier_kingdom
+	NOT = { faith = $HOLDER$.faith }
+	NOT = { is_allied_to = $HOLDER$ }
+	NOT = { is_at_war_with = $HOLDER$ }
+	NOT = { $HOLDER$.top_liege = this }
+	is_within_diplo_range = { CHARACTER = $HOLDER$ }
+	max_military_strength > $HOLDER$.max_military_strength
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The Island Changes Hands (proposal 5).
+
+# A member of the faith on Gotland (scope: a character): adult, free, not its ruler.
+tm_got_islander_trigger = {
+	faith = faith:tm_baeddel
+	is_adult = yes
+	is_imprisoned = no
+	location ?= { county ?= { this = title:c_gutland } }
+	NOT = { this = title:c_gutland.holder }
+}
+
+# Gotland has the faith's people: members on the island, or a county that kept the faith.
+tm_got_island_has_people_trigger = {
+	OR = {
+		title:c_gutland = { faith = faith:tm_baeddel }
+		any_living_character = { tm_got_islander_trigger = yes }
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Swear the Peace of the Island (proposal 2).
+
+# A Bædling band (scope) camps within reach of Gotland.
+tm_got_band_near_island_trigger = {
+	tm_got_band_trigger = yes
+	exists = domicile.domicile_location
+	title:c_gutland.title_province = {
+		squared_distance = {
+			target = prev.domicile.domicile_location
+			value < define:NTaskContract|ADVENTURER_DISTANCE_RESTRICTION
+		}
+	}
+}
+
+# Gotland's ruler (scope) may be asked to swear the peace: the faith's people live there, or a band camps nearby.
+tm_got_peace_candidate_trigger = {
+	is_adult = yes
+	is_imprisoned = no
+	NOT = { has_variable = tm_got_peace_asked }
+	title:c_gutland = { NOT = { has_county_modifier = tm_got_island_peace_modifier } }
+	OR = {
+		tm_got_island_has_people_trigger = yes
+		any_ruler = { tm_got_band_near_island_trigger = yes }
+	}
+}

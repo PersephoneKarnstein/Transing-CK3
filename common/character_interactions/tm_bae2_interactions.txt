@@ -1,0 +1,54 @@
+﻿# Crusader Dolls — Spring the Cell, started by a player (common/schemes/scheme_types/tm_bae2_schemes.txt).
+# Template: vanilla start_abduct (00_scheme_interactions.txt, 1.20). The AI starts the scheme from its own yearly
+# pulse instead (tm_bae2_ai_find_plotter_effect), so this interaction has no AI weights.
+tm_bae2_spring_cell_interaction = {
+	icon = icon_scheme_abduct
+	interface_priority = 70
+	category = interaction_category_hostile
+	send_name = START_SCHEME
+	scheme = tm_bae2_spring_cell
+	ignores_pending_interaction_block = yes
+
+	is_shown = {
+		NOT = { scope:recipient = scope:actor }
+		scope:actor = { tm_bae2_cell_plotter_trigger = yes }
+		scope:recipient = { tm_bae2_cell_jailer_trigger = { PLOTTER = scope:actor } }
+	}
+
+	is_valid_showing_failures_only = {
+		scope:actor = {
+			can_start_scheme = {
+				type = tm_bae2_spring_cell
+				target_character = scope:recipient
+			}
+		}
+	}
+
+	desc = tm_bae2_spring_cell_interaction_desc
+
+	on_accept = {
+		scope:actor = {
+			stress_and_fulfillment_impact = {
+				craven = minor_stress_impact_gain
+			}
+			send_interface_toast = {
+				type = event_toast_effect_neutral
+				title = tm_bae2_spring_cell_notification
+				left_icon = scope:actor
+				right_icon = scope:recipient
+				begin_scheme_with_agents_effect = {
+					SCHEME_TYPE = tm_bae2_spring_cell
+					TARGET_TYPE = target_character
+					TARGET_SCOPE = scope:recipient
+					AGENT_1 = tm_bae2_agent_guard
+					AGENT_2 = tm_bae2_agent_guard
+					AGENT_3 = tm_bae2_agent_servant
+					AGENT_4 = tm_bae2_agent_friend
+					AGENT_5 = agent_lookout
+				}
+			}
+		}
+	}
+
+	auto_accept = yes
+}

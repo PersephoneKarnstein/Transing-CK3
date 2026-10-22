@@ -1,0 +1,23 @@
+﻿# Crusader Dolls — memories of the Deeds of the House (tm_ach_memories_effect). Spec: game/common/character_memory_types/_character_memories.info.
+
+# The officiant: she brought someone of note through the Rite of the Knife.
+tm_ach_officiated_memory = {
+	categories = { faith tm_ach }
+	icon = "legend.dds"
+	description = { desc = tm_ach_officiated_memory_desc }
+	second_perspective_description = { desc = tm_ach_officiated_memory_desc_second_perspective }
+	third_perspective_description = { desc = tm_ach_officiated_memory_desc_third_perspective }
+	participants = { daughter }
+	duration = { years = memory_default_duration }
+}
+
+# The new daughter: whose House she passed through.
+tm_ach_risen_memory = {
+	categories = { faith tm_ach }
+	icon = "legend.dds"
+	description = { desc = tm_ach_risen_memory_desc }
+	second_perspective_description = { desc = tm_ach_risen_memory_desc_second_perspective }
+	third_perspective_description = { desc = tm_ach_risen_memory_desc_third_perspective }
+	participants = { officiant }
+	duration = { years = memory_default_duration }
+}

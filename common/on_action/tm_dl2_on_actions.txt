@@ -1,0 +1,121 @@
+﻿# Crusader Dolls — Adelphai Dorleyaiou stage 2 (wave 3): hooks for events/tm_dl2_events.txt. docs/wave3/dorley.md.
+
+on_game_start_after_lobby = {
+	on_actions = { tm_dl2_on_game_start_after_lobby }
+}
+
+yearly_global_pulse = {
+	on_actions = { tm_dl2_yearly_global }
+}
+
+yearly_playable_pulse = {
+	on_actions = { tm_dl2_yearly_playable }
+}
+
+# Ignatios returns (tm_dl2.0010): restored as patriarch in November 867 (Ringrose 2003, pp. 62, 118). Only the 867
+# start sees it; the delay brings it to late November.
+tm_dl2_on_game_start_after_lobby = {
+	trigger = {
+		current_date < 867.6.1
+		NOT = { has_global_variable = tm_dl2_ignatios_seen }
+	}
+	effect = {
+		tm_dl2_pick_mother_effect = yes
+		if = {
+			limit = { exists = scope:tm_dl2_mother }
+			set_global_variable = tm_dl2_ignatios_seen
+			tm_dl2_send_to_faith_effect = { EVENT = tm_dl2.0010 DAYS = 323 }
+		}
+	}
+}
+
+# The Holy Mountain closes to eunuchs (tm_dl2.0040): Alexios I, 1083 (Guilland 1943, p. 232). Once, 1083-1089.
+tm_dl2_yearly_global = {
+	trigger = {
+		current_date >= 1083.1.1
+		current_date < 1090.1.1
+		NOT = { has_global_variable = tm_dl2_athos_seen }
+	}
+	effect = {
+		tm_dl2_pick_mother_effect = yes
+		if = {
+			limit = { exists = scope:tm_dl2_mother }
+			set_global_variable = tm_dl2_athos_seen
+			tm_dl2_send_to_faith_effect = { EVENT = tm_dl2.0040 DAYS = 90 }
+		}
+	}
+}
+
+# Yearly, one at most per ruler per year, on the flavour budget (tm_flavour_ready_trigger).
+tm_dl2_yearly_playable = {
+	trigger = {
+		faith = faith:transbian_maximalism
+		is_landed = yes
+		tm_flavour_ready_trigger = yes
+	}
+	effect = {
+		# The train to Tarsus (tm_dl2.0020): while the Cilician frontier is Muslim and before al-Muqaddasi (d. c. 990)
+		# reports the trade ended with the frontier fortresses (Ayalon 1999, p. 107). Rulers in Asia Minor.
+		if = {
+			limit = {
+				current_date < 990.1.1
+				NOT = { has_variable = tm_dl2_tarsus_seen }
+				capital_province ?= { geographical_region = world_asia_minor }
+				title:c_cilicia.holder ?= { religion = religion:islam_religion }
+			}
+			random = {
+				chance = 4
+				trigger_event = { id = tm_dl2.0020 days = { 1 200 } }
+			}
+		}
+		# The Galenic wing's book (tm_dl2.0030): Theophylact's logos, c. 1100-07 (Mullett 2002, pp. 178, 183-84);
+		# from 1107, when it was finished. Commoner for rulers of the Galenic rite, whose book it is.
+		else_if = {
+			limit = {
+				current_date >= 1107.1.1
+				NOT = { has_variable = tm_dl2_book_seen }
+			}
+			random = {
+				chance = 2
+				modifier = { add = 8 rite ?= { rite_has_parameter = tm_castrates_third_kind } }
+				modifier = { add = 2 learning >= 12 }
+				trigger_event = { id = tm_dl2.0030 days = { 1 300 } }
+			}
+		}
+		# The Steward at the Gate (tm_dl2.0050): the Kecharitomene rule (1110-16; [79]-[80] c. 1120/30). Rulers who
+		# keep a Sisters' House in the Byzantine world.
+		if = {
+			limit = {
+				current_date >= 1120.1.1
+				NOT = { has_variable = tm_dl2_steward_seen }
+				tm_holds_sisters_house_trigger = yes
+				capital_province ?= {
+					OR = {
+						geographical_region = world_asia_minor
+						geographical_region = world_europe_south_east
+					}
+				}
+			}
+			random = {
+				chance = 2
+				trigger_event = { id = tm_dl2.0050 days = { 1 300 } }
+			}
+		}
+		# The consul's letter (tm_dl2.0060): Psellos's dated letters on his "feminine" nature, S 72 (c. 1063-4) and S 157
+		# (c. 1074); he died likely in 1078 (Jeffreys and Lauxtermann 2017, pp. 345, 387; Papaioannou 2013, p. 11).
+		# The copy reaches the Mother House first, so her holder is likelier to read it.
+		if = {
+			limit = {
+				current_date >= 1063.1.1
+				current_date < 1079.1.1
+				NOT = { has_variable = tm_dl2_psellos_seen }
+			}
+			random = {
+				chance = 3
+				modifier = { add = 7 has_title = title:d_tm_mother_house }
+				modifier = { add = 2 learning >= 12 }
+				trigger_event = { id = tm_dl2.0060 days = { 1 300 } }
+			}
+		}
+	}
+}

@@ -55,6 +55,59 @@ transbian_maximalist_rite = {
 	cultures = { kybeline }
 }
 
+# The Galenic splinter: the rite that agrees with the Emperor (wave 3, docs/wave3/dorley.md; faith_design.md §12
+# Byzantine revisions 2, Bhatt revisions 2). Leo VI's Novel 98 counts three kinds: men, women and eunuchs (Sidéris 2010,
+# p. 89; Tougher 2008, p. 111: "some strange sex"). The accommodationist wing, not a neutral alternative: the main rite
+# calls it the old cage with a new name. Its book, from c. 1100-07, is Theophylact of Ochrid's In Defence of Eunuchs
+# (Mullett in Tougher (ed.) 2002, pp. 177-86; research/byz_tougher_eunuchs_antiquity_beyond.md row 12).
+# Not created at the start (create = no). A Dorleyaian ruler founds it with tm_dl2_found_galenic_decision
+# (create_rite_from_type, as vanilla does for quanzhen and daoxue); later rulers join it with tm_dl2_adopt_galenic_decision.
+# The founder's knife doctrine is copied onto the new rite (tm_dl2_found_galenic_effect), so only the body doctrine differs.
+tm_galenic_rite = {
+	name = tm_galenic_rite
+	desc = tm_galenic_rite_desc
+	faith = transbian_maximalism
+
+	color = { 0.78 0.62 0.80 }
+	icon = tm_dorleyaian
+
+	convert = yes
+	create = no
+
+	tenets = {
+		tenet_tm_day_of_blood
+		tenet_tm_daughters_chosen
+		tenet_tm_sisterhood
+	}
+
+	doctrines = {
+		doctrine_spiritual_head
+		doctrine_gender_female_dominated
+		doctrine_pluralism_pluralistic
+		doctrine_monogamy
+		doctrine_divorce_allowed
+		doctrine_bastardry_none
+		doctrine_consanguinity_cousins
+		doctrine_homosexuality_accepted
+		doctrine_adultery_men_shunned
+		doctrine_adultery_women_shunned
+		doctrine_deviancy_virtuous
+		doctrine_witchcraft_accepted
+		doctrine_clerical_function_alms_and_pacification
+		doctrine_clerical_gender_female_only
+		doctrine_clerical_marriage_allowed
+		doctrine_clerical_succession_spiritual_appointment
+		doctrine_monasticism_encouraged
+		doctrine_funeral_bewailment
+		doctrine_pilgrimage_encouraged
+		special_doctrine_is_eastern_christian_faith
+		tm_knife_aunt_bea			# replaced by the founder's own knife doctrine on creation
+		tm_body_galenic				# the cut are counted a third kind, as the Emperor's law counts them
+	}
+
+	cultures = { kybeline }
+}
+
 # The northern rite (Bæddel). Martial, outlawed, seiðr-led. faith_design.md §12.
 tm_baeddel_rite = {
 	name = tm_baeddel_rite

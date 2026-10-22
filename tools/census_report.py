@@ -180,6 +180,9 @@ def main(path):
             print(f'{d}s  {row[0]:7} {row[1]:6} {row[2]:6} {row[3]:6} {row[4]:8} |  {inc[0]:10} {inc[1]:5} {inc[2]:5} {inc[3]:5} {inc[4]:6} {inc[5]:5} {inc[6]:6} {inc[7]:5} {inc[8]:5}')
         print()
     if decades:
+        print('deaths: members seen at a census who died with a court or as rulers (from v0.3; before, every death with a\n'
+              'court). pool: the rest (no court, or made and cleared between two censuses). pilgr: the kahal\'s pilgrims\n'
+              'and members going to a court of their faith (from v0.3 all six faiths, and a dead ruler\'s household).\n')
         print('Worldwide: ' + ', '.join(
             f"{d}s {int(gvars.get(f'tm_c{d:04d}_marked', 0) or 0)} Marked / {int(gvars.get(f'tm_c{d:04d}_daughters', 0) or 0)} daughters"
             for d in decades) + '\n')

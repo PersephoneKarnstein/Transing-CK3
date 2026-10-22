@@ -1,0 +1,46 @@
+﻿# Crusader Dolls — Bædling stage 2 opinions (docs/wave3/baedling.md).
+
+# Spring the Cell, discovered: she emptied my prison. As vanilla abducted_me_opinion, and a crime.
+tm_bae2_sprang_my_cell_opinion = {
+	opinion = -40
+	years = 15
+	decaying = yes
+	imprisonment_reason = yes
+}
+
+# Spring the Cell, discovered but failed. As vanilla attempted_abduction_opinion.
+tm_bae2_tried_my_cell_opinion = {
+	opinion = -30
+	years = 10
+	decaying = yes
+	imprisonment_reason = yes
+}
+
+# Outlawry: the accuser's view of the one he outlawed (Ahola p. 98: only the plaintiff must pursue).
+tm_bae2_outlawed_by_me_opinion = {
+	opinion = -25
+	years = 10
+	decaying = yes
+}
+
+# A settlement paid (Miller pp. 262-77: arbitration and compensation end most cases).
+tm_bae2_settled_with_me_opinion = {
+	opinion = 15
+	years = 10
+	decaying = yes
+}
+
+# The lord quashed the accuser's suit.
+tm_bae2_suit_quashed_opinion = {
+	opinion = -15
+	years = 5
+	decaying = yes
+}
+
+# The accuser's view of a lord who keeps the outlaw at court. Harbouring had its limits (Ahola p. 97) and could be
+# settled for a fee (p. 213); helping an outlaw moves honour from the pursuer (p. 226).
+tm_bae2_harbours_outlaw_opinion = {
+	opinion = -15
+	years = 5
+	decaying = yes
+}

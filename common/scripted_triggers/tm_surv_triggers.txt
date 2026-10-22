@@ -1,0 +1,63 @@
+﻿# Crusader Dolls — survival balance (docs/wave3/survival.md; tm_surv_effects.txt).
+
+# A Rabbanite Jew who may join the kahal: an adult, free, not a ruler (a sect takes in people, not ruling houses).
+# Scope: a character.
+tm_surv_kahal_candidate_trigger = {
+	tm_rabbanite_jew_trigger = yes
+	is_adult = yes
+	is_ruler = no
+	is_imprisoned = no
+}
+
+# A court in the sect's lands: a landed ruler of Ha-Nehpakhot, or a lord whose liege or top liege is one. A Jewish
+# lord's lands are where a kahal can gather. Scope: a ruler.
+tm_surv_kahal_realm_trigger = {
+	OR = {
+		AND = {
+			faith = faith:tm_nehpakhot
+			is_landed = yes
+		}
+		liege ?= { faith = faith:tm_nehpakhot is_landed = yes }
+		top_liege ?= { faith = faith:tm_nehpakhot is_landed = yes }
+	}
+}
+
+# A member with no court who goes to the court of her faith (tm_surv_gather_effect): a daughter, a novice, a Marked
+# woman, a declared seeker, or anyone of a family of standing (not lowborn), whose realm has fallen. The lowborn
+# pool characters the game makes and clears in a faith's counties by the hundred are left alone.
+# Scope: a character.
+tm_surv_gatherer_trigger = {
+	rite ?= { rite_has_parameter = tm_sisters_faith }
+	OR = {
+		is_pool_character = yes
+		is_pool_guest = yes
+	}
+	is_imprisoned = no
+	OR = {
+		tm_captive_daughter_trigger = yes
+		has_variable = tm_declared
+		is_lowborn = no
+	}
+}
+
+# A court a member may be sent to (tm_surv_find_home_effect): free, settled, has a location, and not her own.
+# Scope: a ruler. scope:tm_surv_seeker = the member.
+tm_surv_home_court_trigger = {
+	NOT = { this = scope:tm_surv_seeker }
+	NOT = { scope:tm_surv_seeker.employer ?= this }
+	is_imprisoned = no
+	tm_settled_court_trigger = yes
+	exists = location
+}
+
+# A Rabbanite Jew the kahal may match with a member (tm_kahal_match_effect): unmarried, of the opposite sex, fertile, not
+# celibate. Scope: the candidate. scope:tm_match_seeker = the member.
+tm_surv_match_candidate_trigger = {
+	tm_surv_kahal_candidate_trigger = yes
+	is_married = no
+	is_betrothed = no
+	age <= 40
+	fertility > 0
+	NOT = { has_trait = celibate }
+	sex_opposite_of = scope:tm_match_seeker
+}

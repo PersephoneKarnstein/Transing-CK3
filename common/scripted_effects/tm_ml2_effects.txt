@@ -1,0 +1,140 @@
+﻿# Crusader Dolls — the Worn Garland, stage 2 (events/tm_ml2_events.txt; docs/stage2/worn-garland.md).
+# A share on the temple street: the produce of temple land, held by a woman in her own name, paid while she lives
+# in the county and passed "to her and her descendants" (Orr 2000, pp. 72–75, 151; SII 2 no. 66, ¶1).
+
+# Mark a county as a temple street, once. Scope: a county title.
+tm_ml2_mark_street_effect = {
+	if = {
+		limit = { NOT = { has_variable = tm_ml2_street } }
+		set_variable = { name = tm_ml2_street value = yes }
+		add_county_modifier = { modifier = tm_ml2_street_county_modifier }
+	}
+}
+
+# Grant a share on the temple street of $COUNTY$ (a county title). Scope: the woman.
+tm_ml2_grant_share_effect = {
+	set_variable = { name = tm_ml2_share value = $COUNTY$ }
+	if = {
+		limit = { has_variable = tm_ml2_away }
+		remove_variable = tm_ml2_away
+	}
+	if = {
+		limit = { NOT = { has_character_modifier = tm_ml2_share_modifier } }
+		add_character_modifier = { modifier = tm_ml2_share_modifier }
+	}
+	$COUNTY$ = { tm_ml2_mark_street_effect = yes }
+}
+
+# Take the share from her (it has passed on). Scope: the woman.
+tm_ml2_remove_share_effect = {
+	remove_variable = tm_ml2_share
+	if = {
+		limit = { has_variable = tm_ml2_away }
+		remove_variable = tm_ml2_away
+	}
+	remove_character_modifier = tm_ml2_share_modifier
+	if = {
+		limit = { has_variable = tm_ml3_resettled }
+		remove_variable = tm_ml3_resettled
+	}
+}
+
+# The share passes: from 1070, to her eldest daughter of the Garland, born or taken; before 1070, or with none, the
+# women of the street choose one of their own living in the county. Grants "to her descendants" appear only in the
+# deals of 1070–1300 (Orr 2000, pp. 74–75, 151); before them a share is the temple's, and Thanjavur's order (c. 1014)
+# names "nearest relations" who do the work, with the other incumbents choosing when there are none (SII 2 no. 66, ¶1).
+# The design reads the pre-1070 case as the street's choice. Scope: the holder (dead, or gone too long). Saves scope:tm_ml2_mother,
+# scope:tm_ml2_share_county and, if any, scope:tm_ml2_heir.
+tm_ml2_pass_share_effect = {
+	if = {								# the yearly pulse may pass several shares in one run
+		limit = { exists = scope:tm_ml2_heir }
+		clear_saved_scope = tm_ml2_heir
+	}
+	save_scope_as = tm_ml2_mother
+	var:tm_ml2_share = { save_scope_as = tm_ml2_share_county }
+	if = {
+		limit = { current_year >= 1070 }
+		ordered_child = {
+			limit = { tm_ml2_share_heir_trigger = yes }
+			order_by = age
+			save_scope_as = tm_ml2_heir
+		}
+	}
+	if = {
+		limit = { NOT = { exists = scope:tm_ml2_heir } }
+		scope:tm_ml2_share_county = {
+			every_county_province = {
+				random_character_in_location = {
+					limit = {
+						NOT = { this = scope:tm_ml2_mother }
+						is_adult = yes
+						tm_is_daughter_trigger = yes
+						tm_ml2_share_heir_trigger = yes
+					}
+					save_scope_as = tm_ml2_heir
+				}
+			}
+		}
+	}
+	if = {
+		limit = { exists = scope:tm_ml2_heir }
+		scope:tm_ml2_heir = {
+			tm_ml2_grant_share_effect = { COUNTY = scope:tm_ml2_share_county }
+			trigger_event = { id = tm_ml2.0003 days = 3 }
+		}
+	}
+}
+
+# Once a year: the share pays while she lives in its county. Three years away and it goes to those who "do the work"
+# (SII 2 no. 66, ¶1). Scope: the holder.
+tm_ml2_share_year_effect = {
+	if = {
+		limit = { tm_ml2_at_share_trigger = yes }
+		if = {								# a house in a dwindled quarter: half pay while it is resettled (tm_ml3.0010)
+			limit = { has_variable = tm_ml3_resettled }
+			add_gold = 4
+		}
+		else = {
+			add_gold = 8
+		}
+		if = {
+			limit = { has_variable = tm_ml2_away }
+			remove_variable = tm_ml2_away
+		}
+	}
+	else_if = {
+		limit = { var:tm_ml2_away ?= 2 }
+		tm_ml2_pass_share_effect = yes
+		tm_ml2_remove_share_effect = yes
+		trigger_event = { id = tm_ml2.0004 days = 1 }
+	}
+	else = {
+		if = {
+			limit = { NOT = { has_variable = tm_ml2_away } }
+			set_variable = { name = tm_ml2_away value = 0 }
+		}
+		change_variable = { name = tm_ml2_away add = 1 }
+	}
+}
+
+# A gift recorded in her own name. Scope: the donor. scope:tm_ml2_gift_county = where.
+tm_ml2_record_gift_effect = {
+	scope:tm_ml2_gift_county = { tm_ml2_mark_street_effect = yes }
+	if = {
+		limit = { NOT = { has_variable = tm_ml2_gifts } }
+		set_variable = { name = tm_ml2_gifts value = 0 }
+	}
+	change_variable = { name = tm_ml2_gifts add = 1 }
+}
+
+# She of the illustrious staff. Scope: the daughter. $NAMED$ = yes if the title is cut in stone (the nickname).
+tm_ml2_give_staff_effect = {
+	add_character_modifier = { modifier = tm_ml2_staff_modifier }
+	if = {
+		limit = {
+			always = $NAMED$
+			has_any_nickname = no
+		}
+		give_nickname = tm_ml2_nick_talaikkoli
+	}
+}

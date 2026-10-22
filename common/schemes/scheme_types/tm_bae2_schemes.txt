@@ -1,0 +1,169 @@
+﻿# Crusader Dolls — Spring the Cell (docs/TODO.md, "Branch faiths, stage 2"; docs/wave3/baedling.md).
+# A hostile scheme for any adult of the six faiths, landed or not, against a ruler who holds a daughter, a Marked
+# woman, a novice or a declared sister in prison. Agents: Marked guards, faithful servants, friends of the House
+# (common/schemes/agent_types/tm_bae2_agent_types.txt). On success every such prisoner walks free to the nearest
+# Sisters' House, else to the plotter's court (tm_bae2_walk_free_effect); the jailer may never learn who did it.
+# Discovery and failure follow vanilla hostile schemes. Template: vanilla abduct (common/schemes/scheme_types/
+# abduct_scheme.txt, 1.20), with the outcome fired from our own events (events/tm_bae2_events.txt, 0001-0021)
+# instead of vanilla's critical-moment chain.
+# The non-war counterpart of Rescue the Daughters (common/casus_belli_types/tm_casus_belli.txt). Miller row 17
+# (research/norse_miller_bloodtaking.md): the jailer's grudge is the price of a rescue.
+tm_bae2_spring_cell = {
+	# Basic Setup
+	skill = intrigue
+	desc = tm_bae2_spring_cell_desc_general
+	success_desc = "TM_BAE2_SPRING_CELL_SUCCESS_DESC"
+	discovery_desc = "TM_BAE2_SPRING_CELL_DISCOVERY_DESC"
+	icon = icon_scheme_abduct
+	illustration = "gfx/interface/illustrations/event_scenes/dungeon.dds"
+	category = hostile
+	target_type = character
+	is_secret = yes
+	maximum_breaches = 5
+	cooldown = { years = 5 }
+
+	# Parameters (abduct's)
+	speed_per_skill_point = t2_spsp_owner_value
+	speed_per_target_skill_point = t2_spsp_target_value
+	base_progress_goal = t2_base_phase_length_value
+	maximum_secrecy = 85
+	base_maximum_success = t2_base_max_success_value
+	phases_per_agent_charge = 1
+	success_chance_growth_per_skill_point = t2_scgpsp_value
+
+	allow = {
+		tm_bae2_cell_plotter_trigger = yes
+		scope:target = {
+			NOT = { this = scope:owner }
+			tm_bae2_cell_jailer_trigger = { PLOTTER = scope:owner }
+		}
+	}
+	valid = {
+		is_imprisoned = no
+		is_incapable = no
+		scope:target = {
+			is_alive = yes
+			exists = location
+			in_diplomatic_range = scope:owner
+			tm_bae2_cell_jailer_trigger = { PLOTTER = scope:owner }
+		}
+	}
+
+	# Agents
+	agent_leave_threshold = -25
+	agent_join_chance = {
+		base = 0
+		ai_agent_join_chance_basic_suite_modifier = yes
+		ai_agent_join_chance_hostile_grievous_modifier = yes
+		# The faithful come for their own.
+		modifier = {
+			add = 40
+			desc = tm_bae2_agent_join_sisters
+			rite ?= { rite_has_parameter = tm_sisters_faith }
+		}
+		modifier = {
+			add = 40
+			desc = tm_bae2_agent_join_marked
+			OR = {
+				has_trait = tm_transgender
+				tm_is_daughter_trigger = yes
+				has_variable = tm_declared
+			}
+		}
+		modifier = {
+			add = 25
+			desc = tm_bae2_agent_join_compassion
+			has_trait = compassionate
+		}
+	}
+	agent_groups_owner_perspective = { courtiers guests scripted_relations }
+	agent_groups_target_character_perspective = { courtiers vassals }
+	valid_agent = { is_valid_agent_standard_trigger = yes }
+
+	odds_prediction = {
+		add = hostile_scheme_base_odds_prediction_target_is_char_value
+		add = odds_skill_contribution_intrigue_value
+		add = agent_groups_owner_perspective_value
+		min = 0
+	}
+
+	base_success_chance = {
+		base = 0
+		scheme_type_skill_success_chance_modifier = { SKILL = INTRIGUE }
+		hostile_scheme_base_chance_modifier = yes
+		apply_calculated_scheme_success_chance_adjustments_modifier = yes
+		dangerous_hostile_scheme_base_chance_modifier = yes
+
+		# A prison is easier to open than a ruler is to carry off; a foreign one is still hard.
+		first_valid = {
+			modifier = {
+				add = -40
+				desc = "sway_foreign_target"
+				scope:target.top_liege != scope:owner.top_liege
+			}
+			modifier = {
+				add = -15
+				desc = tm_bae2_cell_same_realm
+				always = yes
+			}
+		}
+		# At war: the gates are shut.
+		modifier = {
+			add = -500
+			desc = "SCHEME_AT_WAR"
+			scope:target = { is_at_war_with = scope:owner }
+		}
+		# A House nearby has somewhere to take her.
+		modifier = {
+			add = 10
+			desc = tm_bae2_cell_house_near
+			scope:target.capital_county ?= {
+				OR = {
+					has_variable = tm_house
+					any_neighboring_county = { has_variable = tm_house }
+				}
+			}
+		}
+	}
+	base_secrecy = {
+		add = secrecy_base_value
+		add = countermeasure_apply_secrecy_maluses_value
+	}
+
+	on_start = {
+		set_variable = {
+			name = apply_countermeasures
+			value = flag:calculating
+		}
+		add_scheme_starting_opportunities_intrigue_effect = yes
+		# Fallback agents, for a scheme started from script without begin_scheme_with_agents_effect.
+		if = {
+			limit = {
+				scheme_owner = { NOT = { has_variable = agents_added } }
+			}
+			add_agent_slot = tm_bae2_agent_guard
+			add_agent_slot = tm_bae2_agent_guard
+			add_agent_slot = tm_bae2_agent_servant
+			add_agent_slot = tm_bae2_agent_friend
+			add_agent_slot = agent_lookout
+		}
+	}
+	# Each phase brings a night when the cell could be opened: strike now or wait for better odds (tm_bae2.0001).
+	on_phase_completed = {
+		save_scope_as = tm_bae2_scheme
+		scheme_owner = { trigger_event = tm_bae2.0001 }
+	}
+	on_monthly = {
+		hostile_scheme_monthly_discovery_chance_effect = yes
+	}
+	on_invalidated = {
+		scheme_target_character = { save_scope_as = target }
+		scheme_owner = {
+			send_interface_toast = {
+				title = tm_bae2_spring_cell_invalidated_title
+				left_icon = scope:target
+				custom_tooltip = tm_bae2_spring_cell_invalidated_tt
+			}
+		}
+	}
+}

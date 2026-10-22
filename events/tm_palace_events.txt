@@ -11,7 +11,8 @@
 # disgrace (So 2000, pp. 200, 477). The register filing her as a eunuch is the faith's polemic, not the narrator's claim
 # (research/cn_rideout_tang_eunuchs.md §1.7).
 #   0001  the inner offices write: take the seal, stay with the society, or take it and keep the books apart
-#   0002  a memorial from the scholar-officials, three to six years on
+#   0002  a memorial from the scholar-officials, three to six years on; stage 2 sends it again when the balance at
+#         court leans (tm_yt2_yearly_effect), and a memorial weathered or lost moves the balance
 #   0003  the palace emptied (903-904, under a celestial throne)
 # Root = the daughter. scope:tm_palace_throne = her top liege. Started from tm_palace_yearly (tm_palace_on_actions.txt).
 
@@ -89,10 +90,12 @@ tm_palace.0002 = {
 			60 = {
 				desc = tm_palace.0002.a.kept
 				add_prestige = 25
+				top_liege ?= { primary_title = { tm_yt2_north_effect = { AMOUNT = 1 } } }	# stage 2 (tm_yt2_effects.txt)
 			}
 			40 = {
 				desc = tm_palace.0002.a.lost
 				tm_palace_lose_office_effect = yes
+				top_liege ?= { primary_title = { tm_yt2_south_effect = yes } }
 				add_prestige = -100
 				every_held_title = {
 					limit = { tier = tier_county has_variable = tm_house }

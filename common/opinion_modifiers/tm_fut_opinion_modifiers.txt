@@ -1,0 +1,49 @@
+﻿# Crusader Dolls — protection under Muslim and Orthodox lords, wave 4 (events/tm_fut_events.txt).
+
+# She put herself under his word, and he gave it (tm_fut.0011).
+tm_fut_gave_word_opinion = {
+	opinion = 30
+	years = 20
+}
+
+# He refused to give her up when she was demanded (tm_fut.0020).
+tm_fut_kept_word_opinion = {
+	opinion = 20
+	years = 15
+}
+
+# The demander, refused (tm_fut.0020).
+tm_fut_refused_demand_opinion = {
+	opinion = -20
+	years = 10
+}
+
+# He sent her from his court when she was demanded (tm_fut.0020).
+tm_fut_sent_away_opinion = {
+	opinion = -30
+	years = 15
+}
+
+# He granted the community terms (tm_fut.0030).
+tm_fut_terms_opinion = {
+	opinion = 20
+	years = 20
+}
+
+# He let her ride with him when she asked (tm_fut.0032).
+tm_fut_let_ride_opinion = {
+	opinion = 15
+	years = 10
+}
+
+# He left the community's quarrel to them, as the terms say (tm_fut.0033).
+tm_fut_kept_terms_opinion = {
+	opinion = 10
+	years = 5
+}
+
+# His bailiff heard the community's quarrel, and the terms ended (tm_fut.0033).
+tm_fut_broke_terms_opinion = {
+	opinion = -20
+	years = 10
+}

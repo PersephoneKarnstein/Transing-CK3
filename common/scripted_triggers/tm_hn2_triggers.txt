@@ -1,0 +1,123 @@
+﻿# Crusader Dolls — Ha-Nehpakhot, stage 2 (events/tm_hn2_events.txt).
+
+# A younger woman or a seeker of the daughter's faith, at her court, to learn the spinning. Scope: the courtier.
+# Root: the daughter.
+tm_hn2_spinner_trigger = {
+	is_alive = yes
+	is_imprisoned = no
+	NOT = { this = root }
+	faith = root.faith
+	age >= 10
+	age < 30
+	OR = {
+		is_female = yes
+		tm_turning_seeker_trigger = yes
+	}
+}
+
+# She owns the adornment (tm_hn2_give_adornment_effect). Scope: the character.
+tm_hn2_has_adornment_trigger = {
+	any_character_artifact = { has_variable = tm_hn2_adornment }
+}
+
+# Protection earned by service: the lord of her county commissioned a translation from a daughter of the Turning
+# (tm_hipukh.0030), or she serves as a licensed physician (tm_hipukh.0031). Never bought. Scope: the member.
+# Needs scope:tm_hn2_lord.
+tm_hn2_served_lord_trigger = {
+	exists = scope:tm_hn2_lord
+	OR = {
+		scope:tm_hn2_lord = { has_character_modifier = tm_translation_patron_modifier }
+		has_character_modifier = tm_fisica_licensed_modifier
+		has_character_modifier = tm_fisica_women_modifier
+		has_character_modifier = tm_hn3_physician_modifier		# wave 3: physician to a Muslim lord (tm_hipukh.0031)
+		has_character_modifier = tm_hn3_vizier_modifier
+	}
+}
+
+# A daughter of the Turning a rival may take to the bailiff: she lives in a county held by a Christian lord, and has a
+# living rival. Scope: the daughter.
+tm_hn2_bailiff_trigger = {
+	has_trait = tm_daughter_of_the_turning
+	is_adult = yes
+	is_imprisoned = no
+	current_date >= 1260.1.1		# Assis's cases run from Lleida 1263; the Provencal court fines are 14th-century
+	any_relation = {
+		type = rival
+		is_alive = yes
+	}
+	location ?= {
+		county ?= {
+			holder ?= { faith.religion = religion:christianity_religion }		# so never herself
+		}
+	}
+}
+
+# A member at a Christian court in the lands of the youth abbeys (Provence and France: Frankish heritage), from 1400.
+# The Arles case of 1433 was called "a novelty never seen" (REJ 41: 93-94); 1400 is a game convention for "the
+# generation before it" (user decision 2026-10-21: keep 1400). Scope: the member.
+tm_hn2_carnival_member_trigger = {
+	faith = faith:tm_nehpakhot
+	is_adult = yes
+	is_imprisoned = no
+	is_ruler = no
+	current_date >= 1400.1.1
+	employer ?= { faith.religion = religion:christianity_religion }
+	location ?= {
+		county ?= {
+			culture ?= { has_cultural_pillar = heritage_frankish }
+		}
+	}
+}
+
+# What each text may cite, by date (docs/stage2/ha-nehpakhot.md, "Dates"). No scope needed.
+# Rashi wrote at Troyes c. 1070-1105; his commentary is complete at his death (1105). Its reach in Provence by 1178 is
+# unverified (docs/research/later_starts/region_latin-christendom-jewish-europe.md §1.1), so 1105 is the earliest
+# defensible date, not a proven one.
+tm_hn2_rashi_trigger = {
+	current_date >= 1105.1.1
+}
+
+# Maimonides' Mishneh Torah, completed c. 1180 (Avodah Zarah 12:10 on women's adornment).
+tm_hn2_maimonides_trigger = {
+	current_date >= 1180.1.1
+}
+
+# Sefer ha-Hinukh, "a 13th-century Barcelona code" (research/jud_rabbinic_primary_texts.md §12); the exact year is not
+# in the notes, so it is gated at the latest plausible date.
+tm_hn2_hinukh_trigger = {
+	current_date >= 1300.1.1
+}
+
+# Even Bohan, finished Tevet 5083 (Dec. 1322-Jan. 1323), as the built Turning gates it.
+tm_hn2_touchstone_trigger = {
+	current_date >= 1323.1.1
+}
+
+# A seeker named in Catalonia or Aragon (tm_hipukh.0002): of Catalan or Aragonese culture, or in a county de jure in
+# the kingdom of Aragon (which holds Barcelona). The Girona names are attested from the 1390s. Scope: the one named.
+tm_hn2_catalan_seeker_trigger = {
+	current_date >= 1390.1.1
+	OR = {
+		culture ?= culture:catalan
+		culture ?= culture:aragonese
+		location ?= { county ?= { target_is_de_jure_liege_or_above = title:k_aragon } }
+	}
+}
+
+# A seat below: a member of the sect, a daughter or a seeker, with no seat yet, from 1409 (the women's room is attested
+# at Arles in 1409 and 1452). Scope: the member.
+tm_hn2_seat_candidate_trigger = {
+	current_date >= 1409.1.1
+	faith = faith:tm_nehpakhot
+	is_adult = yes
+	is_imprisoned = no
+	NOT = { has_variable = tm_hn2_women_seat }
+	OR = {
+		has_trait = tm_daughter_of_the_turning
+		tm_turning_seeker_trigger = yes
+	}
+	OR = {
+		is_ruler = yes
+		exists = employer
+	}
+}

@@ -1,0 +1,64 @@
+﻿# Crusader Dolls — the Worn Garland, wave 4 (events/tm_ml3_events.txt; docs/wave4/garland.md).
+# Source: Hall, Trade and Statecraft in the Age of the Colas (1980); research/ind_hall_cola_trade.md.
+
+# A lamp kept by the market (tm_ml2.0010 option e). The market assembly keeps the gift and pays oil to the god for
+# ever, "even if they were to leave this village" (Hall 1980, pp. 76–77, 194). A perpetual endowment: nothing is lent
+# and nothing comes back to her but the record. Scope: the donor; scope:tm_ml2_gift_county = where.
+tm_ml3_market_lamp_effect = {
+	if = {
+		limit = { NOT = { has_character_modifier = tm_ml3_market_lamp_modifier } }
+		add_character_modifier = { modifier = tm_ml3_market_lamp_modifier }
+	}
+	else = {
+		add_prestige = 25
+	}
+	scope:tm_ml2_gift_county = {
+		set_variable = { name = tm_ml3_market_lamp value = yes }
+	}
+}
+
+# A caravan brought to the coast. Count it; after the third, the captain is called "of the Heroes of the Road", and
+# the employer may offer the band a frontier market town (tm_ml3.0030). Scope: the band's leader; scope:employer.
+tm_ml3_caravan_done_effect = {
+	if = {
+		limit = { NOT = { has_variable = tm_ml3_caravans } }
+		set_variable = { name = tm_ml3_caravans value = 0 }
+	}
+	change_variable = { name = tm_ml3_caravans add = 1 }
+	if = {
+		limit = {
+			var:tm_ml3_caravans >= 3
+			has_any_nickname = no
+		}
+		give_nickname = tm_ml3_nick_heroes_of_the_road
+	}
+	if = {
+		limit = {
+			var:tm_ml3_caravans >= 3
+			NOT = { has_variable = tm_ml3_town_offered }
+			government_has_flag = government_is_landless_adventurer
+			exists = scope:employer
+			scope:employer = { tm_ml3_town_giver_trigger = yes }
+		}
+		set_variable = { name = tm_ml3_town_offered value = yes years = 20 }
+		save_scope_as = tm_ml3_band
+		scope:employer = { trigger_event = { id = tm_ml3.0030 days = { 30 90 } } }
+	}
+}
+
+# Settle the band in the town through vanilla Negotiate Settlement: the same scopes and list its interaction
+# (negotiate_settlement_interaction, on_accept) sets, then the effect its event ep3_laamps.0300 runs,
+# negotiate_settlement_interaction_effect (07_dlc_ep3_scripted_effects.txt). Run here directly, in the band's own
+# choice, so the list of offered titles stays in one context. The ruler offered in tm_ml3.0030.
+# Scope: the band's leader; scope:tm_ml3_giver = the ruler; scope:tm_ml3_town = the county.
+tm_ml3_settle_band_effect = {
+	scope:tm_ml3_town = {
+		set_variable = { name = tm_ml3_erivira value = yes }
+		add_county_modifier = { modifier = tm_ml3_erivira_county_modifier years = 10 }
+		add_to_list = offered_titles
+		save_scope_as = new_primary_title
+	}
+	save_scope_as = recipient
+	scope:tm_ml3_giver = { save_scope_as = actor }
+	negotiate_settlement_interaction_effect = yes
+}

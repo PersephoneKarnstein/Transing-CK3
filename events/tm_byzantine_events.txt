@@ -80,6 +80,14 @@ tm_byz.0010 = {
 		add_piety = -50
 		add_stress = 20
 	}
+	option = {	# Galenic wing (wave 3, docs/wave3/dorley.md): show them the Emperor's own count. Leo VI's Novel 98 counts
+				# three kinds (Sidéris 2010, p. 89); the wing's books agree with it, so the bishop's men leave them.
+				# The cost is the name: the Houses' own register goes with the rest.
+		name = tm_byz.0010.e
+		trigger = { rite ?= { rite_has_parameter = tm_castrates_third_kind } }
+		add_piety = -25
+		liege ?= { add_opinion = { target = root modifier = respect_opinion opinion = 10 } }
+	}
 }
 
 # Rung 2: the assemblies.
@@ -148,6 +156,18 @@ tm_byz.0012 = {
 		every_child = {
 			limit = { is_alive = yes tm_is_daughter_trigger = yes }
 			add_character_modifier = { modifier = tm_contested_inheritance_modifier years = 10 }
+		}
+	}
+	option = {	# Galenic wing (wave 3): register the adoptions under Leo VI's adoption law (Novels 26-27; Macrides 1990,
+				# p. 111), entering each daughter as a eunuch, the kind Novel 98 counts (Sidéris 2010, p. 89). The court
+				# raises no objection to the wing that counts as it counts, so it costs no gold. It costs the
+				# daughters their name in the register.
+		name = tm_byz.0012.e
+		trigger = { rite ?= { rite_has_parameter = tm_castrates_third_kind } }
+		set_variable = tm_wills_registered
+		every_child = {
+			limit = { is_alive = yes tm_is_daughter_trigger = yes }
+			add_opinion = { target = root modifier = tm_dl2_counted_eunuch_opinion }
 		}
 	}
 }

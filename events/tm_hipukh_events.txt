@@ -91,12 +91,43 @@ tm_hipukh.0011 = {
 			}
 			desc = tm_hipukh.0011.desc
 		}
+		# Wave 3: in Ifriqiya, the Purim-eve bonfires of Qayrawan, "the stirrup of Purim" (Nissim, in Hirschberg p. 170).
+		# Any date; the text by era (tm_hn3_maghreb_era): Qayrawan itself before Nov. 1057, then those who came from it.
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					tm_hn3_in_ifriqiya_trigger = yes
+					tm_hn3_maghreb_era_trigger = { ERA = 1 }
+				}
+				desc = tm_hn3.purim_fire_qayrawan
+			}
+			triggered_desc = {
+				trigger = {
+					tm_hn3_in_ifriqiya_trigger = yes
+					tm_hn3_maghreb_era_trigger = { ERA = 3 }
+				}
+				desc = tm_hn3.purim_fire_gate
+			}
+			triggered_desc = {
+				trigger = { tm_hn3_in_ifriqiya_trigger = yes }
+				desc = tm_hn3.purim_fire_after
+			}
+		}
 	}
 	theme = faith
 	left_portrait = { character = root animation = happiness }
 	right_portrait = { character = scope:tm_zekenah animation = personality_rational }
 
 	trigger = { exists = scope:tm_zekenah }
+
+	option = {	# Wave 3, Ifriqiya: she leapt the Purim fire in the dress last night. +10 at the prayer (tm_hipukh.0001)
+		name = tm_hn3.purim_fire_option
+		trigger = { tm_hn3_in_ifriqiya_trigger = yes }
+		set_variable = { name = tm_hn3_purim_fire value = yes days = 30 }
+		add_stress = -15
+		add_prestige = 10
+		trigger_event = { id = tm_hipukh.0001 days = 1 }
+	}
 
 	option = {	# Keep the dress on when the joke is over
 		name = tm_hipukh.0011.a
@@ -112,6 +143,7 @@ tm_hipukh.0011 = {
 	option = {	# Refuse the dress
 		name = tm_hipukh.0011.c
 		tm_turning_clear_effect = yes
+		remove_variable = tm_hn3_purim_fire
 	}
 }
 
@@ -138,6 +170,16 @@ tm_hipukh.0001 = {
 			}
 			desc = tm_hipukh.0001.desc_jeremiah
 		}
+		triggered_desc = {	# wave 3: the rope from heaven, for one who has waited an Adar already, in the Maghreb or the
+							# Sahel, from 1160. Maimon b. Joseph, Epistle of Consolation, Fez 1159/60 (Kraemer ch. 6;
+							# research/jud_maghreb_maimonides_fes.md, design row 1). Only the image, in the elder's voice.
+			trigger = {
+				has_variable = tm_turning_prayers
+				current_date >= 1160.1.1
+				tm_hn3_in_west_trigger = yes
+			}
+			desc = tm_hn3.rope_from_heaven
+		}
 	}
 	theme = faith
 	left_portrait = { character = scope:tm_zekenah animation = personality_zealous }
@@ -155,7 +197,9 @@ tm_hipukh.0001 = {
 				modifier = { add = scope:tm_zekenah.learning }
 				modifier = { add = 20 has_personal_tenet_flag = tm_personal_turning_easier }
 				modifier = { add = 10 has_variable = tm_turning_women_synagogue }
+				modifier = { add = 10 has_variable = tm_hn2_women_seat }	# a seat of her own below (Arles 1409/1452; tm_hn2.0050)
 				modifier = { add = 20 has_variable = tm_turning_kept_dress }
+				modifier = { add = 10 has_variable = tm_hn3_purim_fire }	# she leapt the Purim fire (wave 3; Hirschberg p. 170)
 				modifier = { add = 15 has_variable = tm_hevrah_taught }
 				modifier = {							# the worthies of this town have licensed it before
 					add = 15
@@ -175,6 +219,7 @@ tm_hipukh.0001 = {
 					title = tm_hipukh.0001.a.success
 				}
 				tm_turning_clear_effect = yes
+				remove_variable = tm_hn3_purim_fire
 				remove_variable = tm_turning_prayers
 				remove_variable = tm_hevrah_taught
 				# A seeker of another Jewish faith is turned into the sect.
@@ -200,6 +245,7 @@ tm_hipukh.0001 = {
 					add_stress = 5
 				}
 				tm_turning_clear_effect = yes
+				remove_variable = tm_hn3_purim_fire
 				if = {
 					limit = { has_variable = tm_turning_prayers }
 					change_variable = { name = tm_turning_prayers add = 1 }
@@ -237,6 +283,19 @@ tm_hipukh.0002 = {
 	option = {	# A name of the street, as the Jewish women of Provence were called
 		name = tm_hipukh.0002.d
 		tm_give_daughter_name_effect = yes
+		add_prestige = 25
+	}
+	option = {	# A name of the street as the Jewish women of Catalonia were called (an added choice; tm_hn2)
+		name = tm_hn2_catalan_name_option
+		trigger = { tm_hn2_catalan_seeker_trigger = yes }
+		tm_hn2_catalan_name_effect = yes
+		add_prestige = 25
+	}
+	option = {	# A name of the street as the Jewish women of the Maghreb were called (an added choice; wave 3, tm_hn3).
+				# Goitein, Med. Society 3, pp. 314-319; Gil; India Traders pp. 57, 70. The scroll names stay.
+		name = tm_hn3.maghreb_name_option
+		trigger = { tm_hn3_maghrebi_trigger = yes }
+		tm_hn3_maghreb_name_effect = yes
 		add_prestige = 25
 	}
 	option = {
@@ -281,6 +340,15 @@ tm_hipukh.0003 = {
 		else = {
 			save_scope_value_as = { name = tm_council_women value = no }
 		}
+		# The worthies have heard this argued before, at the spindle, and she won (tm_hn2.0002). Consumed here.
+		if = {
+			limit = { location ?= { county ?= { has_variable = tm_hn2_spindle_heard } } }
+			save_scope_value_as = { name = tm_hn2_spindle_heard value = yes }
+			location.county = { remove_variable = tm_hn2_spindle_heard }
+		}
+		else = {
+			save_scope_value_as = { name = tm_hn2_spindle_heard value = no }
+		}
 	}
 	theme = faith
 	left_portrait = { character = root animation = worry }
@@ -292,13 +360,14 @@ tm_hipukh.0003 = {
 				modifier = { add = { value = learning multiply = 2 } }
 				modifier = { add = 10 scope:tm_council_women = yes }	# the women of the street sit in the council
 				modifier = { add = 20 has_character_modifier = tm_taught_answers_modifier }	# Teach Her the Answers (tm_mech_interactions.txt)
+				modifier = { add = 10 scope:tm_hn2_spindle_heard = yes }	# argued before at the spindle (tm_hn2.0002)
 				desc = tm_hipukh.0003.a.win
 				add_prestige = 75
 				location ?= { county ?= { set_variable = { name = tm_worthies_licence value = yes years = 10 } } }
 			}
 			50 = {
 				desc = tm_hipukh.0003.a.lose
-				tm_turning_niddui_effect = yes
+				tm_hn3_niddui_effect = yes		# the ban by where she lives (wave 3; tm_hn3_effects.txt)
 				add_stress = 15
 			}
 		}
@@ -312,13 +381,14 @@ tm_hipukh.0003 = {
 				modifier = { add = { value = learning multiply = 2 } }
 				modifier = { add = 10 scope:tm_council_women = yes }
 				modifier = { add = 20 has_character_modifier = tm_taught_answers_modifier }	# Teach Her the Answers (tm_mech_interactions.txt)
+				modifier = { add = 10 scope:tm_hn2_spindle_heard = yes }	# argued before at the spindle (tm_hn2.0002)
 				desc = tm_hipukh.0003.e.win
 				add_prestige = 75
 				location ?= { county ?= { set_variable = { name = tm_worthies_licence value = yes years = 10 } } }
 			}
 			50 = {
 				desc = tm_hipukh.0003.e.lose
-				tm_turning_niddui_effect = yes
+				tm_hn3_niddui_effect = yes		# the ban by where she lives (wave 3; tm_hn3_effects.txt)
 				add_stress = 15
 			}
 		}
@@ -333,7 +403,7 @@ tm_hipukh.0003 = {
 		name = tm_hipukh.0003.c
 		add_piety = 75
 		add_stress = -20
-		tm_turning_niddui_effect = yes
+		tm_hn3_niddui_effect = yes		# the ban by where she lives (wave 3; tm_hn3_effects.txt)
 	}
 	option = {	# Put the dress away until next Adar
 		name = tm_hipukh.0003.d
@@ -452,7 +522,40 @@ tm_hipukh.0040 = {
 tm_hipukh.0031 = {
 	type = character_event
 	title = tm_hipukh.0031.t
-	desc = tm_hipukh.0031.desc
+	desc = {
+		first_valid = {
+			triggered_desc = {	# wave 3: the physician as protector, for a Muslim lord in the Maghreb or the Sahel
+				trigger = { tm_hn3_physician_lord_trigger = yes }
+				desc = tm_hn3.physician_desc
+			}
+			desc = tm_hipukh.0031.desc
+		}
+		first_valid = {
+			triggered_desc = {	# the first nagid, the Zirid emir's physician, from 1015 (Stillman pp. 46, 183-187)
+				trigger = {
+					tm_hn3_physician_lord_trigger = yes
+					current_date >= 1015.1.1
+					tm_hn3_maghreb_era_trigger = { ERA = 1 }
+				}
+				desc = tm_hn3.physician_nagid_now
+			}
+			triggered_desc = {
+				trigger = {
+					tm_hn3_physician_lord_trigger = yes
+					current_date >= 1057.11.1
+				}
+				desc = tm_hn3.physician_nagid_then
+			}
+		}
+		triggered_desc = {		# the amir's Jewish physicians titled vizier (Kraemer ch. 5; Hirschberg pp. 122, 351);
+								# gated from 1075, the Almoravids in Fes (user decision)
+			trigger = {
+				tm_hn3_physician_lord_trigger = yes
+				current_date >= 1075.1.1
+			}
+			desc = tm_hn3.physician_vizier
+		}
+	}
 	theme = learning
 	left_portrait = { character = scope:tm_fisica animation = personality_rational }
 
@@ -460,7 +563,10 @@ tm_hipukh.0031 = {
 
 	option = {	# Licence her to practise
 		name = tm_hipukh.0031.a
-		trigger = { gold >= 50 }
+		trigger = {
+			gold >= 50
+			tm_hn3_physician_lord_trigger = no		# wave 3: in the Maghreb and the Sahel, service instead of a licence
+		}
 		remove_short_term_gold = 50
 		scope:tm_fisica = {
 			add_character_modifier = { modifier = tm_fisica_licensed_modifier years = 10 }
@@ -469,7 +575,10 @@ tm_hipukh.0031 = {
 	}
 	option = {	# Licence her to treat women only: "they are better suited to treat sick women than are men"
 		name = tm_hipukh.0031.b
-		trigger = { gold >= 25 }
+		trigger = {
+			gold >= 25
+			tm_hn3_physician_lord_trigger = no
+		}
 		remove_short_term_gold = 25
 		scope:tm_fisica = {
 			add_character_modifier = { modifier = tm_fisica_women_modifier years = 10 }
@@ -478,6 +587,50 @@ tm_hipukh.0031 = {
 	}
 	option = {	# No licence
 		name = tm_hipukh.0031.c
+		trigger = { tm_hn3_physician_lord_trigger = no }
 		scope:tm_fisica = { add_opinion = { target = root modifier = disappointed_opinion opinion = -10 } }
+	}
+	# Wave 3, the physician as protector (Maghreb and Sahel, Muslim lord). Service, not a fee: she rides with her lord and
+	# speaks for her people; while she serves, a daughter shunned in his land can petition him to forbid the ban
+	# (tm_hn3_lord_has_protector_trigger, tm_hn3.0010). The protection is hers and ends with her (Stillman pp. 186-187).
+	option = {	# Take her into my service as my physician
+		name = tm_hn3.physician_a
+		trigger = { tm_hn3_physician_lord_trigger = yes }
+		scope:tm_fisica = {
+			add_character_modifier = { modifier = tm_hn3_physician_modifier years = 10 }
+			add_opinion = { target = root modifier = respect_opinion opinion = 20 }
+		}
+		ai_chance = { base = 50 }
+	}
+	option = {	# With the title of vizier (from 1075). Muslim courtiers resent it a little (Bennison p. 167)
+		name = tm_hn3.physician_b
+		trigger = {
+			tm_hn3_physician_lord_trigger = yes
+			current_date >= 1075.1.1
+		}
+		scope:tm_fisica = {
+			add_character_modifier = { modifier = tm_hn3_vizier_modifier years = 10 }
+			add_prestige = 50
+			add_opinion = { target = root modifier = respect_opinion opinion = 30 }
+			save_scope_as = tm_hn3_vizier
+		}
+		every_courtier = {
+			limit = {
+				faith.religion = religion:islam_religion
+				NOT = { this = scope:tm_hn3_vizier }
+			}
+			add_opinion = { target = root modifier = tm_hn3_jewish_vizier_opinion }
+		}
+		ai_chance = {
+			base = 20
+			modifier = { add = 20 has_trait = arbitrary }
+			modifier = { add = 20 has_trait = ambitious }
+		}
+	}
+	option = {	# I have physicians enough
+		name = tm_hn3.physician_c
+		trigger = { tm_hn3_physician_lord_trigger = yes }
+		scope:tm_fisica = { add_opinion = { target = root modifier = disappointed_opinion opinion = -10 } }
+		ai_chance = { base = 30 }
 	}
 }

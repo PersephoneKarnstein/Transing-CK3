@@ -1,0 +1,405 @@
+﻿namespace = tm_fut
+
+# Protection under Muslim and Orthodox lords, wave 4 (docs/wave4/protection.md). Hooked in
+# common/on_action/tm_fut_on_actions.txt (yearly_playable_pulse) and tm_fut_grant_terms_interaction.
+#
+# Under Her Chivalry (Tor, Violent Order, 2007; research/isl_tor_violent_order.md §6, proposal 3)
+#   0001  the fityan of his town swear him in (Iran and Iraq before 1056 only: the oath and the trousers, p. 248)
+#   0010  she may put herself under his word (to the daughter)
+#   0011  he gives his word, or does not (to the lord)
+#   0020  someone demands her: he refuses, gives the roadside answer (Iran and Iraq only, p. 249), or sends her
+#         away to her own people. She is never handed to the one who demands her.
+# The code as Tor gathers it (pp. 243-250): justice, resident and stranger alike (p. 244), loyalty (p. 245), the open
+# table (p. 250), and protection "at the risk of your life" for whoever "has surrendered to you ... and entrusted
+# himself to your chivalry" (p. 250, the Qabus-nama). Women in the code are protected, never members (pp. 248, 257).
+# Outside Iran and Iraq before 1056 the text says "a free man's word" and names no fata (Tor note §11 "Geography").
+# No sectarian violence, no protection money, no jihad framing, and none of Tor's partisan asides (§11). The one who
+# demands her is never a Jewish character (tm_fut_demander_trigger).
+#
+# No Service in the Prince's Wars (Dollinger, The German Hansa, Document 3, pp. 381-382;
+# research/norse_dollinger_hansa.md §7, proposal 3)
+#   0030  the community asks for terms: no part in his wars unless they ask (cl. 32), and their quarrels settled in
+#         their own fashion (cl. 10). In return, service: physician, interpreter or steward. No money, no loans, no
+#         war financing (Ha-Nehpakhot guardrails; Dollinger note §11 "Finance and Jews").
+#   0032  a member asks to ride with him: "unless they ask"
+#   0033  a quarrel in the community: his bailiff stays out, or hears it and ends the terms
+# The 1229 treaty is a precedent the lord's scribe knows (an Orthodox lord, from 1229). The narrator never says the
+# Smolensk Germans were Jewish, or that any lord gave the sect these terms in history.
+
+# ---------------------------------------------------------------------------------------------------
+# The fityan of his town. Root = a Muslim lord in Iran or Iraq before 1056. scope:tm_fut_town = his capital county.
+tm_fut.0001 = {
+	type = character_event
+	title = tm_fut.0001.t
+	desc = tm_fut.0001.desc
+	theme = court
+	left_portrait = { character = root animation = personality_honorable }
+
+	trigger = {
+		tm_fut_lord_trigger = yes
+		tm_fut_keeps_code_trigger = no
+	}
+
+	immediate = {
+		capital_county ?= { save_scope_as = tm_fut_town }
+	}
+
+	option = {	# Swear by the futuwwa (Tor p. 248)
+		name = tm_fut.0001.a
+		add_character_modifier = { modifier = tm_fut_javanmard_modifier }
+		add_prestige = 50
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = brave }
+			modifier = { add = 20 has_trait = generous }
+			modifier = { add = 20 has_trait = honest }
+			modifier = { add = 10 has_trait = just }
+		}
+	}
+	option = {	# Thank them, and send them home
+		name = tm_fut.0001.b
+		ai_chance = {
+			base = 50
+			modifier = { add = 20 has_trait = craven }
+			modifier = { add = 20 has_trait = greedy }
+			modifier = { add = 20 has_trait = deceitful }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# She may put herself under his word. Root = a daughter of the six faiths at a Muslim court. scope:tm_fut_lord.
+tm_fut.0010 = {
+	type = character_event
+	title = tm_fut.0010.t
+	desc = {
+		desc = tm_fut.0010.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:tm_fut_lord = { has_character_modifier = tm_fut_javanmard_modifier } }
+				desc = tm_fut.0010.desc_fata
+			}
+			desc = tm_fut.0010.desc_plain
+		}
+	}
+	theme = court
+	left_portrait = { character = root animation = thinking }
+	right_portrait = { character = scope:tm_fut_lord animation = personality_honorable }
+
+	trigger = {
+		exists = scope:tm_fut_lord
+		scope:tm_fut_lord = { tm_fut_lord_trigger = yes }
+		is_adult = yes
+		is_imprisoned = no
+		OR = {
+			is_courtier_of = scope:tm_fut_lord
+			is_foreign_court_or_pool_guest_of = scope:tm_fut_lord
+		}
+	}
+
+	option = {	# Put myself under his word
+		name = {
+			trigger = { scope:tm_fut_lord = { has_character_modifier = tm_fut_javanmard_modifier } }
+			text = tm_fut.0010.a_fata
+		}
+		name = {
+			trigger = { scope:tm_fut_lord = { NOT = { has_character_modifier = tm_fut_javanmard_modifier } } }
+			text = tm_fut.0010.a
+		}
+		save_scope_as = tm_fut_daughter
+		scope:tm_fut_lord = { trigger_event = { id = tm_fut.0011 days = { 1 5 } } }
+		ai_chance = {
+			base = 60
+			modifier = { add = 20 scope:tm_fut_lord = { tm_fut_keeps_code_trigger = yes } }
+			modifier = { add = 10 has_trait = trusting }
+			modifier = { add = -30 has_trait = paranoid }
+		}
+	}
+	option = {	# Keep my own counsel
+		name = tm_fut.0010.b
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = shy }
+		}
+	}
+}
+
+# He gives his word, or does not. Root = the Muslim lord. scope:tm_fut_daughter. A follow-up: no budget.
+tm_fut.0011 = {
+	type = character_event
+	title = tm_fut.0011.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { has_character_modifier = tm_fut_javanmard_modifier }
+				desc = tm_fut.0011.desc_fata
+			}
+			desc = tm_fut.0011.desc
+		}
+		desc = tm_fut.0011.desc_end
+	}
+	theme = court
+	left_portrait = { character = scope:tm_fut_daughter animation = personality_bold }
+
+	trigger = {
+		exists = scope:tm_fut_daughter
+		tm_fut_lord_trigger = yes
+		scope:tm_fut_daughter = {
+			is_alive = yes
+			is_imprisoned = no
+			tm_fut_sheltered_trigger = no
+			OR = {
+				is_courtier_of = root
+				is_foreign_court_or_pool_guest_of = root
+			}
+		}
+	}
+
+	option = {	# She has my word
+		name = tm_fut.0011.a
+		tm_fut_give_word_effect = yes
+		add_prestige = 25
+		ai_chance = {
+			base = 40
+			modifier = { add = 40 tm_fut_keeps_code_trigger = yes }
+			modifier = { add = 20 has_trait = brave }
+			modifier = { add = 20 has_trait = just }
+			modifier = { add = 20 has_trait = honest }
+			modifier = { add = 10 has_trait = generous }
+			modifier = { factor = 0.5 has_trait = zealous }
+		}
+	}
+	option = {	# I cannot give it. For one who keeps the code, that is the code broken.
+		name = tm_fut.0011.b
+		if = {
+			limit = { tm_fut_keeps_code_trigger = yes }
+			tm_fut_lose_code_effect = yes
+			add_prestige = -50
+		}
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = zealous }
+			modifier = { add = 20 has_trait = craven }
+			modifier = { add = 10 has_trait = deceitful }
+			modifier = { factor = 0.2 tm_fut_keeps_code_trigger = yes }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Someone demands her. Root = the Muslim lord. scope:tm_fut_daughter (under his word); scope:tm_fut_demander (his
+# liege, else a neighbouring ruler: of no Sisters' faith, never Jewish). She is never given to the demander: the worst
+# he can do is send her from his court to her own people. Nuh's lashes (Tor p. 234) are not shown.
+tm_fut.0020 = {
+	type = character_event
+	title = tm_fut.0020.t
+	desc = {
+		desc = tm_fut.0020.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { has_character_modifier = tm_fut_javanmard_modifier }
+				desc = tm_fut.0020.desc_fata
+			}
+			desc = tm_fut.0020.desc_plain
+		}
+	}
+	theme = diplomacy
+	left_portrait = { character = scope:tm_fut_daughter animation = worry }
+	right_portrait = { character = scope:tm_fut_demander animation = anger }
+
+	trigger = {
+		exists = scope:tm_fut_daughter
+		exists = scope:tm_fut_demander
+		tm_fut_keeps_code_trigger = yes
+		scope:tm_fut_daughter = { tm_fut_sheltered_by_trigger = { LORD = root } }
+		scope:tm_fut_demander = { tm_fut_demander_trigger = yes }
+	}
+
+	option = {	# She is under my word
+		name = tm_fut.0020.a
+		add_prestige = 50
+		scope:tm_fut_demander = { add_opinion = { target = root modifier = tm_fut_refused_demand_opinion } }
+		scope:tm_fut_daughter = { add_opinion = { target = root modifier = tm_fut_kept_word_opinion } }
+		ai_chance = {
+			base = 60
+			modifier = { add = 20 has_trait = brave }
+			modifier = { add = 20 has_trait = just }
+			modifier = { add = 10 has_trait = stubborn }
+		}
+	}
+	option = {	# The roadside answer: neither betray her nor lie (Tor p. 249, the Qabus-nama)
+		name = tm_fut.0020.b
+		trigger = { has_character_modifier = tm_fut_javanmard_modifier }
+		add_prestige = 25
+		scope:tm_fut_daughter = { add_opinion = { target = root modifier = tm_fut_kept_word_opinion } }
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 intrigue >= 12 }
+			modifier = { add = 10 has_trait = honest }
+		}
+	}
+	option = {	# Send her from my court, to her own people
+		name = tm_fut.0020.c
+		tm_fut_lose_code_effect = yes
+		add_prestige = -75
+		scope:tm_fut_daughter = {
+			add_opinion = { target = root modifier = tm_fut_sent_away_opinion }
+			tm_fut_end_shelter_effect = yes
+			tm_surv_go_home_effect = yes
+			if = {
+				limit = { is_courtier_of = root }
+				move_to_pool = yes
+			}
+		}
+		ai_chance = {
+			base = 10
+			modifier = { add = 30 has_trait = craven }
+			modifier = { add = 10 is_independent_ruler = no }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The community asks for terms. Root = a lord of another faith with members of Ha-Nehpakhot at court.
+# scope:tm_fut_spokeswoman = the member who asks. From the yearly pulse (budget) or tm_fut_grant_terms_interaction.
+# The scribe's precedent: an Orthodox lord from 1229 (Dollinger pp. 30, 381-382). Before, or elsewhere, a plain line.
+tm_fut.0030 = {
+	type = character_event
+	title = tm_fut.0030.t
+	desc = {
+		desc = tm_fut.0030.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					faith = faith:orthodox
+					current_date >= 1229.1.1
+				}
+				desc = tm_fut.0030.desc_smolensk
+			}
+			desc = tm_fut.0030.desc_plain
+		}
+	}
+	theme = diplomacy
+	left_portrait = { character = scope:tm_fut_spokeswoman animation = personality_rational }
+
+	trigger = {
+		exists = scope:tm_fut_spokeswoman
+		tm_fut_terms_lord_trigger = yes
+		NOT = { has_variable = tm_fut_terms }
+		scope:tm_fut_spokeswoman = {
+			tm_fut_community_member_trigger = yes
+			is_courtier_of = root
+		}
+	}
+
+	option = {	# Grant them; she will be my physician
+		name = tm_fut.0030.a
+		tm_fut_grant_terms_effect = { SERVICE = physician }
+		ai_chance = {
+			base = 20
+			modifier = { add = 20 scope:tm_fut_spokeswoman = { learning >= 12 } }
+			modifier = { add = 20 health <= 3 }
+		}
+	}
+	option = {	# Grant them; she will read and write my letters in other tongues
+		name = tm_fut.0030.b
+		tm_fut_grant_terms_effect = { SERVICE = interpreter }
+		ai_chance = {
+			base = 20
+			modifier = { add = 20 scope:tm_fut_spokeswoman = { diplomacy >= 12 } }
+		}
+	}
+	option = {	# Grant them; she will keep my household
+		name = tm_fut.0030.c
+		tm_fut_grant_terms_effect = { SERVICE = steward }
+		ai_chance = {
+			base = 20
+			modifier = { add = 20 scope:tm_fut_spokeswoman = { stewardship >= 12 } }
+		}
+	}
+	option = {	# No terms
+		name = tm_fut.0030.d
+		ai_chance = {
+			base = 40
+			modifier = { add = 30 has_trait = zealous }
+			modifier = { add = 20 has_trait = arbitrary }
+			modifier = { add = -20 has_trait = just }
+		}
+	}
+}
+
+# She asks to ride with him. Root = the lord with terms, at war. scope:tm_fut_rider = a member. "Unless they ask"
+# (cl. 32): she is not refused for asking, and not called up if she does not.
+tm_fut.0032 = {
+	type = character_event
+	title = tm_fut.0032.t
+	desc = tm_fut.0032.desc
+	theme = war
+	left_portrait = { character = scope:tm_fut_rider animation = personality_bold }
+
+	trigger = {
+		exists = scope:tm_fut_rider
+		has_variable = tm_fut_terms
+		is_at_war = yes
+		scope:tm_fut_rider = {
+			tm_fut_under_terms_trigger = yes
+			is_courtier_of = root
+		}
+	}
+
+	option = {	# Let her ride with me
+		name = tm_fut.0032.a
+		scope:tm_fut_rider = {
+			add_character_flag = tm_fut_rides
+			set_knight_status = default
+			add_opinion = { target = root modifier = tm_fut_let_ride_opinion }
+		}
+		ai_chance = { base = 80 }
+	}
+	option = {	# Stay; you need not
+		name = tm_fut.0032.b
+		ai_chance = {
+			base = 20
+			modifier = { add = 20 has_trait = paranoid }
+		}
+	}
+}
+
+# Their own fashion. Root = the lord with terms. scope:tm_fut_party_a and scope:tm_fut_party_b = two members at court.
+# Two households fall out over a betrothal. No one is the wrongdoer, and the text says nothing of money.
+tm_fut.0033 = {
+	type = character_event
+	title = tm_fut.0033.t
+	desc = tm_fut.0033.desc
+	theme = court
+	left_portrait = { character = scope:tm_fut_party_a animation = disapproval }
+	right_portrait = { character = scope:tm_fut_party_b animation = disapproval }
+
+	trigger = {
+		exists = scope:tm_fut_party_a
+		exists = scope:tm_fut_party_b
+		has_variable = tm_fut_terms
+	}
+
+	option = {	# No concern of mine
+		name = tm_fut.0033.a
+		add_prestige = 10
+		every_courtier = {
+			limit = { tm_fut_under_terms_trigger = yes }
+			add_opinion = { target = root modifier = tm_fut_kept_terms_opinion }
+		}
+		ai_chance = { base = 80 }
+	}
+	option = {	# My bailiff will hear it, and the terms are done
+		name = tm_fut.0033.b
+		every_courtier = {
+			limit = { tm_fut_under_terms_trigger = yes }
+			add_opinion = { target = root modifier = tm_fut_broke_terms_opinion }
+		}
+		tm_fut_end_terms_effect = yes
+		ai_chance = {
+			base = 10
+			modifier = { add = 20 has_trait = arbitrary }
+		}
+	}
+}

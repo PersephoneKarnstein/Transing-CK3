@@ -1,0 +1,667 @@
+﻿namespace = tm_hn2
+
+# Ha-Nehpakhot, stage 2 (docs/stage2/ha-nehpakhot.md). Hooks: common/on_action/tm_hn2_on_actions.txt.
+#   0001  by moonlight: the spinning circle (Even Bohan p. 16, research/jud_kalonymus_even_bohan.md §§2, 8). In it she
+#         may tell of Sarah, whom the sages call an aylonit and for whom, Rashi says, "a female organ was made"
+#         (bYevamot 64b with Rashi; research/jud_rabbinic_primary_texts.md §§10-11). Faith's voice only.
+#   0002  the spindle talks: what is said at the spindle can reach a court (Mishnah Sotah 6:1, after Rosen 2003,
+#         p. 249 n. 26; research/jud_rosen_circumcised_cinderella.md). The worthies answer with Rashi; so does she
+#         (Rashi on Deut. 22:5; research/jud_rabbinic_primary_texts.md §15 and summary table).
+#   0010  the adornment: at her wedding the spouse may give her an ornament of gold, as Kalonymus imagined a husband
+#         would ("he would adorn me with ornaments of gold", Even Bohan p. 17). The choice is the spouse's own, and
+#         a refusal costs her nothing.
+#   0011  she wears it
+#   0020  the bailiff: a rival takes her case to the Christian lord's court. In the Crown of Aragon such charges were
+#         tried by the king's officers and usually ended in a fine or a pardon (Assis 2001, pp. 34-36, 44;
+#         research/jud_assis_catalonia_sexuality.md §§2.1-2.2, 4); in Provence the fines of the lord's court were his
+#         income (Shatzmiller 2023, pp. 321-324). Protection is earned by service, never bought.
+#   0029  hidden: a member waits for Carnival (February)
+#   0030  Carnival before Purim: the abbot of youth demands the pelote; the seneschal's lieutenant ordered the pledges
+#         returned, "a novelty never seen" (Arles, 24 Feb. 1433; Hildenfinger, REJ 41: 73 n. 1, 93-94;
+#         Stouff, "Chretiens et juifs" §59). Christian harassment and a lord's protection; never Jewish wrongdoing.
+#   0050  a seat below: a widow and her daughter sell their seats, two in the men's school above and one below in
+#         the women's (Arles 1451/52, Hildenfinger, REJ 48: 75-76; Stouff n. 24 for 1409). From 1409.
+#   0040  the lord's licence: a ruler of the sect is asked to confirm the ban on a daughter. A Provencal community could
+#         ban only by its lord's consent (Abba Mari, c. 1305, Shatzmiller 2023, p. 86); the Arles licence of 1405
+#         ran for one year and reserved absolution to the lord's vicar (Hildenfinger, REJ 41: 67 n. 5, 85-86).
+# Dates: every text is gated by what its source allows (docs/stage2/ha-nehpakhot.md, "Dates"; tm_hn2_triggers.txt):
+#   Rashi from 1105, Maimonides' Mishneh Torah from 1180, Sefer ha-Hinukh from 1300, Even Bohan from 1323; the
+#   bailiff from 1260 (Assis's first case, Lleida 1263); Carnival from 1400.
+
+# ---------------------------------------------------------------------------------------------------
+# By moonlight. Root = a daughter of the Turning. scope:tm_hn2_court = whose court; scope:tm_hn2_spinner = a younger
+# woman or seeker of the faith at that court, if any.
+tm_hn2.0001 = {
+	type = character_event
+	title = tm_hn2.0001.t
+	desc = {
+		first_valid = {
+			triggered_desc = {						# the moonlit circle is Kalonymus's image (Even Bohan p. 16, 1322-23)
+				trigger = { tm_hn2_touchstone_trigger = yes }
+				desc = tm_hn2.0001.desc
+			}
+			desc = tm_hn2.0001.desc_early
+		}
+	}
+	theme = faith
+	left_portrait = { character = root animation = happiness }
+	lower_right_portrait = scope:tm_hn2_spinner
+
+	trigger = {
+		is_alive = yes
+		is_imprisoned = no
+		has_trait = tm_daughter_of_the_turning
+		OR = {
+			is_ruler = yes
+			exists = employer
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = { is_ruler = yes }
+			save_scope_as = tm_hn2_court
+		}
+		else = {
+			employer = { save_scope_as = tm_hn2_court }
+		}
+		scope:tm_hn2_court = {
+			random_courtier = {
+				limit = { tm_hn2_spinner_trigger = yes }
+				save_scope_as = tm_hn2_spinner
+			}
+		}
+	}
+
+	option = {	# Tell them of Sarah, from the Talmud alone (bYevamot 64b): before Rashi
+		name = tm_hn2.0001.a_early
+		trigger = { tm_hn2_rashi_trigger = no }
+		tm_hn2_tell_sarah_effect = yes
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = zealous }
+			modifier = { add = 10 has_trait = gregarious }
+		}
+	}
+	option = {	# Tell them of Sarah: the sages say she was an aylonit, and Rashi says a woman's body was made for her
+		name = tm_hn2.0001.a
+		trigger = { tm_hn2_rashi_trigger = yes }
+		tm_hn2_tell_sarah_effect = yes
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = zealous }
+			modifier = { add = 10 has_trait = gregarious }
+		}
+	}
+	option = {	# Teach her to comb the flax and spin
+		name = tm_hn2.0001.b
+		trigger = { exists = scope:tm_hn2_spinner }
+		add_stress = -10
+		add_stewardship_lifestyle_xp = 50
+		scope:tm_hn2_spinner = {
+			add_opinion = { target = root modifier = respect_opinion opinion = 15 }
+			if = {			# the prayer goes with the spinning, as the elders teach it (tm_hipukh.0020)
+				limit = { tm_turning_seeker_trigger = yes }
+				set_variable = tm_hevrah_taught
+			}
+		}
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = patient }
+			modifier = { add = 10 has_trait = compassionate }
+		}
+	}
+	option = {	# Only listen to their stories
+		name = tm_hn2.0001.c
+		add_stress = -20
+		add_character_modifier = { modifier = tm_spinning_circle_modifier years = 1 }
+		random = {
+			chance = 5
+			set_variable = { name = tm_hn2_spindle_talk value = yes years = 1 }
+			trigger_event = { id = tm_hn2.0002 days = { 60 180 } }
+		}
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = shy }
+			modifier = { add = 20 stress >= 50 }
+		}
+	}
+}
+
+# The spindle talks. Root = the daughter. Who answers whom depends on the date (docs/stage2/ha-nehpakhot.md, "Dates"):
+# Rashi from 1105 (tm_hn2_rashi_trigger), Sefer ha-Hinukh from 1300 (tm_hn2_hinukh_trigger); before, the Talmud and
+# the Torah alone. The worthies are "the worthies of the street" at every date: a gloss, not an Arles office.
+tm_hn2.0002 = {
+	type = character_event
+	title = tm_hn2.0002.t
+	desc = {
+		desc = tm_hn2.0002.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { tm_hn2_rashi_trigger = yes }
+				desc = tm_hn2.0002.desc_rashi			# "a womb was made for Sarah, not a sex"
+			}
+			desc = tm_hn2.0002.desc_talmud				# "Sarah was a woman before and after"
+		}
+		first_valid = {
+			triggered_desc = {
+				trigger = { tm_hn2_hinukh_trigger = yes }
+				desc = tm_hn2.0002.desc_hinukh			# Sefer ha-Hinukh 542-543: the beard
+			}
+			desc = tm_hn2.0002.desc_torah				# Deut. 22:5 itself
+		}
+	}
+	theme = faith
+	left_portrait = { character = root animation = worry }
+
+	trigger = {
+		is_alive = yes
+		is_imprisoned = no
+		has_variable = tm_hn2_spindle_talk
+	}
+
+	immediate = {
+		remove_variable = tm_hn2_spindle_talk
+	}
+
+	option = {	# Before Rashi: answer from the Talmud, Leah prayed and Dinah was turned (bBerakhot 60a)
+		name = tm_hn2.0002.a_early
+		trigger = { tm_hn2_rashi_trigger = no }
+		tm_hn2_answer_worthies_effect = yes
+		ai_chance = {
+			base = 40
+			modifier = { add = 30 learning >= 12 }
+		}
+	}
+	option = {	# Rashi against Rashi: the Torah forbade only the dress that leads to abomination (Rashi on Deut. 22:5)
+		name = tm_hn2.0002.a
+		trigger = { tm_hn2_rashi_trigger = yes }
+		tm_hn2_answer_worthies_effect = yes
+		ai_chance = {
+			base = 40
+			modifier = { add = 30 learning >= 12 }
+		}
+	}
+	option = {	# Before Rashi: "Sarah had no place for a child, and she bore Isaac."
+		name = tm_hn2.0002.b_early
+		trigger = { tm_hn2_rashi_trigger = no }
+		add_piety = 30
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = zealous }
+		}
+	}
+	option = {	# "As Rashi says of Sarah: a woman's body was made for her."
+		name = tm_hn2.0002.b
+		trigger = { tm_hn2_rashi_trigger = yes }
+		add_piety = 30
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = zealous }
+		}
+	}
+	option = {	# It was only talk at the spindle
+		name = tm_hn2.0002.c
+		add_stress = 5
+		ai_chance = {
+			base = 20
+			modifier = { add = 20 has_trait = shy }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The adornment. Root = the spouse of a daughter of the Turning, at their wedding. scope:tm_hn2_bride = the daughter.
+tm_hn2.0010 = {
+	type = character_event
+	title = tm_hn2.0010.t
+	desc = {
+		desc = tm_hn2.0010.desc
+		first_valid = {
+			triggered_desc = {						# Even Bohan p. 17 (1322-23)
+				trigger = { tm_hn2_touchstone_trigger = yes }
+				desc = tm_hn2.0010.desc_touchstone
+			}
+			triggered_desc = {						# Maimonides, MT Avodah Zarah 12:10 (MT completed c. 1180)
+				trigger = { tm_hn2_maimonides_trigger = yes }
+				desc = tm_hn2.0010.desc_law
+			}
+			desc = tm_hn2.0010.desc_rebecca			# Gen. 24:22, 47: Rebecca's bracelets of gold
+		}
+		first_valid = {
+			triggered_desc = {						# wave 3, Maghreb version: a Qayrawanese attire (Goitein p. 167)
+				trigger = {
+					scope:tm_hn2_bride = { tm_hn3_attire_trigger = yes }
+					tm_hn3_maghreb_era_trigger = { ERA = 1 }
+				}
+				desc = tm_hn3.attire_end_qayrawan
+			}
+			triggered_desc = {
+				trigger = { scope:tm_hn2_bride = { tm_hn3_attire_trigger = yes } }
+				desc = tm_hn3.attire_end_fashion
+			}
+			desc = tm_hn2.0010.desc_end
+		}
+	}
+	theme = marriage
+	left_portrait = { character = scope:tm_hn2_bride animation = happiness }
+	right_portrait = { character = root animation = thinking }
+
+	trigger = {
+		exists = scope:tm_hn2_bride
+		scope:tm_hn2_bride = {
+			is_alive = yes
+			tm_hn2_has_adornment_trigger = no
+		}
+	}
+
+	option = {	# Have the goldsmith make her a necklace of gold
+		name = tm_hn2.0010.a
+		trigger = {
+			gold >= 40
+			scope:tm_hn2_bride = { tm_hn3_attire_trigger = no }		# wave 3: in the Maghreb, the attire instead
+		}
+		remove_short_term_gold = 40
+		scope:tm_hn2_bride = {
+			tm_hn2_give_adornment_effect = { GIVER = root }
+			add_opinion = { target = root modifier = tm_hn2_adornment_opinion }
+			trigger_event = { id = tm_hn2.0011 days = { 3 14 } }
+		}
+		ai_chance = {
+			base = 40
+			modifier = { add = 30 opinion = { target = scope:tm_hn2_bride value >= 25 } }
+			modifier = { add = 20 has_trait = generous }
+			modifier = { factor = 0.3 has_trait = greedy }
+		}
+	}
+	option = {	# Wave 3, Maghreb version: send for a Qayrawanese robe, cap, veil and mantle, "a complete attire" (Goitein
+				# p. 167: a husband's "most urgent request"). Same cost and weights as the necklace.
+		name = tm_hn3.attire_option
+		trigger = {
+			gold >= 40
+			scope:tm_hn2_bride = { tm_hn3_attire_trigger = yes }
+		}
+		remove_short_term_gold = 40
+		scope:tm_hn2_bride = {
+			tm_hn3_give_attire_effect = { GIVER = root }
+			add_opinion = { target = root modifier = tm_hn2_adornment_opinion }
+			trigger_event = { id = tm_hn2.0011 days = { 14 40 } }
+		}
+		ai_chance = {
+			base = 40
+			modifier = { add = 30 opinion = { target = scope:tm_hn2_bride value >= 25 } }
+			modifier = { add = 20 has_trait = generous }
+			modifier = { factor = 0.3 has_trait = greedy }
+		}
+	}
+	option = {	# Not now
+		name = tm_hn2.0010.b
+		ai_chance = {
+			base = 40
+			modifier = { add = 30 opinion = { target = scope:tm_hn2_bride value < 0 } }
+			modifier = { add = 20 has_trait = greedy }
+		}
+	}
+}
+
+# She wears it. Root = the daughter. scope:tm_hn2_giver = the spouse.
+tm_hn2.0011 = {
+	type = character_event
+	title = tm_hn2.0011.t
+	desc = {
+		first_valid = {
+			triggered_desc = {						# wave 3: she was given the Qayrawanese attire
+				trigger = { tm_hn3_has_attire_trigger = yes }
+				desc = tm_hn3.attire_worn
+			}
+			desc = tm_hn2.0011.desc
+		}
+		triggered_desc = {
+			trigger = {
+				tm_hn2_touchstone_trigger = yes
+				tm_hn3_has_attire_trigger = no		# Kalonymus wished for gold, not a robe
+			}
+			desc = tm_hn2.0011.desc_touchstone
+		}
+	}
+	theme = faith
+	left_portrait = { character = root animation = happiness }
+	right_portrait = { character = scope:tm_hn2_giver animation = happiness }
+
+	trigger = { exists = scope:tm_hn2_giver }
+
+	option = {	# Wear it when I light the Sabbath lamp
+		name = tm_hn2.0011.a
+		add_piety = 20
+		add_stress = -15
+	}
+	option = {	# Wear it in the street, where only women wear such things
+		name = tm_hn2.0011.b
+		add_prestige = 20
+		add_stress = -15
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The bailiff. Root = a daughter of the Turning living under a Christian lord. scope:tm_hn2_rival = her rival;
+# scope:tm_hn2_lord = the holder of the county she lives in.
+tm_hn2.0020 = {
+	type = character_event
+	title = tm_hn2.0020.t
+	desc = {
+		desc = tm_hn2.0020.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { tm_hn2_served_lord_trigger = yes }
+				desc = tm_hn2.0020.desc_served
+			}
+			desc = tm_hn2.0020.desc_fine
+		}
+	}
+	theme = faith
+	left_portrait = { character = root animation = worry }
+	right_portrait = { character = scope:tm_hn2_rival animation = scheme }
+
+	trigger = {
+		is_alive = yes
+		tm_hn2_bailiff_trigger = yes
+	}
+
+	immediate = {
+		random_relation = {
+			type = rival
+			limit = { is_alive = yes }
+			save_scope_as = tm_hn2_rival
+		}
+		location ?= {
+			county ?= {
+				holder ?= { save_scope_as = tm_hn2_lord }
+			}
+		}
+	}
+
+	option = {	# Pay the fine
+		name = tm_hn2.0020.a
+		trigger = {
+			exists = scope:tm_hn2_lord
+			gold >= 25
+		}
+		pay_short_term_gold = { target = scope:tm_hn2_lord gold = 25 }
+		add_stress = 5
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = craven }
+		}
+	}
+	option = {	# Ask the lord I have served to stand for me
+		name = tm_hn2.0020.b
+		trigger = { tm_hn2_served_lord_trigger = yes }
+		add_prestige = 25
+		scope:tm_hn2_lord = {
+			add_opinion = { target = root modifier = respect_opinion opinion = 5 }
+		}
+		ai_chance = { base = 80 }
+	}
+	option = {	# Answer the charge before the bailiff myself
+		name = tm_hn2.0020.c
+		random_list = {
+			40 = {
+				modifier = { add = { value = learning multiply = 2 } }
+				modifier = { add = diplomacy }
+				desc = tm_hn2.0020.c.win
+				add_prestige = 40
+			}
+			50 = {
+				desc = tm_hn2.0020.c.lose
+				add_stress = 10
+				if = {
+					limit = {
+						exists = scope:tm_hn2_lord
+						gold >= 25
+					}
+					pay_short_term_gold = { target = scope:tm_hn2_lord gold = 25 }
+				}
+				else = {
+					add_prestige = -50
+				}
+			}
+		}
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 learning >= 12 }
+			modifier = { add = 20 has_trait = brave }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Hidden. Root = a member of the faith at a Christian court. Waits for Carnival (February), a year at most.
+tm_hn2.0029 = {
+	type = character_event
+	hidden = yes
+
+	immediate = {
+		if = {
+			limit = { current_month = 2 }
+			remove_variable = tm_hn2_carnival_wait
+			trigger_event = { id = tm_hn2.0030 days = { 1 20 } }
+		}
+		else_if = {
+			limit = { NOT = { has_variable = tm_hn2_carnival_wait } }		# change_variable fails on an unset variable
+			set_variable = { name = tm_hn2_carnival_wait value = 1 }
+			trigger_event = { id = tm_hn2.0029 days = 30 }
+		}
+		else_if = {
+			limit = { var:tm_hn2_carnival_wait < 12 }
+			change_variable = { name = tm_hn2_carnival_wait add = 1 }
+			trigger_event = { id = tm_hn2.0029 days = 30 }
+		}
+		else = {
+			remove_variable = tm_hn2_carnival_wait
+		}
+	}
+}
+
+# Carnival before Purim. Root = the member. scope:tm_hn2_lord = her lord.
+tm_hn2.0030 = {
+	type = character_event
+	title = tm_hn2.0030.t
+	desc = {
+		desc = tm_hn2.0030.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { tm_hn2_served_lord_trigger = yes }
+				desc = tm_hn2.0030.desc_served
+			}
+			desc = tm_hn2.0030.desc_plain
+		}
+	}
+	theme = faith
+	left_portrait = { character = root animation = worry }
+	right_portrait = { character = scope:tm_hn2_lord animation = thinking }
+
+	trigger = {
+		is_alive = yes
+		is_imprisoned = no
+		faith = faith:tm_nehpakhot
+	}
+
+	immediate = {
+		if = {
+			limit = { exists = employer }
+			employer = { save_scope_as = tm_hn2_lord }
+		}
+		else = {
+			location ?= {
+				county ?= {
+					holder ?= { save_scope_as = tm_hn2_lord }
+				}
+			}
+		}
+	}
+
+	option = {	# Pay the pelote, and have the pledges back
+		name = tm_hn2.0030.a
+		trigger = { gold >= 15 }
+		remove_short_term_gold = 15
+		add_stress = 5
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = craven }
+			modifier = { add = 10 has_trait = content }
+		}
+	}
+	option = {	# Appeal to the seneschal: no such due was ever paid
+		name = tm_hn2.0030.b
+		trigger = { exists = scope:tm_hn2_lord }
+		random_list = {
+			50 = {
+				modifier = { add = 30 tm_hn2_served_lord_trigger = yes }
+				modifier = {
+					add = 15
+					scope:tm_hn2_lord = { opinion = { target = root value >= 25 } }
+				}
+				modifier = { add = { value = diplomacy multiply = 2 } }
+				desc = tm_hn2.0030.b.win
+				add_prestige = 30
+			}
+			50 = {
+				modifier = {
+					add = 20
+					scope:tm_hn2_lord = { opinion = { target = root value < 0 } }
+				}
+				desc = tm_hn2.0030.b.lose
+				add_prestige = -15
+				add_stress = 10
+			}
+		}
+		ai_chance = {
+			base = 40
+			modifier = { add = 40 tm_hn2_served_lord_trigger = yes }
+		}
+	}
+	option = {	# Refuse. Let them keep the pledges
+		name = tm_hn2.0030.c
+		add_piety = 15
+		add_stress = 10
+		ai_chance = {
+			base = 20
+			modifier = { add = 20 has_trait = stubborn }
+			modifier = { add = 20 has_trait = brave }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The lord's licence. Root = a landed ruler of the faith. scope:tm_hn2_shunned = a daughter at her court or among her
+# vassals who is under niddui (tm_turning_niddui_effect).
+tm_hn2.0040 = {
+	type = character_event
+	title = tm_hn2.0040.t
+	desc = {
+		desc = tm_hn2.0040.desc
+		first_valid = {
+			triggered_desc = {						# Arles 1405: one year, absolution reserved (REJ 41: 67 n. 5, 85-86)
+				trigger = { current_date >= 1405.1.1 }
+				desc = tm_hn2.0040.desc_1405
+			}
+			triggered_desc = {						# Abba Mari, Montpellier c. 1305 (Shatzmiller 2023, p. 86)
+				trigger = { current_date >= 1305.1.1 }
+				desc = tm_hn2.0040.desc_1305
+			}
+			desc = tm_hn2.0040.desc_early			# the lord's licence as the mod models it, voiced at any date
+		}
+	}
+	theme = faith
+	left_portrait = { character = scope:tm_hn2_shunned animation = worry }
+
+	trigger = {
+		exists = scope:tm_hn2_shunned
+		scope:tm_hn2_shunned = {
+			is_alive = yes
+			has_character_modifier = tm_niddui_modifier
+		}
+	}
+
+	option = {	# Absolution is mine to give: lift the ban
+		name = tm_hn2.0040.a
+		add_piety = -15
+		scope:tm_hn2_shunned = {
+			remove_character_modifier = tm_niddui_modifier
+			add_opinion = { target = root modifier = tm_hn2_absolved_opinion }
+		}
+		every_courtier = {
+			limit = {
+				faith.religion = religion:judaism_religion
+				NOT = { faith = root.faith }
+			}
+			add_opinion = { target = root modifier = tm_hn2_overruled_opinion }
+		}
+		ai_chance = {
+			base = 40
+			modifier = { add = 30 opinion = { target = scope:tm_hn2_shunned value >= 25 } }
+			modifier = { add = 20 has_trait = compassionate }
+		}
+	}
+	option = {	# License it for one year, and no more
+		name = tm_hn2.0040.b
+		add_piety = 10
+		scope:tm_hn2_shunned = {
+			remove_character_modifier = tm_niddui_modifier
+			add_character_modifier = { modifier = tm_niddui_modifier years = 1 }
+		}
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = just }
+		}
+	}
+	option = {	# The judges of the street have ruled
+		name = tm_hn2.0040.c
+		add_piety = 20
+		ai_chance = {
+			base = 20
+			modifier = { add = 30 has_trait = zealous }
+			modifier = { factor = 0.3 opinion = { target = scope:tm_hn2_shunned value >= 25 } }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# A seat below. Root = a daughter of the Turning or a seeker of the sect.
+tm_hn2.0050 = {
+	type = character_event
+	title = tm_hn2.0050.t
+	desc = {
+		first_valid = {
+			triggered_desc = {						# Arles: the women's room below the men's, in one building
+				trigger = { location ?= { county ?= { has_variable = tm_kahal } } }
+				desc = tm_hn2.0050.desc_arles
+			}
+			desc = tm_hn2.0050.desc
+		}
+	}
+	theme = faith
+	left_portrait = { character = root animation = thinking }
+
+	trigger = {
+		is_alive = yes
+		tm_hn2_seat_candidate_trigger = yes
+	}
+
+	option = {	# Buy the seat below, in my own name
+		name = tm_hn2.0050.a
+		trigger = { gold >= 20 }
+		remove_short_term_gold = 20
+		set_variable = tm_hn2_women_seat
+		add_character_modifier = tm_hn2_women_seat_modifier
+		ai_chance = {
+			base = 50
+			modifier = { add = 20 tm_turning_seeker_trigger = yes }
+			modifier = { factor = 0.3 has_trait = greedy }
+		}
+	}
+	option = {	# Let someone else have it
+		name = tm_hn2.0050.b
+		ai_chance = { base = 30 }
+	}
+}

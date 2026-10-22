@@ -98,7 +98,7 @@ The mod is in alpha. Most of it has never run in a real campaign, and we need pe
 ### Prerequisites
 
 - **Crusader Kings III 1.20.x.** The mod is written against 1.20.1.
-- **DLC.** We test with all DLC enabled. Reports from players with fewer DLC are especially useful.
+- **DLC.** *Roads to Power* is required: the faiths often end up landless, and some start that way. We test with all DLC enabled; reports from players with fewer DLC are especially useful.
 - **A new game.** The faiths are placed in the world at game start, so an existing save will not have them.
 
 ### Loading the mod from this folder
@@ -163,7 +163,8 @@ The Sisters are nostalgic for a sect almost nobody remembers: the Mother's galli
 - **The Emperor's road.** In 949 the Mother of Mothers can ransom the four child eunuchs Liudprand gave the Emperor, each knife House in its own way. When the Emperor goes to war his army may halt at Dorylaion, and his chamber may ask for a daughter, whom it would count a eunuch.
 - **The foremothers.** The Sisters keep five saints of their own, women who died before 867: *Stephania the First Mother*, who took the knife by her own will and founded the House at Dorylaion; *Bethania the Bookbearer*, who carried the House's books out of Dorylaion and died in a governor's prison at Ankyra rather than name a House; *Diana of Kyzikos*, who founded the first daughter House and took in widows and barren wives; *Christina the Physician*, who taught the Houses to keep the knife clean; and *Philippa Who Walked Beside*, who walked the novice years beside many daughters, Theia Beatrike among them. At the 867 start each lies at one of the faith's holy places, as vanilla's saints do. They are inventions, named after the women of *Welcome to Dorley Hall*. The Church's monk-saints who lived as men (Marinos, Euphrosyne, Pelagia) are not claimed: the Sisters call them the Church's double standard.
 - **Holy sites.** Dorylaion and Constantinople, Kyzikos, Ankyra, and ruined Pepouza.
-- **The schism to come.** The main rite is Aristotelian: the cut body changes into the female condition. A planned Galenic splinter is the rite that agrees with the Emperor: the cut are "a third thing, neither". The Aristotelians call that "the old cage with a new name."
+- **The Galenic wing.** The main rite is Aristotelian: the cut body changes into the female condition. From 886 a ruler of the faith may found the Galenic Rite, the rite that agrees with the Emperor: Leo VI's law counts men, women and eunuchs, and the Galenic Sisters call the cut some third thing. It buys peace with Christian lieges and costs piety and the daughters' names in the register. Its book, from 1107, is Theophylact of Ochrid's *In Defence of Eunuchs*. The Aristotelians call it "the old cage with a new name"; a ruler may come home to the main rite.
+- **From the record.** In November 867 Ignatios, cut at fourteen, returns as patriarch, and each House answers in its own way. Before 990 a merchant's train of captive boys passes on the road to Tarsus, and the Houses buy them free, free them and jail the merchant, or (Grandmother's House) take only the boys already cut; no child is cut on screen. From 1063 to 1078 a copy of a letter by Michael Psellos, who wrote of his own soul as feminine, reaches the Mother House, and each wing reads it its own way. In 1083 the Holy Mountain closes to eunuchs, and from 1120 a convent's eunuch steward, barred from the enclosure, may ask a House for work.
 
 **Read more:** [the full overview of Adelphai Dorleyaiou](docs/faiths/adelphai-dorleyaiou.md), with its history, sources and mechanics, cited to the page.
 
@@ -185,6 +186,11 @@ In the north the sanctioned crossing ran toward manhood. Anyone the law counted 
 - **The world.** A martial faith. The skalds fill Valhöll with dead men; the Bædlings say the Allfather's true host has none, and point to the shield-maidens at Brávellir. English courts call valkyries witches. The hall raids to bring its daughters home, and its clergy fight. The faith's devil is Níðhöggr, the malice-striker: its enemy is *níð* itself, the slander shouted at the thing.
 - **Tenets.** Seiðr Unmans, Óðinn's Host, and Daughters of the Hall.
 - **The flyting.** Three rounds of charge and answer: a true charge wins, a false one rebounds, and against *ragr* the strongest answer is to own the word. Stakes double at the June thing, and a lady of the hall can end it with the cup.
+- **Outlawry.** From 1100, under Christian Norse lords, a Bædling may be sued at law: for sorcery by the church, or under the law of dress. Six housewives may swear for her. Otherwise she pays the life-ring and goes abroad for three winters, or refuses and is outlawed in full. A full outlaw who can fight leads a band of her own. A settlement, service in the realm's war, or land of her own ends it.
+- **The band.** A landless Bædling band can answer the hall's call home (see *Bands come home* under [Shared mechanics](#shared-mechanics)).
+- **Open Ports.** A lord at war, of any faith, may open his ports to anyone who will harm his enemy at their own risk, as the Mecklenburg lords did after 1389. A Bædling band near his coast can take the letters (vanilla's join-war contract) and, while the war lasts, may seize an island seat. Peace ends the licence. A band that still holds an island after that may draw a great power's fleet.
+- **The Island Changes Hands.** When Gotland passes to a lord of another faith by conquest or grant, the faith's people there choose: keep quiet in this land, raise the island's levy as the farmers did in 1361, or go to the ships.
+- **The Peace of the Island.** Gotland's ruler, of any faith, may have the island's peoples swear peace, as Gotland and German traders did in 1161: one town, one council, and less ill will between them.
 - **Holy sites.** Uppsala, Trondheim, York and Kyiv. Kyiv sits on the Varangian road south toward Dorylaion.
 
 **Read more:** [the full overview of Bædling](docs/faiths/baedling.md), with its history, sources and mechanics, cited to the page.
@@ -203,9 +209,11 @@ Daoist inner alchemy teaches that an adept nurtures a holy embryo for ten months
   - **Birth from the crown** (month 10), and a name before witnesses.
   A physician may call it a "ghost fetus" and bring a purge. Nothing she has done is ever lost.
 - **The line.** Under Song law a daughter, born or adopted, keeps a sonless house; the magistrate takes only what a house with no daughter leaves. The faith's temple and burial societies pay dues at every birth and death, keep a righteous store that lends at interest, and petition the throne for a name-panel that protects their Houses from confiscation. Waves of confiscation grow after the Yuan conquest.
-- **The world.** A courtly faith of intrigue and stewardship. Prodigies are reported in the prefectures, and a king of the Way can ordain a woman by special edict, as the Song court once ordained a bearded woman. Buddhist neighbours read a daughter as a man reborn a woman for an old sin. A planned palace faction will contend with the scholar-officials.
+- **The world.** A courtly faith of intrigue and stewardship. Prodigies are reported in the prefectures, and a king of the Way can ordain a woman by special edict, as the Song court once ordained a bearded woman. Buddhist neighbours read a daughter as a man reborn a woman for an old sin. A palace faction contends with the scholar-officials.
 - **Tenets.** The Jade Embryo, Rectified Names, and Temple Societies.
-- **The palace offices.** Under a celestial or meritocratic throne the eunuchs' side of the court may offer a daughter a post: power, at the cost of her Houses' name-panels, a censor's memorial, and the purge of 903.
+- **The palace offices.** Under a celestial or meritocratic throne the eunuchs' side of the court may offer a daughter a post: power, at the cost of her Houses' name-panels, a censor's memorial, and the purge of 903. With the seal she can work the inner offices against the scholar-officials, the Northern Office against the Southern. She can adopt followers as the Tang eunuch houses did, register an heir under Song law, win a Shence commander before 903, sit with the ministers, or spend the palace's standing on name-panels and licences for the society. When the scholar-officials have the throne's ear, their memorials come faster. At a celestial court a censor of the Way may hold them on her desk, or send them up.
+- **Neighbours from the west.** At Dunhuang the Sogdian families of the old merchant towns sit in the same street societies as the House. A year-end circular may call the sisters to a banquet at the Cao family's inn, and the House may open its own society to the neighbours' daughters, who keep their own faith. A woman of a merchant family, stranded far from home with no reply to her letters, may come to the House for a camel and a place in a caravan west.
+- **Hide the Name.** Since An Lushan's revolt, families from the west have hidden their origins. A member of the Way of Sogdian heritage, or a daughter at a hostile court, may write a new surname or another birthplace in the register and keep quiet in this land. She hides where she came from, never what she is.
 - **Holy sites.** The Mogao caves, Mount Longhu, Mount Qingcheng and the Southern Marchmount (Mount Heng in Hunan), the holy women's mountain.
 
 **Read more:** [the full overview of Yutai Dao](docs/faiths/yutai-dao.md), with its history, sources and mechanics, cited to the page.
@@ -223,12 +231,16 @@ The rabbis divide the eunuch made "by the hands of heaven" from the one made "by
   - **The revel.** From 1323 the young men put on the woman's dress for the joke, and the rabbis grumble and let it pass (permission comes only in the 16th century). She keeps it on when the joke is over. Before 1323 the custom is unattested, so she is the only one in the dress.
   - **The prayer.** The men thank God each morning that He did not make them women. She asks aloud for the reverse.
   - **The name**, on Shushan Purim. The women teach her their blessing, "who made me a woman" (in Provence, in their own tongue: *qui fis me fenna*). It is written down only after 1453, in Provençal women's prayer books; that it is older is the faith's claim. She takes a name from the scroll (Dinah, Esther, Sara) or a name of the street, as the Jewish women of Provence were called in the notaries' books (Rosa, Mairona, Bella, Regina, Blanca, Gratiosa, Bonadonna and others).
-  - **Before the street's judges.** The dress has outlived Purim, and the street must judge: the worthies before 1215, then the three rectors of the archbishop's ordinance, the baylons from 1386 and the council with them from 1401; from 1401 the council at Arles includes women, and that helps her. She can answer with Dinah, text against text, and win her county a licence; lose and be shunned (*niddui*); cite the *Touchstone*; claim the house as its lady and accept the shunning; or put the dress away. A community could shun only by its Christian lord's licence, so a lord who has taken her people under his protection refuses it, and the sentence falls.
+  - **Before the street's judges.** The dress has outlived Purim, and the street must judge: the worthies before 1215, then the three rectors of the archbishop's ordinance, the baylons from 1386 and the council with them from 1401; from 1401 the council at Arles includes women, and that helps her. She can answer with Dinah, text against text, and win her county a licence; lose and be shunned (*niddui*); cite the *Touchstone*; claim the house as its lady and accept the shunning; or put the dress away. In Christian lands a community could shun only by its lord's licence, so a lord who has taken her people under his protection refuses it, and the sentence falls. (In the Maghreb and the Sahel, see below.)
   - **The odds.** The Turning rests on learning, the elder's and her own, and on patience. Every Adar's unanswered prayer makes the next more likely, as Leah's was answered in its time. A seeker of another Jewish faith who is turned joins the sect.
 - **The line.** Womanhood is what she keeps: the three women's commandments Kalonymus wished for (the days of separation, the portion of the dough, the Sabbath lamp). One whose days do not come keeps them as the *zekenah*, the old woman past them, keeps them. An elder can teach the prayer to one who will need it, and the women spin together by moonlight.
 - **The world.** A learned, landless faith. A lord of any faith with a daughter of the Turning at court may commission a translation from Arabic, as Robert of Naples employed Kalonymus, and take her people under protection; or licence her as a *fisica*, a physician, as Provençal women physicians were licensed. Jewish lords are asked to rule whether what came forth male is male. Jewish characters think less of daughters of every faith; the Nehpakhot think more.
 - **Tenets.** The Turning, The Three Lamps, and Legalism.
-- **Family and door.** Her own kin may send her a prayer book with Rebecca's blessing, "my sister", or decline at no cost to her; in the Days of Awe she may give the prayer to the women at the door. The kahal keeps its children: a guardian of another faith may teach them but not convert them.
+- **Family and door.** Her own kin may send her a prayer book with Rebecca's blessing, "my sister", or decline at no cost to her; in the Days of Awe she may give the prayer to the women at the door. The kahal keeps its children, as all six faiths now do: a guardian of another faith may teach them but not convert them.
+- **The street.** The women spin together by moonlight, and she may tell them of Sarah. The talk may reach the worthies, and a good answer makes the street's next hearing easier. When she marries, her spouse may have a goldsmith make her an adornment. From 1260 a rival may take her to a Christian lord's bailiff: she pays the fine, asks a lord she has served to stand for her, or answers herself. From 1400 the town's young men may come into the Jewish street at Carnival for the *pelote*. From 1409 she may buy a seat below, in the women's synagogue, in her own name. From 1390 a daughter in Catalonia may take a Catalan name of the street.
+- **No Service in the Prince's Wars.** A lord of another faith may give the Nehpakhot at his court terms: his wars are none of their concern unless they ask to ride with him, and they settle their own quarrels. In return one serves him as physician, interpreter or steward. No money passes either way. From 1229 an Orthodox lord's scribe knows such clauses from the prince of Smolensk's treaty with German merchants.
+- **The lord's licence.** Outside the Maghreb and the Sahel, a ruler of the sect may lift the street's ban on a daughter at her court, license it for one year only, or let the judges' ruling stand. Lifting it costs her with the other Jews at court.
+- **In the Maghreb and the Sahel.** Under a Muslim lord the street's ban is its own: no lord licenses it, and its judges are the elders and the dayyan. The lord may send a case back to be heard again (trustworthy women come to hear her at home), lend his court to enforce the ban, forbid it if someone at his court speaks for her, or stay out of it. A ruler of the faith there may decree that neither party of the Jews bans the other. A daughter who serves a Muslim lord as physician (from 1075, as vizier) can speak for her people. Also: Maghrebi names, the Purim fires of Qayrawan, the Qayrawanese attire, Nissim's story with no ending, a refuge decision for the Almohad years (1146–1229) and the decorous hush. Refugees taken in keep their own faith: shelter is not conversion.
 - **Holy sites.** Arles, Jerusalem (whose county holds Hebron and Leah's tomb), Narbonne, Montpellier, and Hamadan, the tomb of Esther and Mordecai.
 - **What it leaves out.** The old charge that medieval Jews ran the slave and eunuch trade is a historiographic motif, not a finding (Phelan 2023), so no Jewish character in the mod trades in slaves or eunuchs. The faith is not seated in Khazaria, and the narrator never says the Talmud recognised "six genders": those are legal categories for bodies, mostly intersex ones, and only a character may claim them. Nor does it use any of the medieval Christian tropes about Jewish bodies (the "male menses", the bloody flux) or the accusations about Purim.
 
@@ -250,7 +262,10 @@ Tamil poets, men among them, sang to the god as girls in love from the seventh c
   - **The garland.** She may wear the god's garland before it is offered, as Āṇṭāḷ did, and risk being seen.
   - **The dream** of the wedding: a sign, not the success. Āṇṭāḷ woke from the same dream.
   - **The staff and the name.** The old rite of Śiva's temples touched a staff to a girl's head and named her a daughter of God. What decides it is how many of the circle held to the end.
-- **The line.** A share on the temple street, recorded in stone; a daughter names the one who will hold it after her.
+- **The line: a share on the temple street.** A Hindu lord may grant a daughter of the Garland at his court a house and a share on the temple street, written in her name, not his; from 1070 she may buy one herself. It pays a little gold each year while she lives in its county. From 1070 it passes to her eldest daughter of the Garland, born or taken; before that, or with no daughter, the women of the street choose who holds it. If she is away three years running, it goes to those who do the work.
+- **A gift in her own name.** A daughter with gold of her own may light a lamp before the god, endow a feeding house that bears her name, or, from 1119, set up the Lady beside the god, which brings a share. From 1100 the Lady also brings the title *She of the Illustrious Staff*: pay the priests' fee and have it cut in stone, or let the eldest of the street lay the staff.
+- **Other courts.** A Hindu lord's pandit may read the law books over the lord's own daughter: food and clothing only, an appointed daughter who stays his heir, or a share in her own name. A Jain monk may say his Order will not house her; under a Śvetāmbara lord the Order's own rule may admit her for her skill, and she can take the place on her terms or refuse it. At Shaiva courts from 1135 a reciter tells of the merchant's wife of Kāraikkāl, given the form she asked for; at Kannada courts from 1160 a singer brings Basavaṇṇa's sayings.
+- **The market and the road.** A daughter with no land can give a lamp through the market assembly of her county, which keeps it burning in her name wherever she goes. A poor Hindu lord may settle a daughter in an emptied quarter of his capital, free of its dues, at half a share's pay for ten years. A band of the Garland in the south can take a contract to guard merchants' caravans to the coast. After three, the merchants' lord may offer the band a frontier county as a guild town. A guild town that joins a faction against its liege hears what happened at Valikandapuram.
 - **The world.** A name in stone: gold given to the temple buys an inscription and lasting piety. Orthodox pandits answer with Ilā, the king turned woman who was turned back in every telling.
 - **Tenets.** The Pāvai Vow, The Temple Street, and Bhakti.
 - **The temple's deal.** As temple women did in the inscriptions of 1070–1300, a daughter may buy a hereditary honour with a gift: a verse to sing in Mārkaḻi, the flywhisk, or the first house. It passes to her eldest daughter.
@@ -275,6 +290,7 @@ In the Sunjata tradition a woman named Tenenba claimed a hero she had not borne:
 - **The world.** Naming feasts: a daughter first serves at others', then hosts her own while a jeli speaks for her. This texture comes from contemporary West African studies and is marked as reconstruction; the faith borrows roles, never the identity of any living community.
 - **Tenets.** The Crossing, Mother's Children, and Ancestor Worship.
 - **The New Roof.** Every seventh dry season a court of the faith re-roofs its house and gathers the daughters who crossed since the last roof into a named age-set.
+- **At court.** When a ruler of the faith dies, the heir answers the sister's line: pay the sister's share, honour it in words, or refuse, and the sister's child gains a claim. A new ruler's realm is hot until a jelimuso's cool word settles it. The court's jelimuso sings the ruler's line, mother's name first, and must be paid before everyone; at a child's naming one may come uninvited. From 1352 a ruler may name her spouse, a sister, her mother or her claiming mother associate in rule, and her name is said with the ruler's at the feast.
 - **Holy sites.** Kirina, Niani, Awkar, Walata and Do.
 - **What it leaves out.** No Ṣàngó priests, *'yan daudu*, *góor-jigéen*, *woubi* or *sasso* are mapped onto it; no Griaule cosmology; none of the Kangaba sanctuary's rites.
 
@@ -292,11 +308,19 @@ In the Sunjata tradition a woman named Tenenba claimed a hero she had not borne:
 - **The Sisters Choose.** An elective succession law: the ruler, the faith's clergy and its vassals choose an heir from among the ruler's born and adopted children, the women of the faith on the council, and the faithful vassals.
 - **Jewish and Indic neighbours.** Jewish courts think less of a daughter of any faith ("what came forth male is male"), and a Jewish lord may be asked to rule on one at court; the Nehpakhot cancel it. Buddhist, Hindu and Jain courts read a daughter of the knife as a castrated man and think much less of her, and a daughter of the other gates as a man become a woman, which they mind less.
 - **Islamic neighbours.** Islamic courts value a daughter as a trusted servant and think less of her as a ruler: their jesters may mock a daughter who rules, while an Islamic lord may come to trust one in his household.
+- **Under a lord's word.** A daughter of any of the six faiths at a Muslim court may put herself under the lord's word. A lord who gives it keeps the code: he takes her into his court, will not give her up when a liege or neighbour demands her, and his household does not offer her a place "without desire". In Iran and Iraq before 1056 the town's *fityan* may swear him in, and the text speaks of *futuwwa*; elsewhere it is a free man's word. The protection is for honour and service, never for gold.
 - **The call.** Each year a Marked character of another faith may join the nearest of the six: Byzantium and Anatolia to Adelphai Dorleyaiou, the North and the Baltic to the Bædlings, China and the Tarim to Yutai Dao, the Jewish faiths to Ha-Nehpakhot, the Deccan and Tamil country to the Worn Garland, and West Africa to Badenya. A Sisters' House nearby, or a daughter at court, makes it likelier. Courtiers who are Marked, eunuchs or declared sisters may begin their faith's rite on their own, and a ruler with no heir of her faith looks for a daughter to take.
 - **Arrivals.** Each year a Marked traveller, a woman turned out for bearing no children, or (where there is a House) a friend of the House may come to the court of a ruler of these faiths. Turning someone away sends them on to the next House.
 - **Same-sex marriage.** All six faiths allow it, whatever the game rule says.
-- **Rescue the Daughters.** Every faith can wage it (Adelphai Dorleyaiou only under Aunt Bea's House or Gift Alone): a holy war on a neighbouring county where two or more daughters, novices or Marked women of the attacker's faith live under a lord of another faith, or whose lord holds one prisoner. On victory each woman freed chooses whether to join the attacker's court or go home, and the attacker gains piety for each.
-- **Raised in the faith.** A child born to a member of the six, at that parent's court, is brought up in the parent's faith, the mother's first.
+- **Rescue the Daughters.** Every faith can wage it (Adelphai Dorleyaiou only under Aunt Bea's House or Gift Alone), landed rulers and landless bands alike: a holy war on a neighbouring county where two or more daughters, novices, Marked women or declared sisters of the attacker's faith live under a lord of another faith, or whose lord holds one prisoner. On victory each woman freed chooses whether to join the attacker's court or go home, and the attacker gains piety for each. A band that wins takes the county as its own land.
+- **Spring the Cell.** The war's quiet counterpart. Anyone of the six faiths, landed or not, can plot against a ruler who holds a daughter, a Marked woman or a declared sister in prison. Marked guards, servants inside the house and friends of the House do the work. On success she walks free to the nearest House, and the jailer may never learn who opened the door.
+- **Bands come home.** A landless band of any of the six faiths can answer the hall's call: go to war for a nearby county whose people kept the faith, which keeps a Sisters' House, or which is the faith's seat. A band that takes land has ten years' grace to hold it, and a county that kept the faith welcomes its own.
+- **The patent and the robe.** A lord may offer a band of the six faiths a county of his own, to hold as his vassal: after it fought on his side and won, after it camped five years on his land, or years after it moved on when he asked. The offer is worded as the land knows it: a patent and a robe of honour in the Islamic east, a place on the register of a "rallied township" in China, a treaty or a district command in the Balkans and Anatolia, a charter elsewhere. A band asked to move on may go with patience, keeping a claim and the lord's goodwill, or stay and face eviction.
+- **The companions choose.** When a band's leader fails, her officers may hand the band to a stronger companion. She steps down with honour and rides on in the band. A player leader always decides.
+- **Raised in the faith.** A child born to a member of the six, at that parent's court, is brought up in the parent's faith, the mother's first. Guardians of another faith may teach the faiths' children, but not convert them.
+- **The gathering.** Members of the six with no court, or only visiting one, who are daughters, Marked, declared or of a family of standing go to the nearest court of their faith (20% a year), else to a lord who keeps a Sisters' House, else to the seat. When a ruler of the faith dies with an heir of another faith, her unmarried daughters and Marked women leave for the nearest court of the faith.
+- **The kahal of her town.** A landed ruler of Ha-Nehpakhot draws Jews of her lands to her court (2% a year, 4% if her capital is of the sect); the kahal's matches marry Rabbanite Jews of her court first.
+- **Deeds of the House.** When a player's House brings a famous man to the Rite of the Knife (a Pope, a Patriarch, a Muslim lord's councillor, a khan or his son, a court poet), the deed is remembered: a nickname, memories, prestige or piety, and the courts' outrage. Fifty daughters of the knife in one house, or both a Pope and a Patriarch in one lifetime, earn deeds of their own. The *Deeds of the House* decision lists them. They are dark comedy: the joke is always the courts' panic, never the cut or the body.
 - **Set Down the Name.** A declared sister can set her name down at any time, with no penalty from her faith, and declare again later. Stepping back from any gate costs nothing beyond what was spent, and is refunded.
 - **Sister-Making.** A daughter can swear sisterhood with any adult of her faith who is Marked, declared or of a House. The bond carries no inheritance; it brings the seeker into the House, counts as her sponsor at her gate, and helps the call reach her.
 - **Keep Quiet in This Land.** Under a lord of another faith, a ruling daughter may choose to keep quiet: hostile events come half as often, and she does not stand as her House's Elder Sister. She can speak aloud again at any time.
@@ -315,11 +339,20 @@ In the Sunjata tradition a woman named Tenenba claimed a hero she had not borne:
 - [x] Sisters' Houses, Declare Before Witnesses, The Sisters Choose
 - [x] Bædling and Yutai Dao: faiths, tenets and gates
 - [x] Re-embodiment, Take as Daughter, arrivals
+- [x] Ha-Nehpakhot, the Worn Garland and Badenya: faiths, tenets and gates
 - [x] One stage-2 feature per faith: the Bædling flyting; Liudprand's four children and the Emperor at Dorylaion; the Way's palace offices; the prayer book and the women at the door; the temple's deal; the New Roof
-- [ ] Bædling: feud and settlement, outlawry and landless war-bands, Spring the Cell
-- [ ] Yutai Dao: a full palace faction against the scholar-officials
-- [ ] Adelphai Dorleyaiou: the Galenic splinter rite; more events from the reading (Ignatios, the Tarsus boy-train)
-- [ ] Flavour achievement events, the Pope first
+- [x] Rescue the Daughters, Sister-Making, Set Down the Name, Keep Quiet in This Land, refugees, Teach Her the Answers
+- [x] The hostile world, life events, the Adelphai saints, and a game rule for how often flavour events fire
+- [x] Bædling: Spring the Cell, outlawry, landless war-bands that can come home
+- [ ] Bædling: the feud ledger and settlement (Offer Bót), reprieve by killing outlaws, the níð suit
+- [x] Yutai Dao: a palace faction against the scholar-officials (small version; Liao and Ming levers not built)
+- [x] Adelphai Dorleyaiou: the Galenic splinter rite (found, join, return); Ignatios (867), the train to Tarsus, Theophylact's book, Psellos's letter (1063–78), the Athos ban (1083), the Steward at the Gate
+- [x] Ha-Nehpakhot, the Worn Garland and Badenya: stage-2 work for each (the street, the bailiff and the Maghreb; the share and the gift; the sister's line, the jelimuso and the associate in rule)
+- [x] Flavour achievement events (the Deeds of the House): Ioanna Secunda (the Pope, in three Houses' versions), the Patriarch's Daughter, Al-Kunduri's Mercy, Gelded Like My Camels, Six Hundred Daughters, the Greater Circumcision and Mother of Mothers Unmade a Father of Fathers
+- [ ] Survival balance from observe runs: the small faiths' Houses keep their numbers, the kahal recruits, daughters stay (first pass built: the gathering, the kahal of her town, children kept by all six; to be checked in observe runs)
+- [x] Landless bands of all six faiths: settlement by a lord's offer (the patent and the robe) and a change of leader (the companions choose)
+- [x] Wave 4: Open Ports, the Island Changes Hands and the Peace of the Island (Bædling); a lord's word and terms of service (Muslim and other lords); the market and the road (the Worn Garland); Hide the Name and the Sogdian neighbours (Yutai Dao)
+- [ ] Merchant companies, if a future DLC adds them: a charter for a trading post held by contract. Bands already settle by a lord's offer or by war; the company would add a third road
 - [ ] Commissioned art for faith icons, traits and events
 
 See the [open issues](https://github.com/PersephoneKarnstein/Transing-CK3/issues) for everything else.
@@ -399,25 +432,31 @@ Cited in the notes, not read: Feinberg, Leslie, *Transgender Warriors* (in the R
 </details>
 
 <details>
-<summary><strong>Byzantium, Cybele and the eunuch traditions</strong> (30 works)</summary>
+<summary><strong>Byzantium, Cybele and the eunuch traditions</strong> (29 works)</summary>
 
 - Betancourt, Roland. 2020. *Byzantine Intersectionality: Sexuality, Gender, and Race in the Middle Ages*. Princeton University Press.
+- Blessing, Patricia, and Rachel Goshgarian (eds.). 2017. *Architecture and Landscape in Medieval Anatolia, 1100–1500*. Edinburgh University Press.
 - Burns, Krishni. 2025. *Bringing Their Mother Home: Roman Multiculturalism and the Mother of the Gods*. University of Michigan Press. (Open access.)
 - Bury, J. B. 1911. *The Imperial Administrative System in the Ninth Century, with a Revised Text of the Kletorologion of Philotheos*. British Academy.
 - Davis, Stephen J. 2002. "Crossed Texts, Crossed Sex: Intertextuality and Gender in Early Christian Legends of Holy Women Disguised as Men." *Journal of Early Christian Studies* 10.1: 1–36.
+- De Nicola, Bruno. 2024. *The Chobanids of Kastamonu: Politics, Patronage and Religion in Thirteenth-Century Anatolia*. Routledge. (Open access.)
 - Garland, Lynda. 1999. *Byzantine Empresses: Women and Power in Byzantium, AD 527–1204*. Routledge.
 - Guilland, Rodolphe. 1943. "Les eunuques dans l'Empire byzantin." *Études byzantines* 1: 197–238.
+- Jeffreys, Michael, and Marc D. Lauxtermann (eds.). 2017. *The Letters of Psellos: Cultural Networks and Historical Realities*. Oxford Studies in Byzantium. Oxford University Press. (Read in part: the summaries of the letters used, the excursus on gender, and parts of chapters 3–6.)
 - King, Helen. 2013. *The One-Sex Body on Trial: The Classical and Early Modern Evidence*. Ashgate.
 - Latham, Jacob. 2012. "'Fabulous Clap-Trap': Roman Masculinity, the Cult of Magna Mater, and Literary Constructions of the *galli* at Rome." *Journal of Religion* 92.1: 84–122.
 - Macrides, R. J. 1990. "Kinship by Arrangement: The Case of Adoption." *Dumbarton Oaks Papers* 44: 109–118.
 - Neil, Bronwen, and Lynda Garland (eds.). 2013. *Questions of Gender in Byzantine Society*. Ashgate. (Routledge reprint 2016.)
 - Neville, Leonora. 2019. *Byzantine Gender*. Past Imperfect. Arc Humanities Press.
+- Papaioannou, Stratis. 2013. *Michael Psellos: Rhetoric and Authorship in Byzantium*. Cambridge University Press. (Chapter 5, "Female voice", and the introduction's life of Psellos read in full.)
+- Peacock, A. C. S. 2021. "Urban Agency and the City Notables of Medieval Anatolia." *Medieval Worlds* 14: 22–34.
 - Rapp, Claudia. 2016. *Brother-Making in Late Antiquity and Byzantium: Monks, Laymen, and Christian Ritual*. Oxford University Press.
 - Ringrose, Kathryn M. 2003. *The Perfect Servant: Eunuchs and the Social Construction of Gender in Byzantium*. University of Chicago Press.
 - Roller, Lynn E. 1997. "The Ideology of the Eunuch Priest." *Gender & History* 9.3: 542–559.
 - Roller, Lynn E. 1999. *In Search of God the Mother: The Cult of Anatolian Cybele*. University of California Press.
 - Sidéris, Georges. 2010. "Les eunuques de Byzance (IVe–XIIe siècle) : de la société de cour à la société urbaine." In Élisabeth Malamut (ed.), *Dynamiques sociales au Moyen Âge*, 89–116. Presses universitaires de Provence.
 - Sidéris, Georges. 2013. "Sur l'origine des anges eunuques à Byzance." In Constantin Zuckerman (ed.), *Constructing the Seventh Century*, Travaux et Mémoires 17: 539–558.
+- Sophoulis, Panos. 2020. *Banditry in the Medieval Balkans, 800–1500*. New Approaches to Byzantine History and Culture. Palgrave Macmillan.
 - Spencer-Hall, Alicia, and Blake Gutt (eds.). 2021. *Trans and Genderqueer Subjects in Medieval Hagiography*. Amsterdam University Press. (Open access.)
 - Tougher, Shaun. 2008. *The Eunuch in Byzantine History and Society*. Routledge. (Read in the 2009 Taylor & Francis e-library edition.)
 - Tougher, Shaun. 2013. "Bearding Byzantium: Masculinity, Eunuchs and the Byzantine Life Course." In Neil and Garland (eds.), *Questions of Gender in Byzantine Society*, 153–166.
@@ -438,26 +477,31 @@ Cited in the notes, not read: Kuefler, *The Manly Eunuch* (2001); Messis, *Les e
 </details>
 
 <details>
-<summary><strong>Islamic comparanda</strong> (11 works)</summary>
+<summary><strong>Islamic comparanda</strong> (16 works)</summary>
 
 - Almarri, Saqer A. 2016. "'You Have Made Her a Man among Men': Translating the Khuntha's Anatomy in Fatimid Jurisprudence." *TSQ: Transgender Studies Quarterly* 3.3–4: 578–586.
 - Ayalon, David. 1999. *Eunuchs, Caliphs and Sultans: A Study in Power Relationships*. Jerusalem: Magnes Press.
+- Bouchakour Ali Amar, Amina, and Rabah Lounici. 2025. "Sufi Brotherhoods (Turuq) and Their Functional Transformations." *Science, Education and Innovations in the Context of Modern Problems* 8.8: 626–634. (Leads only: its references are unreliable.)
 - Davis, Natalie Zemon. 2006. *Trickster Travels: A Sixteenth-Century Muslim between Worlds*. Hill and Wang.
 - de la Puente, Cristina. 2023. "Al-Ḥakam I in the Andalusi Sources: His Slaves, Eunuchs, and Concubines." *Slavery & Abolition* 44.4: 593–615.
 - El-Azhari, Taef. 2019. *Queens, Eunuchs and Concubines in Islamic History, 661–1257*. Edinburgh University Press.
+- Lecoquierre, Marion. 2023. "Ribāṭ in Palestine: Life on the Frontier." *Contemporary Levant* 8.2: 157–173.
 - Marmon, Shaun. 1995. *Eunuchs and Sacred Boundaries in Islamic Society*. Oxford University Press.
+- Mortel, Richard T. 1998. "Ribāṭs in Mecca during the Medieval Period: A Descriptive Study Based on Literary Sources." *Bulletin of the School of Oriental and African Studies* 61.1: 29–50.
+- Negre, Joan. 2024. "Ribāṭ in the Furthermost Coasts of Early Al-Andalus." *Religions* 15.1: 124.
 - Rowson, Everett K. 2003. "Gender Irregularity as Entertainment: Institutionalized Transvestism at the Caliphal Court in Medieval Baghdad." In Sharon Farmer and Carol Braun Pasternack (eds.), *Gender and Difference in the Middle Ages*, 45–72. University of Minnesota Press.
 - Rowson, Everett K. 2008. "Homoerotic Liaisons among the Mamluk Elite in Late Medieval Egypt and Syria." In Babayan and Najmabadi (eds.), *Islamicate Sexualities: Translations across Temporal Geographies of Desire*, 204–238. Harvard University Press.
 - Rowson, Everett K. 1991. "The Categorization of Gender and Sexual Irregularity in Medieval Arabic Vice Lists." In Julia Epstein and Kristina Straub (eds.), *Body Guards: The Cultural Politics of Gender Ambiguity*, 50–79. Routledge.
 - Rowson, Everett K. 1991. "The Effeminates of Early Medina." *Journal of the American Oriental Society* 111.4: 671–693.
 - Sanders, Paula. 1991. "Gendering the Ungendered Body: Hermaphrodites in Medieval Islamic Law." In Nikki R. Keddie and Beth Baron (eds.), *Women in Middle Eastern History: Shifting Boundaries in Sex and Gender*, 74–95. Yale University Press.
+- Tor, D. G. 2007. *Violent Order: Religious Warfare, Chivalry, and the ʿAyyār Phenomenon in the Medieval Islamic World*. Istanbuler Texte und Studien 11. Würzburg: Ergon Verlag, for the Orient-Institut Istanbul. (Chapters 1–3, 7 and 8 and the Conclusions read in full; chapters 4–6 in part.)
 
 Cited in the notes, not read: Ayalon, David, "On the Eunuchs in Islam," *Jerusalem Studies in Arabic and Islam* 1 (1979): 67–124; El-Rouayheb, *Before Homosexuality*; Babayan and Najmabadi (eds.), *Islamicate Sexualities*.
 
 </details>
 
 <details>
-<summary><strong>Northern Europe</strong> (28 works)</summary>
+<summary><strong>Northern Europe</strong> (26 works)</summary>
 
 - Acker, Paul, and Carolyne Larrington (eds.). 2002. *The Poetic Edda: Essays on Old Norse Mythology*. Routledge Medieval Casebooks. Routledge.
 - Ahola, Joonas. 2014. *Outlawry in the Icelandic Family Sagas*. PhD dissertation, University of Helsinki.
@@ -467,6 +511,7 @@ Cited in the notes, not read: Ayalon, David, "On the Eunuchs in Islam," *Jerusal
 - Clover, Carol J. 1980. "The Germanic Context of the Unferþ Episode." *Speculum* 55.3: 444–468.
 - Clover, Carol J. 1993. "Regardless of Sex: Men, Women, and Power in Early Northern Europe." *Speculum* 68.2: 363–387.
 - Damico, Helen. 1984. *Beowulf's Wealhtheow and the Valkyrie Tradition*. University of Wisconsin Press.
+- Dollinger, Philippe. 1970. *The German Hansa*. Trans. and ed. D. S. Ault and S. H. Steinberg. Stanford University Press. (Translation of *La Hanse*, 1964. Chapters 1–5 and 8 read in full; parts of chapters 6, 7, 9, 10, 12 and 13 and Documents 3, 8, 15–20, 23 and 24.)
 - Evans, Gareth Lloyd, and Jessica Clare Hancock (eds.). 2020. *Masculinities in Old Norse Literature*. D. S. Brewer.
 - Gade, Kari Ellen. 1986. "Homosexuality and Rape of Males in Old Norse Law and Literature." *Scandinavian Studies* 58.2: 124–141.
 - Gardeła, Leszek, Sophie Bønding and Peter Pentz (eds.). 2023. *The Norse Sorceress: Mind and Materiality in the Viking World*. Oxbow Books. (Open access.)
@@ -492,32 +537,42 @@ Cited in the notes, not read: Ayalon, David, "On the Eunuchs in Islam," *Jerusal
 </details>
 
 <details>
-<summary><strong>Medieval Judaism</strong> (34 works)</summary>
+<summary><strong>Medieval Judaism</strong> (47 works)</summary>
 
-For Ha-Nehpakhot, and for how Jewish courts answer every faith's daughters. The open-access English of Kalonymus's prayer (Open Siddur, CC BY-SA) was a reading aid only; every line in the mod is rendered afresh from the public-domain Hebrew.
+For Ha-Nehpakhot, and for how Jewish courts answer every faith's daughters. The books on North Africa and the Cairo Geniza (Bennison, Cohen, Gil, Goitein, Hirschberg, Kraemer, Krakowski, Nissim, Rustow, Stillman, Stroumsa) serve the sect where it rules in the Maghreb. The open-access English of Kalonymus's prayer (Open Siddur, CC BY-SA) was a reading aid only; every line in the mod is rendered afresh from the public-domain Hebrew.
 
 - Assis, Yom Tov. 2000–2001. "El comportament sexual en la societat hispanojueva de l'edat mitjana." *Tamid* 3: 7–47.
 - Baricci, Erica. 2014. "'Bendig tu…qui fis me fenna': donne, libri e letteratura nel Medioevo giudeo-provenzale." *Altre Modernità* 05/2014: 221–242.
 - Baricci, Erica. 2023. "Canti e preghiere dal siddur giudeo-provenzale (Ms. Leeds, Brotherton Library, Roth 32)." *Specula* 6: 63–95.
 - Baumgarten, Elisheva. 2016. "Prier à part ? Le genre dans les synagogues ashkénazes médiévales (XIIIe–XIVe siècle)." *Clio. Femmes, Genre, Histoire* 44: 43–62.
+- Benjamin of Tudela. 1907. *The Itinerary of Benjamin of Tudela*. Ed. and trans. Marcus Nathan Adler. London: Henry Frowde.
+- Bennison, Amira K. 2016. *The Almoravid and Almohad Empires*. The Edinburgh History of the Islamic Empires. Edinburgh University Press.
 - Ben-Shalom, Ram. 2024. *The Jews of Provence and Languedoc: Renaissance in the Shadow of the Church*. Trans. Shmuel Sermoneta-Gertel. Littman Library of Jewish Civilization.
 - Chotzner, J. 1900. "Kalonymos ben Kalonymos, a Hebrew Satirist of the Thirteenth Century." *Jewish Quarterly Review* 13.1: 128–146.
+- Cohen, Mark R. 2008 [1994]. *Under Crescent and Cross: The Jews in the Middle Ages*. Reissue with a new introduction and afterword. Princeton University Press.
 - Davidson, Israel. 1907. *Parody in Jewish Literature*. Columbia University Press.
 - Fonrobert, Charlotte Elisheva. 2006. "The Semiotics of the Sexed Body in Early Halakhic Discourse." In Matthew Kraus (ed.), *How Should Rabbinic Literature Be Read in the Modern World?*, 79–104. Gorgias.
 - Fonrobert, Charlotte Elisheva. 2007. "Regulating the Human Body: Rabbinic Legal Discourse and the Making of Jewish Gender." In *The Cambridge Companion to the Talmud and Rabbinic Literature*, 270–294. Cambridge University Press.
+- Gil, Moshe. 2004. *Jews in Islamic Countries in the Middle Ages*. Trans. David Strassler. Études sur le judaïsme médiéval 28. Brill.
+- Goitein, S. D. 1978. *A Mediterranean Society: The Jewish Communities of the Arab World as Portrayed in the Documents of the Cairo Geniza*. Vol. 3: *The Family*. University of California Press.
+- Goitein, S. D., and Mordechai A. Friedman. 2008. *India Traders of the Middle Ages: Documents from the Cairo Geniza ("India Book")*. Études sur le judaïsme médiéval 31. Brill.
 - Grabowski, Antoni. 2015. "Eunuch between Economy and Philology: The Case of *carzimasium*." *Mélanges de l'École française de Rome – Moyen Âge* 127.1.
 - Gross, Heinrich. 1897. *Gallia Judaica: dictionnaire géographique de la France d'après les sources rabbiniques*. Léopold Cerf.
 - Grossman, Avraham. 2004. *Pious and Rebellious: Jewish Women in Medieval Europe*. Trans. Jonathan Chipman. Brandeis University Press.
 - Guerson, Alexandra, and Dana Wessell Lightfoot. 2019. "Crises and Community: Catalan Jewish Women and Conversas in Girona, 1391–1420." *Tamid* 14: 91–130.
 - Hildenfinger, Paul. 1900–1904. "Documents relatifs aux Juifs d'Arles." *Revue des études juives* 41: 62–97; 47: 221–242; 48: 48–81, 265–272.
+- Hirschberg, H. Z. (J. W.). 1974. *A History of the Jews in North Africa*. Vol. I: *From Antiquity to the Sixteenth Century*. 2nd rev. ed. Trans. M. Eichelberg. Brill.
 - Hornsby, Teresa J., and Ken Stone (eds.). 2011. *Bible Trouble: Queer Reading at the Boundaries of Biblical Scholarship*. Semeia Studies 67. Society of Biblical Literature. (Introduction and five chapters read in full.)
 - Horowitz, Elliott. 2006. *Reckless Rites: Purim and the Legacy of Jewish Violence*. Princeton University Press.
 - Kahn, Yoel H. 2011. *The Three Blessings: Boundaries, Censorship, and Identity in Jewish Liturgy*. Oxford University Press.
 - Kalonymus ben Kalonymus. c. 1322. *Even Boḥan*. Lemberg, 1865.
+- Kraemer, Joel L. 2008. *Maimonides: The Life and World of One of Civilization's Greatest Minds*. Doubleday. (Read in an e-book without page numbers, so cited by chapter.)
+- Krakowski, Eve. 2018. *Coming of Age in Medieval Egypt: Female Adolescence, Jewish Law, and Ordinary Culture*. Princeton University Press. (Read in an e-book without page numbers, so cited by chapter.)
 - Lev, Sarra. 2024. *And the Sages Did Not Know: Early Rabbinic Approaches to Intersex*. University of Pennsylvania Press.
 - Macwilliam, Stuart. 2011. *Queer Theory and the Prophetic Marriage Metaphor in the Hebrew Bible*. BibleWorld. Equinox; reissued Routledge, 2014. (Introduction, conclusion and the central chapters read.)
 - Marienberg, Evyatar. 2004. "Menstruation in Sacred Spaces: Medieval and Early-Modern Jewish Women in the Synagogue." *Nordisk Judaistik* 25.1: 7–16.
 - Neis, Rafael Rachel. 2023. *When a Human Gives Birth to a Raven: Rabbis and the Reproduction of Species*. University of California Press (Luminos).
+- Nissim ben Jacob ibn Shahin. 1977. *An Elegant Composition Concerning Relief after Adversity*. Trans. William M. Brinner. Yale Judaica Series 20. Yale University Press. (Seven tales read in full.)
 - Phelan, Joseph. 2023. "The Jewish 'Monopoly' of the Slave Trade in the Early Middle Ages: The Origins of an Enduring Historical Motif." *Patterns of Prejudice* 57.3: 161–174.
 - Renan, Ernest, and Adolf Neubauer. 1893. *Les écrivains juifs français du XIVe siècle*. Imprimerie nationale.
 - Resnick, Irven M. 2000. "Medieval Roots of the Myth of Jewish Male Menses." *Harvard Theological Review* 93.3: 241–263.
@@ -525,11 +580,14 @@ For Ha-Nehpakhot, and for how Jewish courts answer every faith's daughters. The 
 - Roos, Lena. 2017. "Cross-dressing among Medieval Ashkenazi Jews: Confirming Challenged Group Borders." *Nordisk Judaistik* 28.2: 4–22.
 - Rosen, Tova. 2000. "Circumcised Cinderella: The Fantasies of a Fourteenth-Century Jewish Author." *Prooftexts* 20.1: 87–110.
 - Rosen, Tova. 2003. *Unveiling Eve: Reading Gender in Medieval Hebrew Literature*. University of Pennsylvania Press.
+- Rustow, Marina. 2008. *Heresy and the Politics of Community: The Jews of the Fatimid Caliphate*. Cornell University Press. (Read in the 2014 e-book, without page numbers, so cited by chapter.)
 - Shatzmiller, Joseph. 1994. *Jews, Medicine, and Medieval Society*. University of California Press.
 - Shatzmiller, Joseph. 2023. *Collected Studies, Volume 1: The Jews of Provence*. Academic Studies Press.
 - Stouff, Louis. 2014. *Arles au Moyen Âge finissant*. Presses universitaires de Provence.
+- Stillman, Norman A. 1979. *The Jews of Arab Lands: A History and Source Book*. Jewish Publication Society of America.
 - Strassfeld, Max K. 2013. "Classically Queer: Eunuchs and Androgynes in Rabbinic Literature." PhD dissertation, Stanford University.
 - Strassfeld, Max K. 2022. *Trans Talmud: Androgynes and Eunuchs in Rabbinic Literature*. University of California Press.
+- Stroumsa, Sarah. 2009. *Maimonides in His World: Portrait of a Mediterranean Thinker*. Princeton University Press.
 
 Read but not used: Howard, *Hebrew Gospel of Matthew* (1995), which is Shem Tov ibn Shaprut's *Even Boḥan* (1380s), a different work from Kalonymus's.
 
@@ -561,7 +619,7 @@ The 2019 *Medieval Feminist Forum* special issue on medieval trans feminism, edi
 </details>
 
 <details>
-<summary><strong>China</strong> (53 works)</summary>
+<summary><strong>China</strong> (48 works)</summary>
 
 - Balkwill, Stephanie. 2016. "The *Sūtra on Transforming the Female Form*: Unpacking an Early Medieval Chinese Buddhist Text." *Journal of Chinese Religions* 44.2: 127–148.
 - Bernhardt, Kathryn. 1999. *Women and Property in China, 960–1949*. Stanford University Press.
@@ -573,6 +631,7 @@ The 2019 *Medieval Feminist Forum* special issue on medieval trans feminism, edi
 - Chiang, Howard. 2012. "How China Became a 'Castrated Civilization' and Eunuchs a 'Third Sex'." In Chiang (ed.), *Transgender China*, 23–66.
 - Chiang, Howard (ed.). 2012. *Transgender China*. Palgrave Macmillan. (Chapters 1–5 read in full. Chapters 6–11 are modern and were only skimmed.)
 - Dale, Melissa S. 2018. *Inside the World of the Eunuch: A Social History of the Emperor's Servants in Qing China*. Hong Kong University Press.
+- de la Vaissière, Étienne. 2005. *Sogdian Traders: A History*. Trans. James Ward. Handbook of Oriental Studies, Section 8 (Central Asia), vol. 10. Brill. (Chapters 2 and 5 and the General Conclusion read in full; parts of chapters 3, 6, 7, 9 and 10.)
 - Despeux, Catherine, and Livia Kohn. 2003. *Women in Daoism*. Three Pines Press.
 - Faure, Bernard. 2003. *The Power of Denial: Buddhism, Purity, and Gender*. Princeton University Press.
 - Galambos, Imre. 2020. *Dunhuang Manuscript Culture: End of the First Millennium*. De Gruyter. (Open access.)
@@ -635,7 +694,7 @@ For how Buddhist, Hindu, Jain and Delhi Sultanate courts read every faith's daug
 </details>
 
 <details>
-<summary><strong>South India</strong> (25 works)</summary>
+<summary><strong>South India</strong> (24 works)</summary>
 
 For the Worn Garland, and for how Hindu, Jain and Buddhist courts of the south read every faith's daughters.
 
@@ -647,6 +706,7 @@ For the Worn Garland, and for how Hindu, Jain and Buddhist courts of the south r
 - Doniger, Wendy. 1999. *Splitting the Difference: Gender and Myth in Ancient Greece and India*. University of Chicago Press.
 - Goodall, Dominic. 2018. "Rudragaṇikās: Courtesans in Śiva's Temple? Some Hitherto Neglected Sanskrit Sources." *Cracow Indological Studies* 20.1: 91–143.
 - Govindacharya, Alkondavilli. 1902. *The Holy Lives of the Azhvars, or The Dravida Saints*. Mysore.
+- Hall, Kenneth R. 1980. *Trade and Statecraft in the Age of the Cōḷas*. New Delhi: Abhinav Publications. (Chapters 3, 4, 6, 7 and 8 read in full; the rest in part or by search.)
 - Hardy, Friedhelm. 1983. *Viraha-Bhakti: The Early History of Kṛṣṇa Devotion in South India*. Oxford University Press.
 - Kersenboom-Story, Saskia C. 1987. *Nityasumaṅgalī: Devadasi Tradition in South India*. Motilal Banarsidass.
 - Merkle, Sarah. 2016. "Tying the Knot with the Dēvi: Gender Transgression in Regional and Trans-Regional Discourses." *Cracow Indological Studies* 18: 367–389.
@@ -672,6 +732,7 @@ Primary texts read in translation: the *Mahābhārata* (trans. Ganguli), for Bha
 
 For Badenya. The medieval and epic sources first; then contemporary studies, used only for the faith's everyday texture and marked as reconstruction.
 
+- al-Bakrī. 1913. *Description de l'Afrique septentrionale*. Trans. W. Mac Guckin de Slane, rev. ed. Algiers: Jourdan. (English excerpt: Levtzion and Hopkins (eds.), *Corpus of Early Arabic Sources for West African History*, 1981, pp. 79–81.)
 - Austen, Ralph A. (ed.). 1999. *In Search of Sunjata: The Mande Oral Epic as History, Literature and Performance*. Indiana University Press. (Including David C. Conrad, "Mooning Armies and Mothering Heroes".)
 - Bertolt, Boris. 2020. "Les ambiguïtés de la question homosexuelle au Sénégal." *Cahiers d'études africaines* 239.
 - Brett-Smith, Sarah C. 1994. *The Making of Bamana Sculpture: Creativity and Gender*. Cambridge University Press.
@@ -684,6 +745,8 @@ For Badenya. The medieval and epic sources first; then contemporary studies, use
 - Gaudio, Rudolf Pell. 2009. *Allah Made Us: Sexual Outlaws in an Islamic African City*. Wiley-Blackwell.
 - Geoffrion, Karine. 2013. "'I Wish Our Gender Could Be Dual': Male Femininities in Ghanaian University Students." *Cahiers d'études africaines* 209–210: 417–443.
 - Gomez, Michael A. 2018. *African Dominion: A New History of Empire in Early and Medieval West Africa*. Princeton University Press.
+- Ibn Baṭṭūṭa. 1874 [1858]. *Voyages d'Ibn Batoutah*, vol. 4. Arabic text and French trans. C. Defrémery and B. R. Sanguinetti. Paris: Imprimerie nationale.
+- Ibn Khaldūn. 1854. *Histoire des Berbères et des dynasties musulmanes de l'Afrique septentrionale*, vol. 2. Trans. Baron de Slane. Algiers: Imprimerie du Gouvernement.
 - Jansen, Jan. 1996. "'Elle connaît tout le Mande': A Tribute to the Griotte Siramori Diabate." *Research in African Literatures*.
 - Jansen, Jan. 1996. "The Younger Brother and the Stranger: In Search of a Status Discourse for Mande." *Cahiers d'études africaines* 36 (144): 659–688.
 - Jansen, Jan. 2002. *Les secrets du Manding : les récits du sanctuaire Kamabolon de Kangaba (Mali)*. Research School CNWS.
@@ -721,7 +784,7 @@ Cited in the notes, not read: Davies, Sharyn Graham, *Challenging Gender Norms: 
 </details>
 
 <details>
-<summary><strong>General and comparative history</strong> (12 works)</summary>
+<summary><strong>General and comparative history</strong> (13 works)</summary>
 
 - Adkins, Evelyn. 2020. "The Politics of Transgender Representation in Apuleius' *Golden Ass* and *Loukios, or the Ass*." In Surtees and Dyer (eds.), *Exploring Gender Diversity in the Ancient World*, 157–168.
 - Betancourt, Roland. 2021. "Where Are All the Trans Women in Byzantium?" In LaFleur, Raskolnikov and Kłosowska (eds.), *Trans Historical*.
@@ -730,6 +793,7 @@ Cited in the notes, not read: Davies, Sharyn Graham, *Challenging Gender Norms: 
 - Krass, Andreas. 2012. "Saying It with Flowers: Post-Foucauldian Literary History and the Poetics of Taboo in a Premodern German Love Song." In Spector, Puff and Herzog (eds.), *After The History of Sexuality: German Genealogies With and Beyond Foucault*, 63–75. Berghahn.
 - LaFleur, Greta, Masha Raskolnikov, and Anna Kłosowska (eds.). 2021. *Trans Historical: Gender Plurality Before the Modern*. Cornell University Press.
 - Levin, Eve. 1989. *Sex and Society in the World of the Orthodox Slavs, 900–1700*. Cornell University Press.
+- Lopez, Robert S. 1976 [1971]. *The Commercial Revolution of the Middle Ages, 950–1350*. Cambridge University Press. (Chapters 3 and 4 read in full; parts of chapters 1, 5 and 6.)
 - Álvarez-Pedrosa, Juan Antonio, and Enrique Santos Marinas. 2023. *Rituals in Slavic Pre-Christian Religion: Festivals, Banqueting, and Divination*. Arc Humanities Press.
 - Álvarez-Pedrosa, Juan Antonio (ed.). 2021. *Sources of Slavic Pre-Christian Religion*. Brill.
 - Puff, Helmut. 2012. "After the History of (Male) Homosexuality." In Spector, Puff and Herzog (eds.), *After The History of Sexuality*, 17–30. Berghahn.

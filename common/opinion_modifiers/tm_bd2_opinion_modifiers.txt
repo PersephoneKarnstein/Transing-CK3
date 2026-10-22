@@ -1,0 +1,60 @@
+﻿# Crusader Dolls — Badenya stage 2 (events/tm_bd2_events.txt).
+
+# The heir honoured the sister's line (tm_bd2.0002).
+tm_bd2_honoured_line_opinion = {
+	opinion = 25
+	years = 10
+}
+
+# The heir passed over the sister's line (tm_bd2.0002).
+tm_bd2_passed_over_line_opinion = {
+	opinion = -30
+	years = 20
+}
+
+# The ruler paid the jelimuso's praise (tm_bd2.0010, tm_bd2.0020).
+tm_bd2_paid_praise_opinion = {
+	opinion = 15
+	years = 5
+}
+
+# The ruler would not pay for the praise (tm_bd2.0020).
+tm_bd2_unpaid_praise_opinion = {
+	opinion = -15
+	years = 5
+}
+
+# Two who quarrelled in a hot realm and were cooled by the jelimuso's word (tm_bd2.0010).
+tm_bd2_cooled_words_opinion = {
+	opinion = 15
+	years = 5
+}
+
+# Two who quarrelled in a hot realm, and no one cooled it (tm_bd2.0010).
+tm_bd2_hot_words_opinion = {
+	opinion = -15
+	years = 3
+}
+
+# The ruler judged a hot quarrel against this character (tm_bd2.0010).
+tm_bd2_judged_against_opinion = {
+	opinion = -20
+	years = 5
+}
+
+# A vassal of the faith, of the ruler's associate in rule (removed when the honour ends).
+tm_bd2_associate_vassal_opinion = {
+	opinion = 15
+}
+
+# A Muslim vassal, of a ruler who named a woman associate in rule: a custom of the country, not of the law.
+tm_bd2_associate_jurist_opinion = {
+	opinion = -10
+	years = 10
+}
+
+# The ruler set her aside as associate in rule (by decision; no blame is scripted).
+tm_bd2_associate_set_aside_opinion = {
+	opinion = -15
+	years = 5
+}

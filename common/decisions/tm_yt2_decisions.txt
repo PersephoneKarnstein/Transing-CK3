@@ -1,0 +1,43 @@
+﻿# Crusader Dolls — the palace faction, stage 2 (tm_yt2_events.txt; design note docs/wave3/yutai.md)
+
+# Work the inner offices: a daughter of the Way who holds a palace seal (tm_palace.0001) moves the court's balance
+# between the inner offices and the scholar-officials, or spends it on the society. Opens tm_yt2.0001.
+tm_yt2_work_offices_decision = {
+	picture = { reference = "gfx/interface/illustrations/decisions/decision_misc.dds" }
+	sort_order = 81
+
+	is_shown = {
+		faith = faith:tm_yutai
+		has_variable = tm_palace_office
+	}
+
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+	}
+
+	is_valid = {
+		tm_palace_daughter_trigger = yes
+	}
+
+	cooldown = { years = 5 }
+
+	effect = {
+		custom_tooltip = tm_yt2_work_offices_decision_effect_tt
+		top_liege = {
+			save_scope_as = tm_palace_throne
+			primary_title = {
+				save_scope_as = tm_palace_seat
+				tm_yt2_seat_init_effect = yes
+			}
+		}
+		trigger_event = tm_yt2.0001
+	}
+
+	ai_check_interval = 60
+	ai_will_do = {
+		base = 20
+		modifier = { add = 15 has_trait = ambitious }
+		modifier = { add = 10 has_trait = schemer }
+		modifier = { add = -15 has_trait = content }
+	}
+}

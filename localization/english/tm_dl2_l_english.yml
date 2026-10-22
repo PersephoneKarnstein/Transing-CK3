@@ -1,0 +1,92 @@
+﻿l_english:
+ ### The Galenic rite (tm_rite_types.txt) ###
+ tm_galenic_rite:0 "Galenic Rite"
+ tm_galenic_rite_adj:0 "Galenic"
+ tm_galenic_rite_adherent:0 "Galenic Sister"
+ tm_galenic_rite_adherent_plural:0 "Galenic Sisters"
+ tm_galenic_rite_desc:0 "The wing of the Sisters that counts as the Emperor counts. His law names three kinds of people: men, women and eunuchs. After Galen, the Galenic Sisters call the cut some third thing, and they say the Houses stand safer for it. The main rite answers that the Houses were built so that no daughter would be written down that way."
+
+ ### Decisions (tm_dl2_decisions.txt) ###
+ tm_dl2_found_galenic_decision:0 "Found the Galenic Rite"
+ tm_dl2_found_galenic_decision_desc:0 "The Emperor's law counts three kinds of people: men, women and eunuchs. Some of the Sisters would count as he counts. Give the bishops a kind to write us down as, and they may stop hunting for one. The Mother of Mothers will call it the old cage with a new name."
+ tm_dl2_found_galenic_decision_tooltip:0 "Found the Galenic Rite, the wing of the Sisters that agrees with the Emperor."
+ tm_dl2_found_galenic_decision_confirm:0 "Count as the Emperor counts"
+ tm_dl2_found_galenic_decision_effect_tt:0 "You found and join the #V Galenic Rite#!:\n- It keeps your House of the knife and every tenet of the faith\n- The cut are counted a third kind, as the Emperor's law counts them\n- A [liege|E] of another Christian faith thinks better of you\n- The Mother of Mothers will answer"
+ tm_dl2_adopt_galenic_decision:0 "Join the Galenic Rite"
+ tm_dl2_adopt_galenic_decision_desc:0 "The Galenic Sisters count the cut as the Emperor's law counts them: a kind of their own. It buys the Houses some peace with the bishops. It costs the daughters a name."
+ tm_dl2_adopt_galenic_decision_tooltip:0 "Join the Galenic Rite, the wing of the Sisters that agrees with the Emperor."
+ tm_dl2_adopt_galenic_decision_confirm:0 "Count as the Emperor counts"
+ tm_dl2_adopt_galenic_decision_effect_tt:0 "You join the #V Galenic Rite#!:\n- A [liege|E] of another Christian faith thinks better of you\n- The Mother of Mothers will answer"
+ tm_dl2_return_aristotelian_decision:0 "Return to the Rite of Dorleyaion"
+ tm_dl2_return_aristotelian_decision_desc:0 "The cut are women. Come home to the Mother House, and let the bishops count what they like."
+ tm_dl2_return_aristotelian_decision_tooltip:0 "Return to the main rite of the Sisters."
+ tm_dl2_return_aristotelian_decision_confirm:0 "Come home"
+
+ ### Opinions (tm_dl2_opinion_modifiers.txt) ###
+ tm_dl2_agrees_with_emperor_opinion:0 "Counts as the Emperor Counts"
+ tm_dl2_old_cage_opinion:0 "The Old Cage, a New Name"
+ tm_dl2_counted_eunuch_opinion:0 "Registered Me as a Eunuch"
+ tm_dl2_came_home_opinion:0 "Came Home to the Mother House"
+
+ ### The Emperor's count (tm_dl2.0001) ###
+ tm_dl2.0001.t:0 "The Emperor's Count"
+ tm_dl2.0001.desc:0 "The new rite is written. Its books open with the Emperor's law, which names three kinds of people: men, women and eunuchs. After Galen, the Galenic Sisters say the cut are some third thing. The knife, the Houses and the adoptions stay as they were. What changes is the register: the word the Houses write beside each daughter's name.\n\nAt the Mother House they are already saying it. A third kind can be honoured, employed and kept apart. They call it the old cage with a new name."
+ tm_dl2.0001.a:0 "The Houses will stand. That is what we bought."
+ tm_dl2.0001.b:0 "The bishops will have less to write about us."
+
+ ### The Mother of Mothers answers (tm_dl2.0002) ###
+ tm_dl2.0002.t:0 "A Sister Counts Three"
+ tm_dl2.0002.desc:0 "[tm_dl2_founder.GetName] has taken the Emperor's count. Her rite calls the cut a kind of their own, neither men nor women, and her chaplains read Leo's law aloud in the hall.\n\nThe Houses were built so that no daughter would be written down as a kind of her own. Now one of our own writes it."
+ tm_dl2.0002.a:0 "It is the old cage with a new name. Tell her so."
+ tm_dl2.0002.b:0 "She is still our sister. Let the councils argue it out."
+
+ ### Ignatios returns (tm_dl2.0010) ###
+ tm_dl2.0010.t:0 "The Patriarch Without a Beard"
+ tm_dl2.0010.desc:0 "Word comes from the City. The new Emperor has put Photios out, and Ignatios sits again on the patriarch's throne he lost nine years ago.\n\nIgnatios is an emperor's son. When his father fell, the next emperor had him cut at fourteen and sent to a monastery, so that the old line would end with him. In the mosaics of the Great Church he is the only patriarch without a beard. The monks call him father."
+ tm_dl2.0010.a:0 "The Church will seat a cut man on its throne, so long as it may call him father."
+ tm_dl2.0010.b:0 "Pray for him. They took his name as well. He was Niketas once."
+ tm_dl2.0010.c:0 "The court cuts its princes as we cut our captives. Only the names differ."
+
+ ### The train to Tarsus (tm_dl2.0020) ###
+ tm_dl2.0020.t:0 "The Train to Tarsus"
+ tm_dl2.0020.desc:0 "A merchant's train is on the road south to the Cilician Gates. It carries boys from the villages of Rum, bought or taken in raids, for the frontier markets at Tarsus. Some of them were cut before they reached the road. A cut boy fetches three or four times the price.\n\nA writer of Basra wrote that every castration in the world begins in Rum. The merchant does not argue. He has a price for each child."
+ tm_dl2.0020.a:0 "Buy every one of them free. Those who have a village go home. The rest stay with us, and no one will ask anything of them."
+ tm_dl2.0020.b:0 "Free the children, and give the merchant a cell. The House knows how to keep one."
+ tm_dl2.0020.c:0 "Pay the man his price for the cut ones, and call them daughters. The rest go on to Tarsus. No one asked them."
+ tm_dl2.0020.d:0 "Send word to the strategos. The train is on the Emperor's road."
+ tm_dl2.0020.d.stopped:0 "The strategos turns the train back to the coast. Where the boys go from there, no one says."
+ tm_dl2.0020.d.paid:0 "The strategos has his own price. The train goes through."
+ tm_dl2.0020.e:0 "The train is past the Gates before we can reach it."
+
+ ### The Galenic wing's book (tm_dl2.0030) ###
+ tm_dl2.0030.t:0 "A Book for the Third Kind"
+ tm_dl2.0030.desc:0 "A copy of a dialogue is going round the Houses. Theophylact, archbishop of Ochrid, wrote it for his brother Demetrios, a eunuch who was tired of the hostility he met. A monk attacks eunuchs, and a eunuch answers him. The old laws against the knife are dead, the eunuch says. A boy cut by his family for a chaste life is a vine pruned. Ascetics change their bodies too. A grown man who cuts himself is his own murderer.\n\nThe eunuch has just had his own nephew cut. The two men argue over the boy's head."
+ tm_dl2.0030.a:0 "This is our book. He counts the cut as the law counts them, and he defends them."
+ tm_dl2.0030.b:0 "The archbishop defended the uncle. No one asked the boy."
+ tm_dl2.0030.c:0 "Put it in the library, and copy our answer beside it."
+
+ ### The Holy Mountain closes (tm_dl2.0040) ###
+ tm_dl2.0040.t:0 "The Holy Mountain Closes"
+ tm_dl2.0040.desc:0 "The Emperor Alexios has closed the monasteries of Athos to eunuchs. The Mountain already turned away beardless youths. Now the cut monks there must go as well, wherever they can.\n\nThe new dynasty prefers its kinsmen to eunuchs, at court and now in the cloister."
+ tm_dl2.0040.a:0 "The Mountain was never our door."
+ tm_dl2.0040.b:0 "Petition the Emperor for the cut monks. His law counts them a kind of their own. Let it house them."
+ tm_dl2.0040.c:0 "Any cut monk who is turned away may come to our Houses."
+ tm_dl2.0040.d:0 "The Komnenoi have their kin. Nothing we say will change that."
+
+ ### The Steward at the Gate (tm_dl2.0050) ###
+ tm_dl2.0050.t:0 "The Steward at the Gate"
+ tm_dl2.0050.desc:0 "A convent in the City keeps the rule its foundress, an empress, wrote for it. Its steward must be a eunuch. The steward keeps the estates, the accounts and the gate, and the inner enclosure is closed even to eunuchs. [tm_dl2_steward.GetFirstName] has served the nuns there for years and never once passed the inner door.\n\nNow [tm_dl2_steward.GetFirstName] stands at ours, with a bundle and a letter from the abbess, asking for work."
+ tm_dl2.0050.a:0 "Come in. Stay with us as a friend of the House."
+ tm_dl2.0050.b:0 "Come in. The empress's nuns kept you at the door. We open it. If you ever ask for the Hilaria and a name, they are yours."
+ tm_dl2.0050.c:0 "We have no room this year. Take bread for the road."
+
+ ### The consul's letter (tm_dl2.0060) ###
+ tm_dl2.0060.t:0 "The Consul's Letter"
+ tm_dl2.0060.desc:0 "A copy of a letter from the City has reached the Mother House, and the Houses are copying it. Its writer is Michael Psellos, a monk of the court, whom the Emperor once named consul of the philosophers. He wrote it to the kaisar when his grandson was born. In learning, he says, he is perhaps the more masculine, but by nature he is feminine. In another letter, on a friend's newborn son, he asks what it matters whether a child is stamped more feminine or more masculine.\n\nHe wrote this to great men, in a learned style, and he says it of his soul and his feelings, not of his body. The Sisters know that. They read it aloud all the same, and each wing reads it its own way."
+ tm_dl2.0060.a:0 "He says it of his soul. We say it of our sisters."
+ tm_dl2.0060.b:0 "Even the consul of the philosophers is a little of a third thing."
+ tm_dl2.0060.c:0 "Copy it for the library. Write beside it that this is our reading, not his word."
+
+ ### Galenic answers to the heresy laws (tm_byzantine_events.txt) ###
+ tm_byz.0010.e:0 "Show them the Emperor's own law. We count as it counts."
+ tm_byz.0012.e:0 "Register the adoptions under Leo's law, and enter each daughter as a eunuch."

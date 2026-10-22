@@ -1,0 +1,47 @@
+﻿# Crusader Dolls — protection under Muslim and Orthodox lords, wave 4 (events/tm_fut_events.txt).
+# No modifier here touches gold, tax or loans: the protection is for honour and service.
+
+# Sworn in by the fityan of his town (tm_fut.0001). Iran and Iraq before 1056 only. The code: justice, equal treatment
+# of resident and stranger, loyalty, an open table, and protection for whoever "entrusted himself to your chivalry"
+# (Tor pp. 243-250). The oath and the trousers, p. 248.
+tm_fut_javanmard_modifier = {
+	icon = prestige_positive
+	monthly_prestige = 0.3
+	prowess = 1
+}
+
+# A free man's word, given before his household to one who put herself under it (tm_fut.0011). The same code told
+# in plain words, for every Muslim lord outside Tor's land and years.
+tm_fut_free_word_modifier = {
+	icon = prestige_positive
+	monthly_prestige = 0.3
+}
+
+# She is under a lord's word. Refreshed every year while it holds (tm_fut_on_actions.txt).
+tm_fut_sheltered_modifier = {
+	icon = stress_negative
+	stress_loss_mult = 0.1
+}
+
+# The lord's side of the terms: the service the community gives in return (tm_fut.0030). One of three.
+tm_fut_terms_physician_modifier = {
+	icon = health_positive
+	health = 0.25
+}
+tm_fut_terms_interpreter_modifier = {
+	icon = learning_positive
+	diplomacy = 1
+	learning = 1
+}
+tm_fut_terms_steward_modifier = {
+	icon = stewardship_positive
+	stewardship = 1
+	monthly_county_control_growth_add = 0.1
+}
+
+# The member's side: the lord's wars are none of her concern unless she asks (Smolensk 1229, cl. 32). She is not
+# called up as a knight while it holds (set_knight_status = forbid, tm_fut_effects.txt).
+tm_fut_terms_member_modifier = {
+	icon = social_positive
+	stress_gain_mult = -0.05
+}

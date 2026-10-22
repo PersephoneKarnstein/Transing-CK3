@@ -1,0 +1,269 @@
+﻿# Crusader Dolls — flavour "achievements": the Deeds of the House. Design: docs/faith_design.md §11 (kept as dark
+# comedy by the user, §12 revision 8); build note: docs/wave3/achievements.md.
+#
+# Mods cannot add Steam achievements, so each deed is an event to the player who brought it about. The hook is in
+# tm_take_the_knife_effect (tm_rite_effects.txt), which every knife path runs (the voluntary rite tm_knife.0004,
+# the Dorley path tm_dorley.0100, arrivals raised by the knife):
+#
+#   tm_take_the_knife_effect = {
+#       tm_ach_before_knife_effect = yes
+#       tm_rise_daughter_effect = { TRAIT = tm_daughter_of_the_knife RENAME = tm_knife.0002 }
+#       tm_ach_after_knife_effect = yes
+#   }
+#
+# Before: who she was (the Pope, a vizier...) is read while the old body still holds its titles and offices, and who
+# brought her to the knife. After: the deeds go to that player, with the body that survives the rite
+# (scope:tm_new_body when re-embodiment is on). Players only; nothing for the AI except the house's count of daughters.
+#
+# Grandmother's House keeps no rite that ends here (its cut is vanilla castration and makes eunuchs), so its Pope and
+# Patriarch deeds are found by a quarterly check instead (tm_ach_on_actions.txt).
+
+# Scope: the one about to take the knife. Root: whoever's event or decision runs the rite.
+tm_ach_before_knife_effect = {
+	clear_saved_scope = tm_ach_target
+	clear_saved_scope = tm_ach_officiant
+	clear_saved_scope = tm_ach_consent
+	clear_saved_scope = tm_ach_was_pope
+	clear_saved_scope = tm_ach_was_patriarch
+	clear_saved_scope = tm_ach_master
+	clear_saved_scope = tm_ach_khan
+	clear_saved_scope = tm_ach_khan_is_self
+	clear_saved_scope = tm_ach_was_artist
+	clear_saved_scope = tm_ach_target_faith
+	clear_saved_scope = tm_ach_daughter
+	save_scope_as = tm_ach_target
+	faith = { save_scope_as = tm_ach_target_faith }
+
+	# Who brought her here. The Dorley path: root is the captor. A courtier offered the rite (tm_rite_offered): her
+	# player lord offered it. Her own decision: she came of her own will (consent), and a player taking the knife
+	# herself is her own officiant.
+	if = {
+		limit = {
+			NOT = { root = this }
+			root = { is_ai = no }
+		}
+		root = { save_scope_as = tm_ach_officiant }
+	}
+	else_if = {
+		limit = { is_ai = no }
+		save_scope_as = tm_ach_officiant
+		save_scope_value_as = { name = tm_ach_consent value = yes }
+	}
+	else_if = {
+		limit = {
+			has_variable = tm_rite_offered
+			employer ?= { is_ai = no }
+		}
+		employer = { save_scope_as = tm_ach_officiant }
+		save_scope_value_as = { name = tm_ach_consent value = yes }
+	}
+	else_if = {
+		limit = { root = this }
+		save_scope_value_as = { name = tm_ach_consent value = yes }
+	}
+
+	# Who she was.
+	if = {
+		limit = { tm_ach_is_pope_trigger = yes }
+		save_scope_value_as = { name = tm_ach_was_pope value = yes }
+	}
+	else_if = {
+		limit = { tm_ach_is_patriarch_trigger = yes }
+		save_scope_value_as = { name = tm_ach_was_patriarch value = yes }
+	}
+	# A Muslim lord's councillor. Read at capture too (tm_ach_on_imprison), in case prison cost him the seat.
+	if = {
+		limit = {
+			has_variable = tm_ach_vizier_of
+			var:tm_ach_vizier_of = { is_alive = yes }
+		}
+		var:tm_ach_vizier_of = { save_scope_as = tm_ach_master }
+	}
+	else_if = {
+		limit = {
+			exists = employer
+			tm_ach_is_vizier_of_trigger = { MASTER = employer }
+		}
+		employer = { save_scope_as = tm_ach_master }
+	}
+	else_if = {
+		limit = {
+			exists = liege
+			tm_ach_is_vizier_of_trigger = { MASTER = liege }
+		}
+		liege = { save_scope_as = tm_ach_master }
+	}
+	# A khan, or a khan's son.
+	if = {
+		limit = { tm_ach_steppe_ruler_trigger = yes }
+		save_scope_as = tm_ach_khan
+		save_scope_value_as = { name = tm_ach_khan_is_self value = yes }
+	}
+	else_if = {
+		limit = {
+			father ?= {
+				is_alive = yes
+				tm_ach_steppe_ruler_trigger = yes
+			}
+		}
+		father = { save_scope_as = tm_ach_khan }
+	}
+	if = {
+		limit = { tm_ach_is_artist_trigger = yes }
+		save_scope_value_as = { name = tm_ach_was_artist value = yes }
+	}
+}
+
+# Scope: the same character, after tm_rise_daughter_effect (dead, if re-embodied).
+tm_ach_after_knife_effect = {
+	if = {
+		limit = {
+			exists = scope:tm_ach_target
+			scope:tm_ach_target = this
+		}
+		# The body that survives the rite.
+		if = {
+			limit = {
+				exists = scope:tm_new_body
+				exists = scope:tm_old_body
+				scope:tm_old_body = this
+			}
+			scope:tm_new_body = { save_scope_as = tm_ach_daughter }
+		}
+		else = {
+			save_scope_as = tm_ach_daughter
+		}
+		# A player who took the knife herself plays the new body now.
+		if = {
+			limit = {
+				exists = scope:tm_ach_officiant
+				scope:tm_ach_officiant = scope:tm_ach_target
+			}
+			scope:tm_ach_daughter = { save_scope_as = tm_ach_officiant }
+		}
+
+		# Six Hundred Daughters: every house keeps a count of its daughters of the knife (from this version on).
+		scope:tm_ach_daughter = {
+			house ?= {
+				if = {
+					limit = { NOT = { has_variable = tm_ach_knife_daughters } }
+					set_variable = { name = tm_ach_knife_daughters value = 0 }
+				}
+				change_variable = { name = tm_ach_knife_daughters add = 1 }
+				save_scope_as = tm_ach_house
+			}
+		}
+		if = {
+			limit = {
+				exists = scope:tm_ach_house
+				scope:tm_ach_house = {
+					var:tm_ach_knife_daughters >= 50
+					NOT = { has_variable = tm_ach_deed_six_hundred }
+				}
+			}
+			every_player = {
+				limit = { house ?= scope:tm_ach_house }
+				trigger_event = { id = tm_ach.0040 days = 7 }
+			}
+		}
+
+		if = {
+			limit = { exists = scope:tm_ach_officiant }
+			scope:tm_ach_officiant = {
+				if = {
+					limit = { exists = scope:tm_ach_was_pope }
+					trigger_event = { id = tm_ach.0001 days = 3 }
+				}
+				if = {
+					limit = { exists = scope:tm_ach_was_patriarch }
+					trigger_event = { id = tm_ach.0010 days = 3 }
+				}
+				if = {
+					limit = {
+						exists = scope:tm_ach_master
+						NOT = { scope:tm_ach_master = this }
+					}
+					trigger_event = { id = tm_ach.0020 days = 5 }
+				}
+				if = {
+					limit = {
+						exists = scope:tm_ach_khan
+						NOT = { scope:tm_ach_khan = this }
+					}
+					trigger_event = { id = tm_ach.0030 days = 5 }
+				}
+				if = {
+					limit = { exists = scope:tm_ach_was_artist }
+					trigger_event = { id = tm_ach.0050 days = 4 }
+				}
+			}
+		}
+		# The rarer Gift Alone deed (§11 design rule): a Pope or Patriarch of the Sisters' own faith asked for the knife
+		# and no player brought him. Every player of her faith hears of it.
+		else_if = {
+			limit = {
+				exists = scope:tm_ach_consent
+				OR = {
+					exists = scope:tm_ach_was_pope
+					exists = scope:tm_ach_was_patriarch
+				}
+			}
+			every_player = {
+				limit = { faith = scope:tm_ach_daughter.faith }
+				if = {
+					limit = { exists = scope:tm_ach_was_pope }
+					trigger_event = { id = tm_ach.0001 days = 3 }
+				}
+				else = {
+					trigger_event = { id = tm_ach.0010 days = 3 }
+				}
+			}
+		}
+	}
+}
+
+# Records a deed. Scope: the player. DEED = the house variable's suffix; FLAG = the character flag's suffix
+# (the three Pope deeds share one flag, for Mother of Mothers Unmade a Father of Fathers).
+tm_ach_record_effect = {
+	add_character_flag = tm_ach_$FLAG$_done
+	house ?= {
+		set_variable = { name = tm_ach_deed_$DEED$ value = yes }
+	}
+	if = {
+		limit = {
+			has_character_flag = tm_ach_pope_done
+			has_character_flag = tm_ach_patriarch_done
+			NOT = { has_character_flag = tm_ach_fathers_done }
+		}
+		trigger_event = { id = tm_ach.0060 days = 10 }
+	}
+}
+
+# Memories for the officiant and the new daughter. Scope: the officiant. Only when she brought the daughter herself.
+tm_ach_memories_effect = {
+	if = {
+		limit = {
+			NOT = { exists = scope:tm_ach_consent }
+			scope:tm_ach_daughter = { is_alive = yes }
+			NOT = { this = scope:tm_ach_daughter }
+		}
+		create_character_memory = {
+			type = tm_ach_officiated_memory
+			participants = { daughter = scope:tm_ach_daughter }
+		}
+		scope:tm_ach_daughter = {
+			create_character_memory = {
+				type = tm_ach_risen_memory
+				participants = { officiant = root }
+			}
+		}
+	}
+}
+
+# The nickname, unless she already carries the summary deed's. Scope: the player.
+tm_ach_nickname_effect = {
+	if = {
+		limit = { NOT = { has_nickname = tm_ach_nick_unmaker_of_fathers } }
+		give_nickname = $NICK$
+	}
+}

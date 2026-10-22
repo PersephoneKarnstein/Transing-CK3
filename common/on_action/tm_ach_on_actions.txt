@@ -1,0 +1,75 @@
+﻿# Crusader Dolls — the Deeds of the House (tm_ach_effects.txt). Players only.
+
+on_imprison = {
+	on_actions = { tm_ach_on_imprison }
+}
+
+quarterly_playable_pulse = {
+	on_actions = { tm_ach_grandmother_pulse }
+}
+
+# root: the prisoner; scope:imprisoner (vanilla prison_on_actions.txt). A Muslim lord's councillor taken by a player is
+# noted at capture, in case prison costs him the seat before the knife (Al-Kunduri's Mercy).
+tm_ach_on_imprison = {
+	trigger = {
+		scope:imprisoner ?= { is_ai = no }
+		is_male = yes
+	}
+	effect = {
+		if = {
+			limit = {
+				exists = employer
+				tm_ach_is_vizier_of_trigger = { MASTER = employer }
+			}
+			set_variable = { name = tm_ach_vizier_of value = employer years = 5 }
+		}
+		else_if = {
+			limit = {
+				exists = liege
+				tm_ach_is_vizier_of_trigger = { MASTER = liege }
+			}
+			set_variable = { name = tm_ach_vizier_of value = liege years = 5 }
+		}
+	}
+}
+
+# Grandmother's House cuts with vanilla castration (tm_knife_vanilla_eunuch_outcome), which runs no rite of ours. Once a
+# quarter a player of that House checks whether the Pope or the Patriarch is a eunuch she castrated (vanilla
+# castrated_me opinion, 50 years). root: the player.
+tm_ach_grandmother_pulse = {
+	trigger = {
+		is_ai = no
+		rite ?= { rite_has_doctrine = tm_knife_grandmother }
+	}
+	effect = {
+		if = {
+			limit = {
+				NOT = { has_character_flag = tm_ach_pope_done }
+				title:k_papal_state.holder ?= {
+					OR = {
+						has_trait = eunuch_1
+						has_trait = beardless_eunuch
+					}
+					has_opinion_modifier = { target = root modifier = castrated_me }
+				}
+			}
+			title:k_papal_state.holder = { save_scope_as = tm_ach_target }
+			save_scope_value_as = { name = tm_ach_was_pope value = yes }
+			trigger_event = tm_ach.0002
+		}
+		else_if = {
+			limit = {
+				NOT = { has_character_flag = tm_ach_patriarch_done }
+				title:k_orthodox.holder ?= {
+					OR = {
+						has_trait = eunuch_1
+						has_trait = beardless_eunuch
+					}
+					has_opinion_modifier = { target = root modifier = castrated_me }
+				}
+			}
+			title:k_orthodox.holder = { save_scope_as = tm_ach_target }
+			trigger_event = tm_ach.0002
+		}
+	}
+}

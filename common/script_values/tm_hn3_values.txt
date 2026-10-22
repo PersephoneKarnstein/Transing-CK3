@@ -1,0 +1,31 @@
+﻿# Crusader Dolls — Ha-Nehpakhot in the Maghreb (docs/wave3/ha-nehpakhot-maghreb.md). Text variants only.
+# The era where a character lives (scope: a character). Where the books disagree on a year, one is picked:
+#   1  to 1 Nov. 1057: Qayrawan the seat of learning; the Banu Hilal plunder it on that day (Gil p. 741).
+#   2  from 1057: after Qayrawan. The Almoravids take Fes in 1074-75 (Bennison p. 337); the era starts at the sack,
+#      because the texts it selects speak of Qayrawan in the past tense.
+#   3  from 1146: the Almohads. Fes falls in 1146 (Bennison p. 341; Kraemer ch. 5 gives 1145: Bennison is used).
+#      In Ifriqiya from 1160: Abd al-Mu'min's campaign of 1159-60 and the Tunis decree (Bennison pp. 88, 342).
+#   4  from 1229: al-Ma'mun renounces Almohad mahdism and Hafsid Ifriqiya breaks away (Bennison p. 345; Hirschberg
+#      p. 363 gives 1228: Bennison is used, with Stillman p. 77 "after 1229"). The Banu Marin take Fes in 1248
+#      (Bennison p. 345; Hirschberg p. 364 gives 1250); no text names them, so the era does not split there.
+tm_hn3_maghreb_era = {
+	value = 1
+	if = {
+		limit = { current_date >= 1057.11.1 }
+		value = 2
+	}
+	if = {
+		limit = {
+			current_date >= 1146.1.1
+			OR = {
+				current_date >= 1160.1.1
+				tm_hn3_in_ifriqiya_trigger = no
+			}
+		}
+		value = 3
+	}
+	if = {
+		limit = { current_date >= 1229.1.1 }
+		value = 4
+	}
+}

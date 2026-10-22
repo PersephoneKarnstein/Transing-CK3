@@ -1,0 +1,15 @@
+﻿# Crusader Dolls — landless bands of the six faiths, wave 4 (docs/wave4/bands.md).
+
+# How well a character (scope) could lead a band: war, the purse and keeping people together. Tor pp. 110-111: the
+# companions chose Yaʿqūb "for his organising skill and his care for their affairs".
+tm_band_leadership_value = {
+	value = martial
+	add = stewardship
+	add = diplomacy
+}
+
+# The same, plus ten: a companion must lead clearly better than the leader she would replace.
+tm_band_leadership_value_plus_ten = {
+	value = tm_band_leadership_value
+	add = 10
+}

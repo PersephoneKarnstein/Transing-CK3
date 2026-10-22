@@ -1,0 +1,517 @@
+﻿namespace = tm_bae2
+
+# Crusader Dolls — Bædling stage 2 (docs/wave3/baedling.md).
+#   0001-0021  Spring the Cell (common/schemes/scheme_types/tm_bae2_schemes.txt); 0002 the AI's plotter search
+#   0100-0135  Outlawry: the suit, the sentence, an outlaw abroad, the settlement, forgiven for the war
+# Landless bands have no events: tm_bae2_answer_hall_decision and tm_bae2_title_gain (tm_bae2_on_actions.txt).
+
+# ===================================================================================================
+# Spring the Cell
+# ===================================================================================================
+
+# A night when the cell could be opened. Root = the plotter; scope:tm_bae2_scheme = the scheme.
+tm_bae2.0001 = {
+	type = character_event
+	title = tm_bae2.0001.t
+	desc = tm_bae2.0001.desc
+	theme = intrigue
+	override_background = { reference = dungeon }
+	left_portrait = { character = root animation = scheme }
+	right_portrait = { character = scope:tm_bae2_jailer animation = idle }
+
+	trigger = {
+		exists = scope:tm_bae2_scheme
+		scope:tm_bae2_scheme = {
+			scheme_target_character = { tm_bae2_cell_jailer_trigger = { PLOTTER = root } }
+		}
+	}
+
+	immediate = {
+		save_scope_as = tm_bae2_plotter
+		scope:tm_bae2_scheme = {
+			scheme_target_character = { save_scope_as = tm_bae2_jailer }
+		}
+		scope:tm_bae2_jailer = {
+			random_prisoner = {
+				limit = { tm_bae2_cell_prisoner_trigger = yes }
+				save_scope_as = tm_bae2_freed
+			}
+		}
+	}
+
+	option = {	# Open the cell tonight
+		name = tm_bae2.0001.a
+		custom_tooltip = tm_bae2.0001.a.tt
+		hidden_effect = {
+			random = {
+				chance = scope:tm_bae2_scheme.scheme_success_chance
+				save_scope_value_as = { name = tm_bae2_success value = yes }
+			}
+			random = {
+				chance = {
+					value = 100
+					subtract = scope:tm_bae2_scheme.scheme_secrecy
+				}
+				save_scope_value_as = { name = tm_bae2_discovered value = yes }
+			}
+			if = {
+				limit = { exists = scope:tm_bae2_success }
+				trigger_event = tm_bae2.0010
+			}
+			else = {
+				trigger_event = tm_bae2.0020
+			}
+		}
+		ai_chance = {
+			base = 50
+			modifier = {
+				add = 100
+				scope:tm_bae2_scheme = { scheme_success_chance >= 60 }
+			}
+			modifier = {
+				add = -40
+				scope:tm_bae2_scheme = { scheme_success_chance < 30 }
+			}
+		}
+	}
+	option = {	# Wait for a better night
+		name = tm_bae2.0001.b
+		custom_tooltip = tm_bae2.0001.b.tt
+		ai_chance = {
+			base = 30
+			modifier = { add = 30 has_trait = patient }
+			modifier = { add = -20 has_trait = impatient }
+		}
+	}
+}
+
+# The AI looks for a plotter (tm_bae2_yearly_cell). Root = a jailer.
+tm_bae2.0002 = {
+	hidden = yes
+	trigger = { any_prisoner = { tm_bae2_cell_prisoner_trigger = yes } }
+	immediate = {
+		save_scope_as = tm_bae2_jailer
+		tm_bae2_ai_find_plotter_effect = yes
+	}
+}
+
+# The cell is open. Root = the plotter.
+tm_bae2.0010 = {
+	type = character_event
+	title = tm_bae2.0010.t
+	desc = {
+		desc = tm_bae2.0010.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:tm_bae2_discovered }
+				desc = tm_bae2.0010.desc.known
+			}
+			desc = tm_bae2.0010.desc.unknown
+		}
+	}
+	theme = intrigue
+	override_background = { reference = dungeon }
+	left_portrait = { character = root animation = happiness }
+	right_portrait = { character = scope:tm_bae2_freed animation = personality_rational }
+
+	immediate = {
+		tm_bae2_spring_all_effect = yes
+		scope:tm_bae2_jailer = { trigger_event = tm_bae2.0011 }
+		scope:tm_bae2_freed ?= {
+			if = {
+				limit = { is_ai = no }
+				trigger_event = tm_bae2.0012
+			}
+		}
+	}
+
+	option = {
+		name = tm_bae2.0010.a
+		add_piety = minor_piety_gain
+		scope:tm_bae2_scheme ?= { end_scheme = yes }
+	}
+}
+
+# The jailer finds the cell empty. Root = the jailer.
+tm_bae2.0011 = {
+	type = character_event
+	title = tm_bae2.0011.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:tm_bae2_discovered }
+				desc = tm_bae2.0011.desc.known
+			}
+			desc = tm_bae2.0011.desc.unknown
+		}
+	}
+	theme = prison
+	override_background = { reference = dungeon }
+	left_portrait = { character = root animation = rage }
+	right_portrait = {
+		character = scope:tm_bae2_plotter
+		animation = scheme
+		trigger = { exists = scope:tm_bae2_discovered }
+	}
+
+	option = {
+		name = tm_bae2.0011.a
+		trigger = { exists = scope:tm_bae2_discovered }
+		add_opinion = {
+			target = scope:tm_bae2_plotter
+			modifier = tm_bae2_sprang_my_cell_opinion
+		}
+		add_character_modifier = {
+			modifier = watchful_modifier
+			days = watchful_modifier_duration
+		}
+	}
+	option = {
+		name = tm_bae2.0011.b
+		trigger = { NOT = { exists = scope:tm_bae2_discovered } }
+		add_character_modifier = {
+			modifier = watchful_modifier
+			days = watchful_modifier_duration
+		}
+	}
+}
+
+# A player prisoner walks out. Root = the freed woman.
+tm_bae2.0012 = {
+	type = character_event
+	title = tm_bae2.0012.t
+	desc = tm_bae2.0012.desc
+	theme = faith
+	override_background = { reference = terrain }
+	left_portrait = { character = root animation = happiness }
+	right_portrait = { character = scope:tm_bae2_plotter animation = personality_rational }
+
+	option = { name = tm_bae2.0012.a }
+}
+
+# The attempt fails. Root = the plotter.
+tm_bae2.0020 = {
+	type = character_event
+	title = tm_bae2.0020.t
+	desc = {
+		desc = tm_bae2.0020.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:tm_bae2_discovered }
+				desc = tm_bae2.0020.desc.known
+			}
+			desc = tm_bae2.0020.desc.unknown
+		}
+	}
+	theme = intrigue
+	override_background = { reference = dungeon }
+	left_portrait = { character = root animation = stress }
+
+	immediate = {
+		scope:tm_bae2_jailer = { trigger_event = tm_bae2.0021 }
+	}
+
+	option = {	# Give it up
+		name = tm_bae2.0020.a
+		scope:tm_bae2_scheme ?= { end_scheme = yes }
+		ai_chance = { base = 60 }
+	}
+	option = {	# Try again
+		name = tm_bae2.0020.b
+		custom_tooltip = restart_scheme_tt
+		scope:tm_bae2_scheme ?= { reset_failed_scheme_effect = yes }
+		ai_chance = {
+			base = 40
+			modifier = { add = 100 has_trait = stubborn }
+			modifier = { add = 50 has_relation_tm_sister = scope:tm_bae2_freed }
+		}
+	}
+}
+
+# The jailer hears of an attempt. Root = the jailer.
+tm_bae2.0021 = {
+	type = character_event
+	title = tm_bae2.0021.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:tm_bae2_discovered }
+				desc = tm_bae2.0021.desc.known
+			}
+			desc = tm_bae2.0021.desc.unknown
+		}
+	}
+	theme = prison
+	override_background = { reference = dungeon }
+	left_portrait = { character = root animation = anger }
+	right_portrait = {
+		character = scope:tm_bae2_plotter
+		animation = scheme
+		trigger = { exists = scope:tm_bae2_discovered }
+	}
+
+	option = {
+		name = tm_bae2.0021.a
+		trigger = { exists = scope:tm_bae2_discovered }
+		add_opinion = {
+			target = scope:tm_bae2_plotter
+			modifier = tm_bae2_tried_my_cell_opinion
+		}
+		add_character_modifier = {
+			modifier = watchful_modifier
+			days = watchful_modifier_duration
+		}
+	}
+	option = {
+		name = tm_bae2.0021.b
+		trigger = { NOT = { exists = scope:tm_bae2_discovered } }
+		add_character_modifier = {
+			modifier = watchful_modifier
+			days = watchful_modifier_duration
+		}
+	}
+}
+
+# ===================================================================================================
+# Outlawry. Sources: Grágás K §§51-55, §155, §254 (research/norse_gragas_laws.md §1.2-1.3); Mitchell pp. 150,
+# 159-61 (research/norse_mitchell_witchcraft_magic.md); Ahola pp. 85-104, 197, 227 (research/norse_ahola_outlawry.md);
+# Miller pp. 234-39, 262-77 (research/norse_miller_bloodtaking.md). Fired from tm_bae2_yearly_outlawry.
+# Scopes: scope:tm_bae2_outlaw = the Bædling; scope:tm_bae2_lord = her lord, where the suit is heard;
+# scope:tm_bae2_accuser = who brings it; scope:tm_bae2_charge = flag:seidr or flag:dress.
+# ===================================================================================================
+
+# The suit is brought at the lord's court. Root = the lord (a Christian lord of Norse heritage, from 1100).
+tm_bae2.0100 = {
+	type = character_event
+	title = tm_bae2.0100.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:tm_bae2_charge = flag:seidr }
+				desc = tm_bae2.0100.desc.seidr
+			}
+			desc = tm_bae2.0100.desc.dress
+		}
+		desc = tm_bae2.0100.desc.end
+	}
+	theme = faith
+	override_background = { reference = terrain }
+	left_portrait = { character = scope:tm_bae2_accuser animation = disapproval }
+	right_portrait = { character = scope:tm_bae2_outlaw animation = personality_rational }
+
+	trigger = {
+		scope:tm_bae2_outlaw = {
+			is_alive = yes
+			tm_bae2_outlawry_candidate_trigger = yes
+		}
+		scope:tm_bae2_accuser = { is_alive = yes }
+	}
+
+	option = {	# Let the law take its course
+		name = tm_bae2.0100.a
+		custom_tooltip = tm_bae2.0100.a.tt
+		scope:tm_bae2_outlaw = { trigger_event = tm_bae2.0101 }
+		ai_chance = {
+			base = 60
+			modifier = { add = 30 has_trait = zealous }
+			modifier = { add = 20 has_trait = just }
+		}
+	}
+	option = {	# Quash the suit
+		name = tm_bae2.0100.b
+		scope:tm_bae2_accuser = {
+			if = {
+				limit = { NOT = { this = root } }
+				add_opinion = { target = root modifier = tm_bae2_suit_quashed_opinion }
+			}
+		}
+		add_piety = minor_piety_loss
+		ai_chance = {
+			base = 25
+			opinion_modifier = { opinion_target = scope:tm_bae2_outlaw multiplier = 0.5 }
+			modifier = { add = 30 has_trait = compassionate }
+			modifier = { add = 20 has_trait = cynical }
+			modifier = { factor = 0 this = scope:tm_bae2_accuser }
+		}
+	}
+}
+
+# The sentence. Root = the Bædling (always AI: she is no ruler).
+tm_bae2.0101 = {
+	type = character_event
+	title = tm_bae2.0101.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:tm_bae2_charge = flag:seidr }
+				desc = tm_bae2.0101.desc.seidr
+			}
+			desc = tm_bae2.0101.desc.dress
+		}
+	}
+	theme = faith
+	override_background = { reference = terrain }
+	left_portrait = { character = root animation = personality_rational }
+	right_portrait = { character = scope:tm_bae2_accuser animation = disapproval }
+
+	immediate = { save_scope_as = tm_bae2_outlaw }
+
+	option = {	# Six housewives will swear for me (the sorcery charge only: Gulaþing, Mitchell pp. 160-61)
+		name = tm_bae2.0101.a
+		trigger = { scope:tm_bae2_charge = flag:seidr }
+		custom_tooltip = tm_bae2.0101.a.tt
+		random_list = {
+			50 = {
+				modifier = { add = 20 tm_house_member_trigger = yes }
+				modifier = { add = 15 diplomacy >= 12 }
+				modifier = { add = -20 scope:tm_bae2_lord = { opinion = { target = root value < -20 } } }
+				# Cleared: the accuser is a slanderer (Mitchell p. 150).
+				set_variable = { name = tm_bae2_outlawry_cooldown value = yes years = 10 }
+				scope:tm_bae2_accuser = { add_prestige = minor_prestige_loss }
+				scope:tm_bae2_lord = {
+					send_interface_toast = {
+						title = tm_bae2.0101.cleared
+						left_icon = scope:tm_bae2_outlaw
+						right_icon = scope:tm_bae2_accuser
+					}
+				}
+			}
+			50 = {
+				# The oath fails: out of the realm.
+				tm_bae2_lesser_outlawry_effect = yes
+			}
+		}
+		ai_chance = { base = 60 }
+	}
+	option = {	# Pay the life-ring and go abroad for three winters
+		name = tm_bae2.0101.b
+		custom_tooltip = tm_bae2.0101.b.tt
+		tm_bae2_lesser_outlawry_effect = yes
+		ai_chance = {
+			base = 50
+			modifier = { add = 30 has_trait = calm }
+			modifier = { add = 30 has_trait = craven }
+		}
+	}
+	option = {	# Refuse the ring: the woods
+		name = tm_bae2.0101.c
+		custom_tooltip = tm_bae2.0101.c.tt
+		tm_bae2_full_outlawry_effect = yes
+		ai_chance = {
+			base = 15
+			modifier = { add = 40 has_trait = stubborn }
+			modifier = { add = 40 has_trait = wrathful }
+			modifier = { add = 20 has_trait = brave }
+			modifier = { factor = 0 has_trait = craven }
+		}
+	}
+}
+
+# An outlaw comes to a player's court from abroad. Root = the ruler who took her in.
+tm_bae2.0110 = {
+	type = character_event
+	title = tm_bae2.0110.t
+	desc = tm_bae2.0110.desc
+	theme = faith
+	override_background = { reference = terrain }
+	left_portrait = { character = scope:tm_bae2_exile animation = worry }
+
+	trigger = {
+		scope:tm_bae2_exile = { is_courtier_of = root }
+	}
+
+	option = {	# Keep her
+		name = tm_bae2.0110.a
+		custom_tooltip = tm_bae2.0110.a.tt
+		scope:tm_bae2_exile.var:tm_bae2_accuser ?= {
+			add_opinion = { target = root modifier = tm_bae2_harbours_outlaw_opinion }
+		}
+		add_prestige = minor_prestige_gain
+	}
+	option = {	# Send her on
+		name = tm_bae2.0110.b
+		scope:tm_bae2_exile = { tm_send_on_effect = { EXCLUDE = root } }
+	}
+}
+
+# A full outlaw offers compensation for a settlement (Miller pp. 262-77; Ahola p. 100). Root = the accuser;
+# scope:tm_bae2_outlaw = the outlaw; scope:tm_bae2_price = the sum.
+tm_bae2.0130 = {
+	type = character_event
+	title = tm_bae2.0130.t
+	desc = tm_bae2.0130.desc
+	theme = stewardship
+	override_background = { reference = study }
+	left_portrait = { character = scope:tm_bae2_outlaw animation = personality_rational }
+
+	trigger = {
+		scope:tm_bae2_outlaw = {
+			is_alive = yes
+			has_character_modifier = tm_bae2_full_outlaw_modifier
+			gold >= scope:tm_bae2_price
+		}
+	}
+
+	option = {	# Take the price
+		name = tm_bae2.0130.a
+		scope:tm_bae2_outlaw = {
+			pay_short_term_gold = { target = root gold = scope:tm_bae2_price }
+			tm_bae2_lift_outlawry_effect = yes
+			add_opinion = { target = root modifier = tm_bae2_settled_with_me_opinion }
+		}
+		add_opinion = { target = scope:tm_bae2_outlaw modifier = tm_bae2_settled_with_me_opinion }
+		ai_chance = {
+			base = 50
+			modifier = { add = 40 has_trait = greedy }
+			modifier = { add = 30 has_trait = forgiving }
+			modifier = { add = -40 has_trait = vengeful }
+			modifier = { add = -40 has_trait = zealous }
+		}
+	}
+	option = {	# Refuse
+		name = tm_bae2.0130.b
+		scope:tm_bae2_outlaw = { set_variable = { name = tm_bae2_bot_refused value = yes years = 3 } }
+		ai_chance = {
+			base = 50
+			modifier = { add = 30 has_trait = stubborn }
+		}
+	}
+}
+
+# Forgiven for the war (Sophoulis pp. 117, 120 n. 26). Root = the ruler of the realm that outlawed her, with whom she
+# is fighting; scope:tm_bae2_outlaw = the outlaw. Once only.
+tm_bae2.0135 = {
+	type = character_event
+	title = tm_bae2.0135.t
+	desc = tm_bae2.0135.desc
+	theme = war
+	override_background = { reference = army_camp }
+	left_portrait = { character = scope:tm_bae2_outlaw animation = war_over_win }
+
+	trigger = {
+		scope:tm_bae2_outlaw = {
+			is_alive = yes
+			tm_bae2_is_outlaw_trigger = yes
+		}
+	}
+
+	option = {	# Pardon her
+		name = tm_bae2.0135.a
+		add_prestige = minor_prestige_loss
+		scope:tm_bae2_outlaw = {
+			tm_bae2_lift_outlawry_effect = yes
+			add_opinion = { target = root modifier = grateful_opinion opinion = 20 }
+		}
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = forgiving }
+			modifier = { add = 20 has_trait = just }
+			modifier = { add = -30 has_trait = zealous }
+			modifier = { add = -30 has_trait = vengeful }
+		}
+	}
+	option = {	# No pardon
+		name = tm_bae2.0135.b
+		ai_chance = { base = 60 }
+	}
+}

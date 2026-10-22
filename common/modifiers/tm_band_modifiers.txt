@@ -1,0 +1,9 @@
+﻿# Crusader Dolls — landless bands of the six faiths, wave 4 (docs/wave4/bands.md).
+
+# The Companions Choose: she handed the band to a stronger companion and stayed in its company. Character modifier,
+# 10 years. Honour, and an easier mind.
+tm_band_stepped_down_modifier = {
+	icon = prestige_positive
+	monthly_prestige = 0.5
+	stress_gain_mult = -0.15
+}

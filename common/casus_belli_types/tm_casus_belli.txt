@@ -16,10 +16,8 @@ tm_rescue_daughters_cb = {
 
 	allowed_for_character = {
 		scope:attacker.rite ?= { rite_has_parameter = tm_rescue_daughters_cb }
-		NOR = {
-			government_has_flag = government_is_landless_adventurer
-			government_has_flag = government_is_nomadic
-		}
+		# Landless bands may wage it (user, wave 3); on victory they land as vanilla's claim war lands them.
+		NOT = { government_has_flag = government_is_nomadic }
 	}
 
 	allowed_against_character = {
@@ -89,6 +87,26 @@ tm_rescue_daughters_cb = {
 						tm_captive_daughter_trigger = yes
 					}
 					add_to_list = tm_rescued
+				}
+			}
+		}
+		# A landless band lands as in vanilla's claim war (00_claim.txt): the adventurer trait, and her followers marked.
+		scope:attacker = {
+			if = {
+				limit = {
+					is_landless_adventurer = yes
+					NOT = { government_has_flag = government_is_nomadic }
+				}
+				hidden_effect = {
+					if = {
+						limit = { NOT = { has_trait = adventurer } }
+						add_trait = adventurer
+					}
+					save_scope_as = the_adventurer
+					every_courtier = {
+						set_variable = { name = former_camp_leader value = scope:the_adventurer }
+						add_trait = adventurer_follower
+					}
 				}
 			}
 		}

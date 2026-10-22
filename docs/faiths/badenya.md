@@ -70,6 +70,11 @@ Women held real power at this court: Sulaymān's chief wife, Qāsā, shared the 
 | *Mother's Children* (tenet) | Adopted daughters inherit as daughters of the blood; adoption is always possible; same-faith opinion +10. | Gomez 2018, chs. 3 and 6 (Ghana, 1063); Ibn Baṭṭūṭa, *Voyages* IV, p. 388; Ibn Khaldūn II, p. 111 | [note](../research/waf_gomez_african_dominion.md), [note](../research/waf_ibn_khaldun_mali.md) |
 | *The House Buries Its Own* (tm_badenya.0030) | When a daughter dies, her lord chooses: the House buries her under her own name, or her blood kin take her body, goods and birth name. | Bulman et al. 2023, ch. 3, p. 75, ch. 5, p. 96; Broqua 2017, ¶3; Gaudio 2009, pp. 192, 200, 204 | [note](../research/waf_bulman_corpus.md), [note](../research/waf_contemporary_gender.md), [note](../research/waf_gaudio_otu.md) |
 | *A Naming Feast* (tm_badenya.0020) | A daughter serves at three feasts, then may host, sitting while a jeli speaks for her. | Gaudio 2009, pp. 62–63, 164–169; Broqua 2017, ¶16, ¶34–35; Schulz 2002, p. 807 | [note](../research/waf_gaudio_otu.md), [note](../research/waf_contemporary_gender.md) |
+| *The Sister's Line* (tm_bd2.0002); *The Sister's Child* (tm_bd2.0001) | When a ruler of the faith dies, the heir pays the sister's share, honours it in words, or refuses, and the sister's child gains a claim. If the heir is the sister's child, she hears "My mother's name goes first". A Muslim heir answers from the law of inheritance. Ghana's custom is spoken of in the present tense before 1077 and in the past after. | al-Bakrī (de Slane p. 328; 455/1063); Ibn Khaldūn II, p. 111; Ibn Baṭṭūṭa IV, pp. 388, 443; Koné 2004, p. 2 (the belt and the milk) | [note](../research/later_starts/badenya_ghana_1066.md), [note](../research/waf_ibn_khaldun_mali.md) |
+| *A Hot Realm* / *Hot Words* (tm_bd2.0010) | A new ruler's realm is hot until a jelimuso's cool word settles a quarrel. | Jansen 2002, p. 53; Schulz 2002, pp. 797 n. 1, 816 and n. 49 | [note](../research/waf_jansen_kangaba_griots.md), [note](../research/waf_schulz_jelimusow.md) |
+| *Praise Before the Court* (tm_bd2.0020) | The jelimuso sings the ruler's line, the mother's name first, and is paid before everyone. At a king's court from 1330 the poet stands by the dais; from 1352 the parasol, the feather-bird bards and their admonition. | al-ʿUmarī (Wilks, in Austen (ed.) 1999, pp. 44–45); Ibn Baṭṭūṭa IV, pp. 406, 411–414; Schulz 2002, p. 797 n. 1 | [note](../research/waf_ibn_battuta_mali.md), [note](../research/waf_conrad_austen_sunjata.md) |
+| *Uninvited Praise* (tm_bd2.0030) | On the eighth day a jelimuso nobody sent for sings the child's name and must be paid. | Schulz 2002, p. 801 n. 10; Niane 1965, pp. 14–15 | [note](../research/waf_schulz_jelimusow.md) |
+| *Named With the King* (decision; tm_bd2.0040–0042) | From 1352 a ruler may name a woman (her spouse, a sister, her mother or her claiming mother; cis or trans) associate in rule; her name is said with the ruler's at the feast. The honour only: it ends by decision or at a death. | Ibn Baṭṭūṭa IV, p. 417 (Qasa); Gomez 2018, ch. 7 | [note](../research/waf_ibn_battuta_mali.md), [note](../research/waf_gomez_african_dominion.md) |
 | Holy site: Walata | Where a man's heir was his sister's son. | Ibn Baṭṭūṭa, *Voyages* IV, p. 388 | [note](../research/waf_ibn_battuta_mali.md) |
 | Holy site: Awkar | Ghana, where the heir was the sister's son. | Gomez 2018, ch. 3 (al-Bakrī) | [note](../research/waf_gomez_african_dominion.md) |
 | Holy site: Do | Al-Bakrī's "Daw" (1068), with medieval burial mounds; the epic's homeland of the Condé sisters. | Bulman et al. 2023, p. 18; Conrad and Condé 2004, p. xxxix | [note](../research/waf_bulman_corpus.md) |
@@ -89,9 +94,11 @@ Women held real power at this court: Sulaymān's chief wife, Qāsā, shared the 
 
 **The New Roof.** Every seventh dry season a court of the faith puts a new roof on its house. The daughters who crossed since the last roof are gathered into one age-set, whose name is told first and shouted when the roof is on (Jansen 2002, pp. 45–47, 52). The host pays for the roof, or lets the court's offerings be called aloud with each giver's name (p. 51); either way the set's members stand together for seven years. It is built on Mande house and age-set practice, not on the Kamabolon of Kangaba, and the seven-yearly roof as the faith's own is a reconstruction.
 
+**At court (stage 2).** In the observe runs Badenya often ends up a royal faith, so stage 2 adds what happens at a mansa's court as well as a count's. When a ruler of the faith dies, the heir answers the sister's line: pay the sister's share, honour it before the court, or refuse ("the belt is closer than the milk"), and the sister's child gains a claim. A Muslim heir answers from the law of inheritance, a lawful view and not villainy. A new ruler's realm is hot until a jelimuso's cool word settles a quarrel. The court's jelimuso sings the ruler's line, mother's name first, and must be paid before everyone; at a child's naming one may come uninvited. From 1352 a ruler may name a woman associate in rule. The House claims no king for the sister's line and names none. The design is in [docs/stage2/badenya.md](../stage2/badenya.md).
+
 **Growth.** The shared call reaches West Africa: each year a Marked person of another faith there may join Badenya, more likely with a member or a House nearby. In one test run a converted lord's line took Mali in 967 and Badenya ruled thirteen kingdoms; a faith this small should grow slowly, so Kirina now starts as a county and a court, not a converted lord. In a later run Badenya fell to one member in the 970s and recovered to 39 by the 1000s.
 
-**Neighbours.** Most of the faith's neighbours are Muslim. Under the shared rules, Islamic courts value a daughter as a trusted servant and think less of her as a ruler. That reaction leans partly on Leo Africanus's Fez of the early 16th century, where, as Davis reads him, people Leo calls men, in women's dress, cooked for the army and lamented the dead but were barred from the mosques (Davis 2006, chs. 4 and 7). The Maliki jurist at the mansa's court is the hostile voice. Jewish and Indic reactions apply as for every faith.
+**Neighbours.** Most of the faith's neighbours are Muslim. Under the shared rules, Islamic courts value a daughter as a trusted servant and think less of her as a ruler. That reaction leans partly on Leo Africanus's Fez of the early 16th century, where, as Davis reads him, people Leo calls men, in women's dress, cooked for the army and lamented the dead but were barred from the mosques (Davis 2006, chs. 4 and 7). The Maliki jurist at the mansa's court is the hostile voice. Since wave 4 a daughter at a Muslim court may also put herself under the lord's word, and a lord who keeps the code will not give her up to a demanding liege or neighbour. In the Sahel this is always *A Free Man's Word*: Tor's *futuwwa* belongs to Iran and Iraq before 1056, so the word *fityan* never appears here (Tor 2007, pp. 248–250; [docs/wave4/protection.md](../wave4/protection.md)). Jewish and Indic reactions apply as for every faith.
 
 **Designed, not yet built.** A refuge at the rock of Koulikoro, which from 1819 to about 1930 sheltered runaways of either sex fleeing a master or a spouse (Bulman et al. 2023, ch. 2, p. 63), without its shrine; and a warm misreading by the Orisha faith, which would see a daughter as a bride of the god (Matory 2005, pp. 7, 216–217).
 
@@ -101,6 +108,7 @@ Women held real power at this court: Sulaymān's chief wife, Qāsā, shared the 
 - Succession through a sister or sister's son at Ghana (al-Bakrī, 1068, via Gomez; Tunka Manīn, 1063), Walata and Tagaddā (Ibn Baṭṭūṭa, pp. 388, 443), and one Mali king chosen as a daughter's son (Ibn Khaldūn, p. 111).
 - A court where speech passed through a paid interpreter-singer and bird-masked bards admonished the king (Ibn Baṭṭūṭa, pp. 405, 411–414).
 - A queen who shared the government and was named with the king in the sermon (pp. 417–419).
+- A poet who spoke between the king and the people before Mali's throne (al-ʿUmarī, late 1330s).
 - Do as "Daw" (al-Bakrī via Bulman et al. 2023, p. 18).
 
 **Epic tradition, set in the 13th century and recorded from 1889 to 1994.**
@@ -114,6 +122,7 @@ Women held real power at this court: Sulaymān's chief wife, Qāsā, shared the 
 - The House, its three-step gate, and the gate's order.
 - The value the faith gives the sculptor's loss: in the source it is a demotion, and the faith reclaims it.
 - The djinn's single return, the coin-toss satire, and the gold amounts.
+- The hot realm after a succession, the heir's three answers to the sister's line, and the merging of Dugha's paid song with the masked bards' admonition in one jelimuso.
 - The House's burial as a doctrine.
 - Mande terms and god names: the high god "Ala", the spirits, the ancestors and the bush spirits all await a Mande speaker's check.
 
@@ -122,6 +131,7 @@ The design notes add a warning from van Beek's restudy of Griaule. A powerful ou
 ## Sources
 
 **Primary sources in translation**
+- al-Bakrī, *Description de l'Afrique septentrionale* (trans. de Slane, rev. ed., 1913), pp. 317–336; English in Levtzion and Hopkins, *Corpus of Early Arabic Sources for West African History* (1981), pp. 79–81. [note](../research/later_starts/badenya_ghana_1066.md)
 - Ibn Baṭṭūṭa, *Voyages*, vol. 4 (trans. Defrémery and Sanguinetti). [note](../research/waf_ibn_battuta_mali.md)
 - Ibn Khaldūn, *Histoire des Berbères*, vol. 2 (trans. de Slane). [note](../research/waf_ibn_khaldun_mali.md)
 - al-Saʿdī, *Tarikh es-Soudan* (trans. Houdas). [note](../research/waf_tarikh_es_soudan.md)
@@ -144,6 +154,7 @@ The design notes add a warning from van Beek's restudy of Griaule. A powerful ou
 - Matory, J. Lorand. 2005. *Sex and the Empire That Is No More: Gender and the Politics of Metaphor in Oyo Yoruba Religion*. 2nd ed. Berghahn. [note](../research/waf_matory_oyo.md)
 - Niane, D. T. 1965. *Sundiata: An Epic of Old Mali*. Trans. G. D. Pickett. Longman. [note](../research/waf_conrad_conde_sunjata.md)
 - Schulz, Dorothea E. 2002. "'The World Is Made by Talk': Female Fans, Popular Music, and New Forms of Public Sociality in Urban Mali." *Cahiers d'études africaines* 168: 797–829. [note](../research/waf_schulz_jelimusow.md)
+- Tor, D. G. 2007. *Violent Order: Religious Warfare, Chivalry, and the ʿAyyār Phenomenon in the Medieval Islamic World*. Istanbuler Texte und Studien 11. Ergon Verlag. Cited for the lord's word. [note](../research/isl_tor_violent_order.md)
 - van Beek, Walter E. A. 1991. "Dogon Restudied: A Field Evaluation of the Work of Marcel Griaule." *Current Anthropology* 32.2: 139–167. [note](../research/waf_vanbeek_dogon.md)
 
 **Theory**

@@ -1,0 +1,350 @@
+﻿namespace = tm_ml3
+
+# The Worn Garland, wave 4: the market town and the road (docs/wave4/garland.md).
+# Source: Kenneth R. Hall, Trade and Statecraft in the Age of the Colas (1980); research/ind_hall_cola_trade.md.
+# Hall's own words for temple women are not used. No guild member in Hall's records is a woman (note §8): the women
+# here give through the market, they do not join it. The narrator does not say the settlers of the dwindled quarter
+# or the guild's soldiers were of the faith.
+#   0010  the quarter that dwindled: a Hindu lord settles a daughter in an emptied quarter, free of its dues
+#   0020  heroes of the road: a band of the Garland takes a caravan to the coast (contract tm_ml3_caravan_contract)
+#   0021  drawn swords: halfway, a toll at sword point, or keep faith with the guild
+#   0022  the coast: the contract ends
+#   0030  where the heroes of the road conduct trade: after three caravans, the employer offers a frontier town
+#   0031  the band's answer; settling runs vanilla Negotiate Settlement's effect (negotiate_settlement_interaction_effect)
+#   0040  the lord of Vannadu: a guild town in a faction hears what happened at Valikandapuram
+# Saved scopes: tm_ml3_settler (0010); task_contract, employer, tm_ml3_outcome (0020–0022);
+# tm_ml3_band, tm_ml3_giver, tm_ml3_town (0030, 0031); tm_ml3_liege (0040).
+
+# ---------------------------------------------------------------------------------------------------
+# The quarter that dwindled. Root = a Hindu lord whose capital is poor or out of hand; scope:tm_ml3_settler = a
+# daughter of the Garland at court with no share. In Kanchipuram under Uttama Cola (r. 970–85, reign dates general
+# knowledge) a quarter that "had dwindled" and stopped supplying oil and rice to a temple was resettled tax-free
+# "in consideration of their poverty" (Madras Museum Plates; Hall 1980, pp. 74, 91). Those settlers were not women of
+# the temple, and the text does not say so. A share at no cost to the lord, at half pay for ten years.
+tm_ml3.0010 = {
+	type = character_event
+	title = tm_ml3.0010.t
+	desc = tm_ml3.0010.desc
+	theme = faith
+	left_portrait = { character = scope:tm_ml3_settler animation = personality_honorable }
+
+	trigger = {
+		exists = scope:tm_ml3_settler
+		exists = capital_county
+		scope:tm_ml3_settler = {
+			tm_ml2_share_candidate_trigger = yes
+			employer ?= root
+		}
+	}
+
+	immediate = {
+		capital_county = { save_scope_as = tm_ml2_share_county }
+	}
+
+	option = {	# Settle her there, free of the city's dues
+		name = tm_ml3.0010.a
+		add_piety = 10
+		scope:tm_ml3_settler = {
+			tm_ml2_grant_share_effect = { COUNTY = scope:tm_ml2_share_county }
+			set_variable = { name = tm_ml3_resettled value = yes years = 10 }
+			custom_tooltip = tm_ml3.0010.a.tt
+			add_opinion = { target = root modifier = grateful_opinion opinion = 15 }
+		}
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 gold < 50 }			# the lord is poor: the quarter costs him nothing
+			modifier = { add = 10 has_trait = generous }
+			modifier = { add = 10 has_trait = zealous }
+		}
+	}
+	option = {	# Let the quarter stand empty
+		name = tm_ml3.0010.b
+		scope:tm_ml3_settler = { add_opinion = { target = root modifier = disappointed_opinion opinion = -5 } }
+		ai_chance = {
+			base = 20
+			modifier = { add = 20 has_trait = arrogant }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Heroes of the road. Root = the leader of a band of the Garland who took tm_ml3_caravan_contract;
+# scope:task_contract; scope:employer = the ruler whose merchants hired the band.
+tm_ml3.0020 = {
+	type = character_event
+	title = tm_ml3.0020.t
+	desc = tm_ml3.0020.desc
+	theme = martial
+	override_background = { reference = market_india }
+	left_portrait = { character = root animation = marshal }
+	right_portrait = { character = scope:employer animation = personality_honorable }
+
+	trigger = {
+		exists = scope:task_contract
+		exists = scope:employer
+	}
+
+	option = {
+		name = tm_ml3.0020.a
+		trigger_event = { id = tm_ml3.0021 days = { 20 40 } }
+	}
+}
+
+# Drawn swords. The guild's rules for a town it protected barred merchants who "demanded taxes or tolls by threatening
+# people with drawn swords" (Kattur, 256 of 1912; Hall 1980, pp. 151, 193). Some armed merchant bands did; Hall reads
+# them as an occupation turned to banditry, not a people.
+tm_ml3.0021 = {
+	type = character_event
+	title = tm_ml3.0021.t
+	desc = tm_ml3.0021.desc
+	theme = martial
+	override_background = { reference = market_india }
+	left_portrait = { character = root animation = personality_rational }
+
+	trigger = {
+		exists = scope:task_contract
+	}
+
+	option = {	# Keep faith with the guild
+		name = tm_ml3.0021.a
+		add_prestige = 15
+		stress_impact = {
+			greedy = minor_stress_impact_gain
+		}
+		trigger_event = { id = tm_ml3.0022 days = { 20 40 } }
+		ai_chance = {
+			base = 60
+			modifier = { add = 20 has_trait = honest }
+			modifier = { add = 20 has_trait = just }
+		}
+	}
+	option = {	# Take the toll
+		name = tm_ml3.0021.b
+		add_gold = 30
+		scope:task_contract = { set_variable = { name = tm_ml3_toll value = yes } }
+		custom_tooltip = tm_ml3.0021.b.tt
+		stress_impact = {
+			honest = minor_stress_impact_gain
+			just = minor_stress_impact_gain
+		}
+		trigger_event = { id = tm_ml3.0022 days = { 20 40 } }
+		ai_chance = {
+			base = 15
+			modifier = { add = 25 has_trait = greedy }
+			modifier = { add = 10 has_trait = arbitrary }
+		}
+	}
+}
+
+# The coast. The contract ends here.
+tm_ml3.0022 = {
+	type = character_event
+	title = tm_ml3.0022.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:tm_ml3_outcome ?= flag:success }
+				desc = tm_ml3.0022.desc_success
+			}
+			triggered_desc = {
+				trigger = { scope:tm_ml3_outcome ?= flag:toll }
+				desc = tm_ml3.0022.desc_toll
+			}
+			desc = tm_ml3.0022.desc_road
+		}
+	}
+	theme = martial
+	override_background = { reference = docks }
+	left_portrait = { character = root animation = marshal }
+	right_portrait = { character = scope:employer animation = idle }
+
+	trigger = {
+		exists = scope:task_contract
+	}
+
+	immediate = {
+		random_list = {
+			75 = {
+				modifier = { add = -35 scope:task_contract = { has_variable = tm_ml3_toll } }
+				modifier = { add = 10 martial >= 12 }
+				modifier = { add = 5 prowess >= 12 }
+				save_scope_value_as = { name = tm_ml3_outcome value = flag:success }
+			}
+			25 = {
+				trigger = { scope:task_contract = { has_variable = tm_ml3_toll } }
+				save_scope_value_as = { name = tm_ml3_outcome value = flag:toll }
+			}
+			15 = {
+				modifier = { add = 10 martial < 8 }
+				save_scope_value_as = { name = tm_ml3_outcome value = flag:road }
+			}
+		}
+		if = {
+			limit = { scope:tm_ml3_outcome = flag:success }
+			scope:task_contract = { complete_task_contract = success_standard }
+			tm_ml3_caravan_done_effect = yes
+		}
+		else = {
+			scope:task_contract = { complete_task_contract = failure_standard }
+		}
+	}
+
+	option = {
+		name = {
+			trigger = { scope:tm_ml3_outcome = flag:success }
+			text = tm_ml3.0022.a
+		}
+		name = {
+			trigger = { NOT = { scope:tm_ml3_outcome = flag:success } }
+			text = tm_ml3.0022.b
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Where the heroes of the road conduct trade. Root = the employer of the band's third caravan; scope:tm_ml3_band.
+# An erivirapattinam lay "far from the heartlands", where the king's protection was "more symbolic than practical"
+# (Hall 1980, pp. 143, 151, 188). The lord offers his farthest county; the band answers in 0031.
+tm_ml3.0030 = {
+	type = character_event
+	title = tm_ml3.0030.t
+	desc = tm_ml3.0030.desc
+	theme = stewardship
+	override_background = { reference = market_india }
+	left_portrait = { character = scope:tm_ml3_band animation = marshal }
+
+	trigger = {
+		exists = scope:tm_ml3_band
+		tm_ml3_town_giver_trigger = yes
+		scope:tm_ml3_band = {
+			is_alive = yes
+			government_has_flag = government_is_landless_adventurer
+		}
+		NOT = { has_relation_nemesis = scope:tm_ml3_band }
+	}
+
+	immediate = {
+		save_scope_as = tm_ml3_giver
+		ordered_held_county = {
+			limit = { tm_ml3_town_county_trigger = yes }
+			order_by = "title_province.squared_distance(root.capital_province)"
+			save_scope_as = tm_ml3_town
+		}
+	}
+
+	option = {	# Settle the band there
+		name = tm_ml3.0030.a
+		scope:tm_ml3_band = { trigger_event = { id = tm_ml3.0031 days = { 3 7 } } }
+		custom_tooltip = tm_ml3.0030.a.tt
+		ai_chance = {
+			base = 25
+			modifier = { add = 20 has_trait = generous }
+			modifier = { add = 15 has_trait = craven }
+			modifier = { add = 10 scope:tm_ml3_town = { county_control < 60 } }
+			modifier = { add = -15 has_trait = greedy }
+		}
+	}
+	option = {	# My own officers will keep that road
+		name = tm_ml3.0030.b
+		ai_chance = {
+			base = 50
+			modifier = { add = 20 has_trait = paranoid }
+		}
+	}
+}
+
+# The band's answer. Root = the band's leader; scope:tm_ml3_giver, scope:tm_ml3_town.
+# At Kattur the Five Hundred freed a town of its communal dues and gave its people "twice the privileges" they had
+# before (Hall 1980, p. 144).
+tm_ml3.0031 = {
+	type = character_event
+	title = tm_ml3.0031.t
+	desc = tm_ml3.0031.desc
+	theme = martial
+	override_background = { reference = army_camp }
+	left_portrait = { character = root animation = personality_rational }
+	right_portrait = { character = scope:tm_ml3_giver animation = idle }
+
+	trigger = {
+		exists = scope:tm_ml3_town
+		government_has_flag = government_is_landless_adventurer
+		scope:tm_ml3_town.holder ?= scope:tm_ml3_giver
+		scope:tm_ml3_giver = { tm_ml3_town_giver_trigger = yes }
+	}
+
+	option = {	# Hold it, and free the town of its dues
+		name = tm_ml3.0031.a
+		trigger = { gold >= 50 }
+		remove_short_term_gold = 50
+		scope:tm_ml3_town = { add_county_modifier = { modifier = tm_ml3_dues_freed_county_modifier years = 10 } }
+		tm_ml3_settle_band_effect = yes
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = generous }
+			modifier = { add = 10 has_trait = just }
+		}
+	}
+	option = {	# Hold it
+		name = tm_ml3.0031.b
+		tm_ml3_settle_band_effect = yes
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = greedy }
+		}
+	}
+	option = {	# The road is our home
+		name = tm_ml3.0031.c
+		add_prestige = 10
+		ai_chance = {
+			base = 10
+			modifier = { add = 20 has_trait = lifestyle_traveler }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The lord of Vannadu. Root = a ruler of the Garland holding a guild town (tm_ml3_erivira) who has joined a faction
+# against her liege; scope:tm_ml3_liege. At Valikandapuram a guild of "eighteen lands" claimed the town as its
+# tenure (late 12th c.), then sided with "the lord of Vannadu" against the king; under Rajaraja III (1216–60) two
+# Hoysala generals put the rebel down and redrew three nadu into two (Hall 1980, pp. 194–95). From 1220, when the
+# story can be told. A warning only: nothing is taken from her.
+tm_ml3.0040 = {
+	type = character_event
+	title = tm_ml3.0040.t
+	desc = tm_ml3.0040.desc
+	theme = martial
+	override_background = { reference = market_india }
+	left_portrait = { character = root animation = worry }
+	right_portrait = { character = scope:tm_ml3_liege animation = anger }
+
+	trigger = {
+		exists = scope:tm_ml3_liege
+		is_a_faction_member = yes
+		liege ?= scope:tm_ml3_liege
+	}
+
+	immediate = {
+		set_variable = { name = tm_ml3_warned value = yes years = 20 }
+	}
+
+	option = {	# Leave the faction
+		name = tm_ml3.0040.a
+		joined_faction = { save_scope_as = tm_ml3_faction }
+		leave_faction = scope:tm_ml3_faction
+		scope:tm_ml3_liege = { add_opinion = { target = root modifier = respect_opinion opinion = 10 } }
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = craven }
+			modifier = { add = 10 has_trait = content }
+		}
+	}
+	option = {	# We know our own road
+		name = tm_ml3.0040.b
+		add_prestige = 10
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = ambitious }
+			modifier = { add = 10 has_trait = brave }
+		}
+	}
+}

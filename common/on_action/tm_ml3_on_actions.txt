@@ -1,0 +1,108 @@
+﻿# Crusader Dolls — the Worn Garland, wave 4 (events/tm_ml3_events.txt; docs/wave4/garland.md).
+
+yearly_playable_pulse = {
+	on_actions = {
+		tm_ml3_yearly
+	}
+}
+
+tm_ml3_yearly = {
+	effect = {
+		# The quarter that dwindled (0010): a poor Hindu lord with a daughter of the Garland at court and no share.
+		if = {
+			limit = {
+				tm_ml3_dwindled_lord_trigger = yes
+				tm_flavour_ready_trigger = yes
+				any_courtier = { tm_ml2_share_candidate_trigger = yes }
+			}
+			random = {
+				chance = 3
+				modifier = {						# the women's deals and shares peak 1070–1300 (Orr 2000, pp. 74–75)
+					add = 2
+					current_year >= 1070
+					current_year < 1300
+				}
+				random_courtier = {
+					limit = { tm_ml2_share_candidate_trigger = yes }
+					save_scope_as = tm_ml3_settler
+				}
+				tm_flavour_spent_effect = yes
+				trigger_event = { id = tm_ml3.0010 days = { 1 300 } }
+			}
+		}
+
+		# Heroes of the road: an AI band of the Garland with no contract under way is hired by the lord of the county
+		# where it camps, or by that lord's liege. Players find the same contract on the contract map.
+		if = {
+			limit = {
+				is_ai = yes
+				tm_ml3_garland_band_trigger = yes
+				num_taken_task_contracts = 0
+				exists = location.county.holder
+			}
+			random = {
+				chance = 20
+				location.county.holder = {
+					if = {
+						limit = {
+							tm_ml3_caravan_employer_trigger = yes
+							root = {
+								can_create_task_contract = {
+									type_name = tm_ml3_caravan_contract
+									employer = prev
+								}
+							}
+						}
+						save_scope_as = tm_ml3_hirer
+					}
+					else_if = {
+						limit = {
+							exists = top_liege
+							top_liege = { tm_ml3_caravan_employer_trigger = yes }
+							root = {
+								can_create_task_contract = {
+									type_name = tm_ml3_caravan_contract
+									employer = prev.top_liege
+								}
+							}
+						}
+						top_liege = { save_scope_as = tm_ml3_hirer }
+					}
+				}
+				if = {
+					limit = { exists = scope:tm_ml3_hirer }
+					create_task_contract = {
+						task_contract_type = tm_ml3_caravan_contract
+						task_contract_tier = scope:tm_ml3_hirer.task_contract_tier_value
+						location = scope:tm_ml3_hirer.capital_province
+						task_contract_employer = scope:tm_ml3_hirer
+						save_scope_as = tm_ml3_new_contract
+					}
+					if = {
+						limit = { exists = scope:tm_ml3_new_contract }
+						accept_task_contract = scope:tm_ml3_new_contract
+					}
+				}
+			}
+		}
+
+		# The lord of Vannadu (0040): a ruler of the Garland holding a guild town, in a faction against her liege.
+		if = {
+			limit = {
+				current_year >= 1220
+				faith = faith:tm_garland
+				is_landed = yes
+				is_a_faction_member = yes
+				exists = liege
+				NOT = { liege = this }
+				NOT = { has_variable = tm_ml3_warned }
+				any_held_county = { has_variable = tm_ml3_erivira }
+			}
+			random = {
+				chance = 25
+				liege = { save_scope_as = tm_ml3_liege }
+				trigger_event = { id = tm_ml3.0040 days = { 1 60 } }
+			}
+		}
+	}
+}

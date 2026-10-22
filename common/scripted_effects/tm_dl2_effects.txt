@@ -1,0 +1,170 @@
+﻿# Crusader Dolls — Adelphai Dorleyaiou stage 2 (wave 3): the Galenic splinter rite and events from the Byzantine reading.
+# Design note: docs/wave3/dorley.md. Events: events/tm_dl2_events.txt. Decisions: common/decisions/tm_dl2_decisions.txt.
+
+# Found the Galenic rite. Pattern: vanilla daoxue / quanzhen (00_historical_characters_scripted_effects.txt):
+# create_rite_from_type once, guarded by a global variable, then rite:<key> is safe to use.
+# Scope: the founder (a Dorleyaian ruler of the main rite).
+tm_dl2_found_galenic_effect = {
+	save_scope_as = tm_dl2_founder
+	rite = { save_scope_as = tm_dl2_old_rite }
+	create_rite_from_type = {
+		type = tm_galenic_rite
+		save_scope_as = tm_dl2_new_rite
+		convert = yes
+	}
+	set_global_variable = { name = tm_dl2_galenic_founded value = yes }
+	# Keep the founder's House of the knife: the wings split on the body, not on who may be cut.
+	scope:tm_dl2_new_rite = {
+		if = {
+			limit = { scope:tm_dl2_old_rite = { rite_has_doctrine = tm_knife_grandmother } }
+			change_rite_doctrine = tm_knife_grandmother
+		}
+		else_if = {
+			limit = { scope:tm_dl2_old_rite = { rite_has_doctrine = tm_knife_gift_alone } }
+			change_rite_doctrine = tm_knife_gift_alone
+		}
+	}
+	# The founder's own seat follows her, if its people are of the faith; nothing else is converted.
+	if = {
+		limit = { capital_county ?= { faith = scope:tm_dl2_founder.faith } }
+		capital_county = { set_county_rite = scope:tm_dl2_new_rite }
+	}
+	tm_dl2_galenic_reactions_effect = yes
+}
+
+# Join the Galenic rite once it exists. Scope: the ruler.
+tm_dl2_adopt_galenic_effect = {
+	save_scope_as = tm_dl2_founder
+	set_character_rite_with_conversion = rite:tm_galenic_rite
+	tm_dl2_galenic_reactions_effect = yes
+}
+
+# Who answers when a ruler takes the Emperor's count. Scope: the ruler (scope:tm_dl2_founder).
+# A liege of another Christian faith thinks better of her; the Mother of Mothers, if she keeps the main rite, answers
+# by event (tm_dl2.0002), where she may or may not hold it against her.
+tm_dl2_galenic_reactions_effect = {
+	if = {
+		limit = {
+			liege ?= {
+				NOT = { this = root }
+				NOT = { faith = root.faith }
+				faith = { religion_tag = christianity_religion }
+			}
+		}
+		liege = { add_opinion = { target = root modifier = tm_dl2_agrees_with_emperor_opinion } }
+	}
+	if = {
+		limit = {
+			title:d_tm_mother_house.holder ?= {
+				NOT = { this = root }
+				faith = root.faith
+				rite ?= { rite_has_doctrine = tm_body_aristotelian }
+			}
+		}
+		title:d_tm_mother_house.holder = { trigger_event = { id = tm_dl2.0002 days = { 7 30 } } }
+	}
+}
+
+# The recipient of a once-only Byzantine event: the Mother of Mothers if she is of the faith, else the greatest
+# ruler of the faith (same rule as tm_byzr_yearly_global). Saves scope:tm_dl2_mother if anyone qualifies.
+tm_dl2_pick_mother_effect = {
+	clear_saved_scope = tm_dl2_mother
+	if = {
+		limit = { title:d_tm_mother_house.holder ?= { faith = faith:transbian_maximalism } }
+		title:d_tm_mother_house.holder = { save_scope_as = tm_dl2_mother }
+	}
+	else = {
+		ordered_ruler = {
+			faith_filter = faith:transbian_maximalism
+			order_by = {
+				value = highest_held_title_tier
+				multiply = 1000
+				add = sub_realm_size
+			}
+			save_scope_as = tm_dl2_mother
+		}
+	}
+}
+
+# Sends a once-only event to scope:tm_dl2_mother and to every human player of the faith (players who are not the
+# Mother of Mothers would otherwise never see the faith's history happen). $EVENT$ = the event id; $DAYS$ = delay.
+tm_dl2_send_to_faith_effect = {
+	scope:tm_dl2_mother = { trigger_event = { id = $EVENT$ days = $DAYS$ } }
+	every_player = {
+		limit = {
+			faith = faith:transbian_maximalism
+			NOT = { this = scope:tm_dl2_mother }
+		}
+		trigger_event = { id = $EVENT$ days = $DAYS$ }
+	}
+}
+
+# Children taken off the Tarsus train (tm_dl2.0020) come to root's court and root adopts them. Some were cut
+# before they reached the road (El-Azhari 2019, pp. 143-45, 254; Ayalon 1999, p. 107); none is cut here and none is
+# given a rite or a name: whoever asks, later and grown, asks for herself. Rum boys: Greek culture.
+# Scope: root. $CUT$ / $UNCUT$ = how many of each (each at least 1).
+tm_dl2_take_in_children_effect = {
+	save_scope_as = tm_dl2_house
+	while = {
+		count = $CUT$
+		create_character = {
+			age = { 8 12 }
+			gender = male
+			trait = eunuch_1
+			faith = scope:tm_dl2_house.faith
+			culture = culture:greek
+			dynasty = none
+			employer = scope:tm_dl2_house
+			save_temporary_scope_as = tm_dl2_child
+		}
+		adopt_effect = { CHILD = scope:tm_dl2_child ADOPTER = scope:tm_dl2_house }
+	}
+	while = {
+		count = $UNCUT$
+		create_character = {
+			age = { 8 12 }
+			gender = male
+			faith = scope:tm_dl2_house.faith
+			culture = culture:greek
+			dynasty = none
+			employer = scope:tm_dl2_house
+			save_temporary_scope_as = tm_dl2_child
+		}
+		adopt_effect = { CHILD = scope:tm_dl2_child ADOPTER = scope:tm_dl2_house }
+	}
+}
+
+# Only the children who were already cut (Grandmother's House). Scope: root.
+tm_dl2_take_cut_children_effect = {
+	save_scope_as = tm_dl2_house
+	while = {
+		count = 2
+		create_character = {
+			age = { 8 12 }
+			gender = male
+			trait = eunuch_1
+			faith = scope:tm_dl2_house.faith
+			culture = culture:greek
+			dynasty = none
+			employer = scope:tm_dl2_house
+			save_temporary_scope_as = tm_dl2_child
+		}
+		adopt_effect = { CHILD = scope:tm_dl2_child ADOPTER = scope:tm_dl2_house }
+	}
+}
+
+# The convent steward (tm_dl2.0050): an adult eunuch, cut as a child for service, of the steward's own church.
+# Comes to root's court. Scope: root. Saves scope:tm_dl2_steward.
+tm_dl2_create_steward_effect = {
+	create_character = {
+		age = { 35 55 }
+		gender = male
+		trait = eunuch_1
+		trait = diligent
+		faith = faith:orthodox
+		culture = culture:greek
+		dynasty = none
+		employer = root
+		save_scope_as = tm_dl2_steward
+	}
+}

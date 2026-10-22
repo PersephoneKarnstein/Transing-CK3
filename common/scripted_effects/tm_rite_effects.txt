@@ -111,7 +111,9 @@ tm_sponsor_reward_effect = {
 
 # The knife itself (Adelphai Dorleyaiou).
 tm_take_the_knife_effect = {
+	tm_ach_before_knife_effect = yes	# Deeds of the House: note the target before the knife (tm_ach_effects.txt)
 	tm_rise_daughter_effect = { TRAIT = tm_daughter_of_the_knife RENAME = tm_knife.0002 }
+	tm_ach_after_knife_effect = yes
 }
 
 # Raise by whatever gate the root ruler's rite keeps (arrivals). Scope: the newcomer. ROOT_RULER = whose rite.

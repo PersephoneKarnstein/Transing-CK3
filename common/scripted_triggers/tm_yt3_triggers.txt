@@ -1,0 +1,94 @@
+﻿# Crusader Dolls — Yutai Dao and the Sogdians of Dunhuang (tm_yt3_events.txt; design note docs/wave4/yutai-sogdians.md).
+# Source: de la Vaissiere, Sogdian Traders (2005), research/cn_vaissiere_sogdian_traders.md.
+
+# Of Sogdian heritage: Sogdian by culture, or a child of a Sogdian parent. Scope: a character.
+tm_yt3_sogdian_heritage_trigger = {
+	OR = {
+		culture = culture:sogdian
+		any_parent = { culture = culture:sogdian }
+	}
+}
+
+# Her court does not love her: a liege of another faith whose faith is hostile to hers or who dislikes her, or the
+# palace purge of 903 has fallen on her in the last few years (tm_palace.0003). Scope: a character.
+tm_yt3_hostile_court_trigger = {
+	save_temporary_scope_as = tm_yt3_subject		# not root: this also runs from the global pulse
+	OR = {
+		AND = {
+			has_character_flag = tm_palace_purge_seen
+			current_date < 910.1.1
+		}
+		liege ?= {
+			NOT = { faith = scope:tm_yt3_subject.faith }
+			OR = {
+				faith = {
+					faith_hostility_level = {
+						target = scope:tm_yt3_subject.faith
+						value >= faith_hostile_level
+					}
+				}
+				opinion = {
+					target = scope:tm_yt3_subject
+					value <= -20
+				}
+			}
+		}
+	}
+}
+
+# Hide the Name (pp. 220-222): a member of the Way of Sogdian heritage under a lord who is not Sogdian, or a daughter
+# (or declared sister) at a hostile court. She has not hidden it already. Scope: a character.
+tm_yt3_hide_name_eligible_trigger = {
+	faith = faith:tm_yutai
+	is_adult = yes
+	is_imprisoned = no
+	is_independent_ruler = no
+	exists = liege
+	save_temporary_scope_as = tm_yt3_subject		# not root: this also runs from the global pulse
+	NOT = { liege = scope:tm_yt3_subject }
+	NOT = { has_variable = tm_yt3_name_hidden }
+	OR = {
+		AND = {
+			tm_yt3_sogdian_heritage_trigger = yes
+			liege = { NOT = { culture = culture:sogdian } }
+		}
+		AND = {
+			tm_world_daughter_trigger = yes
+			tm_yt3_hostile_court_trigger = yes
+		}
+	}
+}
+
+# A record that speaks for her: she sits on the council, rides as a knight, or her liege thinks well of her. Families
+# whose loyalty was proven kept their descent openly, like He Wenzhe (764-830) (p. 222). Scope: a character.
+tm_yt3_proven_record_trigger = {
+	save_temporary_scope_as = tm_yt3_subject
+	OR = {
+		is_councillor = yes
+		is_knight = yes
+		liege ?= {
+			opinion = {
+				target = scope:tm_yt3_subject
+				value >= 50
+			}
+		}
+	}
+}
+
+# Holds a Sisters' House in a county of Hexi (de jure k_hexi: Shazhou, Guazhou, Ganzhou, Liangzhou and the rest of
+# the Gansu corridor). Scope: a character.
+tm_yt3_hexi_house_trigger = {
+	any_held_title = {
+		tier = tier_county
+		has_variable = tm_house
+		kingdom ?= { this = title:k_hexi }
+	}
+}
+
+# Her court sits in Hexi, or she keeps a House there. Scope: a character.
+tm_yt3_in_hexi_trigger = {
+	OR = {
+		tm_yt3_hexi_house_trigger = yes
+		capital_county ?= { kingdom ?= { this = title:k_hexi } }
+	}
+}

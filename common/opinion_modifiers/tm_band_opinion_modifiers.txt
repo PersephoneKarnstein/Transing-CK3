@@ -1,0 +1,44 @@
+﻿# Crusader Dolls — landless bands of the six faiths, wave 4 (docs/wave4/bands.md).
+
+# The Patent and the Robe: the band's view of the lord who gave her land (the robe of honour, Tor p. 122).
+tm_band_patent_given_opinion = {
+	opinion = 25
+	years = 20
+	decaying = yes
+}
+
+# She Was Patient: the lord's view of a band that moved on when he asked (Tor p. 122: Herat taken, then left when asked).
+tm_band_left_when_asked_opinion = {
+	opinion = 25
+	years = 15
+	decaying = yes
+}
+
+# The band's view of the lord who asked her to move on. Mild: asking is his right.
+tm_band_asked_to_leave_opinion = {
+	opinion = -10
+	years = 5
+	decaying = yes
+}
+
+# The lord's view of a band that would not move on when asked.
+tm_band_refused_to_leave_opinion = {
+	opinion = -25
+	years = 10
+	decaying = yes
+}
+
+# The Companions Choose: the old leader and the new, after a hand-over with honour (Tor pp. 110-111: Dirham "did not
+# contend" and stayed in the band).
+tm_band_stepped_down_opinion = {
+	opinion = 20
+	years = 20
+	decaying = yes
+}
+
+# The companion whom the leader would not make way for.
+tm_band_kept_the_band_opinion = {
+	opinion = -10
+	years = 5
+	decaying = yes
+}

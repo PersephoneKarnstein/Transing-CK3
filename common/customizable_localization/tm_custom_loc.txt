@@ -13,6 +13,10 @@
 # [ROOT.Char.Custom('tm_kahal_judges')] mid-sentence, ..._cap to open a sentence, ..._title in the event title.
 tm_kahal_judges = {
 	type = character
+	text = {	# Maghreb and Sahel: elders, and a dayyan where there is a court (Hirschberg pp. 224, 230; wave 3)
+		trigger = { tm_hn3_in_west_trigger = yes }
+		localization_key = tm_kahal_judges_elders
+	}
 	text = {
 		trigger = { current_date >= 1401.1.1 }
 		localization_key = tm_kahal_judges_council
@@ -33,6 +37,10 @@ tm_kahal_judges = {
 
 tm_kahal_judges_cap = {
 	type = character
+	text = {	# Maghreb and Sahel: elders, and a dayyan where there is a court (Hirschberg pp. 224, 230; wave 3)
+		trigger = { tm_hn3_in_west_trigger = yes }
+		localization_key = tm_kahal_judges_elders_cap
+	}
 	text = {
 		trigger = { current_date >= 1401.1.1 }
 		localization_key = tm_kahal_judges_council_cap
@@ -53,6 +61,10 @@ tm_kahal_judges_cap = {
 
 tm_kahal_judges_title = {
 	type = character
+	text = {	# Maghreb and Sahel: elders, and a dayyan where there is a court (Hirschberg pp. 224, 230; wave 3)
+		trigger = { tm_hn3_in_west_trigger = yes }
+		localization_key = tm_kahal_judges_elders_title
+	}
 	text = {
 		trigger = { current_date >= 1386.1.1 }
 		localization_key = tm_kahal_judges_baylons_title

@@ -1,0 +1,9 @@
+﻿# Crusader Dolls — nicknames of the Deeds of the House (tm_ach_events.txt). Spec: game/common/nicknames/_nicknames.info.
+
+tm_ach_nick_the_unmaker = {}			# Ioanna Secunda (the Pope)
+tm_ach_nick_the_restorer = {}			# The Patriarch's Daughter
+tm_ach_nick_the_merciful = {}			# Al-Kunduri's Mercy
+tm_ach_nick_gelder_of_khans = {}		# Gelded Like My Camels
+tm_ach_nick_mother_of_fifty = {}		# Six Hundred Daughters
+tm_ach_nick_the_greater = {}			# The Greater Circumcision
+tm_ach_nick_unmaker_of_fathers = {}	# Mother of Mothers Unmade a Father of Fathers

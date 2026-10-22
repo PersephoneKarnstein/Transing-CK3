@@ -235,11 +235,41 @@ tm_offer_begin_effect = {
 # communities arranged their own marriages, and the wider Jewry of Provence is not modelled as characters. An unmarried
 # adult of the sect is matched with a Jewish spouse from outside the courts, who joins the sect and the court; their
 # children are born into it. Without this the sect died out in every observe run. Scope: the unmarried member.
+# Where the game has a Rabbanite Jew at her court or in its capital's pool, the match is made with them, inside the
+# lord's lands (docs/wave3/survival.md); they join the sect as a kahal join.
 tm_kahal_match_effect = {
 	clear_saved_scope = tm_match_seeker		# called in a loop: the last match must not carry over
 	clear_saved_scope = tm_match_spouse
+	clear_saved_scope = tm_match_capital
 	save_scope_as = tm_match_seeker
+	employer ?= {
+		capital_province ?= { save_scope_as = tm_match_capital }
+		if = {
+			limit = { any_courtier = { tm_surv_match_candidate_trigger = yes } }
+			random_courtier = {
+				limit = { tm_surv_match_candidate_trigger = yes }
+				save_scope_as = tm_match_spouse
+			}
+		}
+		else_if = {
+			limit = {
+				exists = scope:tm_match_capital
+				any_pool_character = { province = scope:tm_match_capital tm_surv_match_candidate_trigger = yes }
+			}
+			random_pool_character = {
+				province = scope:tm_match_capital
+				limit = { tm_surv_match_candidate_trigger = yes }
+				save_scope_as = tm_match_spouse
+			}
+		}
+	}
 	if = {
+		limit = { exists = scope:tm_match_spouse }
+		scope:tm_match_spouse = {
+			tm_surv_kahal_take_in_effect = { COURT = scope:tm_match_seeker.employer }
+		}
+	}
+	else_if = {
 		limit = { exists = employer }
 		create_character = {
 			opposite_gender = scope:tm_match_seeker
@@ -381,90 +411,6 @@ tm_kahal_pilgrimage_effect = {
 				save_scope_as = tm_pilgrim
 				scope:tm_kahal_court = { add_courtier = scope:tm_pilgrim }
 				tm_track_effect = { FAITH = faith:tm_nehpakhot WHAT = pilgrims }
-			}
-		}
-	}
-}
-
-# The kahal keeps its children. An AI ruler who gives a child of the sect a guardian of his own faith picks the
-# "convert faith" education by default (vanilla 00_education_interactions.txt), so every child raised at a Christian
-# court grew up Christian: the Arles household was gone within a generation in three observe runs. A guardian outside
-# the sect may still teach her, but not convert her. A player's own choice stands. Scope: none (tm_yearly_growth).
-tm_kahal_keeps_children_effect = {
-	every_living_character = {
-		limit = {
-			is_adult = no
-			faith = faith:tm_nehpakhot
-			NOT = { employer ?= { is_ai = no } }
-		}
-		save_scope_as = tm_kahal_child
-		every_relation = {
-			type = guardian
-			limit = {
-				is_ai = yes
-				NOT = { faith = faith:tm_nehpakhot }
-				has_relation_flag = {
-					target = scope:tm_kahal_child
-					relation = ward
-					flag = convert_faith
-				}
-			}
-			remove_relation_flag = {
-				target = scope:tm_kahal_child
-				relation = ward
-				flag = convert_faith
-			}
-		}
-	}
-}
-
-# The way home: Marked members and daughters of the faith with no court (pool characters, who wander and are cleared)
-# come to the faith's home court. That is the holder of the seat if they are of the faith, else the ruler of the faith
-# with most members at court, else the seat's lord, at whose court the faith has lived. Like the pilgrimage to the
-# kahal, it is counted as `pilgrims`. Scope: none (tm_yearly_growth). $FAITH$ a faith, $SEAT$ the seat county title.
-tm_homecoming_effect = {
-	clear_saved_scope = tm_home_court
-	clear_saved_scope = tm_homecomer
-	ordered_ruler = {
-		faith_filter = $FAITH$
-		limit = {
-			is_imprisoned = no
-			tm_settled_court_trigger = yes
-		}
-		order_by = {
-			value = 0
-			if = { limit = { any_held_title = { this = $SEAT$ } } add = 1000 }
-			every_courtier = {
-				limit = { faith = $FAITH$ }
-				add = 10
-			}
-			add = sub_realm_size
-		}
-		save_scope_as = tm_home_court
-	}
-	if = {
-		limit = { NOT = { exists = scope:tm_home_court } }
-		$SEAT$.holder ?= { save_scope_as = tm_home_court }
-	}
-	if = {
-		limit = { exists = scope:tm_home_court }
-		every_living_character = {
-			limit = {
-				faith = $FAITH$
-				is_adult = yes
-				is_pool_character = yes
-				is_imprisoned = no
-				OR = {
-					has_trait = tm_transgender
-					tm_is_daughter_trigger = yes
-					has_variable = tm_declared
-				}
-			}
-			random = {
-				chance = 20
-				save_scope_as = tm_homecomer
-				scope:tm_home_court = { add_courtier = scope:tm_homecomer }
-				tm_track_effect = { FAITH = $FAITH$ WHAT = pilgrims }
 			}
 		}
 	}

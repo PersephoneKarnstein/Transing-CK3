@@ -1,0 +1,386 @@
+﻿namespace = tm_hn3
+
+# Ha-Nehpakhot in the Maghreb and the Sahel, wave 3 (docs/wave3/ha-nehpakhot-maghreb.md). Notes:
+# docs/research/jud_maghreb_*.md. Kraemer, Krakowski and Rustow have no print pages in our copies: cited by chapter.
+# Hooks: common/on_action/tm_hn3_on_actions.txt, tm_hn2_on_actions.txt, tm_hn3_decisions.txt, tm_hn3_niddui_effect.
+#   0010  the Muslim lord and the street's ban: send it back, lend his court, forbid it on petition, or not interfere
+#   0011  the rehearing: the trustworthy women come to hear her at home (Goitein p. 212; Krakowski ch. 6, nn. 94-96)
+#   0020  the Decree of the Two Parties: a ruler of the sect, in the Maghreb or the Sahel, in place of the Provencal
+#         licence (tm_hn2.0040). After al-Zahir's decree of 1030 (Rustow ch. 8; Stillman p. 198)
+#   0030  the story with no ending: Nissim of Qayrawan's "Abandoned Girl" breaks off (Nissim, trans. Brinner,
+#         pp. 175-176 and n. 6); Nissim asked readers to fill any gap (p. 6)
+#   0040  robes from the Lady: a woman ruling in Ifriqiya honours a learned daughter, before Oct. 1023 (Gil p. 188 and
+#         n. 126; Goitein p. 357)
+#   0050  they shall not be turned away: a ruler of the sect receives a household out of the Almohad lands, 1146-1229
+#         (Hirschberg p. 195). Persecution is never shown or modelled
+#   0060  the decorous hush: no one at her court speaks a daughter's old name (Stroumsa p. 59)
+# The narrator never claims a historical person for the faith; the faith may, in its own voice.
+
+# ---------------------------------------------------------------------------------------------------
+# The Muslim lord hears of the ban. Root = the holder of the county where she lives. scope:tm_hn3_banned = the
+# daughter. Fired by tm_hn3_niddui_effect thirty days after the ban.
+tm_hn3.0010 = {
+	type = character_event
+	title = tm_hn3.0010.t
+	desc = {
+		desc = tm_hn3.0010.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { tm_hn3_has_petition_trigger = yes }
+				desc = tm_hn3.0010.desc_petition
+			}
+			desc = tm_hn3.0010.desc_plain
+		}
+	}
+	theme = faith
+	left_portrait = { character = scope:tm_hn3_banned animation = worry }
+
+	trigger = {
+		exists = scope:tm_hn3_banned
+		scope:tm_hn3_banned = {
+			is_alive = yes
+			has_character_modifier = tm_niddui_modifier
+		}
+	}
+
+	immediate = {
+		save_scope_as = tm_hn3_lord
+	}
+
+	option = {	# Send it back: a new judge of their own, by their own law (Krakowski ch. 6; Goitein p. 212)
+		name = tm_hn3.0010.a
+		scope:tm_hn3_banned = {
+			add_opinion = { target = root modifier = tm_hn3_sent_back_opinion }
+			trigger_event = { id = tm_hn3.0011 days = { 7 30 } }
+		}
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = just }
+			modifier = { add = 20 tm_hn3_has_petition_trigger = yes }
+		}
+	}
+	option = {	# Lend them my court (Hirschberg pp. 236-237)
+		name = tm_hn3.0010.b
+		scope:tm_hn3_banned = {
+			add_character_modifier = { modifier = tm_hn3_lent_court_modifier years = 3 }
+			add_opinion = { target = root modifier = tm_hn3_lent_court_opinion }
+		}
+		ai_chance = {
+			base = 10
+			modifier = { add = 10 has_trait = arbitrary }
+			modifier = { factor = 0 tm_hn3_has_petition_trigger = yes }
+		}
+	}
+	option = {	# Forbid this ban, on her petition (Rustow ch. 8)
+		name = tm_hn3.0010.c
+		trigger = { tm_hn3_has_petition_trigger = yes }
+		scope:tm_hn3_banned = {
+			remove_character_modifier = tm_niddui_modifier
+			add_opinion = { target = root modifier = tm_hn3_forbade_opinion }
+			save_scope_as = tm_hn3_petitioner
+		}
+		every_courtier = {
+			limit = {
+				faith.religion = religion:judaism_religion
+				NOT = { faith = faith:tm_nehpakhot }
+			}
+			add_opinion = { target = scope:tm_hn3_petitioner modifier = tm_hn3_petitioned_opinion }
+		}
+		scope:tm_hn3_banned.employer ?= {
+			every_courtier = {
+				limit = {
+					faith.religion = religion:judaism_religion
+					NOT = { faith = faith:tm_nehpakhot }
+				}
+				add_opinion = { target = scope:tm_hn3_petitioner modifier = tm_hn3_petitioned_opinion }
+			}
+		}
+		ai_chance = {
+			base = 40
+			modifier = { add = 30 tm_hn3_lord_has_protector_trigger = yes }
+			modifier = { add = 20 opinion = { target = scope:tm_hn3_banned value >= 25 } }
+		}
+	}
+	option = {	# We do not interfere in their affairs (Cohen p. 74)
+		name = tm_hn3.0010.d
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = content }
+		}
+	}
+}
+
+# The rehearing. Root = the daughter. scope:tm_hn3_lord = the lord who sent it back.
+tm_hn3.0011 = {
+	type = character_event
+	title = tm_hn3.0011.t
+	desc = {
+		desc = tm_hn3.0011.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { tm_hn3_has_woman_witness_trigger = yes }
+				desc = tm_hn3.0011.desc_witness
+			}
+			desc = tm_hn3.0011.desc_alone
+		}
+	}
+	theme = faith
+	left_portrait = { character = root animation = worry }
+
+	trigger = {
+		is_alive = yes
+		has_character_modifier = tm_niddui_modifier
+	}
+
+	option = {	# Tell them what I told the judges
+		name = tm_hn3.0011.a
+		random_list = {
+			50 = {
+				modifier = { add = 15 tm_hn3_has_woman_witness_trigger = yes }	# a woman of the street sits with her
+				modifier = { add = learning }
+				modifier = { add = 20 has_character_modifier = tm_taught_answers_modifier }
+				desc = tm_hn3.0011.a.win
+				remove_character_modifier = tm_niddui_modifier
+				add_prestige = 50
+				location ?= { county ?= { set_variable = { name = tm_worthies_licence value = yes years = 10 } } }
+			}
+			50 = {
+				desc = tm_hn3.0011.a.lose
+				add_stress = 10
+			}
+		}
+		ai_chance = { base = 80 }
+	}
+	option = {	# I will not be heard twice
+		name = tm_hn3.0011.b
+		add_piety = 20
+		ai_chance = {
+			base = 20
+			modifier = { add = 20 has_trait = stubborn }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The Two Parties. Root = a landed ruler of the sect whose capital is in the Maghreb or the Sahel.
+# scope:tm_hn2_shunned = a daughter at her court or among her vassals under niddui (tm_hn2_yearly_ruler).
+tm_hn3.0020 = {
+	type = character_event
+	title = tm_hn3.0020.t
+	desc = {
+		desc = tm_hn3.0020.desc
+		first_valid = {
+			triggered_desc = {						# al-Zahir's decree, 1030 (Rustow ch. 8)
+				trigger = { current_date >= 1030.1.1 }
+				desc = tm_hn3.0020.desc_decree
+			}
+			desc = tm_hn3.0020.desc_early
+		}
+	}
+	theme = faith
+	left_portrait = { character = scope:tm_hn2_shunned animation = worry }
+
+	trigger = {
+		exists = scope:tm_hn2_shunned
+		scope:tm_hn2_shunned = {
+			is_alive = yes
+			has_character_modifier = tm_niddui_modifier
+		}
+	}
+
+	option = {	# Decree it: neither party shall ban the other
+		name = tm_hn3.0020.a
+		trigger = { NOT = { has_variable = tm_hn3_two_parties } }
+		scope:tm_hn2_shunned = {
+			add_opinion = { target = root modifier = tm_hn2_absolved_opinion }
+		}
+		tm_hn3_two_parties_effect = yes
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = just }
+			modifier = { add = 20 opinion = { target = scope:tm_hn2_shunned value >= 25 } }
+		}
+	}
+	option = {	# Forbid this ban, and only this one
+		name = tm_hn3.0020.b
+		scope:tm_hn2_shunned = {
+			remove_character_modifier = tm_niddui_modifier
+			add_opinion = { target = root modifier = tm_hn2_absolved_opinion }
+		}
+		every_courtier = {
+			limit = {
+				faith.religion = religion:judaism_religion
+				NOT = { faith = root.faith }
+			}
+			add_opinion = { target = root modifier = tm_hn2_overruled_opinion }
+		}
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = compassionate }
+		}
+	}
+	option = {	# The judges of the street have ruled
+		name = tm_hn3.0020.c
+		add_piety = 20
+		ai_chance = {
+			base = 20
+			modifier = { add = 30 has_trait = zealous }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The story with no ending. Root = a daughter of the Turning (tm_hn3_story_trigger). scope:tm_hn3_court = whose court.
+tm_hn3.0030 = {
+	type = character_event
+	title = tm_hn3.0030.t
+	desc = tm_hn3.0030.desc
+	theme = faith
+	left_portrait = { character = root animation = personality_rational }
+
+	trigger = { tm_hn3_story_trigger = yes }
+
+	immediate = {
+		if = {
+			limit = { is_ruler = yes }
+			save_scope_as = tm_hn3_court
+		}
+		else = {
+			employer = { save_scope_as = tm_hn3_court }
+		}
+	}
+
+	option = {	# "The Jew of the market was a woman of the lamp, and she took her home."
+		name = tm_hn3.0030.a
+		add_stress = -10
+		scope:tm_hn3_court = {
+			every_courtier = {
+				limit = {
+					faith = root.faith
+					is_female = yes
+					NOT = { this = root }
+				}
+				add_opinion = { target = root modifier = tm_hn3_story_opinion }
+			}
+		}
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = gregarious }
+		}
+	}
+	option = {	# "Her uncle came back ashamed, and she forgave him."
+		name = tm_hn3.0030.b
+		add_stress = -10
+		add_piety = 20
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = forgiving }
+		}
+	}
+	option = {	# "She kept her father's fields, and married whom she chose."
+		name = tm_hn3.0030.c
+		add_stress = -10
+		add_prestige = 20
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = ambitious }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Robes from the Lady. Root = the woman who rules (a ruler, or a ruler's regent). scope:tm_hn3_scholar = the daughter.
+# Umm Malal, al-Sayyida, aunt and regent of al-Mu'izz, sent a scholar of Qayrawan "a saddled mule and ceremonial
+# clothes" (Gil p. 188, n. 126); "the prominence of women in the affairs of ... Zirid Tunisia is remarkable"
+# (Goitein p. 357). The narrator cites no one; the woman here is whoever rules.
+tm_hn3.0040 = {
+	type = character_event
+	title = tm_hn3.0040.t
+	desc = tm_hn3.0040.desc
+	theme = learning
+	left_portrait = { character = scope:tm_hn3_scholar animation = personality_rational }
+
+	trigger = {
+		exists = scope:tm_hn3_scholar
+		scope:tm_hn3_scholar = { is_alive = yes }
+	}
+
+	option = {	# Send her robes of honour and a saddled mule
+		name = tm_hn3.0040.a
+		scope:tm_hn3_scholar = {
+			add_prestige = 50
+			add_opinion = { target = root modifier = tm_hn3_robes_opinion }
+		}
+		add_prestige = 10
+		ai_chance = {
+			base = 50
+			modifier = { add = 20 has_trait = generous }
+		}
+	}
+	option = {	# Have her read before my household
+		name = tm_hn3.0040.b
+		add_learning_lifestyle_xp = 50
+		scope:tm_hn3_scholar = {
+			add_learning_lifestyle_xp = 100
+			add_opinion = { target = root modifier = respect_opinion opinion = 10 }
+		}
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 learning >= 15 }
+		}
+	}
+	option = {	# Not this year
+		name = tm_hn3.0040.c
+		ai_chance = { base = 10 }
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# They shall not be turned away. Root = a ruler of the sect (tm_hn3_refuge_decision). 1146-1229.
+tm_hn3.0050 = {
+	type = character_event
+	title = tm_hn3.0050.t
+	desc = {
+		desc = tm_hn3.0050.desc
+		first_valid = {
+			triggered_desc = {						# Maimonides' epistle, written 1160-65 (Kraemer ch. 6): latest year used
+				trigger = { current_date >= 1165.1.1 }
+				desc = tm_hn3.0050.desc_epistle
+			}
+			desc = tm_hn3.0050.desc_early
+		}
+	}
+	theme = faith
+
+	option = {	# Take them into my household
+		name = tm_hn3.0050.a
+		tm_hn3_receive_refugees_effect = yes
+		add_piety = 50
+		ai_chance = { base = 100 }
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The decorous hush. Root = a ruler of the sect (tm_hn3_hush_decision).
+tm_hn3.0060 = {
+	type = character_event
+	title = tm_hn3.0060.t
+	desc = {
+		desc = tm_hn3.0060.desc
+		triggered_desc = {							# the hush is recorded for the 12th-c. west (Stroumsa p. 59); the
+			trigger = { current_date >= 1160.1.1 }	# Maimonides family settles in Fez in 1159/60 (Stroumsa p. 8)
+			desc = tm_hn3.0060.desc_west
+		}
+	}
+	theme = faith
+
+	option = {	# Let no one at my court speak it
+		name = tm_hn3.0060.a
+		tm_hn3_hush_effect = yes
+		ai_chance = { base = 100 }
+	}
+	option = {	# Not now
+		name = tm_hn3.0060.b
+		ai_chance = { base = 0 }
+	}
+}

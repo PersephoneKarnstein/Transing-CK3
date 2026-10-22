@@ -1,0 +1,127 @@
+﻿# Crusader Dolls — the Worn Garland, wave 4 (events/tm_ml3_events.txt; docs/wave4/garland.md).
+#
+# Heroes of the Road: a band of the Garland guards a merchant caravan from an inland market to the coast.
+# The itinerant guilds began as merchants who banded together "for their mutual protection" (Hall 1980, p. 151); a
+# town under a guild's protection was an erivirapattinam, "a place where the heroes of the road conduct trade"
+# (p. 143); guild regiments hired out to caravans (pp. 154, 167–68, 192). Bandits in these records are merchants
+# with swords (p. 193), an occupation, not a people.
+#
+# Garland-specific on purpose: it is offered only to an adventurer band whose leader is of the Garland, by a Hindu
+# or Jain ruler in the south with a market town. It sits in vanilla's hireling group, so players see it on the
+# contract map like any other; AI bands of the faith are also given one from tm_ml3_on_actions.txt.
+# The general "Patent and Robe" settlement for every band belongs to tm_band_; this contract only leads to vanilla
+# Negotiate Settlement (tm_ml3_settle_band_effect).
+#
+# Flow: on_accepted -> tm_ml3.0020 (the caravan sets out) -> tm_ml3.0021 (drawn swords) -> tm_ml3.0022 (the coast:
+# complete_task_contract) -> after the third, tm_ml3.0030 (the employer offers a frontier market) -> tm_ml3.0031.
+
+tm_ml3_caravan_contract = {
+	group = laamp_contracts_hireling_group
+	icon = "gfx/interface/icons/character_interactions/icon_contract_escort.dds"
+
+	travel = no
+	use_diplomatic_range = no
+
+	weight = {
+		value = task_contract_weight_default_value
+		add = laamp_contracts_weight_up_martial_value
+		scope:employer = {
+			multiply = task_contract_weight_by_tier_value
+			add = task_contract_weight_employer_contact_list_value
+		}
+	}
+
+	valid_to_create = {
+		valid_laamp_basic_trigger = {
+			EMPLOYER = scope:employer
+			LAAMP = root
+		}
+		employer_has_treasury_to_offer_job_trigger = yes
+		valid_laamp_sensible_start_trigger = yes
+		rule_out_dramatic_laamp_employers_trigger = yes
+		faith = faith:tm_garland
+		scope:employer = { tm_ml3_caravan_employer_trigger = yes }
+	}
+	valid_to_accept = {
+		valid_laamp_basic_accept_only_trigger = yes
+		valid_laamp_basic_trigger = {
+			EMPLOYER = scope:employer
+			LAAMP = root
+		}
+		scope:employer = { is_landed = yes }
+	}
+	valid_to_continue = {
+		valid_laamp_basic_trigger = {
+			EMPLOYER = root.task_contract_employer
+			LAAMP = root.task_contract_taker
+		}
+		task_contract_employer = { is_landed = yes }
+	}
+	valid_to_keep = {
+		valid_laamp_basic_trigger = {
+			EMPLOYER = root.task_contract_employer
+			LAAMP = root.task_contract_taker
+		}
+		task_contract_employer = { is_landed = yes }
+	}
+
+	on_create = {
+		scope:contract = {
+			grab_gold_fuzz_number_effect = yes
+			save_scope_as = task_contract
+			set_variable = {
+				name = gold_success_standard
+				value = task_contract_taker.task_contract_success_gold_gain_full_value
+			}
+		}
+	}
+
+	on_accepted = {
+		task_contract_taker = { play_sound_effect = "event:/DLC/EP3/SFX/UI/Contracts/ep3_ui_contracts_accept_contract" }
+		save_scope_as = task_contract
+		task_contract_employer = { save_scope_as = employer }
+		task_contract_taker ?= { trigger_event = tm_ml3.0020 }
+	}
+
+	task_contract_reward = {
+		success_standard = {
+			should_print_on_complete = yes
+			effect = {
+				task_contract_taker = { play_sound_effect = "event:/DLC/EP3/SFX/UI/Contracts/ep3_ui_contracts_success_on_contract" }
+				save_scope_as = task_contract
+				save_scope_value_as = { name = extra_reward value = flag:no }
+				laamp_rewards_disburse_ordinary_currency_effect = {
+					GOLD = scope:task_contract.var:gold_success_standard
+					PRESTIGE = task_contract_success_prestige_gain_half_value
+					PIETY = 0
+					PROVISIONS = task_contract_success_provisions_gain_minor_value
+					OPINION = task_contract_opinion_standard_reward_value
+					OPINION_TYPE = succeeded_task_contract_opinion
+					CONTACT = yes
+					CONTACT_HOOK = no
+					EXTRA_REWARD = scope:extra_reward
+				}
+				task_contract_taker = { task_successful_noncrim_contract_count_effect = yes }
+			}
+		}
+		failure_standard = {
+			positive = no
+			should_print_on_complete = yes
+			effect = {
+				task_contract_taker = { play_sound_effect = "event:/DLC/EP3/SFX/UI/Contracts/ep3_ui_contracts_failure_on_contract" }
+				save_scope_value_as = { name = extra_reward value = flag:no }
+				laamp_rewards_disburse_ordinary_currency_effect = {
+					GOLD = 0
+					PRESTIGE = task_contract_failure_prestige_loss_full_value
+					PIETY = 0
+					PROVISIONS = task_contract_failure_provisions_gain_minor_value
+					OPINION = task_contract_opinion_standard_failure_value
+					OPINION_TYPE = failed_task_contract_opinion
+					CONTACT = no
+					CONTACT_HOOK = no
+					EXTRA_REWARD = scope:extra_reward
+				}
+			}
+		}
+	}
+}

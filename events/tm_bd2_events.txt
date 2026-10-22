@@ -1,0 +1,498 @@
+﻿namespace = tm_bd2
+
+# Badenya, stage 2 (docs/stage2/badenya.md). Built for the faith as it ends up in runs: a royal faith at a mansa's
+# court as well as a small House.
+#   0001  the sister's child takes the seat: the heir is a sister's child of the dead ruler
+#   0002  the sister's line: the heir answers a sister's child who was passed over
+#   0010  hot words: a quarrel in a hot realm, and a jelimuso's cool word
+#   0020  praise before the court: the jelimuso sings the ruler's line, the mother's name first
+#   0030  uninvited praise: a jelimuso comes to a naming, on the eighth day
+# Started by tm_bd2_on_actions.txt and tm_bd2_succession_effect (tm_bd2_effects.txt).
+# The sister's line rests first on Ghana: al-Bakri (1067-68) gives the custom, its stated reason, and a dated case, Beci
+# succeeded by his sister's son Tenkamenin in 455/1063 (de Slane p. 328). Later: one king of Mali chosen as a daughter's
+# son (Ibn Khaldun II, p. 111), and Walata and Tagadda (Ibn Battuta IV, pp. 388, 443). Mali's later royal line, and Mansa
+# Musa's descent, are disputed between translations and are not claimed for it. Ghana's court is said to have become
+# Muslim in 469/1076-77 (al-Zuhri, c. 1137): from 1077 the loc speaks of Ghana's custom in the past tense.
+
+# The sister's child takes the seat. Root = the heir, a child of the dead ruler's sister.
+# scope:tm_bd2_old = the dead ruler; scope:tm_bd2_title = her primary title.
+tm_bd2.0001 = {
+	type = character_event
+	title = tm_bd2.0001.t
+	desc = {
+		desc = tm_bd2.0001.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { current_year < 1077 }
+				desc = tm_bd2.0001.desc_ghana
+			}
+			desc = tm_bd2.0001.desc_ghana_past
+		}
+		desc = tm_bd2.0001.desc_end
+	}
+	theme = family
+	left_portrait = { character = root animation = personality_rational }
+
+	trigger = {
+		exists = scope:tm_bd2_old
+		scope:tm_bd2_title ?= { holder ?= root }
+	}
+
+	option = {	# My mother's name goes first
+		name = tm_bd2.0001.a
+		add_prestige = 50
+		add_piety = 25
+	}
+}
+
+# The sister's line. Root = the heir (of any faith), who now holds the title.
+# scope:tm_bd2_old = the dead ruler; scope:tm_bd2_title = her primary title; scope:tm_bd2_sisters_child = the eldest
+# child of her sisters who is of the faith.
+tm_bd2.0002 = {
+	type = character_event
+	title = tm_bd2.0002.t
+	desc = {
+		desc = tm_bd2.0002.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { faith = faith:tm_badenya current_year < 1077 }
+				desc = tm_bd2.0002.desc_faith
+			}
+			triggered_desc = {
+				trigger = { faith = faith:tm_badenya }
+				desc = tm_bd2.0002.desc_faith_past
+			}
+			# A Muslim heir: from 1178 nearly every royal court of the region is Muslim at the top. The heir speaks from
+			# Maliki inheritance, and the courtier's rationale is al-Bakri's own report (p. 328), attributed.
+			triggered_desc = {
+				trigger = { faith.religion = religion:islam_religion }
+				desc = tm_bd2.0002.desc_muslim
+			}
+			desc = tm_bd2.0002.desc_other
+		}
+	}
+	theme = family
+	left_portrait = { character = root animation = personality_rational }
+	right_portrait = { character = scope:tm_bd2_sisters_child animation = personality_honorable }
+
+	trigger = {
+		exists = scope:tm_bd2_old
+		scope:tm_bd2_title ?= { holder ?= root }
+		scope:tm_bd2_sisters_child ?= { is_alive = yes }
+	}
+
+	option = {	# Give the sister's share in gold
+		name = tm_bd2.0002.a
+		trigger = { gold >= minor_gold_value }
+		remove_short_term_gold = minor_gold_value
+		scope:tm_bd2_sisters_child = {
+			add_gold = minor_gold_value
+			add_opinion = { target = root modifier = tm_bd2_honoured_line_opinion }
+		}
+		if = {
+			limit = { faith = faith:tm_badenya }
+			add_piety = 25
+		}
+		ai_chance = {
+			base = 20
+			modifier = { add = 50 faith = faith:tm_badenya }
+			ai_value_modifier = { ai_greed = -0.5 }
+		}
+	}
+	option = {	# Honour it before the court, with my word
+		name = tm_bd2.0002.b
+		add_prestige = -50
+		scope:tm_bd2_sisters_child = {
+			add_opinion = { target = root modifier = tm_bd2_honoured_line_opinion }
+		}
+		ai_chance = {
+			base = 10
+			modifier = { add = 20 faith = faith:tm_badenya }
+			ai_value_modifier = { ai_honor = 0.5 }
+		}
+	}
+	option = {	# The seat is mine; the sister's line may claim what it likes
+		name = {
+			trigger = { faith.religion = religion:islam_religion }
+			text = tm_bd2.0002.c_muslim
+		}
+		name = {
+			trigger = { NOT = { faith.religion = religion:islam_religion } }
+			text = tm_bd2.0002.c
+		}
+		add_prestige = 15
+		scope:tm_bd2_sisters_child = {
+			add_unpressed_claim = scope:tm_bd2_title
+			add_opinion = { target = root modifier = tm_bd2_passed_over_line_opinion }
+		}
+		ai_chance = {
+			base = 30
+			modifier = { add = -20 faith = faith:tm_badenya }
+			ai_value_modifier = { ai_greed = 0.5 ai_boldness = 0.25 }
+		}
+	}
+}
+
+# Hot words. Root = a ruler of Badenya whose realm is still hot from the succession. scope:tm_bd2_hot_a and
+# scope:tm_bd2_hot_b = the two who quarrel; scope:tm_bd2_jeli = the jelimuso, if there is one.
+tm_bd2.0010 = {
+	type = character_event
+	title = tm_bd2.0010.t
+	desc = tm_bd2.0010.desc
+	theme = court
+	left_portrait = { character = scope:tm_bd2_hot_a animation = anger }
+	right_portrait = { character = scope:tm_bd2_hot_b animation = anger }
+
+	trigger = {
+		has_character_modifier = tm_bd2_hot_realm_modifier
+		is_imprisoned = no
+		tm_flavour_ready_trigger = yes
+		OR = {
+			any_vassal = { count >= 2 tm_bd2_quarrel_party_trigger = yes }
+			any_courtier = { count >= 2 tm_bd2_quarrel_party_trigger = yes }
+		}
+	}
+
+	immediate = {
+		tm_flavour_spent_effect = yes
+		if = {
+			limit = { any_vassal = { count >= 2 tm_bd2_quarrel_party_trigger = yes } }
+			random_vassal = {
+				limit = { tm_bd2_quarrel_party_trigger = yes }
+				save_scope_as = tm_bd2_hot_a
+			}
+			random_vassal = {
+				limit = {
+					tm_bd2_quarrel_party_trigger = yes
+					NOT = { this = scope:tm_bd2_hot_a }
+				}
+				save_scope_as = tm_bd2_hot_b
+			}
+		}
+		else = {
+			random_courtier = {
+				limit = { tm_bd2_quarrel_party_trigger = yes }
+				save_scope_as = tm_bd2_hot_a
+			}
+			random_courtier = {
+				limit = {
+					tm_bd2_quarrel_party_trigger = yes
+					NOT = { this = scope:tm_bd2_hot_a }
+				}
+				save_scope_as = tm_bd2_hot_b
+			}
+		}
+		tm_bd2_find_jeli_effect = yes
+	}
+
+	option = {	# Let the jelimuso speak of it coolly
+		name = tm_bd2.0010.a
+		trigger = {
+			exists = scope:tm_bd2_jeli
+			gold >= minor_gold_value
+		}
+		remove_short_term_gold = minor_gold_value
+		remove_character_modifier = tm_bd2_hot_realm_modifier
+		add_character_modifier = { modifier = tm_bd2_cooled_realm_modifier years = 5 }
+		scope:tm_bd2_hot_a = { add_opinion = { target = scope:tm_bd2_hot_b modifier = tm_bd2_cooled_words_opinion } }
+		scope:tm_bd2_hot_b = { add_opinion = { target = scope:tm_bd2_hot_a modifier = tm_bd2_cooled_words_opinion } }
+		scope:tm_bd2_jeli = { add_opinion = { target = root modifier = tm_bd2_paid_praise_opinion } }
+		ai_chance = {
+			base = 60
+			ai_value_modifier = { ai_greed = -0.25 }
+		}
+	}
+	option = {	# Judge it myself, now
+		name = tm_bd2.0010.b
+		add_prestige = 25
+		scope:tm_bd2_hot_b = { add_opinion = { target = root modifier = tm_bd2_judged_against_opinion } }
+		ai_chance = {
+			base = 25
+			ai_value_modifier = { ai_boldness = 0.5 }
+		}
+	}
+	option = {	# Let it burn itself out
+		name = tm_bd2.0010.c
+		scope:tm_bd2_hot_a = { add_opinion = { target = scope:tm_bd2_hot_b modifier = tm_bd2_hot_words_opinion } }
+		scope:tm_bd2_hot_b = { add_opinion = { target = scope:tm_bd2_hot_a modifier = tm_bd2_hot_words_opinion } }
+		ai_chance = {
+			base = 15
+		}
+	}
+}
+
+# Praise before the court. Root = a ruler of Badenya. scope:tm_bd2_jeli = the jelimuso.
+# The sung praise, paid before everyone, follows Dugha's (Ibn Battuta IV, pp. 411-413) and the jelimusow paid in goods
+# (Schulz 2002, p. 797 n. 1); the reminder of the kings before follows the masked bards (pp. 413-414). The masked bards
+# have no fee in the source: joining the two is the faith's.
+tm_bd2.0020 = {
+	type = character_event
+	title = tm_bd2.0020.t
+	desc = {
+		# The royal-court detail is dated by its sources: al-Umari's poet who speaks between king and people (written
+		# late 1330s from informants on Musa's court; Wilks, in Austen (ed.) 1999, pp. 44-45), gated from 1330; the parasol
+		# with its gold bird, the bards in feather birds and their admonition (Ibn Battuta IV, pp. 406, 413-414), from 1352.
+		# Before 1330, and at lesser courts, a plain version: the jelimuso's song is the faith's custom, not a period record.
+		first_valid = {
+			triggered_desc = {
+				trigger = { highest_held_title_tier >= tier_kingdom current_year >= 1352 }
+				desc = tm_bd2.0020.desc_king
+			}
+			triggered_desc = {
+				trigger = { highest_held_title_tier >= tier_kingdom current_year >= 1330 }
+				desc = tm_bd2.0020.desc_king_early
+			}
+			desc = tm_bd2.0020.desc_court
+		}
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:tm_bd2_ruler_mother }
+				desc = tm_bd2.0020.desc_mother
+			}
+			desc = tm_bd2.0020.desc_nomother
+		}
+	}
+	theme = court
+	left_portrait = { character = scope:tm_bd2_jeli animation = happiness }
+	right_portrait = { character = root animation = personality_rational }
+
+	trigger = {
+		is_imprisoned = no
+		tm_bd2_has_jeli_trigger = yes
+	}
+
+	immediate = {
+		tm_bd2_find_jeli_effect = yes
+		mother ?= { save_scope_as = tm_bd2_ruler_mother }
+	}
+
+	option = {	# Pay her before the whole court
+		name = tm_bd2.0020.a
+		trigger = { gold >= medium_gold_value }
+		remove_short_term_gold = medium_gold_value
+		add_prestige = 100
+		scope:tm_bd2_jeli = {
+			add_gold = minor_gold_value
+			add_opinion = { target = root modifier = tm_bd2_paid_praise_opinion }
+		}
+		if = {
+			limit = { has_character_modifier = tm_bd2_hot_realm_modifier }
+			remove_character_modifier = tm_bd2_hot_realm_modifier
+			add_character_modifier = { modifier = tm_bd2_cooled_realm_modifier years = 5 }
+		}
+		ai_chance = {
+			base = 40
+			ai_value_modifier = { ai_greed = -0.5 }
+		}
+	}
+	option = {	# Pay what is owed, and hear the verse about the kings before me
+		name = tm_bd2.0020.b
+		trigger = { gold >= minor_gold_value }
+		remove_short_term_gold = minor_gold_value
+		add_prestige = 25
+		add_piety = 25
+		ai_chance = {
+			base = 40
+		}
+	}
+	option = {	# Pay nothing
+		name = tm_bd2.0020.c
+		add_prestige = -50
+		scope:tm_bd2_jeli = { add_opinion = { target = root modifier = tm_bd2_unpaid_praise_opinion } }
+		ai_chance = {
+			base = 5
+			ai_value_modifier = { ai_greed = 0.5 }
+		}
+	}
+}
+
+# Uninvited praise. Root = a parent of the faith. scope:tm_bd2_child = the newborn; scope:tm_bd2_mother = the mother.
+# Uninvited praise at namings, imposed and paid (Schulz 2002, p. 801 n. 10); the name given on the eighth day and the
+# mother's name before the child's (Niane 1965, pp. 14-15 and n. 27; Jansen 2018, p. 14 n. 50).
+tm_bd2.0030 = {
+	type = character_event
+	title = tm_bd2.0030.t
+	desc = tm_bd2.0030.desc
+	theme = family
+	left_portrait = { character = root animation = happiness }
+	right_portrait = { character = scope:tm_bd2_child }
+
+	trigger = {
+		is_imprisoned = no
+		scope:tm_bd2_child ?= { is_alive = yes }
+		exists = scope:tm_bd2_mother
+	}
+
+	option = {	# Pay her
+		name = tm_bd2.0030.a
+		trigger = { gold >= minor_gold_value }
+		remove_short_term_gold = minor_gold_value
+		add_prestige = 30
+		ai_chance = {
+			base = 60
+			ai_value_modifier = { ai_greed = -0.5 }
+		}
+	}
+	option = {	# Pay what I can, and let her make of it what she will
+		name = tm_bd2.0030.b
+		trigger = { gold >= tiny_gold_value }
+		remove_short_term_gold = tiny_gold_value
+		random_list = {
+			50 = {
+				desc = tm_bd2.0030.b.praise
+				add_prestige = 10
+			}
+			50 = {
+				desc = tm_bd2.0030.b.satire
+				add_prestige = -25
+			}
+		}
+		ai_chance = {
+			base = 30
+		}
+	}
+	option = {	# Send her away
+		name = tm_bd2.0030.c
+		add_prestige = -40
+		ai_chance = {
+			base = 10
+			ai_value_modifier = { ai_greed = 0.5 }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Named With the King (tm_bd2_decisions.txt). From 1352 (Ibn Battuta IV, p. 417). The honour only.
+
+# Whom to name. Root = the ruler.
+tm_bd2.0040 = {
+	type = character_event
+	title = tm_bd2.0040.t
+	desc = {
+		desc = tm_bd2.0040.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					OR = {
+						any_vassal = { faith.religion = religion:islam_religion }
+						any_courtier = { faith.religion = religion:islam_religion }
+					}
+				}
+				desc = tm_bd2.0040.desc_jurist
+			}
+			desc = tm_bd2.0040.desc_end
+		}
+	}
+	theme = court
+	left_portrait = { character = root animation = personality_rational }
+
+	immediate = {
+		primary_spouse ?= {
+			if = {
+				limit = { tm_bd2_associate_ok_trigger = yes }
+				save_scope_as = tm_bd2_cand_spouse
+			}
+		}
+		ordered_sibling = {
+			limit = {
+				tm_bd2_associate_ok_trigger = yes
+				tm_bd2_associate_near_trigger = yes
+			}
+			order_by = age
+			save_scope_as = tm_bd2_cand_sister
+		}
+		mother ?= {
+			if = {
+				limit = {
+					tm_bd2_associate_ok_trigger = yes
+					tm_bd2_associate_near_trigger = yes
+				}
+				save_scope_as = tm_bd2_cand_mother
+			}
+		}
+		var:tm_claimed_by ?= {
+			if = {
+				limit = {
+					tm_bd2_associate_ok_trigger = yes
+					tm_bd2_associate_near_trigger = yes
+					NOT = { root.mother ?= this }
+				}
+				save_scope_as = tm_bd2_cand_claimer
+			}
+		}
+	}
+
+	option = {	# My spouse
+		name = tm_bd2.0040.a
+		trigger = { exists = scope:tm_bd2_cand_spouse }
+		scope:tm_bd2_cand_spouse = { save_scope_as = tm_bd2_associate }
+		tm_bd2_name_associate_effect = yes
+		ai_chance = { base = 50 }
+	}
+	option = {	# My sister
+		name = tm_bd2.0040.b
+		trigger = { exists = scope:tm_bd2_cand_sister }
+		scope:tm_bd2_cand_sister = { save_scope_as = tm_bd2_associate }
+		tm_bd2_name_associate_effect = yes
+		ai_chance = { base = 30 }
+	}
+	option = {	# My mother
+		name = tm_bd2.0040.c
+		trigger = { exists = scope:tm_bd2_cand_mother }
+		scope:tm_bd2_cand_mother = { save_scope_as = tm_bd2_associate }
+		tm_bd2_name_associate_effect = yes
+		ai_chance = { base = 20 }
+	}
+	option = {	# The woman who claimed me
+		name = tm_bd2.0040.d
+		trigger = { exists = scope:tm_bd2_cand_claimer }
+		scope:tm_bd2_cand_claimer = { save_scope_as = tm_bd2_associate }
+		tm_bd2_name_associate_effect = yes
+		ai_chance = { base = 30 }
+	}
+	option = {	# Not yet
+		name = tm_bd2.0040.e
+		add_prestige = 100		# the decision's cost back
+		ai_chance = { base = 5 }
+	}
+}
+
+# At the feast. Root = the ruler. scope:tm_bd2_associate = the associate in rule.
+tm_bd2.0041 = {
+	type = character_event
+	title = tm_bd2.0041.t
+	desc = tm_bd2.0041.desc
+	theme = court
+	left_portrait = { character = root animation = happiness }
+	right_portrait = { character = scope:tm_bd2_associate animation = happiness }
+
+	trigger = {
+		var:tm_bd2_associate ?= { is_alive = yes }
+	}
+
+	immediate = {
+		var:tm_bd2_associate = { save_scope_as = tm_bd2_associate }
+	}
+
+	option = {
+		name = tm_bd2.0041.a
+		add_prestige = 20
+		scope:tm_bd2_associate = { add_prestige = 20 }
+		tm_bd2_associate_opinions_effect = yes
+	}
+}
+
+# The associate has died. Root = the ruler. scope:tm_bd2_former = the associate.
+tm_bd2.0042 = {
+	type = character_event
+	title = tm_bd2.0042.t
+	desc = tm_bd2.0042.desc
+	theme = death
+	left_portrait = { character = root animation = grief }
+
+	trigger = { exists = scope:tm_bd2_former }
+
+	option = {
+		name = tm_bd2.0042.a
+	}
+}

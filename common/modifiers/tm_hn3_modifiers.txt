@@ -1,0 +1,38 @@
+﻿# Crusader Dolls — Ha-Nehpakhot in the Maghreb and the Sahel (events/tm_hn3_events.txt).
+
+# A physician of the sect in a Muslim lord's service (tm_hipukh.0031, Maghreb version). Service, not a licence: she
+# rides with her lord and speaks for her people (the first nagid, Stillman pp. 46, 183-187; Hirschberg pp. 112-113).
+tm_hn3_physician_modifier = {
+	icon = learning_positive
+	learning = 2
+	monthly_prestige = 0.3
+}
+
+# The same, with the title of vizier, as the Almoravid amir titled his Jewish physicians (Kraemer ch. 5;
+# Hirschberg pp. 122, 351).
+tm_hn3_vizier_modifier = {
+	icon = learning_positive
+	learning = 2
+	diplomacy = 1
+	monthly_prestige = 0.5
+}
+
+# The lord lent his court to the street's ban (tm_hn3.0010). The Jewish courts had no officers of their own
+# (Hirschberg pp. 236-237).
+tm_hn3_lent_court_modifier = {
+	icon = social_negative
+	monthly_prestige = -0.5
+	stress_gain_mult = 0.1
+}
+
+# The Qayrawanese attire, given at her wedding (tm_hn2.0010, Maghreb version; Goitein p. 167). Carried by the artifact.
+tm_hn3_attire_modifier = {
+	diplomacy = 1
+	monthly_prestige = 0.1
+}
+
+# The decorous hush: at her court no one speaks a daughter's old name (tm_hn3.0060; Stroumsa p. 59).
+tm_hn3_hush_modifier = {
+	icon = social_positive
+	stress_gain_mult = -0.1
+}

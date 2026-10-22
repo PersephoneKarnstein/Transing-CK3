@@ -1,0 +1,21 @@
+﻿# Crusader Dolls — Gotland opinions (docs/wave4/gotland.md).
+
+# Open Ports lapsed: the former enemy's view of a band that raided him under another lord's licence (p. 80).
+tm_got_raided_under_licence_opinion = {
+	opinion = -20
+	years = 10
+	decaying = yes
+}
+
+# The Island Changes Hands: the new lord's view of whoever raised the island's levy against him.
+tm_got_raised_levy_opinion = {
+	opinion = -25
+	years = 10
+	decaying = yes
+}
+
+# Swear the Peace of the Island: both ways, between Gotland's ruler and the faith's people there or camped nearby.
+tm_got_sworn_peace_opinion = {
+	opinion = 20
+	years = 25
+}

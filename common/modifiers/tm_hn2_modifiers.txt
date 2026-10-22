@@ -1,0 +1,14 @@
+﻿# Crusader Dolls — Ha-Nehpakhot, stage 2 (events/tm_hn2_events.txt).
+
+# The adornment, a necklace of gold given at her wedding (tm_hn2.0010). Carried by the artifact.
+tm_hn2_adornment_modifier = {
+	diplomacy = 1
+	monthly_prestige = 0.1
+}
+
+# A seat of her own in the women's synagogue (tm_hn2.0050; Arles 1409, 1452). For a seeker it also counts in the
+# Turning's prayer (tm_hipukh.0001, the variable tm_hn2_women_seat).
+tm_hn2_women_seat_modifier = {
+	icon = piety_positive
+	monthly_piety = 0.2
+}

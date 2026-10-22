@@ -1,0 +1,24 @@
+﻿# Crusader Dolls — Ha-Nehpakhot, stage 2 (events/tm_hn2_events.txt).
+
+# She told the spinning circle of Sarah (tm_hn2.0001).
+tm_hn2_sarah_opinion = {
+	opinion = 10
+	years = 3
+}
+
+# Her spouse gave her the adornment at their wedding (tm_hn2.0010).
+tm_hn2_adornment_opinion = {
+	opinion = 25
+}
+
+# A ruler of the sect lifted the ban on her (tm_hn2.0040).
+tm_hn2_absolved_opinion = {
+	opinion = 30
+	years = 10
+}
+
+# A ruler of the sect overruled the judges of the street (tm_hn2.0040). Jewish courtiers of other faiths.
+tm_hn2_overruled_opinion = {
+	opinion = -10
+	years = 5
+}

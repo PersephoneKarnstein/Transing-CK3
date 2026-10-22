@@ -1,0 +1,350 @@
+﻿# Crusader Dolls — Gotland effects (docs/wave4/gotland.md). Dollinger, The German Hansa (1970), research/
+# norse_dollinger_hansa.md.
+
+# ---------------------------------------------------------------------------------------------------
+# Open Ports (proposal 1; pp. 78-81, 111, 403).
+
+# Offer the licence to one band. Scope: the band. scope:tm_got_lord = the licensor; scope:tm_got_war = his war.
+# A player band gets vanilla's own join-war contract when the game allows one (laamp_join_war_contract, as
+# spawn_join_war_contracts_effect makes it), so the licence sits on the contract board; otherwise, and for every AI
+# band, the offer comes as an event (tm_got.0100). Vanilla's AI picks contracts by its own weights, which the mod
+# cannot raise for this one, so the AI is asked directly.
+tm_got_offer_licence_effect = {
+	save_scope_as = tm_got_band
+	if = {
+		limit = {
+			is_ai = no
+			can_create_task_contract = {
+				type_name = laamp_join_war_contract
+				employer = scope:tm_got_lord
+			}
+		}
+		send_interface_message = {
+			type = msg_task_contract_created
+			title = tm_got_contract_spawn.t
+			desc = tm_got_contract_spawn.desc
+			left_icon = scope:tm_got_lord
+			create_task_contract = {
+				task_contract_employer = scope:tm_got_lord
+				task_contract_type = laamp_join_war_contract
+				task_contract_tier = scope:tm_got_lord.task_contract_tier_value
+				location = scope:tm_got_lord.default_location
+				save_scope_as = tm_got_contract
+			}
+		}
+		scope:tm_got_contract ?= {
+			set_variable = { name = retain_despite_distance value = yes }
+			set_variable = { name = task_contract_war value = scope:tm_got_war }
+			set_variable = { name = task_contract_employer value = scope:tm_got_lord }
+			if = {
+				limit = { scope:tm_got_war = { is_attacker = scope:tm_got_lord } }
+				set_variable = { name = task_contract_target value = scope:tm_got_war.primary_defender }
+			}
+			else = {
+				set_variable = { name = task_contract_target value = scope:tm_got_war.primary_attacker }
+			}
+			set_variable = { name = tm_got_open_ports value = yes }
+		}
+	}
+	else = {
+		trigger_event = tm_got.0100
+	}
+}
+
+# Join the licensor's war, as vanilla's join-war contract does (ep3_contract_event.0008). Scope: the band.
+# scope:tm_got_lord, scope:tm_got_war. The licence itself is recorded by tm_got_on_join_war.
+tm_got_take_licence_effect = {
+	scope:tm_got_war = {
+		hidden_effect = { set_called_to = root }
+		if = {
+			limit = { is_attacker = scope:tm_got_lord }
+			add_attacker = root
+		}
+		else = {
+			add_defender = root
+		}
+	}
+}
+
+# Record the licence on a band that has joined the licensor's side. Scope: the band. scope:war = the war;
+# scope:tm_got_lord = the licensor.
+tm_got_record_licence_effect = {
+	set_variable = { name = tm_got_licence value = scope:tm_got_lord }
+	scope:war = {
+		if = {
+			limit = { is_attacker = scope:tm_got_lord }
+			primary_defender = { save_scope_as = tm_got_enemy }
+		}
+		else = {
+			primary_attacker = { save_scope_as = tm_got_enemy }
+		}
+	}
+	set_variable = { name = tm_got_licence_enemy value = scope:tm_got_enemy }
+	set_variable = { name = tm_got_licence_war value = scope:war }
+	remove_variable = tm_got_lapsed
+	add_prestige = minor_prestige_gain
+}
+
+# Peace removes the licence ("removed the justification for piracy", p. 80). Scope: the band. The former enemy keeps
+# a grudge; the band keeps the lapsed mark for ten years, which is what lets a clearing war come for an island she
+# holds (tm_got_yearly_clearing).
+tm_got_lapse_effect = {
+	clear_saved_scope = tm_got_enemy
+	if = {
+		limit = { has_variable = tm_got_licence }
+		save_scope_as = tm_got_band
+		var:tm_got_licence ?= { save_scope_as = tm_got_lord }
+		if = {
+			limit = {
+				exists = var:tm_got_licence_enemy
+				var:tm_got_licence_enemy = { is_alive = yes }
+			}
+			var:tm_got_licence_enemy = {
+				save_scope_as = tm_got_enemy
+				add_opinion = {
+					target = scope:tm_got_band
+					modifier = tm_got_raided_under_licence_opinion
+				}
+			}
+		}
+		remove_variable = tm_got_licence
+		remove_variable = tm_got_licence_enemy
+		remove_variable = tm_got_licence_war
+		set_variable = { name = tm_got_lapsed value = yes years = 10 }
+		if = {
+			limit = { tm_flavour_ready_trigger = yes }
+			tm_flavour_spent_effect = yes
+			trigger_event = tm_got.0110
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The Island Changes Hands (proposal 5; pp. 67, 79-80, 291).
+
+# Which time the island is in. Scope: the new holder. Saves scope:tm_got_era as a flag. A dated variant only when the
+# game matches the history (Dollinger): Denmark takes it in 1361 and again in 1407, a band in 1391, the Teutonic Order
+# in 1398. Otherwise generic. Vanilla has no history for Gotland after 1066, so "matches" means the new holder's
+# realm, not a scripted date.
+tm_got_find_era_effect = {
+	if = {
+		limit = {
+			current_year >= 1355
+			current_year <= 1370
+			top_liege = { has_title = title:k_denmark }
+		}
+		save_scope_value_as = { name = tm_got_era value = flag:valdemar }
+	}
+	else_if = {
+		limit = {
+			current_year >= 1385
+			current_year <= 1400
+			has_trait = adventurer
+		}
+		save_scope_value_as = { name = tm_got_era value = flag:brothers }
+	}
+	else_if = {
+		limit = {
+			current_year >= 1395
+			current_year <= 1406
+			religion = religion:christianity_religion
+			OR = {
+				government_has_flag = government_is_theocracy
+				top_liege = { government_has_flag = government_is_theocracy }
+				top_liege = { has_title = title:k_livonia }
+			}
+		}
+		save_scope_value_as = { name = tm_got_era value = flag:order }
+	}
+	else_if = {
+		limit = {
+			current_year >= 1405
+			current_year <= 1415
+			top_liege = { has_title = title:k_denmark }
+		}
+		save_scope_value_as = { name = tm_got_era value = flag:denmark }
+	}
+	else = {
+		save_scope_value_as = { name = tm_got_era value = flag:generic }
+	}
+}
+
+# Keep quiet in this land: the faith goes unremarked under the new lord. The county (if it kept the faith) holds its
+# own quietly; ruling daughters among the islanders take the shared Keep Quiet in This Land
+# (tm_world_keep_quiet_decision). Scope: none. scope:tm_got_lord = the new holder.
+tm_got_keep_quiet_effect = {
+	title:c_gutland = {
+		if = {
+			limit = { faith = faith:tm_baeddel }
+			add_county_modifier = { modifier = tm_got_quiet_island_modifier years = 15 }
+		}
+	}
+	every_living_character = {
+		limit = {
+			tm_got_islander_trigger = yes
+			is_ruler = yes
+			tm_world_daughter_trigger = yes
+		}
+		set_variable = tm_world_keep_quiet
+	}
+}
+
+# Raise the island's levy, as the farmers did against Valdemar in 1361 (p. 67). Likely defeat. Either way the new lord
+# holds the island less firmly for a while, and the faith's fervour holds. Scope: the one who leads it (may be none:
+# scope:tm_got_leader). scope:tm_got_lord = the new holder. Saves scope:tm_got_levy_won on success.
+tm_got_raise_levy_effect = {
+	random = {
+		chance = {
+			value = 20
+			if = {
+				limit = { exists = scope:tm_got_leader }
+				if = {
+					limit = { scope:tm_got_leader.martial >= 12 }
+					add = 10
+				}
+			}
+			if = {
+				limit = { title:c_gutland = { faith = faith:tm_baeddel } }
+				add = 10
+			}
+			if = {
+				limit = { any_ruler = { tm_got_band_near_island_trigger = yes } }
+				add = 10
+			}
+		}
+		save_scope_value_as = { name = tm_got_levy_won value = yes }
+	}
+	title:c_gutland = {
+		if = {
+			limit = { exists = scope:tm_got_levy_won }
+			change_county_control = -40
+			add_county_modifier = { modifier = tm_got_levy_held_modifier years = 10 }
+		}
+		else = {
+			change_county_control = -15
+			add_county_modifier = { modifier = tm_got_levy_broken_modifier years = 5 }
+		}
+	}
+	faith:tm_baeddel = {
+		change_fervor = {
+			value = 3
+			desc = tm_got_levy_fervor
+		}
+	}
+	scope:tm_got_leader ?= {
+		if = {
+			limit = { exists = scope:tm_got_levy_won }
+			add_prestige = medium_prestige_gain
+		}
+		else = {
+			add_prestige = minor_prestige_gain
+		}
+		if = {
+			limit = { exists = scope:tm_got_lord }
+			reverse_add_opinion = {
+				target = scope:tm_got_lord
+				modifier = tm_got_raised_levy_opinion
+			}
+		}
+	}
+}
+
+# Go to the ships: the faith's people on the island, who are not rulers, leave for the nearest band or court of the
+# faith (not the new lord's). Scope: none. scope:tm_got_lord = the new holder.
+tm_got_to_the_ships_effect = {
+	title:c_gutland.title_province = { save_scope_as = tm_got_island_province }
+	every_living_character = {
+		limit = {
+			tm_got_islander_trigger = yes
+			is_ruler = no
+			trigger_if = {
+				limit = { exists = scope:tm_got_lord }
+				NOT = { is_spouse_of = scope:tm_got_lord }
+			}
+		}
+		save_scope_as = tm_got_sailor
+		if = {
+			limit = {
+				any_ruler = {
+					faith = faith:tm_baeddel
+					is_imprisoned = no
+					NOT = { this = title:c_gutland.holder }
+					trigger_if = {
+						limit = { exists = scope:tm_got_sailor.employer }
+						NOT = { this = scope:tm_got_sailor.employer }
+					}
+				}
+			}
+			ordered_ruler = {
+				limit = {
+					faith = faith:tm_baeddel
+					is_imprisoned = no
+					NOT = { this = title:c_gutland.holder }
+					trigger_if = {
+						limit = { exists = scope:tm_got_sailor.employer }
+						NOT = { this = scope:tm_got_sailor.employer }
+					}
+				}
+				order_by = {
+					value = 0
+					subtract = "location.squared_distance(scope:tm_got_island_province)"
+				}
+				add_courtier = scope:tm_got_sailor
+			}
+		}
+	}
+}
+
+# Hidden resolution when no one of the faith on the island can take the event (the county kept the faith but no member
+# lives there, or her budget is spent). Scope: none. scope:tm_got_lord = the new holder; scope:tm_got_leader may exist.
+tm_got_resolve_quietly_effect = {
+	random_list = {
+		70 = {
+			tm_got_keep_quiet_effect = yes
+		}
+		20 = {
+			tm_got_raise_levy_effect = yes
+			scope:tm_got_lord = {
+				if = {
+					limit = { tm_flavour_ready_trigger = yes }
+					tm_flavour_spent_effect = yes
+					trigger_event = tm_got.0210
+				}
+			}
+		}
+		10 = {
+			trigger = { any_living_character = { tm_got_islander_trigger = yes is_ruler = no } }
+			tm_got_to_the_ships_effect = yes
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Swear the Peace of the Island (proposal 2; p. 24, the 1161 oath; p. 25, the double town).
+
+# Scope: Gotland's ruler, who swears. The county's peace; the faith's people on the island and bands nearby and the
+# ruler think better of one another.
+tm_got_swear_peace_effect = {
+	save_scope_as = tm_got_swearer
+	title:c_gutland = {
+		add_county_modifier = { modifier = tm_got_island_peace_modifier years = 25 }
+		set_variable = { name = tm_got_island_peace value = scope:tm_got_swearer years = 25 }
+	}
+	every_living_character = {
+		limit = {
+			OR = {
+				tm_got_islander_trigger = yes
+				tm_got_band_near_island_trigger = yes
+			}
+			NOT = { this = scope:tm_got_swearer }
+		}
+		add_opinion = {
+			target = scope:tm_got_swearer
+			modifier = tm_got_sworn_peace_opinion
+		}
+		reverse_add_opinion = {
+			target = scope:tm_got_swearer
+			modifier = tm_got_sworn_peace_opinion
+		}
+	}
+}

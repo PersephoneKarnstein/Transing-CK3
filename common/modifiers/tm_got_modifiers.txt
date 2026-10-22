@@ -1,0 +1,33 @@
+﻿# Crusader Dolls — Gotland modifiers (docs/wave4/gotland.md; research/norse_dollinger_hansa.md).
+
+# The Island Changes Hands, "Keep quiet": the faith's people hold to it without a sound. County, 15 years.
+tm_got_quiet_island_modifier = {
+	icon = county_modifier_opinion_positive
+	county_opinion_add = 5
+	monthly_county_control_growth_add = 0.2
+}
+
+# The Island Changes Hands, the levy held: the farmers' army stood (unlike 1361, p. 67). County, 10 years.
+tm_got_levy_held_modifier = {
+	icon = county_modifier_opinion_negative
+	county_opinion_add = -15
+	levy_size = -0.2
+	tax_mult = -0.1
+}
+
+# The Island Changes Hands, the levy broken: the farmers' army was beaten, as in 1361 (p. 67). County, 5 years.
+tm_got_levy_broken_modifier = {
+	icon = county_modifier_development_negative
+	county_opinion_add = -5
+	levy_size = -0.1
+	development_growth_factor = -0.1
+}
+
+# Swear the Peace of the Island: the 1161 oath (p. 24) and the double town with one council "from among both nations"
+# (p. 25). County, 25 years.
+tm_got_island_peace_modifier = {
+	icon = county_modifier_development_positive
+	county_opinion_add = 10
+	development_growth_factor = 0.15
+	tax_mult = 0.05
+}

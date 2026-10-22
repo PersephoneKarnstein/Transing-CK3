@@ -1,0 +1,5 @@
+﻿# Crusader Dolls — the Worn Garland, stage 2. Spec: game/common/nicknames/_nicknames.info.
+# She of the illustrious staff, talaikkoli: a title borne only by temple women (Orr 2000, pp. 60–61), given by
+# tm_ml2.0011 when the priests cut it in stone.
+
+tm_ml2_nick_talaikkoli = {}

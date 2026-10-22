@@ -1,0 +1,25 @@
+﻿# Crusader Dolls — Adelphai Dorleyaiou stage 2 (wave 3). docs/wave3/dorley.md.
+
+# A liege of another Christian faith, when a Dorleyaian ruler takes the Galenic rite: she counts as the Emperor counts.
+tm_dl2_agrees_with_emperor_opinion = {
+	opinion = 15
+	years = 10
+}
+
+# The Mother of Mothers, when she answers the Galenic founding or a joining with "the old cage with a new name" (tm_dl2.0002).
+tm_dl2_old_cage_opinion = {
+	opinion = -20
+	years = 10
+}
+
+# A daughter whose adoption her mother registered as a eunuch's under the Emperor's law (tm_byz.0012, Galenic answer).
+tm_dl2_counted_eunuch_opinion = {
+	opinion = -15
+	years = 10
+}
+
+# The Mother of Mothers, when a ruler returns to the main rite (tm_dl2_return_aristotelian_decision).
+tm_dl2_came_home_opinion = {
+	opinion = 15
+	years = 10
+}

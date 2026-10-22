@@ -1,0 +1,36 @@
+﻿# Crusader Dolls — the Worn Garland, stage 2 (events/tm_ml2_events.txt).
+
+# A share on the temple street, held in her own name (SII 2 no. 66, ¶1; Orr 2000, pp. 72–75, 151). It also pays
+# a little gold each year while she lives in its county (tm_ml2_share_year_effect).
+tm_ml2_share_modifier = {
+	icon = piety_positive
+	monthly_piety = 0.1
+	monthly_prestige = 0.1
+}
+
+# Her gift cut in the temple wall under her own name (Orr 2000, pp. 65–70).
+tm_ml2_name_in_stone_modifier = {
+	icon = prestige_positive
+	monthly_prestige = 0.2
+}
+
+# She of the illustrious staff, talaikkoli (Orr 2000, pp. 60–61; Goodall 2018, pp. 110–12).
+tm_ml2_staff_modifier = {
+	icon = prestige_positive
+	monthly_prestige = 0.2
+	monthly_piety = 0.2
+	diplomacy = 1
+}
+
+# Admitted under the Śvetāmbara Order's rule for the skilled, a condition she named aloud (tm_ml2.0032; Zwilling and
+# Sweet 2000, p. 122). Modest; no skill bonus, so the game does not reward the condition.
+tm_ml2_admitted_modifier = {
+	icon = prestige_positive
+	monthly_prestige = 0.1
+}
+
+# A temple street: gifts and shares recorded in the women's names. County modifier.
+tm_ml2_street_county_modifier = {
+	icon = county_modifier_development_positive
+	development_growth_factor = 0.05
+}

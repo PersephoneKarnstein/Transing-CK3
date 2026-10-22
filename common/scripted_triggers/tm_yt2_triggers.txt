@@ -1,0 +1,21 @@
+﻿# Crusader Dolls — the palace faction, stage 2 (tm_yt2_events.txt; design note docs/wave3/yutai.md)
+
+# The throne keeps a ministry (the celestial emperor), and its Censor is of the Way. Scope: the throne.
+# In the ministry the Censor sits in the spymaster's seat (00_council_positions.txt, e_minister_censor).
+tm_yt2_way_censor_trigger = {
+	tgp_has_access_to_ministry_trigger = yes
+	title:e_minister_censor.holder ?= {
+		faith = faith:tm_yutai
+		is_adult = yes
+		is_imprisoned = no
+	}
+}
+
+# The inner offices hold at least this much ground at the throne of the character in scope. Scope: a character.
+tm_yt2_balance_at_least_trigger = {
+	exists = top_liege
+	top_liege.primary_title = {
+		has_variable = tm_yt2_balance
+		var:tm_yt2_balance >= $VALUE$
+	}
+}

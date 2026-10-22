@@ -1,0 +1,76 @@
+﻿# Crusader Dolls — Answer the Hall's Call (docs/wave3/baedling.md §3). A landless band (vanilla adventurer) of any of
+# the six faiths may go to war for a county whose people kept her faith, or which keeps a Sisters' House, or which is
+# her faith's seat, while a lord of another faith holds it. She gains a pressed claim and opens a claim war, as
+# vanilla's own become_conqueror_decision does (ep3_laamp_decision_event.1110, claim_cb from script). Nothing is
+# guaranteed: the war can be lost. One rung of prestige lower than vanilla's county invasion (level 1, not 2), since
+# the people call her. If she wins, tm_bae2_settle_effect gives the first years' grace (tm_bae2_on_actions.txt).
+tm_bae2_answer_hall_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/fp2_decision_struggle_hostility.dds"
+	}
+	decision_group_type = adventurer
+	sort_order = 395
+	desc = tm_bae2_answer_hall_decision_desc
+	selection_tooltip = tm_bae2_answer_hall_decision_tooltip
+
+	is_shown = {
+		tm_bae2_faith_band_trigger = yes
+	}
+
+	is_valid = {
+		is_at_war = no
+		prestige_level >= 1
+		custom_description = {
+			text = tm_bae2_answer_hall_county_tt
+			any_county = { tm_bae2_hall_county_trigger = { BAND = root } }
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+		is_incapable = no
+	}
+
+	cost = {
+		prestige = 250
+	}
+
+	effect = {
+		save_scope_as = tm_bae2_band
+		ordered_county = {
+			limit = { tm_bae2_hall_county_trigger = { BAND = root } }
+			order_by = {
+				value = 0
+				subtract = "title_province.squared_distance(root.domicile.domicile_location)"
+			}
+			save_scope_as = tm_bae2_hall
+		}
+		custom_tooltip = tm_bae2_answer_hall_decision.tt
+		set_variable = { name = tm_bae2_was_band value = yes years = 3 }
+		scope:tm_bae2_hall ?= {
+			root = { add_pressed_claim = scope:tm_bae2_hall }
+			hidden_effect = {
+				root = {
+					start_war = {
+						cb = claim_cb
+						target = scope:tm_bae2_hall.holder
+						claimant = root
+						target_title = scope:tm_bae2_hall
+					}
+				}
+			}
+		}
+	}
+
+	ai_check_interval = 24
+	ai_potential = { tm_bae2_faith_band_trigger = yes }
+	ai_will_do = {
+		base = 40
+		modifier = { add = 20 has_trait = ambitious }
+		modifier = { add = 20 has_trait = brave }
+		modifier = { add = 10 prestige_level >= 2 }
+		modifier = { factor = 0.5 has_trait = craven }
+		modifier = { factor = 0.5 has_trait = content }
+		modifier = { factor = 0 current_military_strength < 300 }
+	}
+}

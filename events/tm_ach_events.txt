@@ -1,0 +1,460 @@
+﻿namespace = tm_ach
+
+# Crusader Dolls — flavour "achievements": the Deeds of the House. Design: docs/faith_design.md §11, kept as dark comedy
+# by the user (§12 revision 8). Fired by tm_ach_after_knife_effect (the knife's paths) and tm_ach_grandmother_pulse.
+# Root: the player who brought the deed about (or, for a deed by consent, a player of the new daughter's faith).
+# Saved scopes: tm_ach_target (the old body), tm_ach_daughter (the body that survives the rite), tm_ach_consent,
+# tm_ach_target_faith, tm_ach_master, tm_ach_khan, tm_ach_khan_is_self.
+# Writing: the comedy is at the courts' panic, never at the cut or the body (§16 rule 5); the knife makes the body the
+# world reads, not the woman (rule 8). Hostile lines belong to a named court.
+
+# Ioanna Secunda: the Pope. Aunt Bea's House (the Dorley path) reads as uneasy rehabilitation; the Gift Alone version
+# (he asked for the knife himself) is the rarer consent deed. Grandmother's House: tm_ach.0002.
+tm_ach.0001 = {
+	type = character_event
+	title = tm_ach.0001.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:tm_ach_consent }
+				desc = tm_ach.0001.desc_consent
+			}
+			desc = tm_ach.0001.desc
+		}
+		first_valid = {
+			triggered_desc = {
+				trigger = { current_year >= 1250 }
+				desc = tm_ach.0001.desc_joan
+			}
+			desc = tm_ach.0001.desc_nojoan
+		}
+	}
+	theme = faith
+	left_portrait = { character = scope:tm_ach_daughter animation = personality_zealous }
+	right_portrait = { character = root animation = happiness }
+
+	trigger = {
+		is_ai = no
+		exists = scope:tm_ach_daughter
+		NOT = { has_character_flag = tm_ach_pope_done }
+	}
+
+	immediate = {
+		if = {
+			limit = { exists = scope:tm_ach_consent }
+			tm_ach_record_effect = { DEED = pope_consent FLAG = pope }
+			add_piety = 300
+		}
+		else = {
+			tm_ach_record_effect = { DEED = pope FLAG = pope }
+			tm_ach_nickname_effect = { NICK = tm_ach_nick_the_unmaker }
+			add_prestige = 500
+			add_piety = 100
+			tm_ach_memories_effect = yes
+			# The See's faith remembers for a generation (§11).
+			every_ruler = {
+				limit = {
+					faith = scope:tm_ach_target_faith
+					NOT = { this = scope:tm_ach_daughter }
+				}
+				custom = tm_ach.0001.rulers_tt
+				add_opinion = { target = root modifier = tm_ach_unmade_the_pope_opinion }
+			}
+		}
+	}
+
+	option = {	# Ioanna Secunda.
+		name = tm_ach.0001.a
+	}
+	option = {	# Take her as my daughter.
+		name = tm_ach.0001.b
+		trigger = {
+			NOT = { exists = scope:tm_ach_consent }
+			rite ?= { rite_has_parameter = tm_adoptive_matriline }
+			scope:tm_ach_daughter = {
+				is_alive = yes
+				NOT = { is_child_of = root }
+				age < root.age
+			}
+		}
+		adopt_effect = { CHILD = scope:tm_ach_daughter ADOPTER = root }
+		add_prestige = 100
+	}
+}
+
+# Grandmother's House: the Pope or the Patriarch is a eunuch of our cutting. Triumph, as that House means it.
+# Saved scopes: tm_ach_target, tm_ach_was_pope (absent: the Patriarch).
+tm_ach.0002 = {
+	type = character_event
+	title = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:tm_ach_was_pope }
+				desc = tm_ach.0002.t_pope
+			}
+			desc = tm_ach.0002.t_patriarch
+		}
+	}
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:tm_ach_was_pope }
+				desc = tm_ach.0002.desc_pope
+			}
+			desc = tm_ach.0002.desc_patriarch
+		}
+	}
+	theme = prison
+	left_portrait = { character = root animation = personality_callous }
+	right_portrait = { character = scope:tm_ach_target animation = rage }
+
+	trigger = {
+		is_ai = no
+		exists = scope:tm_ach_target
+	}
+
+	immediate = {
+		if = {
+			limit = { exists = scope:tm_ach_was_pope }
+			tm_ach_record_effect = { DEED = pope_grandmother FLAG = pope }
+			add_prestige = 300
+			every_ruler = {
+				limit = {
+					faith = scope:tm_ach_target.faith
+					NOT = { this = scope:tm_ach_target }
+				}
+				custom = tm_ach.0001.rulers_tt
+				add_opinion = { target = root modifier = tm_ach_unmade_the_pope_opinion }
+			}
+		}
+		else = {
+			tm_ach_record_effect = { DEED = patriarch FLAG = patriarch }
+			add_prestige = 150
+		}
+		tm_ach_nickname_effect = { NICK = tm_ach_nick_the_unmaker }
+		add_dread = 30
+	}
+
+	option = {
+		name = tm_ach.0002.a
+	}
+}
+
+# The Patriarch's Daughter: Constantinople has had eunuch patriarchs, so the text is wry, not apocalyptic; piety for
+# "restoring the old order" (§11; research/byz_guilland_eunuques.md, byz_spencer_hall_gutt_hagiography.md: Ignatios).
+tm_ach.0010 = {
+	type = character_event
+	title = tm_ach.0010.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:tm_ach_consent }
+				desc = tm_ach.0010.desc_consent
+			}
+			desc = tm_ach.0010.desc
+		}
+	}
+	theme = faith
+	left_portrait = { character = scope:tm_ach_daughter animation = personality_rational }
+	right_portrait = { character = root animation = happiness }
+
+	trigger = {
+		is_ai = no
+		exists = scope:tm_ach_daughter
+		NOT = { has_character_flag = tm_ach_patriarch_done }
+	}
+
+	immediate = {
+		tm_ach_record_effect = { DEED = patriarch FLAG = patriarch }
+		add_piety = 250
+		if = {
+			limit = { NOT = { exists = scope:tm_ach_consent } }
+			tm_ach_nickname_effect = { NICK = tm_ach_nick_the_restorer }
+			add_prestige = 150
+			tm_ach_memories_effect = yes
+		}
+	}
+
+	option = {
+		name = tm_ach.0010.a
+	}
+}
+
+# Al-Kunduri's Mercy: a Muslim lord's councillor, taken through the Dorley path, may go back to his master's service.
+# Precedent (after 1064): Tughril castrated his vizier al-Kunduri and kept him in office (research/hist_ayalon_eunuchs_caliphs.md
+# no. 41, Ayalon after Ibn Khallikan). The realm that takes her back gains a hook on the player (§11).
+tm_ach.0020 = {
+	type = character_event
+	title = tm_ach.0020.t
+	desc = {
+		desc = tm_ach.0020.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { current_year >= 1064 }
+				desc = tm_ach.0020.desc_kunduri
+			}
+			desc = tm_ach.0020.desc_early
+		}
+	}
+	theme = diplomacy
+	left_portrait = { character = scope:tm_ach_daughter animation = personality_rational }
+	right_portrait = { character = scope:tm_ach_master animation = worry }
+
+	trigger = {
+		is_ai = no
+		exists = scope:tm_ach_daughter
+		exists = scope:tm_ach_master
+		scope:tm_ach_master = { is_alive = yes }
+		NOT = { has_character_flag = tm_ach_vizier_done }
+	}
+
+	immediate = {
+		tm_ach_record_effect = { DEED = vizier FLAG = vizier }
+		tm_ach_nickname_effect = { NICK = tm_ach_nick_the_merciful }
+		tm_ach_memories_effect = yes
+	}
+
+	option = {	# Send her back to her master's service.
+		name = tm_ach.0020.a
+		trigger = {
+			scope:tm_ach_daughter = {
+				is_alive = yes
+				is_ruler = no
+				is_imprisoned = no
+			}
+		}
+		scope:tm_ach_master = {
+			add_courtier = scope:tm_ach_daughter
+			add_hook = { type = favor_hook target = root }
+		}
+		add_prestige = 200
+	}
+	option = {	# She stays with the House.
+		name = tm_ach.0020.b
+		add_piety = 150
+	}
+}
+
+# Gelded Like My Camels: a khan or a khan's son. The steppe kept no knife for men and met cut men first at the courts
+# of the south (research/east_mongol_sex_genghis.md E26, Terbish p. 24); the khan's camp answers (tm_ach.0031).
+tm_ach.0030 = {
+	type = character_event
+	title = tm_ach.0030.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:tm_ach_khan_is_self }
+				desc = tm_ach.0030.desc_khan
+			}
+			desc = tm_ach.0030.desc_son
+		}
+	}
+	theme = nomads
+	left_portrait = { character = scope:tm_ach_daughter animation = personality_bold }
+	right_portrait = { character = root animation = happiness }
+
+	trigger = {
+		is_ai = no
+		exists = scope:tm_ach_daughter
+		NOT = { has_character_flag = tm_ach_steppe_done }
+	}
+
+	immediate = {
+		tm_ach_record_effect = { DEED = steppe FLAG = steppe }
+		tm_ach_nickname_effect = { NICK = tm_ach_nick_gelder_of_khans }
+		add_prestige = 250
+		tm_ach_memories_effect = yes
+		# Who speaks for the camp: the khan, for his son; for a khan, her heir.
+		if = {
+			limit = {
+				NOT = { exists = scope:tm_ach_khan_is_self }
+				scope:tm_ach_khan = { is_alive = yes }
+			}
+			scope:tm_ach_khan = { save_scope_as = tm_ach_speaker }
+		}
+		else = {
+			scope:tm_ach_daughter = {
+				primary_heir ?= {
+					if = {
+						limit = {
+							is_alive = yes
+							NOT = { this = root }
+						}
+						save_scope_as = tm_ach_speaker
+					}
+				}
+			}
+		}
+		if = {
+			limit = { exists = scope:tm_ach_speaker }
+			trigger_event = { id = tm_ach.0031 months = 2 }
+		}
+	}
+
+	option = {
+		name = tm_ach.0030.a
+	}
+}
+
+# The camp's judgment.
+tm_ach.0031 = {
+	type = character_event
+	title = tm_ach.0031.t
+	desc = {
+		desc = tm_ach.0031.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:tm_ach_speaker.religion = religion:tengrism_religion }
+				desc = tm_ach.0031.desc_tengri
+			}
+			desc = tm_ach.0031.desc_other
+		}
+	}
+	theme = diplomacy
+	left_portrait = { character = scope:tm_ach_speaker animation = rage }
+
+	trigger = {
+		is_ai = no
+		exists = scope:tm_ach_speaker
+		scope:tm_ach_speaker = { is_alive = yes }
+	}
+
+	option = {	# Send horses and silver.
+		name = tm_ach.0031.a
+		pay_short_term_gold = {
+			target = scope:tm_ach_speaker
+			gold = medium_gold_value
+		}
+		scope:tm_ach_speaker = { add_opinion = { target = root modifier = tm_ach_gelded_kin_paid_opinion } }
+	}
+	option = {	# Let the judges say what they like.
+		name = tm_ach.0031.b
+		scope:tm_ach_speaker = { add_opinion = { target = root modifier = tm_ach_gelded_kin_opinion } }
+		add_prestige = 50
+	}
+}
+
+# Six Hundred Daughters: the house counts fifty daughters of the knife (tm_ach_knife_daughters, counted from this
+# version on). Yang Fugong (d. 894) adopted six hundred eunuch sons (research/cn_lo_tunghwa_tang_adoption.md, Lo p. 26).
+tm_ach.0040 = {
+	type = character_event
+	title = tm_ach.0040.t
+	desc = {
+		desc = tm_ach.0040.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { current_year >= 890 }
+				desc = tm_ach.0040.desc_yang
+			}
+			desc = tm_ach.0040.desc_early
+		}
+		desc = tm_ach.0040.desc_end
+	}
+	theme = family
+	left_portrait = { character = root animation = happiness }
+
+	trigger = {
+		is_ai = no
+		house ?= { NOT = { has_variable = tm_ach_deed_six_hundred } }
+	}
+
+	immediate = {
+		tm_ach_record_effect = { DEED = six_hundred FLAG = six_hundred }
+		tm_ach_nickname_effect = { NICK = tm_ach_nick_mother_of_fifty }
+		dynasty ?= { add_dynasty_prestige = 500 }
+		add_prestige = 200
+	}
+
+	option = {
+		name = tm_ach.0040.a
+	}
+}
+
+# The Greater Circumcision: a court musician or poet. The quips of the Medinan singers cut on the caliph's order in 717
+# (research/hist_rowson_mukhannathun.md §2.8, Rowson p. 691; isl_rowson_gender_irregularity.md for the date).
+tm_ach.0050 = {
+	type = character_event
+	title = tm_ach.0050.t
+	desc = tm_ach.0050.desc
+	theme = faith
+	left_portrait = { character = scope:tm_ach_daughter animation = laugh }
+	right_portrait = { character = root animation = shock }
+
+	trigger = {
+		is_ai = no
+		exists = scope:tm_ach_daughter
+		scope:tm_ach_daughter = { is_alive = yes }
+		NOT = { has_character_flag = tm_ach_circumcision_done }
+	}
+
+	immediate = {
+		tm_ach_record_effect = { DEED = circumcision FLAG = circumcision }
+		tm_ach_nickname_effect = { NICK = tm_ach_nick_the_greater }
+		tm_ach_memories_effect = yes
+	}
+
+	option = {	# "A second circumcision."
+		name = tm_ach.0050.a
+		add_prestige = 75
+	}
+	option = {	# "The Greater Circumcision."
+		name = tm_ach.0050.b
+		add_prestige = 150
+		add_piety = -25
+	}
+	option = {	# "May the circumciser and the circumcised be safe."
+		name = tm_ach.0050.c
+		add_piety = 75
+	}
+}
+
+# Mother of Mothers Unmade a Father of Fathers: the Pope and the Patriarch in one lifetime.
+tm_ach.0060 = {
+	type = character_event
+	title = tm_ach.0060.t
+	desc = tm_ach.0060.desc
+	theme = faith
+	left_portrait = { character = root animation = personality_zealous }
+
+	trigger = {
+		is_ai = no
+		has_character_flag = tm_ach_pope_done
+		has_character_flag = tm_ach_patriarch_done
+		NOT = { has_character_flag = tm_ach_fathers_done }
+	}
+
+	immediate = {
+		tm_ach_record_effect = { DEED = fathers FLAG = fathers }
+		give_nickname = tm_ach_nick_unmaker_of_fathers
+		add_prestige = 1000
+		dynasty ?= { add_dynasty_prestige = 1000 }
+	}
+
+	option = {
+		name = tm_ach.0060.a
+	}
+}
+
+# Deeds of the House (tm_ach_deeds_decision): the house's deeds, one line each.
+tm_ach.0900 = {
+	type = character_event
+	title = tm_ach.0900.t
+	desc = {
+		desc = tm_ach.0900.desc
+		triggered_desc = { trigger = { house ?= { has_variable = tm_ach_deed_pope } } desc = tm_ach.0900.pope }
+		triggered_desc = { trigger = { house ?= { has_variable = tm_ach_deed_pope_consent } } desc = tm_ach.0900.pope_consent }
+		triggered_desc = { trigger = { house ?= { has_variable = tm_ach_deed_pope_grandmother } } desc = tm_ach.0900.pope_grandmother }
+		triggered_desc = { trigger = { house ?= { has_variable = tm_ach_deed_patriarch } } desc = tm_ach.0900.patriarch }
+		triggered_desc = { trigger = { house ?= { has_variable = tm_ach_deed_vizier } } desc = tm_ach.0900.vizier }
+		triggered_desc = { trigger = { house ?= { has_variable = tm_ach_deed_steppe } } desc = tm_ach.0900.steppe }
+		triggered_desc = { trigger = { house ?= { has_variable = tm_ach_deed_six_hundred } } desc = tm_ach.0900.six_hundred }
+		triggered_desc = { trigger = { house ?= { has_variable = tm_ach_deed_circumcision } } desc = tm_ach.0900.circumcision }
+		triggered_desc = { trigger = { house ?= { has_variable = tm_ach_deed_fathers } } desc = tm_ach.0900.fathers }
+	}
+	theme = faith
+	left_portrait = { character = root animation = personality_honorable }
+
+	option = {
+		name = tm_ach.0900.a
+	}
+}

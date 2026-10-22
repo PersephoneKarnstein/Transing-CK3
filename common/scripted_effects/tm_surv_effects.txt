@@ -1,0 +1,245 @@
+﻿# Crusader Dolls — survival balance (docs/wave3/survival.md). The roadmap item: the small faiths' Houses keep their
+# numbers, the kahal recruits, daughters stay. Nothing here scales with a faith's size; each rule is contact or
+# family, as the growth engine's (docs/faith_design.md §14).
+
+# ---------------------------------------------------------------------------------------------------
+# The kahal takes someone in. For other builders' events and decisions too (the refuge in the Maghreb): call it on a
+# person who comes to the sect. She takes the sect's faith (counted as a kahal join, if she was not already of it) and,
+# if $COURT$ is a ruler and she is not one, joins $COURT$'s court. Scope: the person. $COURT$ a character scope,
+# e.g. scope:tm_refuge_lord or root.
+tm_surv_kahal_take_in_effect = {
+	if = {
+		limit = { NOT = { faith = faith:tm_nehpakhot } }
+		set_character_faith = faith:tm_nehpakhot
+		tm_track_effect = { FAITH = faith:tm_nehpakhot WHAT = kahal_joins }
+	}
+	if = {
+		limit = {
+			is_ruler = no
+			$COURT$ = { is_ruler = yes }
+			NOT = { this = $COURT$ }
+			NOT = { employer ?= $COURT$ }
+		}
+		save_scope_as = tm_surv_taken_in
+		$COURT$ = { add_courtier = scope:tm_surv_taken_in }
+	}
+}
+
+# The kahal of her town. A landed ruler of the sect is a kahal's lord: Jews of her lands come to her court. A
+# Rabbanite Jew who lives at her court or in her capital's pool comes first; the game has almost none (three in the
+# whole world in the 1200 save of the fourth observe run), so most are of the wider Jewry, which the game does not
+# make as characters, as the kahal's matches and pilgrims are. 2% a year, +2 if her capital county keeps the sect's
+# faith (a Jewish town). Scope: the ruler (tm_yearly_growth).
+tm_surv_kahal_draw_effect = {
+	clear_saved_scope = tm_surv_kahal_lord
+	clear_saved_scope = tm_surv_newcomer
+	clear_saved_scope = tm_surv_kahal_capital
+	save_scope_as = tm_surv_kahal_lord
+	capital_province ?= { save_scope_as = tm_surv_kahal_capital }
+	random = {
+		chance = 2
+		modifier = {
+			add = 2
+			capital_county ?= { faith = faith:tm_nehpakhot }
+		}
+		if = {
+			limit = { any_courtier = { tm_surv_kahal_candidate_trigger = yes } }
+			random_courtier = {
+				limit = { tm_surv_kahal_candidate_trigger = yes }
+				save_scope_as = tm_surv_newcomer
+			}
+		}
+		else_if = {
+			limit = {
+				exists = scope:tm_surv_kahal_capital
+				any_pool_character = { province = scope:tm_surv_kahal_capital tm_surv_kahal_candidate_trigger = yes }
+			}
+			random_pool_character = {
+				province = scope:tm_surv_kahal_capital
+				limit = { tm_surv_kahal_candidate_trigger = yes }
+				save_scope_as = tm_surv_newcomer
+			}
+		}
+		else = {
+			create_character = {
+				gender_female_chance = 50
+				age = { 16 30 }
+				culture = scope:tm_surv_kahal_lord.culture
+				faith = faith:rabbinic_faith
+				dynasty = none
+				employer = scope:tm_surv_kahal_lord
+				save_scope_as = tm_surv_newcomer
+			}
+		}
+		scope:tm_surv_newcomer ?= {
+			tm_surv_kahal_take_in_effect = { COURT = scope:tm_surv_kahal_lord }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Where a member of the faith with no court of her own faith should go. In order: the nearest court of her faith;
+# the nearest lord who keeps a Sisters' House; the faith's seat, where it has lived (as the old way home did for
+# Bædling and Mālai). Scope: the member. Saves scope:tm_surv_home, or nothing.
+tm_surv_find_home_effect = {
+	clear_saved_scope = tm_surv_home
+	clear_saved_scope = tm_surv_from
+	save_scope_as = tm_surv_seeker
+	location ?= { save_scope_as = tm_surv_from }
+	if = {
+		limit = { exists = scope:tm_surv_from }
+		ordered_ruler = {
+			faith_filter = scope:tm_surv_seeker.faith
+			limit = { tm_surv_home_court_trigger = yes }
+			order_by = {
+				value = 0
+				subtract = "location.squared_distance(scope:tm_surv_from)"
+			}
+			save_scope_as = tm_surv_home
+		}
+		if = {
+			limit = { NOT = { exists = scope:tm_surv_home } }
+			ordered_ruler = {
+				limit = {
+					tm_surv_home_court_trigger = yes
+					tm_holds_sisters_house_trigger = yes
+				}
+				order_by = {
+					value = 0
+					subtract = "location.squared_distance(scope:tm_surv_from)"
+				}
+				save_scope_as = tm_surv_home
+			}
+		}
+	}
+	if = {
+		limit = { NOT = { exists = scope:tm_surv_home } }
+		tm_surv_seat_home_effect = yes
+	}
+}
+
+# The faith's seat as a last home: its holder, whatever her faith, at whose court the faith has lived. For the
+# Adelphai, the Mother of Mothers. Scope: the member (scope:tm_surv_seeker). Saves scope:tm_surv_home, or nothing.
+tm_surv_seat_home_effect = {
+	if = {
+		limit = { faith = faith:transbian_maximalism }
+		title:d_tm_mother_house.holder ?= { save_scope_as = tm_surv_home }
+	}
+	else_if = {
+		limit = {
+			faith = faith:tm_baeddel
+			has_global_variable = tm_baeddel_seat			# none after the Uppsala cult ends
+		}
+		global_var:tm_baeddel_seat.holder ?= { save_scope_as = tm_surv_home }
+	}
+	else_if = {
+		limit = { faith = faith:tm_yutai }
+		title:c_shazhou.holder ?= { save_scope_as = tm_surv_home }
+	}
+	else_if = {
+		limit = { faith = faith:tm_nehpakhot }
+		title:c_venaissin.holder ?= { save_scope_as = tm_surv_home }
+	}
+	else_if = {
+		limit = { faith = faith:tm_garland }
+		title:c_kanchipuram.holder ?= { save_scope_as = tm_surv_home }
+	}
+	else_if = {
+		limit = { faith = faith:tm_badenya }
+		title:c_sibi_mali.holder ?= { save_scope_as = tm_surv_home }
+	}
+	if = {	# not her own court, nor herself, nor a lord in prison or a company
+		limit = {
+			exists = scope:tm_surv_home
+			scope:tm_surv_home = { NOT = { tm_surv_home_court_trigger = yes } }
+		}
+		clear_saved_scope = tm_surv_home
+	}
+}
+
+# Takes a member to the home tm_surv_find_home_effect found, if any; counted as `pilgrims`, as the way home was.
+# Scope: the member.
+tm_surv_go_home_effect = {
+	tm_surv_find_home_effect = yes
+	if = {
+		limit = { exists = scope:tm_surv_home }
+		scope:tm_surv_home = { add_courtier = scope:tm_surv_seeker }
+		tm_track_effect = { FAITH = scope:tm_surv_seeker.faith WHAT = pilgrims }
+	}
+}
+
+# The gathering (replaces the way home, which was Bædling's and Mālai's only). Members of all six with no court, or
+# only visiting one as guests, who are daughters, novices, Marked, declared, or of a family of standing (a fallen
+# realm's people), have a 20% chance a year to go to the nearest court of their faith. In the fourth observe run two of
+# the three living daughters of the Adelphai were wandering guests, and Badenya's members died in the pool by the
+# hundred after Mali fell (1040s–1080s: 85–164 pool deaths a decade). Scope: none (tm_yearly_growth).
+tm_surv_gather_effect = {
+	every_living_character = {
+		limit = { tm_surv_gatherer_trigger = yes }
+		random = {
+			chance = 20
+			tm_surv_go_home_effect = yes
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The household of a ruler of the faith who dies with an heir of another faith (or none): her daughters, novices,
+# Marked women and declared seekers at court who are unmarried leave for the nearest court of their faith, a few days
+# after the heir takes the court (tm_growth.0010). Not the heir's close family. Scope: the dying ruler
+# (tm_surv_on_death, tm_surv_on_actions.txt).
+tm_surv_household_on_death_effect = {
+	save_scope_as = tm_surv_dying
+	primary_heir ?= { save_scope_as = tm_surv_heir }
+	every_courtier = {
+		limit = {
+			faith = scope:tm_surv_dying.faith
+			is_adult = yes
+			is_imprisoned = no
+			is_married = no
+			OR = {
+				tm_captive_daughter_trigger = yes
+				has_variable = tm_declared
+			}
+			trigger_if = {
+				limit = { exists = scope:tm_surv_heir }
+				NOT = { this = scope:tm_surv_heir }
+				NOT = { is_close_family_of = scope:tm_surv_heir }
+			}
+		}
+		trigger_event = { id = tm_growth.0010 days = { 7 30 } }
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The faiths keep their children (was the kahal's alone, tm_kahal_keeps_children_effect, since the fifth observe run).
+# An AI ruler who gives a child of another faith a guardian of his own picks the "convert faith" education by default
+# (vanilla 00_education_interactions.txt): a guardian outside the faith may still teach the child, but not convert
+# her. A player's own choice stands. Scope: none (tm_yearly_growth).
+tm_surv_keeps_children_effect = {
+	every_living_character = {
+		limit = {
+			is_adult = no
+			rite ?= { rite_has_parameter = tm_sisters_faith }
+			NOT = { employer ?= { is_ai = no } }
+		}
+		save_scope_as = tm_surv_child
+		every_relation = {
+			type = guardian
+			limit = {
+				is_ai = yes
+				NOT = { faith = scope:tm_surv_child.faith }
+				has_relation_flag = {
+					target = scope:tm_surv_child
+					relation = ward
+					flag = convert_faith
+				}
+			}
+			remove_relation_flag = {
+				target = scope:tm_surv_child
+				relation = ward
+				flag = convert_faith
+			}
+		}
+	}
+}

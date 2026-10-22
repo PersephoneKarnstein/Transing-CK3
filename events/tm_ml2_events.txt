@@ -1,0 +1,554 @@
+﻿namespace = tm_ml2
+
+# The Worn Garland, stage 2: a power base for a landless faith (docs/stage2/worn-garland.md).
+# In the Tamil inscriptions of 850–1300 the main recorded role of temple women is donor: 133 of 304 inscriptions
+# record their gifts. They did not marry, so their wealth stayed under their own control (Orr 2000, pp. 66, 72–73).
+# Rajaraja's temple gave each of its 400 women a house and a share; if she died or left, the share went to the
+# "nearest relations" who would "do the work" (SII 2 no. 66, ¶1). The temple women of the record are not daughters
+# of the Garland and the narrator does not make them so; the Garland takes their shares and gifts as its own way of
+# holding a place (tenet The Temple Street).
+#   0001  a house on the temple street: a Hindu lord grants a share, or (from 1070) she buys one
+#   0003  the share passes to her daughter (from 1070), or the women of the street choose
+#   0004  three years away: the share goes to those who do the work
+#   0010  a gift in her own name: a lamp, a feeding house, a shrine of the Lady, or (wave 4, no land) a lamp kept by the market
+#   0011  she of the illustrious staff: the priests' fee, or the street's own elder
+#   0030  food and clothing: a Hindu lord's pandit reads the law books on his daughter
+#   0031  of the third feeling: a Jain monk judges a daughter at court
+#   0032  the Order's terms: a Svetambara lord admits her for her skill; she takes the place naming the condition, or refuses
+#   0040  the reciter: a daughter at a Shaiva court hears the saints' lives, or a Kannada saying
+# Saved scopes: tm_ml2_woman (0001), tm_ml2_mother / tm_ml2_share_county / tm_ml2_heir (0003, 0004),
+# tm_ml2_gift_county (0010, 0011), tm_ml2_child (0030), tm_ml2_daughter (0031), tm_ml2_host (0040).
+
+# ---------------------------------------------------------------------------------------------------
+# A house on the temple street. Root = a Hindu lord; scope:tm_ml2_woman = a daughter of the Garland at court, or herself.
+tm_ml2.0001 = {
+	type = character_event
+	title = tm_ml2.0001.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:tm_ml2_woman = root }
+				desc = tm_ml2.0001.desc_self
+			}
+			desc = tm_ml2.0001.desc
+		}
+	}
+	theme = faith
+	left_portrait = { character = scope:tm_ml2_woman animation = happiness }
+
+	trigger = {
+		exists = scope:tm_ml2_woman
+		exists = capital_county
+		scope:tm_ml2_woman = {
+			tm_ml2_share_candidate_trigger = yes
+			OR = {
+				this = root
+				employer ?= root
+			}
+		}
+	}
+
+	immediate = {
+		capital_county = { save_scope_as = tm_ml2_share_county }
+	}
+
+	option = {	# Grant her a house and a share
+		name = tm_ml2.0001.a
+		trigger = {
+			NOT = { scope:tm_ml2_woman = root }
+			gold >= 60
+		}
+		remove_short_term_gold = 60
+		add_piety = 15
+		scope:tm_ml2_woman = {
+			tm_ml2_grant_share_effect = { COUNTY = scope:tm_ml2_share_county }
+			add_opinion = { target = root modifier = grateful_opinion opinion = 20 }
+		}
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = generous }
+			modifier = { add = 10 has_trait = zealous }
+			modifier = { add = -20 has_trait = greedy }
+		}
+	}
+	option = {	# She buys it from her own purse
+		name = tm_ml2.0001.b
+		trigger = {
+			current_year >= 1070					# the women's deals begin in 1070 (Orr 2000, pp. 74–75)
+			NOT = { scope:tm_ml2_woman = root }
+			scope:tm_ml2_woman = { gold >= 40 }
+		}
+		scope:tm_ml2_woman = {
+			remove_short_term_gold = 40
+			tm_ml2_grant_share_effect = { COUNTY = scope:tm_ml2_share_county }
+		}
+		ai_chance = { base = 30 }
+	}
+	option = {	# Buy a house and a share in my own name
+		name = tm_ml2.0001.c
+		trigger = {
+			current_year >= 1070
+			scope:tm_ml2_woman = root
+			gold >= 40
+		}
+		remove_short_term_gold = 40
+		tm_ml2_grant_share_effect = { COUNTY = scope:tm_ml2_share_county }
+		ai_chance = { base = 50 }
+	}
+	option = {	# Not now
+		name = tm_ml2.0001.d
+		if = {
+			limit = { NOT = { scope:tm_ml2_woman = root } }
+			scope:tm_ml2_woman = { add_opinion = { target = root modifier = disappointed_opinion opinion = -5 } }
+		}
+		ai_chance = {
+			base = 20
+			modifier = { add = 20 has_trait = greedy }
+		}
+	}
+}
+
+# The share passes. Root = the new holder; scope:tm_ml2_mother = the one who held it.
+tm_ml2.0003 = {
+	type = character_event
+	title = tm_ml2.0003.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:tm_ml2_mother = { any_child = { this = root } } }
+				desc = tm_ml2.0003.desc_child
+			}
+			desc = tm_ml2.0003.desc_street
+		}
+	}
+	theme = faith
+	left_portrait = { character = root animation = personality_honorable }
+
+	trigger = {
+		exists = scope:tm_ml2_mother
+		exists = scope:tm_ml2_share_county
+	}
+
+	option = {
+		name = tm_ml2.0003.a
+		add_piety = 10
+	}
+}
+
+# Three years away: the share goes to those who do the work. Root = the woman who held it.
+tm_ml2.0004 = {
+	type = character_event
+	title = tm_ml2.0004.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:tm_ml2_heir }
+				desc = tm_ml2.0004.desc_heir
+			}
+			desc = tm_ml2.0004.desc
+		}
+	}
+	theme = faith
+	left_portrait = { character = root animation = sadness }
+
+	trigger = { exists = scope:tm_ml2_share_county }
+
+	option = {
+		name = tm_ml2.0004.a
+		add_stress = 5
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# A gift in her own name. Root = a daughter of the Garland with gold of her own, landed or not.
+tm_ml2.0010 = {
+	type = character_event
+	title = tm_ml2.0010.t
+	desc = tm_ml2.0010.desc
+	theme = faith
+	left_portrait = { character = root animation = personality_zealous }
+
+	trigger = {
+		tm_ml2_donor_trigger = yes
+	}
+
+	immediate = {
+		location.county = { save_scope_as = tm_ml2_gift_county }
+	}
+
+	option = {	# A lamp before the god
+		name = tm_ml2.0010.a
+		remove_short_term_gold = 30
+		add_piety = 30
+		add_character_modifier = { modifier = tm_ml2_name_in_stone_modifier years = 10 }
+		tm_ml2_record_gift_effect = yes
+		ai_chance = { base = 30 }
+	}
+	option = {	# A feeding house that bears her name
+		name = tm_ml2.0010.b
+		trigger = { gold >= 80 }
+		remove_short_term_gold = 80
+		add_prestige = 50
+		add_character_modifier = { modifier = tm_ml2_name_in_stone_modifier years = 20 }
+		tm_ml2_record_gift_effect = yes
+		if = {
+			limit = {
+				exists = employer
+				NOT = { employer = root }
+			}
+			employer = { add_opinion = { target = root modifier = respect_opinion opinion = 15 } }
+		}
+		ai_chance = {
+			base = 20
+			modifier = { add = 15 has_trait = generous }
+		}
+	}
+	option = {	# Set up the Lady beside the god: the first temple woman's goddess shrine in the notes is 1119 (SITI 118;
+		name = tm_ml2.0010.c		# Orr 2000, p. 17); such shrines spread in the 13th century (p. 24)
+		trigger = {
+			current_year >= 1119
+			gold >= 150
+		}
+		remove_short_term_gold = 150
+		add_piety = 50
+		add_character_modifier = { modifier = tm_ml2_name_in_stone_modifier years = 20 }
+		tm_ml2_record_gift_effect = yes
+		if = {
+			limit = { NOT = { has_variable = tm_ml2_share } }
+			tm_ml2_grant_share_effect = { COUNTY = scope:tm_ml2_gift_county }
+		}
+		if = {
+			limit = { NOT = { has_character_modifier = tm_ml2_staff_modifier } }
+			if = {
+			limit = { current_year >= 1100 }			# the staff rite is 12th c. (Goodall 2018, pp. 110–12); title date unverified
+			trigger_event = { id = tm_ml2.0011 days = { 20 40 } }
+		}
+		}
+		ai_chance = {
+			base = 25
+			modifier = { add = 15 has_trait = zealous }
+			modifier = { add = 10 NOT = { has_character_modifier = tm_ml2_staff_modifier } }
+		}
+	}
+	option = {	# A lamp kept by the market (wave 4): a daughter with no land gives through the market assembly (nagaram)
+		name = tm_ml2.0010.e	# of the county where she lives. At Valikandapuram (10th c.) a chief's daughter gave a lamp
+		trigger = {				# "using the nagaram members as her intermediaries" (Hall 1980, p. 194; 241 of 1943–44); the
+			is_landed = no		# assembly became "the collective agent of the donor" and paid oil or ghee to the god, "even if
+			gold >= 40			# they were to leave this village" (pp. 76–77). Perpetual endowment only: no lending, no interest.
+			location.county ?= { tm_ml3_nagaram_county_trigger = yes }
+		}
+		remove_short_term_gold = 40
+		add_piety = 30
+		tm_ml2_record_gift_effect = yes
+		tm_ml3_market_lamp_effect = yes
+		ai_chance = {
+			base = 30
+			modifier = { add = 10 has_trait = zealous }
+			modifier = { add = 10 NOT = { has_variable = tm_ml2_share } }	# no share to tie her to a street: the market keeps it
+		}
+	}
+	option = {	# Keep it
+		name = tm_ml2.0010.d
+		ai_chance = {
+			base = 20
+			modifier = { add = 30 has_trait = greedy }
+		}
+	}
+}
+
+# She of the illustrious staff. Root = the daughter who set up the Lady; scope:tm_ml2_gift_county = where.
+tm_ml2.0011 = {
+	type = character_event
+	title = tm_ml2.0011.t
+	desc = tm_ml2.0011.desc
+	theme = faith
+	left_portrait = { character = root animation = happiness }
+
+	trigger = {
+		is_alive = yes
+		current_year >= 1100
+		NOT = { has_character_modifier = tm_ml2_staff_modifier }
+	}
+
+	option = {	# Pay the priests' fee, and have it cut in stone
+		name = tm_ml2.0011.a
+		trigger = { gold >= 25 }
+		remove_short_term_gold = 25
+		add_prestige = 50
+		tm_ml2_give_staff_effect = { NAMED = yes }
+		ai_chance = {
+			base = 50
+			modifier = { add = -30 has_trait = greedy }
+		}
+	}
+	option = {	# Let the eldest of the street lay the staff
+		name = tm_ml2.0011.b
+		add_piety = 30
+		add_stress = -10
+		tm_ml2_give_staff_effect = { NAMED = no }
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = zealous }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Food and clothing. Root = a Hindu lord not of the Garland; scope:tm_ml2_child = his child, a daughter (any gate).
+# Manu 9.201 bars the klība from inheritance; 9.202 asks the heirs to give food and clothing (comparanda_reading_list.md,
+# South Asia finding; Zwilling and Sweet 2000, p. 121). The law is the pandit's, spoken by him; never the narrator's.
+tm_ml2.0030 = {
+	type = character_event
+	title = tm_ml2.0030.t
+	desc = tm_ml2.0030.desc
+	theme = faith
+	left_portrait = { character = scope:tm_ml2_child animation = worry }
+
+	trigger = {
+		exists = scope:tm_ml2_child
+		scope:tm_ml2_child = { tm_ml2_food_and_clothing_child_trigger = yes }
+	}
+
+	immediate = {
+		scope:tm_ml2_child = { set_variable = tm_ml2_ruled_on }
+	}
+
+	option = {	# The law books: maintained, not an heir
+		name = tm_ml2.0030.a
+		add_piety = 25
+		scope:tm_ml2_child = {
+			add_trait = disinherited
+			add_opinion = { target = root modifier = disappointed_opinion opinion = -40 }
+		}
+		if = {
+			limit = { gold >= 30 }
+			pay_short_term_gold = {
+				target = scope:tm_ml2_child
+				gold = 30
+			}
+		}
+		ai_chance = {
+			base = 30
+			modifier = { add = 30 has_trait = zealous }
+			modifier = { add = -20 has_trait = cynical }
+			modifier = { add = -20 opinion = { target = scope:tm_ml2_child value >= 50 } }
+		}
+	}
+	option = {	# An appointed daughter, as the law books also allow
+		name = tm_ml2.0030.b
+		add_piety = -15
+		scope:tm_ml2_child = { add_opinion = { target = root modifier = respect_opinion opinion = 25 } }
+		ai_chance = {
+			base = 25
+			modifier = { add = 20 has_trait = compassionate }
+			modifier = { add = 20 opinion = { target = scope:tm_ml2_child value >= 50 } }
+		}
+	}
+	option = {	# A share on the temple street, in her own name
+		name = tm_ml2.0030.c
+		trigger = {
+			gold >= 60
+			exists = capital_county
+			scope:tm_ml2_child = { tm_ml2_share_candidate_trigger = yes }
+		}
+		remove_short_term_gold = 60
+		add_piety = 10
+		capital_county = { save_scope_as = tm_ml2_share_county }
+		scope:tm_ml2_child = {
+			tm_ml2_grant_share_effect = { COUNTY = scope:tm_ml2_share_county }
+			add_opinion = { target = root modifier = grateful_opinion opinion = 15 }
+		}
+		ai_chance = {
+			base = 25
+			modifier = { add = 15 has_trait = generous }
+		}
+	}
+}
+
+# Of the third feeling. Root = a Jain lord; scope:tm_ml2_daughter = a daughter at court (any gate).
+# Jain law judges by veda, sex as desire, not by the body (Zwilling and Sweet 2000, pp. 112–16, 121–22).
+tm_ml2.0031 = {
+	type = character_event
+	title = tm_ml2.0031.t
+	desc = tm_ml2.0031.desc
+	theme = faith
+	left_portrait = { character = scope:tm_ml2_daughter animation = worry }
+
+	trigger = {
+		exists = scope:tm_ml2_daughter
+		scope:tm_ml2_daughter = {
+			is_alive = yes
+			employer ?= root
+		}
+	}
+
+	immediate = {
+		scope:tm_ml2_daughter = { set_variable = tm_ml2_veda_ruled }
+		save_scope_as = tm_ml2_jain_lord
+	}
+
+	option = {	# The monk has spoken for the Order
+		name = tm_ml2.0031.a
+		add_piety = 15
+		scope:tm_ml2_daughter = { add_opinion = { target = root modifier = disappointed_opinion opinion = -15 } }
+		ai_chance = {
+			base = 35
+			modifier = { add = 25 has_trait = zealous }
+		}
+	}
+	option = {	# The Order's rule is for the Order, not for my hall
+		name = tm_ml2.0031.b
+		add_prestige = 15
+		add_piety = -10
+		scope:tm_ml2_daughter = { add_opinion = { target = root modifier = respect_opinion opinion = 20 } }
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = just }
+			modifier = { add = 10 has_trait = compassionate }
+		}
+	}
+	option = {	# Let it lie
+		name = tm_ml2.0031.c
+		add_stress = 5
+		ai_chance = { base = 20 }
+	}
+	option = {	# Śvetāmbara only: the Order's own rule admits the skilled (Zwilling and Sweet 2000, p. 122). The monk's
+		name = tm_ml2.0031.d	# law, not the narrator's; she answers it in tm_ml2.0032 (writing rule 7).
+		trigger = {
+			rite = rite:svetambara
+			scope:tm_ml2_daughter = {
+				OR = {
+					stewardship >= 12
+					learning >= 12
+				}
+			}
+		}
+		add_prestige = 10
+		scope:tm_ml2_daughter = { trigger_event = { id = tm_ml2.0032 days = { 3 7 } } }
+		ai_chance = {
+			base = 30
+			modifier = { add = 15 has_trait = just }
+			modifier = { add = 10 has_trait = diligent }
+		}
+	}
+}
+
+# The Order's terms. Root = the daughter; scope:tm_ml2_jain_lord = her Śvetāmbara lord (saved in
+# 0031's immediate). The monk's rule admits her for her skill; she did not choose that condition. A chain under way: no budget.
+tm_ml2.0032 = {
+	type = character_event
+	title = tm_ml2.0032.t
+	desc = tm_ml2.0032.desc
+	theme = faith
+	left_portrait = { character = root animation = personality_honorable }
+	right_portrait = { character = scope:tm_ml2_jain_lord animation = idle }
+
+	trigger = {
+		exists = scope:tm_ml2_jain_lord
+		employer ?= scope:tm_ml2_jain_lord
+		is_imprisoned = no
+	}
+
+	option = {	# Take the place, and say the condition aloud
+		name = tm_ml2.0032.a
+		add_character_modifier = { modifier = tm_ml2_admitted_modifier years = 10 }
+		add_stress = 5
+		scope:tm_ml2_jain_lord = { add_opinion = { target = root modifier = respect_opinion opinion = 10 } }
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = ambitious }
+			modifier = { add = 10 has_trait = content }
+		}
+	}
+	option = {	# Refuse it
+		name = tm_ml2.0032.b
+		add_piety = 20
+		add_stress = -5
+		scope:tm_ml2_jain_lord = { add_opinion = { target = root modifier = disappointed_opinion opinion = -10 } }
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = stubborn }
+			modifier = { add = 20 has_trait = zealous }
+			modifier = { add = 10 has_trait = arrogant }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The reciter. Root = a daughter of the Garland at a Shaiva court; scope:tm_ml2_host = her lord.
+# Kannada court from 1160: a saying of Basavanna (Ramanujan 1973, vacana 703; Ben-Herut 2018, pp. 85–88).
+# Otherwise, from 1135: the Periya Puranam's life of Karaikkal Ammaiyar (Pechilis 2012, p. 202, vv. 49–50).
+# In period the bride was a song and a rite, not a life; the faith claims the pattern in its own voice.
+tm_ml2.0040 = {
+	type = character_event
+	title = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:tm_ml2_host = { culture = culture:kannada } current_year >= 1160 }
+				desc = tm_ml2.0040.t_vacana
+			}
+			desc = tm_ml2.0040.t
+		}
+	}
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:tm_ml2_host = { culture = culture:kannada } current_year >= 1160 }
+				desc = tm_ml2.0040.desc_vacana
+			}
+			desc = tm_ml2.0040.desc
+		}
+	}
+	theme = faith
+	left_portrait = { character = root animation = personality_zealous }
+	right_portrait = { character = scope:tm_ml2_host animation = idle }
+
+	trigger = {
+		exists = scope:tm_ml2_host
+		employer ?= scope:tm_ml2_host
+		is_imprisoned = no
+	}
+
+	option = {	# The faith's word: she asked, and was given
+		name = {
+			trigger = { scope:tm_ml2_host = { culture = culture:kannada } current_year >= 1160 }
+			text = tm_ml2.0040.a_vacana
+		}
+		name = {
+			trigger = {
+				NOT = {
+					AND = {
+						scope:tm_ml2_host = { culture = culture:kannada }
+						current_year >= 1160
+					}
+				}
+			}
+			text = tm_ml2.0040.a
+		}
+		add_piety = 20
+		add_stress = -10
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = zealous }
+		}
+	}
+	option = {	# Reward the singer in her lord's hall
+		name = tm_ml2.0040.b
+		trigger = { gold >= 10 }
+		remove_short_term_gold = 10
+		scope:tm_ml2_host = { add_opinion = { target = root modifier = grateful_opinion opinion = 15 } }
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = generous }
+			modifier = { add = -20 has_trait = greedy }
+		}
+	}
+	option = {	# Listen, and keep it to herself
+		name = tm_ml2.0040.c
+		add_stress = -15
+		ai_chance = {
+			base = 20
+			modifier = { add = 20 has_trait = shy }
+		}
+	}
+}

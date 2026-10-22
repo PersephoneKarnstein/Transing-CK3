@@ -277,6 +277,7 @@ tm_world_yearly = {
 					tm_world_rested_trigger = yes
 					tm_flavour_ready_trigger = yes
 					NOT = { has_character_flag = tm_world_quarters_asked }
+					tm_fut_sheltered_trigger = no	# wave 4: under a Muslim lord's word, his household does not ask (tm_fut)
 				}
 			}
 			save_scope_as = tm_world_household
@@ -286,6 +287,7 @@ tm_world_yearly = {
 					tm_world_rested_trigger = yes
 					tm_flavour_ready_trigger = yes
 					NOT = { has_character_flag = tm_world_quarters_asked }
+					tm_fut_sheltered_trigger = no	# wave 4: under a Muslim lord's word, his household does not ask (tm_fut)
 				}
 				save_scope_as = tm_world_quarters_daughter
 			}

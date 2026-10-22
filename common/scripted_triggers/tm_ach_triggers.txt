@@ -1,0 +1,86 @@
+﻿# Crusader Dolls — flavour "achievements" (Deeds of the House). Design: docs/faith_design.md §11; docs/wave3/achievements.md.
+# Targets of the deeds. Scope: the character before the Rite of the Knife.
+
+# Not one of the Sisters' own faiths (their heads are never the "great man" of a deed).
+tm_ach_not_sisters_faith_trigger = {
+	NOT = { rite ?= { rite_has_parameter = tm_sisters_faith } }
+}
+
+# The Pope: holds the Papal See, or heads a Christian faith from Rome (§11: "a Roman seat").
+tm_ach_is_pope_trigger = {
+	tm_ach_not_sisters_faith_trigger = yes
+	OR = {
+		has_title = title:k_papal_state
+		AND = {
+			exists = faith.religious_head
+			faith.religious_head = this
+			faith.religion = religion:christianity_religion
+			has_title = title:c_roma
+		}
+	}
+}
+
+# The Patriarch: holds the Ecumenical Patriarchate, or heads another Christian faith of Byzantine heritage
+# (the Eastern sees that had eunuch patriarchs: Ignatios, Germanos I, Methodios; research/byz_guilland_eunuques.md).
+tm_ach_is_patriarch_trigger = {
+	tm_ach_not_sisters_faith_trigger = yes
+	tm_ach_is_pope_trigger = no
+	OR = {
+		has_title = title:k_orthodox
+		AND = {
+			exists = faith.religious_head
+			faith.religious_head = this
+			faith.religion = religion:christianity_religion
+			culture = { has_cultural_pillar = heritage_byzantine }
+		}
+	}
+}
+
+# A steppe ruler: nomadic government (Khans of the Steppe), or a tribal ruler of Turkic or Mongolic heritage.
+tm_ach_steppe_ruler_trigger = {
+	is_ruler = yes
+	OR = {
+		government_has_flag = government_is_nomadic
+		AND = {
+			government_has_flag = government_is_tribal
+			culture = {
+				OR = {
+					has_cultural_pillar = heritage_turkic
+					has_cultural_pillar = heritage_mongolic
+				}
+			}
+		}
+	}
+}
+
+# A court musician or poet (Rowson: the Medinan singers of 717).
+tm_ach_is_artist_trigger = {
+	OR = {
+		has_court_position = court_musician_court_position
+		has_court_position = court_poet_court_position
+		has_trait = lifestyle_poet
+	}
+}
+
+# Councillor of a Muslim ruler. MASTER = that ruler.
+tm_ach_is_vizier_of_trigger = {
+	is_councillor_of = $MASTER$
+	$MASTER$ = { religion = religion:islam_religion }
+}
+
+# Any deed recorded for this house (the Deeds of the House decision). Scope: a character.
+tm_ach_house_has_deed_trigger = {
+	house ?= {
+		OR = {
+			has_variable = tm_ach_deed_pope
+			has_variable = tm_ach_deed_pope_consent
+			has_variable = tm_ach_deed_pope_grandmother
+			has_variable = tm_ach_deed_patriarch
+			has_variable = tm_ach_deed_vizier
+			has_variable = tm_ach_deed_steppe
+			has_variable = tm_ach_deed_six_hundred
+			has_variable = tm_ach_deed_circumcision
+			has_variable = tm_ach_deed_fathers
+		}
+	}
+}

@@ -1,0 +1,74 @@
+﻿# Crusader Dolls — Ha-Nehpakhot in the Maghreb and the Sahel (events/tm_hn3_events.txt).
+
+# The lord sent her case back for a new hearing by Jewish law (tm_hn3.0010).
+tm_hn3_sent_back_opinion = {
+	opinion = 10
+	years = 5
+}
+
+# The lord lent his court to the ban on her (tm_hn3.0010).
+tm_hn3_lent_court_opinion = {
+	opinion = -15
+	years = 5
+}
+
+# She took the street's case to the ruler, and he forbade the ban (tm_hn3.0010). Jews of other faiths at her court
+# and his: "the street's judges would not have the government trouble itself on our account" (Rustow ch. 8).
+tm_hn3_petitioned_opinion = {
+	opinion = -10
+	years = 5
+}
+
+# The lord forbade the ban on her (tm_hn3.0010).
+tm_hn3_forbade_opinion = {
+	opinion = 25
+	years = 10
+}
+
+# The ruler decreed that neither party of the Jews may ban the other (tm_hn3_two_parties_effect).
+tm_hn3_two_parties_opinion = {
+	opinion = 10
+	years = 10
+}
+
+# The same decree, to a zealot of either party.
+tm_hn3_two_parties_zealot_opinion = {
+	opinion = -10
+	years = 5
+}
+
+# A ruler took in a household that came out of the Almohad lands (tm_hn3.0050).
+tm_hn3_refuge_opinion = {
+	opinion = 25
+	years = 20
+}
+
+# The ruler keeps the decorous hush: no one at her court speaks a daughter's old name (tm_hn3.0060).
+tm_hn3_hush_opinion = {
+	opinion = 10
+}
+
+# The same, to Jews of other faiths at the court.
+tm_hn3_hush_doubt_opinion = {
+	opinion = -5
+	years = 5
+}
+
+# The Lady of the court honoured her with robes (tm_hn3.0040).
+tm_hn3_robes_opinion = {
+	opinion = 20
+	years = 10
+}
+
+# The lord gave a Jewish physician the title of vizier (tm_hipukh.0031, Maghreb version). Muslim courtiers
+# (Bennison p. 167: such posts could provoke resentment).
+tm_hn3_jewish_vizier_opinion = {
+	opinion = -5
+	years = 5
+}
+
+# She told the story with no ending her own way (tm_hn3.0030).
+tm_hn3_story_opinion = {
+	opinion = 10
+	years = 3
+}

@@ -1,0 +1,62 @@
+﻿# Crusader Dolls — the Worn Garland, stage 2 (events/tm_ml2_events.txt; docs/stage2/worn-garland.md).
+
+# A daughter of the Garland who could hold a share on a temple street. Scope: a character.
+tm_ml2_share_candidate_trigger = {
+	is_adult = yes
+	is_imprisoned = no
+	faith = faith:tm_garland
+	tm_is_daughter_trigger = yes
+	NOT = { has_variable = tm_ml2_share }
+}
+
+# Could take up a share "to her and her descendants", or be chosen by the women of the street: a living woman of
+# the Garland with no share of her own. Scope: a character.
+tm_ml2_share_heir_trigger = {
+	is_alive = yes
+	is_female = yes
+	faith = faith:tm_garland
+	NOT = { has_variable = tm_ml2_share }
+}
+
+# She lives in the county of her share. Scope: the shareholder.
+tm_ml2_at_share_trigger = {
+	has_variable = tm_ml2_share
+	location.county ?= var:tm_ml2_share
+}
+
+# A daughter of the Garland who could give to the temple in her own name. Scope: a character.
+tm_ml2_donor_trigger = {
+	is_adult = yes
+	is_imprisoned = no
+	faith = faith:tm_garland
+	tm_is_daughter_trigger = yes
+	gold >= 30
+	exists = location.county
+}
+
+# A county where a share or a gift of a daughter is recorded, or the older temple-street mark
+# (tm_kovil.0001, tm_garland.0020). Scope: a county title.
+tm_ml2_street_trigger = {
+	OR = {
+		has_variable = tm_ml2_street
+		has_variable = tm_temple_street
+	}
+}
+
+# A Hindu lord's own child who is a daughter (any gate), not yet ruled on. Scope: the child.
+tm_ml2_food_and_clothing_child_trigger = {
+	is_alive = yes
+	is_adult = yes
+	tm_is_daughter_trigger = yes
+	NOT = { has_trait = disinherited }
+	NOT = { has_variable = tm_ml2_ruled_on }
+}
+
+# A daughter of the Garland at a Shaiva court, who might hear a reciter. Scope: a courtier.
+tm_ml2_reciter_listener_trigger = {
+	is_adult = yes
+	is_imprisoned = no
+	faith = faith:tm_garland
+	tm_is_daughter_trigger = yes
+	tm_flavour_ready_trigger = yes
+}

@@ -1,0 +1,244 @@
+﻿# Crusader Dolls — Bædling stage 2 effects (docs/wave3/baedling.md).
+
+# Spring the Cell: one prisoner walks free. Scope: the prisoner. Needs scope:tm_bae2_plotter, scope:tm_bae2_jailer and
+# scope:tm_bae2_cell (the province of the prison). A landed prisoner goes home by herself. Otherwise she goes to the
+# holder of the nearest Sisters' House; failing that, to the plotter's court (or the plotter's lord's, for a
+# courtier); failing that, to the road. Never to the jailer.
+tm_bae2_walk_free_effect = {
+	save_scope_as = tm_bae2_walker
+	release_from_prison = yes
+	if = {
+		limit = { is_ruler = no }
+		if = {
+			limit = {
+				any_county = { tm_bae2_open_house_trigger = { JAILER = scope:tm_bae2_jailer } }
+			}
+			ordered_county = {
+				limit = { tm_bae2_open_house_trigger = { JAILER = scope:tm_bae2_jailer } }
+				order_by = {
+					value = 0
+					subtract = "title_province.squared_distance(scope:tm_bae2_cell)"
+				}
+				holder = { add_courtier = scope:tm_bae2_walker }
+			}
+		}
+		else_if = {
+			limit = { scope:tm_bae2_plotter = { is_playable_character = yes } }
+			scope:tm_bae2_plotter = { add_courtier = scope:tm_bae2_walker }
+		}
+		else_if = {
+			limit = {
+				scope:tm_bae2_plotter.employer ?= {
+					NOT = { this = scope:tm_bae2_jailer }
+				}
+			}
+			scope:tm_bae2_plotter.employer = { add_courtier = scope:tm_bae2_walker }
+		}
+		else = {
+			move_to_pool = yes
+		}
+	}
+	add_opinion = {
+		target = scope:tm_bae2_plotter
+		modifier = grateful_opinion
+		opinion = 30
+	}
+}
+
+# Spring the Cell: free everyone the jailer holds who qualifies. Scope: any. Needs scope:tm_bae2_plotter and
+# scope:tm_bae2_jailer; sets scope:tm_bae2_cell.
+tm_bae2_spring_all_effect = {
+	scope:tm_bae2_jailer = {
+		location ?= { save_scope_as = tm_bae2_cell }
+		every_prisoner = {
+			limit = {
+				tm_bae2_cell_prisoner_trigger = yes
+				NOT = { this = scope:tm_bae2_plotter }
+			}
+			tm_bae2_walk_free_effect = yes
+		}
+	}
+}
+
+# AI plotters. Scope: a jailer (saved as scope:tm_bae2_jailer). Looks for one AI member of the six faiths who would
+# plot: the prisoner's sworn sisters, close family and friends, and the rulers who keep a Sisters' House or share her
+# faith within reach. Weighted by bond and temper; starts the scheme with its agents.
+tm_bae2_ai_find_plotter_effect = {
+	random_prisoner = {
+		limit = { tm_bae2_cell_prisoner_trigger = yes }
+		save_scope_as = tm_bae2_prisoner
+		every_relation = {
+			type = tm_sister
+			add_to_list = tm_bae2_plotters
+		}
+		every_relation = {
+			type = friend
+			add_to_list = tm_bae2_plotters
+		}
+		every_close_family_member = { add_to_list = tm_bae2_plotters }
+	}
+	every_ruler = {
+		limit = {
+			rite ?= { rite_has_parameter = tm_sisters_faith }
+			OR = {
+				tm_holds_sisters_house_trigger = yes
+				faith = scope:tm_bae2_prisoner.faith
+			}
+			in_diplomatic_range = scope:tm_bae2_jailer
+		}
+		add_to_list = tm_bae2_plotters
+	}
+	random_in_list = {
+		list = tm_bae2_plotters
+		limit = {
+			is_ai = yes
+			tm_bae2_cell_plotter_trigger = yes
+			NOT = { this = scope:tm_bae2_jailer }
+			NOT = { is_at_war_with = scope:tm_bae2_jailer }
+			NOT = { is_scheming_against = { target = scope:tm_bae2_jailer type = tm_bae2_spring_cell } }
+			can_start_scheme = {
+				type = tm_bae2_spring_cell
+				target_character = scope:tm_bae2_jailer
+			}
+		}
+		weight = {
+			base = 1
+			modifier = { add = 4 has_relation_tm_sister = scope:tm_bae2_prisoner }
+			modifier = { add = 3 is_close_family_of = scope:tm_bae2_prisoner }
+			modifier = { add = 2 has_relation_friend = scope:tm_bae2_prisoner }
+			modifier = { add = 1 tm_holds_sisters_house_trigger = yes }
+			modifier = { factor = 1.5 has_trait = compassionate }
+			modifier = { factor = 1.5 has_trait = brave }
+			modifier = { factor = 0.5 has_trait = craven }
+			modifier = { factor = 0.5 has_trait = content }
+			modifier = { factor = 0.3 faith = scope:tm_bae2_jailer.faith }
+		}
+		save_scope_as = tm_bae2_plotter
+	}
+	scope:tm_bae2_plotter ?= {
+		begin_scheme_with_agents_effect = {
+			SCHEME_TYPE = tm_bae2_spring_cell
+			TARGET_TYPE = target_character
+			TARGET_SCOPE = scope:tm_bae2_jailer
+			AGENT_1 = tm_bae2_agent_guard
+			AGENT_2 = tm_bae2_agent_guard
+			AGENT_3 = tm_bae2_agent_servant
+			AGENT_4 = tm_bae2_agent_friend
+			AGENT_5 = agent_lookout
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Outlawry (Grágás K §§51-55; Mitchell pp. 159-61; Ahola ch. 5; Miller ch. 7). Scope: the outlaw. Needs
+# scope:tm_bae2_lord (the court where the suit was heard) and scope:tm_bae2_accuser.
+
+# Lesser outlawry: she pays the life-ring to the lord who held the court and goes abroad for three winters
+# (K §§51-53). The Gulaþing church law sends a sorceress out of the realm (Mitchell p. 160-61).
+tm_bae2_lesser_outlawry_effect = {
+	add_character_modifier = { modifier = tm_bae2_lesser_outlaw_modifier years = 3 }
+	set_variable = { name = tm_bae2_accuser value = scope:tm_bae2_accuser }
+	set_variable = { name = tm_bae2_outlawry_cooldown value = yes years = 10 }
+	if = {
+		limit = { gold >= 10 }
+		pay_short_term_gold = { target = scope:tm_bae2_lord gold = 10 }
+	}
+	scope:tm_bae2_accuser = {
+		add_opinion = { target = prev modifier = tm_bae2_outlawed_by_me_opinion }
+	}
+	tm_bae2_go_abroad_effect = yes
+}
+
+# Full outlawry: she would not pay the ring, or would not go. Killable by anyone, no standing at law. A woman with a
+# sword arm takes to the woods with a band (vanilla landless adventurer; Harðar saga's band, Ahola pp. 113, 210);
+# anyone else seeks service far from her enemies (Miller p. 237).
+tm_bae2_full_outlawry_effect = {
+	add_character_modifier = tm_bae2_full_outlaw_modifier
+	set_variable = { name = tm_bae2_accuser value = scope:tm_bae2_accuser }
+	set_variable = { name = tm_bae2_outlawry_cooldown value = yes years = 10 }
+	scope:tm_bae2_accuser = {
+		add_opinion = { target = prev modifier = tm_bae2_outlawed_by_me_opinion }
+	}
+	if = {
+		limit = {
+			age < 55
+			OR = {
+				martial >= 8
+				prowess >= 10
+				is_knight = yes
+			}
+		}
+		scope:tm_bae2_lord = { save_scope_as = host }	# read only by a branch for young warriors that cannot fire here
+		create_landless_adventurer_title_effect = {
+			REASON = flag:exile
+			FLAVOR_CHAR = scope:tm_bae2_accuser
+		}
+	}
+	else = {
+		tm_bae2_go_abroad_effect = yes
+	}
+}
+
+# Out of the realm that sentenced her: to a court of the six faiths beyond it, a House first; else the road.
+tm_bae2_go_abroad_effect = {
+	save_scope_as = tm_bae2_exile
+	scope:tm_bae2_lord.top_liege = { save_scope_as = tm_bae2_realm_top }
+	if = {
+		limit = {
+			any_ruler = {
+				NOT = { top_liege = scope:tm_bae2_realm_top }
+				is_imprisoned = no
+				rite ?= { rite_has_parameter = tm_sisters_faith }
+			}
+		}
+		random_ruler = {
+			limit = {
+				NOT = { top_liege = scope:tm_bae2_realm_top }
+				is_imprisoned = no
+				rite ?= { rite_has_parameter = tm_sisters_faith }
+			}
+			weight = {
+				base = 1
+				modifier = { add = 4 tm_holds_sisters_house_trigger = yes }
+				modifier = { add = 2 faith = scope:tm_bae2_exile.faith }
+			}
+			add_courtier = scope:tm_bae2_exile
+			if = {
+				limit = { is_ai = no }
+				trigger_event = tm_bae2.0110
+			}
+		}
+	}
+	else = {
+		move_to_pool = yes
+	}
+}
+
+# A reprieve: the sentence is lifted.
+tm_bae2_lift_outlawry_effect = {
+	remove_character_modifier = tm_bae2_lesser_outlaw_modifier
+	remove_character_modifier = tm_bae2_full_outlaw_modifier
+	remove_variable = tm_bae2_accuser
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Landless bands of the six faiths (docs/wave3/baedling.md §3).
+
+# A band has taken land. Scope: the new holder; scope:title = the county gained. Ten years' grace, and the county
+# that kept the faith (or its House, or the seat) welcomes its own home.
+tm_bae2_settle_effect = {
+	remove_variable = tm_bae2_was_band
+	add_character_modifier = { modifier = tm_bae2_settling_modifier years = 10 }
+	scope:title = {
+		if = {
+			limit = {
+				OR = {
+					faith = root.faith
+					has_variable = tm_house
+					tm_bae2_seat_of_trigger = { FAITH = root.faith }
+				}
+			}
+			add_county_modifier = { modifier = tm_bae2_hall_returned_county_modifier years = 20 }
+		}
+	}
+}

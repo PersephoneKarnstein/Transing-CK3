@@ -1,0 +1,23 @@
+﻿# Crusader Dolls — the Worn Garland, wave 4 (events/tm_ml3_events.txt; docs/wave4/garland.md).
+
+# A lamp kept by the market: a gift placed with a county's market assembly, which pays oil to the god for ever
+# (Hall 1980, pp. 76–77, 194). It stays with her wherever she goes. Permanent; added once.
+tm_ml3_market_lamp_modifier = {
+	icon = piety_positive
+	monthly_piety = 0.1
+	monthly_prestige = 0.1
+}
+
+# Where the heroes of the road conduct trade (erivirapattinam): a frontier market town under a band's protection.
+# The guild, not the lord, keeps its peace (Hall 1980, pp. 143–44, 151, 188). County modifier, 10 years.
+tm_ml3_erivira_county_modifier = {
+	icon = county_modifier_development_mixed
+	development_growth_factor = 0.1
+	monthly_county_control_growth_factor = -0.1
+}
+
+# The town's dues remitted, "twice the privileges" (Kattur; Hall 1980, p. 144). County modifier, 10 years.
+tm_ml3_dues_freed_county_modifier = {
+	icon = county_modifier_opinion_positive
+	county_opinion_add = 10
+}

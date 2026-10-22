@@ -1,0 +1,278 @@
+﻿namespace = tm_yt3
+
+# Yutai Dao and the Sogdians of Dunhuang (docs/wave4/yutai-sogdians.md). Source: de la Vaissiere, Sogdian Traders (2005),
+# research/cn_vaissiere_sogdian_traders.md, design rows 4-6.
+#   0001  Hide the Name (pp. 220-222): a member of Sogdian heritage, or a daughter at a hostile court, hides her origins.
+#         Decision tm_yt3_hide_name_decision; offered once after the purge of 903 (tm_yt2_yearly_effect).
+#   0010  The banquet at the Cao inn (p. 324; S. 2894v, the she circular of 973): the street's society meets at a
+#         Sogdian family's inn. Linked to the Way's own temple and burial society (tm_yutai.0030, tm_yutai.0040) by
+#         the House strain. Shelter is not conversion: an admitted neighbour keeps her own faith.
+#   0020  The stranded woman (pp. 47, 56-57 and n. 37, 188): modelled on the Ancient Letters of c. 313. The letters lay
+#         sealed in a ruined guard tower until 1907, so no one in the game knows them; she is a woman of 867 or later
+#         in the same straits, never Miunai and never a member of the Way.
+# Not built, by rule: no Sogdian moneylender or usurer figure (note §9); nothing of the massacres of 755-763 (p. 220).
+
+# Hide the Name. Root = the character.
+tm_yt3.0001 = {
+	type = character_event
+	title = tm_yt3.0001.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					has_character_flag = tm_palace_purge_seen
+					current_date < 910.1.1
+				}
+				desc = tm_yt3.0001.desc_purge
+			}
+			triggered_desc = {
+				trigger = {
+					tm_yt3_sogdian_heritage_trigger = yes
+					current_date >= 756.1.1		# the first renaming on record, An to Li, is of 756 (p. 221)
+				}
+				desc = tm_yt3.0001.desc_sogdian
+			}
+			triggered_desc = {
+				trigger = { tm_yt3_sogdian_heritage_trigger = yes }
+				desc = tm_yt3.0001.desc_sogdian_early
+			}
+			desc = tm_yt3.0001.desc_court
+		}
+	}
+	theme = intrigue
+	left_portrait = { character = root animation = worry }
+	right_portrait = { character = root.liege animation = personality_rational }
+
+	trigger = {
+		tm_yt3_hide_name_eligible_trigger = yes
+	}
+
+	option = {	# A new surname, written back through four generations (the An who became Li, 756; p. 221)
+		name = tm_yt3.0001.a
+		add_prestige = -50
+		tm_yt3_hide_name_effect = yes
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = craven }
+		}
+	}
+	option = {	# A birthplace far away. For a Sogdian, Guiji: a famous southern city, and also the old name of
+				# Changle by Dunhuang, thought to be An Lushan's home (p. 221). The joke is in the record.
+		name = tm_yt3.0001.b_sogdian
+		trigger = {
+			tm_yt3_sogdian_heritage_trigger = yes
+			current_date >= 756.1.1
+			gold >= 25
+		}
+		remove_short_term_gold = 25
+		tm_yt3_hide_name_effect = yes
+		random_list = {
+			85 = { desc = tm_yt3.0001.b.quiet }
+			15 = {
+				desc = tm_yt3.0001.b_sogdian.found
+				add_prestige = -25
+			}
+		}
+		ai_chance = { base = 30 }
+	}
+	option = {	# A birthplace far away (any other case)
+		name = tm_yt3.0001.b
+		trigger = {
+			NOT = {
+				AND = {
+					tm_yt3_sogdian_heritage_trigger = yes
+					current_date >= 756.1.1
+				}
+			}
+			gold >= 25
+		}
+		remove_short_term_gold = 25
+		tm_yt3_hide_name_effect = yes
+		random_list = {
+			85 = { desc = tm_yt3.0001.b.quiet }
+			15 = {
+				desc = tm_yt3.0001.b.found
+				add_prestige = -25
+			}
+		}
+		ai_chance = { base = 30 }
+	}
+	option = {	# Stand on my record (He Wenzhe's family kept its descent openly, p. 222)
+		name = tm_yt3.0001.c
+		trigger = { tm_yt3_proven_record_trigger = yes }
+		add_prestige = 25
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = brave }
+		}
+	}
+	option = {	# Keep the name. The Way rectifies names; it does not unwrite them.
+		name = tm_yt3.0001.d
+		add_piety = 10
+		ai_chance = {
+			base = 20
+			modifier = { add = 20 has_trait = stubborn }
+		}
+	}
+}
+
+# The banquet at the Cao inn. Root = a ruler of the Way holding a House in Hexi; scope:tm_yt3_house_county.
+tm_yt3.0010 = {
+	type = character_event
+	title = tm_yt3.0010.t
+	desc = tm_yt3.0010.desc
+	theme = feast_activity
+	left_portrait = { character = root animation = happiness }
+
+	trigger = {
+		exists = scope:tm_yt3_house_county
+		scope:tm_yt3_house_county = { holder ?= root }
+	}
+
+	option = {	# Bring the flour, and bring the neighbours' daughters into the House's own society
+		name = tm_yt3.0010.a
+		trigger = { gold >= 10 }
+		remove_short_term_gold = 10
+		add_piety = 10
+		tm_yt3_ease_house_strain_effect = yes
+		random_list = {
+			50 = {
+				desc = tm_yt3.0010.a.guest
+				tm_yt3_create_neighbour_effect = {
+					COUNTY = scope:tm_yt3_house_county
+					AGE_MIN = 16
+					AGE_MAX = 30
+					SCOPE = tm_yt3_neighbour
+				}
+				add_courtier = scope:tm_yt3_neighbour
+				scope:tm_yt3_neighbour = {
+					add_opinion = { target = root modifier = friendliness_opinion opinion = 20 }
+				}
+				custom_tooltip = tm_yt3_neighbour_keeps_faith_tt
+			}
+			50 = {
+				desc = tm_yt3.0010.a.home
+			}
+		}
+		ai_chance = { base = 40 }
+	}
+	option = {	# Go to the banquet, and keep our society to the House
+		name = tm_yt3.0010.b
+		add_piety = 5
+		ai_chance = { base = 30 }
+	}
+	option = {	# Hold the banquet at the House this year
+		name = tm_yt3.0010.c
+		trigger = { gold >= 25 }
+		remove_short_term_gold = 25
+		add_prestige = 30
+		tm_yt3_ease_house_strain_effect = yes
+		ai_chance = {
+			base = 20
+			modifier = { add = 20 has_trait = generous }
+			modifier = { factor = 0 has_trait = greedy }
+		}
+	}
+}
+
+# The stranded woman. Root = a ruler of the Way in Hexi; scope:tm_yt3_house_county.
+tm_yt3.0020 = {
+	type = character_event
+	title = tm_yt3.0020.t
+	desc = {
+		desc = tm_yt3.0020.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:tm_yt3_kin_court }
+				desc = tm_yt3.0020.desc_kin
+			}
+			desc = tm_yt3.0020.desc_nokin
+		}
+	}
+	theme = faith
+	left_portrait = { character = scope:tm_yt3_stranded animation = worry }
+
+	trigger = {
+		exists = scope:tm_yt3_house_county
+		scope:tm_yt3_house_county = { holder ?= root }
+	}
+
+	immediate = {
+		# Her people's court in the west, if any Sogdian ruler is left: where a caravan home would take her.
+		random_ruler = {
+			limit = {
+				culture = culture:sogdian
+				is_landed = yes
+				NOT = { faith = root.faith }
+			}
+			save_scope_as = tm_yt3_kin_court
+		}
+		if = {
+			limit = { exists = scope:tm_yt3_kin_court }
+			create_character = {
+				gender = female
+				age = { 24 40 }
+				culture = culture:sogdian
+				faith = scope:tm_yt3_kin_court.faith
+				location = scope:tm_yt3_house_county.title_province
+				learning = { 6 12 }
+				save_scope_as = tm_yt3_stranded
+			}
+		}
+		else = {
+			tm_yt3_create_neighbour_effect = {
+				COUNTY = scope:tm_yt3_house_county
+				AGE_MIN = 24
+				AGE_MAX = 40
+				SCOPE = tm_yt3_stranded
+			}
+		}
+	}
+
+	option = {	# Ask the House's priestess for a camel, and a place in the next caravan west
+		name = tm_yt3.0020.a
+		trigger = { gold >= 25 }
+		remove_short_term_gold = 25
+		add_piety = 15
+		if = {
+			limit = { exists = scope:tm_yt3_kin_court }
+			scope:tm_yt3_kin_court = {
+				add_courtier = scope:tm_yt3_stranded
+				add_opinion = { target = root modifier = grateful_opinion opinion = 15 }
+			}
+		}
+		else = {
+			custom_tooltip = tm_yt3.0020.a.road_tt
+		}
+		ai_chance = { base = 40 }
+	}
+	option = {	# Take her in as the House's lodger
+		name = tm_yt3.0020.b
+		add_courtier = scope:tm_yt3_stranded
+		add_piety = 5
+		scope:tm_yt3_stranded = {
+			add_opinion = { target = root modifier = grateful_opinion opinion = 20 }
+		}
+		custom_tooltip = tm_yt3_stranded_keeps_faith_tt
+		ai_chance = { base = 40 }
+	}
+	option = {	# She can write: the court needs a clerk for its letters west
+		name = tm_yt3.0020.c
+		trigger = { scope:tm_yt3_stranded = { learning >= 8 } }
+		add_courtier = scope:tm_yt3_stranded
+		add_prestige = 15
+		scope:tm_yt3_stranded = {
+			add_opinion = { target = root modifier = grateful_opinion opinion = 30 }
+		}
+		custom_tooltip = tm_yt3_stranded_keeps_faith_tt
+		ai_chance = { base = 30 }
+	}
+	option = {	# We cannot help her
+		name = tm_yt3.0020.d
+		add_piety = -10
+		ai_chance = {
+			base = 5
+			modifier = { factor = 0 gold >= 25 }
+		}
+	}
+}

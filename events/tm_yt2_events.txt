@@ -1,0 +1,269 @@
+﻿namespace = tm_yt2
+
+# The palace faction, stage 2 (docs/wave3/yutai.md; docs/TODO.md "Stage 2 inputs from the China reading").
+# Stage 1 (tm_palace_events.txt) offers a daughter of the Way a seal in the inner offices. Stage 2 adds a standing
+# tug-of-war at each celestial or meritocratic throne: tm_yt2_balance on the throne's primary title, -3 to +3
+# (tm_yt2_effects.txt). The inner offices are the Northern Office, the scholar-officials the Southern Office, as the
+# censor Meng Zhaotu named them in 881 (So 2000, p. 143).
+#   0001  the inner offices at work (decision tm_yt2_work_offices_decision): adopt across names (Tang to 907: Yang
+#         Fugong's adopted sons, So 2000, pp. 152-153; Song from 971: the register and certificate of the Court of
+#         Imperial Ceremonies, So 2000, p. 200, and the quota of 1053, p. 345); win a Shence commander (867-903: the
+#         commanders chose emperors, So 2000, p. 139); sit in the ministers' audiences (Du Cong under Yizong, "inner and
+#         outer officials are one body", So 2000, p. 138); ask for licences and name-panels (eunuch Commissioners of
+#         Merit oversaw both clergies, Rideout 1949, p. 56; a name-panel guarded a house from confiscation, Gernet 1995,
+#         p. 43)
+#   0002  a clerk of the Court of Imperial Ceremonies asks after the society's adopted daughters (from 971, celestial;
+#         So 2000, p. 200 and design row 10)
+#   0003  the Censor's brush: the throne's Censor is of the Way, and a memorial against the palace names her sister
+# The memorial itself is tm_palace.0002, fired again by the balance (tm_yt2_yearly_effect). The 903 purge (tm_palace.0003)
+# sets the balance to -3. Nothing here for 907-960, Liao, or the Ming: the sources read do not cover them (So 2000 skips
+# the Five Dynasties; no study of Liao eunuchs was found, research/china_reading_list.md). Meritocratic thrones get only
+# the generic levers.
+
+# The inner offices at work. Root = the daughter, in office. scope:tm_palace_throne, scope:tm_palace_seat.
+tm_yt2.0001 = {
+	type = character_event
+	title = tm_yt2.0001.t
+	desc = {
+		desc = tm_yt2.0001.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:tm_palace_seat = { var:tm_yt2_balance >= 2 } }
+				desc = tm_yt2.0001.desc_north
+			}
+			triggered_desc = {
+				trigger = { scope:tm_palace_seat = { var:tm_yt2_balance <= -2 } }
+				desc = tm_yt2.0001.desc_south
+			}
+			desc = tm_yt2.0001.desc_even
+		}
+	}
+	theme = intrigue
+	left_portrait = { character = root animation = scheme }
+	right_portrait = { character = scope:tm_palace_throne animation = personality_rational }
+
+	trigger = {
+		has_variable = tm_palace_office
+		exists = scope:tm_palace_seat
+	}
+
+	option = {	# Tang: adopt grown followers across names, as the Yang did
+		name = tm_yt2.0001.a
+		trigger = {
+			current_date < 907.1.1
+			scope:tm_palace_throne = { has_government = celestial_government }
+			gold >= 50
+		}
+		remove_short_term_gold = 50
+		add_prestige = 25
+		scope:tm_palace_seat = { tm_yt2_north_effect = { AMOUNT = 1 } }
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = ambitious }
+		}
+	}
+	option = {	# Song: register an adopted heir with the Court of Imperial Ceremonies
+		name = tm_yt2.0001.b
+		trigger = {
+			current_date >= 971.1.1
+			scope:tm_palace_throne = { has_government = celestial_government }
+			prestige >= 100
+		}
+		add_prestige = -100
+		if = {
+			limit = { current_date >= 1053.1.1 }
+			random_list = {
+				75 = {
+					desc = tm_yt2.0001.b.entered
+					scope:tm_palace_seat = { tm_yt2_north_effect = { AMOUNT = 1 } }
+				}
+				25 = {
+					desc = tm_yt2.0001.b.quota
+				}
+			}
+		}
+		else = {
+			scope:tm_palace_seat = { tm_yt2_north_effect = { AMOUNT = 1 } }
+		}
+		ai_chance = { base = 25 }
+	}
+	option = {	# 867-903: win a Shence commander
+		name = tm_yt2.0001.c
+		trigger = {
+			current_date < 903.1.1
+			scope:tm_palace_throne = { has_government = celestial_government }
+			gold >= 100
+		}
+		remove_short_term_gold = 100
+		scope:tm_palace_seat = { tm_yt2_north_effect = { AMOUNT = 2 } }
+		random_list = {
+			70 = { desc = tm_yt2.0001.c.quiet }
+			30 = {
+				desc = tm_yt2.0001.c.noticed
+				scope:tm_palace_throne = {
+					add_opinion = { target = root modifier = suspicion_opinion opinion = -15 }
+				}
+			}
+		}
+		ai_chance = {
+			base = 20
+			modifier = { add = 20 has_trait = ambitious }
+			modifier = { add = -15 has_trait = craven }
+		}
+	}
+	option = {	# Sit in the ministers' audiences
+		name = tm_yt2.0001.d
+		custom_tooltip = tm_yt2_one_body_tt
+		set_variable = { name = tm_yt2_one_body value = yes years = 5 }
+		add_prestige = 15
+		ai_chance = {
+			base = 20
+			modifier = { add = 20 has_trait = content }
+			modifier = { add = 10 has_trait = diplomat }
+		}
+	}
+	option = {	# Ask for licences and name-panels for the society
+		name = tm_yt2.0001.e
+		trigger = { scope:tm_palace_seat = { var:tm_yt2_balance >= 1 } }
+		scope:tm_palace_seat = {
+			tm_yt2_spend_effect = yes
+			set_variable = { name = tm_yt2_licences value = yes years = 5 }
+		}
+		custom_tooltip = tm_yt2_licences_tt
+		scope:tm_palace_throne = {
+			random_realm_county = {
+				limit = {
+					has_variable = tm_house
+					NOT = { has_variable = tm_house_named }
+					holder ?= { NOT = { this = root } }
+				}
+				set_variable = tm_house_named
+			}
+		}
+		add_piety = 25
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = zealous }
+		}
+	}
+	option = {	# Not this year
+		name = tm_yt2.0001.f
+		ai_chance = { base = 5 }
+	}
+}
+
+# Song: the clerk of the Court of Imperial Ceremonies. Root = a daughter of the Way who keeps a House, under a celestial
+# throne, from 971. scope:tm_palace_throne, scope:tm_palace_seat.
+tm_yt2.0002 = {
+	type = character_event
+	title = tm_yt2.0002.t
+	desc = tm_yt2.0002.desc
+	theme = stewardship
+	left_portrait = { character = root animation = personality_rational }
+
+	trigger = {
+		tm_holds_sisters_house_trigger = yes
+		exists = scope:tm_palace_seat
+	}
+
+	option = {	# Answer with the rectified names
+		name = tm_yt2.0002.a
+		random_list = {
+			60 = {
+				modifier = { add = { value = learning multiply = 2 } }
+				desc = tm_yt2.0002.a.kept
+				add_piety = 25
+			}
+			40 = {
+				desc = tm_yt2.0002.a.lost
+				add_prestige = -25
+				every_held_title = {
+					limit = { tier = tier_county has_variable = tm_house }
+					change_variable = { name = tm_house_strain add = 1 }
+				}
+			}
+		}
+		ai_chance = { base = 40 }
+	}
+	option = {	# A friend in the inner offices files the question away
+		name = tm_yt2.0002.b
+		trigger = { scope:tm_palace_seat = { var:tm_yt2_balance >= 1 } }
+		scope:tm_palace_seat = { tm_yt2_spend_effect = yes }
+		ai_chance = { base = 40 }
+	}
+	option = {	# Buy the certificate, and let him write what he likes
+		name = tm_yt2.0002.c
+		trigger = { gold >= 50 }
+		remove_short_term_gold = 50
+		add_piety = -25
+		ai_chance = { base = 20 }
+	}
+}
+
+# The Censor's brush. Root = the throne's Censor, of the Way. scope:tm_palace_daughter = a daughter in the inner
+# offices named in a memorial. In the record censors were the eunuchs' opponents (Rideout 1953, pp. 47-48; So 2000,
+# p. 139), so a censor of the Way sits on the other side of the court from her sister.
+tm_yt2.0003 = {
+	type = character_event
+	title = tm_yt2.0003.t
+	desc = tm_yt2.0003.desc
+	theme = intrigue
+	left_portrait = { character = root animation = worry }
+	right_portrait = { character = scope:tm_palace_daughter animation = personality_rational }
+
+	trigger = {
+		exists = scope:tm_palace_daughter
+		scope:tm_palace_daughter = { has_variable = tm_palace_office is_alive = yes }
+		exists = scope:tm_palace_seat
+	}
+
+	option = {	# Send it up
+		name = tm_yt2.0003.a
+		add_prestige = 50
+		add_piety = -25
+		scope:tm_palace_seat = { tm_yt2_south_effect = yes }
+		scope:tm_palace_daughter = {
+			tm_palace_lose_office_effect = yes
+			add_opinion = { target = root modifier = angry_opinion opinion = -30 }
+		}
+		ai_chance = {
+			base = 20
+			modifier = { add = 20 has_trait = just }
+			modifier = { add = 15 has_trait = ambitious }
+		}
+	}
+	option = {	# Let it lie on my desk
+		name = tm_yt2.0003.b
+		scope:tm_palace_seat = { tm_yt2_north_effect = { AMOUNT = 1 } }
+		random_list = {
+			70 = { desc = tm_yt2.0003.b.quiet }
+			30 = {
+				desc = tm_yt2.0003.b.found
+				add_prestige = -50
+				scope:tm_palace_throne ?= {
+					add_opinion = { target = root modifier = angry_opinion opinion = -15 }
+				}
+			}
+		}
+		scope:tm_palace_daughter = {
+			add_opinion = { target = root modifier = grateful_opinion opinion = 20 }
+		}
+		ai_chance = {
+			base = 30
+			modifier = { add = 15 has_trait = deceitful }
+		}
+	}
+	option = {	# Write to her first
+		name = tm_yt2.0003.c
+		add_piety = 25
+		scope:tm_palace_daughter = {
+			tm_palace_lose_office_effect = yes
+			add_piety = 25
+			add_opinion = { target = root modifier = grateful_opinion opinion = 10 }
+		}
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = honest }
+		}
+	}
+}

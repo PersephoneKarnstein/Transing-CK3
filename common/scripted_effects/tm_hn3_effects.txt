@@ -1,0 +1,179 @@
+﻿# Crusader Dolls — Ha-Nehpakhot in the Maghreb and the Sahel (events/tm_hn3_events.txt; docs/wave3/ha-nehpakhot-maghreb.md).
+
+# The ban, by where she lives. Called from tm_hipukh.0003 in place of tm_turning_niddui_effect. Scope: the daughter.
+#  - A ruler of the sect has decreed that neither party may ban the other: no ban (tm_hn3_two_parties_effect).
+#  - Under a Muslim lord in the Maghreb or the Sahel the ban is the street's own and needs no licence (Hirschberg
+#    pp. 221, 233-237; Gil's Maghreb pages mention no licence either). The lord has no say unless asked. Thirty days on,
+#    he hears of it (the thirty days are Hirschberg's, p. 237), if his flavour budget allows: he may send the case back
+#    for a new Jewish hearing (Krakowski ch. 6; Goitein p. 212), lend his court to enforce it (Hirschberg pp. 236-237),
+#    forbid it on her petition (Rustow ch. 8), or not interfere (Cohen p. 74).
+#  - In a county held by a ruler of the sect in the Maghreb or the Sahel the ban is likewise the street's own; she
+#    hears of it through the yearly pulse (tm_hn3.0020, in place of the Provencal licence, tm_hn2.0040).
+#  - Elsewhere: the Provencal lord's licence, as before (tm_turning_niddui_effect).
+tm_hn3_niddui_effect = {
+	if = {
+		limit = { tm_hn3_under_two_parties_trigger = yes }
+		send_interface_toast = {
+			type = event_toast_effect_good
+			title = tm_hn3_niddui_decree_toast
+		}
+	}
+	else_if = {
+		limit = { tm_hn3_muslim_lord_ban_trigger = yes }
+		add_character_modifier = { modifier = tm_niddui_modifier years = 3 }
+		save_scope_as = tm_hn3_banned
+		location.county.holder = { save_scope_as = tm_hn3_lord }
+		if = {
+			limit = {
+				NOT = { scope:tm_hn3_lord = scope:tm_hn3_banned }
+				scope:tm_hn3_lord = { tm_flavour_ready_trigger = yes }
+			}
+			scope:tm_hn3_lord = {
+				tm_flavour_spent_effect = yes
+				trigger_event = { id = tm_hn3.0010 days = 30 }
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			tm_hn3_in_west_trigger = yes
+			location ?= { county ?= { holder ?= { faith = faith:tm_nehpakhot } } }
+		}
+		add_character_modifier = { modifier = tm_niddui_modifier years = 3 }
+	}
+	else = {
+		tm_turning_niddui_effect = yes
+	}
+}
+
+# The Decree of the Two Parties: "neither party shall interfere with the other" (al-Zahir's decree of 1030 for the
+# Rabbanites and Karaites, Rustow ch. 8; Stillman p. 198). A ruler of the sect issues it for her own land. While she
+# lives, no Jewish court in her realm may ban a daughter (tm_hn3_niddui_effect), and the bans already laid in her
+# realm are lifted. Both parties' courtiers are pleased; the zealots of either are not. Scope: the ruler.
+tm_hn3_two_parties_effect = {
+	set_variable = tm_hn3_two_parties
+	every_courtier = {
+		limit = { has_character_modifier = tm_niddui_modifier }
+		remove_character_modifier = tm_niddui_modifier
+	}
+	every_vassal = {
+		limit = { has_character_modifier = tm_niddui_modifier }
+		remove_character_modifier = tm_niddui_modifier
+	}
+	every_courtier = {
+		limit = {
+			faith.religion = religion:judaism_religion
+			NOT = { has_trait = zealous }
+		}
+		add_opinion = { target = root modifier = tm_hn3_two_parties_opinion }
+	}
+	every_courtier = {
+		limit = {
+			faith.religion = religion:judaism_religion
+			has_trait = zealous
+		}
+		add_opinion = { target = root modifier = tm_hn3_two_parties_zealot_opinion }
+	}
+}
+
+# A household out of the Almohad lands is received at a court: a man and a woman, married, Rabbanite Jews of the
+# host's land. The kahal takes them in at once (tm_surv_kahal_take_in_effect, tm_surv_effects.txt: the sect's faith,
+# counted as kahal joins, and the host's court). Persecution is not shown: they arrive, that is all. "Those who escape shall be
+# accepted ... they shall not be turned away" (Maimonides, Epistle on Forced Conversion; Hirschberg p. 195).
+# Callable by any builder. Scope: the receiving ruler (a ruler of the sect: the take-in converts them).
+tm_hn3_receive_refugees_effect = {
+	save_scope_as = tm_hn3_refuge_host
+	if = {
+		limit = { exists = capital_county }
+		capital_county.culture = { save_scope_as = tm_hn3_refuge_culture }
+	}
+	else = {
+		culture = { save_scope_as = tm_hn3_refuge_culture }
+	}
+	create_character = {
+		gender = male
+		age = { 22 45 }
+		culture = scope:tm_hn3_refuge_culture
+		faith = faith:rabbinic_faith
+		dynasty = generate
+		employer = scope:tm_hn3_refuge_host
+		save_scope_as = tm_hn3_refugee_man
+	}
+	create_character = {
+		gender = female
+		age = { 20 40 }
+		culture = scope:tm_hn3_refuge_culture
+		faith = faith:rabbinic_faith
+		dynasty = none
+		employer = scope:tm_hn3_refuge_host
+		save_scope_as = tm_hn3_refugee_woman
+	}
+	scope:tm_hn3_refugee_man = {
+		marry = scope:tm_hn3_refugee_woman
+		set_variable = tm_hn3_refugee
+		add_opinion = { target = scope:tm_hn3_refuge_host modifier = tm_hn3_refuge_opinion }
+	}
+	scope:tm_hn3_refugee_woman = {
+		set_variable = tm_hn3_refugee
+		add_opinion = { target = scope:tm_hn3_refuge_host modifier = tm_hn3_refuge_opinion }
+	}
+	# Shelter is not conversion: they fled one forced conversion and keep their own faith here. They live at her court,
+	# where the kahal of her town (tm_surv_kahal_draw_effect) takes Rabbanite Jews at court first, so some may join later.
+}
+
+# The adornment, Maghreb version: "a Qayrawanese robe, cap, veil and mantle, that is, a complete attire", a husband's
+# "most urgent request" (Goitein p. 167). Same variable as the necklace, so a daughter has one adornment or the other.
+# Scope: the daughter. $GIVER$ = who sends for it.
+tm_hn3_give_attire_effect = {
+	create_artifact = {
+		name = tm_hn3_attire_name
+		description = tm_hn3_attire_desc
+		type = miscellaneous
+		visuals = fabric_roll
+		modifier = tm_hn3_attire_modifier
+		decaying = no
+		wealth = 30
+		quality = 30
+		creator = $GIVER$
+		save_scope_as = tm_hn3_new_attire
+	}
+	scope:tm_hn3_new_attire = {
+		set_variable = tm_hn2_adornment
+		set_variable = tm_hn3_attire
+	}
+}
+
+# A Maghrebi name, an added choice at the naming (tm_hipukh.0002); the scroll names stay. Names of rule and good
+# omen, mostly Sitt- ("lady who rules") compounds: Goitein, Med. Society 3, pp. 314-319 (mothers chose them); Gil.
+# Scope: the one being named.
+tm_hn3_maghreb_name_effect = {
+	random_list = {
+		10 = { change_first_name = Sitt_al_Kull }	# "she who rules over everyone"; most common (Goitein p. 316, n. 30)
+		8 = { change_first_name = Mawlat }			# "lady"; Qayrawan, early 11th c. (Goitein pp. 117, 499 n. 29); Mahdiya (Gil pp. 678, 695)
+		8 = { change_first_name = Surura }			# "happy"; Qayrawan (Goitein pp. 202, 319); Mahdiya (Gil pp. 695, 699)
+		6 = { change_first_name = Sittuna }			# "little lady"; a Tunisian woman (Goitein p. 203)
+		6 = { change_first_name = Sitt_al_Ahl }		# "mistress of the family"; Qayrawan epitaphs (Goitein n. 17 p. 498)
+		6 = { change_first_name = Mubaraka }		# "the blessed one"; of Gabes (Goitein p. 183); Mahdiya (Gil p. 702)
+		6 = { change_first_name = Berakha }			# "blessing"; Ben Yiju's sister, al-Mahdiyya (India Traders pp. 54, 57)
+		5 = { change_first_name = Sitt_al_Dar }		# "mistress of the house"; Ben Yiju's daughter (India Traders p. 70); Goitein n. 14 p. 498
+		4 = { change_first_name = Sittat }			# the Tahirti family, Maghrib (Gil p. 678)
+		3 = { change_first_name = Banina }			# a Maghribi merchant's sister, 1037 (Goitein p. 289; Gil p. 678)
+	}
+}
+
+# The decorous hush (tm_hn3.0060). Scope: the ruler.
+tm_hn3_hush_effect = {
+	set_variable = tm_hn3_hush
+	every_courtier = {
+		limit = { has_trait = tm_daughter_of_the_turning }
+		add_opinion = { target = root modifier = tm_hn3_hush_opinion }
+		add_character_modifier = { modifier = tm_hn3_hush_modifier years = 2 }
+	}
+	every_courtier = {
+		limit = {
+			faith.religion = religion:judaism_religion
+			NOT = { faith = root.faith }
+		}
+		add_opinion = { target = root modifier = tm_hn3_hush_doubt_opinion }
+	}
+}

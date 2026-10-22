@@ -1,0 +1,104 @@
+﻿# Crusader Dolls — landless bands of the six faiths, wave 4 (docs/wave4/bands.md). Appended to vanilla on_actions.
+# Builds on wave 3 (tm_bae2_on_actions.txt): tm_bae2_faith_band_trigger names a band, tm_bae2_was_band marks it, and
+# tm_bae2_title_gain gives a band that lands, however it lands, the settling grace. Nothing here duplicates that.
+
+yearly_global_pulse = {
+	on_actions = {
+		tm_band_yearly_patent
+		tm_band_yearly_companions
+	}
+}
+
+on_war_won_attacker = {
+	on_actions = { tm_band_war_won_attacker }
+}
+
+on_war_won_defender = {
+	on_actions = { tm_band_war_won_defender }
+}
+
+# The Patent and the Robe. Count each band's years in one camp, then let each band at peace look for a lord who might
+# give it land (tm_band.0002, its own event so that each band's saved scopes start empty).
+tm_band_yearly_patent = {
+	effect = {
+		every_ruler = {
+			limit = { tm_bae2_faith_band_trigger = yes }
+			tm_band_track_camp_effect = yes
+			if = {
+				limit = {
+					is_at_war = no
+					is_adult = yes
+					is_imprisoned = no
+					NOT = { has_variable = tm_band_patent_cooldown }
+					OR = {
+						exists = var:tm_band_served
+						exists = var:tm_band_patient_with
+						tm_band_camped_long_trigger = yes
+					}
+				}
+				trigger_event = tm_band.0002
+			}
+		}
+	}
+}
+
+# The Companions Choose: rare. A band whose leader is weak or failing, with a clearly better companion among her
+# officers, at peace. 5% a year for an AI leader; 10% for a player, whose own choice it is (tm_band.0100), within the
+# flavour budget.
+tm_band_yearly_companions = {
+	effect = {
+		every_ruler = {
+			limit = {
+				tm_bae2_faith_band_trigger = yes
+				is_at_war = no
+				is_imprisoned = no
+				NOT = { has_variable = tm_band_companions_cooldown }
+				tm_band_weak_leader_trigger = yes
+				save_temporary_scope_as = tm_band_leader_tmp
+				any_courtier = { tm_band_companion_trigger = { LEADER = scope:tm_band_leader_tmp } }
+				trigger_if = {
+					limit = { is_ai = no }
+					tm_flavour_ready_trigger = yes
+				}
+			}
+			random = {
+				chance = 5
+				modifier = {
+					add = 5
+					is_ai = no
+				}
+				trigger_event = tm_band.0102
+			}
+		}
+	}
+}
+
+# A band that fought on a lord's side in a war he won (laamp_join_war_contract and the like) has served him: the
+# Saffarid case of a band that cleared a county (Tor p. 122). Remember him for ten years.
+tm_band_war_won_attacker = {
+	effect = {
+		root.war ?= {
+			every_war_attacker = {
+				limit = {
+					tm_bae2_faith_band_trigger = yes
+					NOT = { this = scope:attacker }
+				}
+				set_variable = { name = tm_band_served value = scope:attacker years = 10 }
+			}
+		}
+	}
+}
+
+tm_band_war_won_defender = {
+	effect = {
+		root.war ?= {
+			every_war_defender = {
+				limit = {
+					tm_bae2_faith_band_trigger = yes
+					NOT = { this = scope:defender }
+				}
+				set_variable = { name = tm_band_served value = scope:defender years = 10 }
+			}
+		}
+	}
+}

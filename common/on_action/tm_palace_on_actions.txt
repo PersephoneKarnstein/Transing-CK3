@@ -9,6 +9,9 @@ tm_palace_yearly = {
 			limit = { tm_palace_daughter_trigger = yes }
 			save_scope_as = tm_palace_daughter
 			top_liege = { save_scope_as = tm_palace_throne }
+			# Stage 2: the balance between the inner offices and the scholar-officials (tm_yt2_effects.txt). Saves
+			# scope:tm_palace_seat, the throne's primary title.
+			tm_yt2_yearly_effect = yes
 			# The purge of 903 (So 2000, p. 161): only under a celestial throne, and only for those in office.
 			if = {
 				limit = {
@@ -19,6 +22,7 @@ tm_palace_yearly = {
 					NOT = { has_character_flag = tm_palace_purge_seen }
 				}
 				add_character_flag = tm_palace_purge_seen
+				scope:tm_palace_seat = { set_variable = { name = tm_yt2_balance value = -3 } }
 				trigger_event = { id = tm_palace.0003 days = { 1 300 } }
 			}
 			# The inner offices write: about once in twenty years, never twice in fifteen.
@@ -29,6 +33,10 @@ tm_palace_yearly = {
 				}
 				random = {
 					chance = 5
+					# Stage 2: the inner offices write more often when they hold the throne's ear, less when the
+					# scholar-officials do.
+					modifier = { add = 3 scope:tm_palace_seat = { var:tm_yt2_balance >= 2 } }
+					modifier = { add = -3 scope:tm_palace_seat = { var:tm_yt2_balance <= -2 } }
 					set_variable = { name = tm_palace_offered value = yes years = 15 }
 					trigger_event = { id = tm_palace.0001 days = { 1 300 } }
 				}

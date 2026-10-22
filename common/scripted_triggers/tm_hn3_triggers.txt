@@ -1,0 +1,219 @@
+﻿# Crusader Dolls — Ha-Nehpakhot in the Maghreb and the Sahel, wave 3 (events/tm_hn3_events.txt; docs/wave3/ha-nehpakhot-maghreb.md).
+
+# ---------------------------------------------------------------------------------------------------
+# Regions, by de jure title (vanilla 00_landed_titles.txt).
+# The Maghreb: e_maghreb (k_maghreb, k_tahert, k_africa, k_anbiya, k_sahara, k_canarias). Ifriqiya: k_africa
+# (Kairouan, Tunis with al-Mahdiyya, Gabes, Tripolitania, Constantine). The Sahel and the Volta, where the faith goes
+# in the observe runs: e_mali, e_kanem_bornu (Hausaland), k_gur (Dagomba) and k_akan (Bono). Scope: a county title.
+tm_hn3_county_in_maghreb_trigger = {
+	target_is_de_jure_liege_or_above = title:e_maghreb
+}
+
+tm_hn3_county_in_sahel_trigger = {
+	OR = {
+		target_is_de_jure_liege_or_above = title:e_mali
+		target_is_de_jure_liege_or_above = title:e_kanem_bornu
+		target_is_de_jure_liege_or_above = title:k_gur
+		target_is_de_jure_liege_or_above = title:k_akan
+	}
+}
+
+# The Maghreb or the Sahel. Scope: a county title.
+tm_hn3_county_in_west_trigger = {
+	OR = {
+		tm_hn3_county_in_maghreb_trigger = yes
+		tm_hn3_county_in_sahel_trigger = yes
+	}
+}
+
+# Where a character lives. Scope: a character.
+tm_hn3_in_maghreb_trigger = {
+	location ?= { county ?= { tm_hn3_county_in_maghreb_trigger = yes } }
+}
+
+tm_hn3_in_ifriqiya_trigger = {
+	location ?= { county ?= { target_is_de_jure_liege_or_above = title:k_africa } }
+}
+
+tm_hn3_in_west_trigger = {
+	location ?= { county ?= { tm_hn3_county_in_west_trigger = yes } }
+}
+
+# A ruler whose capital is in the Maghreb or the Sahel. Scope: a character.
+tm_hn3_capital_in_west_trigger = {
+	capital_county ?= { tm_hn3_county_in_west_trigger = yes }
+}
+
+# A daughter of Maghrebi speech: of Arabic or Berber heritage, or living in the Maghreb. Used for the names and the
+# story with no ending. Scope: a character.
+tm_hn3_maghrebi_trigger = {
+	OR = {
+		tm_hn3_in_maghreb_trigger = yes
+		culture ?= { has_cultural_pillar = heritage_arabic }
+		culture ?= { has_cultural_pillar = heritage_berber }
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The era, for text variants only (script value tm_hn3_maghreb_era, common/script_values/tm_hn3_values.txt):
+#   1 = Qayrawan (to Nov. 1057), 2 = after Qayrawan, the Almoravids in the west (1057-1146),
+#   3 = the Almohads (1146-1229; in Ifriqiya 1160-1229), 4 = the Hafsids and the Banu Marin (from 1229).
+# No mechanic reads it except the refuge decision's date. Scope: a character. $ERA$ = 1 to 4.
+tm_hn3_maghreb_era_trigger = {
+	tm_hn3_maghreb_era = $ERA$
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The ban, Maghreb version. A daughter whose county is held by a Muslim lord in the Maghreb or the Sahel: there the
+# ban is the street's own and needs no lord's licence (Hirschberg pp. 221, 233-237; no licence in Gil's Maghreb
+# pages either). Scope: the daughter.
+tm_hn3_muslim_lord_ban_trigger = {
+	tm_hn3_in_west_trigger = yes
+	location ?= {
+		county ?= {
+			holder ?= {
+				faith.religion = religion:islam_religion
+				is_landed = yes
+			}
+		}
+	}
+}
+
+# A ruler of the sect has decreed that neither party of the Jews shall ban the other (tm_hn3_two_parties_effect),
+# and the daughter lives in her land. Scope: the daughter.
+tm_hn3_under_two_parties_trigger = {
+	location ?= {
+		county ?= {
+			holder ?= {
+				OR = {
+					has_variable = tm_hn3_two_parties
+					top_liege ?= { has_variable = tm_hn3_two_parties }
+				}
+			}
+		}
+	}
+}
+
+# A lord who has a protector of the sect at his side: a physician of the sect in his service (tm_hipukh.0031,
+# either version), or he commissioned a translation from a daughter (tm_hipukh.0030). Protection from service, never
+# bought. Scope: the lord.
+tm_hn3_lord_has_protector_trigger = {
+	OR = {
+		has_character_modifier = tm_translation_patron_modifier
+		any_courtier = {
+			OR = {
+				has_character_modifier = tm_hn3_physician_modifier
+				has_character_modifier = tm_hn3_vizier_modifier
+				has_character_modifier = tm_fisica_licensed_modifier
+				has_character_modifier = tm_fisica_women_modifier
+			}
+		}
+	}
+}
+
+# The shunned daughter can petition the lord to forbid her ban: a protector of the sect serves him, or a Jew at his
+# court is her friend (the courtier route of the Fatimid ban of 1029-30: Rustow ch. 3 and ch. 8). Needs
+# scope:tm_hn3_lord and scope:tm_hn3_banned.
+tm_hn3_has_petition_trigger = {
+	exists = scope:tm_hn3_lord
+	exists = scope:tm_hn3_banned
+	scope:tm_hn3_lord = {
+		OR = {
+			tm_hn3_lord_has_protector_trigger = yes
+			any_courtier = {
+				NOT = { this = scope:tm_hn3_banned }
+				faith.religion = religion:judaism_religion
+				OR = {
+					has_relation_friend = scope:tm_hn3_banned
+					opinion = { target = scope:tm_hn3_banned value >= 50 }
+				}
+			}
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The physician as protector: a Muslim lord whose capital is in the Maghreb or the Sahel (tm_hipukh.0031, Maghreb
+# version). Scope: the lord.
+tm_hn3_physician_lord_trigger = {
+	faith.religion = religion:islam_religion
+	tm_hn3_capital_in_west_trigger = yes
+}
+
+# The adornment, Maghreb version: a Qayrawanese attire instead of a necklace. Scope: the bride.
+tm_hn3_attire_trigger = {
+	OR = {
+		tm_hn3_in_west_trigger = yes
+		culture ?= { has_cultural_pillar = heritage_arabic }
+		culture ?= { has_cultural_pillar = heritage_berber }
+	}
+}
+
+# She owns the Qayrawanese attire. Scope: the character.
+tm_hn3_has_attire_trigger = {
+	any_character_artifact = { has_variable = tm_hn3_attire }
+}
+
+# A woman of the street to sit with her when the trustworthy women come (tm_hn3.0011): a friend, or kin, of a Jewish
+# faith at her court. Scope: the daughter.
+tm_hn3_has_woman_witness_trigger = {
+	OR = {
+		any_relation = {
+			type = friend
+			is_female = yes
+			faith.religion = religion:judaism_religion
+		}
+		any_close_family_member = {
+			is_female = yes
+			is_adult = yes
+			faith.religion = religion:judaism_religion
+		}
+	}
+}
+
+# The Zirid robes: a woman who rules a realm in Ifriqiya in her own name or as regent, before the death of al-Sayyida
+# (Oct. 1023; Gil p. 188 n. 126, p. 735). Scope: the ruler (the woman is herself, or her diarch).
+tm_hn3_robes_court_trigger = {
+	current_date < 1023.11.1
+	is_landed = yes
+	capital_county ?= { target_is_de_jure_liege_or_above = title:k_africa }
+	OR = {
+		is_female = yes
+		diarch ?= { is_female = yes }
+	}
+	any_courtier = { tm_hn3_learned_daughter_trigger = yes }
+}
+
+# A learned daughter of the Turning. Scope: the courtier.
+tm_hn3_learned_daughter_trigger = {
+	has_trait = tm_daughter_of_the_turning
+	is_adult = yes
+	is_imprisoned = no
+	learning >= 10
+}
+
+# The story with no ending: Nissim of Qayrawan's book, Judeo-Arabic, for Jews under Muslim rule. Gated at his death
+# (1062), when the book is complete; its year of writing is not in the notes. Scope: the daughter.
+tm_hn3_story_trigger = {
+	current_date >= 1062.7.1
+	has_trait = tm_daughter_of_the_turning
+	is_adult = yes
+	is_imprisoned = no
+	OR = {
+		is_ruler = yes
+		exists = employer
+	}
+	OR = {
+		tm_hn3_in_west_trigger = yes
+		tm_hn3_maghrebi_trigger = yes
+	}
+}
+
+# A ruler of the sect who may receive the households that come out of the Almohad lands (tm_hn3_refuge_decision).
+# Scope: the ruler.
+tm_hn3_refuge_ruler_trigger = {
+	faith = faith:tm_nehpakhot
+	is_landed = yes
+	tm_hn3_capital_in_west_trigger = yes
+	tm_hn3_maghreb_era_trigger = { ERA = 3 }
+}

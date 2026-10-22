@@ -1,0 +1,239 @@
+﻿# Crusader Dolls — protection under Muslim and Orthodox lords, wave 4 (events/tm_fut_events.txt).
+# Appends to vanilla on_actions through on_actions lists only. Every flavour event checks the receiver's budget
+# (tm_flavour_ready_trigger) and spends it (tm_flavour_spent_effect); the blocks run in order, so a lord gets one of
+# them in a year at most. Follow-ups (0011) and events started by the interaction are exempt. Chances are small.
+
+yearly_playable_pulse = {
+	on_actions = { tm_fut_yearly_ruler }
+}
+
+tm_fut_yearly_ruler = {
+	effect = {
+		save_scope_as = tm_fut_pulse_lord
+
+		# ---------------------------------------------------------------------------------------------------
+		# Under Her Chivalry: upkeep. Daughters under this lord's word keep the modifier and the household's
+		# silence (tm_fut_shelter_upkeep_effect) while he keeps the code and they live at his court.
+		if = {
+			limit = {
+				faith = { religion_tag = islam_religion }
+				tm_fut_keeps_code_trigger = yes
+			}
+			every_courtier = {
+				limit = { tm_fut_sheltered_by_trigger = { LORD = scope:tm_fut_pulse_lord } }
+				tm_fut_shelter_upkeep_effect = yes
+			}
+		}
+
+		# The fityan of his town swear him in. Iran and Iraq before 1056; only at a court where a daughter of the six
+		# faiths lives, so the event belongs to the mod's world.
+		if = {
+			limit = {
+				tm_flavour_ready_trigger = yes
+				tm_fut_lord_trigger = yes
+				tm_fut_fata_land_trigger = yes
+				tm_fut_keeps_code_trigger = no
+				NOT = { has_character_flag = tm_fut_fityan_cd }
+				exists = capital_county
+				any_courtier_or_guest = {
+					tm_world_daughter_trigger = yes
+					rite ?= { rite_has_parameter = tm_sisters_faith }
+				}
+			}
+			random = {
+				chance = 2
+				modifier = { add = 1 has_trait = brave }
+				modifier = { add = 1 has_trait = generous }
+				modifier = { add = 1 has_trait = honest }
+				modifier = { add = 1 has_trait = just }
+				tm_flavour_spent_effect = yes
+				add_character_flag = { flag = tm_fut_fityan_cd years = 20 }
+				trigger_event = { id = tm_fut.0001 days = { 1 300 } }
+			}
+		}
+
+		# She may put herself under his word. A Muslim lord with a daughter at court, or visiting; likelier if he
+		# already keeps the code. Asked of each daughter once in ten years.
+		if = {
+			limit = {
+				tm_fut_lord_trigger = yes
+				any_courtier_or_guest = {
+					tm_fut_seeker_trigger = yes
+					tm_flavour_ready_trigger = yes
+				}
+			}
+			random = {
+				chance = 3
+				modifier = { add = 3 tm_fut_keeps_code_trigger = yes }
+				random_courtier_or_guest = {
+					limit = {
+						tm_fut_seeker_trigger = yes
+						tm_flavour_ready_trigger = yes
+					}
+					save_scope_as = tm_fut_daughter
+				}
+				save_scope_as = tm_fut_lord
+				scope:tm_fut_daughter = {
+					tm_flavour_spent_effect = yes
+					add_character_flag = { flag = tm_fut_asked_cd years = 10 }
+					trigger_event = { id = tm_fut.0010 days = { 1 300 } }
+				}
+			}
+		}
+
+		# Someone demands her: his liege, else a neighbouring ruler (never Jewish, of no Sisters' faith). Once in ten
+		# years at most.
+		if = {
+			limit = {
+				tm_flavour_ready_trigger = yes
+				tm_fut_keeps_code_trigger = yes
+				NOT = { has_character_flag = tm_fut_demand_cd }
+				any_courtier = { tm_fut_sheltered_by_trigger = { LORD = scope:tm_fut_pulse_lord } }
+				OR = {
+					liege ?= { tm_fut_demander_trigger = yes }
+					any_neighboring_top_liege_realm_owner = { tm_fut_demander_trigger = yes }
+				}
+			}
+			random = {
+				chance = 3
+				random_courtier = {
+					limit = { tm_fut_sheltered_by_trigger = { LORD = scope:tm_fut_pulse_lord } }
+					save_scope_as = tm_fut_daughter
+				}
+				if = {
+					limit = {
+						is_independent_ruler = no
+						liege ?= { tm_fut_demander_trigger = yes }
+					}
+					liege = { save_scope_as = tm_fut_demander }
+				}
+				else = {
+					random_neighboring_top_liege_realm_owner = {
+						limit = { tm_fut_demander_trigger = yes }
+						save_scope_as = tm_fut_demander
+					}
+				}
+				tm_flavour_spent_effect = yes
+				add_character_flag = { flag = tm_fut_demand_cd years = 10 }
+				trigger_event = { id = tm_fut.0020 days = { 1 300 } }
+			}
+		}
+
+		# ---------------------------------------------------------------------------------------------------
+		# No Service in the Prince's Wars: upkeep. Members at a court with terms keep the modifier and stay off the
+		# knights' roll; members who came from a court with terms to one without are released. The terms lapse when
+		# no member is left at court.
+		if = {
+			limit = { has_variable = tm_fut_terms }
+			if = {
+				limit = {
+					OR = {
+						tm_fut_terms_lord_trigger = no
+						NOT = { any_courtier = { tm_fut_community_member_trigger = yes } }
+					}
+				}
+				tm_fut_end_terms_effect = yes
+			}
+			else = {
+				every_courtier = {
+					limit = { tm_fut_community_member_trigger = yes }
+					tm_fut_member_upkeep_effect = yes
+				}
+			}
+		}
+		else_if = {
+			limit = { any_courtier = { has_character_modifier = tm_fut_terms_member_modifier } }
+			every_courtier = {
+				limit = { has_character_modifier = tm_fut_terms_member_modifier }
+				tm_fut_member_release_effect = yes
+			}
+		}
+
+		# The community asks for terms. Likelier where a member already serves him (tm_hn3_lord_has_protector_trigger:
+		# a physician or vizier of the sect, a licensed fisica, or a translation he commissioned).
+		if = {
+			limit = {
+				tm_flavour_ready_trigger = yes
+				tm_fut_terms_lord_trigger = yes
+				NOT = { has_variable = tm_fut_terms }
+				NOT = { has_character_flag = tm_fut_terms_cd }
+				any_courtier = { tm_fut_community_member_trigger = yes }
+			}
+			random = {
+				chance = 3
+				modifier = { add = 3 tm_hn3_lord_has_protector_trigger = yes }
+				ordered_courtier = {
+					limit = { tm_fut_community_member_trigger = yes }
+					order_by = learning
+					save_scope_as = tm_fut_spokeswoman
+				}
+				tm_flavour_spent_effect = yes
+				add_character_flag = { flag = tm_fut_terms_cd years = 10 }
+				trigger_event = { id = tm_fut.0030 days = { 1 300 } }
+			}
+		}
+
+		# A member asks to ride with him, while he is at war.
+		if = {
+			limit = {
+				tm_flavour_ready_trigger = yes
+				has_variable = tm_fut_terms
+				is_at_war = yes
+				any_courtier = {
+					tm_fut_under_terms_trigger = yes
+					NOT = { has_character_flag = tm_fut_rides }
+					OR = {
+						has_trait = brave
+						prowess >= 10
+					}
+				}
+			}
+			random = {
+				chance = 5
+				random_courtier = {
+					limit = {
+						tm_fut_under_terms_trigger = yes
+						NOT = { has_character_flag = tm_fut_rides }
+						OR = {
+							has_trait = brave
+							prowess >= 10
+						}
+					}
+					save_scope_as = tm_fut_rider
+				}
+				tm_flavour_spent_effect = yes
+				trigger_event = { id = tm_fut.0032 days = { 1 60 } }
+			}
+		}
+
+		# A quarrel in the community. Once in fifteen years at most.
+		if = {
+			limit = {
+				tm_flavour_ready_trigger = yes
+				has_variable = tm_fut_terms
+				NOT = { has_character_flag = tm_fut_quarrel_cd }
+				any_courtier = {
+					count >= 2
+					tm_fut_under_terms_trigger = yes
+				}
+			}
+			random = {
+				chance = 2
+				random_courtier = {
+					limit = { tm_fut_under_terms_trigger = yes }
+					save_scope_as = tm_fut_party_a
+				}
+				random_courtier = {
+					limit = {
+						tm_fut_under_terms_trigger = yes
+						NOT = { this = scope:tm_fut_party_a }
+					}
+					save_scope_as = tm_fut_party_b
+				}
+				tm_flavour_spent_effect = yes
+				add_character_flag = { flag = tm_fut_quarrel_cd years = 15 }
+				trigger_event = { id = tm_fut.0033 days = { 1 300 } }
+			}
+		}
+	}
+}

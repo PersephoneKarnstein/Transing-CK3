@@ -1,0 +1,61 @@
+﻿# Crusader Dolls — Ha-Nehpakhot in the Maghreb and the Sahel (events/tm_hn3_events.txt).
+# Appends to vanilla on_actions through on_actions lists only. The story with no ending rides in the faith's yearly
+# member scan (tm_hn2_on_actions.txt), so the faith is scanned once a year, not twice.
+
+yearly_playable_pulse = {
+	on_actions = { tm_hn3_yearly_ruler }
+}
+
+tm_hn3_yearly_ruler = {
+	effect = {
+		# The Decree of the Two Parties stands while she lives: bans laid elsewhere on daughters who come to her land
+		# are lifted (tm_hn3_two_parties_effect).
+		if = {
+			limit = { has_variable = tm_hn3_two_parties }
+			every_courtier = {
+				limit = { has_character_modifier = tm_niddui_modifier }
+				remove_character_modifier = tm_niddui_modifier
+			}
+			every_vassal = {
+				limit = { has_character_modifier = tm_niddui_modifier }
+				remove_character_modifier = tm_niddui_modifier
+			}
+		}
+		# The decorous hush is kept at her court: daughters who come to it are covered too.
+		if = {
+			limit = { has_variable = tm_hn3_hush }
+			every_courtier = {
+				limit = {
+					has_trait = tm_daughter_of_the_turning
+					NOT = { has_character_modifier = tm_hn3_hush_modifier }
+				}
+				add_character_modifier = { modifier = tm_hn3_hush_modifier years = 2 }
+			}
+		}
+		# Robes from the Lady: a woman ruling in Ifriqiya, or regent there, before Oct. 1023. Flavour.
+		if = {
+			limit = { tm_hn3_robes_court_trigger = yes }
+			if = {
+				limit = { is_female = yes }
+				save_scope_as = tm_hn3_lady
+			}
+			else = {
+				diarch = { save_scope_as = tm_hn3_lady }
+			}
+			if = {
+				limit = { scope:tm_hn3_lady = { tm_flavour_ready_trigger = yes } }
+				random = {
+					chance = 10
+					random_courtier = {
+						limit = { tm_hn3_learned_daughter_trigger = yes }
+						save_scope_as = tm_hn3_scholar
+					}
+					scope:tm_hn3_lady = {
+						tm_flavour_spent_effect = yes
+						trigger_event = { id = tm_hn3.0040 days = { 1 300 } }
+					}
+				}
+			}
+		}
+	}
+}

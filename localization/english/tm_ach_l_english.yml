@@ -1,0 +1,109 @@
+﻿l_english:
+ # Crusader Dolls: the Deeds of the House (flavour "achievements"). docs/faith_design.md §11; docs/wave3/achievements.md.
+
+ # Ioanna Secunda (the Pope)
+ tm_ach.0001.t:0 "Ioanna Secunda"
+ tm_ach.0001.desc:0 "Within the month every court in Christendom has heard. The Bishop of Rome went into our cells a violent man, as the House requires, and [tm_ach_daughter.GetFirstName] came out of them. The House does not call it a gift. Aunt Bea's House says every woman it makes is a woman, and admits it learned its cells from Grandmother's. What [tm_ach_daughter.GetFirstName] says, she has not said yet.\n\nIn Rome the cardinals cannot agree whether the See is empty. The scribes of the Curia have stopped writing altogether, in case they write the wrong word."
+ tm_ach.0001.desc_consent:0 "The Bishop of Rome asked the House for the knife himself. He came as any novice comes, paid what any novice pays, and answered the knifer's question the old way. Now she is [tm_ach_daughter.GetFirstName]. She still holds the keys of Peter, because no one in Rome can find a canon that says what to do. The cardinals are reading very old books, very quickly."
+ tm_ach.0001.desc_nojoan:0 "\n\nThe Sisters have started calling her Ioanna Secunda: Joan the Second. Nobody in Rome knows who the first is meant to be."
+ tm_ach.0001.desc_joan:0 "\n\nThe chroniclers already tell of a woman who sat on Peter's throne long ago. The Sisters have started calling this one Ioanna Secunda. So, less fondly, has Rome."
+ tm_ach.0001.a:0 "Ioanna Secunda."
+ tm_ach.0001.b:0 "Take her as my daughter."
+ tm_ach.0001.rulers_tt:0 "Every ruler of [tm_ach_target_faith.GetName]"
+
+ # Grandmother's House
+ tm_ach.0002.t_pope:0 "The Keys and the Knife"
+ tm_ach.0002.t_patriarch:0 "An Old Custom of the City"
+ tm_ach.0002.desc_pope:0 "Grandmother's House has done what it always said it would. The Bishop of Rome sat in [ROOT.Char.GetFirstName]'s cells, and [ROOT.Char.GetHerHis] knife found him. He is a eunuch now, like the eunuchs of any court, and still a man in his own mind. Grandmother's House wanted it so.\n\nThe cardinals are arguing whether a eunuch may keep the keys of Peter. The envoys of Constantinople point out, helpfully, that their patriarchs have managed."
+ tm_ach.0002.desc_patriarch:0 "The Patriarch of Constantinople is a eunuch of our cutting. Grandmother's House hoped the City would scream. The City shrugs. It has had eunuch patriarchs before: Ignatios was cut at fourteen and sat on the throne twice. A deacon of the Great Church says only that the throne has its old custom back."
+ tm_ach.0002.a:0 "Grandmother's House keeps its word."
+
+ # The Patriarch's Daughter
+ tm_ach.0010.t:0 "The Patriarch's Daughter"
+ tm_ach.0010.desc:0 "The Patriarch of Constantinople went into the House's cells for what he had done, and [tm_ach_daughter.GetFirstName] came out of them. We waited for the City to scream. It did not. Constantinople has had beardless patriarchs before: Ignatios was cut at fourteen and held the throne twice.\n\nA deacon of the Great Church remarked that the throne had its old custom back. The Sisters have taken this as a blessing. The deacon did not mean it as one."
+ tm_ach.0010.desc_consent:0 "The Patriarch of Constantinople asked the House for the knife, and answered the knifer's question the old way. Now she is [tm_ach_daughter.GetFirstName]. The City is less shocked than anyone expected. It has had beardless patriarchs before: Ignatios was cut at fourteen and held the throne twice.\n\nThe Sisters say the throne has its old custom back. For once a deacon of the Great Church agrees with them, more or less."
+ tm_ach.0010.a:0 "The old order, restored."
+
+ # Al-Kunduri's Mercy
+ tm_ach.0020.t:0 "Al-Kunduri's Mercy"
+ tm_ach.0020.desc:0 "Before our cells, [tm_ach_daughter.GetFirstName] sat on the council of [tm_ach_master.GetTitledFirstName]. She has come through the knife, and her old master has written asking for his councillor back. The letter does not say what to call her. His clerks have left a space for the name."
+ tm_ach.0020.desc_kunduri:0 "\n\nHis clerks have also found a precedent. When the Sultan Tughril sent his vizier al-Kunduri to ask for a woman's hand, the vizier married her himself. Tughril had him castrated, and then kept him in office. Whether [tm_ach_master.GetFirstName] means to be as forgiving as Tughril, the letter does not say."
+ tm_ach.0020.desc_early:0 "\n\nNo one at his court can find a precedent. They are still looking."
+ tm_ach.0020.a:0 "Send her back. She will tell him all about us."
+ tm_ach.0020.b:0 "She stays with the House."
+
+ # Gelded Like My Camels
+ tm_ach.0030.t:0 "Gelded Like My Camels"
+ tm_ach.0030.desc_son:0 "He was a son of [tm_ach_khan.GetTitledFirstName], and a cruel one, as the House requires. Our cells took him. [tm_ach_daughter.GetFirstName] rides out of them.\n\nThe steppe keeps no knife for men. Its people met cut men first at the courts of the south, and did not think well of them. In the khan's camp someone has already said that we geld princes the way they geld camels. The Sisters have taken this up as a boast, which was not the idea."
+ tm_ach.0030.desc_khan:0 "A khan sat in our cells, and a cruel one, as the House requires. [tm_ach_daughter.GetFirstName] rides out of them.\n\nThe steppe keeps no knife for men. Its people met cut men first at the courts of the south, and did not think well of them. In the camp someone has already said that we geld khans the way they geld camels. The Sisters have taken this up as a boast, which was not the idea."
+ tm_ach.0030.a:0 "Let them say it."
+ tm_ach.0031.t:0 "The Judges of the Camp"
+ tm_ach.0031.desc:0 "An envoy rides in from the camp of [tm_ach_speaker.GetTitledFirstName]. The judges there have sat, and their judgment is short: [ROOT.Char.GetFirstName] is the camp's enemy until [ROOT.Char.GetSheHe] pays for what was done."
+ tm_ach.0031.desc_tengri:0 "\n\nThe envoy adds what the shamans say: this is the cruelty of the southern courts, carried onto the grass, and the Sky never asked for it."
+ tm_ach.0031.desc_other:0 "\n\nThe envoy adds that his lord had heard of such things only from the courts of the south, and never thought to see one."
+ tm_ach.0031.a:0 "Send horses and silver."
+ tm_ach.0031.b:0 "Let the judges say what they like."
+
+ # Six Hundred Daughters
+ tm_ach.0040.t:0 "Six Hundred Daughters"
+ tm_ach.0040.desc:0 "The House's register now counts fifty daughters of the knife under the name of [ROOT.Char.GetHouse.GetName]. Fifty is not six hundred."
+ tm_ach.0040.desc_yang:0 " In Chang'an, they say, the palace steward Yang Fugong adopted six hundred eunuch sons and made every one an army supervisor."
+ tm_ach.0040.desc_early:0 " In Chang'an, they say, the palace stewards adopt eunuch sons by the dozen and make them governors."
+ tm_ach.0040.desc_end:0 "\n\n"The Steward has six hundred sons and not one daughter," the Sisters say. "We have only daughters, and we feed them.""
+ tm_ach.0040.a:0 "Fifty daughters, and every one fed."
+
+ # The Greater Circumcision
+ tm_ach.0050.t:0 "The Greater Circumcision"
+ tm_ach.0050.desc:0 "[tm_ach_daughter.GetFirstName] has come back to court to make songs and verses. The court has not been easy since. The steward will not meet her eye. The chaplain prays louder at dinner. At last a young guest dares to ask her how it went.\n\nShe answers as the singers of Medina answered, when a caliph had them cut in 717:"
+ tm_ach.0050.a:0 ""Only a second circumcision.""
+ tm_ach.0050.b:0 ""Or rather, the Greater Circumcision.""
+ tm_ach.0050.c:0 ""May the cutter and the cut both be well.""
+
+ # Mother of Mothers Unmade a Father of Fathers
+ tm_ach.0060.t:0 "Mother of Mothers Unmade a Father of Fathers"
+ tm_ach.0060.desc:0 "The Bishop of Rome and the Patriarch of Constantinople have both passed through [ROOT.Char.GetFirstName]'s House in one lifetime. Rome and Constantinople agree on very little. They agree about [ROOT.Char.GetHerHim].\n\nIn both cities the preachers have found the same text for Sunday. In both cities the congregations already know how the sermon ends."
+ tm_ach.0060.a:0 "Neither of them will forget me."
+
+ # Deeds of the House
+ tm_ach_deeds_decision:0 "Deeds of the House"
+ tm_ach_deeds_decision_desc:0 "The House keeps a short book of the deeds the world will not let it forget."
+ tm_ach_deeds_decision_tooltip:0 "Read the deeds of my house."
+ tm_ach_deeds_decision_confirm:0 "Open the book"
+ tm_ach.0900.t:0 "Deeds of the House"
+ tm_ach.0900.desc:0 "The short book of [ROOT.Char.GetHouse.GetName]. Each deed is written once, in a plain hand:"
+ tm_ach.0900.pope:0 "\n\n#bold Ioanna Secunda#!: the Bishop of Rome went into our cells, and a daughter came out."
+ tm_ach.0900.pope_consent:0 "\n\n#bold Ioanna Secunda#!: the Bishop of Rome asked for the knife himself."
+ tm_ach.0900.pope_grandmother:0 "\n\n#bold The Keys and the Knife#!: Grandmother's House cut the Bishop of Rome."
+ tm_ach.0900.patriarch:0 "\n\n#bold The Patriarch's Daughter#!: the throne of Constantinople had its old custom back."
+ tm_ach.0900.vizier:0 "\n\n#bold Al-Kunduri's Mercy#!: a councillor came through the knife, and her master asked for her back."
+ tm_ach.0900.steppe:0 "\n\n#bold Gelded Like My Camels#!: a khan's camp named us its enemy."
+ tm_ach.0900.six_hundred:0 "\n\n#bold Six Hundred Daughters#!: fifty daughters of the knife under our name."
+ tm_ach.0900.circumcision:0 "\n\n#bold The Greater Circumcision#!: a singer of our court answered as the singers of Medina did."
+ tm_ach.0900.fathers:0 "\n\n#bold Mother of Mothers Unmade a Father of Fathers#!: the Pope and the Patriarch, in one lifetime."
+ tm_ach.0900.a:0 "Close the book."
+
+ # Nicknames
+ tm_ach_nick_the_unmaker:0 "the Unmaker"
+ tm_ach_nick_the_unmaker_desc:0 "Brought a Father of the Church under the knife."
+ tm_ach_nick_the_restorer:0 "the Restorer"
+ tm_ach_nick_the_restorer_desc:0 "Gave the throne of Constantinople back its old custom."
+ tm_ach_nick_the_merciful:0 "the Merciful"
+ tm_ach_nick_the_merciful_desc:0 "Brought a lord's councillor through the knife, and let her master ask for her back."
+ tm_ach_nick_gelder_of_khans:0 "Gelder of Khans"
+ tm_ach_nick_gelder_of_khans_desc:0 "The steppe's name for this ruler. The Sisters took it up as a boast."
+ tm_ach_nick_mother_of_fifty:0 "Mother of Fifty"
+ tm_ach_nick_mother_of_fifty_desc:0 "This ruler's house counts fifty daughters of the knife."
+ tm_ach_nick_the_greater:0 "the Greater"
+ tm_ach_nick_the_greater_desc:0 "After the Greater Circumcision, as the singers of Medina called it."
+ tm_ach_nick_unmaker_of_fathers:0 "Unmaker of Fathers"
+ tm_ach_nick_unmaker_of_fathers_desc:0 "Brought both the Pope and the Patriarch under the knife in one lifetime."
+
+ # Memories
+ tm_ach_officiated_memory:0 "brought someone through the Rite of the Knife"
+ tm_ach_officiated_memory_desc:0 "I brought [daughter.GetName] through the Rite of the Knife"
+ tm_ach_officiated_memory_desc_second_perspective:0 "you brought [daughter.GetName] through the Rite of the Knife"
+ tm_ach_officiated_memory_desc_third_perspective:0 "[owner.GetName] brought [daughter.GetName] through the Rite of the Knife"
+ tm_ach_risen_memory:0 "passed through the Rite of the Knife"
+ tm_ach_risen_memory_desc:0 "I passed through the Rite of the Knife in the House of [officiant.GetName]"
+ tm_ach_risen_memory_desc_second_perspective:0 "you passed through the Rite of the Knife in the House of [officiant.GetName]"
+ tm_ach_risen_memory_desc_third_perspective:0 "[owner.GetName] passed through the Rite of the Knife in the House of [officiant.GetName]"

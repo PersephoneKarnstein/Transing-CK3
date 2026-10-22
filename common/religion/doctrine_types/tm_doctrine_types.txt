@@ -111,7 +111,11 @@ tm_body_aristotelian = {
 	}
 }
 
-# Galen: the cut are a third kind, neither man nor woman, beloved of the angels.
+# The Galenic wing: the cut are counted a third kind, as Leo VI's Novel 98 counts them (men, women, eunuchs; Sidéris 2010,
+# p. 89). The accommodationist wing (faith_design.md §12, Bhatt revisions 2): the main rite disputes it, and no text
+# presents it as a sacred third gender. Galen is paraphrased only as "some third thing" (the renderings in
+# research/byz_galen_on_semen.md are unverified against De Lacy). Taken by tm_galenic_rite (tm_rite_types.txt).
+# Its modifier (wave 3): a liege of another faith finds the wing easier to live with; the Houses find less to pray for.
 tm_body_galenic = {
 	doctrine_group_type = doctrine_tm_body
 	index = 1
@@ -128,5 +132,10 @@ tm_body_galenic = {
 
 	parameters = {
 		tm_castrates_third_kind
+	}
+
+	character_modifier = {
+		different_faith_liege_opinion = 10
+		monthly_piety_gain_mult = -0.05
 	}
 }

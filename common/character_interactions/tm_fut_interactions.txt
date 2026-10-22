@@ -1,0 +1,31 @@
+﻿# Crusader Dolls — No Service in the Prince's Wars (events/tm_fut_events.txt, 0030), started by a player lord.
+# A lord of another faith offers the members of Ha-Nehpakhot at his court terms: no part in his wars unless they ask,
+# and their own quarrels settled their own way (Dollinger, Document 3, pp. 381-382, cls. 10 and 32). He chooses the
+# service they give in return in tm_fut.0030. AI lords reach the same event from the yearly pulse
+# (tm_fut_on_actions.txt), so this interaction has no AI weights.
+tm_fut_grant_terms_interaction = {
+	icon = icon_scheme_befriend
+	interface_priority = 40
+	category = interaction_category_friendly
+	desc = tm_fut_grant_terms_interaction_desc
+
+	is_shown = {
+		NOT = { scope:recipient = scope:actor }
+		scope:actor = { tm_fut_terms_lord_trigger = yes }
+		scope:recipient = {
+			tm_fut_community_member_trigger = yes
+			is_courtier_of = scope:actor
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		scope:actor = { NOT = { has_variable = tm_fut_terms } }
+	}
+
+	on_accept = {
+		scope:recipient = { save_scope_as = tm_fut_spokeswoman }
+		scope:actor = { trigger_event = tm_fut.0030 }
+	}
+
+	auto_accept = yes
+}

@@ -1,0 +1,4 @@
+﻿# Crusader Dolls — the Worn Garland, wave 4 (tm_ml3_caravan_done_effect). "Heroes of the road" (erivira; Hall 1980, p. 143).
+tm_ml3_nick_heroes_of_the_road = {
+	is_bad = no
+}

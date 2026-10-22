@@ -1,0 +1,126 @@
+﻿# Crusader Dolls — Badenya stage 2 (events/tm_bd2_events.txt; design in docs/stage2/badenya.md).
+
+# Find the court's jelimuso: the court chaplain if she is one (the faith's clergy are jelimusow), else a woman or
+# daughter of the faith at court. Scope: the ruler. Saves scope:tm_bd2_jeli, or nothing.
+tm_bd2_find_jeli_effect = {
+	if = {
+		limit = { cp:councillor_court_chaplain ?= { tm_bd2_jeli_trigger = yes } }
+		cp:councillor_court_chaplain = { save_scope_as = tm_bd2_jeli }
+	}
+	else = {
+		random_courtier = {
+			limit = { tm_bd2_jeli_trigger = yes }
+			weight = {
+				base = 1
+				modifier = { add = 2 tm_is_daughter_trigger = yes }
+				modifier = { add = 1 diplomacy >= 10 }
+			}
+			save_scope_as = tm_bd2_jeli
+		}
+	}
+}
+
+# The succession of a ruler of Badenya. Root: the dying ruler (tm_bd2_on_death), who still holds her titles.
+# 1. The sister's line (Ibn Khaldun II, p. 111; al-Bakri via Gomez 2018, chs. 3 and 6; Ibn Battuta IV, pp. 388, 443):
+#    if her primary heir is a sister's child, the heir is told so (tm_bd2.0001); otherwise, if a sister's child of
+#    the faith lives, the heir must answer the sister's line (tm_bd2.0002).
+# 2. A hot realm (Jansen 2002, p. 53; Schulz 2002, p. 816 n. 49): a primary heir of the faith takes the realm hot,
+#    and may be asked to cool a quarrel (tm_bd2.0010).
+tm_bd2_succession_effect = {
+	save_scope_as = tm_bd2_old
+	primary_title = { save_scope_as = tm_bd2_title }
+	primary_heir = { save_scope_as = tm_bd2_heir }
+	# The heir is a child of one of her sisters.
+	if = {
+		limit = {
+			scope:tm_bd2_heir = {
+				faith = faith:tm_badenya
+				mother ?= {
+					any_sibling = { this = scope:tm_bd2_old }
+				}
+			}
+		}
+		scope:tm_bd2_heir = { trigger_event = { id = tm_bd2.0001 days = { 5 10 } } }
+	}
+	# Otherwise, the eldest sister's child of the faith who is not the heir.
+	else = {
+		every_sibling = {
+			limit = { is_female = yes }
+			every_child = {
+				limit = {
+					tm_bd2_sisters_child_trigger = yes
+					NOT = { this = scope:tm_bd2_heir }
+				}
+				add_to_list = tm_bd2_sisters_children
+			}
+		}
+		ordered_in_list = {
+			list = tm_bd2_sisters_children
+			order_by = age
+			save_scope_as = tm_bd2_sisters_child
+		}
+		if = {
+			limit = { exists = scope:tm_bd2_sisters_child }
+			scope:tm_bd2_heir = { trigger_event = { id = tm_bd2.0002 days = { 5 10 } } }
+		}
+	}
+	# A hot realm, for an heir of the faith.
+	if = {
+		limit = { scope:tm_bd2_heir = { faith = faith:tm_badenya } }
+		scope:tm_bd2_heir = {
+			add_character_modifier = { modifier = tm_bd2_hot_realm_modifier days = 730 }
+			random = {
+				chance = 50
+				trigger_event = { id = tm_bd2.0010 days = { 60 400 } }
+			}
+		}
+	}
+}
+
+# Named With the King. Root: the ruler; scope:tm_bd2_associate = the woman she names associate in rule.
+# Ibn Battuta IV, p. 417 (1352): the chief wife was the king's associate in government by the custom of the people,
+# and her name was said from the pulpit with his. The honour only: the source's fall (pp. 417-419) is not built.
+tm_bd2_name_associate_effect = {
+	set_variable = { name = tm_bd2_associate value = scope:tm_bd2_associate }
+	scope:tm_bd2_associate = {
+		set_variable = { name = tm_bd2_associate_of value = root }
+		add_character_modifier = tm_bd2_associate_modifier
+		add_prestige = 50
+	}
+	tm_bd2_associate_opinions_effect = yes
+	# Muslim vassals hear it as a custom of the country, not of the law (an attributed jurist's view).
+	every_vassal = {
+		limit = { faith.religion = religion:islam_religion }
+		add_opinion = { target = root modifier = tm_bd2_associate_jurist_opinion }
+	}
+}
+
+# Vassals of the faith think well of the associate. Root: the ruler; scope:tm_bd2_associate set. Skips those who
+# already have it, so the feast can bring in new vassals.
+tm_bd2_associate_opinions_effect = {
+	every_vassal = {
+		limit = {
+			faith = faith:tm_badenya
+			NOT = { this = scope:tm_bd2_associate }
+			NOT = { has_opinion_modifier = { target = scope:tm_bd2_associate modifier = tm_bd2_associate_vassal_opinion } }
+		}
+		add_opinion = { target = scope:tm_bd2_associate modifier = tm_bd2_associate_vassal_opinion }
+	}
+}
+
+# End the honour: set aside by decision, or at the death of either. Root: the ruler. Saves scope:tm_bd2_former.
+tm_bd2_clear_associate_effect = {
+	var:tm_bd2_associate ?= {
+		save_scope_as = tm_bd2_former
+		remove_character_modifier = tm_bd2_associate_modifier
+		remove_variable = tm_bd2_associate_of
+	}
+	if = {
+		limit = { exists = scope:tm_bd2_former }
+		every_vassal = {
+			limit = { has_opinion_modifier = { target = scope:tm_bd2_former modifier = tm_bd2_associate_vassal_opinion } }
+			remove_opinion = { target = scope:tm_bd2_former modifier = tm_bd2_associate_vassal_opinion }
+		}
+	}
+	remove_variable = tm_bd2_associate
+}

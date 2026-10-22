@@ -1,0 +1,146 @@
+﻿# Crusader Dolls — Badenya stage 2: the sister's line, a hot realm, praise at court, praise at a naming
+# (events/tm_bd2_events.txt; design in docs/stage2/badenya.md).
+
+on_death = {
+	on_actions = {
+		tm_bd2_on_death
+	}
+}
+
+yearly_playable_pulse = {
+	on_actions = {
+		tm_bd2_yearly
+	}
+}
+
+on_birth_child = {
+	on_actions = {
+		tm_bd2_on_birth
+	}
+}
+
+# A ruler of Badenya dies holding a county or more. A body left at re-embodiment is not a death: she lives on.
+tm_bd2_on_death = {
+	trigger = {
+		is_ruler = yes
+		faith = faith:tm_badenya
+		highest_held_title_tier >= tier_county
+		NOT = { has_variable = tm_reborn }
+		exists = primary_title
+		exists = primary_heir
+	}
+	effect = {
+		tm_bd2_succession_effect = yes
+	}
+}
+
+# Praise before the court. The jelimusow sang at a patron's festivals (Schulz 2002, p. 797 n. 1, LATER). From 1330,
+# when the sources first put a poet before Mali's throne (al-Umari; Ibn Battuta IV, pp. 409-414: every Friday and at
+# both feasts), a king hears it more often.
+tm_bd2_yearly = {
+	trigger = {
+		faith = faith:tm_badenya
+		highest_held_title_tier >= tier_county
+		is_imprisoned = no
+		tm_flavour_ready_trigger = yes
+		tm_bd2_has_jeli_trigger = yes
+	}
+	effect = {
+		random = {
+			chance = 5
+			modifier = { add = 5 highest_held_title_tier >= tier_kingdom current_year >= 1330 }
+			modifier = { add = 3 has_character_modifier = tm_bd2_hot_realm_modifier }
+			tm_flavour_spent_effect = yes
+			trigger_event = { id = tm_bd2.0020 days = { 1 300 } }
+		}
+	}
+}
+
+# Uninvited praise at a naming (Schulz 2002, p. 801 n. 10). Root: the newborn. The praise goes to a parent of the
+# faith: a ruling mother first, then a ruling father, then the mother.
+tm_bd2_on_birth = {
+	trigger = {
+		OR = {
+			scope:mother ?= { faith = faith:tm_badenya }
+			scope:father ?= { faith = faith:tm_badenya }
+		}
+	}
+	effect = {
+		save_scope_as = tm_bd2_child
+		scope:mother ?= { save_scope_as = tm_bd2_mother }
+		if = {
+			limit = { scope:mother ?= { faith = faith:tm_badenya is_ruler = yes } }
+			scope:mother = { save_scope_as = tm_bd2_parent }
+		}
+		else_if = {
+			limit = { scope:father ?= { faith = faith:tm_badenya is_ruler = yes } }
+			scope:father = { save_scope_as = tm_bd2_parent }
+		}
+		else_if = {
+			limit = { scope:mother ?= { faith = faith:tm_badenya is_adult = yes } }
+			scope:mother = { save_scope_as = tm_bd2_parent }
+		}
+		scope:tm_bd2_parent ?= {
+			if = {
+				limit = {
+					is_imprisoned = no
+					tm_flavour_ready_trigger = yes
+					exists = scope:tm_bd2_mother
+				}
+				random = {
+					chance = 15
+					tm_flavour_spent_effect = yes
+					trigger_event = { id = tm_bd2.0030 days = 8 }
+				}
+			}
+		}
+	}
+}
+
+# Named With the King (tm_bd2_decisions.txt): the honour ends at the death of the associate or of the ruler.
+on_death = {
+	on_actions = {
+		tm_bd2_associate_on_death
+	}
+}
+
+yearly_playable_pulse = {
+	on_actions = {
+		tm_bd2_associate_yearly
+	}
+}
+
+tm_bd2_associate_on_death = {
+	effect = {
+		# The associate dies: her ruler is told.
+		if = {
+			limit = { has_variable = tm_bd2_associate_of }
+			var:tm_bd2_associate_of ?= {
+				tm_bd2_clear_associate_effect = yes
+				trigger_event = { id = tm_bd2.0042 days = 1 }
+			}
+		}
+		# The ruler dies: the honour was hers to give, and ends with her.
+		if = {
+			limit = { has_variable = tm_bd2_associate }
+			tm_bd2_clear_associate_effect = yes
+		}
+	}
+}
+
+# At the feast her name is said with the ruler's.
+tm_bd2_associate_yearly = {
+	trigger = {
+		has_variable = tm_bd2_associate
+		faith = faith:tm_badenya
+		is_imprisoned = no
+		tm_flavour_ready_trigger = yes
+	}
+	effect = {
+		random = {
+			chance = 8
+			tm_flavour_spent_effect = yes
+			trigger_event = { id = tm_bd2.0041 days = { 1 300 } }
+		}
+	}
+}

@@ -1,0 +1,204 @@
+﻿# Crusader Dolls — the Worn Garland, stage 2 (events/tm_ml2_events.txt; docs/stage2/worn-garland.md).
+# The faith as it ends up in runs is landless: daughters at Hindu courts, a republic, a mercenary band. Everything
+# here is offered to a courtier through her host's yearly pulse, or to a playable daughter herself.
+
+yearly_playable_pulse = {
+	on_actions = {
+		tm_ml2_yearly
+	}
+}
+
+on_death = {
+	on_actions = {
+		tm_ml2_on_death
+	}
+}
+
+tm_ml2_yearly = {
+	effect = {
+		# The shares pay, or count the years she is away (not flavour: no budget).
+		if = {
+			limit = { has_variable = tm_ml2_share }
+			tm_ml2_share_year_effect = yes
+		}
+		every_courtier = {
+			limit = { has_variable = tm_ml2_share }
+			tm_ml2_share_year_effect = yes
+		}
+
+		# A house on the temple street (0001): a Hindu lord with a daughter of the Garland and no share at court.
+		if = {
+			limit = {
+				faith ?= { religion = religion:hinduism_religion }
+				exists = capital_county
+				tm_flavour_ready_trigger = yes
+				OR = {
+					AND = {							# a lord who is herself a daughter can only buy (from 1070)
+						tm_ml2_share_candidate_trigger = yes
+						current_year >= 1070
+					}
+					any_courtier = { tm_ml2_share_candidate_trigger = yes }
+				}
+			}
+			random = {
+				chance = 4
+				modifier = {						# 985–1070, the trough: Thanjavur (c. 1014) drew women from nearby temples
+					add = -2						# (Orr 2000, pp. 42–46, 141–42, 163–64)
+					current_year >= 985
+					current_year < 1070
+				}
+				modifier = {						# the street is already there
+					add = 4
+					capital_county = { tm_ml2_street_trigger = yes }
+				}
+				modifier = {						# the women's deals and shares peak 1070–1300 (Orr 2000, pp. 74–75, 163–64)
+					add = 4
+					current_year >= 1070
+					current_year < 1300
+				}
+				if = {
+					limit = {
+						tm_ml2_share_candidate_trigger = yes
+						current_year >= 1070
+					}
+					save_scope_as = tm_ml2_woman
+				}
+				else = {
+					random_courtier = {
+						limit = { tm_ml2_share_candidate_trigger = yes }
+						save_scope_as = tm_ml2_woman
+					}
+				}
+				tm_flavour_spent_effect = yes
+				trigger_event = { id = tm_ml2.0001 days = { 1 300 } }
+			}
+		}
+
+		# A gift in her own name (0010): a daughter of the Garland with gold of her own, here or at this court.
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						tm_ml2_donor_trigger = yes
+						tm_flavour_ready_trigger = yes
+					}
+					any_courtier = {
+						tm_ml2_donor_trigger = yes
+						tm_flavour_ready_trigger = yes
+					}
+				}
+			}
+			random = {
+				chance = 10
+				modifier = {						# 985–1070, the trough (Orr 2000, pp. 42–46, 163–64)
+					add = -5
+					current_year >= 985
+					current_year < 1070
+				}
+				modifier = {						# the women's giving peaks 1070–1300 (Orr 2000, pp. 67–73)
+					add = 5
+					current_year >= 1070
+					current_year < 1300
+				}
+				modifier = {						# after 1300 kings crowd out the women's gifts (Orr 2000, pp. 174–77)
+					add = -5
+					current_year >= 1300
+				}
+				if = {
+					limit = {
+						tm_ml2_donor_trigger = yes
+						tm_flavour_ready_trigger = yes
+					}
+					save_scope_as = tm_ml2_donor
+				}
+				else = {
+					random_courtier = {
+						limit = {
+							tm_ml2_donor_trigger = yes
+							tm_flavour_ready_trigger = yes
+						}
+						save_scope_as = tm_ml2_donor
+					}
+				}
+				scope:tm_ml2_donor = {
+					tm_flavour_spent_effect = yes
+					trigger_event = { id = tm_ml2.0010 days = { 1 300 } }
+				}
+			}
+		}
+
+		# Food and clothing (0030): a Hindu lord, not of the Garland, whose own child is a daughter.
+		if = {
+			limit = {
+				faith ?= { religion = religion:hinduism_religion }
+				NOT = { faith = faith:tm_garland }
+				tm_flavour_ready_trigger = yes
+				any_child = { tm_ml2_food_and_clothing_child_trigger = yes }
+			}
+			random = {
+				chance = 6
+				random_child = {
+					limit = { tm_ml2_food_and_clothing_child_trigger = yes }
+					save_scope_as = tm_ml2_child
+				}
+				tm_flavour_spent_effect = yes
+				trigger_event = { id = tm_ml2.0030 days = { 1 300 } }
+			}
+		}
+
+		# Of the third feeling (0031): a Jain lord with a daughter at court.
+		if = {
+			limit = {
+				faith ?= faith:jain_faith
+				tm_flavour_ready_trigger = yes
+				any_courtier = {
+					is_adult = yes
+					tm_is_daughter_trigger = yes
+					NOT = { has_variable = tm_ml2_veda_ruled }
+				}
+			}
+			random = {
+				chance = 5
+				random_courtier = {
+					limit = {
+						is_adult = yes
+						tm_is_daughter_trigger = yes
+						NOT = { has_variable = tm_ml2_veda_ruled }
+					}
+					save_scope_as = tm_ml2_daughter
+				}
+				tm_flavour_spent_effect = yes
+				trigger_event = { id = tm_ml2.0031 days = { 1 300 } }
+			}
+		}
+
+		# The reciter (0040): a daughter of the Garland at a Shaiva court, once the Periya Puranam exists (c. 1135).
+		if = {
+			limit = {
+				faith ?= faith:shaiva_faith
+				current_year >= 1135
+				any_courtier = { tm_ml2_reciter_listener_trigger = yes }
+			}
+			random = {
+				chance = 6
+				save_scope_as = tm_ml2_host
+				random_courtier = {
+					limit = { tm_ml2_reciter_listener_trigger = yes }
+					tm_flavour_spent_effect = yes
+					trigger_event = { id = tm_ml2.0040 days = { 1 300 } }
+				}
+			}
+		}
+	}
+}
+
+# The share passes to her daughter, or the street chooses. A body she left at re-embodiment passes nothing.
+tm_ml2_on_death = {
+	trigger = {
+		has_variable = tm_ml2_share
+		NOT = { has_variable = tm_reborn }
+	}
+	effect = {
+		tm_ml2_pass_share_effect = yes
+	}
+}

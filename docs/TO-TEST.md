@@ -315,7 +315,7 @@ Start a new 867 game, pick any ruler, type `observe`, and run at full speed to a
 This shows whether the AI ever uses the rites, Houses, fostering, Companions, the elective law and the court offices. It also catches errors that only show up after decades.
 
 **This is now the most important test.** The first observe run (867–986) found the faiths dying out, and the growth engine is new and untuned (`docs/faith_design.md` §14). Please:
-- send the last save (an autosave is fine; saves must be plain text, so keep *compressed saves* off and don't play ironman). Every 10 years each faith takes a census and keeps it in the save by decade: members, daughters, Marked, landed members and counties, and running totals of joins by the call (and how many were rulers), kahal joins, kahal matches, pilgrims to the kahal (and, for Bædling and Mālai, members with no court coming home), rites offered, daughters raised, deaths, and pool characters the game cleared. The characters made at game start for each seat are kept on lists too, and each foothold seat records how it started (a vassal of the faith, the lord's court, or no holder). One late save holds the whole run. To read it yourself: `python3 tools/census_report.py "<save>.ck3"`. These numbers are what the rates will be tuned on;
+- send the last save (an autosave is fine; saves must be plain text, so keep *compressed saves* off and don't play ironman). Every 10 years each faith takes a census and keeps it in the save by decade: members, daughters, Marked, landed members and counties, and running totals of joins by the call (and how many were rulers), kahal joins, kahal matches, pilgrims (members gathered to a court of their faith, for all six faiths, and to the kahal), rites offered, daughters raised, deaths of members seen at a census, and pool deaths (everyone else, including characters the game cleared). The characters made at game start for each seat are kept on lists too, and each foothold seat records how it started (a vassal of the faith, the lord's court, or no holder). One late save holds the whole run. To read it yourself: `python3 tools/census_report.py "<save>.ck3"`. These numbers are what the rates will be tuned on;
 - note whether any faith **booms** (hundreds of members, or many counties) as well as whether any dies;
 - check Phrygia at the end: is it still Dorleyite, and is the Mother of Mothers a theocracy? If Byzantium took it, does the Mother House holder have a claim on it?
 - check that Arles has Ha-Nehpakhot courtiers at the count of Venaissin's court.
@@ -465,7 +465,7 @@ Start the observe run only after these files are in place: new script files are 
 - **The Emperor halts at Dorylaion.** Hold Phrygia as a Dorleyaian vassal of the Emperor while he is at war. Within a few years *The Emperor Halts at Dorylaion* should fire; the petition option shows only after a suppression rung; with a daughter of the knife at court, hosting may lead to *The Chamber Asks*, and if she goes she moves to the Emperor's court.
 - **The palace offices (Yutai Dao).** Make a daughter of the Way a vassal of the Tang emperor and fire `event tm_palace.0001`. Option (a) adds the seal modifier, removes `tm_house_named` from her House counties and schedules `tm_yutai.0010`, then `tm_palace.0002` in 3–6 years; option (c) is hidden under intrigue 10. Set the date to 903.2.1 while she holds office: `tm_palace.0003` fires once, and a courtier is sent on to a House.
 - **The prayer book and the door (Ha-Nehpakhot).** Give a daughter of the Turning a living Jewish sibling and run `event tm_kahal.0019 <her id>`: the sibling gets 0001 in 7–30 days. "Not this year" leaves her untouched and puts `tm_kahal_book_declined` on the sibling; a scribe's copy gives her 0002 ("my sister"), the modifier and the opinion. Marry her off and check the wedding text. At a court with a Jewish woman run `event tm_kahal.0009 <her id>`: it waits for September or October, then fires 0010.
-- **The kahal keeps its children.** At an AI Christian court with a Ha-Nehpakhot child, let the ruler appoint a Christian guardian with the faith-conversion option; within a year the convert flag should be gone, and the child should still be of the sect at 16. A player's own choice of conversion must stand.
+- **The kahal keeps its children** (now for all six faiths; see T5). At an AI Christian court with a Ha-Nehpakhot child, let the ruler appoint a Christian guardian with the faith-conversion option; within a year the convert flag should be gone, and the child should still be of the sect at 16. A player's own choice of conversion must stand.
 - **The temple's deal (Mālai).** Play a Hindu ruler with an adult daughter of the Garland at court and fire `tm_kovil.0001` (or wait a few years after 1070). Each option's modifier should appear and gold come off the right purse. With the verse, wait for December or January for *The Seventh Verse*. Kill the holder with a living daughter of the Garland (born or adopted): the honour and *To Her Descendants* pass to the eldest; re-embodiment passes nothing on.
 - **The New Roof (Badenya).** In the console, `set_global_variable = { name = tm_next_new_roof value = 1 }` (or wait for 874). Have a Badenya daughter at a Badenya ruler's court and advance to 1 January: *The New Roof* comes between March and May. Check option (a)'s gold and prestige and (b)'s gifts and opinions; each member gets *Under One Roof*, Same Roof and mutual "My Age-Mate", and no second gathering at the next roof. Option (c) gathers them seven years later. With the daughter at a non-Badenya lord's court, the eldest Badenya woman there hosts.
 
@@ -505,3 +505,496 @@ Design: `faith_design.md` §16. With `-debug_mode`, event IDs show on each windo
 - **New events**: The Same Roof (`tm_house.0070`), I Simply Cannot (`tm_life.0035`), the frightened courtier (`tm_life.0090`), Elder in Years (variant in `tm_life.0050`), Ruled as a Man (`tm_world.0070`), The Confessor's Book (`tm_world.0060`, Catholic, 1000–1346), Women Without a Rule (`tm_world.0061`, from 1312), A Woman in the Line (`tm_world.0051`), the mask law (`tm_world.0080`, from 1325).
 - **Keep Quiet in This Land** (decision): hostile `tm_world` events halve; she can't be Elder Sister.
 - **Learned answers**: `tm_byz.0001` option e, `tm_hipukh.0003` option e (learning ≥ 12).
+
+---
+
+## L. Bædling: Spring the Cell, outlawry and landless bands (added 2026-10-21, untested)
+
+Design: [docs/wave3/baedling.md](wave3/baedling.md). Start a fresh game with these files in place.
+
+**Spring the Cell**
+
+**L1. The scheme.** As a Bædling ruler, imprison nothing yourself. Via console, have a neighbouring Catholic count imprison a daughter of seiðr. Open the count's interactions.
+- **Expect:** *Spring the Cell (Scheme)* shows, and the agent slots list Marked Guard ×2, Faithful Servant, Friend of the House and Lookout.
+- **Send:** a screenshot of the agent slots, with their names and contributions.
+
+**L2. Success.** Let a phase complete. "A Night for It" offers tonight or wait. Choose tonight with high odds.
+- **Expect:** the prisoner is released and appears at the nearest House holder's court (or yours if none). The jailer gets "An Empty Cell"; with low secrecy it names you and adds "Emptied My Prison".
+
+**L3. Failure.** "The Door Held" offers give up or go again; the jailer gets "Footsteps in the Yard".
+
+**L4. The AI plots.** Put a Marked prisoner in an AI dungeon with a sworn sister of hers (an AI ruler of the faith) in range.
+- **Expect:** within a few years the sister owns a Spring the Cell scheme against the jailer (character window, schemes).
+
+**L5. Freed another way.** Free the prisoner by other means: the scheme ends with "Spring the Cell Ends".
+
+**Outlawry**
+
+**L6. The suit.** Set the date to 1100 or later. A Catholic Norwegian or Swedish count (you) keeps a Bædling daughter of seiðr as a courtier, and his chaplain dislikes her.
+- **Expect:** in time the count gets "A Suit at Law" with the church's charge. Quashing costs piety and the chaplain's opinion.
+
+**L7. Her answer.** Let the suit run. The AI daughter takes the oath, the ring or the woods.
+- **Ring:** she leaves for a faith court outside the realm with "Lesser Outlaw" (3 years).
+- **Woods, if she can fight:** a new adventurer camp led by her, with "Outlaw".
+
+**L8. The outlaw at the door.** As a Bædling ruler with a House, receive the lesser outlaw: "An Outlaw at the Door" offers keep or send on.
+
+**L9. Settlement.** A full outlaw band with 100 gold or more: the accuser gets "The Outlaw's Price". Accepting lifts the sentence.
+
+**L10. Forgiven for the war.** Hire the outlaw band for a war on the accuser's side: the accuser's top liege gets "Forgiven for the War", once.
+
+**L11. The high seat.** An outlaw band takes any county: the outlaw modifier is gone.
+
+**L12. No suit.** Before 1100, or under a pagan or English lord, no suit ever fires.
+
+**Landless bands**
+
+**L13. Answer the Hall's Call.** Play a Bædling adventurer with prestige level 1 or more, at peace, camped within reach of Gotland held by a Catholic.
+- **Expect:** "Answer the Hall's Call" shows, costs 250 prestige, and opens a claim war for Gotland.
+- **Check:** whether the war's own cost is charged on top of the decision's prestige.
+
+**L14. Settling.** Win: "Settling the Hall" (10 years) on you and "Our Own Came Home" (20 years) on Gotland. Take a county by vanilla invasion instead: you get "Settling the Hall" only, unless the county keeps the faith or has a House.
+
+**L15. Observe run.** AI faith bands far from any welcoming county start travelling toward one, about one band in seven a year. Bands in reach of a weaker AI holder use the decision.
+
+**L16. Rescue the Daughters as a band.** As a landless band of any of the six faiths, find a neighbouring county where two or more daughters, Marked women or declared sisters of your faith live under a lord of another faith, or whose lord holds one of them prisoner. A declared sister counts in both cases.
+- **Expect:** *Rescue the Daughters* is offered to the band (never to nomads). Win it: you hold the county, your camp is gone, you have the *adventurer* trait and your followers *adventurer_follower*, and "Settling the Hall" applies.
+- **Send:** `error.log` and a screenshot of your realm after the war. The landing path is not vanilla's, so this is the step most likely to fail.
+
+---
+
+## M. Yutai Dao: the palace faction (added 2026-10-21, untested)
+
+Design: [docs/wave3/yutai.md](wave3/yutai.md). The balance is the variable `tm_yt2_balance` on the throne's primary title; hover that title in debug mode to read it.
+
+**M1. The inner offices at work.** As a daughter of the Way under the Tang emperor, fire `event tm_palace.0001 <your id>` and take the seal.
+- **Expect:** the decision *Work the Inner Offices* appears. Before 903 options (a) and (c) show; (e) is hidden until the balance is 1 or more.
+- **Check:** (a) moves the balance +1, (c) +2. Then (e): one other Sisters' House in the realm gains `tm_house_named`; her own does not.
+
+**M2. Song levers.** Set the date to 1060 under the Song: (b) shows, (a) and (c) do not, and the balance cannot pass +2.
+
+**M3. Memorials by balance.** Set the throne title's `tm_yt2_balance` to −3 and advance a few years.
+- **Expect:** `tm_palace.0002` returns about once a decade at most for a daughter in office, and never within five years of option (d).
+
+**M4. The Censor's Brush.** Under a celestial throne, make a member of the Way the Censor of the ministry (appoint her spymaster), with a different daughter in office.
+- **Expect:** no memorials fire. Within some years `tm_yt2.0003` fires to the Censor.
+- **Check:** each option's office loss and opinion changes reach the sister. Under a meritocratic throne the event never fires.
+
+**M5. The clerk.** After 971, under a celestial throne, a daughter of the Way who holds a House should rarely get `tm_yt2.0002`. Option (b) shows only at balance 1 or more.
+
+**M6. 903.** Hold the seal on 903.2.1: the purge fires, and the throne title's balance is −3.
+
+**M7. Month 3.** With `tm_yt2_licences` on the top liege's primary title, `tm_embryo.0010` shows option (e).
+
+---
+
+## N. Adelphai Dorleyaiou: the Galenic rite and the reading (added 2026-10-21, untested)
+
+Design: [docs/wave3/dorley.md](wave3/dorley.md).
+
+**N1. Found the Galenic Rite.** Play a Dorleyaian count under an Orthodox liege and set the date past 886.
+- **Expect:** the decision shows (never for the Mother of Mothers). Take it: the rite exists, you are of it, and so is your capital county if it is Dorleyaian.
+- **Check:**
+  - the new rite's name, colour and icon (screenshot the faith screen);
+  - your House of the knife matches your old rite (try with Gift Alone);
+  - the faith's three tenets still show on the new rite;
+  - your liege has +15 "Counts as the Emperor Counts";
+  - the Mother of Mothers gets *A Sister Counts Three* within a month;
+  - the found decision disappears for everyone, *Join* appears for other Dorleyaians, and *Return* appears for you. Return: back to the main rite, and the Mother +15.
+
+**N2. Before 886** the found decision does not show.
+
+**N3. The heresy laws, Galenic.** As a Galenic ruler under an Orthodox liege, fire `event tm_byz.0010 <your id>` and `event tm_byz.0012 <your id>`.
+- **Expect:** the Galenic answers show. At 0012, adopted daughter-children gain −15 of you and `tm_wills_registered` is set.
+
+**N4. Ignatios.** New 867 game as any Dorleyaian player: *The Patriarch Without a Beard* arrives around 20 November 867, once, also to the Mother of Mothers. A later start never sees it.
+
+**N5. The train to Tarsus.** Before 990, as a Dorleyaian ruler in Anatolia with Cilicia held by a Muslim, fire `event tm_dl2.0020 <your id>`.
+- **Expect:** only your House's option shows, plus the strategos under a Christian top liege, plus "Past the Gates".
+- **Check:**
+  - Gift Alone and Aunt Bea's House: three boys aged 8–12 (two of them eunuchs) adopted at court;
+  - Aunt Bea's House: a greedy Sunni merchant in your dungeon, and the prisoner interaction shows only if he happens to qualify;
+  - Grandmother's House: two eunuch boys, and dread;
+  - it fires at most once in 20 years per ruler, not after 990, and not without a Muslim holder of Cilicia.
+
+**N6. The book.** After 1107, fire `event tm_dl2.0030 <your id>` as a Galenic ruler (option a) and as an Aristotelian (option b). Learning 10 or more adds option c. Once per ruler.
+
+**N7. Athos.** Set the date to 1083 on an observe save: *The Holy Mountain Closes* fires once by 1090.
+
+**N8. The steward.** After 1120, with a Sisters' House in Anatolia, fire `event tm_dl2.0050 <your id>`.
+- **Expect:** an Orthodox eunuch courtier appears. (a) converts and becomes a friend of the House; (b) converts and gets the courtier rite offer (`tm_growth.0001`); (c) sends the steward to the pool.
+
+**N9. The Consul's Letter.** Set the date to 1070 as a Dorleyaian ruler of the main rite and fire `event tm_dl2.0060 <your id>`.
+- **Expect:** options a and c show, b does not. As a Galenic ruler: b and c.
+- **Check:** the text never calls Psellos a Sister or names what he was. It fires once per ruler, never before 1063 or after 1078, and the Mother House's holder sees it more often in observe runs.
+
+**N10. Budget.** With the rare flavour rule, Tarsus, the book and the steward never come within two years of another flavour event.
+
+---
+
+## O. Deeds of the House (added 2026-10-21, untested)
+
+Design: [docs/wave3/achievements.md](wave3/achievements.md). The deeds fire a few days after the Rite of the Knife, and only for players. They do not use the flavour budget. Since wave 4 the debug interaction that forces the programme on a prisoner skips the deeds: "run the programme" here means the real programme, the Dorley path, or `run tm_programme_prisoners.txt`.
+
+**O1. The Pope, re-embodiment on.** Aunt Bea's House. Capture the Pope (console: imprison him; give him `wrathful`), take him into the House, and wait for `tm_dorley.0100`.
+- **Expect:** `tm_ach.0001` three days after the knife, with the Dorley text and the pre-1250 line.
+- **Check:** "the Unmaker"; memories on both; Catholic rulers at −40; the adopt option (Daughters Chosen); the new body holds `k_papal_state`. Set the year past 1250 and repeat for the line about the chroniclers' woman pope.
+
+**O2. The Pope, re-embodiment off.** As O1: the same deed, with the old body still Pope.
+
+**O3. The Patriarch, then both.** The Patriarch through the Dorley path: `tm_ach.0010`. Then the Pope too: `tm_ach.0060` about ten days after the second deed.
+
+**O4. Grandmother's House.** Castrate the Pope with the vanilla interaction. Within a quarter, `tm_ach.0002` with the Pope text. Repeat with the Patriarch.
+
+**O5. The vizier.** Capture the councillor of a Muslim ruler; check the variable `tm_ach_vizier_of`; run the programme.
+- **Expect:** in `tm_ach.0020`, "send her back" puts her at her master's court, and he holds a favour hook on you. Test before and after 1064.
+
+**O6. The khan's son.** A khan's son (nomadic, or Turkic tribal) through the programme: `tm_ach.0030`, then `tm_ach.0031` two months later; try both options. A khan himself: the envoy speaks for her heir.
+
+**O7. The poet.** A court poet or musician through the programme or the offered rite: `tm_ach.0050`, all three options.
+
+**O8. Six Hundred.** Set the house variable `tm_ach_knife_daughters` to 49 and raise one more daughter: `tm_ach.0040` comes to every player of the house.
+
+**O9. No deed.** The voluntary rite as a player who holds no notable title: no deed, only the house count rises.
+
+**O10. The decision.** *Deeds of the House* is hidden with no deeds; afterwards it lists exactly the deeds earned.
+
+**O11. AI captor.** An AI captor finishes a Pope programme: no event, no flag, only the house count.
+
+---
+
+## P. Ha-Nehpakhot: the street (stage 2, added 2026-10-21, untested)
+
+Design: [docs/stage2/ha-nehpakhot.md](stage2/ha-nehpakhot.md). These are flavour events: free the flavour budget first if you fire them from the console.
+
+**P1. By moonlight.** Give a daughter of the Turning a court with women of her faith and fire `event tm_hn2.0001 <her id>`.
+- **Check:** each option, and `tm_hevrah_taught` on a seeker pupil. Before 1105 the Sarah option has the Talmud text. Before 1323 the desc has no *Touchstone* line.
+
+**P2. The talk travels.** Set `tm_hn2_spindle_talk` on her and fire `event tm_hn2.0002 <her id>` at 1066, 1200 and 1350.
+- **Check:** the Talmud and Rashi variants, the Torah and Ḥinukh lines, the roll, and the *Teach Her the Answers* bonus.
+
+**P3. Spindle to hearing.** Win 0002.a and check `tm_hn2_spindle_heard` on her county. Then run a seeker's Turning to `tm_hipukh.0003` in that county.
+- **Expect:** the tooltip for a and e shows +10, and the county variable is gone after the hearing. A second hearing there has no bonus.
+
+**P4. The adornment.** Marry a daughter of the Turning at 1100, 1200 and 1330, and check the desc variant each time. On the spouse, give the necklace.
+- **Check:** the artifact's name, desc, icon and modifier, and that it does not decay. A second marriage offers none.
+
+**P5. Before the bailiff.** At 1300, a daughter with a rival, living in a county held by a Christian lord.
+- **Check:** the "served" option with and without `tm_translation_patron_modifier` on the county's holder. Before 1260 the event does not fire.
+
+**P6. Carnival.** A member at a Christian Occitan court after 1400. The hidden wait reaches February; check each option. Before 1400 it does not fire.
+
+**P7. The lord's licence.** A landed ruler of the sect, outside the Maghreb and the Sahel, with a shunned daughter at court (give her `tm_niddui_modifier`). Fire `event tm_hn2.0040 <your id>`.
+- **Check:** each option, and the desc at 1200, 1350 and 1420.
+
+**P8. A seat below.** From 1409, a seeker of the sect at the count of Venaissin's court gets the Arles desc; elsewhere the plain desc. Buy the seat: her next Turning prayer shows +10 for the seat. Before 1409 it does not fire.
+
+**P9. Catalan names.** A seeker at Barcelona (or of Catalan culture) after 1390 who is turned.
+- **Expect:** at the naming the scroll, Provençal and Catalan options all show, and the Catalan option gives a name from the list (Dolça and Estel·lina drawn correctly). In Provence the Catalan option is hidden.
+
+---
+
+## Q. Ha-Nehpakhot in the Maghreb and the Sahel (added 2026-10-21, untested)
+
+Design: [docs/wave3/ha-nehpakhot-maghreb.md](wave3/ha-nehpakhot-maghreb.md). "The West" means a county de jure in the Maghreb empire, Mali, Kanem-Bornu, Dagomba or Bono.
+
+**Q1. The ban under a Muslim lord.** A seeker in Fes (Muslim holder) loses `tm_hipukh.0003`.
+- **Expect:** she gets the ban, and the street's judges are "the elders and the dayyan". Thirty days later the holder sees `tm_hn3.0010`.
+- **Check:** without a protector or a Jewish friend at his court, option c is hidden. Give his court a courtier with `tm_hn3_physician_modifier`: c shows and lifts the ban, and Jews of other faiths at both courts get −10 of her. Option a leads to `tm_hn3.0011` within a month; b gives *The Ban Enforced*.
+
+**Q2. The ban under a ruler of the sect.** A ruler of the sect with her capital in `k_maghreb` and a shunned daughter at court.
+- **Expect:** the yearly pulse gives `tm_hn3.0020`, not `tm_hn2.0040`. Take a: courtier bans are lifted, and a new loss in 0003 in her realm shows the toast and no ban.
+- **Check:** the decision appears only without the decree and with Jews of another faith at court.
+
+**Q3. Provence unchanged.** The same in Arles: `tm_turning_niddui_effect` and `tm_hn2.0040` as before, and the judges named by Arles dates.
+
+**Q4. The rehearing.** `tm_hn3.0011` with and without a Jewish female friend: check +15 in the tooltip.
+
+**Q5. The physician.** A Muslim lord with his capital at Kairouan in 1030: the Maghreb desc with the nagid line in the present tense, and no vizier option. At 1100: the past tense, the vizier option and its line. A Christian lord: the old event.
+
+**Q6. Names.** A seeker of Berber culture who is turned: the Maghreb option shows, and the names display (Sitt al-Kull and the others).
+
+**Q7. The Purim fire.** A seeker at Tunis in 1000, 1100, 1180 and 1300: three different lines; the option gives +10 at 0001. A seeker at Fes sees neither.
+
+**Q8. The attire.** A daughter at Marrakesh marries: the attire option replaces the necklace; the artifact is created, and `tm_hn2.0011` reads the attire text without the Kalonymus line. A second marriage offers neither.
+
+**Q9. The story.** A daughter at a court in Gao after 1062: `tm_hn3.0030` fires (raise the chance to test). Before 1062, never.
+
+**Q10. The rope.** A seeker at Fes after 1160 with `tm_turning_prayers`: the rope line follows the elder's desc.
+
+**Q11. The refuge.** A ruler of the sect with her capital in Fes in 1150: the decision shows; at 1100 and 1240 it is hidden.
+- **Expect:** taking it adds a married Rabbanite couple at court. They keep their own faith (shelter is not conversion), like her (+25), and carry `tm_hn3_refugee`. The census `kahal_joins` does not rise at once; the kahal of her town (T1) may draw them in later.
+
+**Q12. The hush.** Take the decision, then check the opinions and the modifier. A daughter who arrives later gets the modifier at the next yearly pulse.
+
+**Q13. Robes of Honour.** A female ruler at Kairouan in 1010 with a daughter of learning 10 or more; also a male ruler with a female regent. After October 1023 it does not fire.
+
+---
+
+## R. The Worn Garland: shares, gifts and other courts (stage 2, added 2026-10-21, untested)
+
+Design: [docs/stage2/worn-garland.md](stage2/worn-garland.md).
+
+**R1. A share.** Kanchipuram start: give a daughter of the Garland at a Hindu court 100 gold, and fire `event tm_ml2.0001 <lord id>`.
+- **Check:** the share, the county's *A Temple Street* modifier, and 8 gold a year while she lives there.
+
+**R2. Away.** Move her to another court. After three yearly pulses, check `tm_ml2.0004` and who gets the share.
+
+**R3. Passing on.** Kill a shareholder with an adopted daughter; then one with no daughter but another daughter of the Garland in the county. Check `tm_ml2.0003`'s two texts.
+
+**R4. The gift and the staff.** Fire `event tm_ml2.0010 <her id>` and choose the Lady (from 1119).
+- **Check:** the share, the staff event (`tm_ml2.0011`), and the nickname with the fee and without it.
+
+**R5. Food and Clothing.** Fire `event tm_ml2.0030 <lord id>` on a Hindu lord with a daughter child. Check each option, and that it never fires twice for her.
+
+**R6. Jain and Shaiva courts.** A Jain lord, and a Shaiva lord (Kannada culture after 1160, Tamil after 1135): check `tm_ml2.0031` and both texts of `tm_ml2.0040`.
+
+**R7. The Order's Terms.** A Śvetāmbara lord (`rite:svetambara`, for example in Gujarat) with a daughter at court whose stewardship is 12 or more: fire `tm_ml2.0031`.
+- **Expect:** option d shows, and `tm_ml2.0032` reaches her; check both answers. Repeat with a Digambara lord, and with a daughter whose stewardship and learning are under 12: option d must not show.
+
+**R8. Before 1070.** Kill a shareholder who has an adopted daughter: the share goes to a woman the street chooses, not to the daughter. Fire `tm_ml2.0001` before 1070: the "buy" options must not show.
+
+---
+
+## S. Badenya: at court (stage 2, added 2026-10-21, untested)
+
+Design: [docs/stage2/badenya.md](stage2/badenya.md).
+
+**S1. The sister's line.** Give a Badenya count a sister with an adult child of the faith, then kill the count (`kill <id>`).
+- **Expect:** the heir gets *The Sister's Line* in 5–10 days.
+- **Check:** (a) gold moves to the sister's child; (b) prestige; (c) an unpressed claim on the dead count's primary title and the −30 opinion.
+- Make the sister's child the heir (for example, a childless ruler under partition with the nephew as heir) and check *The Sister's Child* instead.
+- Repeat with a Muslim heir: the text should be the neutral variant, with the jurist's view.
+- Check the Ghana tense switch at 1077.
+
+**S2. A hot realm.** The Badenya heir has "A Hot Realm". *Hot Words* comes in 2–13 months about half the time. Check that the jelimuso option needs a Badenya woman or daughter at court, and that it cools the realm.
+
+**S3. Praise before the court.** Fire `event tm_bd2.0020 <your id>` on a Badenya ruler with a Badenya court chaplain.
+- **Check:** the three descriptions (a king before 1330, 1330–1351, and from 1352; a count at any date), the mother's-name line with and without a known mother, and that option a cools a hot realm.
+
+**S4. Associate in rule.** Before 1352 the decision is hidden. From 1352, a Badenya ruler with a wife, a sister at court or a mother at court: take the decision.
+- **Check:** each candidate option, and "Not yet" (prestige refunded); only women are offered, cis and trans; the modifier; +15 opinion from vassals of the faith; −10 from Muslim vassals, and the qadi's line.
+- Fire `event tm_bd2.0041 <your id>` (with the flavour budget free): new vassals of the faith gain the opinion.
+- Set her aside by decision. Name another, kill her (`kill`), and check *One Name at the Feast* and that the vassal opinions are gone. Name another, then kill the ruler and check the associate loses the modifier.
+
+**S5. Uninvited praise.** `event` is not enough here, because it needs the newborn's scopes. Let a Badenya ruler have a child with the flavour budget free: the event comes eight days after the birth about one time in seven.
+
+---
+
+## T. Survival balance (added 2026-10-21, untested)
+
+Design: [docs/wave3/survival.md](wave3/survival.md). The census counters are read with `python3 tools/census_report.py "<save>.ck3"`.
+
+**T1. The kahal of her town.** Give Ha-Nehpakhot a landed ruler (play one, or `set_character_faith` on a count).
+- Run this about 30 times, or wait ten years:
+  `effect = { every_living_character = { limit = { faith = faith:tm_nehpakhot is_landed = yes } tm_surv_kahal_draw_effect = yes } }`
+- **Expect:** a young courtier of the sect appears at her court now and then. Run `run tm_census_log.txt` before and after: the faith's `tm_n_kahal_joins` rises.
+
+**T2. Take in.** As a ruler, run:
+  `effect = { create_character = { age = 20 faith = faith:catholic save_scope_as = x } scope:x = { tm_surv_kahal_take_in_effect = { COURT = root } } }`
+- **Expect:** x is of the sect and at your court.
+
+**T3. The gathering.** Move a daughter of the Adelphai to the pool (`move_to_pool`) far from Phrygia.
+- **Expect:** within about five years (20% a year) she is a courtier of the nearest ruler of her faith, or of the Mother of Mothers. A lowborn ordinary member in the pool stays put. Try a guest as well: a daughter visiting a court of another faith should also be gathered.
+
+**T4. A dead ruler's household.** A ruler of Badenya with an unmarried daughter of the House at court and a Sunni heir: kill the ruler (`kill`).
+- **Expect:** within a month the daughter is at the nearest Badenya court. With a Badenya heir, nothing moves.
+
+**T5. Children.** As for the kahal before (§J), with a child of Badenya at an AI Sunni court: the convert flag on the guardian should be gone within a year.
+
+**T6. The death counter.** In the next observe run, Yutai `deaths` should stay below about a third of members a decade; compare `pool_deaths`.
+
+---
+
+## U. Landless bands: the patent and the robe, and the companions choose (wave 4, added 2026-10-21, untested)
+
+Design: [docs/wave4/bands.md](wave4/bands.md). Start a fresh game with these files in place. The offers use the flavour budget; free it first if you hurry them by console.
+
+**The patent and the robe**
+
+**U1. A long camp.** Make a Bædling adventurer (you) and camp for five years in a county of an AI count who holds two or more counties. To hurry it: `effect = { set_variable = { name = tm_band_camp_years value = 5 } }`.
+- **Expect:** within a few years either "An Offer of Land" (a Western lord: the charter text) or "Asked to Move On".
+- **Check:** accepting makes you his vassal in the offered county (vanilla's letter 0301), with "Settling the Hall" from wave 3.
+
+**U2. The land's own words.** Repeat U1 in three places.
+- Anatolia under a Byzantine count: the treaty text before 1300, the district command from 1300.
+- Iran under a Muslim lord: "The Patent and the Robe", with the robe option.
+- Near Dunhuang under a Chinese lord: "The Rallied Township", with "Enter us on the register".
+
+**U3. Service.** Hire your band to an AI ruler through a war contract and win.
+- **Expect:** `tm_band_served` is on you after the war, and the next years bring that ruler's offer (25% a year).
+
+**U4. Patience.** When the AI lord asks you to move on, choose "We go".
+- **Expect:** your camp travels to a neighbouring realm. You gain prestige, an unpressed claim on the county, and his +25 opinion.
+- **Check:** some years later the same lord offers you land ("Some years ago I asked…").
+
+**U5. We stay.** Choose "We stay" against an AI lord.
+- **Expect:** vanilla's eviction letter follows; refusing it gives him vanilla's apprehend war.
+
+**U5b. A player lord.** As a count with two or more counties and a faith band camped five years in your county.
+- **Expect:** "A Band on My Land", within the flavour budget.
+
+**The companions choose**
+
+**U6. The hand-over.** Play a faith band whose leader has low skills (console `add_martial_skill = -10` and so on) and a camp officer of the faith with a leadership value of 30 or more.
+- **Expect:** within a few years, "The Companions Choose". Take "Then she leads": you play on as her.
+- **Check:** the camp (domicile, buildings, provisions), the men-at-arms, the gold and the courtiers moved with the title. The old leader is in the camp with "Stepped Down with Honour".
+- **Send:** if the domicile did not move, report it at once. The effect must then change (see "The engine question" in the note).
+
+**U7. Not yet.** Choose "Not yet".
+- **Expect:** nothing changes; the companion has −10 opinion of you; no new event for ten years.
+
+**U8. Observe run.** AI bands rarely change leaders (about one weak-led band in twenty a year). No player is ever replaced without the event.
+
+---
+
+## V. Bædling: Open Ports, the Island Changes Hands and the Peace of the Island (wave 4, added 2026-10-21, untested)
+
+Design: [docs/wave4/gotland.md](wave4/gotland.md). Start a fresh game with these files in place.
+
+**Open Ports**
+
+**V1. The decision.** As a coastal Danish or Swedish king at war, with a Bædling band camped nearby (console: create a Bædling adventurer near your capital).
+- **Expect:** *Open the Ports* shows. It is valid only with that band in reach, and costs 100 prestige.
+
+**V2. A player band.** Play the band instead.
+- **Expect:** the "Open Ports" contract message, and *Stand with Us* on the contract board with the king as employer. Accepting joins the war and shows the toast "We Hold the Letters".
+
+**V3. An AI band.** With an AI band in reach.
+- **Expect:** it gets "Open Ports" (0100) and usually takes the letters if it is brave or ambitious and has 200 or more strength.
+- **Check:** it is in the war on the king's side.
+
+**V4. Seize an Island Seat.** While licensed, the band's adventurer decisions show *Seize an Island Seat*.
+- **Expect:** it costs 150 prestige and declares a claim war, on Gotland first if it is in reach.
+
+**V5. The licence lapses.** End the war (white peace).
+- **Expect:** the band gets "The Licence Lapses", and the former enemy has "Raided Under Licence". *Seize an Island Seat* is gone.
+
+**V6. The island seat and the fleet.** A licensed band that takes Gotland gets "A Harbour of Our Own".
+- **Expect:** five or more years after the lapse, an AI king of another faith may gather a fleet (0130). *Hold* starts his claim war; *Pay* costs 100 gold.
+
+**The Island Changes Hands**
+
+**V7. The transfer.** Put Bædling courtiers on Gotland (at the holder's court), then hand Gotland to a Catholic by console (`create_title_and_vassal_change`), or conquer it.
+- **Expect:** the ablest Bædling there gets "The Island Changes Hands". Inheritance never fires it.
+
+**V8. The dates.** Set the year to 1361 with a Danish top liege; to 1391 with a holder who has the *adventurer* trait; to 1398 with a Christian theocracy; to 1407 under Denmark.
+- **Expect:** each shows its own opening. Other cases show the generic one.
+
+**V9. The voice.** A Catholic chaplain after 1200 speaks the crusade line in quotes, as his own. Before 1200 he calls only for the font. A Norse pagan lord has no voice line.
+
+**V10. The levy.** Choose the levy.
+- **Expect:** the result event shows held or broken; the county gets the matching modifier; Bædling fervour +3. The new lord gets "The Farmers Take Up Arms".
+
+**V11. The ships.** Choose the ships.
+- **Expect:** the members who are not rulers leave for the nearest Bædling court or camp.
+
+**V12. No one there.** No members on the island, but a county that kept the faith.
+- **Expect:** no event shows, and a modifier appears (usually *Kept Quiet*).
+
+**The Peace of the Island**
+
+**V13. The oath.** Gotland held by a Catholic, with Bædling courtiers there or a Bædling band camped nearby.
+- **Expect:** within some years "The Peace of the Island" fires once. Swearing adds the county modifier and mutual +20 opinions.
+- **Check:** before 1161 the opening text is the generic one.
+
+---
+
+## W. Under a lord's word, and No Service in the Prince's Wars (wave 4, added 2026-10-21, untested)
+
+Design: [docs/wave4/protection.md](wave4/protection.md). These are flavour events: free the flavour budget first if you fire them by console.
+
+**Under Her Chivalry**
+
+**W1. The Fityan.** A Muslim count with his capital at Nishapur in 900, with a daughter of any of the six faiths at court. Set the chance to 100.
+- **Expect:** `tm_fut.0001` fires; option a gives *Javanmard*.
+- **Check:** the same at Fes, or at Nishapur in 1100: it never fires.
+
+**W2. Entrust, plain.** A Muslim lord at Kairouan with a Badenya or Ha-Nehpakhot daughter as his guest.
+- **Expect:** `tm_fut.0010` to her shows the plain text ("Put myself under [his] word"). Ask: `tm_fut.0011` goes to him. Give the word: she joins his court with *Under a Lord's Word* and the variable; he has *A Free Man's Word*.
+- **Check:** she has `tm_world_quarters_asked` and `tm_fut_quarters_held`.
+
+**W3. Entrust, fata.** The same at Nishapur in 900 with a *Javanmard* lord: the *fata* texts show.
+
+**W4. The household.** With the daughter sheltered, force the `tm_world.0041` pulse chance.
+- **Expect:** she is never picked (the lead's guard in `tm_world_on_actions.txt`). Remove his word: after two years she can be picked.
+
+**W5. Refusing.** `tm_fut.0011` option b while he has *A Free Man's Word*.
+- **Expect:** the modifier is removed, and −50 prestige.
+
+**W6. The demand.** A sheltered daughter; his liege is Christian or Muslim.
+- **Expect:** `tm_fut.0020` with the liege as demander. Option b shows only with *Javanmard*. Option c sends her to the nearest court of her faith (or the pool): no prisoner, and never to the demander.
+- **Check:** with a Jewish liege, the demander falls to a neighbour, or there is no event.
+
+**No Service in the Prince's Wars**
+
+**W7. Terms, AI.** A Catholic count in Provence with two Ha-Nehpakhot courtiers. Raise the pulse chance.
+- **Expect:** `tm_fut.0030` fires with the plain scribe line.
+- **Check:** an Orthodox prince of Smolensk in 1230 gets the Smolensk line; in 1200, the plain line.
+
+**W8. Terms, player.** Play that count.
+- **Expect:** *Grant Terms to Her People* appears on a Ha-Nehpakhot courtier, and not on others. After granting, it is invalid ("already granted").
+
+**W9. Knights.** After the grant, members with high prowess are not on the knights' list.
+- **Expect:** `tm_fut.0032` option a puts one back. A member who moves to another court loses the modifier at that ruler's next yearly pulse, and can be a knight again.
+
+**W10. The quarrel.** `tm_fut.0033` option b.
+- **Expect:** the terms, the service modifier and the members' modifiers are gone; members −20.
+
+**W11. Budget.** No lord gets more than one `tm_fut` event a year from the pulse.
+
+---
+
+## X. The Worn Garland: the market and the road (wave 4, added 2026-10-21, untested)
+
+Design: [docs/wave4/garland.md](wave4/garland.md).
+
+**X1. The market lamp.** A landless Garland daughter with 50 gold, in a county with a city. Fire `event tm_ml2.0010 <her id>`.
+- **Expect:** option e shows. Take it: 40 gold gone, the permanent modifier, the county marked a temple street and `tm_ml3_market_lamp`.
+- **Check:** move her; the modifier stays. A landed daughter, or a county with no city: option e is hidden. Fire it twice: +25 prestige the second time, and no second modifier.
+
+**X2. The quarter that dwindled.** After 970, a Hindu lord whose capital has development under 12, with a Garland courtier who has no share. Fire `event tm_ml3.0010 <lord id>` and settle her.
+- **Expect:** the share; 4 gold a year for ten years, then 8.
+- **Check:** before 970 it never fires from the pulse.
+
+**X3. The contract.** A player adventurer of the Garland camped in Tamil country.
+- **Expect:** *Heroes of the Road* appears on the contract map from a Hindu or Jain ruler with a city county. Accept: 0020, then 0021, then 0022.
+- **Check:** both toll branches, and that the contract completes (gold, prestige) or fails.
+
+**X4. The AI contract.** An AI Garland adventurer in the Deccan. Run yearly pulses.
+- **Expect:** it takes the contract and the chain completes.
+
+**X5. The guild town.** Set `tm_ml3_caravans = 2` and complete one more caravan.
+- **Expect:** the nickname; `tm_ml3.0030` to the employer (two counties or more); the offer; `tm_ml3.0031` to the band. Both "hold" options settle the band as his vassal in his farthest county, with *A Guild Town*. The dues option needs 50 gold.
+- **Check:** declining changes nothing. An employer with one county gets no 0030.
+
+**X6. Vannadu.** After 1220, a Garland countess holding a county with `tm_ml3_erivira` joins a faction.
+- **Expect:** `tm_ml3.0040`; leaving the faction works; she is not asked again for 20 years.
+
+---
+
+## Y. Yutai Dao: Hide the Name and the Sogdians of Dunhuang (wave 4, added 2026-10-21, untested)
+
+Design: [docs/wave4/yutai-sogdians.md](wave4/yutai-sogdians.md).
+
+**Y1. Hide the Name, Sogdian.** Make a courtier of the Way of Sogdian culture under a Han lord (`set_culture` in the console).
+- **Expect:** the decision *Hide the Name* shows. Take (b): the Guiji text, 25 gold gone, and she has `tm_yt3_name_hidden` and `tm_world_keep_quiet`. *Speak Aloud Again* shows.
+- **Check:** use it. Keep Quiet ends, `tm_yt3_name_hidden` stays, and *Hide the Name* does not come back.
+
+**Y2. Hide the Name, hostile court.** A daughter of the Way under a lord whose faith is hostile to the Way, or who has −20 opinion of her.
+- **Expect:** the decision shows with the court description. Option (c) shows only if she is a councillor or knight, or her liege has 50 opinion of her or more.
+
+**Y3. Not shown.** An independent ruler; a member of the Way who is not Sogdian, under a friendly lord; a Sogdian member under a Sogdian lord: no decision.
+
+**Y4. After 903.** Hold a palace seal on 903.2.1 (`tm_palace.0003`).
+- **Expect:** in 904 the yearly pulse brings `tm_yt3.0001` once, with the purge text, if she is still under a liege.
+
+**Y5. The banquet.** Rule Shazhou with a Sisters' House after 900. Fire `tm_yt3.0010`, or let the pulse fire it (about once in 25 years).
+- **Expect:** option (a) lowers the House strain by 1; half the time a Sogdian woman of the county's faith joins the court.
+- **Check:** she is not of the Way.
+
+**Y6. No Reply from There.** Fire `tm_yt3.0020` as a Shazhou ruler of the Way.
+- **Expect:** if any Sogdian ruler exists (Transoxiana in 867), (a) sends her to that court, and that ruler's opinion of you rises by 15. Option (c) shows only if her learning is 8 or more.
+- **Check:** she never has the Way's faith.
+
+**Y7. Budget.** Neither 0010 nor 0020 fires while `tm_flavour_cooldown` is set.

@@ -1,0 +1,132 @@
+﻿# Crusader Dolls — protection under Muslim and Orthodox lords, wave 4 (events/tm_fut_events.txt).
+
+# ---------------------------------------------------------------------------------------------------
+# Under Her Chivalry
+
+# The lord gives his word. Scope: the lord; scope:tm_fut_daughter = her. She joins his court if she was a guest, so
+# the gathering (tm_surv_gather_effect) does not take her away from it.
+tm_fut_give_word_effect = {
+	save_scope_as = tm_fut_lord
+	if = {
+		limit = { tm_fut_keeps_code_trigger = no }
+		add_character_modifier = { modifier = tm_fut_free_word_modifier }
+	}
+	if = {
+		limit = { scope:tm_fut_daughter = { NOT = { is_courtier_of = scope:tm_fut_lord } } }
+		add_courtier = scope:tm_fut_daughter
+	}
+	scope:tm_fut_daughter = {
+		set_variable = { name = tm_fut_sheltered_by value = scope:tm_fut_lord }
+		add_opinion = { target = scope:tm_fut_lord modifier = tm_fut_gave_word_opinion }
+	}
+	scope:tm_fut_daughter = { tm_fut_shelter_upkeep_effect = yes }
+}
+
+# Kept up every year while she is under his word. Scope: her.
+# The household's offer of a place "without desire" (tm_world.0041) is asked once of each daughter, and only of one
+# who lacks the flag tm_world_quarters_asked. Under his word his household does not ask, so the flag is lent to her
+# for two years at a time, and only when she did not already have it (tm_fut_quarters_held marks the loan). When the
+# word lapses both run out, and she can be asked like anyone else.
+tm_fut_shelter_upkeep_effect = {
+	if = {	# refresh, not stack
+		limit = { has_character_modifier = tm_fut_sheltered_modifier }
+		remove_character_modifier = tm_fut_sheltered_modifier
+	}
+	add_character_modifier = { modifier = tm_fut_sheltered_modifier years = 2 }
+	if = {
+		limit = {
+			OR = {
+				NOT = { has_character_flag = tm_world_quarters_asked }
+				has_variable = tm_fut_quarters_held
+			}
+		}
+		add_character_flag = { flag = tm_world_quarters_asked years = 2 }
+		set_variable = { name = tm_fut_quarters_held value = yes years = 2 }
+	}
+}
+
+# The word ends: he sent her away, or broke it. Scope: her.
+tm_fut_end_shelter_effect = {
+	remove_variable = tm_fut_sheltered_by
+	if = {
+		limit = { has_character_modifier = tm_fut_sheltered_modifier }
+		remove_character_modifier = tm_fut_sheltered_modifier
+	}
+	if = {
+		limit = { has_variable = tm_fut_quarters_held }
+		remove_variable = tm_fut_quarters_held
+		remove_character_flag = tm_world_quarters_asked
+	}
+}
+
+# The lord no longer keeps the code. Scope: the lord.
+tm_fut_lose_code_effect = {
+	if = {
+		limit = { has_character_modifier = tm_fut_javanmard_modifier }
+		remove_character_modifier = tm_fut_javanmard_modifier
+	}
+	if = {
+		limit = { has_character_modifier = tm_fut_free_word_modifier }
+		remove_character_modifier = tm_fut_free_word_modifier
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# No Service in the Prince's Wars
+
+# The lord grants the terms. Scope: the lord; scope:tm_fut_spokeswoman. $SERVICE$ = physician, interpreter or steward:
+# what the community gives in return. No money passes either way.
+tm_fut_grant_terms_effect = {
+	save_scope_as = tm_fut_terms_lord
+	set_variable = { name = tm_fut_terms value = flag:$SERVICE$ }
+	add_character_modifier = { modifier = tm_fut_terms_$SERVICE$_modifier }
+	add_prestige = 25
+	every_courtier = {
+		limit = { tm_fut_community_member_trigger = yes }
+		tm_fut_member_upkeep_effect = yes
+		add_opinion = { target = scope:tm_fut_terms_lord modifier = tm_fut_terms_opinion }
+	}
+}
+
+# A member under the terms. Scope: the member. Not called up as a knight, unless she asked to ride (tm_fut_rides).
+tm_fut_member_upkeep_effect = {
+	if = {	# refresh, not stack
+		limit = { has_character_modifier = tm_fut_terms_member_modifier }
+		remove_character_modifier = tm_fut_terms_member_modifier
+	}
+	add_character_modifier = { modifier = tm_fut_terms_member_modifier years = 2 }
+	if = {
+		limit = { NOT = { has_character_flag = tm_fut_rides } }
+		set_knight_status = forbid
+	}
+}
+
+# A member no longer under terms. Scope: the member.
+tm_fut_member_release_effect = {
+	if = {
+		limit = { has_character_modifier = tm_fut_terms_member_modifier }
+		remove_character_modifier = tm_fut_terms_member_modifier
+	}
+	set_knight_status = default
+}
+
+# The terms end. Scope: the lord.
+tm_fut_end_terms_effect = {
+	remove_variable = tm_fut_terms
+	if = {
+		limit = { has_character_modifier = tm_fut_terms_physician_modifier }
+		remove_character_modifier = tm_fut_terms_physician_modifier
+	}
+	if = {
+		limit = { has_character_modifier = tm_fut_terms_interpreter_modifier }
+		remove_character_modifier = tm_fut_terms_interpreter_modifier
+	}
+	if = {
+		limit = { has_character_modifier = tm_fut_terms_steward_modifier }
+		remove_character_modifier = tm_fut_terms_steward_modifier
+	}
+	every_courtier = {
+		limit = { has_character_modifier = tm_fut_terms_member_modifier }
+		tm_fut_member_release_effect = yes
+	}
+}

@@ -1,0 +1,166 @@
+﻿# Crusader Dolls — Open Ports (docs/wave4/gotland.md §1; research/norse_dollinger_hansa.md §6 and proposal 1).
+# Dollinger pp. 78-81: after 1389 the Mecklenburgers opened their ports "to all those who at their own risk would go
+# to sea to harm the kingdom of Denmark" (p. 79). Knights, townsfolk, peasants and convicts came; the licence was
+# political and open to all, and no people is coded here as pirates. In 1391 the band took Visby as a base; the Peace
+# of Skanör (1395) "removed the justification" (p. 80); the Teutonic Order cleared the island in 1398 (p. 80).
+
+# A lord at war opens his ports. Any faith. The licence reaches the Bædling bands camped within an adventurer's reach
+# of his capital: a player band finds vanilla's join-war contract on its board, an AI band gets the offer as an event.
+tm_got_open_ports_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/fp1_decision_forge_jomsvikings.dds"
+	}
+	sort_order = 60
+	desc = tm_got_open_ports_decision_desc
+	selection_tooltip = tm_got_open_ports_decision_tooltip
+
+	is_shown = {
+		is_landed = yes
+		is_independent_ruler = yes
+		any_character_war = { is_war_leader = root }
+		NOT = { has_variable = tm_got_ports_war }
+	}
+
+	is_valid = {
+		custom_description = {
+			text = tm_got_open_ports_coast_tt
+			capital_county ?= { is_coastal_county = yes }
+		}
+		custom_description = {
+			text = tm_got_open_ports_band_tt
+			any_ruler = { tm_got_band_near_lord_trigger = { LORD = root } }
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+		is_incapable = no
+	}
+
+	cost = {
+		prestige = 100
+	}
+
+	effect = {
+		save_scope_as = tm_got_lord
+		# The war he is losing, if any; else any war he leads.
+		if = {
+			limit = { any_character_war = { tm_got_losing_war_trigger = { LORD = root } } }
+			random_character_war = {
+				limit = { tm_got_losing_war_trigger = { LORD = root } }
+				save_scope_as = tm_got_war
+			}
+		}
+		else = {
+			random_character_war = {
+				limit = { is_war_leader = root }
+				save_scope_as = tm_got_war
+			}
+		}
+		set_variable = { name = tm_got_ports_war value = scope:tm_got_war }
+		custom_tooltip = tm_got_open_ports_decision.tt
+		hidden_effect = {
+			every_ruler = {
+				limit = { tm_got_band_near_lord_trigger = { LORD = root } }
+				tm_got_offer_licence_effect = yes
+			}
+		}
+	}
+
+	ai_check_interval = 12
+	ai_potential = {
+		is_landed = yes
+		is_at_war = yes
+		any_ruler = { tm_got_band_near_lord_trigger = { LORD = root } }
+	}
+	ai_will_do = {
+		base = 0
+		# A lord who is losing reaches for the licence.
+		modifier = {
+			add = 25
+			any_character_war = { tm_got_losing_war_trigger = { LORD = root } }
+		}
+		modifier = { add = 10 has_trait = ambitious }
+		modifier = { add = 10 has_trait = callous }
+		modifier = { factor = 0.5 has_trait = just }
+		modifier = { factor = 0.5 has_trait = honest }
+	}
+}
+
+# A licensed band seizes an island seat: Gotland, Åland, Ösel, Bornholm or any island county in reach (Visby, Bornholm,
+# Åbo and Viborg in 1391, p. 79). A pressed claim and a claim war, as Answer the Hall's Call does
+# (tm_bae2_decisions.txt). The licence stands in for vanilla's second rung of prestige.
+tm_got_seize_island_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/ep3_decision_laamp_negative.dds"
+	}
+	decision_group_type = adventurer
+	sort_order = 394
+	desc = tm_got_seize_island_decision_desc
+	selection_tooltip = tm_got_seize_island_decision_tooltip
+
+	is_shown = {
+		tm_got_band_trigger = yes
+		tm_got_licensed_trigger = yes
+	}
+
+	is_valid = {
+		custom_description = {
+			text = tm_got_seize_island_county_tt
+			any_county = { tm_got_seizable_island_trigger = { BAND = root } }
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+		is_incapable = no
+	}
+
+	cost = {
+		prestige = 150
+	}
+
+	effect = {
+		ordered_county = {
+			limit = { tm_got_seizable_island_trigger = { BAND = root } }
+			order_by = {
+				value = 0
+				if = {
+					limit = { this = title:c_gutland }
+					add = 1000000
+				}
+				subtract = "title_province.squared_distance(root.domicile.domicile_location)"
+			}
+			save_scope_as = tm_got_island
+		}
+		custom_tooltip = tm_got_seize_island_decision.tt
+		set_variable = { name = tm_bae2_was_band value = yes years = 3 }
+		scope:tm_got_island ?= {
+			root = { add_pressed_claim = scope:tm_got_island }
+			hidden_effect = {
+				root = {
+					start_war = {
+						cb = claim_cb
+						target = scope:tm_got_island.holder
+						claimant = root
+						target_title = scope:tm_got_island
+					}
+				}
+			}
+		}
+	}
+
+	ai_check_interval = 12
+	ai_potential = {
+		tm_got_band_trigger = yes
+		tm_got_licensed_trigger = yes
+	}
+	ai_will_do = {
+		base = 25
+		modifier = { add = 15 has_trait = ambitious }
+		modifier = { add = 10 has_trait = brave }
+		modifier = { factor = 0.5 has_trait = craven }
+		modifier = { factor = 0.5 has_trait = content }
+		modifier = { factor = 0 current_military_strength < 300 }
+	}
+}

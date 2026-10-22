@@ -261,7 +261,8 @@ tm_debug_force_programme_interaction = {
 				limit = { has_trait = tm_novice }
 				remove_trait = tm_novice
 			}
-			tm_take_the_knife_effect = yes
+			# Debug only: the knife without the Deeds of the House (their effects read root, which an interaction lacks).
+			tm_rise_daughter_effect = { TRAIT = tm_daughter_of_the_knife RENAME = tm_knife.0002 }
 		}
 	}
 }

@@ -1,0 +1,23 @@
+﻿# Crusader Dolls — survival balance (docs/wave3/survival.md; tm_surv_effects.txt). The yearly parts run from
+# tm_yearly_growth (tm_on_actions.txt), so that they come before the census.
+
+on_death = {
+	on_actions = {
+		tm_surv_on_death
+	}
+}
+
+# A ruler of one of the six dies and her heir is not of her faith (or she has none): her unmarried daughters, Marked
+# women and declared seekers go to the nearest court of the faith (tm_surv_household_on_death_effect). A body left
+# behind by re-embodiment is not a death. Root: the dying ruler, who still holds her titles.
+tm_surv_on_death = {
+	trigger = {
+		is_ruler = yes
+		NOT = { has_variable = tm_reborn }
+		rite ?= { rite_has_parameter = tm_sisters_faith }
+		NOT = { primary_heir ?= { faith = root.faith } }
+	}
+	effect = {
+		tm_surv_household_on_death_effect = yes
+	}
+}

@@ -14,6 +14,7 @@ tm_yearly_flyting = {
 				rite ?= { rite_has_parameter = tm_seidr_gate }
 				NOT = { has_variable = tm_flyt_recent }
 				NOT = { has_variable = tm_flyt_round }
+				tm_flavour_ready_trigger = yes	# the flavour budget (tm_budget_triggers.txt)
 				OR = {
 					tm_is_daughter_trigger = yes
 					has_trait = tm_transgender
@@ -52,6 +53,7 @@ tm_yearly_flyting = {
 				if = {
 					limit = { exists = scope:tm_flyter }
 					set_variable = { name = tm_flyt_challenged value = yes }
+					tm_flavour_spent_effect = yes
 					trigger_event = tm_flyting.0001
 				}
 			}

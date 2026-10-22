@@ -83,12 +83,14 @@ tm_badenya.0011 = {
 		trigger = { exists = scope:tm_claimer gold >= 25 }
 		remove_short_term_gold = 25
 		scope:tm_claimer = { add_opinion = { target = root modifier = friendliness_opinion opinion = 20 } }
+		set_variable = { name = tm_claimed_by value = scope:tm_claimer }	# tm_bd2: remembered for Named With the King (tm_bd2.0040)
 		trigger_event = { id = tm_badenya.0012 days = 7 }
 	}
 	option = {	# She claims me; the bracelets can wait
 		name = tm_badenya.0011.b
 		trigger = { exists = scope:tm_claimer }
 		scope:tm_claimer = { add_prestige = -10 }
+		set_variable = { name = tm_claimed_by value = scope:tm_claimer }	# tm_bd2: remembered for Named With the King (tm_bd2.0040)
 		trigger_event = { id = tm_badenya.0012 days = 7 }
 	}
 	option = {	# No one will claim me yet

@@ -1,0 +1,557 @@
+﻿namespace = tm_band
+
+# Crusader Dolls — landless bands of the six faiths, wave 4 (docs/wave4/bands.md).
+#   0001-0021  The Patent and the Robe: a lord offers a band a county, or asks it to move on (Tor pp. 113, 122, 129,
+#              150; Vaissiere pp. 129-130, 152-155; Sophoulis pp. 78-82). 0002 is the hidden search.
+#   0100-0102  The Companions Choose: the officers hand the band to a stronger companion (Tor pp. 109-111). 0102 is
+#              the hidden search.
+# Pulses and war hooks: common/on_action/tm_band_on_actions.txt. Effects: tm_band_effects.txt.
+
+# ===================================================================================================
+# The Patent and the Robe
+# ===================================================================================================
+
+# Hidden. Root = a band at peace with a reason to be noticed: a lord it was patient with, a lord it fought for, or
+# five years camped in one county. Finds the lord and the county, and asks him (0001).
+tm_band.0002 = {
+	type = character_event
+	hidden = yes
+
+	trigger = {
+		tm_bae2_faith_band_trigger = yes
+		is_at_war = no
+	}
+
+	immediate = {
+		save_scope_as = tm_band_band
+		# 1. A lord she once moved on for (Tor p. 122: "was patient and returned").
+		if = {
+			limit = {
+				exists = var:tm_band_patient_with
+				var:tm_band_patient_with = {
+					is_alive = yes
+					save_temporary_scope_as = tm_band_cand
+				}
+				tm_band_patron_trigger = { LORD = scope:tm_band_cand }
+				tm_band_may_be_offered_trigger = { BAND = root LORD = scope:tm_band_cand }
+			}
+			var:tm_band_patient_with = { save_scope_as = tm_band_lord }
+			save_scope_value_as = { name = tm_band_reason value = flag:patient }
+		}
+		# 2. A lord she fought for, and won (the band that cleared a county).
+		else_if = {
+			limit = {
+				exists = var:tm_band_served
+				var:tm_band_served = {
+					is_alive = yes
+					save_temporary_scope_as = tm_band_cand
+				}
+				tm_band_patron_trigger = { LORD = scope:tm_band_cand }
+				tm_band_may_be_offered_trigger = { BAND = root LORD = scope:tm_band_cand }
+			}
+			var:tm_band_served = { save_scope_as = tm_band_lord }
+			save_scope_value_as = { name = tm_band_reason value = flag:served }
+		}
+		# 3. Five years camped in one county: its holder, or the nearest liege above him who has a county to give.
+		else_if = {
+			limit = { tm_band_camped_long_trigger = yes }
+			domicile.domicile_location.county.holder ?= {
+				add_to_list = tm_band_lords
+				every_liege_or_above = { add_to_list = tm_band_lords }
+			}
+			ordered_in_list = {
+				list = tm_band_lords
+				limit = {
+					save_temporary_scope_as = tm_band_cand
+					tm_band_patron_trigger = { LORD = scope:tm_band_cand }
+					tm_band_may_be_offered_trigger = { BAND = root LORD = scope:tm_band_cand }
+				}
+				order_by = {
+					value = 0
+					subtract = highest_held_title_tier
+				}
+				save_scope_as = tm_band_lord
+			}
+			save_scope_value_as = { name = tm_band_reason value = flag:camped }
+		}
+		# The lord must not be fighting for his own land (vanilla blocks settlement then), and a player lord's flavour
+		# budget must allow it.
+		if = {
+			limit = {
+				exists = scope:tm_band_lord
+				exists = domicile.domicile_location
+				scope:tm_band_lord = {
+					NOT = {
+						any_character_war = { is_defender = scope:tm_band_lord }
+					}
+					trigger_if = {
+						limit = { is_ai = no }
+						tm_flavour_ready_trigger = yes
+					}
+				}
+			}
+			random = {
+				chance = 10
+				modifier = {
+					add = 15
+					scope:tm_band_reason = flag:served
+				}
+				modifier = {
+					add = 5
+					scope:tm_band_reason = flag:patient
+				}
+				scope:tm_band_lord = {
+					ordered_held_county = {
+						limit = { tm_band_grantable_county_trigger = { LORD = scope:tm_band_lord } }
+						order_by = {
+							value = 0
+							subtract = "title_province.squared_distance(scope:tm_band_band.domicile.domicile_location)"
+						}
+						save_scope_as = tm_band_county
+					}
+				}
+				if = {
+					limit = { exists = scope:tm_band_county }
+					tm_band_style_effect = yes
+					set_variable = { name = tm_band_patent_cooldown value = yes years = 10 }
+					remove_variable = tm_band_served
+					remove_variable = tm_band_patient_with
+					scope:tm_band_lord = {
+						if = {
+							limit = { is_ai = no }
+							tm_flavour_spent_effect = yes
+						}
+						trigger_event = tm_band.0001
+					}
+				}
+			}
+		}
+	}
+}
+
+# The lord. Root = the lord; scope:tm_band_band = the band; scope:tm_band_county = the county he could give;
+# scope:tm_band_reason = flag:camped / served / patient; scope:tm_band_style = how his land settles a band.
+tm_band.0001 = {
+	type = character_event
+	title = tm_band.0001.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:tm_band_reason = flag:patient }
+				desc = tm_band.0001.desc_patient
+			}
+			triggered_desc = {
+				trigger = { scope:tm_band_reason = flag:served }
+				desc = tm_band.0001.desc_served
+			}
+			desc = tm_band.0001.desc_camped
+		}
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:tm_band_style = flag:township }
+				desc = tm_band.0001.desc_township
+			}
+			triggered_desc = {
+				trigger = { scope:tm_band_style = flag:strumica }
+				desc = tm_band.0001.desc_strumica
+			}
+			triggered_desc = {
+				trigger = { scope:tm_band_style = flag:merope }
+				desc = tm_band.0001.desc_merope
+			}
+			triggered_desc = {
+				trigger = { scope:tm_band_style = flag:robe }
+				desc = tm_band.0001.desc_robe
+			}
+			desc = tm_band.0001.desc_charter
+		}
+	}
+	theme = stewardship
+	override_background = { reference = study }
+	left_portrait = { character = scope:tm_band_band animation = personality_rational }
+
+	trigger = {
+		scope:tm_band_band = {
+			is_alive = yes
+			tm_bae2_faith_band_trigger = yes
+		}
+		scope:tm_band_county.holder ?= root
+	}
+
+	option = {	# Give her the county
+		name = {
+			trigger = { scope:tm_band_style = flag:robe }
+			text = tm_band.0001.a_robe
+		}
+		name = {
+			trigger = { scope:tm_band_style = flag:township }
+			text = tm_band.0001.a_township
+		}
+		name = {
+			trigger = {
+				NOR = {
+					scope:tm_band_style = flag:robe
+					scope:tm_band_style = flag:township
+				}
+			}
+			text = tm_band.0001.a
+		}
+		custom_tooltip = tm_band.0001.a.tt
+		scope:tm_band_band = { trigger_event = tm_band.0010 }
+		ai_chance = {
+			base = 15
+			opinion_modifier = {
+				who = root
+				opinion_target = scope:tm_band_band
+				multiplier = 0.5
+			}
+			modifier = { add = 30 has_trait = generous }
+			modifier = { add = 20 has_trait = craven }
+			modifier = { add = 20 domain_size > domain_limit }
+			modifier = { add = 20 scope:tm_band_reason = flag:served }
+			modifier = { add = 40 scope:tm_band_reason = flag:patient }
+			modifier = { add = 15 faith = scope:tm_band_band.faith }
+			# She costs more to fight than to keep (Sophoulis pp. 81-82).
+			modifier = { add = 25 scope:tm_band_band.current_military_strength > current_military_strength }
+			modifier = { factor = 0.5 has_trait = greedy }
+			modifier = {
+				factor = 0.5
+				has_trait = zealous
+				NOT = { faith = scope:tm_band_band.faith }
+			}
+		}
+	}
+	option = {	# Ask her to move on (only if her camp is in my realm)
+		name = tm_band.0001.b
+		trigger = {
+			scope:tm_band_band.domicile.domicile_location.county.holder.top_liege ?= root.top_liege
+		}
+		custom_tooltip = tm_band.0001.b.tt
+		scope:tm_band_band = { trigger_event = tm_band.0020 }
+		ai_chance = {
+			base = 10
+			modifier = {
+				add = 20
+				has_trait = zealous
+				NOT = { faith = scope:tm_band_band.faith }
+			}
+			modifier = { add = 15 has_trait = paranoid }
+			modifier = {
+				add = 15
+				opinion = { target = scope:tm_band_band value < 0 }
+			}
+			modifier = { factor = 0.5 scope:tm_band_reason = flag:served }
+			modifier = { factor = 0 scope:tm_band_reason = flag:patient }
+		}
+	}
+	option = {	# Let them be
+		name = tm_band.0001.c
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = content }
+		}
+	}
+}
+
+# The band. Root = the band; scope:tm_band_lord offers scope:tm_band_county.
+tm_band.0010 = {
+	type = character_event
+	title = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:tm_band_style = flag:robe }
+				desc = tm_band.0010.t_robe
+			}
+			triggered_desc = {
+				trigger = { scope:tm_band_style = flag:township }
+				desc = tm_band.0010.t_township
+			}
+			desc = tm_band.0010.t
+		}
+	}
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:tm_band_style = flag:township }
+				desc = tm_band.0010.desc_township
+			}
+			triggered_desc = {
+				trigger = { scope:tm_band_style = flag:strumica }
+				desc = tm_band.0010.desc_strumica
+			}
+			triggered_desc = {
+				trigger = { scope:tm_band_style = flag:merope }
+				desc = tm_band.0010.desc_merope
+			}
+			triggered_desc = {
+				trigger = { scope:tm_band_style = flag:robe }
+				desc = tm_band.0010.desc_robe
+			}
+			desc = tm_band.0010.desc_charter
+		}
+		desc = tm_band.0010.desc_end
+	}
+	theme = landless_adventurer
+	left_portrait = { character = root animation = personality_rational }
+	right_portrait = { character = scope:tm_band_lord animation = happiness }
+
+	trigger = {
+		tm_bae2_faith_band_trigger = yes
+		is_imprisoned = no
+		scope:tm_band_lord = { is_alive = yes }
+		scope:tm_band_county.holder ?= scope:tm_band_lord
+	}
+
+	option = {	# Take it
+		name = {
+			trigger = { scope:tm_band_style = flag:township }
+			text = tm_band.0010.a_township
+		}
+		name = {
+			trigger = { NOT = { scope:tm_band_style = flag:township } }
+			text = tm_band.0010.a
+		}
+		custom_tooltip = tm_band.0010.a.tt
+		scope:tm_band_lord = { trigger_event = tm_band.0012 }
+		ai_chance = {
+			base = 60
+			modifier = { add = 30 has_trait = ambitious }
+			modifier = { add = 40 has_character_modifier = ep3_lust_for_land_modifier }
+			modifier = { add = 20 age >= 50 }
+			modifier = { add = 20 gold < 0 }
+			modifier = { factor = 0.5 has_realm_law = camp_purpose_wanderers }
+		}
+	}
+	option = {	# Keep the road
+		name = tm_band.0010.b
+		scope:tm_band_lord = {
+			send_interface_toast = {
+				type = event_toast_effect_neutral
+				title = tm_band.0010.b.toast
+				left_icon = root
+			}
+		}
+		ai_chance = {
+			base = 20
+			modifier = { add = 30 has_realm_law = camp_purpose_wanderers }
+			modifier = { add = 20 has_trait = arrogant }
+		}
+	}
+}
+
+# Hidden. Root = the lord; the band took his offer. Checks it still stands, then vanilla's settlement events
+# (ep3_laamps.0300 for him, 0301 for her) do the rest.
+tm_band.0012 = {
+	type = character_event
+	hidden = yes
+
+	trigger = {
+		is_landed = yes
+		scope:tm_band_county.holder ?= root
+		scope:tm_band_band = {
+			is_alive = yes
+			tm_bae2_faith_band_trigger = yes
+		}
+	}
+
+	immediate = {
+		tm_band_grant_patent_effect = yes
+	}
+}
+
+# The band is asked to move on. Root = the band; scope:tm_band_lord asks; scope:tm_band_county is the county he might
+# one day have given. Leaving when asked is the Saffarid patience (Tor p. 122): a stored claim and his goodwill.
+tm_band.0020 = {
+	type = character_event
+	title = tm_band.0020.t
+	desc = {
+		desc = tm_band.0020.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:tm_band_style = flag:robe }
+				desc = tm_band.0020.desc_robe
+			}
+			triggered_desc = {
+				trigger = { scope:tm_band_style = flag:township }
+				desc = tm_band.0020.desc_township
+			}
+			desc = tm_band.0020.desc_other
+		}
+	}
+	theme = landless_adventurer
+	left_portrait = { character = root animation = worry }
+	right_portrait = { character = scope:tm_band_lord animation = personality_rational }
+
+	trigger = {
+		tm_bae2_faith_band_trigger = yes
+		scope:tm_band_lord = { is_alive = yes }
+	}
+
+	option = {	# Go, with patience
+		name = tm_band.0020.a
+		tm_band_move_on_effect = yes
+		add_prestige = medium_prestige_gain
+		add_unpressed_claim = scope:tm_band_county
+		set_variable = { name = tm_band_patient_with value = scope:tm_band_lord years = 20 }
+		scope:tm_band_lord = {
+			add_opinion = { target = root modifier = tm_band_left_when_asked_opinion }
+			send_interface_toast = {
+				type = event_toast_effect_good
+				title = tm_band.0020.a.toast
+				left_icon = root
+			}
+		}
+		ai_chance = {
+			base = 50
+			modifier = { add = 20 has_trait = patient }
+			modifier = { add = 20 has_trait = content }
+			modifier = { add = 30 scope:tm_band_lord.current_military_strength > current_military_strength }
+			modifier = { add = -20 has_trait = wrathful }
+			modifier = { add = -20 has_trait = arrogant }
+		}
+	}
+	option = {	# Stay
+		name = tm_band.0020.b
+		add_opinion = { target = scope:tm_band_lord modifier = tm_band_asked_to_leave_opinion }
+		scope:tm_band_lord = {
+			add_opinion = { target = root modifier = tm_band_refused_to_leave_opinion }
+			send_interface_toast = {
+				type = event_toast_effect_bad
+				title = tm_band.0020.b.toast
+				left_icon = root
+			}
+		}
+		custom_tooltip = tm_band.0020.b.tt
+		# An AI lord who will not have it uses vanilla's Evict Adventurer, with its own war if she still refuses.
+		if = {
+			limit = {
+				scope:tm_band_lord = {
+					is_ai = yes
+					is_character_interaction_valid = {
+						recipient = root
+						interaction = evict_adventurer_interaction
+					}
+				}
+			}
+			run_interaction = {
+				interaction = evict_adventurer_interaction
+				actor = scope:tm_band_lord
+				recipient = root
+				send_threshold = decline
+			}
+		}
+		ai_chance = {
+			base = 20
+			modifier = { add = 30 current_military_strength > scope:tm_band_lord.current_military_strength }
+			modifier = { add = 20 has_trait = stubborn }
+			modifier = { add = 20 has_trait = arrogant }
+		}
+	}
+}
+
+# ===================================================================================================
+# The Companions Choose
+# ===================================================================================================
+
+# Hidden. Root = a band's weak or failing leader; finds the companion her officers would choose.
+tm_band.0102 = {
+	type = character_event
+	hidden = yes
+
+	trigger = {
+		tm_bae2_faith_band_trigger = yes
+		tm_band_weak_leader_trigger = yes
+	}
+
+	immediate = {
+		save_scope_as = tm_band_leader
+		ordered_courtier = {
+			limit = { tm_band_companion_trigger = { LEADER = scope:tm_band_leader } }
+			order_by = tm_band_leadership_value
+			save_scope_as = tm_band_companion
+		}
+		if = {
+			limit = { exists = scope:tm_band_companion }
+			set_variable = { name = tm_band_companions_cooldown value = yes years = 10 }
+			if = {
+				limit = { is_ai = no }
+				tm_flavour_spent_effect = yes
+			}
+			trigger_event = tm_band.0100
+		}
+	}
+}
+
+# The leader. Root = scope:tm_band_leader; scope:tm_band_companion = the one the officers would follow. A player
+# leader always chooses; the AI rarely refuses (Dirham "did not contend", Tor p. 111).
+tm_band.0100 = {
+	type = character_event
+	title = tm_band.0100.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { is_incapable = yes }
+				desc = tm_band.0100.desc_incapable
+			}
+			triggered_desc = {
+				trigger = { gold < -50 }
+				desc = tm_band.0100.desc_debt
+			}
+			desc = tm_band.0100.desc_weak
+		}
+		desc = tm_band.0100.desc
+	}
+	theme = landless_adventurer
+	left_portrait = { character = root animation = worry }
+	right_portrait = { character = scope:tm_band_companion animation = personality_rational }
+
+	trigger = {
+		tm_bae2_faith_band_trigger = yes
+		scope:tm_band_companion = {
+			is_alive = yes
+			is_imprisoned = no
+			is_courtier_of = root
+		}
+	}
+
+	option = {	# She leads; I ride with her
+		name = tm_band.0100.a
+		custom_tooltip = tm_band.0100.a.tt
+		if = {
+			limit = { is_ai = no }
+			custom_tooltip = tm_band.0100.a.player_tt
+		}
+		tm_band_hand_over_effect = yes
+		if = {
+			limit = { is_ai = no }
+			set_player_character = scope:tm_band_companion
+		}
+		scope:tm_band_companion = {
+			send_interface_toast = {
+				type = event_toast_effect_good
+				title = tm_band.0100.a.toast
+				left_icon = scope:tm_band_companion
+				right_icon = scope:tm_band_leader
+			}
+		}
+		ai_chance = {
+			base = 70
+			modifier = { add = 30 has_trait = humble }
+			modifier = { add = 20 has_trait = content }
+			modifier = { add = 30 is_incapable = yes }
+			modifier = { factor = 0.5 has_trait = ambitious }
+			modifier = { factor = 0.5 has_trait = arrogant }
+			modifier = { factor = 0.7 has_trait = stubborn }
+		}
+	}
+	option = {	# Not yet
+		name = tm_band.0100.b
+		scope:tm_band_companion = {
+			add_opinion = { target = root modifier = tm_band_kept_the_band_opinion }
+		}
+		ai_chance = {
+			base = 30
+			modifier = { factor = 0 is_incapable = yes }
+		}
+	}
+}

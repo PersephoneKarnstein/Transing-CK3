@@ -1,0 +1,55 @@
+﻿# Crusader Dolls — Yutai Dao and the Sogdians of Dunhuang (tm_yt3_events.txt; design note docs/wave4/yutai-sogdians.md).
+
+# Hide the Name: the register now says something else, and she keeps quiet in this land. Reuses the variable of
+# Keep Quiet in This Land (tm_world_keep_quiet, common/decisions/tm_world_decisions.txt) rather than a copy of it: the
+# world's hostile courts are half as likely to single her out (tm_world_keeps_quiet_trigger), she is not chosen Elder
+# Sister while it lasts (tm_elder_sister_eligible_trigger), and Speak Aloud Again (tm_world_speak_aloud_decision) ends
+# it as usual. tm_yt3_name_hidden stays: what was written in the register is not unwritten. Scope: the character.
+tm_yt3_hide_name_effect = {
+	custom_tooltip = tm_yt3_hide_name_tt
+	hidden_effect = {
+		set_variable = tm_yt3_name_hidden
+		if = {
+			limit = { NOT = { has_variable = tm_world_keep_quiet } }
+			set_variable = tm_world_keep_quiet
+		}
+	}
+}
+
+# Ease the strain on every Sisters' House she holds. Scope: the holder.
+tm_yt3_ease_house_strain_effect = {
+	every_held_title = {
+		limit = { tier = tier_county has_variable = tm_house }
+		change_variable = { name = tm_house_strain add = -1 }
+	}
+}
+
+# A Sogdian woman of Dunhuang: a neighbour of the House, not a member of the Way. She takes the faith of the county
+# where she is made, unless that is the Way; then the Buddhism of the Dunhuang Sogdians (pp. 323-324: the Conghua
+# households among the monasteries' people). Saves scope:$SCOPE$. Scope: the ruler at whose court she appears.
+# $COUNTY$ is the county she lives in.
+tm_yt3_create_neighbour_effect = {
+	if = {
+		limit = { NOT = { $COUNTY$.faith = root.faith } }
+		create_character = {
+			gender = female
+			age = { $AGE_MIN$ $AGE_MAX$ }
+			culture = culture:sogdian
+			faith = $COUNTY$.faith
+			location = $COUNTY$.title_province
+			learning = { 6 12 }
+			save_scope_as = $SCOPE$
+		}
+	}
+	else = {
+		create_character = {
+			gender = female
+			age = { $AGE_MIN$ $AGE_MAX$ }
+			culture = culture:sogdian
+			faith = faith:mahayana_faith
+			location = $COUNTY$.title_province
+			learning = { 6 12 }
+			save_scope_as = $SCOPE$
+		}
+	}
+}

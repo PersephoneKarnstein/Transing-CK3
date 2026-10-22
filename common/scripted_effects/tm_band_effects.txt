@@ -1,0 +1,222 @@
+﻿# Crusader Dolls — landless bands of the six faiths, wave 4 (docs/wave4/bands.md).
+
+# ---------------------------------------------------------------------------------------------------
+# The Patent and the Robe
+
+# Count the years a band (scope) has kept its camp in one county. Run once a year.
+tm_band_track_camp_effect = {
+	if = {
+		limit = { exists = domicile.domicile_location.county }
+		if = {
+			limit = {
+				exists = var:tm_band_camp_county
+				domicile.domicile_location.county = var:tm_band_camp_county
+			}
+			change_variable = { name = tm_band_camp_years add = 1 }
+		}
+		else = {
+			set_variable = { name = tm_band_camp_county value = domicile.domicile_location.county }
+			set_variable = { name = tm_band_camp_years value = 1 }
+		}
+	}
+}
+
+# Which way of settling a band the lord's land knows, for the event text. Scope: anything; reads scope:tm_band_lord
+# and scope:tm_band_county; saves scope:tm_band_style.
+#   flag:township  China and the Tarim: the rallied township (Vaissiere pp. 129-130, 152-155).
+#   flag:strumica  The Balkans and Anatolia before 1300: a treaty for the land she holds (Sophoulis pp. 81-82).
+#   flag:merope    The same lands from 1300: a command of a district's forts and villages (Sophoulis pp. 78-81).
+#   flag:robe      Iran, Iraq and the Islamic world: the patent and the robe of honour (Tor pp. 122, 129, 150).
+#   flag:charter   Anywhere else: a county by charter.
+tm_band_style_effect = {
+	if = {
+		limit = {
+			OR = {
+				scope:tm_band_county.title_province = { geographical_region = world_asia_china }
+				scope:tm_band_county.title_province = { geographical_region = world_steppe_tarim }
+				scope:tm_band_lord.culture = { has_cultural_pillar = heritage_chinese }
+			}
+		}
+		save_scope_value_as = { name = tm_band_style value = flag:township }
+	}
+	else_if = {
+		limit = {
+			OR = {
+				scope:tm_band_county.title_province = { geographical_region = world_europe_south_east }
+				scope:tm_band_county.title_province = { geographical_region = world_asia_minor }
+				scope:tm_band_lord.culture = { has_cultural_pillar = heritage_byzantine }
+				scope:tm_band_lord.culture = { has_cultural_pillar = heritage_south_slavic }
+			}
+		}
+		if = {
+			limit = { current_year >= 1300 }
+			save_scope_value_as = { name = tm_band_style value = flag:merope }
+		}
+		else = {
+			save_scope_value_as = { name = tm_band_style value = flag:strumica }
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				scope:tm_band_county.title_province = { geographical_region = world_persian_empire }
+				scope:tm_band_county.title_province = { geographical_region = world_middle_east }
+				scope:tm_band_lord.religion = religion:islam_religion
+			}
+		}
+		save_scope_value_as = { name = tm_band_style value = flag:robe }
+	}
+	else = {
+		save_scope_value_as = { name = tm_band_style value = flag:charter }
+	}
+}
+
+# The lord (root) settles the band on the county through vanilla's own Negotiate Settlement events: the same scopes and
+# list that negotiate_settlement_interaction's on_accept hands to ep3_laamps.0300 (root = the land giver), which runs
+# negotiate_settlement_interaction_effect and sends the band vanilla's letter (0301). The band becomes his vassal, its
+# camp is liquidated, and the ennobled-adventurer rules apply. The wave-3 settling grace follows by itself:
+# tm_bae2_title_gain sees tm_bae2_was_band. Reads scope:tm_band_band and scope:tm_band_county.
+tm_band_grant_patent_effect = {
+	save_scope_as = actor
+	scope:tm_band_band = {
+		save_scope_as = recipient
+		set_variable = { name = tm_bae2_was_band value = yes years = 3 }
+		add_opinion = { target = root modifier = tm_band_patent_given_opinion }
+	}
+	scope:tm_band_county = {
+		add_to_list = offered_titles
+		save_scope_as = new_primary_title
+	}
+	trigger_event = ep3_laamps.0300
+}
+
+# The band (root) moves its camp out of the lord's realm when asked, as vanilla's eviction does (ep3_interactions_
+# events.0502, "Leave"): to a county of a neighbouring realm, the nearest one first. Reads scope:tm_band_lord.
+tm_band_move_on_effect = {
+	if = {
+		limit = {
+			exists = domicile.domicile_location
+			domicile.domicile_location.county.holder.top_liege ?= scope:tm_band_lord.top_liege
+		}
+		domicile.domicile_location = { save_scope_as = tm_band_old_camp }
+		scope:tm_band_lord.top_liege = {
+			random_neighboring_and_across_water_top_liege_realm_owner = {
+				limit = {
+					NOT = { this = root }
+					NOT = { is_at_war_with = root }
+				}
+				save_scope_as = tm_band_next_realm
+			}
+		}
+		scope:tm_band_next_realm ?= {
+			ordered_realm_county = {
+				limit = { is_landless_type_title = no }
+				order_by = {
+					value = 0
+					subtract = "title_province.squared_distance(scope:tm_band_old_camp)"
+				}
+				save_scope_as = tm_band_next_camp
+			}
+		}
+		if = {
+			limit = { exists = scope:tm_band_next_camp }
+			save_scope_value_as = {
+				name = tm_band_provisions
+				value = {
+					value = "scope:tm_band_old_camp.squared_distance(scope:tm_band_next_camp.title_province)"
+					divide = 300
+				}
+			}
+			domicile = {
+				if = {
+					limit = { provisions < scope:tm_band_provisions }
+					change_provisions = scope:tm_band_provisions
+				}
+			}
+			start_travel_plan = {
+				destination = scope:tm_band_next_camp.title_province
+				travel_with_domicile = yes
+				players_use_planner = no
+				return_trip = no
+			}
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The Companions Choose
+
+# Hand the band from scope:tm_band_leader to scope:tm_band_companion while both live (Tor pp. 110-111).
+# Vanilla has no "step down from a camp" effect. Its camp title is a landless duchy (create_adventurer_title) and
+# the engine's own debug interaction moves landless titles with change_title_holder, so the camp title is moved as a
+# stepped_down change, with the old leader's government as the base. Then her people, her purse and the band's
+# memory (camp years, service, patience) follow it. UNTESTED in game: whether the camp (domicile) and men-at-arms
+# follow the title; see docs/wave4/bands.md.
+tm_band_hand_over_effect = {
+	scope:tm_band_leader.primary_title = { save_scope_as = tm_band_camp_title }
+	scope:tm_band_leader = {
+		save_scope_value_as = { name = tm_band_purse value = gold }
+	}
+	create_title_and_vassal_change = {
+		type = stepped_down
+		save_scope_as = change
+		add_claim_on_loss = no
+	}
+	scope:tm_band_camp_title = {
+		change_title_holder = {
+			holder = scope:tm_band_companion
+			change = scope:change
+			government_base = scope:tm_band_leader
+		}
+	}
+	resolve_title_and_vassal_change = scope:change
+	# Her people go with the band, if the engine has not moved them already.
+	scope:tm_band_leader = {
+		every_courtier = {
+			limit = { NOT = { this = scope:tm_band_companion } }
+			save_temporary_scope_as = tm_band_follower
+			scope:tm_band_companion = { add_courtier = scope:tm_band_follower }
+		}
+	}
+	# She stays in the band, as Dirham did.
+	scope:tm_band_companion = {
+		if = {
+			limit = {
+				NOT = { scope:tm_band_leader = { is_courtier_of = scope:tm_band_companion } }
+			}
+			add_courtier = scope:tm_band_leader
+		}
+	}
+	# The camp's purse.
+	if = {
+		limit = { scope:tm_band_purse > 0 }
+		scope:tm_band_leader = {
+			pay_short_term_gold = { target = scope:tm_band_companion gold = scope:tm_band_purse }
+		}
+	}
+	# The band's memory.
+	scope:tm_band_companion = {
+		set_variable = { name = tm_bae2_was_band value = yes years = 3 }
+		set_variable = { name = tm_band_companions_cooldown value = yes years = 10 }
+		if = {
+			limit = { exists = scope:tm_band_leader.var:tm_band_camp_county }
+			set_variable = { name = tm_band_camp_county value = scope:tm_band_leader.var:tm_band_camp_county }
+			set_variable = { name = tm_band_camp_years value = scope:tm_band_leader.var:tm_band_camp_years }
+		}
+		if = {
+			limit = { exists = scope:tm_band_leader.var:tm_band_served }
+			set_variable = { name = tm_band_served value = scope:tm_band_leader.var:tm_band_served years = 5 }
+		}
+		if = {
+			limit = { exists = scope:tm_band_leader.var:tm_band_patient_with }
+			set_variable = { name = tm_band_patient_with value = scope:tm_band_leader.var:tm_band_patient_with years = 10 }
+		}
+		add_opinion = { target = scope:tm_band_leader modifier = tm_band_stepped_down_opinion }
+		add_prestige = minor_prestige_gain
+	}
+	# With honour.
+	scope:tm_band_leader = {
+		add_opinion = { target = scope:tm_band_companion modifier = tm_band_stepped_down_opinion }
+		add_character_modifier = { modifier = tm_band_stepped_down_modifier years = 10 }
+	}
+}

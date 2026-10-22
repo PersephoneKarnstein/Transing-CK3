@@ -1,0 +1,187 @@
+﻿# Crusader Dolls — Ha-Nehpakhot, stage 2 (events/tm_hn2_events.txt).
+# Appends to vanilla on_actions through on_actions lists only, so vanilla's own effects are kept. Every event here is
+# flavour: each recipient is checked against the flavour budget (tm_flavour_ready_trigger) and spends it when one fires.
+
+yearly_global_pulse = {
+	on_actions = { tm_hn2_yearly }
+}
+
+yearly_playable_pulse = {
+	on_actions = { tm_hn2_yearly_ruler }
+}
+
+on_marriage = {
+	on_actions = { tm_hn2_on_marriage }
+}
+
+# Members are mostly courtiers, whom the playable pulse never reaches; one scan of the faith a year.
+tm_hn2_yearly = {
+	effect = {
+		every_living_character = {
+			limit = {
+				faith = faith:tm_nehpakhot
+				is_adult = yes
+				is_imprisoned = no
+			}
+			# A rival takes a daughter to the bailiff.
+			if = {
+				limit = {
+					tm_flavour_ready_trigger = yes
+					tm_hn2_bailiff_trigger = yes
+				}
+				random = {
+					chance = 4
+					tm_flavour_spent_effect = yes
+					trigger_event = { id = tm_hn2.0020 days = { 1 300 } }
+				}
+			}
+			# The spinning circle, by moonlight.
+			if = {
+				limit = {
+					tm_flavour_ready_trigger = yes
+					has_trait = tm_daughter_of_the_turning
+					OR = {
+						is_ruler = yes
+						exists = employer
+					}
+				}
+				random = {
+					chance = 8
+					tm_flavour_spent_effect = yes
+					trigger_event = { id = tm_hn2.0001 days = { 1 300 } }
+				}
+			}
+			# The story with no ending (wave 3, tm_hn3.0030): Nissim of Qayrawan's tale, from 1062, in the Maghreb and the
+			# Sahel or among daughters of Maghrebi speech.
+			if = {
+				limit = {
+					tm_flavour_ready_trigger = yes
+					tm_hn3_story_trigger = yes
+				}
+				random = {
+					chance = 5
+					tm_flavour_spent_effect = yes
+					trigger_event = { id = tm_hn3.0030 days = { 1 300 } }
+				}
+			}
+			# A seat below, from 1409.
+			if = {
+				limit = {
+					tm_flavour_ready_trigger = yes
+					tm_hn2_seat_candidate_trigger = yes
+				}
+				random = {
+					chance = 5
+					tm_flavour_spent_effect = yes
+					trigger_event = { id = tm_hn2.0050 days = { 1 300 } }
+				}
+			}
+			# Carnival: gather the Christian courts that hold members; each court is asked once.
+			if = {
+				limit = { tm_hn2_carnival_member_trigger = yes }
+				employer = {
+					if = {
+						limit = { NOT = { is_in_list = tm_hn2_carnival_courts } }
+						add_to_list = tm_hn2_carnival_courts
+					}
+				}
+			}
+		}
+		every_in_list = {
+			list = tm_hn2_carnival_courts
+			random = {
+				chance = 10
+				random_courtier = {
+					limit = {
+						tm_hn2_carnival_member_trigger = yes
+						tm_flavour_ready_trigger = yes
+					}
+					weight = {
+						base = 1
+						modifier = { add = 2 has_trait = tm_daughter_of_the_turning }
+						modifier = { add = { value = age divide = 20 } }
+					}
+					tm_flavour_spent_effect = yes
+					trigger_event = { id = tm_hn2.0029 days = { 1 30 } }
+				}
+			}
+		}
+	}
+}
+
+# A ruler of the faith is asked to confirm the street's ban on a daughter at her court or among her vassals.
+tm_hn2_yearly_ruler = {
+	trigger = {
+		faith = faith:tm_nehpakhot
+		is_landed = yes
+		tm_flavour_ready_trigger = yes
+		NOT = { has_variable = tm_hn3_two_parties }		# her decree lifts bans itself (tm_hn3_on_actions.txt)
+		OR = {
+			any_courtier = { has_character_modifier = tm_niddui_modifier }
+			any_vassal = { has_character_modifier = tm_niddui_modifier }
+		}
+	}
+	effect = {
+		random = {
+			chance = 50
+			random_courtier = {
+				limit = { has_character_modifier = tm_niddui_modifier }
+				save_scope_as = tm_hn2_shunned
+			}
+			if = {
+				limit = { NOT = { exists = scope:tm_hn2_shunned } }
+				random_vassal = {
+					limit = { has_character_modifier = tm_niddui_modifier }
+					save_scope_as = tm_hn2_shunned
+				}
+			}
+			tm_flavour_spent_effect = yes
+			if = {		# wave 3: in the Maghreb and the Sahel no lord licenses the ban; the Two Parties instead
+				limit = { tm_hn3_capital_in_west_trigger = yes }
+				trigger_event = { id = tm_hn3.0020 days = { 1 60 } }
+			}
+			else = {
+				trigger_event = { id = tm_hn2.0040 days = { 1 60 } }
+			}
+		}
+	}
+}
+
+# The adornment: a daughter of the Turning marries; her spouse may give her an ornament of gold.
+# Root = the major partner; scope:spouse = the minor partner.
+tm_hn2_on_marriage = {
+	effect = {
+		if = {
+			limit = {
+				has_trait = tm_daughter_of_the_turning
+				tm_hn2_has_adornment_trigger = no
+				scope:spouse = { tm_flavour_ready_trigger = yes }
+			}
+			random = {
+				chance = 40
+				save_scope_as = tm_hn2_bride
+				scope:spouse = {
+					save_scope_as = tm_hn2_giver
+					tm_flavour_spent_effect = yes
+					trigger_event = { id = tm_hn2.0010 days = { 3 30 } }
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:spouse = {
+					has_trait = tm_daughter_of_the_turning
+					tm_hn2_has_adornment_trigger = no
+				}
+				tm_flavour_ready_trigger = yes
+			}
+			random = {
+				chance = 40
+				scope:spouse = { save_scope_as = tm_hn2_bride }
+				save_scope_as = tm_hn2_giver
+				tm_flavour_spent_effect = yes
+				trigger_event = { id = tm_hn2.0010 days = { 3 30 } }
+			}
+		}
+	}
+}

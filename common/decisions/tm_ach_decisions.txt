@@ -1,0 +1,22 @@
+﻿# Crusader Dolls — Deeds of the House: lists the house's flavour "achievements" (docs/faith_design.md §11).
+# Free and repeatable; players only.
+
+tm_ach_deeds_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"
+	}
+	sort_order = 5
+
+	is_shown = {
+		is_ai = no
+		tm_ach_house_has_deed_trigger = yes
+	}
+
+	effect = {
+		trigger_event = tm_ach.0900
+	}
+
+	ai_check_interval = 0
+	ai_potential = { always = no }
+	ai_will_do = { base = 0 }
+}

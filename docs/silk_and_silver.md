@@ -167,7 +167,7 @@ So the house is a draper's and an apothecary's company, plus a scriptorium. Its 
 
 ## Mechanics shared by several faiths
 
-- **Associates and the Marked.** A merchant company's Associates are courtiers. Our growth engine already moves Marked characters into courts (`tm_homecoming_effect`, the call). Under S&S, a company of the faith would be a natural home court, and the homecoming's choice of home court might weight a company's head. Keep growth slow ([[feedback-growth-tuning]]: small faiths grow slowly, no visible caps).
+- **Associates and the Marked.** A merchant company's Associates are courtiers. Our growth engine already moves Marked characters into courts (`tm_surv_gather_effect`, the call). Under S&S, a company of the faith would be a natural home court, and the homecoming's choice of home court might weight a company's head. Keep growth slow ([[feedback-growth-tuning]]: small faiths grow slowly, no visible caps).
 - **Popular opinion as the world's reaction.** Now that opinion is bounded and gives bonuses, a daughter's public naming could move it a little. That would be a light way to show the world reacting without an antagonist nation.
 - **Trade Opportunity schemes as rite steps.** Pilgrimage-like steps (the völva's journey, the guarantor's travel in Yutai Dao) could borrow the S&S scheme with its Push for Advantages button, if it turns out to be scriptable.
 - **One choice per faith for usury:**

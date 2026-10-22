@@ -1,0 +1,153 @@
+﻿# Crusader Dolls — the Galenic splinter rite of Adelphai Dorleyaiou (wave 3). docs/wave3/dorley.md.
+# 1.20 has no vanilla decision for changing rite inside a faith: rites are changed by the conversion screen, by
+# create_dynamic_rite / create_rite_from_type (heresy outbreaks, historical characters) and by set_character_rite.
+# These decisions use create_rite_from_type once (as vanilla does for quanzhen and daoxue) and
+# set_character_rite_with_conversion afterwards.
+#
+# Date gate: the wing cites Leo VI's Novel 98 (men, women, eunuchs; Sidéris 2010, p. 89). Leo VI reigned 886-912
+# (Neville 2019, p. 53 and n. 54; Tougher 2008, p. 29), so the wing cannot be founded before 886.
+# The Mother of Mothers keeps the main rite and cannot found or join it.
+
+# Found the Galenic rite: the first ruler only.
+tm_dl2_found_galenic_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"		# placeholder; TODO event art
+	}
+	sort_order = 70
+
+	is_shown = {
+		is_landed = yes
+		faith = faith:transbian_maximalism
+		rite ?= { rite_has_doctrine = tm_body_aristotelian }
+		current_date >= 886.1.1
+		NOT = { has_global_variable = tm_dl2_galenic_founded }
+		NOT = { has_title = title:d_tm_mother_house }
+	}
+
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+		is_adult = yes
+	}
+
+	cost = {
+		piety = 300
+		prestige = 150
+	}
+
+	effect = {
+		custom_tooltip = tm_dl2_found_galenic_decision_effect_tt
+		tm_dl2_found_galenic_effect = yes
+		trigger_event = tm_dl2.0001
+	}
+
+	# The AI founds it rarely, and only under pressure from a liege of another Christian faith: it is the wing of
+	# accommodation, not a free upgrade.
+	ai_check_interval = 120
+	ai_potential = {
+		liege ?= {
+			NOT = { faith = root.faith }
+			faith = { religion_tag = christianity_religion }
+		}
+	}
+	ai_will_do = {
+		base = 0
+		modifier = { add = 10 has_variable = tm_suppression }
+		modifier = { add = 10 var:tm_suppression ?= 3 }
+		modifier = { add = 5 has_trait = content }
+		modifier = { add = 5 has_trait = craven }
+		modifier = { add = -50 has_trait = zealous }
+		modifier = { add = -50 tm_is_daughter_trigger = yes }
+	}
+}
+
+# Join the Galenic rite once it exists.
+tm_dl2_adopt_galenic_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"		# placeholder; TODO event art
+	}
+	sort_order = 70
+
+	is_shown = {
+		is_landed = yes
+		faith = faith:transbian_maximalism
+		rite ?= { rite_has_doctrine = tm_body_aristotelian }
+		has_global_variable = tm_dl2_galenic_founded
+		NOT = { has_title = title:d_tm_mother_house }
+	}
+
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+		is_adult = yes
+	}
+
+	cost = {
+		piety = 150
+	}
+
+	effect = {
+		custom_tooltip = tm_dl2_adopt_galenic_decision_effect_tt
+		tm_dl2_adopt_galenic_effect = yes
+	}
+
+	ai_check_interval = 120
+	ai_potential = {
+		liege ?= {
+			NOT = { faith = root.faith }
+			faith = { religion_tag = christianity_religion }
+		}
+	}
+	ai_will_do = {
+		base = 0
+		modifier = { add = 10 has_variable = tm_suppression }
+		modifier = { add = 10 var:tm_suppression ?= 3 }
+		modifier = { add = 10 liege ?= { rite ?= { rite_has_doctrine = tm_body_galenic } } }
+		modifier = { add = 5 has_trait = content }
+		modifier = { add = -50 has_trait = zealous }
+		modifier = { add = -50 tm_is_daughter_trigger = yes }
+	}
+}
+
+# Come home to the main rite. Stepping back is honoured: the Mother of Mothers welcomes her.
+tm_dl2_return_aristotelian_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"		# placeholder; TODO event art
+	}
+	sort_order = 70
+
+	is_shown = {
+		is_landed = yes
+		faith = faith:transbian_maximalism
+		rite ?= { rite_has_doctrine = tm_body_galenic }
+	}
+
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+	}
+
+	cost = {
+		piety = 100
+	}
+
+	effect = {
+		set_character_rite_with_conversion = faith.main_rite
+		if = {
+			limit = {
+				title:d_tm_mother_house.holder ?= {
+					NOT = { this = root }
+					faith = root.faith
+				}
+			}
+			title:d_tm_mother_house.holder = {
+				add_opinion = { target = root modifier = tm_dl2_came_home_opinion }
+			}
+		}
+	}
+
+	ai_check_interval = 120
+	ai_will_do = {
+		base = 0
+		modifier = { add = 10 has_trait = zealous }
+		modifier = { add = 10 tm_is_daughter_trigger = yes }
+		modifier = { add = 10 NOT = { liege ?= { faith = { religion_tag = christianity_religion } } } }
+	}
+}

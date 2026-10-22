@@ -1,0 +1,381 @@
+﻿namespace = tm_dl2
+
+# Adelphai Dorleyaiou, stage 2 (wave 3). Design note: docs/wave3/dorley.md.
+#   0001  The Emperor's count: the Galenic rite is founded (tm_dl2_found_galenic_decision). Novel 98, 886 on.
+#   0002  The Mother of Mothers answers the Galenic founding or a joining.
+#   0010  Ignatios returns as patriarch (November 867).
+#   0020  The train to Tarsus: a slaver's train of Rum boys bound for the Cilician frontier, 867-989.
+#   0030  The Galenic wing's book: Theophylact's In Defence of Eunuchs (c. 1100-07), from 1107.
+#   0040  The Holy Mountain closes its gates to the cut (Athos, 1083).
+#   0050  The Steward at the Gate (the Kecharitomene rule, from 1120).
+#   0060  A letter of Michael Psellos reaches the Mother House (1063-1078).
+# Writing rules: docs/faith_design.md §16. No event shows a child cut or gives a child a rite or a name.
+
+######################################################################
+# 0001 The Emperor's count. Root = the founder. Leo VI's Novel 98 distinguishes three kinds, men, women and
+# eunuchs (Sidéris 2010, p. 89), and calls eunuchs "some strange sex" (Tougher 2008, p. 111). The wing is
+# accommodationist (faith_design.md §12, Bhatt revisions 2); the main rite's answer is in the text.
+######################################################################
+tm_dl2.0001 = {
+	type = character_event
+	title = tm_dl2.0001.t
+	desc = tm_dl2.0001.desc
+	theme = faith
+	left_portrait = { character = root animation = personality_rational }
+
+	option = {	# The Houses stand
+		name = tm_dl2.0001.a
+		add_prestige = 50
+	}
+	option = {	# The bishops will leave us be
+		name = tm_dl2.0001.b
+		add_stress = -10
+	}
+}
+
+######################################################################
+# 0002 The Mother of Mothers answers. Root = the holder of d_tm_mother_house (main rite);
+# scope:tm_dl2_founder = the ruler who founded or joined the Galenic rite.
+######################################################################
+tm_dl2.0002 = {
+	type = character_event
+	title = tm_dl2.0002.t
+	desc = tm_dl2.0002.desc
+	theme = faith
+	left_portrait = { character = root animation = disappointed }
+	right_portrait = { character = scope:tm_dl2_founder animation = personality_rational }
+
+	trigger = {
+		exists = scope:tm_dl2_founder
+		scope:tm_dl2_founder = { is_alive = yes }
+	}
+
+	option = {	# The old cage with a new name
+		name = tm_dl2.0002.a
+		scope:tm_dl2_founder = {
+			add_opinion = { target = root modifier = tm_dl2_old_cage_opinion }
+		}
+		add_opinion = { target = scope:tm_dl2_founder modifier = tm_dl2_old_cage_opinion }
+		add_piety = 50
+		ai_chance = {
+			base = 50
+			modifier = { add = 30 has_trait = zealous }
+		}
+	}
+	option = {	# Still a sister
+		name = tm_dl2.0002.b
+		add_stress = 10
+		ai_chance = {
+			base = 50
+			modifier = { add = 30 has_trait = forgiving }
+			modifier = { add = 20 has_trait = compassionate }
+		}
+	}
+}
+
+######################################################################
+# 0010 Ignatios returns. Root = the Mother of Mothers, or the greatest ruler of the faith, and every player of the
+# faith. Ignatios, son of Michael I, was castrated at about fourteen when his father fell and made a monk; patriarch
+# 847-58 and again from November 867 (Ringrose 2003, pp. 62, 118; Szabo in Spencer-Hall and Gutt 2021, pp. 117-19;
+# research/byz_spencer_hall_gutt_hagiography.md row 3, research/byz_ringrose_perfect_servant.md). The only beardless
+# patriarch in the Hagia Sophia mosaics (Szabo p. 119). His Life makes him manly and calls him "father" (pp. 121-25).
+# The faith does not claim him; the Sisters speak of what the Church does with him.
+######################################################################
+tm_dl2.0010 = {
+	type = character_event
+	title = tm_dl2.0010.t
+	desc = tm_dl2.0010.desc
+	theme = faith
+	left_portrait = { character = root animation = personality_rational }
+
+	option = {	# So long as it can call him father
+		name = tm_dl2.0010.a
+		trigger = { rite ?= { rite_has_parameter = tm_castrates_are_women } }
+		add_piety = 50
+		ai_chance = { base = 60 }
+	}
+	option = {	# Grandmother's House: the court cuts its princes as we cut our captives
+		name = tm_dl2.0010.c
+		trigger = { rite ?= { rite_has_doctrine = tm_knife_grandmother } }
+		add_dread = 5
+		add_piety = 25
+		ai_chance = { base = 30 }
+	}
+	option = {	# Pray for him
+		name = tm_dl2.0010.b
+		add_piety = 25
+		add_stress = -5
+		ai_chance = { base = 40 }
+	}
+}
+
+######################################################################
+# 0020 The train to Tarsus. Root = a Dorleyaian ruler in Asia Minor while Cilicia is held by a Muslim ruler.
+# Rum boys were carried into Syria and northern Mesopotamia "by means of purchase, or by means of raids" until the
+# frontier fortresses fell (al-Muqaddasi, d. c. 990, in Ayalon 1999, pp. 107, 218-19; research/hist_ayalon_eunuchs_caliphs.md
+# §4.2). Arab writers named Byzantium as a castration centre (El-Azhari 2019, pp. 143-45; al-Jahiz in Ayalon p. 105).
+# Event shape from research/isl_el_azhari_queens_eunuchs.md row 2 ("Boys for Tarsus"). The cutting is never shown,
+# and no child is cut, given a rite or a name. Grandmother's House is the one condemned way: it buys the cut children
+# from the market and lets the rest go on. Aunt Bea's House cells the merchant; whether he can be brought to the knife is
+# the House's ordinary rule (tm_intake_eligible_trigger: violent men only), not this event's.
+######################################################################
+tm_dl2.0020 = {
+	type = character_event
+	title = tm_dl2.0020.t
+	desc = tm_dl2.0020.desc
+	theme = faith
+	left_portrait = { character = root animation = worry }
+
+	trigger = { tm_flavour_ready_trigger = yes }
+
+	immediate = {
+		tm_flavour_spent_effect = yes
+		set_variable = { name = tm_dl2_tarsus_seen value = yes years = 20 }
+	}
+
+	option = {	# Gift Alone: buy them all free
+		name = tm_dl2.0020.a
+		trigger = {
+			rite ?= { rite_has_doctrine = tm_knife_gift_alone }
+			gold >= 100
+		}
+		remove_short_term_gold = 100
+		tm_dl2_take_in_children_effect = { CUT = 2 UNCUT = 1 }
+		add_piety = 100
+		ai_chance = { base = 100 }
+	}
+	option = {	# Aunt Bea's House: free them, and a cell for the merchant
+		name = tm_dl2.0020.b
+		trigger = { rite ?= { rite_has_doctrine = tm_knife_aunt_bea } }
+		create_character = {
+			age = { 30 50 }
+			gender = male
+			trait = greedy
+			faith = faith:sunni
+			culture = culture:levantine
+			dynasty = none
+			employer = root
+			save_scope_as = tm_dl2_slaver
+		}
+		imprison = { target = scope:tm_dl2_slaver type = dungeon }
+		tm_dl2_take_in_children_effect = { CUT = 2 UNCUT = 1 }
+		add_prestige = 50
+		title:c_cilicia.holder ?= {
+			add_opinion = { target = root modifier = angry_opinion opinion = -15 }
+		}
+		ai_chance = { base = 100 }
+	}
+	option = {	# Grandmother's House: pay for the cut ones
+		name = tm_dl2.0020.c
+		trigger = {
+			rite ?= { rite_has_doctrine = tm_knife_grandmother }
+			gold >= 100
+		}
+		remove_short_term_gold = 100
+		tm_dl2_take_cut_children_effect = yes
+		add_dread = 10
+		ai_chance = { base = 100 }
+	}
+	option = {	# Send word to the strategos
+		name = tm_dl2.0020.d
+		trigger = { top_liege ?= { faith = { religion_tag = christianity_religion } } }
+		random_list = {
+			50 = {
+				desc = tm_dl2.0020.d.stopped
+				add_piety = 25
+			}
+			50 = {
+				desc = tm_dl2.0020.d.paid
+				add_stress = 10
+			}
+		}
+		ai_chance = { base = 20 }
+	}
+	option = {	# Past the Gates
+		name = tm_dl2.0020.e
+		add_stress = 15
+		ai_chance = { base = 5 }
+	}
+}
+
+######################################################################
+# 0030 The Galenic wing's book. Root = a Dorleyaian ruler, from 1107. Theophylact of Ochrid wrote his logos "In
+# Defence of Eunuchs" c. 1100-07 for his eunuch brother Demetrios (d. c. 1107): a monk attacks eunuchs and a eunuch
+# answers him; the laws against castration are outmoded; a boy cut by his family for chastity is a vine pruned;
+# ascetics alter their bodies too; adults who cut themselves are their own murderers (Tougher 2008, pp. 75, 98, 108;
+# Mullett in Tougher (ed.) 2002, pp. 177-86; Ringrose 2003, pp. 195-97). The dialogue is spoken over the head of the
+# eunuch's newly cut nephew (Ringrose p. 195). Mullett: a personal gift, about asceticism, not proof of a shift.
+# Aristotelian answer after research/byz_tougher_eunuchs_antiquity_beyond.md row 12 and quote list.
+######################################################################
+tm_dl2.0030 = {
+	type = character_event
+	title = tm_dl2.0030.t
+	desc = tm_dl2.0030.desc
+	theme = learning
+	left_portrait = { character = root animation = reading }
+
+	trigger = { tm_flavour_ready_trigger = yes }
+
+	immediate = {
+		tm_flavour_spent_effect = yes
+		set_variable = tm_dl2_book_seen
+	}
+
+	option = {	# Galenic: our book
+		name = tm_dl2.0030.a
+		trigger = { rite ?= { rite_has_parameter = tm_castrates_third_kind } }
+		add_piety = 50
+		add_learning_lifestyle_xp = 100
+		ai_chance = { base = 100 }
+	}
+	option = {	# Aristotelian: no one asked the boy
+		name = tm_dl2.0030.b
+		trigger = { rite ?= { rite_has_parameter = tm_castrates_are_women } }
+		add_piety = 50
+		ai_chance = { base = 100 }
+	}
+	option = {	# Keep it in the library with the argument beside it
+		name = tm_dl2.0030.c
+		trigger = { learning >= 10 }
+		add_learning_lifestyle_xp = 150
+		ai_chance = { base = 20 }
+	}
+}
+
+######################################################################
+# 0040 The Holy Mountain closes. Root = the Mother of Mothers or the greatest ruler of the faith, and every player of
+# the faith. Alexios I banned eunuchs from the Athos monasteries in 1083 (Guilland 1943, p. 232); the Athos rules
+# already barred beardless youths and eunuchs (Tougher 2008, p. 75). The decline is political, from 1057 and 1081
+# (Guilland pp. 230, 232); Novel 60 was never withdrawn.
+######################################################################
+tm_dl2.0040 = {
+	type = character_event
+	title = tm_dl2.0040.t
+	desc = tm_dl2.0040.desc
+	theme = faith
+	left_portrait = { character = root animation = personality_rational }
+
+	option = {	# Aristotelian: it was never our door
+		name = tm_dl2.0040.a
+		trigger = { rite ?= { rite_has_parameter = tm_castrates_are_women } }
+		add_piety = 25
+		ai_chance = { base = 60 }
+	}
+	option = {	# Galenic: petition for the eunuch monks
+		name = tm_dl2.0040.b
+		trigger = { rite ?= { rite_has_parameter = tm_castrates_third_kind } }
+		add_prestige = -25
+		add_piety = 50
+		ai_chance = { base = 60 }
+	}
+	option = {	# Open the Houses to any cut monk who is turned away
+		name = tm_dl2.0040.c
+		trigger = { tm_holds_sisters_house_trigger = yes }
+		add_piety = 25
+		every_held_title = {
+			limit = { tier = tier_county has_variable = tm_house }
+			change_variable = { name = tm_house_strain add = 1 }
+		}
+		ai_chance = { base = 30 }
+	}
+	option = {	# The Komnenoi have their kin
+		name = tm_dl2.0040.d
+		add_stress = 5
+		ai_chance = { base = 10 }
+	}
+}
+
+######################################################################
+# 0050 The Steward at the Gate. Root = a Dorleyaian ruler with a Sisters' House in the Byzantine world, from 1120.
+# The Kecharitomene typikon (Irene Doukaina, 1110-16) has eunuchs as steward, priests and doctor "around the convent",
+# while the enclosure is "closed even to eunuchs themselves" ([80], Thomas and Hero 2000, p. 710; [79]-[80] dated
+# c. 1120/30 by Gautier). In convents of women the steward was always a eunuch (Guilland 1943, p. 205). Event and line
+# from research/byz_thomas_hero_typika.md row 6. The steward is a eunuch of the court's making; whether she asks for a
+# name is hers to say (tm_offer_courtier_rite_effect lets the steward choose).
+######################################################################
+tm_dl2.0050 = {
+	type = character_event
+	title = tm_dl2.0050.t
+	desc = tm_dl2.0050.desc
+	theme = faith
+	left_portrait = { character = root animation = personality_compassionate }
+	right_portrait = { character = scope:tm_dl2_steward animation = worry }
+
+	trigger = { tm_flavour_ready_trigger = yes }
+
+	immediate = {
+		tm_flavour_spent_effect = yes
+		set_variable = tm_dl2_steward_seen
+		tm_dl2_create_steward_effect = yes
+	}
+
+	option = {	# Stay as a friend of the House
+		name = tm_dl2.0050.a
+		scope:tm_dl2_steward = {
+			set_character_faith = root.faith
+			add_character_modifier = { modifier = tm_house_friend_modifier }
+			add_opinion = { target = root modifier = grateful_opinion opinion = 30 }
+		}
+		add_piety = 25
+		ai_chance = { base = 60 }
+	}
+	option = {	# If you ask, the Hilaria and a name
+		name = tm_dl2.0050.b
+		trigger = { rite ?= { rite_has_parameter = tm_knife_voluntary } }
+		scope:tm_dl2_steward = {
+			set_character_faith = root.faith
+			add_opinion = { target = root modifier = grateful_opinion opinion = 30 }
+			tm_offer_courtier_rite_effect = yes
+		}
+		add_piety = 25
+		ai_chance = { base = 40 }
+	}
+	option = {	# Bread for the road
+		name = tm_dl2.0050.c
+		add_piety = 10
+		scope:tm_dl2_steward = { move_to_pool = yes }
+		ai_chance = { base = 10 }
+	}
+}
+
+######################################################################
+# 0060 The consul's letter. Root = a Dorleyaian ruler, 1063-1078; likelier for the Mother of Mothers, since the copy
+# reaches the Mother House first. Michael Psellos (d. likely 1078) wrote to the kaisar Ioannes Doukas that "with regard
+# to nature I am feminine" (S 72, c. 1063-4), and asked of a friend's newborn son, "more feminine or more masculine?"
+# (S 157, c. 1074): Jeffreys and Lauxtermann 2017, pp. 345, 387; Papaioannou 2013, pp. 195-209. Papaioannou reads a
+# rhetorical persona for a few close readers, not a claim about the body (pp. 202, 215, 231). The narrator does not claim
+# him and does not name what he was; the Sisters' answers are their reading, and say so.
+# research/byz_psellos_papaioannou_letters.md.
+######################################################################
+tm_dl2.0060 = {
+	type = character_event
+	title = tm_dl2.0060.t
+	desc = tm_dl2.0060.desc
+	theme = learning
+	left_portrait = { character = root animation = reading }
+
+	trigger = { tm_flavour_ready_trigger = yes }
+
+	immediate = {
+		tm_flavour_spent_effect = yes
+		set_variable = tm_dl2_psellos_seen
+	}
+
+	option = {	# Aristotelian: he says it of his soul
+		name = tm_dl2.0060.a
+		trigger = { rite ?= { rite_has_parameter = tm_castrates_are_women } }
+		add_piety = 25
+		ai_chance = { base = 100 }
+	}
+	option = {	# Galenic: a little of a third thing
+		name = tm_dl2.0060.b
+		trigger = { rite ?= { rite_has_parameter = tm_castrates_third_kind } }
+		add_piety = 25
+		ai_chance = { base = 100 }
+	}
+	option = {	# Keep it, with a note that this is our reading
+		name = tm_dl2.0060.c
+		add_learning_lifestyle_xp = 75
+		ai_chance = { base = 20 }
+	}
+}

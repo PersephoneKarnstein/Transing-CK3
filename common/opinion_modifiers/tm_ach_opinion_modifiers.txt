@@ -1,0 +1,21 @@
+﻿# Crusader Dolls — the Deeds of the House (tm_ach_events.txt).
+
+# Ioanna Secunda: the Pope's faith remembers who took him into the cells, for a generation (§11).
+tm_ach_unmade_the_pope_opinion = {
+	opinion = -40
+	years = 30
+}
+
+# Gelded Like My Camels: the khan's camp, after its judges have sat.
+tm_ach_gelded_kin_opinion = {
+	opinion = -60
+	years = 25
+	decaying = yes
+}
+
+# ...after horses and silver were sent.
+tm_ach_gelded_kin_paid_opinion = {
+	opinion = -25
+	years = 10
+	decaying = yes
+}

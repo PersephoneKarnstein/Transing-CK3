@@ -3,6 +3,7 @@
 # Growth (docs/faith_design.md §14).
 #   0001  hidden: the rite offered to a courtier begins (tm_offer_courtier_rite_effect). Fired as an event so that
 #         root is the seeker: the yearly pulse that makes the offer has no character root.
+#   0010  hidden: a dead ruler's household goes to the nearest court of its faith (docs/wave3/survival.md).
 
 tm_growth.0001 = {
 	type = character_event
@@ -10,5 +11,25 @@ tm_growth.0001 = {
 
 	immediate = {
 		tm_offer_begin_effect = yes
+	}
+}
+
+# Hidden: a member of a ruler's household who has outlived her ruler, now at an heir's court of another faith or with
+# no court, goes to the nearest court of her faith (tm_surv_household_on_death_effect, tm_surv_effects.txt).
+# Root = the member.
+tm_growth.0010 = {
+	type = character_event
+	hidden = yes
+
+	trigger = {
+		is_alive = yes
+		is_ruler = no
+		is_imprisoned = no
+		rite ?= { rite_has_parameter = tm_sisters_faith }
+		NOT = { employer ?= { faith = root.faith } }
+	}
+
+	immediate = {
+		tm_surv_go_home_effect = yes
 	}
 }

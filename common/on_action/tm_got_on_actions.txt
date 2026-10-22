@@ -1,0 +1,216 @@
+﻿# Crusader Dolls — Gotland (docs/wave4/gotland.md). Appended to vanilla on_actions; the effects are our own
+# on_actions, so vanilla's are untouched.
+yearly_global_pulse = {
+	on_actions = { tm_got_yearly }
+}
+
+on_join_war_as_secondary = {
+	on_actions = { tm_got_on_join_war }
+}
+
+on_war_won_attacker = {
+	on_actions = { tm_got_on_war_end }
+}
+
+on_war_won_defender = {
+	on_actions = { tm_got_on_war_end }
+}
+
+on_war_white_peace = {
+	on_actions = { tm_got_on_war_end }
+}
+
+on_war_invalidated = {
+	on_actions = { tm_got_on_war_end }
+}
+
+on_title_gain = {
+	on_actions = { tm_got_title_gain }
+}
+
+# Open Ports: a Bædling band joins the side of a lord who opened his ports in this war (by vanilla's join-war
+# contract, the offer event, or any other way). Root = the joiner; scope:war = the war.
+tm_got_on_join_war = {
+	trigger = {
+		tm_got_band_trigger = yes
+		NOT = { has_variable = tm_got_licence }
+	}
+	effect = {
+		scope:war = {
+			if = {
+				limit = { is_attacker = root }
+				primary_attacker = { save_scope_as = tm_got_side_leader }
+			}
+			else = {
+				primary_defender = { save_scope_as = tm_got_side_leader }
+			}
+		}
+		if = {
+			limit = {
+				scope:tm_got_side_leader = {
+					has_variable = tm_got_ports_war
+					var:tm_got_ports_war = scope:war
+				}
+			}
+			scope:tm_got_side_leader = { save_scope_as = tm_got_lord }
+			tm_got_record_licence_effect = yes
+			if = {
+				limit = { is_ai = no }
+				send_interface_toast = {
+					type = event_toast_effect_good
+					title = tm_got_licence_taken.t
+					left_icon = scope:tm_got_lord
+					custom_tooltip = tm_got_licence_taken.tt
+				}
+			}
+		}
+	}
+}
+
+# Open Ports: peace removes the licence (p. 80). Every band licensed for this war loses it; the licensor's ports close.
+tm_got_on_war_end = {
+	effect = {
+		scope:war = {
+			every_war_participant = {
+				limit = {
+					has_variable = tm_got_licence_war
+					var:tm_got_licence_war = scope:war
+				}
+				tm_got_lapse_effect = yes
+			}
+			every_war_participant = {
+				limit = {
+					has_variable = tm_got_ports_war
+					var:tm_got_ports_war = scope:war
+				}
+				remove_variable = tm_got_ports_war
+			}
+		}
+	}
+}
+
+# A county changes hands. Root = the new holder; scope:title; scope:transfer_type.
+tm_got_title_gain = {
+	trigger = {
+		scope:title = { tier = tier_county }
+	}
+	effect = {
+		# Open Ports: a licensed (or lately licensed) band takes an island: it is her seat now, and a clearing war may
+		# come in some years (tm_got_yearly; the Brothers held Visby 1391-98, p. 80).
+		if = {
+			limit = {
+				faith = faith:tm_baeddel
+				tm_got_licensed_or_lapsed_trigger = yes
+				scope:title = { tm_got_island_county_trigger = yes }
+			}
+			scope:title = {
+				save_scope_as = tm_got_island
+				set_variable = { name = tm_got_island_seat value = root }
+				set_variable = { name = tm_got_seat_quiet value = yes years = 5 }
+			}
+			if = {
+				limit = { tm_flavour_ready_trigger = yes }
+				tm_flavour_spent_effect = yes
+				trigger_event = tm_got.0120
+			}
+		}
+		# The Island Changes Hands: Gotland passes to a lord of another faith by conquest, grant, revocation, usurpation
+		# or any other hand-over that is not plain succession inside a realm. Once in five years at most.
+		if = {
+			limit = {
+				scope:title = title:c_gutland
+				NOT = { faith = faith:tm_baeddel }
+				NOR = {
+					scope:transfer_type = flag:inheritance
+					scope:transfer_type = flag:election
+					scope:transfer_type = flag:appointment
+					scope:transfer_type = flag:appointment_succession
+					scope:transfer_type = flag:abdication
+					scope:transfer_type = flag:stepped_down
+					scope:transfer_type = flag:created
+					scope:transfer_type = flag:leased_out
+					scope:transfer_type = flag:lease_revoked
+				}
+				title:c_gutland = { NOT = { has_variable = tm_got_changed_recently } }
+				tm_got_island_has_people_trigger = yes
+			}
+			title:c_gutland = { set_variable = { name = tm_got_changed_recently value = yes years = 5 } }
+			trigger_event = tm_got.0200
+		}
+	}
+}
+
+tm_got_yearly = {
+	effect = {
+		# Open Ports, safety net: a licence or open ports with no war left behind lapse.
+		every_ruler = {
+			limit = {
+				has_variable = tm_got_licence
+				is_at_war = no
+			}
+			tm_got_lapse_effect = yes
+		}
+		every_ruler = {
+			limit = {
+				has_variable = tm_got_ports_war
+				is_at_war = no
+			}
+			remove_variable = tm_got_ports_war
+		}
+		# The clearing war ("The Order's Fleet", p. 80): an island seat held by a band whose licence has lapsed, five
+		# years after she took it, may draw a great power's fleet. 10% a year.
+		every_county = {
+			limit = { has_variable = tm_got_island_seat }
+			if = {
+				limit = {
+					OR = {
+						NOT = { exists = holder }
+						NOT = { holder = var:tm_got_island_seat }
+					}
+				}
+				remove_variable = tm_got_island_seat
+			}
+			else_if = {
+				limit = {
+					NOT = { has_variable = tm_got_seat_quiet }
+					NOT = { has_variable = tm_got_clearing_cooldown }
+					holder = {
+						NOT = { has_variable = tm_got_licence }
+						is_at_war = no
+					}
+				}
+				random = {
+					chance = 10
+					save_scope_as = tm_got_island
+					holder = { save_scope_as = tm_got_band }
+					ordered_ruler = {
+						limit = { tm_got_clearing_power_trigger = { HOLDER = scope:tm_got_band } }
+						order_by = max_military_strength
+						save_scope_as = tm_got_power
+					}
+					if = {
+						limit = { exists = scope:tm_got_power }
+						set_variable = { name = tm_got_clearing_cooldown value = yes years = 15 }
+						scope:tm_got_band = { trigger_event = tm_got.0130 }
+					}
+				}
+			}
+		}
+		# Swear the Peace of the Island: Gotland's ruler, of any faith, when the faith's people live there or a band
+		# camps nearby. Once per ruler; 5% a year; a flavour event.
+		title:c_gutland.holder ?= {
+			if = {
+				limit = {
+					tm_got_peace_candidate_trigger = yes
+					tm_flavour_ready_trigger = yes
+				}
+				random = {
+					chance = 5
+					set_variable = tm_got_peace_asked
+					tm_flavour_spent_effect = yes
+					trigger_event = tm_got.0300
+				}
+			}
+		}
+	}
+}

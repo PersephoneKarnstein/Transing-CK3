@@ -1,0 +1,37 @@
+﻿# Crusader Dolls — Yutai Dao and the Sogdians of Dunhuang (tm_yt3_events.txt; design note docs/wave4/yutai-sogdians.md).
+
+# Hide the Name (de la Vaissiere 2005, pp. 220-222; research/cn_vaissiere_sogdian_traders.md §5 and design row 4).
+# After An Lushan's revolt "the hu began to hide their origins": new surnames written back through four generations,
+# birthplaces far to the south, Chinese ancestors. A member of the Way of Sogdian heritage, or a daughter at a hostile
+# court, may do the same. Opens tm_yt3.0001. The disguise the source attests is of descent, not of anything else.
+tm_yt3_hide_name_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"		# placeholder; TODO event art
+	}
+	sort_order = 87
+
+	is_shown = {
+		tm_yt3_hide_name_eligible_trigger = yes
+	}
+
+	cooldown = { years = 10 }
+
+	effect = {
+		custom_tooltip = tm_yt3_hide_name_decision_effect_tt
+		trigger_event = tm_yt3.0001
+	}
+
+	ai_check_interval = 120
+	ai_potential = {
+		tm_yt3_hide_name_eligible_trigger = yes
+	}
+	ai_will_do = {
+		base = 0
+		modifier = { add = 10 has_trait = craven }
+		modifier = { add = 10 has_trait = paranoid }
+		modifier = { add = 5 has_trait = shy }
+		modifier = { add = 10 tm_yt3_hostile_court_trigger = yes }
+		modifier = { factor = 0 has_trait = brave }
+		modifier = { factor = 0 has_trait = arrogant }
+	}
+}

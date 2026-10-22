@@ -1,0 +1,79 @@
+﻿# Crusader Dolls — Badenya stage 2 (events/tm_bd2_events.txt; design in docs/stage2/badenya.md).
+
+# A jelimuso who can sing at this court: an adult woman or daughter of Badenya, free to sing.
+tm_bd2_jeli_trigger = {
+	is_adult = yes
+	is_imprisoned = no
+	faith = faith:tm_badenya
+	OR = {
+		is_female = yes
+		tm_is_daughter_trigger = yes
+	}
+}
+
+# A court with a jelimuso to sing. Scope: the ruler.
+tm_bd2_has_jeli_trigger = {
+	OR = {
+		cp:councillor_court_chaplain ?= { tm_bd2_jeli_trigger = yes }
+		any_courtier = { tm_bd2_jeli_trigger = yes }
+	}
+}
+
+# A sister's child who may stand for the sister's line: adult, of the faith, alive and free.
+tm_bd2_sisters_child_trigger = {
+	is_adult = yes
+	is_imprisoned = no
+	faith = faith:tm_badenya
+	NOT = { has_variable = tm_reborn }
+}
+
+# One of two who may quarrel in a hot realm.
+tm_bd2_quarrel_party_trigger = {
+	is_adult = yes
+	is_imprisoned = no
+	NOT = { has_variable = tm_reborn }
+}
+
+# Named With the King (tm_bd2_decisions.txt). One who may be named associate in rule: an adult woman, cis or trans
+# (user, 2026-10-21): female-coded, a daughter by any gate, or a Marked or declared sister still coded male. No cis
+# men. Alive, free, and not already someone's associate.
+tm_bd2_associate_ok_trigger = {
+	is_adult = yes
+	is_imprisoned = no
+	NOT = { has_variable = tm_reborn }
+	NOT = { has_variable = tm_bd2_associate_of }
+	OR = {
+		is_female = yes
+		tm_is_daughter_trigger = yes
+		has_trait = tm_transgender
+		has_variable = tm_declared
+	}
+}
+
+# A sister, mother or claiming mother is near enough to share the rule: at the ruler's court, or her vassal.
+# Scope: the candidate; prev = the ruler.
+tm_bd2_associate_near_trigger = {
+	OR = {
+		is_courtier_of = prev
+		liege ?= prev
+	}
+}
+
+# Scope: the ruler. Someone she may name: her spouse, a sister, her mother, or the woman who claimed her.
+tm_bd2_has_associate_candidate_trigger = {
+	OR = {
+		primary_spouse ?= { tm_bd2_associate_ok_trigger = yes }
+		any_sibling = {
+			tm_bd2_associate_ok_trigger = yes
+			tm_bd2_associate_near_trigger = yes
+		}
+		mother ?= {
+			tm_bd2_associate_ok_trigger = yes
+			tm_bd2_associate_near_trigger = yes
+		}
+		var:tm_claimed_by ?= {
+			tm_bd2_associate_ok_trigger = yes
+			tm_bd2_associate_near_trigger = yes
+		}
+	}
+}

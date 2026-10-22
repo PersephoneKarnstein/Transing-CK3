@@ -1,0 +1,70 @@
+﻿# Crusader Dolls — Badenya stage 2: Named With the King (events/tm_bd2_events.txt, tm_bd2.0040-0042).
+# Ibn Battuta saw it at Mali in 1352-53: the king's chief wife was "the associate" in government by the custom of the
+# people, and her name was said from the pulpit with his (Voyages IV, p. 417). Hidden before 1352. Not vanilla diarchy.
+# The honour only; the source's fall and plot charge (pp. 417-419) are not built (docs/stage2/badenya.md).
+
+tm_bd2_name_associate_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"		# placeholder; TODO event art
+	}
+	sort_order = 80
+
+	is_shown = {
+		current_year >= 1352
+		faith = faith:tm_badenya
+		is_ruler = yes
+		highest_held_title_tier >= tier_county
+		NOT = { has_variable = tm_bd2_associate }
+	}
+
+	is_valid = {
+		is_imprisoned = no
+		tm_bd2_has_associate_candidate_trigger = yes
+	}
+
+	cost = { prestige = 100 }
+
+	effect = {
+		custom_tooltip = tm_bd2_name_associate_decision.tt
+		trigger_event = tm_bd2.0040
+	}
+
+	ai_check_interval = 120
+	ai_potential = {
+		current_year >= 1352
+		faith = faith:tm_badenya
+		highest_held_title_tier >= tier_kingdom
+	}
+	ai_will_do = {
+		base = 3
+		modifier = { add = 5 primary_spouse ?= { tm_bd2_associate_ok_trigger = yes diplomacy >= 12 } }
+	}
+}
+
+tm_bd2_set_aside_associate_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"		# placeholder; TODO event art
+	}
+	sort_order = 79
+
+	is_shown = {
+		has_variable = tm_bd2_associate
+	}
+
+	effect = {
+		var:tm_bd2_associate ?= {
+			add_opinion = { target = root modifier = tm_bd2_associate_set_aside_opinion }
+		}
+		tm_bd2_clear_associate_effect = yes
+	}
+
+	ai_check_interval = 120
+	ai_potential = { has_variable = tm_bd2_associate }
+	ai_will_do = {
+		base = 0
+		modifier = {
+			add = 10
+			var:tm_bd2_associate ?= { opinion = { target = root value <= -50 } }
+		}
+	}
+}

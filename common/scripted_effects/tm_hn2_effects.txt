@@ -1,0 +1,86 @@
+﻿# Crusader Dolls — Ha-Nehpakhot, stage 2 (events/tm_hn2_events.txt).
+
+# The adornment: a necklace of gold, as Kalonymus imagined a husband would adorn him, "with ornaments of gold"
+# (Even Bohan p. 17; research/jud_kalonymus_even_bohan.md §8). The law counts gold bracelets among a woman's
+# adornments "where only women wear them" (MT Avodah Zarah 12:10; research/jud_rabbinic_primary_texts.md §5).
+# The event's text is dated (tm_hn2.0010); the artifact's own text cites no book, so it reads true at any date.
+# Scope: the daughter who receives it. $GIVER$ = who has it made.
+tm_hn2_give_adornment_effect = {
+	create_artifact = {
+		name = tm_hn2_adornment_name
+		description = tm_hn2_adornment_desc
+		type = necklace
+		visuals = necklace
+		rarity = common
+		modifier = tm_hn2_adornment_modifier
+		decaying = no
+		wealth = 30
+		quality = 30
+		creator = $GIVER$
+		save_scope_as = tm_hn2_new_adornment
+	}
+	scope:tm_hn2_new_adornment = {
+		set_variable = tm_hn2_adornment
+	}
+}
+
+# She tells the spinning circle of Sarah (tm_hn2.0001, either form). Scope: the daughter. Needs scope:tm_hn2_court.
+tm_hn2_tell_sarah_effect = {
+	add_piety = 20
+	add_character_modifier = { modifier = tm_spinning_circle_modifier years = 1 }
+	scope:tm_hn2_court = {
+		every_courtier = {
+			limit = {
+				faith = root.faith
+				NOT = { this = root }
+			}
+			add_opinion = { target = root modifier = tm_hn2_sarah_opinion }
+		}
+	}
+	random = {		# what is said at the spindle travels (Mishnah Sotah 6:1)
+		chance = 15
+		set_variable = { name = tm_hn2_spindle_talk value = yes years = 1 }
+		trigger_event = { id = tm_hn2.0002 days = { 60 180 } }
+	}
+}
+
+# She answers the worthies, text against text (tm_hn2.0002, either form). Scope: the daughter.
+tm_hn2_answer_worthies_effect = {
+	random_list = {
+		40 = {
+			modifier = { add = { value = learning multiply = 2 } }
+			modifier = { add = 20 has_character_modifier = tm_taught_answers_modifier }
+			desc = tm_hn2.0002.a.win
+			add_prestige = 40
+			# The street has heard it argued and answered: the next hearing in this county goes easier
+			# (read and consumed in tm_hipukh.0003).
+			location ?= { county ?= { set_variable = { name = tm_hn2_spindle_heard value = yes years = 10 } } }
+		}
+		50 = {
+			desc = tm_hn2.0002.a.lose
+			add_prestige = -25
+			add_stress = 10
+		}
+	}
+}
+
+# A Catalan name of the street (Guerson and Lightfoot 2019, Girona notarial records, 1390s-1420s;
+# research/jud_women_synagogue_articles.md §4). Used by tm_hipukh.0002 as an added choice beside the scroll and the
+# Provencal street. Blanca, Constanca, Francina and Elionor are left out: there they are conversas' baptismal names.
+# Scope: the one being named.
+tm_hn2_catalan_name_effect = {
+	random_list = {
+		8 = { change_first_name = Astruga }		# pp. 92, 102, 114-115, 120-123 (key already in tm_l_english.yml)
+		8 = { change_first_name = Bonafilla }	# same pages
+		6 = { change_first_name = Regina }		# same pages (vanilla key)
+		5 = { change_first_name = Dolca }		# p. 102
+		4 = { change_first_name = Bellaire }	# p. 106
+		4 = { change_first_name = Orfila }		# pp. 105-106
+		4 = { change_first_name = Preciosa }	# p. 123 (vanilla key)
+		3 = { change_first_name = Tolrana }		# pp. 109-111
+		3 = { change_first_name = Desiyada }	# p. 118
+		3 = { change_first_name = Briona }		# p. 102
+		2 = { change_first_name = Amoretes }	# p. 115
+		2 = { change_first_name = Estellina }	# pp. 105, 117
+	}
+}

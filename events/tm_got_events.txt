@@ -1,0 +1,444 @@
+﻿namespace = tm_got
+
+# Crusader Dolls — Gotland (docs/wave4/gotland.md). Source: Dollinger, The German Hansa (1970); research/
+# norse_dollinger_hansa.md. The narrator never claims the historical Gotlanders, the Victual Brothers or the farmers of
+# 1361 for the faith: the faith's people act "as" they did, in this telling. No people is coded as pirates.
+#   0100-0130  Open Ports: the offer, the lapse, the island seat, the clearing fleet (proposal 1; pp. 78-81)
+#   0200-0210  The Island Changes Hands (proposal 5; pp. 67, 79-80, 291)
+#   0300       Swear the Peace of the Island (proposal 2; pp. 24-25)
+
+# ===================================================================================================
+# Open Ports
+# ===================================================================================================
+
+# The licence is offered. Root = a Bædling band. scope:tm_got_lord = the licensor; scope:tm_got_war = his war.
+tm_got.0100 = {
+	type = character_event
+	title = tm_got.0100.t
+	desc = tm_got.0100.desc
+	theme = war
+	override_background = { reference = docks }
+	left_portrait = { character = root animation = personality_bold }
+	right_portrait = { character = scope:tm_got_lord animation = scheme }
+
+	trigger = {
+		tm_got_band_trigger = yes
+		NOT = { has_variable = tm_got_licence }
+		exists = scope:tm_got_war
+		scope:tm_got_war = { is_war_leader = scope:tm_got_lord }
+		NOT = { scope:tm_got_war = { is_participant = root } }
+		NOT = { is_at_war_with = scope:tm_got_lord }
+	}
+
+	option = {	# Take the letters
+		name = tm_got.0100.a
+		custom_tooltip = tm_got.0100.a.tt
+		tm_got_take_licence_effect = yes
+		# on_join_war_as_secondary may already have recorded it (tm_got_on_join_war); record it here if not.
+		if = {
+			limit = { NOT = { has_variable = tm_got_licence } }
+			scope:tm_got_war = { save_scope_as = war }
+			tm_got_record_licence_effect = yes
+		}
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = ambitious }
+			modifier = { add = 20 has_trait = brave }
+			modifier = { add = 10 has_trait = greedy }
+			modifier = { add = -30 has_trait = craven }
+			modifier = { add = -20 has_trait = content }
+			modifier = { factor = 0 current_military_strength < 200 }
+		}
+	}
+	option = {	# Not our war
+		name = tm_got.0100.b
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = honest }
+			modifier = { add = 20 has_trait = just }
+		}
+	}
+}
+
+# The licence lapses at peace. Root = the band. scope:tm_got_lord (may be gone), scope:tm_got_enemy (may be gone).
+tm_got.0110 = {
+	type = character_event
+	title = tm_got.0110.t
+	desc = {
+		desc = tm_got.0110.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:tm_got_enemy }
+				desc = tm_got.0110.desc.enemy
+			}
+			desc = tm_got.0110.desc.none
+		}
+	}
+	theme = war
+	override_background = { reference = ocean }
+	left_portrait = { character = root animation = thinking }
+	right_portrait = { character = scope:tm_got_enemy animation = anger }
+
+	option = {
+		name = tm_got.0110.a
+		custom_tooltip = tm_got.0110.a.tt
+	}
+}
+
+# A band takes an island seat under the licence. Root = the band (now its holder). scope:tm_got_island.
+tm_got.0120 = {
+	type = character_event
+	title = tm_got.0120.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:tm_got_island = title:c_gutland }
+				desc = tm_got.0120.desc.gotland
+			}
+			desc = tm_got.0120.desc
+		}
+		desc = tm_got.0120.desc.outro
+	}
+	theme = war
+	override_background = { reference = docks }
+	left_portrait = { character = root animation = celebrate_sword }
+
+	option = {
+		name = tm_got.0120.a
+		custom_tooltip = tm_got.0120.a.tt
+	}
+}
+
+# The clearing fleet gathers. Root = the band holding the island seat. scope:tm_got_power, scope:tm_got_island.
+tm_got.0130 = {
+	type = character_event
+	title = tm_got.0130.t
+	desc = tm_got.0130.desc
+	theme = war
+	override_background = { reference = ocean }
+	left_portrait = { character = root animation = worry }
+	right_portrait = { character = scope:tm_got_power animation = war_over_win }
+
+	trigger = {
+		exists = scope:tm_got_power
+		scope:tm_got_island = { holder = root }
+		NOT = { is_at_war_with = scope:tm_got_power }
+	}
+
+	option = {	# Hold the island
+		name = tm_got.0130.a
+		custom_tooltip = tm_got.0130.a.tt
+		scope:tm_got_power = {
+			add_pressed_claim = scope:tm_got_island
+			hidden_effect = {
+				start_war = {
+					cb = claim_cb
+					target = root
+					claimant = scope:tm_got_power
+					target_title = scope:tm_got_island
+				}
+			}
+		}
+		ai_chance = {
+			base = 40
+			modifier = { add = 30 has_trait = brave }
+			modifier = { add = 20 has_trait = stubborn }
+			modifier = { add = -30 has_trait = craven }
+		}
+	}
+	option = {	# Pay the price of peace
+		name = tm_got.0130.b
+		trigger = { gold >= 100 }
+		remove_short_term_gold = 100
+		add_prestige = medium_prestige_loss
+		scope:tm_got_power = { add_gold = 100 }
+		ai_chance = {
+			base = 40
+			modifier = { add = 30 has_trait = craven }
+			modifier = { add = 20 has_trait = content }
+			modifier = { add = -30 has_trait = brave }
+		}
+	}
+}
+
+# ===================================================================================================
+# The Island Changes Hands
+# ===================================================================================================
+
+# Gotland has passed to a lord of another faith. Root = the new holder. Finds the time, the voice of the new court, and
+# the one of the faith on the island who will choose; if no one can, the island chooses quietly.
+tm_got.0200 = {
+	hidden = yes
+	immediate = {
+		save_scope_as = tm_got_lord
+		tm_got_find_era_effect = yes
+		# A hostile voice, attributed: the new lord's Christian chaplain, else the lord himself if Christian.
+		if = {
+			limit = {
+				cp:councillor_court_chaplain ?= { religion = religion:christianity_religion }
+			}
+			cp:councillor_court_chaplain = { save_scope_as = tm_got_voice }
+		}
+		else_if = {
+			limit = { religion = religion:christianity_religion }
+			save_scope_as = tm_got_voice
+		}
+		# Who speaks for the faith's people: a player first, then a ruler, then the ablest.
+		if = {
+			limit = { any_living_character = { tm_got_islander_trigger = yes } }
+			ordered_living_character = {
+				limit = { tm_got_islander_trigger = yes }
+				order_by = {
+					value = martial
+					add = diplomacy
+					if = {
+						limit = { is_ai = no }
+						add = 1000
+					}
+					if = {
+						limit = { is_ruler = yes }
+						add = 100
+					}
+				}
+				save_scope_as = tm_got_leader
+			}
+		}
+		if = {
+			limit = {
+				exists = scope:tm_got_leader
+				scope:tm_got_leader = { tm_flavour_ready_trigger = yes }
+			}
+			scope:tm_got_leader = {
+				tm_flavour_spent_effect = yes
+				trigger_event = tm_got.0201
+			}
+		}
+		else = {
+			tm_got_resolve_quietly_effect = yes
+		}
+	}
+}
+
+# The choice. Root = the one who speaks for the faith's people on Gotland. scope:tm_got_lord, scope:tm_got_era,
+# scope:tm_got_voice (may be missing).
+tm_got.0201 = {
+	type = character_event
+	title = tm_got.0201.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:tm_got_era = flag:valdemar }
+				desc = tm_got.0201.desc.valdemar
+			}
+			triggered_desc = {
+				trigger = { scope:tm_got_era = flag:brothers }
+				desc = tm_got.0201.desc.brothers
+			}
+			triggered_desc = {
+				trigger = { scope:tm_got_era = flag:order }
+				desc = tm_got.0201.desc.order
+			}
+			triggered_desc = {
+				trigger = { scope:tm_got_era = flag:denmark }
+				desc = tm_got.0201.desc.denmark
+			}
+			desc = tm_got.0201.desc.generic
+		}
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					exists = scope:tm_got_voice
+					current_year >= 1200
+				}
+				desc = tm_got.0201.desc.voice_cross
+			}
+			triggered_desc = {
+				trigger = { exists = scope:tm_got_voice }
+				desc = tm_got.0201.desc.voice
+			}
+			desc = tm_got.0201.desc.novoice
+		}
+		desc = tm_got.0201.desc.outro
+	}
+	theme = war
+	override_background = { reference = village }
+	left_portrait = { character = root animation = worry }
+	right_portrait = { character = scope:tm_got_lord animation = war_over_win }
+	lower_right_portrait = scope:tm_got_voice
+
+	option = {	# Keep quiet in this land
+		name = tm_got.0201.a
+		custom_tooltip = tm_got.0201.a.tt
+		tm_got_keep_quiet_effect = yes
+		ai_chance = {
+			base = 60
+			modifier = { add = 20 has_trait = craven }
+			modifier = { add = 20 has_trait = patient }
+			modifier = { add = -20 has_trait = brave }
+			modifier = { add = -20 has_trait = wrathful }
+		}
+	}
+	option = {	# Raise the island's levy
+		name = tm_got.0201.b
+		custom_tooltip = tm_got.0201.b.tt
+		save_scope_as = tm_got_leader
+		hidden_effect = {
+			tm_got_raise_levy_effect = yes
+			trigger_event = tm_got.0202
+			scope:tm_got_lord = {
+				if = {
+					limit = { tm_flavour_ready_trigger = yes }
+					tm_flavour_spent_effect = yes
+					trigger_event = tm_got.0210
+				}
+			}
+		}
+		ai_chance = {
+			base = 20
+			modifier = { add = 30 has_trait = brave }
+			modifier = { add = 20 has_trait = wrathful }
+			modifier = { add = 10 martial >= 12 }
+			modifier = { add = -15 has_trait = craven }
+		}
+	}
+	option = {	# Go to the ships
+		name = tm_got.0201.c
+		trigger = { any_living_character = { tm_got_islander_trigger = yes is_ruler = no } }
+		custom_tooltip = tm_got.0201.c.tt
+		tm_got_to_the_ships_effect = yes
+		ai_chance = {
+			base = 20
+			modifier = { add = 20 has_trait = ambitious }
+			modifier = { add = 10 has_trait = arbitrary }
+			modifier = { add = -10 has_trait = content }
+		}
+	}
+}
+
+# How the levy fared. Root = the one who raised it. scope:tm_got_levy_won if it held.
+tm_got.0202 = {
+	type = character_event
+	title = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:tm_got_levy_won }
+				desc = tm_got.0202.t.won
+			}
+			desc = tm_got.0202.t.lost
+		}
+	}
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:tm_got_levy_won }
+				desc = tm_got.0202.desc.won
+			}
+			desc = tm_got.0202.desc.lost
+		}
+	}
+	theme = war
+	override_background = { reference = battlefield }
+	left_portrait = { character = root animation = war_over_tie }
+
+	option = {
+		name = tm_got.0202.a
+	}
+}
+
+# The new lord hears that the island's farmers took up arms. Root = the new lord. scope:tm_got_leader (may be none),
+# scope:tm_got_voice (may be none), scope:tm_got_levy_won if it held.
+tm_got.0210 = {
+	type = character_event
+	title = tm_got.0210.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:tm_got_levy_won }
+				desc = tm_got.0210.desc.won
+			}
+			desc = tm_got.0210.desc.lost
+		}
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					exists = scope:tm_got_voice
+					NOT = { scope:tm_got_voice = root }
+					current_year >= 1200
+				}
+				desc = tm_got.0210.desc.voice_cross
+			}
+			triggered_desc = {
+				trigger = {
+					exists = scope:tm_got_voice
+					NOT = { scope:tm_got_voice = root }
+				}
+				desc = tm_got.0210.desc.voice
+			}
+			desc = tm_got.0210.desc.novoice
+		}
+	}
+	theme = war
+	override_background = { reference = battlefield }
+	left_portrait = { character = root animation = anger }
+	right_portrait = { character = scope:tm_got_leader animation = war_defender }
+	lower_right_portrait = scope:tm_got_voice
+
+	option = {
+		name = tm_got.0210.a
+	}
+}
+
+# ===================================================================================================
+# Swear the Peace of the Island
+# ===================================================================================================
+
+# Gotland's ruler, of any faith, may make the island's peoples swear peace. Root = the ruler.
+tm_got.0300 = {
+	type = character_event
+	title = tm_got.0300.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { current_year >= 1161 }
+				desc = tm_got.0300.desc.henry
+			}
+			desc = tm_got.0300.desc.early
+		}
+		first_valid = {
+			triggered_desc = {
+				trigger = { faith = faith:tm_baeddel }
+				desc = tm_got.0300.desc.own
+			}
+			triggered_desc = {
+				trigger = { any_ruler = { tm_got_band_near_island_trigger = yes } }
+				desc = tm_got.0300.desc.band
+			}
+			desc = tm_got.0300.desc.people
+		}
+	}
+	theme = stewardship
+	override_background = { reference = market }
+	left_portrait = { character = root animation = personality_rational }
+
+	option = {	# Swear the peace
+		name = tm_got.0300.a
+		custom_tooltip = tm_got.0300.a.tt
+		tm_got_swear_peace_effect = yes
+		ai_chance = {
+			base = 50
+			modifier = { add = 20 has_trait = just }
+			modifier = { add = 20 has_trait = diplomat }
+			modifier = { add = 10 has_trait = greedy }
+			modifier = { add = 10 faith = faith:tm_baeddel }
+			modifier = { factor = 0.3 has_trait = zealous }
+		}
+	}
+	option = {	# Each to their own beach
+		name = tm_got.0300.b
+		ai_chance = {
+			base = 40
+			modifier = { add = 30 has_trait = zealous }
+			modifier = { add = 10 has_trait = paranoid }
+		}
+	}
+}

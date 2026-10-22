@@ -1,0 +1,72 @@
+﻿# Crusader Dolls — Yutai Dao and the Sogdians of Dunhuang (tm_yt3_events.txt; design note docs/wave4/yutai-sogdians.md).
+# The banquet at the Cao inn (tm_yt3.0010) and the stranded woman (tm_yt3.0020), for rulers of the Way in Hexi.
+# Hide the Name (tm_yt3.0001) is a decision, and after the purge of 903 it is offered once from tm_yt2_yearly_effect.
+
+yearly_playable_pulse = {
+	on_actions = { tm_yt3_yearly }
+}
+
+tm_yt3_yearly = {
+	trigger = {
+		is_landed = yes
+		faith = faith:tm_yutai
+		tm_yt3_in_hexi_trigger = yes
+		tm_flavour_ready_trigger = yes
+	}
+	effect = {
+		# The banquet at the Cao inn: a she circular of 973 calls the members to the year-end banquet "at the inn of
+		# the Cao family"; a third of its fifteen members, the head and the assessor among them, were An or Cao
+		# (p. 324; S. 2894v). From 900: the Sogdian families of Conghua are seen in the Dunhuang she through the
+		# 10th century (pp. 323-324). Needs a House of her own in Hexi.
+		if = {
+			limit = {
+				current_date >= 900.1.1
+				tm_yt3_hexi_house_trigger = yes
+				NOT = { has_variable = tm_yt3_banquet_cd }
+			}
+			random = {
+				chance = 4
+				set_variable = { name = tm_yt3_banquet_cd value = yes years = 15 }
+				random_held_title = {
+					limit = {
+						tier = tier_county
+						has_variable = tm_house
+						kingdom ?= { this = title:k_hexi }
+					}
+					save_scope_as = tm_yt3_house_county
+				}
+				tm_flavour_spent_effect = yes
+				trigger_event = { id = tm_yt3.0010 days = { 1 300 } }
+			}
+		}
+		# The stranded woman, after the Ancient Letters of c. 313 (pp. 47, 56-57 and n. 37, 188).
+		if = {
+			limit = {
+				tm_flavour_ready_trigger = yes
+				exists = capital_county
+				NOT = { has_variable = tm_yt3_stranded_cd }
+			}
+			random = {
+				chance = 2
+				modifier = { add = 1 tm_yt3_hexi_house_trigger = yes }
+				set_variable = { name = tm_yt3_stranded_cd value = yes years = 25 }
+				if = {
+					limit = { tm_yt3_hexi_house_trigger = yes }
+					random_held_title = {
+						limit = {
+							tier = tier_county
+							has_variable = tm_house
+							kingdom ?= { this = title:k_hexi }
+						}
+						save_scope_as = tm_yt3_house_county
+					}
+				}
+				else = {
+					capital_county = { save_scope_as = tm_yt3_house_county }
+				}
+				tm_flavour_spent_effect = yes
+				trigger_event = { id = tm_yt3.0020 days = { 1 300 } }
+			}
+		}
+	}
+}

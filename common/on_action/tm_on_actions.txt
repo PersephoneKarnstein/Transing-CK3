@@ -753,9 +753,13 @@ tm_on_death_track = {
 		# and in China exam candidates and the like. Count them apart, or they swamp the deaths of people who lived.
 		# A death counts if she had a court or was a ruler. (death_reason can't be read here: in on_death the character
 		# is still alive, and error.log says so for every death.)
+		# And only if she was seen at a census (tm_surv_seen, set just before each census): in the fourth observe run Yutai
+		# Dao counted 462 deaths in the 900s with 84 members, and up to 2215 a decade later with about 1000. Characters
+		# made and cleared between two censuses (in China, the game makes them by the hundred) go to pool_deaths.
 		if = {
 			limit = {
 				rite ?= { rite_has_parameter = tm_sisters_faith }
+				has_variable = tm_surv_seen
 				is_pool_character = no
 				OR = {
 					is_ruler = yes
@@ -876,26 +880,30 @@ tm_yearly_growth = {
 		}
 		# The pilgrimage to the kahal (tm_kahal_pilgrimage_effect): Marked young Jews come to the seat to be taken in.
 		tm_kahal_pilgrimage_effect = yes
-		# The kahal keeps its children (tm_kahal_keeps_children_effect): a guardian of another faith may not convert them.
-		tm_kahal_keeps_children_effect = yes
-		# The way home (tm_homecoming_effect): Marked members and daughters with no court come to the faith's home court.
-		if = {	# the seat chosen at game start; none after the Uppsala cult ends
-			limit = { has_global_variable = tm_baeddel_seat }
-			tm_homecoming_effect = { FAITH = faith:tm_baeddel SEAT = global_var:tm_baeddel_seat }
-		}
-		tm_homecoming_effect = { FAITH = faith:tm_garland SEAT = title:c_kanchipuram }
-		# The kahal: a Rabbanite Jew at a court where the sect is two or more may join it. A sect within Judaism keeps its families,
-		# and their children are born into it; this is how it renews itself, not by the Marked alone.
+		# The faiths keep their children (tm_surv_keeps_children_effect): a guardian of another faith may not convert them.
+		tm_surv_keeps_children_effect = yes
+		# The gathering (tm_surv_gather_effect; it replaces the way home): members of the six with no court who are
+		# daughters, Marked, declared or of a family of standing go to the nearest court of their faith.
+		tm_surv_gather_effect = yes
+		# The kahal: a Rabbanite Jew at a court where the sect is two or more, or at a court or in a county of a Jewish lord's
+		# lands, may join it. A sect within Judaism keeps its families, and their children are born into it; this is how it
+		# renews itself, not by the Marked alone. The game makes almost no Rabbanite Jews (three in the world in 1200 in the
+		# fourth observe run), so the kahal of a landed ruler of the sect also draws from the wider Jewry
+		# (tm_surv_kahal_draw_effect).
 		every_living_character = {
 			limit = {
-				is_adult = yes
-				is_ruler = no
-				is_imprisoned = no
-				tm_rabbanite_jew_trigger = yes		# not Samaritans, Karaites, Kabarists or the Beta Israel (tm_fixes_triggers.txt)
-				employer ?= {
-					OR = {
-						any_courtier = { count >= 2 faith = faith:tm_nehpakhot }
-						AND = { faith = faith:tm_nehpakhot any_courtier = { faith = faith:tm_nehpakhot } }
+				tm_surv_kahal_candidate_trigger = yes		# Rabbanite only: not Samaritans, Karaites, Kabarists or the Beta Israel
+				OR = {
+					employer ?= {
+						OR = {
+							any_courtier = { count >= 2 faith = faith:tm_nehpakhot }
+							AND = { faith = faith:tm_nehpakhot any_courtier = { faith = faith:tm_nehpakhot } }
+							tm_surv_kahal_realm_trigger = yes
+						}
+					}
+					AND = {
+						NOT = { exists = employer }
+						location ?= { county ?= { holder ?= { tm_surv_kahal_realm_trigger = yes } } }
 					}
 				}
 			}
@@ -904,6 +912,15 @@ tm_yearly_growth = {
 				set_character_faith = faith:tm_nehpakhot
 				tm_track_effect = { FAITH = faith:tm_nehpakhot WHAT = kahal_joins }
 			}
+		}
+		every_living_character = {
+			limit = {
+				faith = faith:tm_nehpakhot
+				is_landed = yes
+				is_imprisoned = no
+				tm_settled_court_trigger = yes
+			}
+			tm_surv_kahal_draw_effect = yes
 		}
 		# The Mother House never forgets Phrygia: if the county leaves the faith, the Mother of Mothers holds a claim.
 		if = {
@@ -922,6 +939,15 @@ tm_yearly_growth = {
 				}
 			}
 			set_global_variable = { name = tm_next_census value = { value = current_year add = 10 } }
+			# Seen at a census: only their deaths count as `deaths` (tm_on_death_track). Characters the game makes and
+			# clears between two censuses never are.
+			every_living_character = {
+				limit = {
+					rite ?= { rite_has_parameter = tm_sisters_faith }
+					NOT = { has_variable = tm_surv_seen }
+				}
+				set_variable = tm_surv_seen
+			}
 			tm_census_log_effect = yes
 		}
 	}

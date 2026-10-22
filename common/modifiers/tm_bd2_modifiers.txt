@@ -1,0 +1,22 @@
+﻿# Crusader Dolls — Badenya stage 2 (events/tm_bd2_events.txt).
+
+# A new ruler of Badenya: the realm is hot, as Mande speech says of a time of change (Jansen 2002, p. 53), and tempers
+# are quick (kalan, Schulz 2002, p. 816 n. 49). Two years, or until a jelimuso's word cools it.
+tm_bd2_hot_realm_modifier = {
+	icon = stress_negative
+	vassal_opinion = -5
+}
+
+# The realm has cooled (Jansen 2002, p. 53: "the Mande has cooled").
+tm_bd2_cooled_realm_modifier = {
+	icon = social_positive
+	vassal_opinion = 5
+}
+
+# Associate in rule: her name is said with the ruler's (Ibn Battuta IV, p. 417). Until set aside or either dies.
+tm_bd2_associate_modifier = {
+	icon = prestige_positive
+	diplomacy = 2
+	stewardship = 2
+	monthly_prestige = 0.5
+}

@@ -1,0 +1,223 @@
+﻿# Crusader Dolls — Bædling stage 2 (docs/wave3/baedling.md). Appended to vanilla on_actions; the effects are our own
+# on_actions, so vanilla's are untouched.
+yearly_global_pulse = {
+	on_actions = {
+		tm_bae2_yearly_cell
+		tm_bae2_yearly_outlawry
+		tm_bae2_yearly_bands
+		tm_bae2_yearly_pardon
+	}
+}
+
+on_title_gain = {
+	on_actions = { tm_bae2_title_gain }
+}
+
+# Spring the Cell for the AI: a jailer holding a daughter, Marked woman, novice or declared sister may find someone
+# of the six faiths willing to plot (tm_bae2_ai_find_plotter_effect). Modest odds; a scheme, not a war.
+tm_bae2_yearly_cell = {
+	effect = {
+		every_ruler = {
+			limit = {
+				any_prisoner = { tm_bae2_cell_prisoner_trigger = yes }
+			}
+			random = {
+				chance = 25
+				trigger_event = tm_bae2.0002	# its own event, so each jailer's list of plotters starts empty
+			}
+		}
+	}
+}
+
+# Outlawry: a suit against a Bædling at a Christian Norse court from 1100 (tm_bae2_outlawry_candidate_trigger).
+# Rare, and a flavour event: the budget is checked on the lord, who sees it.
+tm_bae2_yearly_outlawry = {
+	effect = {
+		every_living_character = {
+			limit = {
+				faith = faith:tm_baeddel
+				tm_bae2_outlawry_candidate_trigger = yes
+				employer = { tm_flavour_ready_trigger = yes }
+			}
+			random = {
+				chance = 4
+				save_scope_as = tm_bae2_outlaw
+				employer = { save_scope_as = tm_bae2_lord }
+				if = {
+					limit = { tm_bae2_seidr_charge_trigger = yes }
+					save_scope_value_as = { name = tm_bae2_charge value = flag:seidr }
+				}
+				else = {
+					save_scope_value_as = { name = tm_bae2_charge value = flag:dress }
+				}
+				# Who brings it: for sorcery, the lord's chaplain (church law); else a courtier or vassal who
+				# dislikes her; else the lord himself, if he does.
+				if = {
+					limit = {
+						scope:tm_bae2_charge = flag:seidr
+						scope:tm_bae2_lord.cp:councillor_court_chaplain ?= {
+							religion = religion:christianity_religion
+						}
+					}
+					scope:tm_bae2_lord.cp:councillor_court_chaplain = { save_scope_as = tm_bae2_accuser }
+				}
+				else_if = {
+					limit = {
+						scope:tm_bae2_lord = {
+							any_courtier_or_guest = {
+								is_adult = yes
+								religion = religion:christianity_religion
+								opinion = { target = scope:tm_bae2_outlaw value <= -10 }
+							}
+						}
+					}
+					scope:tm_bae2_lord = {
+						random_courtier_or_guest = {
+							limit = {
+								is_adult = yes
+								religion = religion:christianity_religion
+								opinion = { target = scope:tm_bae2_outlaw value <= -10 }
+							}
+							save_scope_as = tm_bae2_accuser
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						scope:tm_bae2_lord = { opinion = { target = scope:tm_bae2_outlaw value <= -10 } }
+					}
+					scope:tm_bae2_lord = { save_scope_as = tm_bae2_accuser }
+				}
+				if = {
+					limit = { exists = scope:tm_bae2_accuser }
+					set_variable = { name = tm_bae2_outlawry_cooldown value = yes years = 10 }
+					scope:tm_bae2_lord = {
+						tm_flavour_spent_effect = yes
+						trigger_event = tm_bae2.0100
+					}
+				}
+				clear_saved_scope = tm_bae2_accuser
+			}
+		}
+	}
+}
+
+# Landless bands: mark the bands of the six faiths (for the settling grace); let full outlaws offer a settlement; and
+# send an AI band with no welcoming county in reach travelling toward the nearest one (the faith's own "return to
+# the seat" goal; vanilla's AI looks for the weakest target, with no faith term).
+tm_bae2_yearly_bands = {
+	effect = {
+		every_ruler = {
+			limit = { tm_bae2_faith_band_trigger = yes }
+			set_variable = { name = tm_bae2_was_band value = yes years = 3 }
+			save_scope_as = tm_bae2_band
+			if = {
+				limit = {
+					is_ai = yes
+					is_at_war = no
+					is_travelling = no
+					exists = domicile.domicile_location
+					NOT = { any_county = { tm_bae2_hall_county_trigger = { BAND = scope:tm_bae2_band } } }
+					any_county = { tm_bae2_welcoming_county_trigger = { FAITH = scope:tm_bae2_band.faith } }
+				}
+				random = {
+					chance = 15
+					domicile.domicile_location = { save_scope_as = tm_bae2_camp }
+					ordered_county = {
+						limit = { tm_bae2_welcoming_county_trigger = { FAITH = scope:tm_bae2_band.faith } }
+						order_by = {
+							value = 0
+							subtract = "title_province.squared_distance(scope:tm_bae2_camp)"
+						}
+						save_scope_as = tm_bae2_hall
+					}
+					save_scope_value_as = {
+						name = tm_bae2_provisions
+						value = {
+							value = "scope:tm_bae2_camp.squared_distance(scope:tm_bae2_hall.title_province)"
+							divide = 300
+						}
+					}
+					domicile = {
+						if = {
+							limit = { provisions < scope:tm_bae2_provisions }
+							change_provisions = scope:tm_bae2_provisions
+						}
+					}
+					start_travel_plan = {
+						destination = scope:tm_bae2_hall.title_province
+						travel_with_domicile = yes
+						players_use_planner = no
+						return_trip = no
+					}
+				}
+			}
+		}
+		# A full outlaw with silver may offer the accuser a settlement (Miller pp. 262-77; Ahola p. 100).
+		every_living_character = {
+			limit = {
+				has_character_modifier = tm_bae2_full_outlaw_modifier
+				is_ai = yes
+				NOT = { has_variable = tm_bae2_bot_refused }
+				exists = var:tm_bae2_accuser
+				var:tm_bae2_accuser = { is_alive = yes }
+				gold >= 100
+			}
+			random = {
+				chance = 20
+				save_scope_as = tm_bae2_outlaw
+				save_scope_value_as = { name = tm_bae2_price value = 100 }
+				var:tm_bae2_accuser = { trigger_event = tm_bae2.0130 }
+			}
+		}
+	}
+}
+
+# Forgiven for the war (Sophoulis, research/byz_sophoulis_banditry.md, proposal 4): an outlaw who fights on the side
+# of the realm that outlawed her may ask its ruler's pardon, once. Pardon was a ruler's grace, not the law's: Edward
+# III's charters for men who served (p. 120 n. 26), Folville pardoned for service in Scotland (p. 117).
+tm_bae2_yearly_pardon = {
+	effect = {
+		every_living_character = {
+			limit = {
+				tm_bae2_is_outlaw_trigger = yes
+				is_ai = yes
+				NOT = { has_variable = tm_bae2_pardon_asked }
+				exists = var:tm_bae2_accuser
+				var:tm_bae2_accuser = { is_alive = yes }
+				var:tm_bae2_accuser.top_liege = { is_allied_in_war = prev }
+			}
+			random = {
+				chance = 50
+				set_variable = { name = tm_bae2_pardon_asked value = yes }
+				save_scope_as = tm_bae2_outlaw
+				var:tm_bae2_accuser.top_liege = { trigger_event = tm_bae2.0135 }
+			}
+		}
+	}
+}
+
+# A band takes land; an outlaw takes the high seat. Root = the new holder; scope:title = the title gained.
+tm_bae2_title_gain = {
+	trigger = {
+		scope:title = { tier = tier_county }
+		is_landed = yes
+	}
+	effect = {
+		# The high seat ends it: an outlaw who holds land is outlaw no longer (Ahola p. 401: exile as a stage before
+		# kingship).
+		if = {
+			limit = { tm_bae2_is_outlaw_trigger = yes }
+			tm_bae2_lift_outlawry_effect = yes
+		}
+		# A band of the six faiths has settled: the first years' grace.
+		if = {
+			limit = {
+				has_variable = tm_bae2_was_band
+				NOT = { has_character_modifier = tm_bae2_settling_modifier }
+				rite ?= { rite_has_parameter = tm_sisters_faith }
+			}
+			tm_bae2_settle_effect = yes
+		}
+	}
+}

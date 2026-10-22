@@ -24,6 +24,7 @@ tm_captive_daughter_trigger = {
 		tm_is_daughter_trigger = yes
 		has_trait = tm_novice
 		has_trait = tm_transgender
+		has_variable = tm_declared	# declared sisters too (user, wave 3): the war and Spring the Cell agree
 	}
 }
 
