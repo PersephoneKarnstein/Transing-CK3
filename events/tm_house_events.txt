@@ -69,14 +69,25 @@ tm_house.0010 = {
 			order_by = {
 				value = learning
 				add = diplomacy
+				# The House's voice is a daughter's (wave 5): daughters and Marked sisters are named first, and cis
+				# sisters stand when too few of them are eligible.
+				if = { limit = { OR = { tm_is_daughter_trigger = yes has_trait = tm_transgender } } add = 100 }
 				if = { limit = { tm_is_daughter_trigger = yes } add = 5 }
 				if = { limit = { has_trait = compassionate } add = 4 }
 			}
 			add_to_list = tm_nominees
 		}
-		random_in_list = {
+		random_in_list = {	# the lot falls among the daughters and Marked sisters named, if any were
 			list = tm_nominees
+			limit = { OR = { tm_is_daughter_trigger = yes has_trait = tm_transgender } }
 			save_scope_as = tm_new_elder
+		}
+		if = {
+			limit = { NOT = { exists = scope:tm_new_elder } }
+			random_in_list = {
+				list = tm_nominees
+				save_scope_as = tm_new_elder
+			}
 		}
 		if = {
 			limit = { NOT = { exists = scope:tm_new_elder } }

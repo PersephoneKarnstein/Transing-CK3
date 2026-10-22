@@ -1,0 +1,27 @@
+﻿l_english:
+ # The faiths' own offices, held by daughters (common/court_positions/types/tm_voice_court_positions.txt)
+ tm_voice_aptitude_age:0 "Her years"
+
+ tm_voice_companion_court_position:0 "Companion of the Mothers"
+ tm_voice_companion_court_position_desc:0 "One of the Companions who sit beside the Mother of Mothers, as the prophetesses of Pepouza had theirs. Only a daughter of the faith may hold the seat. A seat here makes her a Companion, while there are fewer than seven."
+ tm_voice_companion_court_position_employer_tt:0 "When the Mother of Mothers is old or ill, her Companions back the best daughter among the candidates for the Mother House: appointment score +25 for each Companion, +75 at most.\nThe call reaches Marked people at this court a little more readily, and the strain on this court's Houses eases."
+
+ tm_voice_volva_court_position:0 "Völva of the Hall"
+ tm_voice_volva_court_position_desc:0 "The seeress of the hall. She sits on the high seat and sings the spirits near. Only a daughter of seiðr may hold the office: she has been through the song herself."
+ tm_voice_volva_court_position_employer_tt:0 "At a seiðr at this court she sings the song, and the rite goes better.\nThe call reaches Marked people at this court a little more readily, and the strain on this court's Houses eases."
+
+ tm_voice_society_head_court_position:0 "Head of the Society"
+ tm_voice_society_head_court_position_desc:0 "The head of the court's street society. Her circular calls the members to the year-end banquet and to every birth and burial. Only a daughter of the Way may hold the office."
+ tm_voice_society_head_court_position_employer_tt:0 "The society stands by an adept of this court through the trials of the Jade Embryo, and they go better.\nThe call reaches Marked people at this court a little more readily, and the strain on this court's Houses eases."
+
+ tm_voice_lamp_elder_court_position:0 "Elder of the Lamp"
+ tm_voice_lamp_elder_court_position_desc:0 "The elder of the women of the lamp. At the Turning she reads Esther in the women's synagogue, and beside \"it was turned about\" she reads the other turnings. Only a daughter of the Turning may hold the office."
+ tm_voice_lamp_elder_court_position_employer_tt:0 "At a Turning at this court she reads the scroll, and the rite goes better.\nThe call reaches Marked people at this court a little more readily, and the strain on this court's Houses eases."
+
+ tm_voice_street_eldest_court_position:0 "Eldest of the Street"
+ tm_voice_street_eldest_court_position_desc:0 "The eldest woman of the temple street. She keeps the pavai vow with the women of the court and lays the staff on the new daughter's head. Only a daughter of the Garland may hold the office."
+ tm_voice_street_eldest_court_position_employer_tt:0 "At a pavai vow at this court she keeps the vow and lays the staff, and the rite goes better.\nThe call reaches Marked people at this court a little more readily, and the strain on this court's Houses eases."
+
+ tm_voice_roof_mother_court_position:0 "Mother of the Roof"
+ tm_voice_roof_mother_court_position_desc:0 "The eldest of the New Roof's age-set. When a woman crosses at this court and no woman of her family will claim her, she claims her as her mother's child. Only a daughter of the House may hold the office."
+ tm_voice_roof_mother_court_position_employer_tt:0 "At a crossing at this court she claims the new woman when her family will not, so no one waits for a mother.\nThe call reaches Marked people at this court a little more readily, and the strain on this court's Houses eases."

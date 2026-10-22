@@ -195,6 +195,7 @@ tm_hipukh.0001 = {
 				modifier = { add = 30 OR = { has_trait = tm_transgender has_variable = tm_declared } }	# Marked, or named before witnesses (§16 rule 8)
 				modifier = { add = learning }
 				modifier = { add = scope:tm_zekenah.learning }
+				modifier = { add = 10 scope:tm_zekenah = { has_court_position = tm_voice_lamp_elder_court_position } }	# the court's Elder of the Lamp reads (tm_voice_court_positions.txt)
 				modifier = { add = 20 has_personal_tenet_flag = tm_personal_turning_easier }
 				modifier = { add = 10 has_variable = tm_turning_women_synagogue }
 				modifier = { add = 10 has_variable = tm_hn2_women_seat }	# a seat of her own below (Arles 1409/1452; tm_hn2.0050)

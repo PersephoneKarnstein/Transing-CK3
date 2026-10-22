@@ -1,0 +1,568 @@
+﻿# Crusader Dolls — each faith's own office, held only by a daughter of that faith (docs/wave5/offices.md).
+# "We're building trans-women religions, not just trans-affirming ones" (user, wave 5): cis women stay members and
+# sisters; the faith's own voice belongs to its daughters. Template: vanilla court_gardener_court_position and
+# court_physician_court_position (00_court_positions.txt; any ruler's court, landless adventurers included).
+# Salary is piety (a religious office; _court_positions.info allows piety), so no gold changes hands, which keeps
+# the Elder of the Lamp clear of money (Ha-Nehpakhot guardrails).
+# AI: hires whenever a valid daughter is at court. Gold-based vanilla terms (scope:base_value, debt) are left out
+# because the office costs no gold. The candidate score follows vanilla (rival -1000; holding another office -150
+# when hiring only, so no hire/fire loop).
+
+# Companion of the Mothers: the koinonoi beside the Mother of Mothers (research/byz_trevett_montanism.md). Only at
+# her court. A seat here names her a Companion (tm_companion_modifier, the cap of seven kept); the Companions back a
+# daughter for the Mother's succession (tm_voice_effects.txt).
+tm_voice_companion_court_position = {
+	sort_order = 276
+	max_available_positions = 3
+	skill = learning
+
+	court_position_asset = {
+		animation = admiration
+		background = "gfx/interface/illustrations/event_scenes/church.dds"
+	}
+
+	opinion = {
+		value = regular_court_position_opinion
+	}
+
+	aptitude_level_breakpoints = { 20 40 60 80 }
+
+	aptitude = {
+		value = 1
+		add = {
+			value = learning
+			multiply = 2.5
+			max = 50
+			desc = court_position_skill_learning
+		}
+		add = {
+			value = diplomacy
+			multiply = 1
+			max = 20
+			desc = court_position_skill_diplomacy
+		}
+		add = general_aptitude_bonus
+	}
+
+	is_shown = {
+		faith = faith:transbian_maximalism
+		has_title = title:d_tm_mother_house
+	}
+
+	valid_position = {
+		faith = faith:transbian_maximalism
+		has_title = title:d_tm_mother_house
+	}
+
+	is_shown_character = {
+		scope:employee = {
+			court_position_employee_shown_trigger = yes
+		}
+	}
+
+	valid_character = {
+		scope:employee = {
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			tm_voice_office_holder_trigger = { FAITH = faith:transbian_maximalism }
+		}
+	}
+
+	revoke_cost = {
+		prestige = {
+			value = minor_court_position_prestige_revoke_cost
+		}
+	}
+
+	salary = {
+		piety = {
+			value = minor_court_position_piety_salary
+		}
+		round = no
+	}
+
+	base_employer_modifier = {
+		monthly_piety_gain_mult = 0.05
+	}
+
+	custom_employer_modifier_description = tm_voice_companion_court_position_employer_tt
+
+	modifier = {
+		monthly_learning_lifestyle_xp_gain_mult = 0.1
+	}
+
+	on_court_position_received = {
+		scope:employee = {
+			if = {
+				limit = {
+					NOT = { has_character_modifier = tm_companion_modifier }
+					NOT = { any_living_character = { count >= 7 has_character_modifier = tm_companion_modifier } }
+				}
+				add_character_modifier = { modifier = tm_companion_modifier }
+			}
+		}
+	}
+
+	ai_position_score = {
+		value = 100
+	}
+	ai_candidate_score = {
+		value = 200
+		add = court_position_candidate_score_base_value
+		add = court_position_candidate_aptitude_value
+	}
+}
+
+# Völva of the Hall: the seeress of a Bædling hall. A daughter of seiðr only: the völva sings the varðlokkur at the
+# seiðr, and the rite already takes its völva from the daughters of seiðr (tm_seidr_begin_effect). She sings it now.
+tm_voice_volva_court_position = {
+	sort_order = 276
+	max_available_positions = 1
+	skill = learning
+
+	court_position_asset = {
+		animation = holding_staff
+		background = "gfx/interface/illustrations/event_scenes/fp1_viking_feast.dds"
+	}
+
+	opinion = {
+		value = regular_court_position_opinion
+	}
+
+	aptitude_level_breakpoints = { 20 40 60 80 }
+
+	aptitude = {
+		value = 1
+		add = {
+			value = learning
+			multiply = 2.5
+			max = 50
+			desc = court_position_skill_learning
+		}
+		add = {
+			value = age
+			subtract = 30
+			multiply = 0.5
+			min = 0
+			max = 15
+			desc = tm_voice_aptitude_age
+		}
+		add = general_aptitude_bonus
+	}
+
+	is_shown = {
+		faith = faith:tm_baeddel
+	}
+
+	valid_position = {
+		faith = faith:tm_baeddel
+	}
+
+	is_shown_character = {
+		scope:employee = {
+			court_position_employee_shown_trigger = yes
+		}
+	}
+
+	valid_character = {
+		scope:employee = {
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			tm_voice_office_holder_trigger = { FAITH = faith:tm_baeddel }
+			has_trait = tm_daughter_of_seidr
+		}
+	}
+
+	revoke_cost = {
+		prestige = {
+			value = minor_court_position_prestige_revoke_cost
+		}
+	}
+
+	salary = {
+		piety = {
+			value = minor_court_position_piety_salary
+		}
+		round = no
+	}
+
+	base_employer_modifier = {
+		stress_loss_mult = 0.05
+	}
+
+	custom_employer_modifier_description = tm_voice_volva_court_position_employer_tt
+
+	modifier = {
+		monthly_learning_lifestyle_xp_gain_mult = 0.1
+	}
+
+	ai_position_score = {
+		value = 100
+	}
+	ai_candidate_score = {
+		value = 200
+		add = court_position_candidate_score_base_value
+		add = court_position_candidate_aptitude_value
+	}
+}
+
+# Head of the Society: the head of the she, the street society whose circular calls its members to the year-end
+# banquet and to every birth and burial (Dunhuang she circulars; docs/wave4/yutai-sogdians.md, "the head and the
+# assessor"). The court's own society, its head a daughter.
+tm_voice_society_head_court_position = {
+	sort_order = 276
+	max_available_positions = 1
+	skill = diplomacy
+
+	court_position_asset = {
+		animation = writing
+		background = "gfx/interface/illustrations/event_scenes/tgp_garden_asia.dds"
+	}
+
+	opinion = {
+		value = regular_court_position_opinion
+	}
+
+	aptitude_level_breakpoints = { 20 40 60 80 }
+
+	aptitude = {
+		value = 1
+		add = {
+			value = diplomacy
+			multiply = 2.5
+			max = 50
+			desc = court_position_skill_diplomacy
+		}
+		add = {
+			value = learning
+			multiply = 1
+			max = 20
+			desc = court_position_skill_learning
+		}
+		add = general_aptitude_bonus
+	}
+
+	is_shown = {
+		faith = faith:tm_yutai
+	}
+
+	valid_position = {
+		faith = faith:tm_yutai
+	}
+
+	is_shown_character = {
+		scope:employee = {
+			court_position_employee_shown_trigger = yes
+		}
+	}
+
+	valid_character = {
+		scope:employee = {
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			tm_voice_office_holder_trigger = { FAITH = faith:tm_yutai }
+		}
+	}
+
+	revoke_cost = {
+		prestige = {
+			value = minor_court_position_prestige_revoke_cost
+		}
+	}
+
+	salary = {
+		piety = {
+			value = minor_court_position_piety_salary
+		}
+		round = no
+	}
+
+	base_employer_modifier = {
+		same_faith_opinion = 3
+	}
+
+	custom_employer_modifier_description = tm_voice_society_head_court_position_employer_tt
+
+	modifier = {
+		diplomacy = 1
+	}
+
+	ai_position_score = {
+		value = 100
+	}
+	ai_candidate_score = {
+		value = 200
+		add = court_position_candidate_score_base_value
+		add = court_position_candidate_aptitude_value
+	}
+}
+
+# Elder of the Lamp: the elder among the women of the lamp who reads Esther at the Turning (README, the scroll).
+# Guardrails: nothing of money in her office, its text or its effects.
+tm_voice_lamp_elder_court_position = {
+	sort_order = 276
+	max_available_positions = 1
+	skill = learning
+
+	court_position_asset = {
+		animation = reading
+		background = "gfx/interface/illustrations/event_scenes/ep3_medi_study.dds"
+	}
+
+	opinion = {
+		value = regular_court_position_opinion
+	}
+
+	aptitude_level_breakpoints = { 20 40 60 80 }
+
+	aptitude = {
+		value = 1
+		add = {
+			value = learning
+			multiply = 2.5
+			max = 50
+			desc = court_position_skill_learning
+		}
+		add = {
+			value = age
+			subtract = 30
+			multiply = 0.5
+			min = 0
+			max = 15
+			desc = tm_voice_aptitude_age
+		}
+		add = general_aptitude_bonus
+	}
+
+	is_shown = {
+		faith = faith:tm_nehpakhot
+	}
+
+	valid_position = {
+		faith = faith:tm_nehpakhot
+	}
+
+	is_shown_character = {
+		scope:employee = {
+			court_position_employee_shown_trigger = yes
+		}
+	}
+
+	valid_character = {
+		scope:employee = {
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			tm_voice_office_holder_trigger = { FAITH = faith:tm_nehpakhot }
+		}
+	}
+
+	revoke_cost = {
+		prestige = {
+			value = minor_court_position_prestige_revoke_cost
+		}
+	}
+
+	salary = {
+		piety = {
+			value = minor_court_position_piety_salary
+		}
+		round = no
+	}
+
+	base_employer_modifier = {
+		learning = 1
+	}
+
+	custom_employer_modifier_description = tm_voice_lamp_elder_court_position_employer_tt
+
+	modifier = {
+		monthly_learning_lifestyle_xp_gain_mult = 0.1
+	}
+
+	ai_position_score = {
+		value = 100
+	}
+	ai_candidate_score = {
+		value = 200
+		add = court_position_candidate_score_base_value
+		add = court_position_candidate_aptitude_value
+	}
+}
+
+# Eldest of the Street: the eldest woman of the temple street, who lays the staff (README, the Worn Garland) and
+# keeps the pavai vow with the women of the court.
+tm_voice_street_eldest_court_position = {
+	sort_order = 276
+	max_available_positions = 1
+	skill = diplomacy
+
+	court_position_asset = {
+		animation = prayer
+		background = "gfx/interface/illustrations/event_scenes/ep2_holysite_indian.dds"
+	}
+
+	opinion = {
+		value = regular_court_position_opinion
+	}
+
+	aptitude_level_breakpoints = { 20 40 60 80 }
+
+	aptitude = {
+		value = 1
+		add = {
+			value = diplomacy
+			multiply = 2.5
+			max = 50
+			desc = court_position_skill_diplomacy
+		}
+		add = {
+			value = age
+			subtract = 30
+			multiply = 0.5
+			min = 0
+			max = 15
+			desc = tm_voice_aptitude_age
+		}
+		add = general_aptitude_bonus
+	}
+
+	is_shown = {
+		faith = faith:tm_garland
+	}
+
+	valid_position = {
+		faith = faith:tm_garland
+	}
+
+	is_shown_character = {
+		scope:employee = {
+			court_position_employee_shown_trigger = yes
+		}
+	}
+
+	valid_character = {
+		scope:employee = {
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			tm_voice_office_holder_trigger = { FAITH = faith:tm_garland }
+		}
+	}
+
+	revoke_cost = {
+		prestige = {
+			value = minor_court_position_prestige_revoke_cost
+		}
+	}
+
+	salary = {
+		piety = {
+			value = minor_court_position_piety_salary
+		}
+		round = no
+	}
+
+	base_employer_modifier = {
+		monthly_prestige_gain_mult = 0.05
+	}
+
+	custom_employer_modifier_description = tm_voice_street_eldest_court_position_employer_tt
+
+	modifier = {
+		diplomacy = 1
+	}
+
+	ai_position_score = {
+		value = 100
+	}
+	ai_candidate_score = {
+		value = 200
+		add = court_position_candidate_score_base_value
+		add = court_position_candidate_aptitude_value
+	}
+}
+
+# Mother of the Roof: the eldest of the New Roof's age-set, who claims the new women at the crossing as her
+# mother's children (tm_badenya.0011).
+tm_voice_roof_mother_court_position = {
+	sort_order = 276
+	max_available_positions = 1
+	skill = diplomacy
+
+	court_position_asset = {
+		animation = dancing
+		background = "gfx/interface/illustrations/event_scenes/ep2_feast_sub_saharan.dds"
+	}
+
+	opinion = {
+		value = regular_court_position_opinion
+	}
+
+	aptitude_level_breakpoints = { 20 40 60 80 }
+
+	aptitude = {
+		value = 1
+		add = {
+			value = diplomacy
+			multiply = 2.5
+			max = 50
+			desc = court_position_skill_diplomacy
+		}
+		add = {
+			value = age
+			subtract = 30
+			multiply = 0.5
+			min = 0
+			max = 15
+			desc = tm_voice_aptitude_age
+		}
+		add = general_aptitude_bonus
+	}
+
+	is_shown = {
+		faith = faith:tm_badenya
+	}
+
+	valid_position = {
+		faith = faith:tm_badenya
+	}
+
+	is_shown_character = {
+		scope:employee = {
+			court_position_employee_shown_trigger = yes
+		}
+	}
+
+	valid_character = {
+		scope:employee = {
+			base_court_position_validity_trigger = { EMPLOYER = scope:liege }
+			tm_voice_office_holder_trigger = { FAITH = faith:tm_badenya }
+		}
+	}
+
+	revoke_cost = {
+		prestige = {
+			value = minor_court_position_prestige_revoke_cost
+		}
+	}
+
+	salary = {
+		piety = {
+			value = minor_court_position_piety_salary
+		}
+		round = no
+	}
+
+	base_employer_modifier = {
+		courtier_and_guest_opinion = 5
+	}
+
+	custom_employer_modifier_description = tm_voice_roof_mother_court_position_employer_tt
+
+	modifier = {
+		monthly_diplomacy_lifestyle_xp_gain_mult = 0.1
+	}
+
+	ai_position_score = {
+		value = 100
+	}
+	ai_candidate_score = {
+		value = 200
+		add = court_position_candidate_score_base_value
+		add = court_position_candidate_aptitude_value
+	}
+}

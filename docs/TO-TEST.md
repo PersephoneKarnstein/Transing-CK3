@@ -1,4 +1,4 @@
-# To test
+﻿# To test
 
 Scenarios for playtesters. Each one sets up a situation on purpose, so that a single session gives as much debug data as possible. None of this has been tested in-game yet. Anything you try is useful, including "it worked".
 
@@ -998,3 +998,16 @@ Design: [docs/wave4/yutai-sogdians.md](wave4/yutai-sogdians.md).
 - **Check:** she never has the Way's faith.
 
 **Y7. Budget.** Neither 0010 nor 0020 fires while `tm_flavour_cooldown` is set.
+
+## Z. Wave 5: the faith's voice is a daughter's; Bonadonna (added 2026-10-21, untested)
+
+**Z1. Bonadonna on the bookmark.** Start the Crusader Dolls bookmark at 867. Bonadonna (Ha-Nehpakhot, Advanced) appears beside Arles with her placeholder portrait.
+- **Expect:** playing her, she is a landless adventurer whose camp, *Women of the Lamp*, has the Scholars purpose and sits at Venaissin. The two Marked youths are in her camp; the physician's household (father, mother, three children) is at the count of Venaissin's court. There is no second, generated elder.
+- **Expect (AI):** observing, the camp takes learning and stewardship contracts like any scholars' camp.
+
+**Z2. Later start.** Start at 1066 or 1178: Bonadonna is dead, the camp does not exist, and the old setup runs (a generated elder and the youths at the count of Venaissin's court).
+
+**Z3. Difficulty labels.** On the bookmark, Steinn, Xun and Cantirâdêvi are Medium; Theia Beatrike, Djeneba and Bonadonna are Advanced.
+
+The succession scenarios (S1–S4) are in docs/wave5/succession.md; the offices' in docs/wave5/offices.md.
+

@@ -1,0 +1,59 @@
+﻿# Crusader Dolls — the faiths' own offices, held by daughters (tm_voice_court_positions.txt; docs/wave5/offices.md).
+
+# Who may hold a faith's office: a daughter of that faith, adult and free. Scope: the employee.
+#   FAITH = the office's faith (faith:tm_baeddel etc.)
+tm_voice_office_holder_trigger = {
+	faith = $FAITH$
+	is_adult = yes
+	tm_is_daughter_trigger = yes
+}
+
+# The scoped court owner employs her own faith's office. Scope: a ruler (the court owner).
+tm_voice_court_has_office_trigger = {
+	OR = {
+		employs_court_position = tm_voice_companion_court_position
+		employs_court_position = tm_voice_volva_court_position
+		employs_court_position = tm_voice_society_head_court_position
+		employs_court_position = tm_voice_lamp_elder_court_position
+		employs_court_position = tm_voice_street_eldest_court_position
+		employs_court_position = tm_voice_roof_mother_court_position
+	}
+}
+
+# The scoped character's court (her own if she rules, else her court owner's) has the office POS filled.
+# Scope: any character (a seeker at a gate).
+tm_voice_my_court_has_office_trigger = {
+	OR = {
+		AND = {
+			is_ruler = yes
+			employs_court_position = $POS$
+		}
+		court_owner ?= { employs_court_position = $POS$ }
+	}
+}
+
+# A Companion of the Mother of Mothers: named by the interaction (tm_companion_modifier) or seated at her court.
+# Scope: a character.
+tm_voice_is_companion_trigger = {
+	faith = faith:transbian_maximalism
+	OR = {
+		has_character_modifier = tm_companion_modifier
+		has_court_position = tm_voice_companion_court_position
+	}
+}
+
+# A daughter the Companions may back for the Mother of Mothers: of the faith, adult, free, among the candidates the
+# clerical appointment admits (the Mother's courtiers, vassals and court officers). Scope: the candidate.
+# scope:tm_voice_mother = the Mother of Mothers.
+tm_voice_backable_daughter_trigger = {
+	is_alive = yes
+	faith = faith:transbian_maximalism
+	is_adult = yes
+	tm_is_daughter_trigger = yes
+	is_imprisoned = no
+	NOT = { this = scope:tm_voice_mother }
+	OR = {
+		is_courtier_of = scope:tm_voice_mother
+		is_vassal_of = scope:tm_voice_mother
+	}
+}

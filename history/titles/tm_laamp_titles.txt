@@ -1,0 +1,20 @@
+﻿# Crusader Dolls — the women of the lamp's camp at the 867 start (Ha-Nehpakhot). Pattern: vanilla
+# history/titles/01_laamp_titles.txt (d_laamp_xuanji). A scholars' camp: learning, translation and physic, the faith's
+# work at Arles (README, Ha-Nehpakhot); no merchants' or brigands' purpose.
+
+d_laamp_tm_lamp = {
+	867.1.1 = {
+		liege = 0
+		holder = tm_nehpakhot_bonadonna
+		government = landless_adventurer_government
+		succession_laws = { landless_adventurer_succession_law }
+		effect = {
+			create_landless_adventurer_title_history_effect = yes
+			set_variable = { name = adventurer_creation_reason value = flag:historical }
+			holder ?= { add_realm_law_skip_effects = camp_purpose_scholars }
+		}
+	}
+	905.1.1 = {
+		holder = 0
+	}
+}

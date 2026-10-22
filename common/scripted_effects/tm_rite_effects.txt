@@ -300,7 +300,29 @@ tm_seidr_begin_effect = {
 	else = {
 		save_scope_as = tm_host
 	}
+	# The Völva of the Hall sings it when the court has one (tm_voice_court_positions.txt)
 	if = {
+		limit = {
+			scope:tm_host = {
+				any_court_position_holder = {
+					type = tm_voice_volva_court_position
+					NOT = { this = root }
+					is_imprisoned = no
+				}
+			}
+		}
+		scope:tm_host = {
+			random_court_position_holder = {
+				type = tm_voice_volva_court_position
+				limit = {
+					NOT = { this = root }
+					is_imprisoned = no
+				}
+				save_scope_as = tm_volva
+			}
+		}
+	}
+	else_if = {
 		limit = {
 			scope:tm_host = {
 				any_courtier = {
@@ -407,7 +429,29 @@ tm_turning_begin_effect = {
 	else = {
 		save_scope_as = tm_host
 	}
+	# The Elder of the Lamp reads when the court has one (tm_voice_court_positions.txt)
 	if = {
+		limit = {
+			scope:tm_host = {
+				any_court_position_holder = {
+					type = tm_voice_lamp_elder_court_position
+					NOT = { this = root }
+					is_imprisoned = no
+				}
+			}
+		}
+		scope:tm_host = {
+			random_court_position_holder = {
+				type = tm_voice_lamp_elder_court_position
+				limit = {
+					NOT = { this = root }
+					is_imprisoned = no
+				}
+				save_scope_as = tm_zekenah
+			}
+		}
+	}
+	else_if = {
 		limit = {
 			scope:tm_host = {
 				any_courtier = {
@@ -499,7 +543,29 @@ tm_pavai_begin_effect = {
 	else = {
 		save_scope_as = tm_host
 	}
+	# The Eldest of the Street keeps the vow when the court has one (tm_voice_court_positions.txt)
 	if = {
+		limit = {
+			scope:tm_host = {
+				any_court_position_holder = {
+					type = tm_voice_street_eldest_court_position
+					NOT = { this = root }
+					is_imprisoned = no
+				}
+			}
+		}
+		scope:tm_host = {
+			random_court_position_holder = {
+				type = tm_voice_street_eldest_court_position
+				limit = {
+					NOT = { this = root }
+					is_imprisoned = no
+				}
+				save_scope_as = tm_garland_elder
+			}
+		}
+	}
+	else_if = {
 		limit = {
 			scope:tm_host = {
 				any_courtier = {

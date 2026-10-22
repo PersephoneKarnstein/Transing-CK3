@@ -81,6 +81,7 @@ tm_sisters_elective = {
 					OR = {
 						is_female = yes
 						tm_is_daughter_trigger = yes
+						has_trait = tm_transgender	# a Marked sister on the council, coded male before her gate
 					}
 				}
 			}

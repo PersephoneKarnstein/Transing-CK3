@@ -45,3 +45,27 @@ tm_badenya_djeneba = {
 	837.1.1 = { birth = yes }
 	905.1.1 = { death = yes }
 }
+
+# Bonadonna, an elder of the women of the lamp at Arles, a daughter of the Turning (Ha-Nehpakhot). The sect holds no
+# land: from 867 she keeps a scholars' camp (Roads to Power), d_laamp_tm_lamp (history/titles/tm_laamp_titles.txt).
+# Bonadonna: a Jewish woman witness at Manosque in 1338 (research/jud_shatzmiller_jews_of_provence.md, row 24,
+# p. 357); the street's names are later than 867, as the faith's other names are.
+tm_nehpakhot_bonadonna = {
+	name = "Bonadonna"
+	dna = tm_nehpakhot_bonadonna_dna		# the face of her bookmark portrait (common/dna_data/tm_dna.txt)
+	female = yes
+	culture = occitan
+	religion = tm_nehpakhot
+	trait = tm_daughter_of_the_turning
+	trait = education_learning_4
+	trait = patient
+	trait = humble
+	trait = lifestyle_physician
+	learning = 16
+	diplomacy = 10
+	stewardship = 8
+	intrigue = 6
+	martial = 3
+	812.1.1 = { birth = yes }		# in her fifties at the start, as the seed's elder was
+	905.1.1 = { death = yes }
+}

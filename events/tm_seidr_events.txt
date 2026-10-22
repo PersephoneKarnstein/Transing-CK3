@@ -125,6 +125,7 @@ tm_seidr.0001 = {
 				modifier = { add = 30 has_variable = tm_seidr_song_known }
 				modifier = { add = 20 has_variable = tm_seidr_song_reluctant }
 				modifier = { add = scope:tm_volva.learning }
+				modifier = { add = 10 scope:tm_volva = { has_court_position = tm_voice_volva_court_position } }	# the hall's own völva (tm_voice_court_positions.txt)
 				desc = tm_seidr.0001.a.success
 				send_interface_toast = {
 					type = event_toast_effect_good

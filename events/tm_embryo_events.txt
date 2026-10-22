@@ -52,6 +52,7 @@ tm_embryo.0010 = {
 				modifier = { add = 15 any_relation = { type = tm_sister tm_is_daughter_trigger = yes } }	# her sworn sister stands as her sponsor (round 2, T21)
 				modifier = { add = { value = learning multiply = 2 } }
 				modifier = { add = 20 has_personal_tenet_flag = tm_personal_embryo_easier }
+				modifier = { add = 10 tm_voice_my_court_has_office_trigger = { POS = tm_voice_society_head_court_position } }	# the society stands by her (tm_voice_court_positions.txt)
 				modifier = { add = 20 has_character_modifier = tm_taught_answers_modifier }	# Teach Her the Answers (tm_mech_interactions.txt)
 				desc = tm_embryo.trial_kept
 				trigger_event = { id = tm_embryo.0011 days = { 80 100 } }
@@ -113,6 +114,7 @@ tm_embryo.0011 = {
 		random_list = {
 			75 = {
 				modifier = { add = { value = learning multiply = 2 } }
+				modifier = { add = 10 tm_voice_my_court_has_office_trigger = { POS = tm_voice_society_head_court_position } }	# the society stands by her (tm_voice_court_positions.txt)
 				desc = tm_embryo.trial_kept
 				trigger_event = { id = tm_embryo.0012 days = { 110 130 } }
 			}

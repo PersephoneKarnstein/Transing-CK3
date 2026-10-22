@@ -153,6 +153,13 @@ tm_sisters_call_effect = {
 				add = 3
 				employer ?= { any_courtier = { tm_is_daughter_trigger = yes } }
 			}
+			modifier = {								# the faith's own office is filled at her court (tm_voice_court_positions.txt)
+				add = 2
+				employer ?= {
+					faith = scope:tm_call_faith
+					tm_voice_court_has_office_trigger = yes
+				}
+			}
 			modifier = {								# a sworn sister of the faith, wherever she lives (round 2, T21)
 				add = 4
 				any_relation = { type = tm_sister faith = scope:tm_call_faith }

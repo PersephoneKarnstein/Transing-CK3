@@ -1,4 +1,4 @@
-# TODO
+﻿# TODO
 
 In-game test scenarios for playtesters are in [TO-TEST.md](TO-TEST.md); the "untested" items below are covered there.
 
@@ -180,7 +180,8 @@ One feature per faith, each in its own files; scenarios in TO-TEST.md §J.
 - [x] Map and highlights (draft): cropped from the game's own flatmap, highlights from the province map; replace or paint over as wanted, then adjust `position` in tm_bookmarks.txt
 - [x] Portraits dumped in game (2026-10-20). Theia Beatrike has fixed DNA (common/dna_data/tm_dna.txt): 44 at the start, dark brown hair, grey-green eyes, as Welcome to Dorley Hall describes her; the others are left to game defaults (user)
 - [ ] Coats of arms for Steinn's and Xun's houses (the bookmark omits their houses: vanilla defines no CoA for dynasties 825 and 2003011)
-- [ ] Ha-Nehpakhot: an unlanded start (Roads to Power) so the sect can join the bookmark
+- [x] Ha-Nehpakhot: an unlanded start (Roads to Power) so the sect can join the bookmark: Bonadonna and her scholars' camp, *Women of the Lamp* (2026-10-21)
+- [ ] Bonadonna's map highlight `gfx/interface/bookmarks/bm_867_crusader_dolls_bookmark_tm_bonadonna.dds` (user's art; shape supplied) and her portrait (`dump_bookmark_portraits`; the current file is a vanilla placeholder)
 
 ## Roads to Power required (user, 2026-10-21; from the next release)
 - [ ] The next release requires *Roads to Power*: observe runs keep leaving the faiths landless (Bædling as an adventurer camp, the Garland as courtiers and a mercenary band), and it lets Ha-Nehpakhot start as a landless figure on the bookmark map without a jury-rigged holding.

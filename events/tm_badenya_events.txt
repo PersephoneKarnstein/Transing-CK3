@@ -62,6 +62,24 @@ tm_badenya.0011 = {
 			}
 			save_scope_as = tm_claimer
 		}
+		if = {	# the Mother of the Roof claims the new women (tm_voice_court_positions.txt)
+			limit = {
+				NOT = { exists = scope:tm_claimer }
+				scope:tm_host ?= {
+					any_court_position_holder = {
+						type = tm_voice_roof_mother_court_position
+						NOT = { this = root }
+					}
+				}
+			}
+			scope:tm_host = {
+				random_court_position_holder = {
+					type = tm_voice_roof_mother_court_position
+					limit = { NOT = { this = root } }
+					save_scope_as = tm_claimer
+				}
+			}
+		}
 		if = {
 			limit = { NOT = { exists = scope:tm_claimer } }
 			scope:tm_host ?= {

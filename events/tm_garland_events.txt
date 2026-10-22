@@ -148,6 +148,7 @@ tm_garland.0001 = {
 					add = { value = var:tm_pavai_companions multiply = 8 }
 				}
 				modifier = { add = 20 has_variable = tm_pavai_garland_worn }
+				modifier = { add = 10 scope:tm_garland_elder ?= { has_court_position = tm_voice_street_eldest_court_position } }	# the Eldest of the Street lays the staff (tm_voice_court_positions.txt)
 				modifier = { add = 15 location ?= { county ?= { this = title:c_kanchipuram } } }
 				desc = tm_garland.0001.a.success
 				send_interface_toast = {

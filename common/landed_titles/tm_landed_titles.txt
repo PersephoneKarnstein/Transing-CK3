@@ -18,3 +18,21 @@ d_tm_mother_house = {
 	always_follows_primary_heir = yes
 	destroy_if_invalid_heir = yes
 }
+
+# The women of the lamp's camp (Ha-Nehpakhot), held by Bonadonna at the 867 start. Pattern: vanilla d_laamp_xuanji.
+@tm_never_primary_score = -1000
+d_laamp_tm_lamp = {
+	color = { 158 140 217 }
+	capital = c_venaissin
+
+	definite_form = yes
+	landless = yes
+	require_landless = yes
+	ruler_uses_title_name = no
+	no_automatic_claims = yes
+	destroy_if_invalid_heir = yes
+
+	dlc_feature = roads_to_power
+
+	ai_primary_priority = { add = @tm_never_primary_score }
+}

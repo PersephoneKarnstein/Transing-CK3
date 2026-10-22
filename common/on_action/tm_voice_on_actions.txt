@@ -1,0 +1,37 @@
+﻿# Crusader Dolls — the faiths' own offices (docs/wave5/offices.md).
+
+yearly_global_pulse = {
+	on_actions = { tm_voice_yearly_global }
+}
+
+# The Companions back a daughter for the Mother House (tm_voice_effects.txt): when the Mother of Mothers is 60 or
+# more or ill, or when no daughter is backed yet.
+tm_voice_yearly_global = {
+	trigger = {
+		title:d_tm_mother_house.holder ?= { faith = faith:transbian_maximalism }
+	}
+	effect = {
+		title:d_tm_mother_house.holder = { save_scope_as = tm_voice_mother }
+		title:d_tm_mother_house = {
+			if = {
+				limit = {
+					OR = {
+						scope:tm_voice_mother = {
+							OR = {
+								age >= 60
+								has_trait = ill
+								has_trait = pneumonic
+								has_trait = infirm
+								has_trait = incapable
+							}
+						}
+						NOT = { has_variable = tm_voice_backed }
+						var:tm_voice_backed ?= { NOT = { tm_voice_backable_daughter_trigger = yes } }
+						NOT = { var:tm_voice_backed_for ?= scope:tm_voice_mother }
+					}
+				}
+				tm_voice_companions_back_daughter_effect = yes
+			}
+		}
+	}
+}

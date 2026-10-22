@@ -1,5 +1,5 @@
 ﻿# Crusader Dolls — a bookmark at 867 showing the playable heads of the six faiths, so players can find them.
-# Ha-Nehpakhot has no landed head at the start, so it is not shown (an unlanded start is planned).
+# Ha-Nehpakhot holds no land: Bonadonna stands as a landless adventurer (Roads to Power, which the mod requires).
 # The leaders made by the start script are historical characters in history/characters/tm_characters.txt; Steinn of
 # Gotland and Xun of Shazhou are vanilla characters the start script converts. Portraits: run
 # dump_bookmark_portraits in a game started at this bookmark and copy the files into common/bookmark_portraits.
@@ -39,7 +39,7 @@ bm_867_crusader_dolls = {
 		religion = tm_baeddel
 		difficulty = "BOOKMARK_CHARACTER_DIFFICULTY_MEDIUM"
 		history_id = 41267
-		position = { 571 265 }
+		position = { 660 160 }		# in Finland, clear of central Europe (Gotland's highlight is at about 542, 255)
 		animation = personality_bold
 	}
 
@@ -68,7 +68,7 @@ bm_867_crusader_dolls = {
 		government = feudal_government
 		culture = tamil
 		religion = tm_garland
-		difficulty = "BOOKMARK_CHARACTER_DIFFICULTY_HARD"
+		difficulty = "BOOKMARK_CHARACTER_DIFFICULTY_MEDIUM"
 		history_id = tm_garland_cantiradevi
 		position = { 1181 884 }
 		animation = personality_zealous
@@ -87,5 +87,20 @@ bm_867_crusader_dolls = {
 		history_id = tm_badenya_djeneba
 		position = { 310 760 }
 		animation = personality_honorable
+	}
+
+	# Bonadonna, an elder of the women of the lamp, keeps a scholars' camp at Arles (Ha-Nehpakhot). ID: tm_nehpakhot_bonadonna
+	character = {
+		name = "bookmark_tm_bonadonna"
+		type = female
+		birth = 812.1.1
+		title = d_laamp_tm_lamp
+		government = landless_adventurer_government
+		culture = occitan
+		religion = tm_nehpakhot
+		difficulty = "BOOKMARK_CHARACTER_DIFFICULTY_HARD"
+		history_id = tm_nehpakhot_bonadonna
+		position = { 395 455 }
+		animation = personality_rational
 	}
 }

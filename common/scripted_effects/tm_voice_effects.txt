@@ -1,0 +1,94 @@
+﻿# Crusader Dolls — the Companions back a daughter for the Mother of Mothers (docs/wave5/offices.md).
+# The Mother House (d_tm_mother_house) passes by the vanilla clerical appointment (succession_appointment/
+# clerical_christian.txt). The Companions are the Mother's koinonoi; they put their weight behind one daughter among
+# the appointment's candidates with change_appointment_investment (as pam_boost_clerical_appointment_score_effect
+# does), 25 each and 75 in all, so three Companions back her fully. A strong candidate who is not a daughter can still win.
+#
+# The backed daughter is kept on the title as var:tm_voice_backed, with var:tm_voice_backed_sum (what the Companions
+# have put in, at most 75) and var:tm_voice_backed_for (the Mother they backed her under; a new Mother starts afresh).
+# She is re-chosen when she dies, leaves the faith or the Mother's court and vassals; the sum starts again with her.
+#
+# Scope: title:d_tm_mother_house. scope:tm_voice_mother = its holder, of the faith.
+tm_voice_companions_back_daughter_effect = {
+	save_scope_as = tm_voice_mh
+	# A new Mother, or a backed daughter who is no longer a candidate: start afresh.
+	if = {
+		limit = {
+			has_variable = tm_voice_backed
+			OR = {
+				NOT = { var:tm_voice_backed_for ?= scope:tm_voice_mother }
+				var:tm_voice_backed ?= { NOT = { tm_voice_backable_daughter_trigger = yes } }
+			}
+		}
+		remove_variable = tm_voice_backed
+	}
+	# Choose the best-qualified daughter by the appointment's own score.
+	if = {
+		limit = {
+			NOT = { has_variable = tm_voice_backed }
+			scope:tm_voice_mother = {
+				OR = {
+					any_courtier = { tm_voice_backable_daughter_trigger = yes }
+					any_vassal = { tm_voice_backable_daughter_trigger = yes }
+				}
+			}
+		}
+		scope:tm_voice_mother = {
+			every_courtier = {
+				limit = { tm_voice_backable_daughter_trigger = yes }
+				add_to_temporary_list = tm_voice_pool
+			}
+			every_vassal = {
+				limit = { tm_voice_backable_daughter_trigger = yes }
+				add_to_temporary_list = tm_voice_pool
+			}
+		}
+		ordered_in_list = {
+			list = tm_voice_pool
+			order_by = "appointment_candidate_score(scope:tm_voice_mh)"
+			save_scope_as = tm_voice_choice
+		}
+		set_variable = { name = tm_voice_backed value = scope:tm_voice_choice }
+		set_variable = { name = tm_voice_backed_for value = scope:tm_voice_mother }
+		set_variable = { name = tm_voice_backed_sum value = 0 }
+	}
+	# The Companions put their weight behind her: 25 each, 75 in all. A Companion who has already backed her does not
+	# again.
+	if = {
+		limit = {
+			has_variable = tm_voice_backed
+			var:tm_voice_backed_sum < 75
+		}
+		var:tm_voice_backed = { save_scope_as = tm_voice_daughter }
+		ordered_living_character = {
+			limit = {
+				tm_voice_is_companion_trigger = yes
+				is_adult = yes
+				NOT = { this = scope:tm_voice_mother }
+				NOT = { this = scope:tm_voice_daughter }
+			}
+			order_by = learning
+			max = 7
+			check_range_bounds = no
+			save_scope_as = tm_voice_companion
+			if = {
+				limit = {
+					scope:tm_voice_mh.var:tm_voice_backed_sum < 75
+					succession_appointment_score_invested = {
+						title = scope:tm_voice_mh
+						candidate = scope:tm_voice_daughter
+						value < 25
+					}
+				}
+				scope:tm_voice_mh = {
+					change_appointment_investment = {
+						target = scope:tm_voice_daughter
+						investor = scope:tm_voice_companion
+						value = 25
+					}
+					change_variable = { name = tm_voice_backed_sum add = 25 }
+				}
+			}
+		}
+	}
+}

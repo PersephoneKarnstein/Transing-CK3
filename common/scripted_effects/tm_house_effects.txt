@@ -183,6 +183,16 @@ tm_house_yearly_effect = {
 			limit = { scope:tm_house_holder = { is_at_war = yes } }		# levies drawn from the House's county
 			change_variable = { name = tm_house_strain add = 1 }
 		}
+		if = {	# the faith's own office at the lord's court takes some of the weight (tm_voice_court_positions.txt)
+			limit = {
+				var:tm_house_strain > 0
+				scope:tm_house_holder = { tm_voice_court_has_office_trigger = yes }
+			}
+			random = {
+				chance = 33
+				change_variable = { name = tm_house_strain add = -1 }
+			}
+		}
 		if = {
 			limit = { var:tm_house_strain < 0 }
 			set_variable = { name = tm_house_strain value = 0 }

@@ -1,0 +1,25 @@
+﻿# Crusader Dolls — the Sisters Choose taken up by AI rulers (docs/wave5/succession.md).
+# In the 867 observe run to 1197 no ruler of the six faiths ever passed the law: vanilla AI does not weigh title
+# laws. So each year an AI ruler of the faiths with a daughter among the law's candidates may take it for her primary
+# title, at the law's prestige cost. A player always decides for herself.
+
+yearly_playable_pulse = {
+	on_actions = { tm_succ_yearly }
+}
+
+tm_succ_yearly = {
+	trigger = {
+		is_ai = yes
+		tm_succ_would_take_sisters_law_trigger = yes
+	}
+	effect = {
+		random = {
+			chance = 10
+			modifier = {	# she is a daughter herself
+				add = 10
+				tm_is_daughter_trigger = yes
+			}
+			primary_title = { add_title_law_effects = tm_sisters_elective_succession_law }
+		}
+	}
+}

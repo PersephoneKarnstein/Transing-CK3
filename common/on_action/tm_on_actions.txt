@@ -163,19 +163,36 @@ tm_on_game_start = {
 				set_variable = tm_kahal			# the women of the lamp's own street: the Turning is likelier here (tm_hipukh.0001)
 				holder ?= { save_scope_as = tm_arles_lord }
 			}
-			create_character = {
-				after_creation = { tm_register_seed_effect = { SEAT = arles } }
-				gender = female
-				age = { 50 65 }
-				culture = title:c_venaissin.culture
-				faith = faith:tm_nehpakhot
-				dynasty = none
-				location = title:c_venaissin.title_province
-				save_scope_as = tm_arles_elder
-				trait = tm_daughter_of_the_turning
-				trait = education_learning_4
-				trait = patient
-				learning = 16
+			# At 867 the elder is Bonadonna, who keeps the women of the lamp's camp (Roads to Power; history/titles/
+			# tm_laamp_titles.txt) and stands on the bookmark. At a later start she is dead and the script makes an elder
+			# at the lord's court instead.
+			character:tm_nehpakhot_bonadonna ?= {
+				if = {
+					limit = {
+						is_alive = yes
+						has_title = title:d_laamp_tm_lamp
+					}
+					save_scope_as = tm_arles_elder
+					save_scope_as = tm_arles_camp
+					tm_register_seed_effect = { SEAT = arles }
+				}
+			}
+			if = {
+				limit = { NOT = { exists = scope:tm_arles_elder } }
+				create_character = {
+					after_creation = { tm_register_seed_effect = { SEAT = arles } }
+					gender = female
+					age = { 50 65 }
+					culture = title:c_venaissin.culture
+					faith = faith:tm_nehpakhot
+					dynasty = none
+					location = title:c_venaissin.title_province
+					save_scope_as = tm_arles_elder
+					trait = tm_daughter_of_the_turning
+					trait = education_learning_4
+					trait = patient
+					learning = 16
+				}
 			}
 			while = {
 				count = 2
@@ -191,14 +208,22 @@ tm_on_game_start = {
 					trait = education_learning_2
 					save_temporary_scope_as = tm_arles_youth
 				}
-				# At the lord's court, as Jews of Arles served as its physicians: pool characters drift and die out.
+				# In Bonadonna's camp; else at the lord's court, as Jews of Arles served as its physicians: pool
+				# characters drift and die out.
 				if = {
+					limit = { exists = scope:tm_arles_camp }
+					scope:tm_arles_camp = { add_courtier = scope:tm_arles_youth }
+				}
+				else_if = {
 					limit = { exists = scope:tm_arles_lord }
 					scope:tm_arles_lord = { add_courtier = scope:tm_arles_youth }
 				}
 			}
 			if = {
-				limit = { exists = scope:tm_arles_lord }
+				limit = {
+					NOT = { exists = scope:tm_arles_camp }
+					exists = scope:tm_arles_lord
+				}
 				scope:tm_arles_lord = { add_courtier = scope:tm_arles_elder }
 			}
 
