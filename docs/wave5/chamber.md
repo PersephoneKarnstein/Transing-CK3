@@ -14,7 +14,7 @@ Modelled on the Yutai palace (`tm_palace`, `tm_yt2`, docs/wave3/yutai.md). The f
 - (b) Stay with the House: +50 piety.
 - (c) Diplomacy 10+: take the post and ask a notary of the empress's to write her among the women. Roll (50 + diplomacy ×2 against 50): written, or −25 piety and −25 prestige.
 
-**The balance** `tm_dl3_balance`, −3 to +3, on the throne's primary title. Created at 0. Yearly per seat: 30% drift toward 0; 25% +1 when a woman holds the throne or the regency (`tm_dl3_women_rule_trigger`: Garland's rule, women gained power in minorities and lost it under adult emperors, p. 198). Each daughter in post: 10% a year, +1.
+**The balance** `tm_dl3_balance`, −3 to +3, on the throne's primary title. Created at 0. Yearly per seat: 30% drift toward 0; 25% +1 when a woman holds the throne or the regency (`tm_dl3_women_rule_trigger`: Garland's rule, women gained power in minorities and lost it under adult emperors, p. 198). Each daughter in post: 20% a year, +1 (raised from 10%, at which an observe run to 1116 had 30 posts and never reached +1 long enough for a chrysobull or an estate).
 
 **What the balance does.**
 - **Chamber's ear (+2 or more):** the heresy ladder (`tm_byz.0010`–`0012`) does not fire for Dorleyite rulers under that throne (`tm_dl3_ladder_stayed_trigger` in the three event triggers). Invitations +3.

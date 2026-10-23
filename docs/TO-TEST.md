@@ -1022,6 +1022,9 @@ The succession scenarios (S1–S4) are in docs/wave5/succession.md; the offices'
 
 The full scenarios (C1-C6) are in docs/wave5/chamber.md.
 
+**AA4. The counts.** An observe run to 1173 (run 9) showed no daughter invited in the last fifteen years and none in post, with three eligible daughters under Sabas, one of them eligible for 62 years. The roll logic is the same that set the invitation marker in run 8, so it may be chance at 5% a year, but the save cannot tell. From now `tools/census_report.py` prints the chamber's run-wide counts (rolled, fired, took, stayed, lost, estate).
+- **Expect:** by 1000, with 3-9 daughters a decade, rolled in the tens; fired close to rolled; took roughly half of fired. Rolled 0 means the roll is not reached; rolled without fired means the event's trigger fails.
+
 ## AB. Badenya guardrails (added 2026-10-22, untested)
 
 **AB1. Scenes that skip her.** Through the run, check that *The Court Wonders* (tm_world.0030), the trusted-servant event (tm_isl.0001) and the jester's mimicry (tm_isl.0002) never fire for a Badenya daughter or a daughter of a sub-Saharan heritage, and that tm_isl.0001 never fires at a West African court. Other daughters still get them.

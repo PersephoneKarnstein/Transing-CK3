@@ -6,7 +6,8 @@
 What it reads (written by common/scripted_effects/tm_tracking_effects.txt and tm_growth_effects.txt):
   - the census kept on each faith by decade (tm_c<decade>_<what>), taken every 10 years;
   - the seats (tm_seat_branch on the seat county: vassal, lord or unheld) and who holds them now;
-  - the characters made at game start (global lists tm_seeds_<seat>): alive or dead, faith, court.
+  - the characters made at game start (global lists tm_seeds_<seat>): alive or dead, faith, court;
+  - the Women's Chamber's run-wide counts (globals tm_dl3_n_<step>, from tm_dl3_effects.txt).
 Saves must be plain text: turn off "compress saves" in the game settings, and do not play ironman.
 """
 import re
@@ -218,6 +219,17 @@ def main(path):
         p = parse(text[s + 1:block_end(text, s) - 1])
         tv = variables(get(p, 'variables'))[0]
         print(f"{seat:12} holder {who(get(p, 'holder'))}; start: {tv.get('tm_seat_branch', '(not a foothold seat)')}")
+    print()
+
+    # The Women's Chamber (tm_dl3_tally_effect): run-wide counts of each step.
+    print("== Women's Chamber ==")
+    steps = ('rolled', 'fired', 'took', 'stayed', 'lost', 'estate')
+    if any(f'tm_dl3_n_{s}' in gvars for s in steps):
+        print('  '.join(f'{s} {int(gvars.get(f"tm_dl3_n_{s}") or 0)}' for s in steps))
+        print('rolled: the yearly roll wrote to a daughter; fired: the letter reached her; took / stayed: her answer;\n'
+              'lost: a post that ended, for any cause; estate: counties the throne granted.')
+    else:
+        print('No counts (the save predates the tally, or the chamber has never written).')
     print()
 
     # Seeds.

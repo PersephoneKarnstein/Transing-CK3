@@ -33,6 +33,10 @@ tm_dl3.0001 = {
 		tm_dl3_can_take_post_trigger = yes	# not tm_dl3_invitable_trigger: the roll has already set tm_dl3_offered
 	}
 
+	immediate = {
+		tm_dl3_tally_effect = { WHAT = fired }
+	}
+
 	option = {	# Take the post
 		name = tm_dl3.0001.a
 		tm_dl3_take_post_effect = yes
@@ -53,6 +57,7 @@ tm_dl3.0001 = {
 	option = {	# Stay with the House
 		name = tm_dl3.0001.b
 		add_piety = 50
+		tm_dl3_tally_effect = { WHAT = stayed }
 		ai_chance = {
 			base = 30
 			modifier = { add = 20 has_trait = content }

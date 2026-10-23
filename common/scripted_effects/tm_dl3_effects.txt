@@ -6,6 +6,16 @@
 # staff their ministers (research/byz_garland_empresses.md, p. 5). Patriarchs stood against them: Nicholas had Zoe
 # Karbounopsina tonsured (p. 119); Keroularios opposed Theodora's appointing of clerics (p. 166).
 
+# Count one step of the chamber, run-wide, for tools/census_report.py: rolled (the yearly roll wrote), fired (the
+# letter arrived), took, stayed (she kept to the House), lost (a post ended, for any cause), estate. Scope: any.
+tm_dl3_tally_effect = {
+	if = {
+		limit = { NOT = { has_global_variable = tm_dl3_n_$WHAT$ } }
+		set_global_variable = { name = tm_dl3_n_$WHAT$ value = 0 }
+	}
+	change_global_variable = { name = tm_dl3_n_$WHAT$ add = 1 }
+}
+
 # Make sure the seat has a balance. Scope: the seat (a landed title).
 tm_dl3_seat_init_effect = {
 	if = {
@@ -55,6 +65,7 @@ tm_dl3_take_post_effect = {
 	}
 	set_variable = tm_dl3_chamber
 	add_character_modifier = { modifier = tm_dl3_chamber_modifier }
+	tm_dl3_tally_effect = { WHAT = took }
 	scope:tm_dl3_throne = {
 		add_opinion = { target = root modifier = grateful_opinion opinion = 15 }
 	}
@@ -62,6 +73,7 @@ tm_dl3_take_post_effect = {
 
 # She leaves the chamber, or is put out of it. Scope: the daughter.
 tm_dl3_lose_post_effect = {
+	tm_dl3_tally_effect = { WHAT = lost }
 	remove_variable = tm_dl3_chamber
 	remove_character_modifier = tm_dl3_chamber_modifier
 }
@@ -101,6 +113,7 @@ tm_dl3_grant_estate_effect = {
 		}
 		resolve_title_and_vassal_change = scope:tm_dl3_change
 	}
+	tm_dl3_tally_effect = { WHAT = estate }
 }
 
 # The estate goes back to the throne. Scope: the daughter. Needs scope:tm_dl3_estate and scope:tm_dl3_throne.
@@ -160,11 +173,12 @@ tm_dl3_yearly_effect = {
 			}
 		}
 		# A daughter in post: her own work draws the chamber up a little, and the Patriarch's party writes when the
-		# court leans.
+		# court leans. At 20% against the 30% drift, one daughter in post holds the chamber at +2 or more about a
+		# quarter of the time (at 10% it almost never got there: a run to 1116 had 30 posts, no chrysobull, no estate).
 		if = {
 			limit = { has_variable = tm_dl3_chamber }
 			random = {
-				chance = 10
+				chance = 20
 				scope:tm_dl3_seat = {
 					change_variable = { name = tm_dl3_balance add = 1 }
 					clamp_variable = { name = tm_dl3_balance min = -3 max = 3 }
@@ -248,6 +262,7 @@ tm_dl3_invite_roll_effect = {
 		modifier = { add = 3 scope:tm_dl3_seat = { var:tm_dl3_balance >= 2 } }
 		modifier = { add = -3 scope:tm_dl3_seat = { var:tm_dl3_balance <= -2 } }
 		set_variable = { name = tm_dl3_offered value = yes years = 15 }
+		tm_dl3_tally_effect = { WHAT = rolled }
 		trigger_event = { id = tm_dl3.0001 days = { 1 300 } }
 	}
 }
