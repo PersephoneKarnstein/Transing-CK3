@@ -34,7 +34,7 @@
  tm_bd2.0030.a:0 "Pay her."
  tm_bd2.0030.b:0 "Pay what I can, and let her make of it what she will."
  tm_bd2.0030.b.praise:0 "She sang it again as praise"
- tm_bd2.0030.b.satire:0 "She sang it again as a joke, and the yard laughed"
+ tm_bd2.0030.b.satire:0 "She sang it again, this time of a host too mean to pay, and the yard laughed at the host's purse"
  tm_bd2.0030.c:0 "Send her away."
  tm_bd2_hot_realm_modifier:0 "A Hot Realm"
  tm_bd2_hot_realm_modifier_desc:0 "This ruler's realm has changed hands and is still hot. Tempers are quick until a cool word settles it."

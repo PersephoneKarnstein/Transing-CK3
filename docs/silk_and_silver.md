@@ -153,6 +153,8 @@ So the house is a draper's and an apothecary's company, plus a scriptorium. Its 
 
 **A ready-made tradition.** *Saharan Traders* is a vanilla tradition with a Become Merchant decision, longer routes and expertise in salt, precious stones and precious metals. The Bure goldfields lie near Kirina and Niani (to source; Gomez 2018 probably covers it). The Mande-speaking traders, the Wangara and later Dyula, are the obvious historical merchants here.
 
+**No captives.** A Badenya house never trades in captives or slaves, whatever the period's trans-Saharan trade carried (Badenya Guardrails 1 and 13, [docs/faiths/badenya.md](faiths/badenya.md#guardrails)).
+
 **One caution about the Dyula.** They were Muslim, so a Badenya merchant house should not be presented as "the Dyula". A Badenya-faith house among Mande traders is enough.
 
 **Fit with existing content.** Commission routes and the jeli's praise economy fit together: gold paid for praise is already a Badenya theme. Smiths belong to a nyamakala group, not a merchant one, so keep the faith's smith out of the merchant role.

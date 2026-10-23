@@ -249,10 +249,10 @@ tm_world_yearly = {
 				tm_flavour_ready_trigger = yes
 				faith = { religion_tag = christianity_religion }
 				tm_world_hostile_court_trigger = yes
-				any_courtier = { tm_world_daughter_trigger = yes tm_world_rested_trigger = yes }
+				any_courtier = { tm_world_daughter_trigger = yes tm_world_rested_trigger = yes NOT = { tm_world_trope_guard_trigger = yes } }
 			}
 			random_courtier = {
-				limit = { tm_world_daughter_trigger = yes tm_world_rested_trigger = yes }
+				limit = { tm_world_daughter_trigger = yes tm_world_rested_trigger = yes NOT = { tm_world_trope_guard_trigger = yes } }
 				save_scope_as = tm_world_daughter
 			}
 			random = {

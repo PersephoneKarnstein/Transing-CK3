@@ -1021,3 +1021,15 @@ The succession scenarios (S1–S4) are in docs/wave5/succession.md; the offices'
 **AA3. The ladder.** At the chamber's ear the heresy laws stop for Dorleyite rulers under that throne; at the Patriarch's they come faster.
 
 The full scenarios (C1-C6) are in docs/wave5/chamber.md.
+
+## AB. Badenya guardrails (added 2026-10-22, untested)
+
+**AB1. Scenes that skip her.** Through the run, check that *The Court Wonders* (tm_world.0030), the trusted-servant event (tm_isl.0001) and the jester's mimicry (tm_isl.0002) never fire for a Badenya daughter or a daughter of a sub-Saharan heritage, and that tm_isl.0001 never fires at a West African court. Other daughters still get them.
+
+**AB2. The satire result.** Pay the jeli what you can in *The Word That Cools* (tm_badenya.0012) and *Uninvited Praise* (tm_bd2.0030) until the satire comes up: the line mocks the purse, not her.
+
+**AB3. The burial.** In *The House Buries Its Own* (tm_badenya.0030), giving her to her blood kin costs 20 piety.
+
+**AB4. The claiming mother.** The woman who claims her in tm_badenya.0011 is never a prisoner or a concubine.
+
+The full list is in docs/faiths/badenya.md, "Guardrails".

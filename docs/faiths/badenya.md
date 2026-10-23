@@ -64,7 +64,7 @@ Women held real power at this court: Sulaymān's chief wife, Qāsā, shared the 
 | *Hot* (modifier) | Stress gain rises until the word cools her. | Jansen 2002, pp. 53–54; Schulz 2002, p. 816 n. 49 | [note](../research/waf_jansen_kangaba_griots.md), [note](../research/waf_schulz_jelimusow.md) |
 | *My Mother's Child* (tm_badenya.0011) | A woman of her family, or a woman of the court who likes her, claims her. Without one she waits. | Conrad and Condé 2004, ll. 2688–89, 3110; Koné 2004, pp. 2–3 | [note](../research/waf_conrad_conde_sunjata.md), [note](../research/waf_kone_male_female_mande.md) |
 | The bracelets (option) | She pays 25 gold for her crossing, or the claimer bears the cost in prestige. | Jansen 2002, p. 127 | [note](../research/waf_jansen_kangaba_griots.md) |
-| *The Word That Cools* (tm_badenya.0012) | A jeli speaks her name before her lord. Paid well, it is praise; paid what she can, it may be a joke the court remembers. | Ibn Baṭṭūṭa, *Voyages* IV, pp. 411–414; Schulz 2002, p. 801 n. 10 | [note](../research/waf_ibn_battuta_mali.md), [note](../research/waf_schulz_jelimusow.md) |
+| *The Word That Cools* (tm_badenya.0012) | A jeli speaks her name before her lord. Paid well, it is praise; paid what she can, the jeli may mock her thin purse, never her name (Guardrail 5). | Ibn Baṭṭūṭa, *Voyages* IV, pp. 411–414; Schulz 2002, p. 801 n. 10 | [note](../research/waf_ibn_battuta_mali.md), [note](../research/waf_schulz_jelimusow.md) |
 | *A Name Before the Mansa* (tm_badenya.0002) | She takes a name "of the old songs" or keeps her own, with the claiming mother's name before it. | Conrad and Condé 2004, p. xxxv; Niane 1965, p. 15 n. 27; Jansen 2018, p. 14 n. 50 | [note](../research/waf_conrad_conde_sunjata.md) |
 | *The Djinn Returns* (tm_badenya.0015) | A year on, the djinn comes back once for a second price: gold, piety, or nothing and five years' ill health. | Jansen 2018, pp. 9–10 (the potters' yearly debt), made a one-off | [note](../research/waf_jansen_kangaba_griots.md) |
 | *Mother's Children* (tenet) | Adopted daughters inherit as daughters of the blood; adoption is always possible; same-faith opinion +10. | Gomez 2018, chs. 3 and 6 (Ghana, 1063); Ibn Baṭṭūṭa, *Voyages* IV, p. 388; Ibn Khaldūn II, p. 111 | [note](../research/waf_gomez_african_dominion.md), [note](../research/waf_ibn_khaldun_mali.md) |
@@ -90,7 +90,7 @@ Women held real power at this court: Sulaymān's chief wife, Qāsā, shared the 
 
 **The line.** The tenet *Mother's Children* lets adopted daughters inherit as daughters of the blood, and keeps adoption always open. With the shared *Take as Daughter* and *The Sisters Choose*, a Badenya ruler can pass her realm to a claimed daughter or a sister's child. Re-embodied daughters bear no children, so the line runs by claiming.
 
-**Feasts and funerals.** Each year a daughter of the House may be called to a naming feast. She serves at her first three, then may host one for 25 gold and five years' prestige. When a daughter dies, her lord decides whether the House buries her. Burial by the House earns piety and the respect of daughters at court. Giving her to her blood kin earns a little prestige and their resentment.
+**Feasts and funerals.** Each year a daughter of the House may be called to a naming feast. She serves at her first three, then may host one for 25 gold and five years' prestige. When a daughter dies, her lord decides whether the House buries her. Burial by the House earns piety and the respect of daughters at court. Giving her to her blood kin costs piety and earns the daughters' resentment (Guardrail 6).
 
 **The New Roof.** Every seventh dry season a court of the faith puts a new roof on its house. The daughters who crossed since the last roof are gathered into one age-set, whose name is told first and shouted when the roof is on (Jansen 2002, pp. 45–47, 52). The host pays for the roof, or lets the court's offerings be called aloud with each giver's name (p. 51); either way the set's members stand together for seven years. It is built on Mande house and age-set practice, not on the Kamabolon of Kangaba, and the seven-yearly roof as the faith's own is a reconstruction.
 
@@ -98,9 +98,9 @@ Women held real power at this court: Sulaymān's chief wife, Qāsā, shared the 
 
 **Growth.** The shared call reaches West Africa: each year a Marked person of another faith there may join Badenya, more likely with a member or a House nearby. In one test run a converted lord's line took Mali in 967 and Badenya ruled thirteen kingdoms; a faith this small should grow slowly, so Kirina now starts as a county and a court, not a converted lord. In a later run Badenya fell to one member in the 970s and recovered to 39 by the 1000s.
 
-**Neighbours.** Most of the faith's neighbours are Muslim. Under the shared rules, Islamic courts value a daughter as a trusted servant and think less of her as a ruler. That reaction leans partly on Leo Africanus's Fez of the early 16th century, where, as Davis reads him, people Leo calls men, in women's dress, cooked for the army and lamented the dead but were barred from the mosques (Davis 2006, chs. 4 and 7). The Maliki jurist at the mansa's court is the hostile voice. Since wave 4 a daughter at a Muslim court may also put herself under the lord's word, and a lord who keeps the code will not give her up to a demanding liege or neighbour. In the Sahel this is always *A Free Man's Word*: Tor's *futuwwa* belongs to Iran and Iraq before 1056, so the word *fityan* never appears here (Tor 2007, pp. 248–250; [docs/wave4/protection.md](../wave4/protection.md)). Jewish and Indic reactions apply as for every faith.
+**Neighbours.** Most of the faith's neighbours are Muslim. Under the shared rules, Islamic courts value a daughter as a trusted servant and think less of her as a ruler; in the Sahel, and for a daughter of Badenya anywhere, the servant scene and the jester's mimicry do not fire (Guardrails 4, 7). That reaction leans partly on Leo Africanus's Fez of the early 16th century, where, as Davis reads him, people Leo calls men, in women's dress, cooked for the army and lamented the dead but were barred from the mosques (Davis 2006, chs. 4 and 7). The Maliki jurist at the mansa's court is the hostile voice. Since wave 4 a daughter at a Muslim court may also put herself under the lord's word, and a lord who keeps the code will not give her up to a demanding liege or neighbour. In the Sahel this is always *A Free Man's Word*: Tor's *futuwwa* belongs to Iran and Iraq before 1056, so the word *fityan* never appears here (Tor 2007, pp. 248–250; [docs/wave4/protection.md](../wave4/protection.md)). Jewish and Indic reactions apply as for every faith.
 
-**Designed, not yet built.** A refuge at the rock of Koulikoro, which from 1819 to about 1930 sheltered runaways of either sex fleeing a master or a spouse (Bulman et al. 2023, ch. 2, p. 63), without its shrine; and a warm misreading by the Orisha faith, which would see a daughter as a bride of the god (Matory 2005, pp. 7, 216–217).
+**Designed, not yet built.** A refuge at the rock of Koulikoro, which from 1819 to about 1930 sheltered runaways of either sex fleeing a master or a spouse (Bulman et al. 2023, ch. 2, p. 63), without its shrine and without any Underground Railroad imagery (Guardrail 11); and a warm misreading by the Orisha faith, which would see a daughter as a bride of the god (Matory 2005, pp. 7, 216–217).
 
 ## What is attested and what is invented
 
@@ -127,6 +127,35 @@ Women held real power at this court: Sulaymān's chief wife, Qāsā, shared the 
 - Mande terms and god names: the high god "Ala", the spirits, the ancestors and the bush spirits all await a Mande speaker's check.
 
 The design notes add a warning from van Beek's restudy of Griaule. A powerful outsider with a thesis, and informants who supply what he wants, produced an "intercultural fiction" the field could not find (van Beek 1991, pp. 153–158). A mod that wants trans women in medieval Mali is also an eager outsider. That is why this page marks every step.
+
+## Guardrails
+
+Read from Snorton, *Black on Both Sides*; Gill-Peterson, *A Short History of Trans Misogyny*; and Bey, *Black Trans Feminism* and *Cistem Failure* ([note](../research/book_snorton_black_on_both_sides.md), [note](../research/book_gill_peterson_short_history.md), [note](../research/book_bey_black_trans_feminism.md), [note](../research/book_bey_cistem_failure.md)). These books are about Black trans people in the modern United States. They are not evidence about the medieval Sahel; they are read here, as the scholarship on antisemitism was read for Ha-Nehpakhot, for the tropes a game could reproduce. US racial categories are never carried back onto Ghana or Mali.
+
+**Bodies and violence**
+1. No crossing is caused by captivity, sale or a master's act. No person is ever the djinn's price; she gives only herself.
+2. No examination of her body, no forced stripping or exposure, in life or after death. No praise for enduring pain.
+3. A daughter is never shown only through violence or death. No martyrdom, no death counts, and persecution is never a mechanic.
+
+**Her womanhood**
+4. No "unmasked", "really a man" or disguise plots. No "deceiver" excuse lessens a harm done to her.
+5. Satire may mock a thin purse or a mean patron, never her womanhood or her name.
+6. No Black woman, cis or trans, is written as a "not-quite-woman". Her birth name is never printed, and burying her under it is never rewarded.
+
+**Stock figures**
+7. No faithful-servant or mammy figure: no reward for loyal service with the keys. A claiming mother is not a selfless prop.
+8. No "African matriarchy", no controlling-mother type, no hypermasculine Mande men.
+
+**Africa and race**
+9. No golden African past or "kings and queens" register; no "Mother Africa" mysticism or "juju"-type words; no "primitive" or civilizing-mission framing; no human sacrifice; no animal or monster comparison and no exhibition of her as a marvel.
+10. Mande gender is never shown as naturally fluid, "ungendered" or open to crossing, and gender never arrives with outsiders.
+11. No US or Atlantic imagery: no fugitive, maroon or plantation pictures, no African American vernacular in Mande mouths. The Koulikoro refuge, if built, must not read as an Underground Railroad.
+12. No ethnic weighting of the Mark. Re-embodiment never changes her skin. Badenya is never presented as "the Black trans faith".
+
+**Money and status**
+13. Gold buys praise, never her status or her protection. No trading in captives.
+
+**In code.** `tm_world_trope_guard_trigger` (tm_world_triggers.txt) marks a daughter of Badenya or of a sub-Saharan heritage. Scenes of exhibition (*The Court Wonders*, tm_world.0030), of the trusted household servant (tm_isl.0001, which also never fires at a West African court) and of a jester's mimicry (tm_isl.0002) skip her. A claiming mother is never a prisoner or a concubine (tm_badenya.0011).
 
 ## Sources
 

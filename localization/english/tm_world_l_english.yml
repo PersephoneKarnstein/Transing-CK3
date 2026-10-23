@@ -83,7 +83,7 @@
 
  # 37. The Court Wonders (0030) and the abbess's feast (0031).
  tm_world.0030.t:0 "The Court Wonders"
- tm_world.0030.desc:0 "My guests stare at [tm_world_daughter.GetFirstName] and ask what she is. Some call her a marvel of nature, like the elephant the caliph sent to Aachen. Some call her a miracle. My chaplain mutters about the devil's deceits."
+ tm_world.0030.desc:0 "My guests stare at [tm_world_daughter.GetFirstName] and ask what she is. Some call her a marvel of nature. Some call her a miracle. My chaplain mutters about the devil's deceits."
  tm_world.0030.desc_greek:0 " He reminds me of the Church's rule for wonders: the lives of the saints are there to be wondered at, not walked."
  tm_world.0030.desc_latin:0 " He reminds me of the Church's rule for wonders: non imitandum sed admirandum. They are to be marvelled at, not copied."
  tm_world.0030.a:0 "A marvel of nature. Let the guests see her."

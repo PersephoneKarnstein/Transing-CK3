@@ -809,7 +809,7 @@ Cited in the notes, not read: Nanda, Serena, *Neither Man nor Woman: The Hijras 
 <details>
 <summary><strong>Fiction</strong> (1 work)</summary>
 
-- Greaves, Alyson. 2022. *Welcome to Dorley Hall*. The Sisters of Dorley, book 1. Serialised online from 2022; print edition from Wilton Square Books. Read through the fan wiki *Dorleybase* (dorley.wiki), the publisher's description and reader reviews. See [`docs/dorley_precedent.md`](docs/dorley_precedent.md).
+- Greaves, Alyson. 2022. *Welcome to Dorley Hall*. The Sisters of Dorley, book 1. Serialised online from 2022; print edition from Wilton Square Books. See [`docs/dorley_precedent.md`](docs/dorley_precedent.md).
 
 </details>
 

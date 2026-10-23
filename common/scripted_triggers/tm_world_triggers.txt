@@ -11,6 +11,28 @@ tm_world_daughter_trigger = {
 	}
 }
 
+# A daughter whom a scene of exhibition, servitude or mimicry would cast in a racist trope: a daughter of Badenya, or
+# of a sub-Saharan African heritage (Badenya guardrails, docs/faiths/badenya.md; research/book_snorton_black_on_both_sides.md,
+# book_gill_peterson_short_history.md). Such scenes skip her. Scope: the character.
+tm_world_trope_guard_trigger = {
+	OR = {
+		faith = faith:tm_badenya
+		culture ?= {
+			OR = {
+				has_cultural_pillar = heritage_sahelian
+				has_cultural_pillar = heritage_senegambian
+				has_cultural_pillar = heritage_west_african
+				has_cultural_pillar = heritage_akan
+				has_cultural_pillar = heritage_yoruba
+				has_cultural_pillar = heritage_central_african
+				has_cultural_pillar = heritage_bantu
+				has_cultural_pillar = heritage_east_african
+				has_cultural_pillar = heritage_somalian
+			}
+		}
+	}
+}
+
 # Not hit by one of these events in the last three years (tm_world_mark_effect), so no daughter is spammed.
 tm_world_rested_trigger = {
 	NOT = { has_character_flag = tm_world_recent }

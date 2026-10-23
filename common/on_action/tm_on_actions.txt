@@ -536,13 +536,16 @@ tm_yearly_turning = {
 tm_yearly_islamic_courts = {
 	trigger = {
 		rite ?= { rite_has_parameter = islamic_syncretic_recipient }
-		any_courtier = { tm_is_daughter_trigger = yes is_adult = yes }
+		# Not at a Sahel court, and never a Badenya or sub-Saharan daughter: the trusted household servant with the keys
+		# is the faithful-servant trope there, and Mali had no eunuch office (Badenya guardrails, docs/faiths/badenya.md).
+		NOT = { capital_province ?= { geographical_region = world_africa_west } }
+		any_courtier = { tm_is_daughter_trigger = yes is_adult = yes NOT = { tm_world_trope_guard_trigger = yes } }
 	}
 	effect = {
 		random = {
 			chance = 5
 			random_courtier = {
-				limit = { tm_is_daughter_trigger = yes is_adult = yes }
+				limit = { tm_is_daughter_trigger = yes is_adult = yes NOT = { tm_world_trope_guard_trigger = yes } }
 				save_scope_as = tm_isl_daughter
 			}
 			trigger_event = { id = tm_isl.0001 days = { 1 300 } }
@@ -620,6 +623,7 @@ tm_yearly_playable = {
 		if = {
 			limit = {
 				tm_is_daughter_trigger = yes
+				NOT = { tm_world_trope_guard_trigger = yes }	# no jester's caricature of a Black daughter (Badenya guardrails)
 				any_neighboring_top_liege_realm_owner = { rite ?= { rite_has_parameter = islamic_syncretic_recipient } }
 			}
 			random = {

@@ -58,6 +58,8 @@ tm_badenya.0011 = {
 				is_female = yes
 				is_adult = yes
 				is_alive = yes
+				is_imprisoned = no
+				is_concubine = no		# a claiming is freely made: never by a captive or a concubine (Badenya guardrails)
 				NOT = { opinion = { target = root value < 0 } }
 			}
 			save_scope_as = tm_claimer
@@ -87,6 +89,8 @@ tm_badenya.0011 = {
 					limit = {
 						is_female = yes
 						is_adult = yes
+						is_imprisoned = no
+						is_concubine = no
 						NOT = { this = root }
 						opinion = { target = root value >= 10 }
 					}
@@ -268,7 +272,7 @@ tm_badenya.0030 = {
 	}
 	option = {	# Let her blood kin take her, and her old name
 		name = tm_badenya.0030.b
-		add_prestige = 15
+		add_piety = -20	# never rewarded: her kin bury her under the old name (Badenya guardrails)
 		every_courtier = {
 			limit = { tm_is_daughter_trigger = yes }
 			add_opinion = { target = root modifier = tm_buried_under_old_name_opinion }
