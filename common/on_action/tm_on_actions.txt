@@ -598,6 +598,7 @@ tm_yearly_playable = {
 				random = {
 					chance = 3
 					modifier = { add = 5 current_date >= 1081.1.1 }	# the Komnenian turn
+					modifier = { add = 3 tm_dl3_patriarch_ear_trigger = yes }	# the Patriarch's party has the throne's ear (tm_dl3)
 					if = {
 						limit = { NOT = { has_variable = tm_suppression } }
 						trigger_event = { id = tm_byz.0010 days = { 1 300 } }

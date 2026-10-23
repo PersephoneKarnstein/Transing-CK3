@@ -1,0 +1,17 @@
+﻿# Crusader Dolls — the Women's Chamber (tm_dl3_events.txt). Appends to vanilla's yearly_global_pulse.
+yearly_global_pulse = {
+	on_actions = { tm_dl3_yearly }
+}
+
+tm_dl3_yearly = {
+	effect = {
+		every_living_character = {
+			limit = {
+				faith = faith:transbian_maximalism
+				tm_is_daughter_trigger = yes
+				is_adult = yes
+			}
+			tm_dl3_yearly_effect = yes
+		}
+	}
+}

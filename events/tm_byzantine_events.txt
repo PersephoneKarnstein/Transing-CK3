@@ -53,7 +53,10 @@ tm_byz.0010 = {
 
 	# Scapegoat pressure (Transpsychoanalytics row 1): a hostile faith that is secure lets this pass some years
 	# (tm_mech_scapegoat_effect, common/scripted_effects/tm_mech_effects.txt).
-	trigger = { NOT = { has_variable = tm_scapegoat_calm } }
+	trigger = {
+		NOT = { has_variable = tm_scapegoat_calm }
+		NOT = { tm_dl3_ladder_stayed_trigger = yes }	# the Women's Chamber (tm_dl3_triggers.txt)
+	}
 
 	immediate = { set_variable = { name = tm_suppression value = 1 } }
 
@@ -100,7 +103,10 @@ tm_byz.0011 = {
 
 	# Scapegoat pressure (Transpsychoanalytics row 1): a hostile faith that is secure lets this pass some years
 	# (tm_mech_scapegoat_effect, common/scripted_effects/tm_mech_effects.txt).
-	trigger = { NOT = { has_variable = tm_scapegoat_calm } }
+	trigger = {
+		NOT = { has_variable = tm_scapegoat_calm }
+		NOT = { tm_dl3_ladder_stayed_trigger = yes }	# the Women's Chamber (tm_dl3_triggers.txt)
+	}
 
 	immediate = { set_variable = { name = tm_suppression value = 2 } }
 
@@ -134,7 +140,10 @@ tm_byz.0012 = {
 
 	# Scapegoat pressure (Transpsychoanalytics row 1): a hostile faith that is secure lets this pass some years
 	# (tm_mech_scapegoat_effect, common/scripted_effects/tm_mech_effects.txt).
-	trigger = { NOT = { has_variable = tm_scapegoat_calm } }
+	trigger = {
+		NOT = { has_variable = tm_scapegoat_calm }
+		NOT = { tm_dl3_ladder_stayed_trigger = yes }	# the Women's Chamber (tm_dl3_triggers.txt)
+	}
 
 	immediate = { set_variable = { name = tm_suppression value = 3 } }
 

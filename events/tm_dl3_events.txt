@@ -1,0 +1,305 @@
+﻿namespace = tm_dl3
+
+# The Women's Chamber (docs/wave5/chamber.md). Built on the Yutai palace (tm_palace_events.txt, tm_yt2_events.txt).
+# A daughter of the Sisters under a Byzantine throne, or anywhere when the emperor of the Romans' chamber writes, is
+# offered a post in the chamber. The empress kept the gynaikonitis with a staff mostly of eunuchs, and the empresses
+# who ruled made them their ministers (research/byz_garland_empresses.md, p. 5). The register filing her as a eunuch is
+# the faith's polemic ("the court calls its eunuchs angels"), not the narrator's claim. No historical chamberlain is
+# claimed for the faith.
+# The standing value is tm_dl3_balance on the throne's primary title (tm_dl3_effects.txt), the chamber against the
+# Patriarch's party: Nicholas had Zoe Karbounopsina tonsured (Garland, p. 119); Keroularios opposed Theodora (p. 166).
+#   0001  the chamber writes: take the post, stay with the House, or take it and have a notary of the empress's write
+#         her as a woman
+#   0002  a letter from the Patriarch's synod, when the court leans (tm_dl3_yearly_effect)
+#   0003  the chrysobull annulled: an estate the chamber won, at a throne where the Patriarch's party holds everything
+#         (Basil II's Novel of 996; research/hist_tougher_eunuch_byzantine.md, p. 56)
+#   0010  the chamber at work (decision tm_dl3_work_chamber_decision): a chrysobull for a House, the empress's audience,
+#         the chamber's own staff, an estate from the throne's demesne
+# Root = the daughter. scope:tm_dl3_throne = the throne, scope:tm_dl3_seat = its primary title. Started from
+# tm_dl3_yearly (tm_dl3_on_actions.txt).
+
+# The chamber writes. Root = the daughter.
+tm_dl3.0001 = {
+	type = character_event
+	title = tm_dl3.0001.t
+	desc = tm_dl3.0001.desc
+	theme = intrigue
+	left_portrait = { character = root animation = personality_rational }
+	right_portrait = { character = scope:tm_dl3_throne animation = personality_honorable }
+
+	trigger = {
+		exists = scope:tm_dl3_throne
+		scope:tm_dl3_throne = { tm_dl3_byzantine_throne_trigger = yes }
+		tm_dl3_invitable_trigger = yes
+	}
+
+	option = {	# Take the post
+		name = tm_dl3.0001.a
+		tm_dl3_take_post_effect = yes
+		if = {
+			limit = { rite ?= { rite_has_parameter = tm_castrates_third_kind } }
+			add_prestige = 25	# the Galenic wing counts as the Emperor counts
+		}
+		else = {
+			custom_tooltip = tm_dl3_registered_tt
+			add_piety = -25
+		}
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = ambitious }
+			modifier = { add = -20 has_trait = content }
+		}
+	}
+	option = {	# Stay with the House
+		name = tm_dl3.0001.b
+		add_piety = 50
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = content }
+			modifier = { add = 10 has_trait = zealous }
+		}
+	}
+	option = {	# Take it, and have the empress's notary write her as a woman
+		name = tm_dl3.0001.c
+		trigger = { diplomacy >= 10 }
+		tm_dl3_take_post_effect = yes
+		random_list = {
+			50 = {
+				modifier = { add = { value = diplomacy multiply = 2 } }
+				desc = tm_dl3.0001.c.written
+			}
+			50 = {
+				desc = tm_dl3.0001.c.refused
+				add_piety = -25
+				add_prestige = -25
+			}
+		}
+		ai_chance = {
+			base = 20
+			modifier = { add = 20 has_trait = diplomat }
+		}
+	}
+}
+
+# A letter from the Patriarch's synod. Root = the daughter, in post.
+tm_dl3.0002 = {
+	type = character_event
+	title = tm_dl3.0002.t
+	desc = tm_dl3.0002.desc
+	theme = faith
+	left_portrait = { character = root animation = worry }
+	right_portrait = { character = scope:tm_dl3_throne animation = personality_rational }
+
+	trigger = {
+		has_variable = tm_dl3_chamber
+		exists = scope:tm_dl3_seat
+	}
+
+	option = {	# The empress's chamber will answer for me
+		name = tm_dl3.0002.a
+		random_list = {
+			60 = {
+				desc = tm_dl3.0002.a.kept
+				modifier = { add = 20 scope:tm_dl3_throne ?= { tm_dl3_women_rule_trigger = yes } }
+				add_prestige = 25
+				scope:tm_dl3_seat = { tm_dl3_chamber_effect = { AMOUNT = 1 } }
+			}
+			40 = {
+				desc = tm_dl3.0002.a.lost
+				tm_dl3_lose_post_effect = yes
+				scope:tm_dl3_seat = { tm_dl3_patriarch_effect = yes }
+				add_prestige = -100
+			}
+		}
+		ai_chance = { base = 40 }
+	}
+	option = {	# Give up the post before it is taken
+		name = tm_dl3.0002.b
+		tm_dl3_lose_post_effect = yes
+		add_piety = 50
+		ai_chance = { base = 30 }
+	}
+	option = {	# Pay the synod's notary to misplace a page
+		name = tm_dl3.0002.c
+		trigger = { gold >= 100 }
+		remove_short_term_gold = 100
+		ai_chance = { base = 30 }
+	}
+}
+
+# The chrysobull annulled. Root = the daughter. scope:tm_dl3_estate = the county the chamber won for her.
+tm_dl3.0003 = {
+	type = character_event
+	title = tm_dl3.0003.t
+	desc = tm_dl3.0003.desc
+	theme = intrigue
+	left_portrait = { character = root animation = worry }
+	right_portrait = { character = scope:tm_dl3_throne animation = personality_cynical }
+
+	trigger = {
+		exists = scope:tm_dl3_estate
+		scope:tm_dl3_estate = { holder ?= root }
+		exists = top_liege
+		top_liege = { tm_dl3_byzantine_throne_trigger = yes }
+	}
+
+	immediate = {
+		top_liege = { save_scope_as = tm_dl3_throne }
+	}
+
+	option = {	# Give it back, and keep my name
+		name = tm_dl3.0003.a
+		tm_dl3_return_estate_effect = yes
+		add_piety = 50
+		ai_chance = { base = 30 }
+	}
+	option = {	# Pay the logothete to find the chrysobull in order
+		name = tm_dl3.0003.b
+		trigger = { gold >= 150 }
+		remove_short_term_gold = 150
+		ai_chance = { base = 40 }
+	}
+	option = {	# Appeal to the throne in person
+		name = tm_dl3.0003.c
+		random_list = {
+			50 = {
+				modifier = { add = { value = diplomacy multiply = 2 } }
+				modifier = { add = 20 scope:tm_dl3_throne = { tm_dl3_women_rule_trigger = yes } }
+				desc = tm_dl3.0003.c.kept
+				add_prestige = 25
+			}
+			50 = {
+				desc = tm_dl3.0003.c.lost
+				tm_dl3_return_estate_effect = yes
+				add_prestige = -50
+			}
+		}
+		ai_chance = { base = 30 }
+	}
+}
+
+# The chamber at work. Root = the daughter, in post. scope:tm_dl3_throne, scope:tm_dl3_seat.
+tm_dl3.0010 = {
+	type = character_event
+	title = tm_dl3.0010.t
+	desc = {
+		desc = tm_dl3.0010.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:tm_dl3_seat = { var:tm_dl3_balance >= 2 } }
+				desc = tm_dl3.0010.desc_chamber
+			}
+			triggered_desc = {
+				trigger = { scope:tm_dl3_seat = { var:tm_dl3_balance <= -2 } }
+				desc = tm_dl3.0010.desc_patriarch
+			}
+			desc = tm_dl3.0010.desc_even
+		}
+	}
+	theme = intrigue
+	left_portrait = { character = root animation = scheme }
+	right_portrait = { character = scope:tm_dl3_throne animation = personality_rational }
+
+	trigger = {
+		has_variable = tm_dl3_chamber
+		exists = scope:tm_dl3_seat
+	}
+
+	option = {	# A chrysobull for a House
+		name = tm_dl3.0010.a
+		trigger = {
+			scope:tm_dl3_seat = { var:tm_dl3_balance >= 1 }
+			scope:tm_dl3_throne = {
+				any_vassal_or_below = {
+					faith = faith:transbian_maximalism
+					tm_holds_sisters_house_trigger = yes
+					NOT = { has_variable = tm_dl3_chrysobull }
+				}
+			}
+		}
+		scope:tm_dl3_seat = { tm_dl3_spend_effect = { AMOUNT = 1 } }
+		add_piety = 25
+		custom_tooltip = tm_dl3_chrysobull_tt
+		scope:tm_dl3_throne = {
+			random_vassal_or_below = {
+				limit = {
+					faith = faith:transbian_maximalism
+					tm_holds_sisters_house_trigger = yes
+					NOT = { has_variable = tm_dl3_chrysobull }
+				}
+				set_variable = { name = tm_dl3_chrysobull value = yes years = 10 }
+				add_opinion = { target = root modifier = grateful_opinion opinion = 20 }
+			}
+		}
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = zealous }
+		}
+	}
+	option = {	# Sit in the empress's chamber
+		name = tm_dl3.0010.b
+		trigger = {
+			scope:tm_dl3_throne = {
+				OR = {
+					tm_dl3_women_rule_trigger = yes
+					primary_spouse ?= { is_female = yes }
+				}
+			}
+		}
+		add_prestige = 15
+		if = {
+			limit = { scope:tm_dl3_throne = { tm_dl3_women_rule_trigger = yes } }
+			scope:tm_dl3_seat = { tm_dl3_chamber_effect = { AMOUNT = 2 } }
+		}
+		else = {
+			scope:tm_dl3_seat = { tm_dl3_chamber_effect = { AMOUNT = 1 } }
+		}
+		ai_chance = {
+			base = 30
+			modifier = { add = 10 has_trait = diplomat }
+		}
+	}
+	option = {	# Bring the chamber's own staff over
+		name = tm_dl3.0010.c
+		trigger = { gold >= 100 }
+		remove_short_term_gold = 100
+		scope:tm_dl3_seat = { tm_dl3_chamber_effect = { AMOUNT = 1 } }
+		random_list = {
+			70 = { desc = tm_dl3.0010.c.quiet }
+			30 = {
+				desc = tm_dl3.0010.c.noticed
+				scope:tm_dl3_throne = {
+					add_opinion = { target = root modifier = suspicion_opinion opinion = -15 }
+				}
+			}
+		}
+		ai_chance = {
+			base = 20
+			modifier = { add = 15 has_trait = ambitious }
+			modifier = { add = -15 has_trait = craven }
+		}
+	}
+	option = {	# Ask the throne for an estate
+		name = tm_dl3.0010.d
+		trigger = {
+			is_ruler = no
+			NOT = { has_character_flag = tm_dl3_estate_asked }
+			prestige >= 200
+			scope:tm_dl3_seat = { var:tm_dl3_balance >= 2 }
+			scope:tm_dl3_throne = { tm_dl3_throne_can_grant_trigger = yes }
+		}
+		add_character_flag = tm_dl3_estate_asked
+		add_prestige = -200
+		scope:tm_dl3_seat = { tm_dl3_spend_effect = { AMOUNT = 2 } }
+		custom_tooltip = tm_dl3_estate_tt
+		tm_dl3_grant_estate_effect = yes
+		ai_chance = {
+			base = 60
+			modifier = { add = 20 has_trait = ambitious }
+		}
+	}
+	option = {	# Not this year
+		name = tm_dl3.0010.e
+		ai_chance = { base = 5 }
+	}
+}

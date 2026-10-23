@@ -1,0 +1,253 @@
+﻿# Crusader Dolls — the Women's Chamber (tm_dl3_events.txt; design note docs/wave5/chamber.md)
+#
+# The standing value: tm_dl3_balance, a number from -3 to +3 kept on the throne's primary title (so it outlives an
+# emperor). Above zero, the chamber has the throne's ear; below zero, the Patriarch's party does. The empress ran the
+# gynaikonitis with a staff "primarily though not entirely composed of eunuchs", and the empresses who ruled made that
+# staff their ministers (research/byz_garland_empresses.md, p. 5). Patriarchs stood against them: Nicholas had Zoe
+# Karbounopsina tonsured (p. 119); Keroularios opposed Theodora's appointing of clerics (p. 166).
+
+# Make sure the seat has a balance. Scope: the seat (a landed title).
+tm_dl3_seat_init_effect = {
+	if = {
+		limit = { NOT = { has_variable = tm_dl3_balance } }
+		set_variable = { name = tm_dl3_balance value = 0 }
+	}
+}
+
+# The chamber gains ground. Scope: the seat.
+tm_dl3_chamber_effect = {
+	custom_tooltip = tm_dl3_chamber_tt
+	hidden_effect = {
+		tm_dl3_seat_init_effect = yes
+		change_variable = { name = tm_dl3_balance add = $AMOUNT$ }
+		clamp_variable = { name = tm_dl3_balance min = -3 max = 3 }
+	}
+}
+
+# The Patriarch's party gains ground. Scope: the seat.
+tm_dl3_patriarch_effect = {
+	custom_tooltip = tm_dl3_patriarch_tt
+	hidden_effect = {
+		tm_dl3_seat_init_effect = yes
+		change_variable = { name = tm_dl3_balance add = -1 }
+		clamp_variable = { name = tm_dl3_balance min = -3 max = 3 }
+	}
+}
+
+# The chamber spends its standing on the Sisters' behalf. Scope: the seat.
+tm_dl3_spend_effect = {
+	custom_tooltip = tm_dl3_spend_tt
+	hidden_effect = {
+		tm_dl3_seat_init_effect = yes
+		change_variable = { name = tm_dl3_balance add = { value = 0 subtract = $AMOUNT$ } }
+		clamp_variable = { name = tm_dl3_balance min = -3 max = 3 }
+	}
+}
+
+# She takes a post in the chamber, at the throne's court. Scope: the daughter. Needs scope:tm_dl3_throne.
+tm_dl3_take_post_effect = {
+	if = {
+		limit = {
+			is_ruler = no
+			NOT = { liege ?= scope:tm_dl3_throne }
+		}
+		scope:tm_dl3_throne = { add_courtier = root }
+	}
+	set_variable = tm_dl3_chamber
+	add_character_modifier = { modifier = tm_dl3_chamber_modifier }
+	scope:tm_dl3_throne = {
+		add_opinion = { target = root modifier = grateful_opinion opinion = 15 }
+	}
+}
+
+# She leaves the chamber, or is put out of it. Scope: the daughter.
+tm_dl3_lose_post_effect = {
+	remove_variable = tm_dl3_chamber
+	remove_character_modifier = tm_dl3_chamber_modifier
+}
+
+# The throne grants her an estate from its own demesne: a county with a Sisters' House first, then one whose people
+# keep her faith, then the least developed. Scope: the daughter. Needs scope:tm_dl3_throne and scope:tm_dl3_seat.
+# The county remembers the seat whose chamber won it, for the annulment (tm_dl3.0003).
+tm_dl3_grant_estate_effect = {
+	scope:tm_dl3_throne = {
+		ordered_held_title = {
+			limit = { tm_dl3_grantable_county_trigger = yes }
+			order_by = {
+				value = 0
+				if = {
+					limit = { has_variable = tm_house }
+					add = 1000
+				}
+				if = {
+					limit = { faith = faith:transbian_maximalism }
+					add = 500
+				}
+				subtract = development_level
+			}
+			save_scope_as = tm_dl3_estate
+		}
+	}
+	scope:tm_dl3_estate = {
+		set_variable = { name = tm_dl3_estate value = scope:tm_dl3_seat }
+		create_title_and_vassal_change = {
+			type = granted
+			save_scope_as = tm_dl3_change
+			add_claim_on_loss = no
+		}
+		change_title_holder = {
+			holder = root
+			change = scope:tm_dl3_change
+		}
+		resolve_title_and_vassal_change = scope:tm_dl3_change
+	}
+}
+
+# The estate goes back to the throne. Scope: the daughter. Needs scope:tm_dl3_estate and scope:tm_dl3_throne.
+tm_dl3_return_estate_effect = {
+	scope:tm_dl3_estate = {
+		remove_variable = tm_dl3_estate
+		create_title_and_vassal_change = {
+			type = revoked
+			save_scope_as = tm_dl3_change
+			add_claim_on_loss = no
+		}
+		change_title_holder = {
+			holder = scope:tm_dl3_throne
+			change = scope:tm_dl3_change
+		}
+		resolve_title_and_vassal_change = scope:tm_dl3_change
+	}
+}
+
+# Once a year for each daughter of the Sisters, from tm_dl3_yearly. Scope: the daughter.
+tm_dl3_yearly_effect = {
+	save_scope_as = tm_dl3_daughter
+	# She left the throne's realm, or the throne stopped being one: the post lapses.
+	if = {
+		limit = {
+			has_variable = tm_dl3_chamber
+			NOT = { tm_dl3_chamber_daughter_trigger = yes }
+		}
+		tm_dl3_lose_post_effect = yes
+	}
+	if = {
+		limit = { tm_dl3_chamber_daughter_trigger = yes }
+		top_liege = {
+			save_scope_as = tm_dl3_throne
+			primary_title = { save_scope_as = tm_dl3_seat }
+		}
+		scope:tm_dl3_seat = {
+			tm_dl3_seat_init_effect = yes
+			# Once a year per seat: drift toward even (an office is the throne's to take back, and the Patriarch's
+			# gains fade too), and a woman on the throne or in the regency draws the chamber up.
+			if = {
+				limit = { NOT = { has_variable = tm_dl3_drifted } }
+				set_variable = { name = tm_dl3_drifted value = yes days = 360 }
+				if = {
+					limit = { var:tm_dl3_balance > 0 }
+					random = { chance = 30 change_variable = { name = tm_dl3_balance add = -1 } }
+				}
+				else_if = {
+					limit = { var:tm_dl3_balance < 0 }
+					random = { chance = 30 change_variable = { name = tm_dl3_balance add = 1 } }
+				}
+				if = {
+					limit = { scope:tm_dl3_throne = { tm_dl3_women_rule_trigger = yes } }
+					random = { chance = 25 change_variable = { name = tm_dl3_balance add = 1 } }
+				}
+				clamp_variable = { name = tm_dl3_balance min = -3 max = 3 }
+			}
+		}
+		# A daughter in post: her own work draws the chamber up a little, and the Patriarch's party writes when the
+		# court leans.
+		if = {
+			limit = { has_variable = tm_dl3_chamber }
+			random = {
+				chance = 10
+				scope:tm_dl3_seat = {
+					change_variable = { name = tm_dl3_balance add = 1 }
+					clamp_variable = { name = tm_dl3_balance min = -3 max = 3 }
+				}
+			}
+			if = {
+				limit = {
+					NOT = { has_variable = tm_dl3_letter_cd }
+					tm_flavour_ready_trigger = yes
+					scope:tm_dl3_seat = {
+						OR = {
+							var:tm_dl3_balance >= 2
+							var:tm_dl3_balance <= -1
+						}
+					}
+				}
+				random = {
+					chance = 3
+					# The Patriarch's party presses harder the more ground it holds.
+					modifier = { add = 3 scope:tm_dl3_seat = { var:tm_dl3_balance <= -1 } }
+					modifier = { add = 3 scope:tm_dl3_seat = { var:tm_dl3_balance <= -2 } }
+					modifier = { add = 3 scope:tm_dl3_seat = { var:tm_dl3_balance <= -3 } }
+					set_variable = { name = tm_dl3_letter_cd value = yes years = 5 }
+					tm_flavour_spent_effect = yes
+					trigger_event = { id = tm_dl3.0002 days = { 1 300 } }
+				}
+			}
+		}
+		# The annulment: an estate the chamber won, at a throne where the Patriarch's party now has everything
+		# (Basil II's Novel of 996 annulled the chrysobulls of Basil the Parakoimomenos; research/
+		# hist_tougher_eunuch_byzantine.md, p. 56). A chain under way: no flavour budget.
+		if = {
+			limit = {
+				NOT = { has_variable = tm_dl3_annul_cd }
+				any_held_title = {
+					has_variable = tm_dl3_estate
+					var:tm_dl3_estate ?= { var:tm_dl3_balance <= -3 }
+				}
+			}
+			random = {
+				chance = 25
+				set_variable = { name = tm_dl3_annul_cd value = yes years = 10 }
+				random_held_title = {
+					limit = {
+						has_variable = tm_dl3_estate
+						var:tm_dl3_estate ?= { var:tm_dl3_balance <= -3 }
+					}
+					save_scope_as = tm_dl3_estate
+				}
+				trigger_event = { id = tm_dl3.0003 days = { 1 120 } }
+			}
+		}
+	}
+	# The chamber writes: about once in twenty years, never twice in fifteen. To a daughter under a Byzantine throne,
+	# or else to one anywhere, from the emperor of the Romans' chamber. (Saved scopes outlive one character in the
+	# yearly loop, so each branch saves the throne and rolls at once.)
+	if = {
+		limit = { tm_dl3_invitable_trigger = yes }
+		if = {
+			limit = { top_liege ?= { tm_dl3_byzantine_throne_trigger = yes } }
+			top_liege = { save_scope_as = tm_dl3_throne }
+			tm_dl3_invite_roll_effect = yes
+		}
+		else_if = {
+			limit = { title:e_byzantium.holder ?= { tm_dl3_byzantine_throne_trigger = yes } }
+			title:e_byzantium.holder = { save_scope_as = tm_dl3_throne }
+			tm_dl3_invite_roll_effect = yes
+		}
+	}
+}
+
+# The chamber's yearly roll to write to her. Scope: the daughter. Needs scope:tm_dl3_throne.
+tm_dl3_invite_roll_effect = {
+	scope:tm_dl3_throne.primary_title = {
+		save_scope_as = tm_dl3_seat
+		tm_dl3_seat_init_effect = yes
+	}
+	random = {
+		chance = 5
+		# The chamber writes more often when it has the throne's ear, less when the Patriarch does.
+		modifier = { add = 3 scope:tm_dl3_seat = { var:tm_dl3_balance >= 2 } }
+		modifier = { add = -3 scope:tm_dl3_seat = { var:tm_dl3_balance <= -2 } }
+		set_variable = { name = tm_dl3_offered value = yes years = 15 }
+		trigger_event = { id = tm_dl3.0001 days = { 1 300 } }
+	}
+}

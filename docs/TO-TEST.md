@@ -1001,7 +1001,7 @@ Design: [docs/wave4/yutai-sogdians.md](wave4/yutai-sogdians.md).
 
 ## Z. Wave 5: the faith's voice is a daughter's; Bonadonna (added 2026-10-21, untested)
 
-**Z1. Bonadonna on the bookmark.** Start the Crusader Dolls bookmark at 867. Bonadonna (Ha-Nehpakhot, Advanced) appears beside Arles with her placeholder portrait.
+**Z1. Bonadonna on the bookmark.** Start the Crusader Dolls bookmark at 867. Bonadonna (Ha-Nehpakhot, Advanced) appears beside Arles in a physician's robes, with quill and book (portrait dumped 2026-10-22).
 - **Expect:** playing her, she is a landless adventurer whose camp, *Women of the Lamp*, has the Scholars purpose and sits at Venaissin. The two Marked youths are in her camp; the physician's household (father, mother, three children) is at the count of Venaissin's court. There is no second, generated elder.
 - **Expect (AI):** observing, the camp takes learning and stewardship contracts like any scholars' camp.
 
@@ -1011,3 +1011,13 @@ Design: [docs/wave4/yutai-sogdians.md](wave4/yutai-sogdians.md).
 
 The succession scenarios (S1–S4) are in docs/wave5/succession.md; the offices' in docs/wave5/offices.md.
 
+## AA. Adelphai Dorleyaiou: the Women's Chamber (wave 5, added 2026-10-22, untested)
+
+**AA1. The chamber writes.** Observe 867 for 20-30 years. Unlanded daughters of the Sisters get *The Chamber Writes*; those who accept move to the emperor's court with *Post in the Chamber*.
+- **Expect:** only daughters; never a Companion of the Mothers; never a cis or Marked sister.
+
+**AA2. The estate.** A daughter in post at balance +2 under an AI emperor takes *Work the Chamber* and asks for an estate: she becomes a count of the faith. Check her government and error.log.
+
+**AA3. The ladder.** At the chamber's ear the heresy laws stop for Dorleyite rulers under that throne; at the Patriarch's they come faster.
+
+The full scenarios (C1-C6) are in docs/wave5/chamber.md.

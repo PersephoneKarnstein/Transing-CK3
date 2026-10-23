@@ -4,8 +4,9 @@ yearly_global_pulse = {
 	on_actions = { tm_voice_yearly_global }
 }
 
-# The Companions back a daughter for the Mother House (tm_voice_effects.txt): when the Mother of Mothers is 60 or
-# more or ill, or when no daughter is backed yet.
+# The Companions back a daughter for the Mother House (tm_voice_effects.txt) only once the Mother of Mothers is 60 or
+# more or ill: as with a pope, the office passes when its holder grows old or dies, and no one is groomed under a
+# Mother in her strength (user decision, wave 5). The effect re-targets if the backed daughter dies or leaves.
 tm_voice_yearly_global = {
 	trigger = {
 		title:d_tm_mother_house.holder ?= { faith = faith:transbian_maximalism }
@@ -15,19 +16,14 @@ tm_voice_yearly_global = {
 		title:d_tm_mother_house = {
 			if = {
 				limit = {
-					OR = {
-						scope:tm_voice_mother = {
-							OR = {
-								age >= 60
-								has_trait = ill
-								has_trait = pneumonic
-								has_trait = infirm
-								has_trait = incapable
-							}
+					scope:tm_voice_mother = {
+						OR = {
+							age >= 60
+							has_trait = ill
+							has_trait = pneumonic
+							has_trait = infirm
+							has_trait = incapable
 						}
-						NOT = { has_variable = tm_voice_backed }
-						var:tm_voice_backed ?= { NOT = { tm_voice_backable_daughter_trigger = yes } }
-						NOT = { var:tm_voice_backed_for ?= scope:tm_voice_mother }
 					}
 				}
 				tm_voice_companions_back_daughter_effect = yes

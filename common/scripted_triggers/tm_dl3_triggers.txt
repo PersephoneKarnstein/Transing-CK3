@@ -1,0 +1,101 @@
+﻿# Crusader Dolls — the Women's Chamber (tm_dl3_events.txt; design note docs/wave5/chamber.md)
+
+# A Byzantine throne: a Christian ruler of another faith than the Sisters' who holds the empire of the Romans, or rules
+# a Byzantine-heritage realm with administrative government. Scope: a character.
+tm_dl3_byzantine_throne_trigger = {
+	is_landed = yes
+	faith = { religion_tag = christianity_religion }
+	NOT = { faith = faith:transbian_maximalism }
+	OR = {
+		has_title = title:e_byzantium
+		AND = {
+			has_government = administrative_government
+			culture ?= { has_cultural_pillar = heritage_byzantine }
+		}
+	}
+}
+
+# A daughter of the Sisters under a Byzantine throne: one of the chamber's own. Scope: the character.
+tm_dl3_chamber_daughter_trigger = {
+	faith = faith:transbian_maximalism
+	tm_is_daughter_trigger = yes
+	is_adult = yes
+	is_imprisoned = no
+	exists = top_liege
+	NOT = { this = top_liege }
+	top_liege = { tm_dl3_byzantine_throne_trigger = yes }
+}
+
+# A daughter the chamber may write to: unlanded, free, not yet asked, and not a Companion of the Mothers (they keep the
+# Mother House). Scope: the character.
+tm_dl3_invitable_trigger = {
+	faith = faith:transbian_maximalism
+	tm_is_daughter_trigger = yes
+	is_adult = yes
+	is_imprisoned = no
+	is_ruler = no
+	NOT = { has_variable = tm_dl3_chamber }
+	NOT = { has_variable = tm_dl3_offered }
+	NOT = { tm_voice_is_companion_trigger = yes }
+}
+
+# A woman sits on the throne, or a woman holds the regency for it: Garland's rule, women gained power in minorities
+# and lost it under adult emperors (research/byz_garland_empresses.md row 10, p. 198). Scope: the throne.
+tm_dl3_women_rule_trigger = {
+	OR = {
+		is_female = yes
+		AND = {
+			has_active_diarchy = yes
+			has_diarchy_type = regency
+			diarch ?= { is_female = yes }
+		}
+	}
+}
+
+# The chamber has the throne's ear at the throne of the character in scope. Scope: a character.
+tm_dl3_chamber_ear_trigger = {
+	top_liege ?= {
+		tm_dl3_byzantine_throne_trigger = yes
+		primary_title = {
+			has_variable = tm_dl3_balance
+			var:tm_dl3_balance >= 2
+		}
+	}
+}
+
+# The Patriarch's party has the throne's ear at the throne of the character in scope. Scope: a character.
+tm_dl3_patriarch_ear_trigger = {
+	top_liege ?= {
+		tm_dl3_byzantine_throne_trigger = yes
+		primary_title = {
+			has_variable = tm_dl3_balance
+			var:tm_dl3_balance <= -2
+		}
+	}
+}
+
+# The heresy ladder (tm_byz.0010-0012) stays its hand: she holds a chrysobull, or the chamber has her throne's ear.
+# Scope: the Dorleyite ruler.
+tm_dl3_ladder_stayed_trigger = {
+	OR = {
+		has_variable = tm_dl3_chrysobull
+		tm_dl3_chamber_ear_trigger = yes
+	}
+}
+
+# A county the throne could grant from its own demesne: not its capital. Scope: a county title. Needs scope:tm_dl3_throne.
+tm_dl3_grantable_county_trigger = {
+	tier = tier_county
+	holder ?= scope:tm_dl3_throne
+	NOT = { this = scope:tm_dl3_throne.capital_county }
+}
+
+# The throne could spare a county: an AI throne holding at least four counties in its own hands. A player's emperor
+# decides for herself, and is never made to give land. Scope: the throne.
+tm_dl3_throne_can_grant_trigger = {
+	is_ai = yes
+	any_held_title = {
+		tier = tier_county
+		count >= 4
+	}
+}

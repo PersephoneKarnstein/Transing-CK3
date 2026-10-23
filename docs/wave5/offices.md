@@ -1,4 +1,4 @@
-# Wave 5: the faiths' own offices
+﻿# Wave 5: the faiths' own offices
 
 User: "we're building *trans-women religions*, not just trans-affirming ones that provide transition care." Each faith now has one office of its own, held only by a daughter of that faith. Cis women stay members and sisters; they don't hold the office.
 
@@ -35,7 +35,7 @@ The völva sings the varðlokkur and goes up on the high seat. The rite already 
 
 `common/on_action/tm_voice_on_actions.txt` (yearly_global_pulse) → `tm_voice_companions_back_daughter_effect` (`common/scripted_effects/tm_voice_effects.txt`), scope `title:d_tm_mother_house`.
 
-- Runs when the holder is of the faith and is 60 or older, or ill (`ill`, `pneumonic`, `infirm`, `incapable`), or no valid daughter is backed yet.
+- Runs only when the holder is of the faith and is 60 or older, or ill (`ill`, `pneumonic`, `infirm`, `incapable`). As with a pope, the office passes when its holder grows old or dies; a Mother in her strength has no one groomed under her, and a sudden death leaves the choice to the vanilla appointment (user decision, 2026-10-21). With the Companions' weight, a cis Mother means an exceptional candidate or no daughter to choose.
 - **Choice.** The pool is adult, free daughters of the faith among the Mother's courtiers and vassals (`tm_voice_backable_daughter_trigger`). Clerical_christian's `default_candidates` are `holder_councilor holder_court_position direct_subject clerical_region_clergy...`, and courtiers and vassals cover the first three. The best is the one with the highest `appointment_candidate_score(scope:tm_voice_mh)`, the appointment's own score. She is stored as `var:tm_voice_backed` on the title.
 - **Backing.** Companions (`tm_voice_is_companion_trigger`: the modifier or the seat, of the faith, adult; not the Mother or the backed daughter herself; ordered by learning) each put `change_appointment_investment = { target investor value = 25 }` on the title, once per Companion (`succession_appointment_score_invested < 25`). The total is capped at 75 (`var:tm_voice_backed_sum`). Companions need not live at her court: `clerical_christian` has `allow_out_of_realm_investment = landless`, and the Mother House is landless.
 - **Re-targeting.** If the backed daughter dies, leaves the faith, the Mother's court or her vassals, or becomes the Mother, the next run chooses again and the sum starts from zero. A new Mother (`var:tm_voice_backed_for`) also starts afresh.

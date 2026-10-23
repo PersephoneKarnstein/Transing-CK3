@@ -1,0 +1,43 @@
+﻿# Crusader Dolls — the Women's Chamber (tm_dl3_events.txt; design note docs/wave5/chamber.md)
+
+# Work the chamber: a daughter of the Sisters who holds a post in the chamber (tm_dl3.0001) moves the court's balance
+# between the chamber and the Patriarch's party, or spends it on the Houses. Opens tm_dl3.0010.
+tm_dl3_work_chamber_decision = {
+	picture = { reference = "gfx/interface/illustrations/decisions/decision_misc.dds" }
+	sort_order = 81
+
+	is_shown = {
+		faith = faith:transbian_maximalism
+		has_variable = tm_dl3_chamber
+	}
+
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+	}
+
+	is_valid = {
+		tm_dl3_chamber_daughter_trigger = yes
+	}
+
+	cooldown = { years = 5 }
+
+	effect = {
+		custom_tooltip = tm_dl3_work_chamber_decision_effect_tt
+		top_liege = {
+			save_scope_as = tm_dl3_throne
+			primary_title = {
+				save_scope_as = tm_dl3_seat
+				tm_dl3_seat_init_effect = yes
+			}
+		}
+		trigger_event = tm_dl3.0010
+	}
+
+	ai_check_interval = 60
+	ai_will_do = {
+		base = 20
+		modifier = { add = 15 has_trait = ambitious }
+		modifier = { add = 10 has_trait = schemer }
+		modifier = { add = -15 has_trait = content }
+	}
+}
