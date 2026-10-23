@@ -398,12 +398,15 @@ Works the research for this mod read, in full or in named chapters. Works it onl
 Click a heading to expand it.
 
 <details>
-<summary><strong>Transfeminist theory and trans studies</strong> (28 works)</summary>
+<summary><strong>Transfeminist theory and trans studies</strong> (35 works)</summary>
 
 - Adair, Cassius, Cameron Awkward-Rich, and Amy Marvin. 2020. "Before Trans Studies." *TSQ: Transgender Studies Quarterly* 7.3: 306–320.
 - Aizura, Aren Z., Trystan Cotten, Carsten Balzer/Carla LaGata, Marcia Ochoa, and Salvador Vidal-Ortiz (eds.). 2014. "Decolonizing the Transgender Imaginary." Special issue, *TSQ: Transgender Studies Quarterly* 1.3. (Both introductions read in full; the other pieces skimmed.)
 - Bettcher, Talia Mae. 2013. "Evil Deceivers and Make-Believers: On Transphobic Violence and the Politics of Illusion." In Stryker and Aizura (eds.), *The Transgender Studies Reader 2*.
+- Bettcher, Talia Mae. 2024. *Beyond Personhood: An Essay in Trans Philosophy*. University of Minnesota Press.
 - betts, edxi, NZ Suékama, and g, moderated by Ren-yo Hwang. 2024. "Black Transfeminist Anarchism." Roundtable. *TSQ: Transgender Studies Quarterly* 11.1: 34–65.
+- Bey, Marquis. 2022. *Black Trans Feminism*. Black Outdoors series. Duke University Press.
+- Bey, Marquis. 2022. *Cistem Failure: Essays on Blackness and Cisgender*. Asterisk series. Duke University Press.
 - Bhatt, Talia. 2025. *Trans/Rad/Fem: Essays on Transfeminism, Book 1*. Self-published.
 - Bhatt, Talia. 2026. *Brown/Trans/Les*. Self-published.
 - Cavanagh, Sheila L. (ed.). 2017. "Transpsychoanalytics." Special issue, *TSQ: Transgender Studies Quarterly* 4.3–4: 323–683. (Introduction and eight items read in full; the rest by abstract.)
@@ -412,6 +415,7 @@ Click a heading to expand it.
 - Currah, Paisley, and Susan Stryker (eds.). 2014. "Postposttranssexual: Key Concepts for a Twenty-First-Century Transgender Studies." *TSQ: Transgender Studies Quarterly* 1.1–2. (The introduction and 41 of the 86 keyword essays read in full.)
 - DiPietro, Pedro Javier. 2016. "Of Huachafería, Así, and M'e Mati: Decolonizing Transing Methodologies." *TSQ: Transgender Studies Quarterly* 3.1–2: 65–73.
 - Dutta, Aniruddha, and Raina Roy. 2014. "Decolonizing Transgender in India: Some Reflections." *TSQ: Transgender Studies Quarterly* 1.3: 320–337.
+- Gill-Peterson, Jules. 2024. *A Short History of Trans Misogyny*. Verso.
 - Gleeson, Jules Joanne, and Elle O'Rourke (eds.). 2021. *Transgender Marxism*. Pluto Press. (Read in full: introduction, 14 chapters and Jordy Rosenberg's afterword.)
 - Heaney, Emma (ed.). 2024. *Feminism against Cisness*. Asterisk series. Duke University Press.
 - Khan, Faris A. 2016. "Khwaja Sira Activism: The Politics of Gender Ambiguity in Pakistan." *TSQ: Transgender Studies Quarterly* 3.1–2: 158–164.
@@ -419,11 +423,14 @@ Click a heading to expand it.
 - Lavery, Grace. 2020. "Egg Theory's Early Style." *TSQ: Transgender Studies Quarterly* 7.3: 383–398.
 - Nirta, Caterina. 2018. *Marginal Bodies, Trans Utopias*. Routledge. (Introduction, conclusion and chapters 2 and 4 read in full.)
 - Pfeil, Cello Latini. 2020. "For Trans Emancipation: Transsexuality and Anarchism." Trans. from *Revista Estudos Libertários* (UFRJ). The Anarchist Library.
+- Revathi, A. 2010. *The Truth About Me: A Hijra Life Story*. Trans. from Tamil by V. Geetha. Penguin Books India.
+- Revathi, A. 2011. *Our Lives, Our Words: Telling Aravani Lifestories*. Trans. A. Mangai. Sexualities series. Yoda Press.
 - Raha, Nat, and Mijke van der Drift. 2024. *Trans Femme Futures: Abolitionist Ethics for Transfeminist Worlds*. Pluto Press.
 - Roy, Jeff. 2016. "Translating Hijra into Transgender: Performance and *Pehchān* in India's Trans-Hijra Communities." *TSQ: Transgender Studies Quarterly* 3.3–4: 412–432.
 - Serano, Julia. 2007–2026. Essays on her blog (juliaserano.blogspot.com, including LiveJournal reposts), on Medium (juliaserano.medium.com) and on Substack. (About 100 of some 311 posts read in full or in large part; the rest triaged by title.)
 - Serano, Julia. 2016 [2007]. *Whipping Girl: A Transsexual Woman on Sexism and the Scapegoating of Femininity*. 2nd ed. Seal Press.
 - Silva, Joseli Maria, and Marcio Jose Ornat. 2016. "Transfeminism and Decolonial Thought: The Contribution of Brazilian Travestis." Trans. Sean Stroud. *TSQ: Transgender Studies Quarterly* 3.1–2: 220–227.
+- Snorton, C. Riley. 2017. *Black on Both Sides: A Racial History of Trans Identity*. University of Minnesota Press.
 - Stryker, Susan. 2026. *Transgender History: A Resource for Today's Struggle—and Tomorrow's*. 3rd ed. Seal Press.
 - Stryker, Susan, and Aren Z. Aizura (eds.). 2013. *The Transgender Studies Reader 2*. Routledge.
 - Stryker, Susan, and Dylan McCarthy Blackston (eds.). 2022. *The Transgender Studies Reader Remix*. Routledge.
