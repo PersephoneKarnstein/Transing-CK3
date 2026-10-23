@@ -30,7 +30,7 @@ tm_dl3.0001 = {
 	trigger = {
 		exists = scope:tm_dl3_throne
 		scope:tm_dl3_throne = { tm_dl3_byzantine_throne_trigger = yes }
-		tm_dl3_invitable_trigger = yes
+		tm_dl3_can_take_post_trigger = yes	# not tm_dl3_invitable_trigger: the roll has already set tm_dl3_offered
 	}
 
 	option = {	# Take the post

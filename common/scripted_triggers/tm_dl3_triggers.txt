@@ -26,17 +26,23 @@ tm_dl3_chamber_daughter_trigger = {
 	top_liege = { tm_dl3_byzantine_throne_trigger = yes }
 }
 
-# A daughter the chamber may write to: unlanded, free, not yet asked, and not a Companion of the Mothers (they keep the
-# Mother House). Scope: the character.
-tm_dl3_invitable_trigger = {
+# A daughter who could take a post: unlanded, free, not already in one, and not a Companion of the Mothers (they keep
+# the Mother House). The invitation (tm_dl3.0001) checks this. Scope: the character.
+tm_dl3_can_take_post_trigger = {
 	faith = faith:transbian_maximalism
 	tm_is_daughter_trigger = yes
 	is_adult = yes
 	is_imprisoned = no
 	is_ruler = no
 	NOT = { has_variable = tm_dl3_chamber }
-	NOT = { has_variable = tm_dl3_offered }
 	NOT = { tm_voice_is_companion_trigger = yes }
+}
+
+# A daughter the chamber may write to: one who could take a post and has not been asked in fifteen years. The yearly
+# roll checks this and sets tm_dl3_offered before the invitation fires, so the invitation must not. Scope: the character.
+tm_dl3_invitable_trigger = {
+	tm_dl3_can_take_post_trigger = yes
+	NOT = { has_variable = tm_dl3_offered }
 }
 
 # A woman sits on the throne, or a woman holds the regency for it: Garland's rule, women gained power in minorities
