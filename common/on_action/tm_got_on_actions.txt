@@ -73,6 +73,7 @@ tm_got_on_war_end = {
 		scope:war = {
 			every_war_participant = {
 				limit = {
+					is_alive = yes	# the war keeps its dead participants, who hold no variables
 					has_variable = tm_got_licence_war
 					var:tm_got_licence_war = scope:war
 				}
@@ -80,6 +81,7 @@ tm_got_on_war_end = {
 			}
 			every_war_participant = {
 				limit = {
+					is_alive = yes	# the war keeps its dead participants, who hold no variables
 					has_variable = tm_got_ports_war
 					var:tm_got_ports_war = scope:war
 				}

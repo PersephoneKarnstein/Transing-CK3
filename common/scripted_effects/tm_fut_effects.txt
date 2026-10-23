@@ -96,7 +96,10 @@ tm_fut_member_upkeep_effect = {
 	}
 	add_character_modifier = { modifier = tm_fut_terms_member_modifier years = 2 }
 	if = {
-		limit = { NOT = { has_character_flag = tm_fut_rides } }
+		limit = {
+			NOT = { has_character_flag = tm_fut_rides }
+			is_potential_knight = yes	# set_knight_status errors on anyone who could not be a knight anyway
+		}
 		set_knight_status = forbid
 	}
 }
