@@ -61,7 +61,7 @@
 
 <p align="center">
   <img src="docs/images/bookmark.jpg" alt="The Crusader Dolls bookmark on CK3's 867 start screen: a stained-glass shark tab among the bookmark tabs, and a painted map from the Baltic to India. Each leader stands under her banner: Steinn of Gute at Gotland (a red whirl on blue), Bonadonna of the Lamp at Arles (a seal with a Hebrew legend round a portcullis), Theia Beatrike of Dorylaion (a gold falcon on a white roundel, on purple), Xun of Suo at Dunhuang, Cantirâdêvi of the Temple Street at Candragiri (a garland of tulsi and jasmine on green) and Djeneba of Do in a West Africa inset (a gold buffalo on black). Theia's info panel is open on the right" width="100%">
-  <br><em>The Crusader Dolls bookmark at 867 (an early build, with stand-in portraits).</em>
+  <br><em>The Crusader Dolls bookmark at 867.</em>
 </p>
 
 The six faiths answer the same three questions in different ways:
