@@ -1,0 +1,26 @@
+﻿# Crusader Dolls — the houses of the one-person dynasties (common/dynasties/tm_dynasties.txt). As vanilla's
+# game/common/dynasty_houses/99_historical_character_houses.txt.
+
+house_tm_dorylaion = {
+	prefix = "dynnp_of"
+	name = "dynn_tm_dorylaion"
+	dynasty = tm_dyn_dorylaion
+}
+
+house_tm_temple_street = {
+	prefix = "dynnp_of"
+	name = "dynn_tm_temple_street"
+	dynasty = tm_dyn_temple_street
+}
+
+house_tm_do = {
+	prefix = "dynnp_of"
+	name = "dynn_tm_do"
+	dynasty = tm_dyn_do
+}
+
+house_tm_lamp = {
+	prefix = "dynnp_of"
+	name = "dynn_tm_lamp"
+	dynasty = tm_dyn_lamp
+}

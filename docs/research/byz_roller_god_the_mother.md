@@ -91,3 +91,14 @@ Page numbers are the book's own (PDF page − 20). The text comes from OCR, whic
 - *Constantinople event:* "Constantine took the Mother of Kyzikos to his city and set her among the statues. She is still there. Nobody there remembers whose mother she is."
 - *Dokimeion quarry flavour:* "The red in the marble is his blood, the quarrymen say. The Sisters say it is ours."
 - *Rival scholar (Galenic):* "Even Rome's poets called them *Gallai*, she-galli. But Rome's law called them nothing at all."
+
+## Iconography, for the Sisters' arms (read 2026-10-23)
+
+Read in part: ch. 3 on Hittite antecedents (p. 41 ff.); ch. 4 on the attributes of Phrygian Matar (pp. 97, 108–9).
+
+- **The bird of prey comes first.** "In central Phrygia, her most frequent animal attribute, the hawk or falcon, is a predator of practical value" (p. 108). It hunts, and it can be trained to hunt for people. A Boğazköy seal impression already shows a seated goddess with a bird of prey and a bowl, "the same attributes as the Phrygian Mother Goddess" (ch. 3).
+- **The lion is secondary in Phrygia.** "The lion is not the constant and ubiquitous companion of Matar in Phrygia, as it is in the images of the Greek Meter" (p. 108). The lion monuments are Kalehisar, the Etlik relief and Arslankaya (pp. 108–9). There the lions both guard her and are mastered by her.
+- **The doorway.** The Phrygians inherited "the presentation of the divinity standing in the sacred doorway" (p. 97). The rock-cut facade is the cult's own monument.
+- **Not Phrygian.** The drinking bowl is an old Anatolian convention that marks nothing in particular (p. 108). The Boğazköy musicians are "unique in the Phrygian material" (p. 109). The tympanum, the mural crown and the lion chariot belong to the Greek and Roman Meter.
+
+**For the mod.** Theia's banner: a falcon (`ce_falcon`) on the faith's pink, with the lions at most as supporters. A faith icon could be the goddess's doorway: a facade niche with a hawk. Leave out the pine and Attis (self-castration, then death: out of scope).

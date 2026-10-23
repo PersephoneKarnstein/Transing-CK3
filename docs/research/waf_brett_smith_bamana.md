@@ -126,3 +126,10 @@ The evidence is the testimony of a handful of elite elders in the 1980s, read th
 ### Do not use
 
 - Child or wife sacrifice in any form the player can choose; the madness of relatives as proof; the Komo flutes, songs and masks; the griotte girl; poisoning duels (pp. 64–65) beyond background; the menstrual-taboo apparatus as doctrine; Brett-Smith's "neither man nor woman" (p. 234); the informants' names with their stories.
+
+## Colour and cloth, for Badenya's arms (read 2026-10-23, from the PDF; pages from its folios)
+
+- **Red mud cloth is excision cloth.** The *Basiae* is "worn by young Bamana women after excision and childbirth" and is always a "red" or ritual cloth (fig. 12). Its rust red is the colour of termite mounds, doors to the spirit world, and "will strike fear into the hearts of the initiates' enemies" (pp. 125–26). **Rule:** Badenya's arms use no mud-cloth patterns and no rust red.
+- **White is death; black is life.** White "is the primary color associated both with the dead and with spirits". Djinns are thought white-skinned, which "connotes death and nonhuman status". "Black or blue-black is perceived as the color of fertile ground, life, and healthy, functioning human beings" (pp. 132–33). **Rule:** a black field with the faith's ochre, never a mainly white banner.
+- **The anvil** is "treated as though it were the senior man in a blacksmith compound" and is told of every smith child's birth (fig. 30). It is male-coded and belongs to the smiths, so it is a poor emblem for a faith of mother-childness.
+- **Dating.** The informants' belief system "would date at least as far back as the 1880s or 1890s, and perhaps even farther" (ch. 1 notes). Like the rest of this book, it is evidence for the 19th and 20th centuries, not for 867.

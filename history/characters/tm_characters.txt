@@ -7,6 +7,7 @@
 tm_theia_beatrike = {
 	name = "tm_name_theia_beatrike"
 	dna = tm_theia_beatrike_dna		# Welcome to Dorley Hall: dark brown hair, grey-green eyes (common/dna_data/tm_dna.txt)
+	dynasty_house = house_tm_dorylaion		# one-person dynasty, so the bookmark shows her arms (docs/heraldry.md)
 	female = yes
 	culture = kybeline
 	religion = transbian_maximalism
@@ -27,6 +28,7 @@ tm_theia_beatrike = {
 # Cantiradevi, a patron of the temple street of Kanchipuram, holds Candragiri for its Pallava lord (the Worn Garland).
 tm_garland_cantiradevi = {
 	name = "CantirA_dE_vi"
+	dynasty_house = house_tm_temple_street		# one-person dynasty, so the bookmark shows her arms (docs/heraldry.md)
 	female = yes
 	culture = tamil
 	religion = tm_garland
@@ -38,6 +40,7 @@ tm_garland_cantiradevi = {
 # Djeneba holds Kirina for its lord (Badenya).
 tm_badenya_djeneba = {
 	name = "Djeneba"
+	dynasty_house = house_tm_do		# one-person dynasty, so the bookmark shows her arms (docs/heraldry.md)
 	female = yes
 	culture = malinke
 	religion = tm_badenya
@@ -53,6 +56,7 @@ tm_badenya_djeneba = {
 tm_nehpakhot_bonadonna = {
 	name = "Bonadonna"
 	dna = tm_nehpakhot_bonadonna_dna		# the face of her bookmark portrait (common/dna_data/tm_dna.txt)
+	dynasty_house = house_tm_lamp		# one-person dynasty, so the bookmark shows her arms (docs/heraldry.md)
 	female = yes
 	culture = occitan
 	religion = tm_nehpakhot

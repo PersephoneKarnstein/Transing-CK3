@@ -1,0 +1,28 @@
+﻿# Crusader Dolls — one-person dynasties for the bookmark's lowborn leaders, so the character selector shows their arms
+# (docs/heraldry.md). As vanilla does for famous figures who would otherwise be lowborn
+# (game/common/dynasties/05_historical_character_dynasties.txt). Named for places and institutions, never for a real
+# lineage: Mande clan names are living lineages.
+
+tm_dyn_dorylaion = {		# Theia Beatrike, Adelphai Dorleyaiou
+	prefix = "dynnp_of"
+	name = "dynn_tm_dorylaion"
+	culture = "kybeline"
+}
+
+tm_dyn_temple_street = {	# Cantiradevi, Mālai
+	prefix = "dynnp_of"
+	name = "dynn_tm_temple_street"
+	culture = "tamil"
+}
+
+tm_dyn_do = {				# Djeneba, Badenya: Do, the buffalo woman's land
+	prefix = "dynnp_of"
+	name = "dynn_tm_do"
+	culture = "malinke"
+}
+
+tm_dyn_lamp = {				# Bonadonna, Ha-Nehpakhot: the women of the lamp
+	prefix = "dynnp_of"
+	name = "dynn_tm_lamp"
+	culture = "occitan"
+}

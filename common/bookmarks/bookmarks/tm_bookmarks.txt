@@ -1,6 +1,7 @@
 ﻿# Crusader Dolls — a bookmark at 867 showing the playable heads of the six faiths, so players can find them.
 # Ha-Nehpakhot holds no land: Bonadonna stands as a landless adventurer (Roads to Power, which the mod requires).
-# The leaders made by the start script are historical characters in history/characters/tm_characters.txt; Steinn of
+# The selector reads each leader's dynasty and house from here, not from history: without them it shows "Lowborn"
+# and falls back to the title's arms (docs/heraldry.md). The leaders made by the start script are historical characters in history/characters/tm_characters.txt; Steinn of
 # Gotland and Xun of Shazhou are vanilla characters the start script converts. Portraits: run
 # dump_bookmark_portraits in a game started at this bookmark and copy the files into common/bookmark_portraits.
 # Art: the tab is the user's; the map (user's) is built from the game's own flatmap (gfx/map/terrain/flat_maps/flatmap.dds), with
@@ -16,6 +17,8 @@ bm_867_crusader_dolls = {
 	# Theia Beatrike, Mother of Mothers (Adelphai Dorleyaiou). ID: tm_theia_beatrike
 	character = {
 		name = "bookmark_tm_theia_beatrike"
+		dynasty_house = house_tm_dorylaion
+		dynasty_splendor_level = 1
 		type = female
 		birth = 823.1.1
 		title = d_tm_mother_house
@@ -31,6 +34,8 @@ bm_867_crusader_dolls = {
 	# Steinn, count of Gotland (Bædling). ID: 41267
 	character = {
 		name = "bookmark_tm_steinn"
+		dynasty = 825		# Gute
+		dynasty_splendor_level = 1
 		type = male
 		birth = 841.1.1
 		title = c_gutland
@@ -46,6 +51,8 @@ bm_867_crusader_dolls = {
 	# Xun, duke of Guasha at Dunhuang (Yutai Dao). ID: 304191
 	character = {
 		name = "bookmark_tm_xun"
+		dynasty = 2003011		# Suo
+		dynasty_splendor_level = 1
 		type = male
 		birth = 840.1.1
 		title = d_guasha
@@ -62,6 +69,8 @@ bm_867_crusader_dolls = {
 	# Cantiradevi, countess of Candragiri (Cutikkotutta Malai). ID: tm_garland_cantiradevi
 	character = {
 		name = "bookmark_tm_cantiradevi"
+		dynasty_house = house_tm_temple_street
+		dynasty_splendor_level = 1
 		type = female
 		birth = 838.1.1
 		title = c_candragiri
@@ -77,6 +86,8 @@ bm_867_crusader_dolls = {
 	# Djeneba, countess of Kirina (Badenya). ID: tm_badenya_djeneba
 	character = {
 		name = "bookmark_tm_djeneba"
+		dynasty_house = house_tm_do
+		dynasty_splendor_level = 1
 		type = female
 		birth = 837.1.1
 		title = c_sibi_mali
@@ -92,6 +103,8 @@ bm_867_crusader_dolls = {
 	# Bonadonna, an elder of the women of the lamp, keeps a scholars' camp at Arles (Ha-Nehpakhot). ID: tm_nehpakhot_bonadonna
 	character = {
 		name = "bookmark_tm_bonadonna"
+		dynasty_house = house_tm_lamp
+		dynasty_splendor_level = 1
 		type = female
 		birth = 812.1.1
 		title = d_laamp_tm_lamp
