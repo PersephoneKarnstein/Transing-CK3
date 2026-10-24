@@ -1040,7 +1040,7 @@ The full scenarios (C1-C6) are in docs/wave5/chamber.md.
 - Guasha: Huijing holds the duchy and its counties under Hexi, as Xun did; Xun is dead; Chengxun (7) is at her court, her adopted son and ward, of Yutai Dao, and her designated heir. The Suo noble-family estate went to Xun's heirs, not to her. Guasha is an appointed governorship (meritocratic), so the game may still appoint someone else when she dies.
 - The selector shows her *of the Jade Embryo* with the tiger, and Steinunn *of Gute* with the whirl.
 - The selector's map banner for Huijing is the tiger; in play, Guasha shows vanilla's Sha seal and Huijing's own arms the tiger.
-- The two portraits are dumped (2026-10-23). The map pictures `gfx/interface/bookmarks/bm_867_crusader_dolls_bookmark_tm_steinunn.dds` and `..._tm_huijing.dds` are missing.
+- The two portraits are dumped (2026-10-23). Hovering each lights up her county: the highlight images are named for the bookmark entry (`gfx/interface/bookmarks/bm_867_crusader_dolls_bookmark_tm_<name>.dds`), renamed from Steinn's and Xun's.
 
 ## AB. Badenya guardrails (added 2026-10-22, untested)
 

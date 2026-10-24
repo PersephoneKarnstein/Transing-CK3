@@ -180,7 +180,6 @@ One feature per faith, each in its own files; scenarios in TO-TEST.md §J.
 - [x] Map and highlights (draft): cropped from the game's own flatmap, highlights from the province map; replace or paint over as wanted, then adjust `position` in tm_bookmarks.txt
 - [x] Portraits dumped in game (2026-10-20). Theia Beatrike has fixed DNA (common/dna_data/tm_dna.txt): 44 at the start, dark brown hair, grey-green eyes, as Welcome to Dorley Hall describes her; the others are left to game defaults (user)
 - [x] Coats of arms for the Gotland and Guasha leaders (done 2026-10-23: Steinunn of Gute carries Gotland's whirl; Huijing of the Jade Embryo the tiger)
-- [ ] Bookmark map pictures for Steinunn and Huijing (portraits dumped 2026-10-23)
 - [x] Ha-Nehpakhot: an unlanded start (Roads to Power) so the sect can join the bookmark: Bonadonna and her scholars' camp, *Women of the Lamp* (2026-10-21)
 - [x] Bonadonna's map highlight `gfx/interface/bookmarks/bm_867_crusader_dolls_bookmark_tm_bonadonna.dds` (user's art) and her portrait (dumped 2026-10-22: physician's robes, quill and book)
 
