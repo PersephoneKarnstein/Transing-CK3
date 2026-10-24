@@ -1,0 +1,46 @@
+﻿# Crusader Dolls — rulers who come to the Sisters' faiths from outside (docs/faith_design.md §17).
+#
+# The run to 1361 (run 11) left the Worn Garland and Yutai Dao the third and fifth faiths of the world by counties
+# (316 and 272), as Yutai had been large in runs 9 and 10 and the Garland in run 5. The mod's own call brought in
+# 5 to 20 a decade and almost no rulers: the kings were of the game's own dynasties (Chola, Pala, Rashtrakuta; Cáo,
+# Kong), who took the faith through the game's conversion. These are faiths of the street, the temple society, the
+# House: membership runs through the community. A ruler of the AI who converts with no tie to it (no Marked or
+# daughter of the Sisters at court or in the family, no House in hand, and not a woman, Marked or daughter herself,
+# who would be a sister of a House by tm_house_member_trigger) is turned away one time in three, and keeps the faith
+# he had. A small change, not a cap: a woman, a Marked ruler or one with sisters about her is never turned away.
+# The player is never turned away.
+
+on_faith_conversion = {
+	on_actions = {
+		tm_conv_on_faith_conversion
+	}
+}
+
+# Root is the convert; scope:old_faith, scope:old_rite what she held before (vanilla, religion_on_actions.txt).
+tm_conv_on_faith_conversion = {
+	effect = {
+		if = {
+			limit = {
+				is_ai = yes
+				is_ruler = yes
+				rite ?= { rite_has_parameter = tm_sisters_faith }
+				NOT = { scope:old_rite ?= { rite_has_parameter = tm_sisters_faith } }	# between two of the six: no
+			}
+			faith = { save_scope_as = tm_conv_faith }
+			tm_track_effect = { FAITH = scope:tm_conv_faith WHAT = ruler_converts }
+			if = {
+				limit = { tm_conv_outsider_trigger = yes }
+				tm_track_effect = { FAITH = scope:tm_conv_faith WHAT = outsider_converts }
+				random = {
+					chance = 33
+					tm_track_effect = { FAITH = scope:tm_conv_faith WHAT = turned_away }
+					set_character_faith = scope:old_faith
+					if = {
+						limit = { exists = scope:old_rite }
+						set_character_rite = scope:old_rite
+					}
+				}
+			}
+		}
+	}
+}

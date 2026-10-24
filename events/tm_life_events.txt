@@ -330,7 +330,7 @@ tm_life.0020 = {
 		name = tm_life.0020.a
 		add_stress = -10
 		every_close_family_member = {
-			limit = { is_alive = yes }
+			limit = { is_alive = yes NOT = { this = root } }
 			add_opinion = { target = root modifier = friendliness_opinion opinion = 5 }
 		}
 		ai_chance = { base = 25 }

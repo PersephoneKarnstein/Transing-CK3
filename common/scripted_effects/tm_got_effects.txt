@@ -97,7 +97,7 @@ tm_got_lapse_effect = {
 		if = {
 			limit = {
 				exists = var:tm_got_licence_enemy
-				var:tm_got_licence_enemy = { is_alive = yes }
+				var:tm_got_licence_enemy ?= { is_alive = yes }
 			}
 			var:tm_got_licence_enemy = {
 				save_scope_as = tm_got_enemy

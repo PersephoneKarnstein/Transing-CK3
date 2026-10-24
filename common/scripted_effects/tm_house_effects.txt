@@ -23,7 +23,7 @@ tm_house_name_protectress_effect = {
 	if = {
 		limit = {
 			has_variable = tm_house_protectress
-			var:tm_house_protectress = { is_alive = yes }
+			var:tm_house_protectress ?= { is_alive = yes }
 		}
 		var:tm_house_protectress = { save_scope_as = tm_old_protectress }
 		var:tm_house_protectress = {
@@ -89,7 +89,7 @@ tm_close_house_effect = {
 	if = {
 		limit = {
 			has_variable = tm_house_protectress
-			var:tm_house_protectress = { is_alive = yes }
+			var:tm_house_protectress ?= { is_alive = yes }
 		}
 		var:tm_house_protectress = { remove_character_modifier = tm_house_protectress_modifier }
 	}
@@ -115,12 +115,14 @@ tm_send_on_effect = {
 			any_ruler = {
 				tm_holds_sisters_house_trigger = yes
 				NOT = { this = $EXCLUDE$ }
+				NOT = { scope:tm_sent_on.employer ?= this }	# not the court she is already at
 			}
 		}
 		random_ruler = {
 			limit = {
 				tm_holds_sisters_house_trigger = yes
 				NOT = { this = $EXCLUDE$ }
+				NOT = { scope:tm_sent_on.employer ?= this }	# not the court she is already at
 			}
 			weight = {
 				base = 1
@@ -203,7 +205,7 @@ tm_house_yearly_effect = {
 			limit = {
 				OR = {
 					NOT = { has_variable = tm_house_protectress }
-					var:tm_house_protectress = { is_alive = no }
+					NOT = { var:tm_house_protectress ?= { is_alive = yes } }
 				}
 			}
 			tm_house_name_protectress_effect = yes
@@ -234,7 +236,7 @@ tm_house_yearly_effect = {
 			limit = {
 				var:tm_house_strain >= 3
 				has_variable = tm_elder_sister
-				var:tm_elder_sister = { is_alive = yes }
+				var:tm_elder_sister ?= { is_alive = yes }
 			}
 			random = {
 				chance = 50

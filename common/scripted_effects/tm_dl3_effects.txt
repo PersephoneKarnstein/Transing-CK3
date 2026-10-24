@@ -7,7 +7,8 @@
 # Karbounopsina tonsured (p. 119); Keroularios opposed Theodora's appointing of clerics (p. 166).
 
 # Count one step of the chamber, run-wide, for tools/census_report.py: rolled (the yearly roll wrote), fired (the
-# letter arrived), took, stayed (she kept to the House), lost (a post ended, for any cause), estate. Scope: any.
+# letter arrived), took, stayed (she kept to the House), lost (a post ended, for any cause), worked (an AI daughter
+# worked the chamber), chrysobull, estate. Scope: any.
 tm_dl3_tally_effect = {
 	if = {
 		limit = { NOT = { has_global_variable = tm_dl3_n_$WHAT$ } }
@@ -182,6 +183,23 @@ tm_dl3_yearly_effect = {
 				scope:tm_dl3_seat = {
 					change_variable = { name = tm_dl3_balance add = 1 }
 					clamp_variable = { name = tm_dl3_balance min = -3 max = 3 }
+				}
+			}
+			# The AI weighs decisions only for rulers, and a daughter in post is a courtier, so "Work the Chamber"
+			# (tm_dl3_work_chamber_decision, five-year cooldown) never ran for her: a run to 1361 had 28 posts and no
+			# chrysobull or estate. Work it for her about once in five years. Not on the flavour budget: the decision
+			# isn't either.
+			if = {
+				limit = {
+					is_ai = yes
+					is_ruler = no
+					NOT = { has_variable = tm_dl3_work_cd }
+				}
+				random = {
+					chance = 20
+					set_variable = { name = tm_dl3_work_cd value = yes years = 5 }
+					tm_dl3_tally_effect = { WHAT = worked }
+					trigger_event = { id = tm_dl3.0010 days = { 1 120 } }
 				}
 			}
 			if = {

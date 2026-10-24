@@ -110,7 +110,10 @@ tm_fut_member_release_effect = {
 		limit = { has_character_modifier = tm_fut_terms_member_modifier }
 		remove_character_modifier = tm_fut_terms_member_modifier
 	}
-	set_knight_status = default
+	if = {
+		limit = { is_potential_knight = yes }	# as above: errors on anyone who could not be a knight anyway
+		set_knight_status = default
+	}
 }
 
 # The terms end. Scope: the lord.

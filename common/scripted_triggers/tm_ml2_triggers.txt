@@ -2,6 +2,7 @@
 
 # A daughter of the Garland who could hold a share on a temple street. Scope: a character.
 tm_ml2_share_candidate_trigger = {
+	is_alive = yes		# a dead one's variables can't be read
 	is_adult = yes
 	is_imprisoned = no
 	faith = faith:tm_garland

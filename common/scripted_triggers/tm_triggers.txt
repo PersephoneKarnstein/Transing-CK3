@@ -261,3 +261,24 @@ tm_settled_court_trigger = {
 		government_has_flag = government_is_holy_order
 	}
 }
+
+# A ruler who has just converted to one of the six with no tie to its community (tm_conv_on_actions.txt). Not
+# herself a sister of a House (a woman, Marked or a daughter); no House in hand; no Marked or daughter of the
+# Sisters at her court or in her close family. The family's faith is not asked: the game converts the convert's
+# family with her (faith_conversion.0003), perhaps before this is read. Scope: the convert.
+tm_conv_outsider_trigger = {
+	NOT = { tm_house_member_trigger = yes }
+	NOT = { tm_holds_sisters_house_trigger = yes }
+	NOT = {
+		any_courtier = {
+			rite ?= { rite_has_parameter = tm_sisters_faith }
+			OR = { tm_is_daughter_trigger = yes has_trait = tm_transgender }
+		}
+	}
+	NOT = {
+		any_close_family_member = {
+			rite ?= { rite_has_parameter = tm_sisters_faith }
+			OR = { tm_is_daughter_trigger = yes has_trait = tm_transgender }
+		}
+	}
+}

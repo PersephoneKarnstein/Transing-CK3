@@ -16,6 +16,8 @@ Modelled on the Yutai palace (`tm_palace`, `tm_yt2`, docs/wave3/yutai.md). The f
 
 **The balance** `tm_dl3_balance`, −3 to +3, on the throne's primary title. Created at 0. Yearly per seat: 30% drift toward 0; 25% +1 when a woman holds the throne or the regency (`tm_dl3_women_rule_trigger`: Garland's rule, women gained power in minorities and lost it under adult emperors, p. 198). Each daughter in post: 20% a year, +1 (raised from 10%, at which an observe run to 1116 had 30 posts and never reached +1 long enough for a chrysobull or an estate).
 
+**AI daughters work the chamber** (added 2026-10-23). The AI weighs decisions only for rulers, and a daughter in post is a courtier: run 11 (to 1361) had 28 posts and no chrysobull or estate. `tm_dl3_yearly_effect` works the chamber for an AI daughter in post who holds no land: 20% a year, then not again for five years (`tm_dl3_work_cd`), firing `tm_dl3.0010` as the decision does.
+
 **What the balance does.**
 - **Chamber's ear (+2 or more):** the heresy ladder (`tm_byz.0010`–`0012`) does not fire for Dorleyite rulers under that throne (`tm_dl3_ladder_stayed_trigger` in the three event triggers). Invitations +3.
 - **Patriarch's ear (−2 or less):** the ladder's yearly chance +3 (`tm_on_actions.txt`). Invitations −3.

@@ -351,7 +351,10 @@ tm_fut.0032 = {
 		name = tm_fut.0032.a
 		scope:tm_fut_rider = {
 			add_character_flag = tm_fut_rides
-			set_knight_status = default
+			if = {
+				limit = { is_potential_knight = yes }
+				set_knight_status = default
+			}
 			add_opinion = { target = root modifier = tm_fut_let_ride_opinion }
 		}
 		ai_chance = { base = 80 }

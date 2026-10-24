@@ -224,6 +224,7 @@ tm_dl3.0010 = {
 		}
 		scope:tm_dl3_seat = { tm_dl3_spend_effect = { AMOUNT = 1 } }
 		add_piety = 25
+		hidden_effect = { tm_dl3_tally_effect = { WHAT = chrysobull } }
 		custom_tooltip = tm_dl3_chrysobull_tt
 		scope:tm_dl3_throne = {
 			random_vassal_or_below = {

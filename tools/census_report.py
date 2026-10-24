@@ -221,13 +221,25 @@ def main(path):
         print(f"{seat:12} holder {who(get(p, 'holder'))}; start: {tv.get('tm_seat_branch', '(not a foothold seat)')}")
     print()
 
+    # Rulers who converted in through the game's conversion (tm_conv_on_actions.txt): run-wide, per faith.
+    print('== Rulers converting in (run-wide) ==')
+    print(f'{"":20} {"all":>6} {"outsiders":>10} {"turned away":>12}')
+    for t, name in FAITHS.items():
+        v = faith_vars.get(t, {})
+        n = [int(v.get(f'tm_n_{k}') or 0) for k in ('ruler_converts', 'outsider_converts', 'turned_away')]
+        print(f'{name:20} {n[0]:6} {n[1]:10} {n[2]:12}')
+    print('all: AI rulers who took the faith by the game\'s conversion; outsiders: with no tie to its community;\n'
+          'turned away: of those, kept their old faith (one in three).')
+    print()
+
     # The Women's Chamber (tm_dl3_tally_effect): run-wide counts of each step.
     print("== Women's Chamber ==")
-    steps = ('rolled', 'fired', 'took', 'stayed', 'lost', 'estate')
+    steps = ('rolled', 'fired', 'took', 'stayed', 'lost', 'worked', 'chrysobull', 'estate')
     if any(f'tm_dl3_n_{s}' in gvars for s in steps):
         print('  '.join(f'{s} {int(gvars.get(f"tm_dl3_n_{s}") or 0)}' for s in steps))
         print('rolled: the yearly roll wrote to a daughter; fired: the letter reached her; took / stayed: her answer;\n'
-              'lost: a post that ended, for any cause; estate: counties the throne granted.')
+              'lost: a post that ended, for any cause; worked: an AI daughter in post worked the chamber;\n'
+              'chrysobull: charters won for a House; estate: counties the throne granted.')
     else:
         print('No counts (the save predates the tally, or the chamber has never written).')
     print()

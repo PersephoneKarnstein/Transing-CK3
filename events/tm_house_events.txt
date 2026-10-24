@@ -46,7 +46,7 @@ tm_house.0010 = {
 			if = {
 				limit = {
 					has_variable = tm_elder_sister
-					var:tm_elder_sister = { is_alive = yes }
+					var:tm_elder_sister ?= { is_alive = yes }
 				}
 				var:tm_elder_sister = {
 					save_scope_as = tm_old_elder
@@ -132,7 +132,7 @@ tm_house.0020 = {
 		exists = scope:tm_house_county
 		scope:tm_house_county = {
 			has_variable = tm_elder_sister
-			var:tm_elder_sister = { is_alive = yes }
+			var:tm_elder_sister ?= { is_alive = yes }
 		}
 	}
 
@@ -260,7 +260,7 @@ tm_house.0050 = {
 				add = 30
 				scope:tm_house_county = {
 					has_variable = tm_house_protectress
-					var:tm_house_protectress = { is_alive = yes }
+					var:tm_house_protectress ?= { is_alive = yes }
 				}
 			}
 			modifier = { add = 30 has_trait = compassionate }
@@ -279,7 +279,7 @@ tm_house.0050 = {
 			if = {
 				limit = {
 					has_variable = tm_house_protectress
-					var:tm_house_protectress = { is_alive = yes }
+					var:tm_house_protectress ?= { is_alive = yes }
 				}
 				var:tm_house_protectress = {
 					add_opinion = { target = root modifier = angry_opinion opinion = -40 }
@@ -293,7 +293,7 @@ tm_house.0050 = {
 			limit = {
 				scope:tm_house_county = {
 					has_variable = tm_elder_sister
-					var:tm_elder_sister = { is_alive = yes is_courtier_of = root is_imprisoned = no }
+					var:tm_elder_sister ?= { is_alive = yes is_courtier_of = root is_imprisoned = no }
 				}
 			}
 			scope:tm_house_county.var:tm_elder_sister = { save_scope_as = tm_house_speaker }
@@ -370,9 +370,17 @@ tm_house.0065 = {
 			}
 			25 = {
 				save_scope_value_as = { name = tm_door_kind value = flag:freed }
+				# She "does not speak our tongue well yet": a neighbouring realm's culture, else the county's (the
+				# engine refuses a character with none).
+				root.capital_county.culture = { save_scope_as = tm_door_culture }
+				random_neighboring_top_liege_realm_owner = {
+					limit = { capital_county ?= { NOT = { culture = root.capital_county.culture } } }
+					capital_county.culture = { save_scope_as = tm_door_culture }
+				}
 				create_character = {
 					gender = female
 					age = { 18 35 }
+					culture = scope:tm_door_culture
 					faith = root.faith
 					location = root.capital_province
 					save_scope_as = tm_door_woman

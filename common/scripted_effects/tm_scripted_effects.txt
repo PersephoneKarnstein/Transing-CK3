@@ -111,7 +111,14 @@ tm_reembody_as_woman_effect = {
 		add_prowess_skill = { value = scope:tm_old_body.prowess subtract = prowess }
 
 		# 5. Resources and lifestyle experience.
-		add_gold = scope:tm_gold
+		if = {	# add_gold refuses a negative amount: a debt carries over as gold taken away
+			limit = { scope:tm_gold > 0 }
+			add_gold = scope:tm_gold
+		}
+		else_if = {
+			limit = { scope:tm_gold < 0 }
+			remove_short_term_gold = { value = 0 subtract = scope:tm_gold }
+		}
 		add_prestige = scope:tm_prestige
 		add_piety = scope:tm_piety
 		add_diplomacy_lifestyle_xp = scope:tm_xp_dip

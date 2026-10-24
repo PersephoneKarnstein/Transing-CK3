@@ -75,7 +75,7 @@ tm_ach_before_knife_effect = {
 	if = {
 		limit = {
 			has_variable = tm_ach_vizier_of
-			var:tm_ach_vizier_of = { is_alive = yes }
+			var:tm_ach_vizier_of ?= { is_alive = yes }
 		}
 		var:tm_ach_vizier_of = { save_scope_as = tm_ach_master }
 	}

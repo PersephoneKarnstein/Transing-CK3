@@ -1206,7 +1206,7 @@ tm_world.0050 = {
 				tier = tier_county
 				has_variable = tm_house
 				has_variable = tm_house_protectress
-				var:tm_house_protectress = { is_alive = yes }
+				var:tm_house_protectress ?= { is_alive = yes }
 			}
 			var:tm_house_protectress = { save_scope_as = tm_world_protectress }
 		}

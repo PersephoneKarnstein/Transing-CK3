@@ -126,7 +126,7 @@ tm_seat_pass_effect = {
 					government_base = scope:tm_seat_holder
 				}
 				every_in_de_jure_hierarchy = {
-					limit = { tier = tier_barony holder ?= scope:tm_seat_holder }
+					limit = { tier = tier_barony holder ?= scope:tm_seat_holder is_capital_barony = no }	# the capital goes with the county
 					change_title_holder = {
 						holder = scope:tm_seat_heir
 						change = scope:tm_seat_change
