@@ -1,0 +1,29 @@
+﻿# Crusader Dolls — the Account (common/scripted_effects/tm_feud_effects.txt).
+
+# Bót paid and taken: a settlement between the houses (Miller pp. 262-63).
+tm_feud_settled_opinion = {
+	opinion = 20
+	years = 10
+	decaying = yes
+}
+
+# He broke the settlement: the griðníðingr, "the betrayer of a truce, one of the lowest of the low" (Miller p. 280).
+tm_feud_truce_broken_opinion = {
+	opinion = -40
+	years = 15
+	decaying = yes
+}
+
+# The lord would not hear her suit over the three words.
+tm_feud_nid_dismissed_opinion = {
+	opinion = -20
+	years = 10
+	decaying = yes
+}
+
+# He paid her for the words, by the lord's award.
+tm_feud_nid_arbitrated_opinion = {
+	opinion = 5
+	years = 5
+	decaying = yes
+}

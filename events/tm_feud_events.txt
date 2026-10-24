@@ -1,0 +1,239 @@
+﻿namespace = tm_feud
+
+# Crusader Dolls — the Account (common/scripted_effects/tm_feud_effects.txt; docs/wave3/baedling.md §2).
+#   0010  bót offered by an AI house head (the player offers through tm_feud_offer_bot_interaction)
+#   0020  the three words: she may sue (Grágás Add. §423)
+#   0021  the suit, before the lord of the hall
+#   0030  a reprieve announced at the thing (Grágás K §110), for a player outlaw
+
+# Bót is offered. Root = the head of the house owed; scope:actor = the payer; scope:recipient = root;
+# scope:tm_feud_price = the sum.
+tm_feud.0010 = {
+	type = character_event
+	title = tm_feud.0010.t
+	desc = tm_feud.0010.desc
+	theme = stewardship
+	left_portrait = { character = scope:actor animation = personality_rational }
+	right_portrait = { character = root animation = thinking }
+
+	trigger = {
+		scope:actor = {
+			is_alive = yes
+			gold >= scope:tm_feud_price
+		}
+		tm_feud_gifts_value > 0
+	}
+
+	option = {	# Take the bót
+		name = tm_feud.0010.a
+		custom_tooltip = tm_feud_offer_bot_interaction_tt
+		tm_feud_settle_effect = yes
+		ai_chance = {
+			base = 40
+			opinion_modifier = { opinion_target = scope:actor multiplier = 0.5 }
+			modifier = { add = 30 has_trait = greedy }
+			modifier = { add = 30 has_trait = forgiving }
+			modifier = { add = 20 is_at_war = yes }
+			modifier = { add = -40 has_trait = vengeful }
+			modifier = { add = -20 has_trait = wrathful }
+		}
+	}
+	option = {	# The dead are worth more than this
+		name = tm_feud.0010.b
+		scope:actor = { set_variable = { name = tm_feud_bot_refused value = yes years = 3 } }
+		ai_chance = {
+			base = 40
+			modifier = { add = 30 has_trait = stubborn }
+			modifier = { add = 20 has_trait = arrogant }
+		}
+	}
+}
+
+# The three words were said before witnesses (a flyting in the hall or at the thing: tm_flyting.0020). Root = the
+# Bædling he named; scope:tm_flyter = the speaker; scope:tm_feud_lord = the lord of the hall, if any;
+# scope:tm_feud_stakes = 1 in the hall, 2 at the thing. The word is already in the Account (tm_feud_wrong_effect).
+tm_feud.0020 = {
+	type = character_event
+	title = tm_feud.0020.t
+	desc = {
+		desc = tm_feud.0020.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { tm_feud_nid_suit_possible_trigger = yes }
+				desc = tm_feud.0020.desc.court
+			}
+			desc = tm_feud.0020.desc.nocourt
+		}
+	}
+	theme = faith
+	override_background = { reference = terrain }
+	left_portrait = { character = root animation = anger }
+	right_portrait = { character = scope:tm_flyter animation = disapproval }
+
+	trigger = {
+		scope:tm_flyter ?= { is_alive = yes }
+	}
+
+	immediate = { save_scope_as = tm_feud_plaintiff }
+
+	option = {	# Bring the suit
+		name = tm_feud.0020.a
+		trigger = { tm_feud_nid_suit_possible_trigger = yes }
+		custom_tooltip = tm_feud.0020.a.tt
+		tm_feud_tally_effect = { WHAT = nid_suits }
+		scope:tm_feud_lord = { trigger_event = { id = tm_feud.0021 days = 1 } }
+		ai_chance = {
+			base = 60
+			modifier = { add = 30 has_trait = vengeful }
+			modifier = { add = 20 has_trait = just }
+			modifier = { add = 20 has_trait = brave }
+			modifier = { add = -30 has_trait = forgiving }
+			modifier = { add = -30 has_trait = craven }
+		}
+	}
+	option = {	# Let it stand in the Account
+		name = tm_feud.0020.b
+		custom_tooltip = tm_feud.0020.b.tt
+		ai_chance = {
+			base = 30
+			modifier = { add = 30 has_trait = forgiving }
+			modifier = { add = 20 has_trait = calm }
+		}
+	}
+}
+
+# The suit before the lord of the hall. Root = the lord (who may be the plaintiff herself);
+# scope:tm_feud_plaintiff, scope:tm_flyter, scope:tm_feud_stakes.
+tm_feud.0021 = {
+	type = character_event
+	title = tm_feud.0021.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { this = scope:tm_feud_plaintiff }
+				desc = tm_feud.0021.desc.self
+			}
+			desc = tm_feud.0021.desc
+		}
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:tm_feud_stakes >= 2 }
+				desc = tm_feud.0021.desc.thing
+			}
+			desc = tm_feud.0021.desc.hall
+		}
+	}
+	theme = faith
+	override_background = { reference = throne_room }
+	left_portrait = { character = scope:tm_feud_plaintiff animation = personality_bold }
+	right_portrait = { character = scope:tm_flyter animation = worry }
+
+	trigger = {
+		scope:tm_feud_plaintiff ?= { is_alive = yes }
+		scope:tm_flyter ?= {
+			is_alive = yes
+			is_ruler = no
+		}
+	}
+
+	immediate = {
+		save_scope_as = tm_feud_lord
+		save_scope_value_as = { name = tm_feud_nid_price value = tm_feud_nid_price_value }
+	}
+
+	option = {	# Every word is to be as it is spoken (K §237): the speaker is outlawed
+		name = tm_feud.0021.a
+		custom_tooltip = tm_feud.0021.a.tt
+		scope:tm_flyter = { tm_feud_nid_outlawry_effect = yes }
+		scope:tm_feud_plaintiff = { add_prestige = minor_prestige_gain }
+		if = {
+			limit = { NOT = { this = scope:tm_feud_plaintiff } }
+			scope:tm_feud_plaintiff = {
+				add_opinion = { target = root modifier = grateful_opinion opinion = 20 }
+			}
+		}
+		ai_chance = {
+			base = 30
+			opinion_modifier = {	# not when she hears her own suit
+				trigger = { NOT = { this = scope:tm_feud_plaintiff } }
+				opinion_target = scope:tm_feud_plaintiff
+				multiplier = 0.5
+			}
+			opinion_modifier = { opinion_target = scope:tm_flyter multiplier = -0.5 }
+			modifier = { add = 30 has_trait = just }
+			modifier = { add = 50 faith = scope:tm_feud_plaintiff.faith }
+			modifier = {
+				add = -30
+				has_trait = zealous
+				NOT = { faith = scope:tm_feud_plaintiff.faith }
+			}
+		}
+	}
+	option = {	# Arbitrate: he pays her for the words (Miller p. 262)
+		name = tm_feud.0021.b
+		custom_tooltip = tm_feud.0021.b.tt
+		scope:tm_flyter = {
+			pay_short_term_gold = { target = scope:tm_feud_plaintiff gold = scope:tm_feud_nid_price }
+			add_prestige = minor_prestige_loss
+		}
+		scope:tm_feud_plaintiff = {
+			add_opinion = { target = scope:tm_flyter modifier = tm_feud_nid_arbitrated_opinion }
+		}
+		if = {	# the words are paid for: off the Account
+			limit = {
+				exists = scope:tm_feud_plaintiff.house
+				exists = scope:tm_flyter.house
+			}
+			scope:tm_feud_plaintiff.house = { tm_feud_pay_one_effect = { DEBTOR = scope:tm_flyter.house } }
+		}
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = diplomat }
+			modifier = { add = 20 has_trait = calm }
+			modifier = { add = 10 has_trait = greedy }
+		}
+	}
+	option = {	# Dismiss the suit
+		name = tm_feud.0021.c
+		trigger = { NOT = { this = scope:tm_feud_plaintiff } }
+		scope:tm_feud_plaintiff = {
+			add_opinion = { target = root modifier = tm_feud_nid_dismissed_opinion }
+		}
+		ai_chance = {
+			base = 20
+			opinion_modifier = { opinion_target = scope:tm_flyter multiplier = 0.5 }
+			modifier = {
+				add = 30
+				has_trait = zealous
+				NOT = { faith = scope:tm_feud_plaintiff.faith }
+			}
+			modifier = { add = -30 has_trait = just }
+		}
+	}
+}
+
+# A reprieve announced at the thing (Grágás K §110). Root = the outlaw (a player); scope:tm_feud_step = passage,
+# lesser or free.
+tm_feud.0030 = {
+	type = character_event
+	title = tm_feud.0030.t
+	desc = {
+		desc = tm_feud.0030.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:tm_feud_step = flag:passage }
+				desc = tm_feud.0030.desc.passage
+			}
+			triggered_desc = {
+				trigger = { scope:tm_feud_step = flag:lesser }
+				desc = tm_feud.0030.desc.lesser
+			}
+			desc = tm_feud.0030.desc.free
+		}
+	}
+	theme = faith
+	override_background = { reference = terrain }
+	left_portrait = { character = root animation = personality_bold }
+
+	option = { name = tm_feud.0030.a }
+}

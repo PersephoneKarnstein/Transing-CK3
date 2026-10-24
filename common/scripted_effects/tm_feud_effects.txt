@@ -1,0 +1,254 @@
+﻿# Crusader Dolls — the Account: feud, settlement and reprieve for the Bædlings (events/tm_feud_events.txt;
+# docs/wave3/baedling.md §2, "The Account").
+#
+# Feud is "a scored relationship between groups with alternating turns, not a war" (Miller, Bloodtaking, pp. 180-82):
+# an insult or a killing is a "gift" that makes the receiver a debtor (p. 182). Here each house keeps its own Account:
+# the houses that owe it, up to three unanswered wrongs each, in three variable lists on the wronged house
+# (tm_acc_1, tm_acc_2, tm_acc_3: in tm_acc_2 means two or more). A wrong the other way is a requital and pays one off.
+# Vanilla's house relation (feud, rivalry, quarrel) moves alongside, for the wrongs vanilla does not already count.
+# The Account opens only where a Bædling is the one wronged or the one who wronged.
+
+# A wrong. $VICTIM$ the one wronged, $WRONGDOER$ the one who did it, $REASON$ a house-relation reason
+# (house_relation_reason_<REASON>_desc) or none, $VANILLA$ yes when vanilla's house relation should move too (the
+# wrongs vanilla does not count itself). Scope: any.
+tm_feud_wrong_effect = {
+	if = {
+		limit = {
+			$VICTIM$ = { exists = house }
+			$WRONGDOER$ = { exists = house }
+			NOT = { $VICTIM$.house = $WRONGDOER$.house }
+			OR = {
+				$VICTIM$ = { faith = faith:tm_baeddel }
+				$WRONGDOER$ = { faith = faith:tm_baeddel }
+			}
+		}
+		$VICTIM$.house = { save_scope_as = tm_feud_creditor }
+		$WRONGDOER$.house = { save_scope_as = tm_feud_debtor }
+		$VICTIM$ = { save_scope_as = tm_feud_victim }
+		$WRONGDOER$ = { save_scope_as = tm_feud_wrongdoer }
+		# The truce-breaker, "one of the lowest of the low" (Miller p. 280): a wrong within ten years of a settlement.
+		if = {
+			limit = {
+				scope:tm_feud_creditor = {
+					is_target_in_variable_list = { name = tm_acc_settled target = scope:tm_feud_debtor }
+				}
+			}
+			scope:tm_feud_wrongdoer = { add_prestige = major_prestige_loss }
+			scope:tm_feud_creditor = { remove_list_variable = { name = tm_acc_settled target = scope:tm_feud_debtor } }
+			scope:tm_feud_debtor = { remove_list_variable = { name = tm_acc_settled target = scope:tm_feud_creditor } }
+			scope:tm_feud_victim = {
+				add_opinion = { target = scope:tm_feud_wrongdoer modifier = tm_feud_truce_broken_opinion }
+			}
+			tm_feud_tally_effect = { WHAT = truce_broken }
+		}
+		# A requital: her house owed his, and this pays one off. Else his house now owes hers one more.
+		if = {
+			limit = {
+				scope:tm_feud_debtor = {
+					is_target_in_variable_list = { name = tm_acc_1 target = scope:tm_feud_creditor }
+				}
+			}
+			scope:tm_feud_debtor = { tm_feud_pay_one_effect = { DEBTOR = scope:tm_feud_creditor } }
+			tm_feud_tally_effect = { WHAT = requitals }
+		}
+		else = {
+			scope:tm_feud_creditor = { tm_feud_add_one_effect = { DEBTOR = scope:tm_feud_debtor } }
+			tm_feud_tally_effect = { WHAT = wrongs }
+			scope:tm_feud_creditor.house_head ?= {
+				if = {
+					limit = { is_ai = no }
+					send_interface_toast = {
+						type = event_toast_effect_bad
+						title = tm_feud_gift_owed_toast
+						left_icon = scope:tm_feud_victim
+						right_icon = scope:tm_feud_wrongdoer
+					}
+				}
+			}
+			scope:tm_feud_debtor.house_head ?= {
+				if = {
+					limit = { is_ai = no }
+					send_interface_toast = {
+						type = event_toast_effect_neutral
+						title = tm_feud_gift_given_toast
+						left_icon = scope:tm_feud_wrongdoer
+						right_icon = scope:tm_feud_victim
+					}
+				}
+			}
+		}
+		if = {
+			limit = { always = $VANILLA$ }
+			scope:tm_feud_creditor = {
+				change_house_relation_effect = {
+					HOUSE = scope:tm_feud_debtor
+					CHAR = scope:tm_feud_wrongdoer
+					TARGET_CHAR = scope:tm_feud_victim
+					TITLE = scope:tm_feud_victim.primary_title
+					VALUE = house_relation_damage_medium_value
+					REASON = $REASON$
+				}
+			}
+		}
+	}
+}
+
+# One more unanswered wrong owed to this house by $DEBTOR$ (a house). Three at most. Scope: the wronged house.
+tm_feud_add_one_effect = {
+	if = {
+		limit = { is_target_in_variable_list = { name = tm_acc_2 target = $DEBTOR$ } }
+		add_to_variable_list = { name = tm_acc_3 target = $DEBTOR$ }
+	}
+	else_if = {
+		limit = { is_target_in_variable_list = { name = tm_acc_1 target = $DEBTOR$ } }
+		add_to_variable_list = { name = tm_acc_2 target = $DEBTOR$ }
+	}
+	else = {
+		add_to_variable_list = { name = tm_acc_1 target = $DEBTOR$ }
+	}
+	# The houses with an open Account, for the yearly offers of bót (tm_feud_yearly).
+	add_to_global_variable_list = { name = tm_acc_creditors target = this }
+}
+
+# One wrong owed by $DEBTOR$ paid off. Scope: the house it was owed to.
+tm_feud_pay_one_effect = {
+	if = {
+		limit = { is_target_in_variable_list = { name = tm_acc_3 target = $DEBTOR$ } }
+		remove_list_variable = { name = tm_acc_3 target = $DEBTOR$ }
+	}
+	else_if = {
+		limit = { is_target_in_variable_list = { name = tm_acc_2 target = $DEBTOR$ } }
+		remove_list_variable = { name = tm_acc_2 target = $DEBTOR$ }
+	}
+	else = {
+		remove_list_variable = { name = tm_acc_1 target = $DEBTOR$ }
+	}
+}
+
+# The Account between this house and $DEBTOR$ is closed. Scope: the house it was owed to.
+tm_feud_clear_effect = {
+	remove_list_variable = { name = tm_acc_1 target = $DEBTOR$ }
+	remove_list_variable = { name = tm_acc_2 target = $DEBTOR$ }
+	remove_list_variable = { name = tm_acc_3 target = $DEBTOR$ }
+}
+
+# Bót is paid and taken (Miller pp. 262-63: arbitration and compensation end most feuds). Scope: any. Needs
+# scope:actor (the payer) and scope:recipient (the one paid), as in the interaction; scope:tm_feud_price the sum.
+# The receiver gains prestige; the payer loses none (p. 184: and the gold "finances the return blow"). Ten years'
+# truce between the houses (tm_acc_settled), after which a new wrong is an ordinary wrong again.
+tm_feud_settle_effect = {
+	scope:actor = {
+		pay_short_term_gold = { target = scope:recipient gold = scope:tm_feud_price }
+		add_opinion = { target = scope:recipient modifier = tm_feud_settled_opinion }
+	}
+	scope:recipient = {
+		add_prestige = medium_prestige_gain
+		add_opinion = { target = scope:actor modifier = tm_feud_settled_opinion }
+	}
+	scope:recipient.house = {
+		tm_feud_clear_effect = { DEBTOR = scope:actor.house }
+		add_to_variable_list = { name = tm_acc_settled target = scope:actor.house years = 10 }
+		change_house_relation_effect = {
+			HOUSE = scope:actor.house
+			CHAR = scope:actor
+			TARGET_CHAR = scope:recipient
+			TITLE = scope:recipient.primary_title
+			VALUE = house_relation_improve_major_value
+			REASON = tm_bot
+		}
+	}
+	scope:actor.house = {
+		add_to_variable_list = { name = tm_acc_settled target = scope:recipient.house years = 10 }
+	}
+	tm_feud_tally_effect = { WHAT = settled }
+}
+
+# Run-wide counts for tools/census_report.py: wrongs, requitals, settled, truce_broken, nid_suits, nid_outlawed,
+# reprieve_kills, reprieves. Scope: any.
+tm_feud_tally_effect = {
+	if = {
+		limit = { NOT = { has_global_variable = tm_feud_n_$WHAT$ } }
+		set_global_variable = { name = tm_feud_n_$WHAT$ value = 0 }
+	}
+	change_global_variable = { name = tm_feud_n_$WHAT$ add = 1 }
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The níð suit (Grágás Add. §423, St §376, II p. 354; research/norse_gragas_laws.md). The three words carry full
+# outlawry for the one who says them, with no fine, and the one insulted may kill him up to the next Assembly. The
+# law punishes the speaker, not the one he names. Scope: the speaker. Needs scope:tm_feud_plaintiff (the woman he
+# named) and scope:tm_feud_lord (the court that heard it). As a full outlaw he may be killed without a feud
+# (tm_feud_on_death), and he can settle or be pardoned like any outlaw (tm_bae2_on_actions.txt).
+tm_feud_nid_outlawry_effect = {
+	add_character_modifier = tm_bae2_full_outlaw_modifier
+	set_variable = { name = tm_bae2_accuser value = scope:tm_feud_plaintiff }
+	scope:tm_feud_plaintiff = {
+		add_opinion = { target = prev modifier = tm_bae2_outlawed_by_me_opinion }
+	}
+	tm_feud_tally_effect = { WHAT = nid_outlawed }
+	if = {
+		limit = {
+			is_ruler = no
+			age < 55
+			OR = {
+				martial >= 8
+				prowess >= 10
+				is_knight = yes
+			}
+		}
+		scope:tm_feud_lord = { save_scope_as = host }	# read only by a branch for young warriors that cannot fire here
+		create_landless_adventurer_title_effect = {
+			REASON = flag:exile
+			FLAVOR_CHAR = scope:tm_feud_plaintiff
+		}
+	}
+	else_if = {
+		limit = { is_ruler = no }
+		move_to_pool = yes		# out of the hall: "no standing at law" and no place in it
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Reprieve by killing outlaws (Grágás K §110, I pp. 171-72). An outlaw who kills an outlaw, or for whom a free man
+# kills one, earns a step: full outlawry, then "an outlaw who may be given passage", then lesser outlawry, then free.
+# The killer names the reprieve to five neighbours; it binds everyone once it is announced at Lögberg, so the step is
+# kept as pending and taken at the next thing (tm_feud_yearly). Scope: the outlaw who earns it.
+tm_feud_reprieve_credit_effect = {
+	if = {
+		limit = { has_variable = tm_feud_reprieve_pending }
+		change_variable = { name = tm_feud_reprieve_pending add = 1 }
+	}
+	else = {
+		set_variable = { name = tm_feud_reprieve_pending value = 1 }
+	}
+	tm_feud_tally_effect = { WHAT = reprieve_kills }
+}
+
+# One step of reprieve, announced at the thing. Scope: the outlaw.
+tm_feud_reprieve_step_effect = {
+	if = {
+		limit = {
+			has_character_modifier = tm_bae2_full_outlaw_modifier
+			NOT = { has_variable = tm_feud_passage }
+		}
+		set_variable = tm_feud_passage
+		save_scope_value_as = { name = tm_feud_step value = flag:passage }
+	}
+	else_if = {
+		limit = { has_character_modifier = tm_bae2_full_outlaw_modifier }
+		remove_variable = tm_feud_passage
+		remove_character_modifier = tm_bae2_full_outlaw_modifier
+		add_character_modifier = { modifier = tm_bae2_lesser_outlaw_modifier years = 3 }
+		save_scope_value_as = { name = tm_feud_step value = flag:lesser }
+	}
+	else = {
+		remove_variable = tm_feud_passage
+		tm_bae2_lift_outlawry_effect = yes
+		save_scope_value_as = { name = tm_feud_step value = flag:free }
+		tm_feud_tally_effect = { WHAT = reprieves }
+	}
+	if = {
+		limit = { is_ai = no }
+		trigger_event = tm_feud.0030
+	}
+}

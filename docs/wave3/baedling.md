@@ -56,7 +56,7 @@ Spec: TODO.md, "Branch faiths, stage 2". The template is vanilla `abduct` (1.20 
   - **Filter:** AI, able to start the scheme, not at war with the jailer, not already running it.
   - **Weights:** sworn sister ×4, family ×3, friend ×2, House holder ×1. Compassionate and brave raise them; craven and content lower them; same faith as the jailer gives ×0.3.
   - The search runs in its own event so that each jailer's candidate list starts empty.
-- **Miller row 17** (the rescue opens his account against her house) is not built, because it needs the feud ledger.
+- **Miller row 17** (the rescue opens his account against her house): built with the Account (`tm_bae2.0011`, 2026-10-23).
 
 ## 2. Outlawry (built, modest)
 
@@ -123,10 +123,55 @@ There is no suit without an accuser. She gets a 10-year cooldown either way.
 
 ### Specified only (not built)
 
-- **Reprieve by killing outlaws** (K §110: one kill buys passage, two reduce the sentence to lesser, three acquit). This needs a kill tracker on `on_death`; it is rare with so few outlaws.
 - The confiscation court. Ride for Sympathy. Houses sheltering outlaws (strain and the harbouring suit). The lair. The sister's revenge.
-- The feud ledger and Offer Bót (Miller rows 1-4). Specification for a later pass: a stacking opinion `tm_unpaid_gift` per unrequited wrong between two houses; a scripted value for the balance; the interaction *Offer Bót* (gold scaled by the victim's rank, clears stacks, 10-year `tm_settled_account`). Wrongs that add a stack: murder or maiming, imprisonment of a sister, a raid on a House county, níð spoken.
-- The níð suit. Under Grágás Add. §423 the man who shouts *ragr* at the thing is the one outlawed; a flyting at the June thing could open a suit *against* the flyter. Not built.
+
+### The Account, the níð suit and reprieve by killing outlaws (built 2026-10-23, untested in game)
+
+Files: `common/scripted_effects/tm_feud_effects.txt`, `tm_feud_triggers.txt`, `common/script_values/tm_feud_values.txt`,
+`common/on_action/tm_feud_on_actions.txt`, `common/character_interactions/tm_feud_interactions.txt`,
+`common/opinion_modifiers/tm_feud_opinion_modifiers.txt`, `events/tm_feud_events.txt` (namespace `tm_feud`),
+`localization/english/tm_feud_l_english.yml`. Prefix `tm_feud_`.
+
+**The Account** (Miller rows 1, 3, 13 and 17; research/norse_miller_bloodtaking.md). Vanilla 1.20 already keeps house
+relations (feud, rivalry, quarrel, neutral, cordial) and moves them for killings, imprisonment, torture and maiming,
+so the Account does not replace them. It adds what they lack: who owes whom, wrong by wrong.
+- Each house keeps the houses that owe it, up to three unanswered wrongs each, in three variable lists
+  (`tm_acc_1`, `tm_acc_2`, `tm_acc_3`). Kept on the houses, not on vanilla's relation, which vanilla prunes.
+- A wrong opens or adds to it only where a Bædling is the one wronged or the one who wronged
+  (`tm_feud_wrong_effect`). A wrong the other way is a requital and pays one off (Miller p. 182).
+- Wrongs: a killing outside a war between the two realms (`on_death`; war is "the top of the scale, not the
+  default"); a sister imprisoned (`on_imprison`, a woman, Marked, daughter or friend of a House of the Bædlings);
+  a raid on a county with a Sisters' House (`on_raid_action_completion`); the three words said before witnesses in a
+  flyting (row 13); a discovered Spring the Cell rescue, against the rescuer's house (row 17). Vanilla's house
+  relation moves too for the last three, which vanilla does not count itself. Maiming has no hook the mod can use;
+  vanilla's relation counts it.
+- An outlaw's death is no wrong: she has no standing at law.
+- **Offer Bót** (`tm_feud_offer_bot_interaction`, row 3). A ruler of the house that owes pays the house owed: 50 gold
+  a wrong to a count, 100 to a duke, 150 to a king, 200 to an emperor. It closes the Account; the receiver gains
+  prestige and the payer loses none; ten years' truce (`tm_acc_settled`). The AI offers through the yearly pulse
+  (10% a year for a house head who can pay, more if just, calm or generous; `tm_feud.0010`). Refused, it waits three
+  years.
+- **The truce-breaker** (Miller p. 280): a wrong within the ten years costs the wrongdoer major prestige and an
+  opinion of −40 from the one wronged, and the truce ends.
+- Not built: escalation by rank (row 2), Grant Self-Judgment (row 4), the refused Account (row 5), fostering to seal
+  a settlement, and the martial bonus for a reopened Account.
+
+**The níð suit** (Grágás Add. §423, St §376; K §237). When the flyter's charge is *ragr* in a hall or at the thing
+(stakes 1 or 2, so before witnesses), the word enters the Account and she may sue (`tm_feud.0020`), before the lord
+of the hall (`tm_feud.0021`, who may be herself). The lord can outlaw the speaker (full outlawry, no fine: he leaves
+the hall, as a band if he is a fighter; anyone may then kill him without a feud), arbitrate (he pays her 50 gold,
+doubled at the thing, and the words come off the Account), or dismiss it. Never against a ruler or the lord himself:
+a sentence on a landed man would be a revocation, which the mod leaves to vanilla. Alone, it is words for words
+(K §237): no suit. The law punishes the speaker, never the one he names.
+
+**Reprieve by killing outlaws** (Grágás K §110). When an outlaw is killed, the killer, if an outlaw, earns a step;
+otherwise a sworn sister or kinswoman of the killer who is an outlaw does ("a free man may kill on his behalf").
+Steps are announced at the next thing (the yearly pulse) and taken one at a time: full outlawry, then "an outlaw who
+may be given passage" (`tm_feud_passage`: whoever takes her in owes the accuser nothing, `tm_bae2.0110`), then
+lesser outlawry for three years, then free. A lesser outlaw goes free with one step. A player outlaw gets
+`tm_feud.0030`.
+
+Counts for observe runs: `tools/census_report.py`, "The Account".
 
 ## 3. Landless bands regaining land (built)
 
@@ -251,7 +296,8 @@ Roadmap: tick "Spring the Cell" and "outlawry and landless war-bands"; leave "fe
 - [ ] Spring the Cell (`tm_bae2_spring_cell`): scheme, three agent types, interaction, AI plotter search; prisoners to the nearest House
 - [ ] Outlawry (`tm_bae2`, 0100–0135): suit from 1100 at Christian Norse courts (sorcery / dress clause), six housewives, life-ring, full outlawry → adventurer band; settlement, forgiven for the war, the high seat
 - [ ] Answer the Hall's Call (`tm_bae2_answer_hall_decision`), return-to-the-seat travel, settling grace on `on_title_gain`
-- [ ] Not built: feud ledger and Offer Bót; reprieve by killing outlaws (K §110); the níð suit against the flyter; Sophoulis proposals 1–3 and 6
+- [ ] The Account and Offer Bót, the níð suit, reprieve by killing outlaws (`tm_feud`, built 2026-10-23; untested)
+- [ ] Not built: Sophoulis proposals 1–3 and 6
 - [ ] Lead: Rescue the Daughters for adventurers? declared sisters in `tm_captive_daughter_trigger`? (docs/wave3/baedling.md §4)
 ```
 

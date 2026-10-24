@@ -219,6 +219,7 @@ tm_bae2_lift_outlawry_effect = {
 	remove_character_modifier = tm_bae2_lesser_outlaw_modifier
 	remove_character_modifier = tm_bae2_full_outlaw_modifier
 	remove_variable = tm_bae2_accuser
+	remove_variable = tm_feud_passage
 }
 
 # ---------------------------------------------------------------------------------------------------

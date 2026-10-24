@@ -161,6 +161,8 @@ tm_bae2.0011 = {
 			target = scope:tm_bae2_plotter
 			modifier = tm_bae2_sprang_my_cell_opinion
 		}
+		# The rescue is itself a gift he will want to repay (Miller pp. 194, 196-97; norse_miller_bloodtaking.md row 17).
+		tm_feud_wrong_effect = { VICTIM = root WRONGDOER = scope:tm_bae2_plotter REASON = tm_cell VANILLA = yes }
 		add_character_modifier = {
 			modifier = watchful_modifier
 			days = watchful_modifier_duration
@@ -423,8 +425,11 @@ tm_bae2.0110 = {
 	option = {	# Keep her
 		name = tm_bae2.0110.a
 		custom_tooltip = tm_bae2.0110.a.tt
-		scope:tm_bae2_exile.var:tm_bae2_accuser ?= {
-			add_opinion = { target = root modifier = tm_bae2_harbours_outlaw_opinion }
+		if = {	# "an outlaw who may be given passage" (Grágás K §110): a host owes the accuser nothing
+			limit = { NOT = { scope:tm_bae2_exile = { has_variable = tm_feud_passage } } }
+			scope:tm_bae2_exile.var:tm_bae2_accuser ?= {
+				add_opinion = { target = root modifier = tm_bae2_harbours_outlaw_opinion }
+			}
 		}
 		add_prestige = minor_prestige_gain
 	}

@@ -136,6 +136,7 @@ tm_flyting.0010 = {
 				}
 				set_variable = { name = tm_flyt_charge value = flag:ragr }
 				set_variable = { name = tm_flyt_true value = flag:yes }
+				set_variable = tm_flyt_nid		# one of the three words (Grágás Add. §423): the suit lies against him
 			}
 			25 = {
 				trigger = {
@@ -431,6 +432,19 @@ tm_flyting.0020 = {
 	}
 
 	after = {
+		# The three words before witnesses: in the Account, and a suit against the speaker (tm_feud_events.txt).
+		# Alone, it is words for words and no suit (Grágás K §237).
+		if = {
+			limit = {
+				has_variable = tm_flyt_nid
+				var:tm_flyt_stakes >= 1
+				scope:tm_flyter = { is_alive = yes }
+			}
+			save_scope_value_as = { name = tm_feud_stakes value = var:tm_flyt_stakes }
+			scope:tm_flyt_hall ?= { save_scope_as = tm_feud_lord }
+			tm_feud_wrong_effect = { VICTIM = root WRONGDOER = scope:tm_flyter REASON = tm_nid VANILLA = yes }
+			trigger_event = { id = tm_feud.0020 days = 3 }
+		}
 		tm_flyting_clear_effect = yes
 	}
 }

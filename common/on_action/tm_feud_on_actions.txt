@@ -1,0 +1,164 @@
+﻿# Crusader Dolls — the Account (common/scripted_effects/tm_feud_effects.txt). Appended to vanilla on_actions; the
+# effects are our own on_actions, so vanilla's are untouched.
+on_death = {
+	on_actions = { tm_feud_on_death }
+}
+
+on_imprison = {
+	on_actions = { tm_feud_on_imprison }
+}
+
+on_raid_action_completion = {
+	on_actions = { tm_feud_on_raid }
+}
+
+yearly_global_pulse = {
+	on_actions = { tm_feud_yearly }
+}
+
+# A killing. Root = the one dying; scope:killer = who killed her, if known.
+# - An outlaw's death is no wrong: she had no standing at law (Ahola pp. 85-86). It may earn a reprieve instead
+#   (Grágás K §110): for the killer, if an outlaw, or else for a sworn sister or kinswoman of the killer who is one
+#   ("a free man may kill on his behalf").
+# - Otherwise a killing outside a war is a gift to her house (Miller p. 182). Deaths in a war between the two realms are
+#   left to the war: "war is the top of the scale, not the default" (research/norse_miller_bloodtaking.md row 1).
+#   Vanilla moves the house relation for killings itself.
+tm_feud_on_death = {
+	trigger = {
+		exists = scope:killer
+		NOT = { scope:killer = root }
+	}
+	effect = {
+		if = {
+			limit = { tm_bae2_is_outlaw_trigger = yes }
+			scope:killer = {
+				if = {
+					limit = { tm_bae2_is_outlaw_trigger = yes }
+					tm_feud_reprieve_credit_effect = yes
+				}
+				else_if = {
+					limit = {
+						any_relation = { type = tm_sister tm_bae2_is_outlaw_trigger = yes NOT = { this = root } }
+					}
+					random_relation = {
+						type = tm_sister
+						limit = { tm_bae2_is_outlaw_trigger = yes NOT = { this = root } }
+						tm_feud_reprieve_credit_effect = yes
+					}
+				}
+				else_if = {
+					limit = {
+						any_close_family_member = { tm_bae2_is_outlaw_trigger = yes NOT = { this = root } }
+					}
+					random_close_family_member = {
+						limit = { tm_bae2_is_outlaw_trigger = yes NOT = { this = root } }
+						tm_feud_reprieve_credit_effect = yes
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = { scope:killer = { is_at_war_with = root } }
+				NOT = {
+					AND = {
+						exists = root.top_liege
+						exists = scope:killer.top_liege
+						scope:killer.top_liege = { is_at_war_with = root.top_liege }
+					}
+				}
+			}
+			tm_feud_wrong_effect = { VICTIM = root WRONGDOER = scope:killer REASON = killed VANILLA = no }
+		}
+	}
+}
+
+# A sister imprisoned: a woman, Marked, daughter or friend of a House of the Bædlings (tm_house_member_trigger).
+# Not an outlaw, whom anyone may take. Root = the prisoner; scope:imprisoner. Vanilla moves the house relation itself.
+tm_feud_on_imprison = {
+	trigger = {
+		faith = faith:tm_baeddel
+		tm_house_member_trigger = yes
+		tm_bae2_is_outlaw_trigger = no
+		exists = scope:imprisoner
+	}
+	effect = {
+		tm_feud_wrong_effect = { VICTIM = root WRONGDOER = scope:imprisoner REASON = imprisonment VANILLA = no }
+	}
+}
+
+# A raid on a county that keeps a Sisters' House. Root = the raid army; scope:raider, scope:county.
+tm_feud_on_raid = {
+	trigger = {
+		exists = scope:raider
+		scope:county = { has_variable = tm_house }
+		exists = scope:county.holder
+		NOT = { scope:county.holder = scope:raider }
+	}
+	effect = {
+		tm_feud_wrong_effect = { VICTIM = scope:county.holder WRONGDOER = scope:raider REASON = tm_house_raided VANILLA = yes }
+	}
+}
+
+# Once a year: the thing.
+tm_feud_yearly = {
+	effect = {
+		# Reprieves named since the last thing are announced and bind everyone (Grágás K §110: "at Lögberg"). The year's
+		# thing is this pulse; the flyting keeps the June date for its own stakes.
+		every_living_character = {
+			limit = { has_variable = tm_feud_reprieve_pending }
+			while = {
+				limit = {
+					var:tm_feud_reprieve_pending > 0
+					tm_bae2_is_outlaw_trigger = yes
+				}
+				tm_feud_reprieve_step_effect = yes
+				change_variable = { name = tm_feud_reprieve_pending subtract = 1 }
+			}
+			remove_variable = tm_feud_reprieve_pending
+		}
+		# An AI house head who owes another house may offer bót (Miller p. 262: arbitration ended most feuds), if the
+		# purse allows and the houses are not at war. Modest odds a year; the head of the house owed answers.
+		every_in_global_list = {
+			variable = tm_acc_creditors
+			save_scope_as = tm_feud_creditor
+			house_head ?= {
+				if = {
+					limit = { is_alive = yes is_ruler = yes is_imprisoned = no }
+					save_scope_as = recipient
+					scope:tm_feud_creditor = {
+						every_in_list = {
+							variable = tm_acc_1
+							house_head ?= {
+								if = {
+									limit = {
+										is_alive = yes
+										is_ai = yes
+										is_ruler = yes
+										is_imprisoned = no
+										NOT = { is_at_war_with = scope:recipient }
+										NOT = { has_variable = tm_feud_bot_refused }
+									}
+									save_scope_as = actor
+									if = {
+										limit = { gold >= tm_feud_bot_price_value }
+										random = {
+											chance = 10
+											modifier = { add = 10 has_trait = just }
+											modifier = { add = 10 has_trait = calm }
+											modifier = { add = 10 has_trait = generous }
+											modifier = { add = -5 has_trait = wrathful }
+											modifier = { add = -5 has_trait = vengeful }
+											save_scope_value_as = { name = tm_feud_price value = tm_feud_bot_price_value }
+											scope:recipient = { trigger_event = tm_feud.0010 }
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

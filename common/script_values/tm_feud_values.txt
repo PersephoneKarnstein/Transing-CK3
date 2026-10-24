@@ -1,0 +1,46 @@
+﻿# Crusader Dolls — the Account (common/scripted_effects/tm_feud_effects.txt).
+
+# Unanswered wrongs scope:actor's house owes scope:recipient's house: 0 to 3.
+tm_feud_gifts_value = {
+	value = 0
+	if = {
+		limit = { scope:recipient.house ?= { is_target_in_variable_list = { name = tm_acc_1 target = scope:actor.house } } }
+		add = 1
+	}
+	if = {
+		limit = { scope:recipient.house ?= { is_target_in_variable_list = { name = tm_acc_2 target = scope:actor.house } } }
+		add = 1
+	}
+	if = {
+		limit = { scope:recipient.house ?= { is_target_in_variable_list = { name = tm_acc_3 target = scope:actor.house } } }
+		add = 1
+	}
+}
+
+# Bót for them: each wrong is priced by the rank of the house that takes it (Miller pp. 184, 200: worth is negotiated,
+# and rank weighs). 50 gold a wrong to a count or less, 100 to a duke, 150 to a king, 200 to an emperor.
+tm_feud_bot_price_value = {
+	value = tm_feud_gifts_value
+	multiply = {
+		value = 50
+		if = {
+			limit = { scope:recipient = { highest_held_title_tier >= tier_duchy } }
+			add = 50
+		}
+		if = {
+			limit = { scope:recipient = { highest_held_title_tier >= tier_kingdom } }
+			add = 50
+		}
+		if = {
+			limit = { scope:recipient = { highest_held_title_tier >= tier_empire } }
+			add = 50
+		}
+	}
+}
+
+# What the speaker of the three words pays the woman he named if the lord arbitrates instead (Miller p. 262:
+# arbitration beat law three to one). Doubled at the thing (Grágás K §237). Needs scope:tm_feud_stakes.
+tm_feud_nid_price_value = {
+	value = 50
+	multiply = scope:tm_feud_stakes
+}

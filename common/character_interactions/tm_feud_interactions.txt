@@ -1,0 +1,65 @@
+﻿# Crusader Dolls — Offer Bót: pay what one's house owes another and close the Account (common/scripted_effects/
+# tm_feud_effects.txt). "Compensation instead of war" (Miller pp. 262-63; research/norse_miller_bloodtaking.md row 3).
+# The AI offers through the yearly pulse instead (tm_feud_yearly), so this interaction has no AI targets.
+tm_feud_offer_bot_interaction = {
+	icon = icon_gold
+	interface_priority = 45
+	category = interaction_category_diplomacy
+	desc = tm_feud_offer_bot_interaction_desc
+
+	is_shown = {
+		NOT = { scope:actor = scope:recipient }
+		scope:actor = { is_ruler = yes exists = house }
+		scope:recipient = { is_ruler = yes exists = house }
+		tm_feud_gifts_value > 0
+	}
+
+	is_valid_showing_failures_only = {
+		scope:actor = {
+			is_imprisoned = no
+			gold >= tm_feud_bot_price_value
+		}
+		scope:recipient = { is_imprisoned = no }
+	}
+
+	on_accept = {
+		save_scope_value_as = { name = tm_feud_price value = tm_feud_bot_price_value }
+		custom_tooltip = tm_feud_offer_bot_interaction_tt
+		tm_feud_settle_effect = yes
+		scope:actor = {
+			send_interface_toast = {
+				type = event_toast_effect_good
+				title = tm_feud_bot_taken_toast
+				left_icon = scope:actor
+				right_icon = scope:recipient
+			}
+		}
+	}
+
+	on_decline = {
+		scope:actor = {
+			send_interface_toast = {
+				type = event_toast_effect_bad
+				title = tm_feud_bot_refused_toast
+				left_icon = scope:actor
+				right_icon = scope:recipient
+			}
+		}
+	}
+
+	ai_accept = {
+		base = 10
+		opinion_modifier = {
+			who = scope:recipient
+			opinion_target = scope:actor
+			multiplier = 0.5
+		}
+		modifier = { add = 30 desc = tm_feud_ai_greedy scope:recipient = { has_trait = greedy } }
+		modifier = { add = 30 desc = tm_feud_ai_forgiving scope:recipient = { has_trait = forgiving } }
+		modifier = { add = -40 desc = tm_feud_ai_vengeful scope:recipient = { has_trait = vengeful } }
+		modifier = { add = -20 desc = tm_feud_ai_wrathful scope:recipient = { has_trait = wrathful } }
+		modifier = { add = 20 desc = tm_feud_ai_at_war scope:recipient = { is_at_war = yes } }
+	}
+
+	auto_accept = no
+}

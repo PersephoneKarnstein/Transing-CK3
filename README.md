@@ -346,7 +346,7 @@ In the Sunjata tradition a woman named Tenenba claimed a hero she had not borne:
 - [x] Rescue the Daughters, Sister-Making, Set Down the Name, Keep Quiet in This Land, refugees, Teach Her the Answers
 - [x] The hostile world, life events, the Adelphai saints, and a game rule for how often flavour events fire
 - [x] Bædling: Spring the Cell, outlawry, landless war-bands that can come home
-- [ ] Bædling: the feud ledger and settlement (Offer Bót), reprieve by killing outlaws, the níð suit
+- [x] Bædling: the feud ledger and settlement (Offer Bót), reprieve by killing outlaws, the níð suit
 - [x] Yutai Dao: a palace faction against the scholar-officials (small version; Liao and Ming levers not built)
 - [x] Adelphai Dorleyaiou: the Galenic splinter rite (found, join, return); Ignatios (867), the train to Tarsus, Theophylact's book, Psellos's letter (1063–78), the Athos ban (1083), the Steward at the Gate
 - [x] Ha-Nehpakhot, the Worn Garland and Badenya: stage-2 work for each (the street, the bailiff and the Maghreb; the share and the gift; the sister's line, the jelimuso and the associate in rule)

@@ -7,7 +7,8 @@ What it reads (written by common/scripted_effects/tm_tracking_effects.txt and tm
   - the census kept on each faith by decade (tm_c<decade>_<what>), taken every 10 years;
   - the seats (tm_seat_branch on the seat county: vassal, lord or unheld) and who holds them now;
   - the characters made at game start (global lists tm_seeds_<seat>): alive or dead, faith, court;
-  - the Women's Chamber's run-wide counts (globals tm_dl3_n_<step>, from tm_dl3_effects.txt).
+  - the Women's Chamber's run-wide counts (globals tm_dl3_n_<step>, from tm_dl3_effects.txt);
+  - the Bædling Account's run-wide counts (globals tm_feud_n_<step>, from tm_feud_effects.txt).
 Saves must be plain text: turn off "compress saves" in the game settings, and do not play ironman.
 """
 import re
@@ -230,6 +231,18 @@ def main(path):
         print(f'{name:20} {n[0]:6} {n[1]:10} {n[2]:12}')
     print('all: AI rulers who took the faith by the game\'s conversion; outsiders: with no tie to its community;\n'
           'turned away: of those, kept their old faith (one in three).')
+    print()
+
+    # The Account (tm_feud_tally_effect): feud, bót, the níð suit and reprieves, run-wide.
+    print('== The Account (Bædling feud) ==')
+    fsteps = ('wrongs', 'requitals', 'settled', 'truce_broken', 'nid_suits', 'nid_outlawed', 'reprieve_kills', 'reprieves')
+    if any(f'tm_feud_n_{s}' in gvars for s in fsteps):
+        print('  '.join(f'{s} {int(gvars.get(f"tm_feud_n_{s}") or 0)}' for s in fsteps))
+        print('wrongs: unanswered wrongs entered; requitals: wrongs that paid one back; settled: bót taken;\n'
+              'truce_broken: a wrong within ten years of bót; nid_suits / nid_outlawed: suits for the three words, and\n'
+              'speakers outlawed; reprieve_kills: outlaws killed toward a reprieve; reprieves: sentences lifted that way.')
+    else:
+        print('No counts (the save predates the Account, or nothing has been entered).')
     print()
 
     # The Women's Chamber (tm_dl3_tally_effect): run-wide counts of each step.

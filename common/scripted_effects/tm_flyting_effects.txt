@@ -27,5 +27,6 @@ tm_flyting_clear_effect = {
 	remove_variable = tm_flyt_true
 	remove_variable = tm_flyt_gain
 	remove_variable = tm_flyt_challenged
+	remove_variable = tm_flyt_nid
 	set_variable = { name = tm_flyt_recent value = yes years = 3 }
 }

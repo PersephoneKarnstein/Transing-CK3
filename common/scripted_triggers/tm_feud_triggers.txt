@@ -1,0 +1,16 @@
+﻿# Crusader Dolls — the Account (common/scripted_effects/tm_feud_effects.txt).
+
+# The níð suit can be heard: a lord of the hall to hear it, and a speaker who is under that law, not a ruler (a sentence
+# on a landed man would be a revocation, which the mod leaves to vanilla, as tm_bae2's suits do) and not the lord
+# himself. Needs scope:tm_flyter and scope:tm_feud_lord.
+tm_feud_nid_suit_possible_trigger = {
+	exists = scope:tm_feud_lord
+	scope:tm_feud_lord = { is_alive = yes }
+	scope:tm_flyter = {
+		is_alive = yes
+		is_ruler = no
+		is_imprisoned = no
+		tm_bae2_is_outlaw_trigger = no
+	}
+	NOT = { scope:tm_flyter = scope:tm_feud_lord }
+}

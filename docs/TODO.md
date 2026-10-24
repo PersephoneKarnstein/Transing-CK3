@@ -63,8 +63,8 @@ Built: shared daughter trigger and per-faith daughter traits; Bæddel faith (Got
 - [ ] Pour the Cup: end a flyting / first cup / inheritance toast at the high seat (Damico; Evans & Hancock)
 - [ ] Events: "They Say He Keeps Seiðmenn" (Tolley); "Weave the Warding Shirt" (Jochens); English reaction text, Wulfstan 1014 (Damico)
 - [x] Insult duel: 3 rounds, charges checked against real traits, owning the word strongest, stakes by witnesses and venue (Lögberg doubles); Raise the Níð-Pole scheme (Clover; Meulengracht Sørensen; Grágás)
-- [ ] Feud ledger, Offer Bót compensation, fostering to seal a settlement (Miller). Specified in docs/wave3/baedling.md §2, not built.
-- [x] Outlawry: lesser (life-ring, three winters) and full; three endings: time, settlement, the war's pardon, the high seat (Grágás; Ahola; `tm_bae2`, wave 3). Not built: reprieve by killing outlaws (K §110).
+- [x] Feud ledger (the Account) and Offer Bót (Miller), built 2026-10-23 (`tm_feud`). Not built: fostering to seal a settlement, Self-Judgment, escalation by rank.
+- [x] Outlawry: lesser (life-ring, three winters) and full; three endings: time, settlement, the war's pardon, the high seat (Grágás; Ahola; `tm_bae2`, wave 3). Reprieve by killing outlaws (K §110): built 2026-10-23 (`tm_feud`).
 - [x] Dress clause as a Christian-era / law pressure; covers weapon-bearing women (Grágás; outlawry suit from 1100 at Christian Norse courts, `tm_bae2`, wave 3)
 - [ ] Holy-site lore: York (Eiríkr's 80 seiðmenn, Gunnhildr), Trondheim (Þorgerðr Hǫlgabrúðr), Kyiv (armed women among the Rus' dead, 971) (Price)
 - [ ] Eleanor Rykener event; female-king title keys; `secret_tm_sister` (medtrans notes)
@@ -167,7 +167,7 @@ Built: shared daughter trigger and per-faith daughter traits; Bæddel faith (Got
 
 ## Stage 2, first pass (added 2026-10-20, untested in-game)
 One feature per faith, each in its own files; scenarios in TO-TEST.md §J.
-- [ ] Bædling flyting (`tm_flyting`): interaction, yearly hostile challenges, three rounds, stakes, the cup. Not built: Raise the Níð-Pole, feud ledger.
+- [ ] Bædling flyting (`tm_flyting`): interaction, yearly hostile challenges, three rounds, stakes, the cup. Not built: Raise the Níð-Pole. The feud ledger and the níð suit: built 2026-10-23 (`tm_feud`).
 - [ ] Liudprand's four children and the Emperor at Dorylaion (`tm_byzr`)
 - [ ] Yutai palace offices (`tm_palace`): the offer, the censor's memorial, the 903 purge. A small faction followed in wave 3 (`tm_yt2`).
 - [ ] Ha-Nehpakhot prayer book and women at the door (`tm_kahal`); the kahal keeps its children (`tm_surv_keeps_children_effect`, now for all six faiths)
@@ -206,7 +206,8 @@ Design notes: docs/stage2/ha-nehpakhot.md, worn-garland.md, badenya.md. Scenario
 - [ ] Spring the Cell (`tm_bae2_spring_cell`): scheme, three agent types, interaction, AI plotter search; prisoners to the nearest House
 - [ ] Outlawry (`tm_bae2`, 0100–0135): suit from 1100 at Christian Norse courts (sorcery / dress clause), six housewives, life-ring, full outlawry → adventurer band; settlement, forgiven for the war, the high seat
 - [ ] Answer the Hall's Call (`tm_bae2_answer_hall_decision`), return-to-the-seat travel, settling grace on `on_title_gain`
-- [ ] Not built: feud ledger and Offer Bót; reprieve by killing outlaws (K §110); the níð suit against the flyter; Sophoulis proposals 1–3 and 6
+- [x] The Account and Offer Bót; reprieve by killing outlaws (K §110); the níð suit against the flyter (`tm_feud`, 2026-10-23)
+- [ ] Not built: Sophoulis proposals 1–3 and 6
 - [x] Lead: Rescue the Daughters for adventurers? declared sisters in `tm_captive_daughter_trigger`? (docs/wave3/baedling.md §4). Both done by the lead (user decision, 2026-10-21): bands may wage it and land on victory; declared sisters count.
 
 ## Yutai Dao palace faction (added 2026-10-21, untested in-game)
