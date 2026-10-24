@@ -226,6 +226,7 @@ tm_hipukh.0001 = {
 				# A seeker of another Jewish faith is turned into the sect.
 				if = {
 					limit = { NOT = { faith = faith:tm_nehpakhot } }
+					set_variable = { name = tm_conv_ours value = yes days = 1 }
 					set_character_faith = faith:tm_nehpakhot
 				}
 				tm_rise_daughter_effect = { TRAIT = tm_daughter_of_the_turning RENAME = tm_hipukh.0002 }

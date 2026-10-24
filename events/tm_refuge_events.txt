@@ -211,6 +211,7 @@ tm_refuge.0020 = {
 
 	option = {	# take her mother's faith
 		name = tm_refuge.0020.a
+		set_variable = { name = tm_conv_ours value = yes days = 1 }
 		set_character_faith = scope:tm_new_mother.faith
 		scope:tm_new_mother = {
 			add_opinion = { target = root modifier = pleased_opinion opinion = 15 }

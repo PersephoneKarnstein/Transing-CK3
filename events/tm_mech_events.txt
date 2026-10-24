@@ -199,6 +199,7 @@ tm_mech.0041 = {
 	option = {	# Stay, and keep her faith with her
 		name = tm_mech.0041.c
 		trigger = { NOT = { faith = scope:tm_mech_daughter.faith } }
+		set_variable = { name = tm_conv_ours value = yes days = 1 }
 		set_character_faith = scope:tm_mech_daughter.faith
 		scope:tm_mech_daughter = {
 			add_opinion = { target = root modifier = grateful_opinion opinion = 30 }

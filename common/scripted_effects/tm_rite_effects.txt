@@ -658,6 +658,7 @@ tm_badenya_rise_effect = {
 	remove_character_modifier = tm_crossing_hot_modifier
 	if = {
 		limit = { NOT = { faith = faith:tm_badenya } }
+		set_variable = { name = tm_conv_ours value = yes days = 1 }
 		set_character_faith = faith:tm_badenya
 	}
 	tm_rise_daughter_effect = { TRAIT = tm_daughter_of_the_house RENAME = tm_badenya.0002 }

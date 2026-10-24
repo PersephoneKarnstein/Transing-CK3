@@ -9,20 +9,26 @@
 # who would be a sister of a House by tm_house_member_trigger) is turned away one time in three, and keeps the faith
 # he had. A small change, not a cap: a woman, a Marked ruler or one with sisters about her is never turned away.
 # The player is never turned away.
+#
+# Hooked on on_rite_change, which the game calls for every change of faith or rite but a birth. Run 12 found that
+# on_faith_conversion is called only by the adventurer's conversion interaction: 9 rulers counted in 350 years. The
+# mod's own conversions (the call, the rites, the seats at the start) set tm_conv_ours for a day and are let be.
 
-on_faith_conversion = {
+on_rite_change = {
 	on_actions = {
 		tm_conv_on_faith_conversion
 	}
 }
 
-# Root is the convert; scope:old_faith, scope:old_rite what she held before (vanilla, religion_on_actions.txt).
+# Root is the convert; scope:old_faith, scope:old_rite what she held before (vanilla, religion_on_actions.txt). Turning
+# her back calls on_rite_change again, from one of the six to another faith: the limit lets that pass.
 tm_conv_on_faith_conversion = {
 	effect = {
 		if = {
 			limit = {
 				is_ai = yes
 				is_ruler = yes
+				NOT = { has_variable = tm_conv_ours }
 				rite ?= { rite_has_parameter = tm_sisters_faith }
 				NOT = { scope:old_rite ?= { rite_has_parameter = tm_sisters_faith } }	# between two of the six: no
 			}

@@ -182,6 +182,7 @@ tm_sisters_call_effect = {
 				factor = 0.05
 				highest_held_title_tier >= tier_duchy
 			}
+			set_variable = { name = tm_conv_ours value = yes days = 1 }
 			set_character_faith = scope:tm_call_faith
 			add_stress = -20
 			tm_track_effect = { FAITH = scope:tm_call_faith WHAT = joins }
@@ -582,6 +583,7 @@ tm_seed_baeddel_seat_effect = {
 	$COUNTY$.holder ?= {
 		if = {
 			limit = { faith.religion = faith:tm_baeddel.religion }
+			set_variable = { name = tm_conv_ours value = yes days = 1 }
 			set_character_faith = faith:tm_baeddel
 		}
 	}

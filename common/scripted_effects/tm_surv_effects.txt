@@ -10,6 +10,7 @@
 tm_surv_kahal_take_in_effect = {
 	if = {
 		limit = { NOT = { faith = faith:tm_nehpakhot } }
+		set_variable = { name = tm_conv_ours value = yes days = 1 }
 		set_character_faith = faith:tm_nehpakhot
 		tm_track_effect = { FAITH = faith:tm_nehpakhot WHAT = kahal_joins }
 	}

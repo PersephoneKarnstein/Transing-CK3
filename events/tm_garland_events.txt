@@ -158,6 +158,7 @@ tm_garland.0001 = {
 				tm_pavai_clear_effect = yes
 				if = {
 					limit = { NOT = { faith = faith:tm_garland } }
+					set_variable = { name = tm_conv_ours value = yes days = 1 }
 					set_character_faith = faith:tm_garland
 				}
 				tm_rise_daughter_effect = { TRAIT = tm_daughter_of_the_garland RENAME = tm_garland.0002 }

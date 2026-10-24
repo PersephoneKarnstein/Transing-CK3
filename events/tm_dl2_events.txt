@@ -312,6 +312,7 @@ tm_dl2.0050 = {
 	option = {	# Stay as a friend of the House
 		name = tm_dl2.0050.a
 		scope:tm_dl2_steward = {
+			set_variable = { name = tm_conv_ours value = yes days = 1 }
 			set_character_faith = root.faith
 			add_character_modifier = { modifier = tm_house_friend_modifier }
 			add_opinion = { target = root modifier = grateful_opinion opinion = 30 }
@@ -323,6 +324,7 @@ tm_dl2.0050 = {
 		name = tm_dl2.0050.b
 		trigger = { rite ?= { rite_has_parameter = tm_knife_voluntary } }
 		scope:tm_dl2_steward = {
+			set_variable = { name = tm_conv_ours value = yes days = 1 }
 			set_character_faith = root.faith
 			add_opinion = { target = root modifier = grateful_opinion opinion = 30 }
 			tm_offer_courtier_rite_effect = yes

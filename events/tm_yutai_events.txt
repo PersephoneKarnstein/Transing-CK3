@@ -41,6 +41,7 @@ tm_yutai.0001 = {
 		name = tm_yutai.0001.c
 		add_courtier = scope:tm_prodigy
 		scope:tm_prodigy = {
+			set_variable = { name = tm_conv_ours value = yes days = 1 }
 			set_character_faith = root.faith
 			add_trait = tm_daughter_of_the_embryo
 			tm_give_daughter_name_effect = yes

@@ -1029,9 +1029,9 @@ The full scenarios (C1-C6) are in docs/wave5/chamber.md.
 
 ## AC. Rulers from outside the community (added 2026-10-23, untested)
 
-**AC1. The window fires.** In a long observe run, `tools/census_report.py` "Rulers converting in" shows `all` above zero for the Garland and Yutai. If all six stay at 0 while the faiths still grow, the AI converts by another road and the turning-away never runs (docs/faith_design.md §17).
+**AC1. The window fires.** In a long observe run, `tools/census_report.py` "Rulers converting in" shows `all` above zero for the Garland and Yutai. If all six stay at 0 while the faiths still grow, the AI converts by another road and the turning-away never runs (docs/faith_design.md §17). Run 12 failed this (9 in all, on `on_faith_conversion`); the hook is now `on_rite_change`. Expect tens or more a century wherever a faith is growing, and no seat holder at the start turned back (the mod's own conversions set `tm_conv_ours`).
 
-**AC2. Turned away.** `turned away` is about a third of `outsiders`. A turned-away ruler keeps her old faith, and her capital and family do not convert.
+**AC2. Turned away.** `turned away` is about a third of `outsiders`. A turned-away ruler keeps her old faith. Vassals or courtiers the game converted with her in the same stroke keep the new one.
 
 **AC3. Not killed off.** Against run 11 (Garland 316 counties, Yutai 272 at 1361), the two large faiths are somewhat smaller, not gone; the four small ones are unchanged.
 
@@ -1041,6 +1041,20 @@ The full scenarios (C1-C6) are in docs/wave5/chamber.md.
 - The selector shows her *of the Jade Embryo* with the tiger, and Steinunn *of Gute* with the whirl.
 - The selector's map banner for Huijing is the tiger; in play, Guasha shows vanilla's Sha seal and Huijing's own arms the tiger.
 - The two portraits are dumped (2026-10-23). Hovering each lights up her county: the highlight images are named for the bookmark entry (`gfx/interface/bookmarks/bm_867_crusader_dolls_bookmark_tm_<name>.dds`), renamed from Steinn's and Xun's.
+
+## AD. The Account, the níð suit, reprieve (added 2026-10-23, untested)
+
+**AD1. A wrong.** As a Bædling ruler, imprison a courtier of another house who is not an outlaw, or have one of your house killed outside a war (console `kill` with a killer is not enough: use a murder scheme). The head of each house, if a player, gets a toast: *A Gift Unpaid* / *A Gift Given*. The census "The Account" shows `wrongs`.
+
+**AD2. Offer Bót.** As the wrongdoer's house, the interaction *Offer Bót* appears on a ruler of the wronged house, priced 50/100/150/200 a wrong by her rank. Accepted: gold paid, she gains prestige, both get *Settled the Account*, and a new wrong within ten years makes you a truce-breaker (major prestige loss, −40 opinion). Watch for AI offers (`tm_feud.0010`).
+
+**AD3. Requital.** After AD1, wrong the other house back: the census counts a `requitals`, and the Account goes down by one rather than opening a second one.
+
+**AD4. The three words.** Lose or win a flyting in a hall (five or more present) where the flyter's charge is *ragr*. Three days later *The Three Words* fires. Suing goes to the lord of the hall (*A Suit for Words*): outlawed, he leaves the court (a band if he is a fighter); arbitrated, he pays 50 gold (100 at the thing). No suit if he is a ruler or the lord himself. Alone (no witnesses), nothing.
+
+**AD5. Reprieve.** Make an outlaw kill an outlaw (or kill one as her sworn sister). At the next New Year she moves one step: passage (a lord who takes her in owes the accuser nothing), then lesser outlawry, then free. A player outlaw gets *Named at the Thing*.
+
+**AD6. Spring the Cell.** A discovered rescue (`tm_bae2.0011`) adds a wrong against the rescuer's house.
 
 ## AB. Badenya guardrails (added 2026-10-22, untested)
 

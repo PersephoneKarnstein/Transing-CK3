@@ -47,6 +47,7 @@ tm_on_game_start = {
 					set_county_faith = faith:transbian_maximalism
 					holder ?= {
 						set_culture = culture:kybeline
+						set_variable = { name = tm_conv_ours value = yes days = 1 }
 						set_character_faith = faith:transbian_maximalism
 					}
 				}
@@ -138,7 +139,7 @@ tm_on_game_start = {
 					limit = { exists = scope:tm_steinunn }
 					character:41267 = { save_scope_as = tm_steinn }
 					tm_hand_over_realm_effect = { FROM = scope:tm_steinn TO = scope:tm_steinunn }
-					scope:tm_steinn = { set_character_faith = faith:tm_baeddel }
+					scope:tm_steinn = { set_variable = { name = tm_conv_ours value = yes days = 1 } set_character_faith = faith:tm_baeddel }
 					scope:tm_steinunn = { add_courtier = scope:tm_steinn }
 				}
 				tm_seed_baeddel_seat_effect = { COUNTY = title:c_gutland SEAT = gotland }
@@ -183,12 +184,13 @@ tm_on_game_start = {
 						set_relation_ward = scope:tm_chengxun
 						set_designated_heir = scope:tm_chengxun
 					}
-					scope:tm_chengxun = { set_character_faith = faith:tm_yutai }
+					scope:tm_chengxun = { set_variable = { name = tm_conv_ours value = yes days = 1 } set_character_faith = faith:tm_yutai }
 				}
 			}
 			title:c_shazhou = {
 				set_county_faith = faith:tm_yutai
 				holder ?= {
+					set_variable = { name = tm_conv_ours value = yes days = 1 }
 					set_character_faith = faith:tm_yutai
 					save_scope_as = tm_shazhou_count
 				}
@@ -801,6 +803,7 @@ tm_on_birth_raised_in_faith = {
 					}
 				}
 			}
+			set_variable = { name = tm_conv_ours value = yes days = 1 }
 			set_character_faith = scope:mother.faith
 		}
 		else_if = {
@@ -814,6 +817,7 @@ tm_on_birth_raised_in_faith = {
 					}
 				}
 			}
+			set_variable = { name = tm_conv_ours value = yes days = 1 }
 			set_character_faith = scope:father.faith
 		}
 	}
@@ -995,6 +999,7 @@ tm_yearly_growth = {
 			}
 			random = {
 				chance = 4
+				set_variable = { name = tm_conv_ours value = yes days = 1 }
 				set_character_faith = faith:tm_nehpakhot
 				tm_track_effect = { FAITH = faith:tm_nehpakhot WHAT = kahal_joins }
 			}
