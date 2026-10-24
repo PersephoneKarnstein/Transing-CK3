@@ -13,6 +13,7 @@
  tm_kovil.0002.b:0 "Let my daughter sing it with me."
  tm_kovil.0003.t:0 "To Her Descendants"
  tm_kovil.0003.desc:0 "[tm_kovil_mother.GetFirstName] is dead. The temple's grant was made to her and to her descendants, and the priests have sent for me to take up her place."
+ tm_kovil.0003.desc_street:0 "[tm_kovil_mother.GetFirstName] is dead and left no daughter to take up the temple's grant. By the custom of the street, the women who live there choose who will keep her place. They have chosen me."
  tm_kovil.0003.a:0 "I will keep it as she kept it."
  tm_kovil_verse_modifier:0 "A Verse of the Tiruvempāvai"
  tm_kovil_verse_modifier_desc:0 "This character has the temple's grant of a verse to sing at Tiruvātirai in Mārkazhi, for herself and her descendants."

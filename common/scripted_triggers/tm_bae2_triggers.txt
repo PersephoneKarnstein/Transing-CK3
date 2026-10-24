@@ -157,6 +157,7 @@ tm_bae2_hall_county_trigger = {
 	}
 	trigger_if = {
 		limit = { $BAND$ = { is_ai = yes } }
+		NOT = { has_variable = tm_got_island_peace }	# an island sworn to peace is spared (tm_got_swear_peace_effect)
 		holder = {
 			is_ai = yes
 			top_liege = { is_ai = yes }
@@ -172,6 +173,20 @@ tm_bae2_hall_in_reach_trigger = {
 		squared_distance = {
 			target = $BAND$.domicile.domicile_location
 			value < define:NTaskContract|ADVENTURER_DISTANCE_RESTRICTION
+		}
+	}
+}
+
+# The dress clause needs a powerful prosecutor (faith_design.md §6, stage-2 inputs: "only with a powerful prosecutor"):
+# a councillor, a landed vassal, or one of standing. Other charges take any accuser. Scope: the would-be accuser;
+# needs scope:tm_bae2_charge.
+tm_bae2_dress_accuser_trigger = {
+	trigger_if = {
+		limit = { scope:tm_bae2_charge = flag:dress }
+		OR = {
+			is_councillor = yes
+			is_landed = yes
+			prestige_level >= 3
 		}
 	}
 }

@@ -11,13 +11,13 @@ tm_hn2_adornment_opinion = {
 	opinion = 25
 }
 
-# A ruler of the sect lifted the ban on her (tm_hn2.0040).
+# A ruler of the sect, or a Rabbinic lord, lifted the ban on her (tm_hn2.0040).
 tm_hn2_absolved_opinion = {
 	opinion = 30
 	years = 10
 }
 
-# A ruler of the sect overruled the judges of the street (tm_hn2.0040). Jewish courtiers of other faiths.
+# A ruler overruled the judges of the street (tm_hn2.0040). Jewish courtiers not of the sect.
 tm_hn2_overruled_opinion = {
 	opinion = -10
 	years = 5

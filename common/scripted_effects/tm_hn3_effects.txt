@@ -46,20 +46,31 @@ tm_hn3_niddui_effect = {
 	}
 }
 
+# The bans lifted across her realm: her court, her vassals, and their courts. Scope: the ruler of the decree.
+tm_hn3_lift_bans_in_realm_effect = {
+	every_courtier = {
+		limit = { has_character_modifier = tm_niddui_modifier }
+		remove_character_modifier = tm_niddui_modifier
+	}
+	every_vassal_or_below = {
+		if = {
+			limit = { has_character_modifier = tm_niddui_modifier }
+			remove_character_modifier = tm_niddui_modifier
+		}
+		every_courtier = {
+			limit = { has_character_modifier = tm_niddui_modifier }
+			remove_character_modifier = tm_niddui_modifier
+		}
+	}
+}
+
 # The Decree of the Two Parties: "neither party shall interfere with the other" (al-Zahir's decree of 1030 for the
 # Rabbanites and Karaites, Rustow ch. 8; Stillman p. 198). A ruler of the sect issues it for her own land. While she
 # lives, no Jewish court in her realm may ban a daughter (tm_hn3_niddui_effect), and the bans already laid in her
 # realm are lifted. Both parties' courtiers are pleased; the zealots of either are not. Scope: the ruler.
 tm_hn3_two_parties_effect = {
 	set_variable = tm_hn3_two_parties
-	every_courtier = {
-		limit = { has_character_modifier = tm_niddui_modifier }
-		remove_character_modifier = tm_niddui_modifier
-	}
-	every_vassal = {
-		limit = { has_character_modifier = tm_niddui_modifier }
-		remove_character_modifier = tm_niddui_modifier
-	}
+	tm_hn3_lift_bans_in_realm_effect = yes
 	every_courtier = {
 		limit = {
 			faith.religion = religion:judaism_religion
@@ -77,10 +88,9 @@ tm_hn3_two_parties_effect = {
 }
 
 # A household out of the Almohad lands is received at a court: a man and a woman, married, Rabbanite Jews of the
-# host's land. The kahal takes them in at once (tm_surv_kahal_take_in_effect, tm_surv_effects.txt: the sect's faith,
-# counted as kahal joins, and the host's court). Persecution is not shown: they arrive, that is all. "Those who escape shall be
-# accepted ... they shall not be turned away" (Maimonides, Epistle on Forced Conversion; Hirschberg p. 195).
-# Callable by any builder. Scope: the receiving ruler (a ruler of the sect: the take-in converts them).
+# host's land. They keep their own faith (user, 2026-10-21: shelter is not conversion). Persecution is not shown: they
+# arrive, that is all. "Those who escape shall be accepted ... they shall not be turned away" (Maimonides, Epistle on
+# Forced Conversion; Hirschberg p. 195). Callable by any builder. Scope: the receiving ruler.
 tm_hn3_receive_refugees_effect = {
 	save_scope_as = tm_hn3_refuge_host
 	if = {

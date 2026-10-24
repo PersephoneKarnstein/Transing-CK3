@@ -111,8 +111,11 @@ Built: shared daughter trigger and per-faith daughter traits; Bæddel faith (Got
 - [ ] Ha-Nehpakhot: a source for Provençal Jewish women's names (Iancu; Shatzmiller); the *aylonit* chapter of *Trans Talmud*; community roles from the medieval codes; Karaite text; the moonlit spinning circle as a recurring sisterhood event; "the adornment" (a gold ornament) as an artifact. The spinning circle and the adornment are built in stage 2 (`tm_hn2.0001`, `0010`).
 - [ ] Catholic reaction: a canonist event on Huguccio's "prevailing sex" by conduct (women's company and work) and the Susa oath before the bishop of Turin (`research/cmp_vanderlugt_sex_difference.md`; Rolker); Peter the Chanter's woman's name at confirmation; whether Catholic hostility to daughters hardens around 1200
 - [ ] Andalusi reaction: Ibn Ḥazm's charge against al-Ḥakam I as a reaction to Grandmother's House (`research/cmp_delapuente_alhakam.md`)
-- [ ] Possible fifth faith (Wendish), if wanted: women's ash divination (Saxo 14.39.11), the woman seer who led a Polish army in 1209, goddess banners (`research/cmp_alvarezpedrosa_slavic_rituals.md`)
-- [ ] Southeast Asian faith deferred (user, 2026-10-19): a Visayan babaylan/asog faith at Cebu, marked as a reconstruction
+
+## Possible new faiths for the 1178 start (user, 2026-10-24)
+Tied to the 1178 bookmark, which waits until after the Silk & Silver DLC (17 November 2026), if ever. Neither is planned for the 867 start.
+- [ ] Wendish (Baltic Slav): women's ash divination (Saxo 14.39.11); "a pythoness as war-leader" who led a Polish army in 1209, confirmed in the Latin; goddess banners; Arkona took a third of spoils; Poznań's carnival dress ban (15th c.) (`research/cmp_alvarezpedrosa_slavic_rituals.md`, `research/cmp_alvarezpedrosa_sources_slavic.md`). Check first where Slav paganism still stands on the 1178 map: Arkona fell to the Danes in 1168.
+- [ ] Visayan (Southeast Asia): a babaylan/asog faith at Cebu, marked as a reconstruction (deferred by the user, 2026-10-19). Check that the map reaches Cebu.
 
 ## Second comparanda reading (added 2026-10-19, untested in-game)
 - [ ] Names split in `tm_hipukh.0002` (scroll / street); the women's blessing line
@@ -127,7 +130,6 @@ Built: shared daughter trigger and per-faith daughter traits; Bæddel faith (Got
 - [ ] Catholic: Hostiensis's oath before the bishop; Baldus on Giovanni Malaspina inheriting by settled choice (1390s) (`research/cmp_devun_shape_of_sex.md`)
 - [ ] German court: Walther's "Under the Linden" (one manuscript: *herre frowe*) (`research/cmp_puff_german_genealogies.md`)
 - [ ] Ha-Nehpakhot: Sarah as *aylonit* (b. Yevamot 64b) as a matriarch; Rashi's glosses as the worthies' lines; whether the spinning circle's talk can reach the worthies (Mishnah Sotah 6:1) (these three built in stage 2, `tm_hn2.0001`–`0002`); the 1306 French expulsion for Narbonne and Montpellier; Hildenfinger's Arles documents; Iancu on the expulsion c. 1500
-- [ ] Wendish (if wanted): "a pythoness as war-leader" (1209) confirmed in the Latin; Arkona took a third of spoils; Poznań's carnival dress ban (15th c.) (`research/cmp_alvarezpedrosa_sources_slavic.md`)
 - [x] Puff, *Sodomy in Reformation Germany and Switzerland* (2003): unavailable (user, 2026-10-19); rely on Rolker, Karras & Pierpont and DeVun for the German lands
 
 ## Third Judaism reading (added 2026-10-19, untested in-game)

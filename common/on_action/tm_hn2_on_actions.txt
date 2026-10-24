@@ -109,10 +109,18 @@ tm_hn2_yearly = {
 	}
 }
 
-# A ruler of the faith is asked to confirm the street's ban on a daughter at her court or among her vassals.
+# A ruler of the faith is asked to confirm the street's ban on a daughter at her court or among her vassals. So is a
+# Rabbinic Jewish ruler under whom the sect lives (docs/stage2/ha-nehpakhot.md §5, open question 1), outside the
+# Maghreb and the Sahel, where no lord licenses the ban (wave 3).
 tm_hn2_yearly_ruler = {
 	trigger = {
-		faith = faith:tm_nehpakhot
+		OR = {
+			faith = faith:tm_nehpakhot
+			AND = {
+				faith.religion = religion:judaism_religion
+				tm_hn3_capital_in_west_trigger = no
+			}
+		}
 		is_landed = yes
 		tm_flavour_ready_trigger = yes
 		NOT = { has_variable = tm_hn3_two_parties }		# her decree lifts bans itself (tm_hn3_on_actions.txt)
@@ -137,7 +145,10 @@ tm_hn2_yearly_ruler = {
 			}
 			tm_flavour_spent_effect = yes
 			if = {		# wave 3: in the Maghreb and the Sahel no lord licenses the ban; the Two Parties instead
-				limit = { tm_hn3_capital_in_west_trigger = yes }
+				limit = {
+					faith = faith:tm_nehpakhot
+					tm_hn3_capital_in_west_trigger = yes
+				}
 				trigger_event = { id = tm_hn3.0020 days = { 1 60 } }
 			}
 			else = {

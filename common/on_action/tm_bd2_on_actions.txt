@@ -13,6 +13,12 @@ yearly_playable_pulse = {
 	}
 }
 
+on_title_gain = {
+	on_actions = {
+		tm_bd2_on_title_gain
+	}
+}
+
 on_birth_child = {
 	on_actions = {
 		tm_bd2_on_birth
@@ -37,9 +43,14 @@ tm_bd2_on_death = {
 # Praise before the court. The jelimusow sang at a patron's festivals (Schulz 2002, p. 797 n. 1, LATER). From 1330,
 # when the sources first put a poet before Mali's throne (al-Umari; Ibn Battuta IV, pp. 409-414: every Friday and at
 # both feasts), a king hears it more often.
+# A West African court not of the faith may keep a jelimuso of the House too, and hear her (docs/stage2/badenya.md §3,
+# open question 6): less often than her own House does.
 tm_bd2_yearly = {
 	trigger = {
-		faith = faith:tm_badenya
+		OR = {
+			faith = faith:tm_badenya
+			culture = { has_cultural_pillar = heritage_west_african }
+		}
 		highest_held_title_tier >= tier_county
 		is_imprisoned = no
 		tm_flavour_ready_trigger = yes
@@ -50,8 +61,34 @@ tm_bd2_yearly = {
 			chance = 5
 			modifier = { add = 5 highest_held_title_tier >= tier_kingdom current_year >= 1330 }
 			modifier = { add = 3 has_character_modifier = tm_bd2_hot_realm_modifier }
+			modifier = { factor = 0.5 NOT = { faith = faith:tm_badenya } }
 			tm_flavour_spent_effect = yes
 			trigger_event = { id = tm_bd2.0020 days = { 1 300 } }
+		}
+	}
+}
+
+# A realm taken hot: a ruler of Badenya who takes a kingdom or more by conquest or usurpation takes it as one who
+# inherits does, hot (docs/stage2/badenya.md §2, open question 4). Root = the new holder; scope:title, scope:transfer_type.
+tm_bd2_on_title_gain = {
+	trigger = {
+		faith = faith:tm_badenya
+		scope:title = { tier >= tier_kingdom }
+		scope:title = root.primary_title
+		OR = {
+			scope:transfer_type = flag:conquest
+			scope:transfer_type = flag:conquest_holy_war
+			scope:transfer_type = flag:conquest_claim
+			scope:transfer_type = flag:conquest_populist
+			scope:transfer_type = flag:usurped
+		}
+		NOT = { has_character_modifier = tm_bd2_hot_realm_modifier }
+	}
+	effect = {
+		add_character_modifier = { modifier = tm_bd2_hot_realm_modifier days = 730 }
+		random = {
+			chance = 50
+			trigger_event = { id = tm_bd2.0010 days = { 60 400 } }
 		}
 	}
 }

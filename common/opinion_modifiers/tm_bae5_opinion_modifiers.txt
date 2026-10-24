@@ -1,0 +1,29 @@
+﻿# Crusader Dolls — Bædling: the níð-pole, the cup and the Wolf's Sermon (events/tm_bae5_events.txt).
+
+# He raised a níð-pole against her hall, and she carried it to the thing.
+tm_bae5_nid_pole_opinion = {
+	opinion = -30
+	years = 10
+	decaying = yes
+}
+
+# The first cup given and taken, with counsel (Maxims I).
+tm_bae5_first_cup_opinion = {
+	opinion = 10
+	years = 5
+	decaying = yes
+}
+
+# She handed the heir the bragarfull.
+tm_bae5_bragarfull_opinion = {
+	opinion = 20
+	years = 10
+	decaying = yes
+}
+
+# The Bædling answered the Wolf's Sermon to his face.
+tm_bae5_wolf_sermon_opinion = {
+	opinion = -15
+	years = 5
+	decaying = yes
+}

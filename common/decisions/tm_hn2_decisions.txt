@@ -1,0 +1,44 @@
+﻿# Crusader Dolls — Ha-Nehpakhot, stage 2 (events/tm_hn2_events.txt; docs/stage2/ha-nehpakhot.md §2, open question 2).
+
+# Commission the adornment herself. The spouse's gift (tm_hn2.0010) stays the usual road; a daughter of the Turning with
+# no adornment may also have the goldsmith make it in her own name. Same variable, so she has one adornment at most;
+# in the Maghreb the attire instead (tm_hn3_attire_trigger). Gold bracelets and ornaments are a woman's adornment "in a
+# place where only women wear them" (MT Avodah Zarah 12:10).
+tm_hn2_commission_adornment_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"		# placeholder; TODO event art
+	}
+	sort_order = 60
+
+	is_shown = {
+		has_trait = tm_daughter_of_the_turning
+		tm_hn2_has_adornment_trigger = no
+	}
+
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+		is_adult = yes
+	}
+
+	cost = {
+		gold = 50
+	}
+
+	effect = {
+		if = {
+			limit = { tm_hn3_attire_trigger = yes }
+			tm_hn3_give_attire_effect = { GIVER = root }
+		}
+		else = {
+			tm_hn2_give_adornment_effect = { GIVER = root }
+		}
+		add_stress = -15
+	}
+
+	ai_check_interval = 120
+	ai_will_do = {
+		base = 5
+		modifier = { add = 10 has_trait = arrogant }
+		modifier = { factor = 0 gold < 100 }
+	}
+}

@@ -5,7 +5,7 @@ tm_ml2_share_candidate_trigger = {
 	is_alive = yes		# a dead one's variables can't be read
 	is_adult = yes
 	is_imprisoned = no
-	faith = faith:tm_garland
+	faith = { has_doctrine_parameter = tm_temple_street }	# the tenet keeps the street (a reformed Garland without it keeps none)
 	tm_is_daughter_trigger = yes
 	NOT = { has_variable = tm_ml2_share }
 }
@@ -15,7 +15,7 @@ tm_ml2_share_candidate_trigger = {
 tm_ml2_share_heir_trigger = {
 	is_alive = yes
 	is_female = yes
-	faith = faith:tm_garland
+	faith = { has_doctrine_parameter = tm_temple_street }
 	NOT = { has_variable = tm_ml2_share }
 }
 

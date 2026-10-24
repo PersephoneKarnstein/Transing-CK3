@@ -1,0 +1,12 @@
+﻿# Crusader Dolls — Bædling: the níð-pole (events/tm_bae5_events.txt).
+
+# Would raise a níð-pole against $TARGET$: a lord of the north, not of the faith, who hates her. The pole is a Norse
+# custom (Gade p. 134; Mitchell pp. 68-69: Egill's pole, turned toward the land). Scope: the would-be raiser.
+tm_bae5_nid_raiser_trigger = {
+	is_adult = yes
+	is_imprisoned = no
+	NOT = { this = $TARGET$ }
+	NOT = { rite ?= { rite_has_parameter = tm_seidr_gate } }
+	culture = { has_cultural_pillar = heritage_north_germanic }
+	opinion = { target = $TARGET$ value <= -20 }
+}

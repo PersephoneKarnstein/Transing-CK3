@@ -173,6 +173,10 @@ tm_sisters_call_effect = {
 				add = 4
 				has_variable = tm_declared
 			}
+			modifier = {								# she lives where a temple street keeps its daughters' names (tm_ml2):
+				add = 3								# a place of contact, a little less than a Sisters' House
+				location ?= { county ?= { tm_ml2_street_trigger = yes } }
+			}
 			modifier = {								# a count turns slowly: her county's faith goes with her
 				factor = 0.25
 				is_ruler = yes

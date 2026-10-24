@@ -1,0 +1,200 @@
+﻿namespace = tm_bae5
+
+# Crusader Dolls — Bædling: the níð-pole, the cup and the Wolf's Sermon (the small items of the README roadmap).
+# On-actions: common/on_action/tm_bae5_on_actions.txt.
+#   0001  The Níð-Pole: a rival raises a pole against a Bædling ruler (research/norse_gade_homosexuality_law.md row 8)
+#   0010  The First Cup: the lady of the hall gives the lord the first cup, and counsel (norse_damico_wealhtheow_valkyrie.md
+#         row 3, Maxims I)
+#   0020  The Bragarfull: a Bædling heir drinks the cup and takes the high seat (Damico row 4; Ynglinga saga ch. 36)
+#   0030  The Wolf's Sermon: an English cleric reads Wulfstan's Sermo Lupi (1014) at a Bædling (Damico row 1)
+
+# The Níð-Pole. Root = the Bædling ruler; scope:tm_nid_raiser = the one who raised it. Níð has a material form: a
+# pole with "two men, one bent before the other, the one in front wearing a blue hat", the hat of Óðinn (Gade p. 134;
+# Bjarnar saga ch. 17). The pole shames the raiser too (Evans and Hancock pp. 168-69), and Grágás gives the one who
+# raises it lesser outlawry before a panel of twelve (Meulengracht Sørensen p. 17). The raiser is a lord, so here it
+# goes into the Account rather than to outlawry. The faith may turn the image: the hat is Óðinn's (Gade row 9).
+tm_bae5.0001 = {
+	type = character_event
+	title = tm_bae5.0001.t
+	desc = tm_bae5.0001.desc
+	theme = unfriendly
+	override_background = { reference = terrain }
+	left_portrait = { character = root animation = anger }
+	right_portrait = { character = scope:tm_nid_raiser animation = scheme }
+
+	trigger = {
+		scope:tm_nid_raiser ?= { is_alive = yes }
+	}
+
+	immediate = {
+		scope:tm_nid_raiser = {
+			add_character_modifier = { modifier = tm_bae5_nid_raised_modifier years = 5 }
+		}
+		tm_feud_tally_effect = { WHAT = nid_poles }
+	}
+
+	option = {	# Burn it
+		name = tm_bae5.0001.a
+		add_prestige = minor_prestige_loss
+		add_stress = -10
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = wrathful }
+			modifier = { add = 10 has_trait = impatient }
+		}
+	}
+	option = {	# The hat is Óðinn's, and so am I
+		name = tm_bae5.0001.b
+		trigger = { rite ?= { rite_has_parameter = tm_seidr_gate } }
+		custom_tooltip = tm_bae5.0001.b.tt
+		add_piety = medium_piety_gain
+		add_stress = -15
+		ai_chance = {
+			base = 40
+			modifier = { add = 30 has_trait = zealous }
+			modifier = { add = 20 has_trait = arrogant }
+			modifier = { add = 20 tm_is_daughter_trigger = yes }
+		}
+	}
+	option = {	# Carry it to the thing
+		name = tm_bae5.0001.c
+		custom_tooltip = tm_bae5.0001.c.tt
+		add_prestige = minor_prestige_loss
+		tm_feud_wrong_effect = { VICTIM = root WRONGDOER = scope:tm_nid_raiser REASON = tm_nid_pole VANILLA = yes }
+		scope:tm_nid_raiser = { add_prestige = minor_prestige_loss }
+		add_opinion = { target = scope:tm_nid_raiser modifier = tm_bae5_nid_pole_opinion }
+		ai_chance = {
+			base = 30
+			modifier = { add = 30 has_trait = vengeful }
+			modifier = { add = 20 has_trait = just }
+		}
+	}
+}
+
+# The First Cup. Root = the lord; scope:tm_cup_lady = the lady of the hall. "The old rule: the lady gives the first cup",
+# and counsel with it (Maxims I; Damico p. 22). Pouring is the cupbearer's work; the first cup is hers.
+tm_bae5.0010 = {
+	type = character_event
+	title = tm_bae5.0010.t
+	desc = tm_bae5.0010.desc
+	theme = feast_activity
+	override_background = { reference = feast }
+	left_portrait = { character = root animation = happiness }
+	right_portrait = { character = scope:tm_cup_lady animation = personality_rational }
+
+	trigger = {
+		scope:tm_cup_lady ?= {
+			is_alive = yes
+			is_imprisoned = no
+		}
+	}
+
+	option = {	# Take the cup and her counsel
+		name = tm_bae5.0010.a
+		add_legitimacy = minor_legitimacy_gain
+		add_opinion = { target = scope:tm_cup_lady modifier = tm_bae5_first_cup_opinion }
+		scope:tm_cup_lady = {
+			add_opinion = { target = root modifier = tm_bae5_first_cup_opinion }
+			add_prestige = minor_prestige_gain
+		}
+		ai_chance = { base = 80 }
+	}
+	option = {	# Drink, and keep my own counsel
+		name = tm_bae5.0010.b
+		add_prestige = minor_prestige_gain
+		scope:tm_cup_lady = {
+			add_opinion = { target = root modifier = disappointed_opinion opinion = -10 }
+		}
+		ai_chance = {
+			base = 20
+			modifier = { add = 30 has_trait = arrogant }
+			modifier = { add = 20 has_trait = paranoid }
+		}
+	}
+}
+
+# The Bragarfull. Root = the heir, just come into her title; scope:previous_holder = whose seat it was;
+# scope:tm_cup_bearer = who hands her the cup, if anyone. "The heir stands, vows over the bragarfull, drains it, and
+# takes the high seat": inheritance itself is a cup rite (Ynglinga saga ch. 36; Damico p. 55). An heir not born to the
+# one before her is made heir by the cup: the faith's answer to the missing adoption law (Damico row 4).
+tm_bae5.0020 = {
+	type = character_event
+	title = tm_bae5.0020.t
+	desc = {
+		desc = tm_bae5.0020.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					exists = scope:previous_holder
+					NOT = { scope:previous_holder = { any_child = { this = root } } }
+				}
+				desc = tm_bae5.0020.desc.chosen
+			}
+			desc = tm_bae5.0020.desc.born
+		}
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:tm_cup_bearer }
+				desc = tm_bae5.0020.desc.bearer
+			}
+			desc = tm_bae5.0020.desc.alone
+		}
+	}
+	theme = feast_activity
+	override_background = { reference = feast }
+	left_portrait = { character = root animation = personality_bold }
+	right_portrait = { character = scope:tm_cup_bearer animation = happiness }
+
+	option = {	# Drain the cup and take the high seat
+		name = tm_bae5.0020.a
+		add_prestige = medium_prestige_gain
+		add_legitimacy = medium_legitimacy_gain
+		if = {
+			limit = { exists = scope:tm_cup_bearer }
+			scope:tm_cup_bearer = {
+				add_opinion = { target = root modifier = tm_bae5_bragarfull_opinion }
+			}
+		}
+	}
+}
+
+# The Wolf's Sermon. Root = a Bædling in an English county; scope:tm_wolf_reader = the cleric who reads it. Wulfstan's
+# Sermo Lupi (1014) lists "witches and valkyries" with harlots and robbers as the ruin of England (Damico p. 53). No
+# English valkyrie cult is claimed: this is the hostile reading, and the faith answers in its own voice (Damico row 1).
+tm_bae5.0030 = {
+	type = character_event
+	title = tm_bae5.0030.t
+	desc = tm_bae5.0030.desc
+	theme = faith
+	override_background = { reference = temple_church }
+	left_portrait = { character = root animation = disapproval }
+	right_portrait = { character = scope:tm_wolf_reader animation = preaching }
+
+	trigger = {
+		scope:tm_wolf_reader ?= { is_alive = yes }
+	}
+
+	option = {	# They mean it as a curse; we take it as a rank
+		name = tm_bae5.0030.a
+		add_prestige = minor_prestige_gain
+		add_stress = -5
+		scope:tm_wolf_reader = {
+			add_opinion = { target = root modifier = tm_bae5_wolf_sermon_opinion }
+		}
+		ai_chance = {
+			base = 50
+			modifier = { add = 30 has_trait = brave }
+			modifier = { add = 20 has_trait = arrogant }
+			modifier = { add = -30 has_trait = craven }
+		}
+	}
+	option = {	# Let it pass
+		name = tm_bae5.0030.b
+		add_stress = 10
+		ai_chance = {
+			base = 50
+			modifier = { add = 30 has_trait = craven }
+			modifier = { add = 20 has_trait = calm }
+		}
+	}
+}

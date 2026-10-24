@@ -493,9 +493,13 @@ yearly_playable_pulse = {
 # The Worn Garland and Badenya (tm_garland_events.txt, tm_badenya_events.txt).
 tm_yearly_south = {
 	effect = {
-		# A name in stone: a ruler of the Garland endows the temple.
+		# A name in stone: a ruler of the Garland endows the temple. A ruler who is herself a daughter gives in her own
+		# name instead (tm_ml2.0010), so no ruler sees both gift events (docs/stage2/worn-garland.md, change 1).
 		if = {
-			limit = { rite ?= { rite_has_parameter = tm_garland_gate } }
+			limit = {
+				rite ?= { rite_has_parameter = tm_garland_gate }
+				NOT = { tm_ml2_donor_trigger = yes }
+			}
 			random = {
 				chance = 15
 				trigger_event = { id = tm_garland.0020 days = { 1 300 } }
@@ -533,7 +537,10 @@ tm_yearly_south = {
 tm_yearly_turning = {
 	effect = {
 		if = {
-			limit = { has_trait = tm_daughter_of_the_turning }
+			limit = {
+				has_trait = tm_daughter_of_the_turning
+				faith = { has_doctrine_parameter = tm_three_lamps }	# the tenet (a reformed sect without it does not keep them)
+			}
 			random = {
 				chance = 25
 				trigger_event = { id = tm_hipukh.0020 days = { 1 300 } }
@@ -658,7 +665,9 @@ tm_yearly_playable = {
 				}
 				random = {
 					chance = 3
+					modifier = { add = 2 current_date >= 1050.1.1 }	# the eunuch-angel ideal fades through the 11th c. (beliefs.md row c: "simply mutilated men")
 					modifier = { add = 5 current_date >= 1081.1.1 }	# the Komnenian turn
+					modifier = { factor = 0.5 rite ?= { rite_has_doctrine = tm_body_galenic } }	# the Galenic wing agrees with the Emperor's count (docs/wave3/dorley.md)
 					modifier = { add = 3 tm_dl3_patriarch_ear_trigger = yes }	# the Patriarch's party has the throne's ear (tm_dl3)
 					if = {
 						limit = { NOT = { has_variable = tm_suppression } }
@@ -872,6 +881,7 @@ tm_on_death_track = {
 tm_on_death_badenya = {
 	trigger = {
 		has_trait = tm_daughter_of_the_house
+		faith = { has_doctrine_parameter = tm_house_buries_its_own }	# the tenet
 		NOT = { has_variable = tm_reborn }
 		OR = {
 			exists = liege

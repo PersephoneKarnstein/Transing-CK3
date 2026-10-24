@@ -1,0 +1,9 @@
+﻿# Crusader Dolls — Bædling: the níð-pole (events/tm_bae5_events.txt).
+
+# He raised a níð-pole. The pole shames the raiser too: onlookers judged that "neither" figure stood well, and the act
+# read as uncivilised (Evans and Hancock pp. 168-69). Character, 5 years.
+tm_bae5_nid_raised_modifier = {
+	icon = social_negative
+	monthly_prestige_gain_mult = -0.1
+	diplomacy = -1
+}

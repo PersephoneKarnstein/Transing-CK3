@@ -337,25 +337,42 @@ In the Sunjata tradition a woman named Tenenba claimed a hero she had not borne:
 
 ## Roadmap
 
-- [x] Adelphai Dorleyaiou: faith, culture, the three houses of the knife, the Dorley prisoner path
-- [x] Sisters' Houses, Declare Before Witnesses, The Sisters Choose
-- [x] Bædling and Yutai Dao: faiths, tenets and gates
-- [x] Re-embodiment, Take as Daughter, arrivals
-- [x] Ha-Nehpakhot, the Worn Garland and Badenya: faiths, tenets and gates
-- [x] One stage-2 feature per faith: the Bædling flyting; Liudprand's four children and the Emperor at Dorylaion; the Way's palace offices; the prayer book and the women at the door; the temple's deal; the New Roof
-- [x] Rescue the Daughters, Sister-Making, Set Down the Name, Keep Quiet in This Land, refugees, Teach Her the Answers
-- [x] The hostile world, life events, the Adelphai saints, and a game rule for how often flavour events fire
-- [x] Bædling: Spring the Cell, outlawry, landless war-bands that can come home
-- [x] Bædling: the feud ledger and settlement (Offer Bót), reprieve by killing outlaws, the níð suit
-- [x] Yutai Dao: a palace faction against the scholar-officials (small version; Liao and Ming levers not built)
-- [x] Adelphai Dorleyaiou: the Galenic splinter rite (found, join, return); Ignatios (867), the train to Tarsus, Theophylact's book, Psellos's letter (1063–78), the Athos ban (1083), the Steward at the Gate
-- [x] Ha-Nehpakhot, the Worn Garland and Badenya: stage-2 work for each (the street, the bailiff and the Maghreb; the share and the gift; the sister's line, the jelimuso and the associate in rule)
-- [x] Flavour achievement events (the Deeds of the House): Ioanna Secunda (the Pope, in three Houses' versions), the Patriarch's Daughter, Al-Kunduri's Mercy, Gelded Like My Camels, Six Hundred Daughters, the Greater Circumcision and Mother of Mothers Unmade a Father of Fathers
-- [ ] Survival balance from observe runs: the small faiths' Houses keep their numbers, the kahal recruits, daughters stay (first pass built: the gathering, the kahal of her town, children kept by all six; to be checked in observe runs)
-- [x] Landless bands of all six faiths: settlement by a lord's offer (the patent and the robe) and a change of leader (the companions choose)
-- [x] Wave 4: Open Ports, the Island Changes Hands and the Peace of the Island (Bædling); a lord's word and terms of service (Muslim and other lords); the market and the road (the Worn Garland); Hide the Name and the Sogdian neighbours (Yutai Dao)
-- [ ] Merchant companies, if a future DLC adds them: a charter for a trading post held by contract. Bands already settle by a lord's offer or by war; the company would add a third road
-- [ ] Commissioned art for faith icons, traits and events
+Built so far is described in the faith sections above. What was planned and not yet built:
+
+### Small: a script change, or one event or decision each (built, not yet tested in game)
+
+- [x] Adelphai Dorleyaiou: the AI founds the Galenic rite now and then; the three Dorleyaian tenets show on the Galenic rite; the Galenic wing feels the suppression ladder less; tolerance starts to decay from 1050
+- [x] Tenet texts match what the tenets do: the temple street, the three lamps and the House burying its own now drive their events; rectified names and sisterhood say less
+- [x] Ha-Nehpakhot: the Two Parties decree reaches daughters at her vassals' courts; a Rabbinic Jewish ruler may also license or lift the ban; a daughter may commission the adornment herself
+- [x] Worn Garland: one gift event a year, not two; an elder who holds the staff is preferred for the vow; the growth call notices temple streets; kovil honours pass to a woman the street chooses
+- [x] Bædling: the níð-pole raised against a Bædling ruler; the first cup; the bragarfull at an inheritance; Wulfstan's sermon in English counties; the dress clause needs a powerful accuser; AI bands spare a sworn island
+- [x] Badenya: Makuria's *ngonnen*; the passed-over sister's child is told of her claim; a kingdom taken by conquest or usurpation is taken hot; a jelimuso of the House sings at other West African courts
+
+### Larger: needs a dedicated pass
+
+- [ ] Adelphai Dorleyaiou: the council fight between the Aristotelian and Galenic wings
+- [ ] Schisms planned in the design notes: "cis is not a caste" against the estates of the Touched; call-outs as scapegoat rituals; whether eunuchs who seek the Bædling faith count as sisters
+- [ ] Adelphai Dorleyaiou: the founding charter as a house legacy; the Tower on the Condition; the Dorley precedent's disclosure, ward schooling and washouts sent to a holy order
+- [ ] Bædling: raising a níð-pole oneself (a scheme, with a proxy carver) and the Níð of the Land against a persecuting liege; vows over the cup that are kept or broken
+- [ ] Bædling: the sorcery-law arc (death penalty in Norway c. 1300 and Sweden c. 1350; the trials at Bergen, Kirkjubær and Greenland)
+- [ ] Bædling: the rest of the feud (escalation by rank, Self-Judgment, the refused Account, fostering to seal a settlement, a reopened Account's martial bonus)
+- [ ] Bædling: the rest of outlawry (the confiscation court, Ride for Sympathy, Houses harbouring outlaws, the lair, the sister's revenge, a woman's suit carried by a friend of the House)
+- [ ] Bædling: Norse lore events (They Say He Keeps Seiðmenn, Weave the Warding Shirt, the holy sites' stories, Eleanor Rykener)
+- [ ] Bædling and the bands: the Strumica peace, Merope's command, the Vigla; flight to a petty coastal lord; The Sword Is My Patent and the darker Companions
+- [ ] Yutai Dao: the Liao and Ming levers, Cui Yin's 902 proposal, the Boy from Min, the repair levy; the women's chains (Xue Xuantong, Wang Fengxian, the abbess of Mo-shan, Empress Chengtian); regency rules by culture
+- [ ] Yutai Dao: the Sogdian rows (Master of the Caravan, Sabao to Office, the Network's Post, the Town of the Grape, the Rallied Township)
+- [ ] Worn Garland: the solitary Tai vow to Kāma; Hall's company of the Five Hundred and the Pepper Merchant's Vow
+- [ ] Ha-Nehpakhot: the bailiff's variants (Catalonia's *batlle*, the panic after a patron's fall); invite a household of the street
+- [ ] Badenya: the refuge at Koulikoro; the fall of the associate in rule
+- [ ] Reactions from the wider world: the Abbasid court (the jester, the plucked beard, the barber) and the comparanda (Huguccio, Ibn Ḥazm, the Orthodox Slavs' penances, the Mamluks, Hostiensis, Walther)
+- [ ] Survival balance from observe runs (first pass built; checked each run)
+- [ ] Commissioned art: faith and trait icons, tenets and doctrines, event pictures, map colours
+
+### After the Silk & Silver DLC (17 November 2026), if ever
+
+- [ ] A 1178 start, with its hooks for the Worn Garland, Ha-Nehpakhot and Badenya, and perhaps two new faiths there (Wendish and Visayan; see `docs/TODO.md`)
+- [ ] Silk & Silver ideas for Yutai Dao and the Worn Garland (traders, caravans, guilds)
+- [ ] Merchant companies: a charter for a trading post held by contract, a third road for the bands
 
 See the [open issues](https://github.com/PersephoneKarnstein/Transing-CK3/issues) for everything else.
 

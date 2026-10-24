@@ -12,14 +12,7 @@ tm_hn3_yearly_ruler = {
 		# are lifted (tm_hn3_two_parties_effect).
 		if = {
 			limit = { has_variable = tm_hn3_two_parties }
-			every_courtier = {
-				limit = { has_character_modifier = tm_niddui_modifier }
-				remove_character_modifier = tm_niddui_modifier
-			}
-			every_vassal = {
-				limit = { has_character_modifier = tm_niddui_modifier }
-				remove_character_modifier = tm_niddui_modifier
-			}
+			tm_hn3_lift_bans_in_realm_effect = yes
 		}
 		# The decorous hush is kept at her court: daughters who come to it are covered too.
 		if = {

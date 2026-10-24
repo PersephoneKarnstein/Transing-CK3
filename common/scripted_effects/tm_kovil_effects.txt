@@ -19,14 +19,37 @@ tm_kovil_patron_effect = {
 	}
 }
 
-# On her death the honour passes "to her descendants": her eldest living daughter of the Garland, born or taken.
-# Scope: the dead holder.
+# On her death the honour passes "to her descendants": her eldest living daughter of the Garland, born or taken. With
+# none, the women of the street choose one of their own, as for a share (tm_ml2_pass_share_effect). Scope: the dead holder.
 tm_kovil_pass_on_effect = {
 	save_scope_as = tm_kovil_mother
 	ordered_child = {
 		limit = { tm_kovil_heir_trigger = yes }
 		order_by = age
 		save_scope_as = tm_kovil_heir
+	}
+	if = {
+		limit = {
+			NOT = { exists = scope:tm_kovil_heir }
+			location ?= { county ?= { tm_ml2_street_trigger = yes } }
+		}
+		location.county = {
+			every_county_province = {
+				random_character_in_location = {
+					limit = {
+						NOT = { this = scope:tm_kovil_mother }
+						is_adult = yes
+						tm_is_daughter_trigger = yes
+						tm_kovil_heir_trigger = yes
+					}
+					save_scope_as = tm_kovil_heir
+				}
+			}
+		}
+		if = {
+			limit = { exists = scope:tm_kovil_heir }
+			save_scope_value_as = { name = tm_kovil_by_street value = yes }
+		}
 	}
 	if = {
 		limit = { exists = scope:tm_kovil_heir }

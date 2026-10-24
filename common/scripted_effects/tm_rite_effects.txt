@@ -582,6 +582,10 @@ tm_pavai_begin_effect = {
 					has_trait = tm_daughter_of_the_garland
 					is_adult = yes
 				}
+				weight = {
+					base = 1
+					modifier = { add = 9 has_character_modifier = tm_ml2_staff_modifier }	# one who holds the staff (tm_ml2) is asked first
+				}
 				save_scope_as = tm_garland_elder
 			}
 		}

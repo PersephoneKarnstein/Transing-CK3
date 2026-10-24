@@ -40,17 +40,19 @@ tm_dl2_found_galenic_decision = {
 		trigger_event = tm_dl2.0001
 	}
 
-	# The AI founds it rarely, and only under pressure from a liege of another Christian faith: it is the wing of
-	# accommodation, not a free upgrade.
-	ai_check_interval = 120
-	ai_potential = {
-		liege ?= {
-			NOT = { faith = root.faith }
-			faith = { religion_tag = christianity_religion }
-		}
-	}
+	# The AI founds it rarely: it is the wing of accommodation, not a free upgrade. Mostly under pressure from a liege of
+	# another Christian faith; now and then without it, so the schism can happen at all (runs 11 and 12: never founded,
+	# when the faith seldom has a landed ruler besides the Mother of Mothers).
+	ai_check_interval = 60
 	ai_will_do = {
-		base = 0
+		base = 3
+		modifier = {
+			add = 7
+			liege ?= {
+				NOT = { faith = root.faith }
+				faith = { religion_tag = christianity_religion }
+			}
+		}
 		modifier = { add = 10 has_variable = tm_suppression }
 		modifier = { add = 10 var:tm_suppression ?= 3 }
 		modifier = { add = 5 has_trait = content }
@@ -89,15 +91,16 @@ tm_dl2_adopt_galenic_decision = {
 		tm_dl2_adopt_galenic_effect = yes
 	}
 
-	ai_check_interval = 120
-	ai_potential = {
-		liege ?= {
-			NOT = { faith = root.faith }
-			faith = { religion_tag = christianity_religion }
-		}
-	}
+	ai_check_interval = 60
 	ai_will_do = {
-		base = 0
+		base = 2
+		modifier = {
+			add = 5
+			liege ?= {
+				NOT = { faith = root.faith }
+				faith = { religion_tag = christianity_religion }
+			}
+		}
 		modifier = { add = 10 has_variable = tm_suppression }
 		modifier = { add = 10 var:tm_suppression ?= 3 }
 		modifier = { add = 10 liege ?= { rite ?= { rite_has_doctrine = tm_body_galenic } } }

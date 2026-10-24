@@ -50,8 +50,9 @@ tm_bae2_yearly_outlawry = {
 				else = {
 					save_scope_value_as = { name = tm_bae2_charge value = flag:dress }
 				}
-				# Who brings it: for sorcery, the lord's chaplain (church law); else a courtier or vassal who
-				# dislikes her; else the lord himself, if he does.
+				# Who brings it: for sorcery, the lord's chaplain (church law); else a courtier or guest who
+				# dislikes her (for the dress clause, only one with weight at court: faith_design.md §6); else the
+				# lord himself, if he does.
 				if = {
 					limit = {
 						scope:tm_bae2_charge = flag:seidr
@@ -68,6 +69,7 @@ tm_bae2_yearly_outlawry = {
 								is_adult = yes
 								religion = religion:christianity_religion
 								opinion = { target = scope:tm_bae2_outlaw value <= -10 }
+								tm_bae2_dress_accuser_trigger = yes
 							}
 						}
 					}
@@ -77,6 +79,7 @@ tm_bae2_yearly_outlawry = {
 								is_adult = yes
 								religion = religion:christianity_religion
 								opinion = { target = scope:tm_bae2_outlaw value <= -10 }
+								tm_bae2_dress_accuser_trigger = yes
 							}
 							save_scope_as = tm_bae2_accuser
 						}

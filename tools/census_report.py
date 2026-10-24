@@ -235,12 +235,12 @@ def main(path):
 
     # The Account (tm_feud_tally_effect): feud, bót, the níð suit and reprieves, run-wide.
     print('== The Account (Bædling feud) ==')
-    fsteps = ('wrongs', 'requitals', 'settled', 'truce_broken', 'nid_suits', 'nid_outlawed', 'reprieve_kills', 'reprieves')
+    fsteps = ('wrongs', 'requitals', 'settled', 'truce_broken', 'nid_suits', 'nid_outlawed', 'nid_poles', 'reprieve_kills', 'reprieves')
     if any(f'tm_feud_n_{s}' in gvars for s in fsteps):
         print('  '.join(f'{s} {int(gvars.get(f"tm_feud_n_{s}") or 0)}' for s in fsteps))
         print('wrongs: unanswered wrongs entered; requitals: wrongs that paid one back; settled: bót taken;\n'
               'truce_broken: a wrong within ten years of bót; nid_suits / nid_outlawed: suits for the three words, and\n'
-              'speakers outlawed; reprieve_kills: outlaws killed toward a reprieve; reprieves: sentences lifted that way.')
+              'speakers outlawed; nid_poles: níð-poles raised against Bædling rulers; reprieve_kills: outlaws killed toward a reprieve; reprieves: sentences lifted that way.')
     else:
         print('No counts (the save predates the Account, or nothing has been entered).')
     print()

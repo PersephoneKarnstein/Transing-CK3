@@ -9,7 +9,14 @@ tenet_tm_day_of_blood = {
 	icon = tenet_mortification_of_the_flesh
 
 	is_shown = {
-		OR = { this = faith:transbian_maximalism this = rite:transbian_maximalist_rite }		# 1.20 evaluates this on the faith in some places and on the rite in others; the side of the wrong type logs a harmless error
+		OR = {		# 1.20 evaluates this on the faith in some places and on the rite in others; the side of the wrong type logs a harmless error
+			this = faith:transbian_maximalism
+			this = rite:transbian_maximalist_rite
+			AND = {		# the Galenic rite keeps the three tenets; rite:tm_galenic_rite exists only once founded
+				has_global_variable = tm_dl2_galenic_founded
+				this = rite:tm_galenic_rite
+			}
+		}
 	}
 
 	piety_cost = {
@@ -61,7 +68,14 @@ tenet_tm_daughters_chosen = {
 	icon = tenet_adoptionism
 
 	is_shown = {
-		OR = { this = faith:transbian_maximalism this = rite:transbian_maximalist_rite }		# 1.20 evaluates this on the faith in some places and on the rite in others; the side of the wrong type logs a harmless error
+		OR = {		# 1.20 evaluates this on the faith in some places and on the rite in others; the side of the wrong type logs a harmless error
+			this = faith:transbian_maximalism
+			this = rite:transbian_maximalist_rite
+			AND = {		# the Galenic rite keeps the three tenets; rite:tm_galenic_rite exists only once founded
+				has_global_variable = tm_dl2_galenic_founded
+				this = rite:tm_galenic_rite
+			}
+		}
 	}
 
 	piety_cost = {
@@ -111,7 +125,14 @@ tenet_tm_sisterhood = {
 	icon = tenet_communal_identity
 
 	is_shown = {
-		OR = { this = faith:transbian_maximalism this = rite:transbian_maximalist_rite }		# 1.20 evaluates this on the faith in some places and on the rite in others; the side of the wrong type logs a harmless error
+		OR = {		# 1.20 evaluates this on the faith in some places and on the rite in others; the side of the wrong type logs a harmless error
+			this = faith:transbian_maximalism
+			this = rite:transbian_maximalist_rite
+			AND = {		# the Galenic rite keeps the three tenets; rite:tm_galenic_rite exists only once founded
+				has_global_variable = tm_dl2_galenic_founded
+				this = rite:tm_galenic_rite
+			}
+		}
 	}
 
 	piety_cost = {

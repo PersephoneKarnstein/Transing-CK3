@@ -68,6 +68,16 @@ tm_bd2.0002 = {
 				trigger = { faith.religion = religion:islam_religion }
 				desc = tm_bd2.0002.desc_muslim
 			}
+			# A Nubian heir at Makuria's courts, from 1155: the Old Nubian ngonnen, "sister of the current ruler and mother
+			# of the future one", is attested for Maria Iesousikol at Qasr Ibrim, probably 1155-c. 1180 (P. QI 3 32;
+			# docs/stage2/badenya.md). A reaction line only: no faith claim on her.
+			triggered_desc = {
+				trigger = {
+					culture = culture:nubian
+					current_year >= 1155
+				}
+				desc = tm_bd2.0002.desc_nubian
+			}
 			desc = tm_bd2.0002.desc_other
 		}
 	}
@@ -124,11 +134,48 @@ tm_bd2.0002 = {
 		scope:tm_bd2_sisters_child = {
 			add_unpressed_claim = scope:tm_bd2_title
 			add_opinion = { target = root modifier = tm_bd2_passed_over_line_opinion }
+			trigger_event = { id = tm_bd2.0003 days = { 3 10 } }
 		}
 		ai_chance = {
 			base = 30
 			modifier = { add = -20 faith = faith:tm_badenya }
 			ai_value_modifier = { ai_greed = 0.5 ai_boldness = 0.25 }
+		}
+	}
+}
+
+# The sister's line passed over. Root = the sister's child; scope:tm_bd2_old = her mother's sibling, now dead;
+# scope:tm_bd2_title = the seat, held by the new ruler. The new ruler kept the seat and left her a claim (tm_bd2.0002,
+# option c): she should know she holds it (docs/stage2/badenya.md §1, open question 3).
+tm_bd2.0003 = {
+	type = character_event
+	title = tm_bd2.0003.t
+	desc = tm_bd2.0003.desc
+	theme = family
+	left_portrait = { character = root animation = anger }
+	right_portrait = { character = scope:tm_bd2_title.holder animation = personality_bold }
+
+	trigger = {
+		exists = scope:tm_bd2_title.holder
+		has_claim_on = scope:tm_bd2_title
+	}
+
+	option = {	# The milk is closer than the belt: I keep the claim
+		name = tm_bd2.0003.a
+		add_prestige = 25
+		ai_chance = {
+			base = 60
+			ai_value_modifier = { ai_boldness = 0.5 ai_greed = 0.25 }
+		}
+	}
+	option = {	# Let it rest, for the peace of the House
+		name = tm_bd2.0003.b
+		remove_claim = scope:tm_bd2_title
+		add_piety = 50
+		add_stress = -10
+		ai_chance = {
+			base = 40
+			ai_value_modifier = { ai_compassion = 0.5 }
 		}
 	}
 }
@@ -241,6 +288,10 @@ tm_bd2.0020 = {
 			triggered_desc = {
 				trigger = { highest_held_title_tier >= tier_kingdom current_year >= 1330 }
 				desc = tm_bd2.0020.desc_king_early
+			}
+			triggered_desc = {						# a court not of the faith, where a jelimuso of the House sings as a guest
+				trigger = { NOT = { faith = faith:tm_badenya } }
+				desc = tm_bd2.0020.desc_court_guest
 			}
 			desc = tm_bd2.0020.desc_court
 		}

@@ -1042,6 +1042,18 @@ The full scenarios (C1-C6) are in docs/wave5/chamber.md.
 - The selector's map banner for Huijing is the tiger; in play, Guasha shows vanilla's Sha seal and Huijing's own arms the tiger.
 - The two portraits are dumped (2026-10-23). Hovering each lights up her county: the highlight images are named for the bookmark entry (`gfx/interface/bookmarks/bm_867_crusader_dolls_bookmark_tm_<name>.dds`), renamed from Steinn's and Xun's.
 
+## AE. The small roadmap items (added 2026-10-24, untested)
+
+**AE1. Galenic.** In a long observe run the Galenic rite is founded at least sometimes (save: a rite with `tm_body_galenic`). With it founded, the three Dorleyaian tenets show on the Galenic rite in the faith view, and the suppression ladder fires about half as often for its rulers.
+**AE2. Tenets.** A reformed Garland, Ha-Nehpakhot or Badenya faith without the temple street, the three lamps or the House burying its own gets no shares, no three-lamps event and no burial event; the founding faiths still do.
+**AE3. Two Parties.** A daughter under a ban at a vassal's court is freed when her liege issues the decree, and by the yearly check after.
+**AE4. Rabbinic lord.** A Rabbinic Jewish ruler outside the Maghreb with a banned daughter at court gets `tm_hn2.0040`; lifting the ban displeases his own Jewish courtiers. No such event for a Rabbinic ruler in the Maghreb or the Sahel.
+**AE5. Adornment.** A daughter of the Turning with none sees Commission the Adornment (50 gold); afterwards she has one adornment and the decision is gone. In the Maghreb she gets the attire.
+**AE6. Garland.** A Garland ruler who is a daughter with 30 gold never gets `tm_garland.0020` (only `tm_ml2.0010`). A kovil honour holder with no daughter passes it to a daughter living in her county if it has a temple street (event shows the street text).
+**AE7. Bædling.** `tm_bae5.0001`–`0030`: the níð-pole names the raiser and gives him "Raised a Níð-Pole"; option c enters a wrong in the Account (census `nid_poles` counts poles). The first cup comes from the wife or a woman of the faith at court. The bragarfull fires on inheriting a primary title, with the "chosen" text for a heir not born to the one before. Wulfstan's sermon only in Anglo-Saxon or English counties after 1014.
+**AE8. Dress clause and island.** A dress-clause charge is brought only by a councillor, a landed vassal or the lord (or one of high prestige). An AI band does not settle on Gotland while the Peace of the Island holds.
+**AE9. Badenya.** A Nubian heir answering the sister's line from 1155 sees the Dongola line. A passed-over sister's child gets "Passed Over"; letting it rest removes the claim. Taking a kingdom by conquest gives "A Hot Realm". A Muslim West African ruler with a Badenya jelimuso at court gets Praise Before the Court with the guest text.
+
 ## AD. The Account, the níð suit, reprieve (added 2026-10-23, untested)
 
 **AD1. A wrong.** As a Bædling ruler, imprison a courtier of another house who is not an outlaw, or have one of your house killed outside a war (console `kill` with a killer is not enough: use a murder scheme). The head of each house, if a player, gets a toast: *A Gift Unpaid* / *A Gift Given*. The census "The Account" shows `wrongs`.

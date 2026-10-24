@@ -130,7 +130,15 @@ tm_kovil.0002 = {
 tm_kovil.0003 = {
 	type = character_event
 	title = tm_kovil.0003.t
-	desc = tm_kovil.0003.desc
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:tm_kovil_by_street }
+				desc = tm_kovil.0003.desc_street
+			}
+			desc = tm_kovil.0003.desc
+		}
+	}
 	theme = faith
 	left_portrait = { character = root animation = grief }
 

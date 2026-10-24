@@ -590,10 +590,10 @@ tm_hn2.0040 = {
 			remove_character_modifier = tm_niddui_modifier
 			add_opinion = { target = root modifier = tm_hn2_absolved_opinion }
 		}
-		every_courtier = {
+		every_courtier = {		# the Jews at court who are not of the sect; for a Rabbinic lord, his own
 			limit = {
 				faith.religion = religion:judaism_religion
-				NOT = { faith = root.faith }
+				NOT = { faith = faith:tm_nehpakhot }
 			}
 			add_opinion = { target = root modifier = tm_hn2_overruled_opinion }
 		}
@@ -601,6 +601,7 @@ tm_hn2.0040 = {
 			base = 40
 			modifier = { add = 30 opinion = { target = scope:tm_hn2_shunned value >= 25 } }
 			modifier = { add = 20 has_trait = compassionate }
+			modifier = { factor = 0.5 NOT = { faith = faith:tm_nehpakhot } }	# a Rabbinic lord overrules his own judges less readily
 		}
 	}
 	option = {	# License it for one year, and no more
