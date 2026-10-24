@@ -122,6 +122,25 @@ tm_on_game_start = {
 			# as Shazhou's is (user, 2026-10-20); in the second observe run that line went on to create Scandinavia.
 			if = {
 				limit = { current_date < 1050.1.1 }
+				# At 867 Gotland is Steinunn's (the bookmark's), the count Steinn's elder sister: she takes his county
+				# and he stays at her court, of her faith, as her heir (user, 2026-10-23).
+				clear_saved_scope = tm_steinunn
+				character:tm_baeddel_steinunn ?= {
+					if = {
+						limit = {
+							is_alive = yes
+							title:c_gutland.holder ?= { this = character:41267 }
+						}
+						save_scope_as = tm_steinunn
+					}
+				}
+				if = {
+					limit = { exists = scope:tm_steinunn }
+					character:41267 = { save_scope_as = tm_steinn }
+					tm_hand_over_realm_effect = { FROM = scope:tm_steinn TO = scope:tm_steinunn }
+					scope:tm_steinn = { set_character_faith = faith:tm_baeddel }
+					scope:tm_steinunn = { add_courtier = scope:tm_steinn }
+				}
 				tm_seed_baeddel_seat_effect = { COUNTY = title:c_gutland SEAT = gotland }
 			}
 			else_if = {
@@ -130,6 +149,43 @@ tm_on_game_start = {
 			}
 
 			# The Way of the Jade Embryo keeps Dunhuang (Shazhou, with the Mogao caves); a nüguan at court.
+			# At 867 the bookmark's Huijing takes Guasha from the vanilla duke Xun, a historical man the mod does not
+			# convert: he dies before the game begins, and she takes his son Chengxun (han_40016, aged 7) as her ward,
+			# adopted child and heir, raised in the Way (user, 2026-10-23). Suo's noble-family estate goes to Xun's heirs.
+			clear_saved_scope = tm_huijing
+			character:tm_yutai_huijing ?= {
+				if = {
+					limit = {
+						is_alive = yes
+						title:c_shazhou.holder ?= { this = character:304191 }
+					}
+					save_scope_as = tm_huijing
+				}
+			}
+			# Guasha's arms are the tiger only for the bookmark's selector (tm_coas.txt): in play, vanilla's seal.
+			title:d_guasha = { set_coa = tm_d_guasha_vanilla }
+			if = {
+				limit = { exists = scope:tm_huijing }
+				character:304191 = { save_scope_as = tm_xun }
+				tm_hand_over_realm_effect = { FROM = scope:tm_xun TO = scope:tm_huijing }
+				character:han_40016 ?= {
+					if = {
+						limit = { is_alive = yes }
+						save_scope_as = tm_chengxun
+					}
+				}
+				scope:tm_xun = { death = { death_reason = death_natural_causes } }
+				if = {
+					limit = { exists = scope:tm_chengxun }
+					scope:tm_huijing = {
+						add_courtier = scope:tm_chengxun
+						adopt = scope:tm_chengxun
+						set_relation_ward = scope:tm_chengxun
+						set_designated_heir = scope:tm_chengxun
+					}
+					scope:tm_chengxun = { set_character_faith = faith:tm_yutai }
+				}
+			}
 			title:c_shazhou = {
 				set_county_faith = faith:tm_yutai
 				holder ?= {

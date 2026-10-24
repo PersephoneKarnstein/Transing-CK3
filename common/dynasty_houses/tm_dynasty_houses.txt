@@ -24,3 +24,9 @@ house_tm_lamp = {
 	name = "dynn_tm_lamp"
 	dynasty = tm_dyn_lamp
 }
+
+house_tm_jade_embryo = {
+	prefix = "dynnp_of"
+	name = "dynn_tm_jade_embryo"
+	dynasty = tm_dyn_jade_embryo
+}

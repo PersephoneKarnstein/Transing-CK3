@@ -26,3 +26,9 @@ tm_dyn_lamp = {				# Bonadonna, Ha-Nehpakhot: the women of the lamp
 	name = "dynn_tm_lamp"
 	culture = "occitan"
 }
+
+tm_dyn_jade_embryo = {		# Huijing, Yutai Dao: the Way of the Jade Embryo
+	prefix = "dynnp_of"
+	name = "dynn_tm_jade_embryo"
+	culture = "han"
+}

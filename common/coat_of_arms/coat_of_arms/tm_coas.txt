@@ -2,7 +2,7 @@
 # name is the bookmark title's arms (a landless adventurer's: her house's); the selected character's panel shows her
 # house's or dynasty's. Arms the game generates in play do not exist there, and show black.
 
-# Gotland (c_gutland), Steinn's county and the Bædling seat, and Gute (dynasty 825), his house: a red Gotland whirl on
+# Gotland (c_gutland), Steinunn's county and the Bædling seat, and Gute (dynasty 825), her and Steinn's house: a red Gotland whirl on
 # blue. Replaces vanilla's arms for Gotland and its Norse variant (c_gutland_norse, set at game start and for Norse
 # holders), at the user's choice, so the map banner in the character selector shows it. The whirl is the disc of
 # Gotland's picture stones; blue with red is the Fyrkat vǫlva's dress (blue wool, red cords, c. 980). Never black on
@@ -598,10 +598,11 @@ d_tm_mother_house = {
 	}
 }
 
-# Suo (dynasty 2003011), Xun of Shazhou's house, Yutai Dao: a white-and-black tiger on green. The user's design. The
-# white tiger is the Queen Mother of the West's envoy (Cahill, p. 53). Every Suo character carries these arms. From the
-# user's image by tools/img2coa.py at 250 px: 1,588 rectangles of ce_block_02.
-2003011 = {
+# The Jade Embryo (tm_dyn_jade_embryo), Huijing of Guasha's one-person dynasty, Yutai Dao: a white-and-black tiger on
+# green. The user's design. The white tiger is the Queen Mother of the West's envoy (Cahill, p. 53). Until 2026-10-23
+# these were the arms of Suo (2003011), Xun's dynasty; Suo now keeps vanilla's. From the user's image by
+# tools/img2coa.py at 250 px: 1,588 rectangles of ce_block_02.
+tm_dyn_jade_embryo = {
 	pattern = "pattern_solid.dds"
 	color1 = rgb { 43 182 115 }
 	colored_emblem = {
@@ -7015,6 +7016,29 @@ c_sibi_mali = {
 
 # The one-person dynasties and their houses (common/dynasties/tm_dynasties.txt) carry the arms above.
 tm_dyn_dorylaion = d_tm_mother_house
+house_tm_jade_embryo = tm_dyn_jade_embryo
+
+# Guasha (d_guasha), Huijing's bookmark title: the tiger, so the map banner in the character selector shows it (that
+# banner is always the bookmark title's arms). At game start tm_on_game_start puts vanilla's Sha seal back on the
+# title (set_coa = tm_d_guasha_vanilla, copied below from game/common/coat_of_arms/coat_of_arms/01_landed_titles.txt),
+# so in play the tiger stays Huijing's own arms (user, 2026-10-23).
+d_guasha = tm_dyn_jade_embryo
+tm_d_guasha_vanilla = {
+	pattern = "pattern_solid.dds"
+	color1 = white
+	color2 = red
+	color3 = black
+	colored_emblem = {
+		color1 = red
+		texture = "ce_seal_frame.dds"
+		instance = { scale = { 0.63 0.8 } }
+	}
+	colored_emblem = {
+		color1 = red
+		texture = "ce_seal_name_sha_6c99.dds"
+		instance = { scale = { 0.7 0.7 } depth = 1.01 }
+	}
+}
 house_tm_dorylaion = d_tm_mother_house
 tm_dyn_temple_street = c_candragiri
 house_tm_temple_street = c_candragiri

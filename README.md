@@ -60,7 +60,7 @@
 *Crusader Dolls* adds six faiths built around trans women to Crusader Kings III. (The repository is *Transing-CK3*; the mod is *Crusader Dolls* in the launcher; the Byzantine faith is *Adelphai Dorleyaiou*.) Each is grounded in a different historical setting and plays differently. Their tenets come from contemporary transfeminist writing: baedelism, third-wave transfeminism and transgender Marxism. A history pass then gives each a veneer of plausibility in its own place and period.
 
 <p align="center">
-  <img src="docs/images/bookmark.jpg" alt="The Crusader Dolls bookmark on CK3's 867 start screen: a stained-glass shark tab among the bookmark tabs, and a painted map from the Baltic to India. Each leader stands under her banner: Steinn of Gute at Gotland (a red whirl on blue), Bonadonna of the Lamp at Arles (a seal with a Hebrew legend round a portcullis), Theia Beatrike of Dorylaion (a gold falcon on a white roundel, on purple), Xun of Suo at Dunhuang, Cantirâdêvi of the Temple Street at Candragiri (a garland of tulsi and jasmine on green) and Djeneba of Do in a West Africa inset (a gold buffalo on black). Theia's info panel is open on the right" width="100%">
+  <img src="docs/images/bookmark.jpg" alt="The Crusader Dolls bookmark on CK3's 867 start screen: a stained-glass shark tab among the bookmark tabs, and a painted map from the Baltic to India. Each leader stands under her banner: Steinunn of Gute at Gotland (a red whirl on blue), Bonadonna of the Lamp at Arles (a seal with a Hebrew legend round a portcullis), Theia Beatrike of Dorylaion (a gold falcon on a white roundel, on purple), Huijing of the Jade Embryo at Dunhuang (a white-and-black tiger on green), Cantirâdêvi of the Temple Street at Candragiri (a garland of tulsi and jasmine on green) and Djeneba of Do in a West Africa inset (a gold buffalo on black). Theia's info panel is open on the right" width="100%">
   <br><em>The Crusader Dolls bookmark at 867.</em>
 </p>
 
@@ -120,7 +120,7 @@ The mod is in alpha. Most of it has never run in a real campaign, and we need pe
    path="C:/Users/you/Documents/Transing-CK3"
    ```
 4. **Enable it.** Open the Paradox launcher, go to *Playsets*, add **Crusader Dolls** to a playset, and make that playset active.
-5. **Start a new game.** At 867, the **Crusader Dolls** bookmark lists a head of each faith: Theia Beatrike at Dorylaion, Steinn of Gotland, Xun of Dunhuang, Cantirâdêvi of Candragiri, Djeneba of Kirina, and Bonadonna, an elder of the women of the lamp, who keeps a landless scholars' camp at Arles (Roads to Power). In the Ruler Designer you can choose the Kybeline culture and any of the six faiths. You can also convert to one in a normal game.
+5. **Start a new game.** At 867, the **Crusader Dolls** bookmark lists a head of each faith: Theia Beatrike at Dorylaion, Steinunn of Gotland, Huijing of Dunhuang, Cantirâdêvi of Candragiri, Djeneba of Kirina, and Bonadonna, an elder of the women of the lamp, who keeps a landless scholars' camp at Arles (Roads to Power). In the Ruler Designer you can choose the Kybeline culture and any of the six faiths. You can also convert to one in a normal game.
 
 To update later, pull or re-download into the same folder. The launcher file does not need to change.
 

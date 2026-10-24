@@ -1,7 +1,8 @@
 ﻿# Crusader Dolls — historical characters for the 867 bookmark (common/bookmarks/bookmarks/tm_bookmarks.txt).
 # A bookmark can only show a character with a history id, so the leaders the start script used to create are
 # defined here. The script still gives them their titles (tm_on_game_start), and still creates a stand-in at a later
-# start date, when these have died. Deaths are set so that they are gone by 1066. They are not historical people.
+# start date, when these have died. Deaths are set so that they are gone by 1066. They are not historical people
+# (Steinunn's father and brother, and Huijing's ward, are vanilla's).
 
 # Theia Beatrike, Mother of Mothers: "Aunt Bea", an elder daughter of the knife (Adelphai Dorleyaiou).
 tm_theia_beatrike = {
@@ -72,4 +73,50 @@ tm_nehpakhot_bonadonna = {
 	martial = 3
 	812.1.1 = { birth = yes }		# in her fifties at the start, as the seed's elder was
 	905.1.1 = { death = yes }
+}
+
+# Steinunn holds Gotland, a daughter of seiðr (Bædling). Elder sister of the count Steinn (vanilla 41267, dynasty 825
+# Gute, father Skúli 194048): the start script gives her his county and keeps him at her court as her heir (user,
+# 2026-10-23), so the seat has a family to pass to.
+tm_baeddel_steinunn = {
+	name = "Steinunn"
+	dynasty = 825		# Gute, Steinn's dynasty: the bookmark shows Gotland's whirl (docs/heraldry.md)
+	father = 194048
+	female = yes
+	culture = norse
+	religion = tm_baeddel
+	trait = tm_daughter_of_seidr
+	trait = education_stewardship_3
+	trait = diligent
+	trait = gregarious
+	stewardship = 12
+	diplomacy = 10
+	learning = 9
+	martial = 7
+	intrigue = 6
+	838.1.1 = { birth = yes }		# three years older than Steinn
+	900.1.1 = { death = yes }
+}
+
+# Huijing, a nüguan and daughter of the embryo, governs Guasha at Dunhuang (Yutai Dao). She replaces the vanilla
+# duke Xun (304191), a historical man the mod does not convert (user, 2026-10-23): the start script gives her his
+# titles and removes him, and she raises his son Chengxun (han_40016) as her ward, adopted child and heir.
+tm_yutai_huijing = {
+	name = "Huijing"
+	dynasty_house = house_tm_jade_embryo		# one-person dynasty, so the bookmark shows her arms (docs/heraldry.md)
+	female = yes
+	culture = han
+	religion = tm_yutai
+	trait = tm_daughter_of_the_embryo
+	trait = education_learning_3
+	trait = calm
+	trait = patient
+	trait = honest
+	learning = 15
+	stewardship = 11
+	diplomacy = 10
+	intrigue = 8
+	martial = 4
+	828.1.1 = { birth = yes }		# in her late thirties at the start
+	900.1.1 = { death = yes }
 }

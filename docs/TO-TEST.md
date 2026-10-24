@@ -471,7 +471,7 @@ Start the observe run only after these files are in place: new script files are 
 
 ## K. The Crusader Dolls bookmark (added 2026-10-20, untested)
 
-- At 867, a **Crusader Dolls** tab should appear in the left-hand list. Selecting it shows five rulers: Theia Beatrike (Mother House), Steinn (Gotland), Xun (Guasha), Cantirâdêvi (Candragiri) and Djeneba (Kirina). Each should be playable, hold the title shown and be of her or his faith. The art and portraits are placeholders.
+- At 867, a **Crusader Dolls** tab should appear in the left-hand list. Selecting it shows five rulers: Theia Beatrike (Mother House), Steinunn (Gotland), Huijing (Guasha), Cantirâdêvi (Candragiri) and Djeneba (Kirina). Each should be playable, hold the title shown and be of her or his faith. The art and portraits are placeholders.
 - Theia, Cantirâdêvi and Djeneba are now historical characters (`history/characters/tm_characters.txt`); the start script hands them their titles. Check that Theia holds the Mother House and Phrygia under the Emperor as a theocracy, that both countesses are vassals of their lords, and that the start at 1066 or 1178 still makes stand-ins (the historical ones are dead by then).
 - **Portraits (needs you, once):** start a game at this bookmark with the console enabled, run `dump_bookmark_portraits`, and copy the five `bookmark_tm_*.txt` files it writes (in the CK3 user folder) over the placeholders in `common/bookmark_portraits/`. The placeholders are vanilla portraits copied so the bookmark screen does not crash.
 
@@ -1007,7 +1007,7 @@ Design: [docs/wave4/yutai-sogdians.md](wave4/yutai-sogdians.md).
 
 **Z2. Later start.** Start at 1066 or 1178: Bonadonna is dead, the camp does not exist, and the old setup runs (a generated elder and the youths at the count of Venaissin's court).
 
-**Z3. Difficulty labels.** On the bookmark, Steinn, Xun and Cantirâdêvi are Medium; Theia Beatrike, Djeneba and Bonadonna are Advanced.
+**Z3. Difficulty labels.** On the bookmark, Steinunn, Huijing and Cantirâdêvi are Medium; Theia Beatrike, Djeneba and Bonadonna are Advanced.
 
 The succession scenarios (S1–S4) are in docs/wave5/succession.md; the offices' in docs/wave5/offices.md.
 
@@ -1024,6 +1024,23 @@ The full scenarios (C1-C6) are in docs/wave5/chamber.md.
 
 **AA4. The counts.** An observe run to 1173 (run 9) showed no daughter invited in the last fifteen years and none in post, with three eligible daughters under Sabas, one of them eligible for 62 years. The roll logic is the same that set the invitation marker in run 8, so it may be chance at 5% a year, but the save cannot tell. From now `tools/census_report.py` prints the chamber's run-wide counts (rolled, fired, took, stayed, lost, estate).
 - **Expect:** by 1000, with 3-9 daughters a decade, rolled in the tens; fired close to rolled; took roughly half of fired. Rolled 0 means the roll is not reached; rolled without fired means the event's trigger fails.
+
+**AA5. AI daughters work the chamber.** The AI weighs decisions only for rulers, so no AI daughter in post ever took *Work the Chamber*: run 11, to 1361, had 64 letters, 28 posts and no chrysobull or estate. The yearly effect now works it for her (20% a year, at most once in five years). Expect `worked` in the tens over a long run, and some `chrysobull`; `estate` needs balance +2 and 200 prestige, so it stays rare.
+
+## AC. Rulers from outside the community (added 2026-10-23, untested)
+
+**AC1. The window fires.** In a long observe run, `tools/census_report.py` "Rulers converting in" shows `all` above zero for the Garland and Yutai. If all six stay at 0 while the faiths still grow, the AI converts by another road and the turning-away never runs (docs/faith_design.md §17).
+
+**AC2. Turned away.** `turned away` is about a third of `outsiders`. A turned-away ruler keeps her old faith, and her capital and family do not convert.
+
+**AC3. Not killed off.** Against run 11 (Garland 316 counties, Yutai 272 at 1361), the two large faiths are somewhat smaller, not gone; the four small ones are unchanged.
+
+**AC4. Steinunn and Huijing** (added 2026-10-23). Start the bookmark at 867.
+- Gotland: Steinunn holds the county, independent or under the same liege as Steinn was; Steinn is at her court, a Bædling, and her heir.
+- Guasha: Huijing holds the duchy and its counties under Hexi, as Xun did; Xun is dead; Chengxun (7) is at her court, her adopted son and ward, of Yutai Dao, and her designated heir. The Suo noble-family estate went to Xun's heirs, not to her. Guasha is an appointed governorship (meritocratic), so the game may still appoint someone else when she dies.
+- The selector shows her *of the Jade Embryo* with the tiger, and Steinunn *of Gute* with the whirl.
+- The selector's map banner for Huijing is the tiger; in play, Guasha shows vanilla's Sha seal and Huijing's own arms the tiger.
+- The two portraits are dumped (2026-10-23). The map pictures `gfx/interface/bookmarks/bm_867_crusader_dolls_bookmark_tm_steinunn.dds` and `..._tm_huijing.dds` are missing.
 
 ## AB. Badenya guardrails (added 2026-10-22, untested)
 

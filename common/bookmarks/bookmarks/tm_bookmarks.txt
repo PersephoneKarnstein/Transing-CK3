@@ -1,8 +1,9 @@
 ﻿# Crusader Dolls — a bookmark at 867 showing the playable heads of the six faiths, so players can find them.
 # Ha-Nehpakhot holds no land: Bonadonna stands as a landless adventurer (Roads to Power, which the mod requires).
 # The selector reads each leader's dynasty and house from here, not from history: without them it shows "Lowborn"
-# and falls back to the title's arms (docs/heraldry.md). The leaders made by the start script are historical characters in history/characters/tm_characters.txt; Steinn of
-# Gotland and Xun of Shazhou are vanilla characters the start script converts. Portraits: run
+# and falls back to the title's arms (docs/heraldry.md). The leaders are historical characters in
+# history/characters/tm_characters.txt, to whom the start script gives their titles: Steinunn takes Gotland from her
+# brother Steinn, Huijing takes Guasha from the vanilla duke Xun. Portraits: run
 # dump_bookmark_portraits in a game started at this bookmark and copy the files into common/bookmark_portraits.
 # Art: the tab is the user's; the map (user's) is built from the game's own flatmap (gfx/map/terrain/flat_maps/flatmap.dds), with
 # West Africa as an inset, as the vanilla 867 adventurers map does. Positions sit beside each highlight.
@@ -31,37 +32,37 @@ bm_867_crusader_dolls = {
 		animation = personality_compassionate
 	}
 
-	# Steinn, count of Gotland (Bædling). ID: 41267
+	# Steinunn, countess of Gotland (Bædling). ID: tm_baeddel_steinunn
 	character = {
-		name = "bookmark_tm_steinn"
+		name = "bookmark_tm_steinunn"
 		dynasty = 825		# Gute
 		dynasty_splendor_level = 1
-		type = male
-		birth = 841.1.1
+		type = female
+		birth = 838.1.1
 		title = c_gutland
 		government = tribal_government
 		culture = norse
 		religion = tm_baeddel
 		difficulty = "BOOKMARK_CHARACTER_DIFFICULTY_MEDIUM"
-		history_id = 41267
+		history_id = tm_baeddel_steinunn
 		position = { 660 160 }		# in Finland, clear of central Europe (Gotland's highlight is at about 542, 255)
 		animation = personality_bold
 	}
 
-	# Xun, duke of Guasha at Dunhuang (Yutai Dao). ID: 304191
+	# Huijing, governor of Guasha at Dunhuang (Yutai Dao). ID: tm_yutai_huijing
 	character = {
-		name = "bookmark_tm_xun"
-		dynasty = 2003011		# Suo
+		name = "bookmark_tm_huijing"
+		dynasty_house = house_tm_jade_embryo
 		dynasty_splendor_level = 1
-		type = male
-		birth = 840.1.1
+		type = female
+		birth = 828.1.1
 		title = d_guasha
 		government = meritocratic_government
 		fallback_government = feudal_government
 		culture = han
 		religion = tm_yutai
 		difficulty = "BOOKMARK_CHARACTER_DIFFICULTY_MEDIUM"
-		history_id = 304191
+		history_id = tm_yutai_huijing
 		position = { 1309 529 }
 		animation = personality_rational
 	}
