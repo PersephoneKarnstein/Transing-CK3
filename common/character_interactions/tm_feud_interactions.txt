@@ -22,10 +22,35 @@ tm_feud_offer_bot_interaction = {
 		scope:recipient = { is_imprisoned = no }
 	}
 
+	# And foster a child of their hall (wave 7; Miller pp. 123, 172): the payer takes a child of the recipient's house as
+	# ward, is "the lesser", and the truce runs fifteen years (tm_feud_foster_seal_effect).
+	send_option = {
+		is_valid = {
+			scope:recipient.house = { any_house_member = { tm_feud_foster_ward_trigger = yes } }
+		}
+		flag = tm_feud_foster
+		localization = tm_feud_foster_option
+		current_description = tm_feud_foster_option_desc
+	}
+
 	on_accept = {
 		save_scope_value_as = { name = tm_feud_price value = tm_feud_bot_price_value }
-		custom_tooltip = tm_feud_offer_bot_interaction_tt
+		if = {
+			limit = { scope:tm_feud_foster = yes }
+			tm_feud_find_ward_effect = yes
+		}
+		if = {
+			limit = { exists = scope:tm_feud_ward }
+			custom_tooltip = tm_feud_offer_bot_foster_tt
+		}
+		else = {
+			custom_tooltip = tm_feud_offer_bot_interaction_tt
+		}
 		tm_feud_settle_effect = yes
+		if = {
+			limit = { exists = scope:tm_feud_ward }
+			tm_feud_foster_seal_effect = yes
+		}
 		scope:actor = {
 			send_interface_toast = {
 				type = event_toast_effect_good
@@ -59,7 +84,41 @@ tm_feud_offer_bot_interaction = {
 		modifier = { add = -40 desc = tm_feud_ai_vengeful scope:recipient = { has_trait = vengeful } }
 		modifier = { add = -20 desc = tm_feud_ai_wrathful scope:recipient = { has_trait = wrathful } }
 		modifier = { add = 20 desc = tm_feud_ai_at_war scope:recipient = { is_at_war = yes } }
+		modifier = { add = 15 desc = tm_feud_ai_foster scope:tm_feud_foster = yes }
 	}
 
 	auto_accept = no
+}
+
+
+# Grant Self-Judgment (sjálfdæmi): the house that owes lets the one it wronged name the price (Miller pp. 273-87). The
+# grant is paid "in units of prestige and honor" (p. 287): it costs the granter prestige, and the award should be
+# moderate. The recipient chooses in tm_feud.0040: a modest sum, a heavy one (and is called uneven for it), or none at
+# all. Every choice settles the Account (tm_feud_settle_effect). The AI does not grant it (no AI targets, no pulse).
+tm_feud_grant_self_judgment_interaction = {
+	icon = icon_gold
+	interface_priority = 44
+	category = interaction_category_diplomacy
+	desc = tm_feud_grant_self_judgment_interaction_desc
+
+	cost = { prestige = medium_prestige_value }
+
+	is_shown = {
+		NOT = { scope:actor = scope:recipient }
+		scope:actor = { is_ruler = yes exists = house }
+		scope:recipient = { is_ruler = yes exists = house }
+		tm_feud_gifts_value > 0
+	}
+
+	is_valid_showing_failures_only = {
+		scope:actor = { is_imprisoned = no }
+		scope:recipient = { is_imprisoned = no }
+	}
+
+	on_accept = {
+		custom_tooltip = tm_feud_grant_self_judgment_interaction_tt
+		scope:recipient = { trigger_event = tm_feud.0040 }
+	}
+
+	auto_accept = yes
 }

@@ -1,0 +1,95 @@
+﻿# Crusader Dolls — Bædling outlawry, wave 7 (docs/wave7/baedling.md §3).
+
+# The chance (0-100) that the confiscation court fails and the sentence lapses (Grágás K §53: "if no confiscation
+# court is held lawfully, the sentence lapses"). Friends at the court could stop it: an outlawed chieftain with 400 men
+# (Miller p. 235), 200 "men of good will" between the sides (p. 267). Scope: the one sentenced.
+tm_bae2_court_fails_value = {
+	value = 20
+	if = {	# a House stands in her county, and she is of it
+		limit = {
+			tm_house_member_trigger = yes
+			location ?= { county ?= { has_variable = tm_house } }
+		}
+		add = 20
+	}
+	if = {	# her sworn sisters at her court, 15 each, two at most
+		limit = {
+			exists = employer
+			any_relation = {
+				type = tm_sister
+				count >= 1
+				is_adult = yes
+				OR = {
+					this = prev.employer
+					is_courtier_of = prev.employer
+				}
+			}
+		}
+		add = 15
+	}
+	if = {
+		limit = {
+			exists = employer
+			any_relation = {
+				type = tm_sister
+				count >= 2
+				is_adult = yes
+				OR = {
+					this = prev.employer
+					is_courtier_of = prev.employer
+				}
+			}
+		}
+		add = 15
+	}
+	if = {	# she leads a band
+		limit = { tm_bae2_faith_band_trigger = yes }
+		add = 20
+	}
+}
+
+# How many would pledge to her ride (tm_bae2_well_wisher_trigger), each counted once. Scope: the outlaw.
+tm_bae2_well_wishers_value = {
+	value = 0
+	every_relation = {
+		type = tm_sister
+		limit = { tm_bae2_well_wisher_trigger = { OUTLAW = prev } }
+		add = 1
+	}
+	every_relation = {
+		type = friend
+		limit = {
+			NOT = { has_relation_tm_sister = prev }
+			tm_bae2_well_wisher_trigger = { OUTLAW = prev }
+		}
+		add = 1
+	}
+	every_ruler = {
+		limit = {
+			tm_holds_sisters_house_trigger = yes
+			NOT = { has_relation_tm_sister = prev }
+			NOT = { has_relation_friend = prev }
+			tm_bae2_well_wisher_trigger = { OUTLAW = prev }
+		}
+		add = 1
+	}
+}
+
+# What a harbourer pays the accuser to settle a summons (Ahola p. 213: Björn settles one "for a fee"): one wrong's bót
+# at the accuser's rank, as tm_feud_bot_price_value prices it (50 to a count or less, 100 a duke, 150 a king, 200 an
+# emperor). Needs scope:tm_bae2_accuser.
+tm_bae2_harbour_price_value = {
+	value = 50
+	if = {
+		limit = { scope:tm_bae2_accuser = { highest_held_title_tier >= tier_duchy } }
+		add = 50
+	}
+	if = {
+		limit = { scope:tm_bae2_accuser = { highest_held_title_tier >= tier_kingdom } }
+		add = 50
+	}
+	if = {
+		limit = { scope:tm_bae2_accuser = { highest_held_title_tier >= tier_empire } }
+		add = 50
+	}
+}

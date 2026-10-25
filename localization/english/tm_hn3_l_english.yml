@@ -80,7 +80,7 @@
  Berakha:0 "Berakha"
  Banina:0 "Banina"
  # The physician as protector (Stillman pp. 46, 183-187; Hirschberg pp. 112-113, 122; Kraemer ch. 5; Bennison p. 167).
- tm_hn3.physician_desc:0 "[tm_fisica.GetFirstName] of my court has learned the physician's art, and the women of the household already send for her. Rulers keep Jewish physicians near them, as the amirs of the Maghreb do, and a physician who rides with her lord can speak for her people."
+ tm_hn3.physician_desc:0 "[tm_fisica.GetFirstName] of my court has learned the physician's art, and the women of the household already send for her. Rulers keep Jewish physicians near them, as the amirs of the Maghreb do, and a physician who rides with her lord can speak for her people. She heals with medicine alone: the Jewish physicians' oath forbids them charms."
  tm_hn3.physician_nagid_now:0 " In Qayrawan the Jews call the emir's physician their nagid: he rides with his lord to war, and speaks for them at court."
  tm_hn3.physician_nagid_then:0 " The Jews of Qayrawan once called the emir's physician their nagid: he rode with his lord to war, and spoke for them at court."
  tm_hn3.physician_vizier:0 " An amir may give his Jewish physician the title of vizier."

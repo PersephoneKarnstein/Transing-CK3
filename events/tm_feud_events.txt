@@ -5,6 +5,9 @@
 #   0020  the three words: she may sue (Grágás Add. §423)
 #   0021  the suit, before the lord of the hall
 #   0030  a reprieve announced at the thing (Grágás K §110), for a player outlaw
+#   0040  self-judgment granted: the one wronged names the price (Miller pp. 273-87)
+#   0050  hidden: a North-Germanic man decides whether to keep an Account with a Bædling woman (Miller p. 32)
+#   0060  Avenge Her: a sister's revenge for an outlaw the law will not avenge (Ahola pp. 108-9, 113)
 
 # Bót is offered. Root = the head of the house owed; scope:actor = the payer; scope:recipient = root;
 # scope:tm_feud_price = the sum.
@@ -52,6 +55,8 @@ tm_feud.0010 = {
 # The three words were said before witnesses (a flyting in the hall or at the thing: tm_flyting.0020). Root = the
 # Bædling he named; scope:tm_flyter = the speaker; scope:tm_feud_lord = the lord of the hall, if any;
 # scope:tm_feud_stakes = 1 in the hall, 2 at the thing. The word is already in the Account (tm_feud_wrong_effect).
+# Under a lord not of the six faiths a man must carry her suit (tm_feud_find_bearer_effect, scope:tm_feud_bearer;
+# Grágás §1.7, Jochens 1995 p. 113); with none, it cannot be brought. Under a lord of the six faiths she speaks it.
 tm_feud.0020 = {
 	type = character_event
 	title = tm_feud.0020.t
@@ -59,8 +64,22 @@ tm_feud.0020 = {
 		desc = tm_feud.0020.desc
 		first_valid = {
 			triggered_desc = {
+				trigger = {
+					tm_feud_nid_suit_possible_trigger = yes
+					tm_feud_bearer_needed_trigger = no
+				}
+				desc = tm_feud.0020.desc.court_sisters
+			}
+			triggered_desc = {
+				trigger = {
+					tm_feud_nid_suit_possible_trigger = yes
+					exists = scope:tm_feud_bearer
+				}
+				desc = tm_feud.0020.desc.court_bearer
+			}
+			triggered_desc = {
 				trigger = { tm_feud_nid_suit_possible_trigger = yes }
-				desc = tm_feud.0020.desc.court
+				desc = tm_feud.0020.desc.court_nobearer
 			}
 			desc = tm_feud.0020.desc.nocourt
 		}
@@ -69,17 +88,46 @@ tm_feud.0020 = {
 	override_background = { reference = terrain }
 	left_portrait = { character = root animation = anger }
 	right_portrait = { character = scope:tm_flyter animation = disapproval }
+	lower_right_portrait = { character = scope:tm_feud_bearer trigger = { exists = scope:tm_feud_bearer } }
 
 	trigger = {
 		scope:tm_flyter ?= { is_alive = yes }
 	}
 
-	immediate = { save_scope_as = tm_feud_plaintiff }
+	immediate = {
+		save_scope_as = tm_feud_plaintiff
+		if = {
+			limit = {
+				tm_feud_nid_suit_possible_trigger = yes
+				tm_feud_bearer_needed_trigger = yes
+			}
+			tm_feud_find_bearer_effect = yes
+			if = {
+				limit = { NOT = { exists = scope:tm_feud_bearer } }
+				tm_feud_tally_effect = { WHAT = nid_no_bearer }
+			}
+		}
+	}
 
 	option = {	# Bring the suit
 		name = tm_feud.0020.a
-		trigger = { tm_feud_nid_suit_possible_trigger = yes }
+		trigger = {
+			tm_feud_nid_suit_possible_trigger = yes
+			custom_description = {
+				text = tm_feud_bearer_custom_trigger
+				OR = {
+					tm_feud_bearer_needed_trigger = no
+					exists = scope:tm_feud_bearer
+				}
+			}
+		}
+		show_as_unavailable = { tm_feud_nid_suit_possible_trigger = yes }
 		custom_tooltip = tm_feud.0020.a.tt
+		if = {
+			limit = { exists = scope:tm_feud_bearer }
+			custom_tooltip = tm_feud.0020.a.bearer_tt
+			tm_feud_tally_effect = { WHAT = nid_borne }
+		}
 		tm_feud_tally_effect = { WHAT = nid_suits }
 		scope:tm_feud_lord = { trigger_event = { id = tm_feud.0021 days = 1 } }
 		ai_chance = {
@@ -103,7 +151,8 @@ tm_feud.0020 = {
 }
 
 # The suit before the lord of the hall. Root = the lord (who may be the plaintiff herself);
-# scope:tm_feud_plaintiff, scope:tm_flyter, scope:tm_feud_stakes.
+# scope:tm_feud_plaintiff, scope:tm_flyter, scope:tm_feud_stakes; scope:tm_feud_bearer, the man who carries it, if
+# the lord is not of the six faiths. A good speaker moves the lord (his diplomacy adds to the AI's odds).
 tm_feud.0021 = {
 	type = character_event
 	title = tm_feud.0021.t
@@ -122,11 +171,16 @@ tm_feud.0021 = {
 			}
 			desc = tm_feud.0021.desc.hall
 		}
+		triggered_desc = {
+			trigger = { exists = scope:tm_feud_bearer }
+			desc = tm_feud.0021.desc.bearer
+		}
 	}
 	theme = faith
 	override_background = { reference = throne_room }
 	left_portrait = { character = scope:tm_feud_plaintiff animation = personality_bold }
-	right_portrait = { character = scope:tm_flyter animation = worry }
+	right_portrait = { character = scope:tm_feud_right animation = personality_rational }
+	lower_right_portrait = { character = scope:tm_flyter trigger = { exists = scope:tm_feud_bearer } }
 
 	trigger = {
 		scope:tm_feud_plaintiff ?= { is_alive = yes }
@@ -139,6 +193,13 @@ tm_feud.0021 = {
 	immediate = {
 		save_scope_as = tm_feud_lord
 		save_scope_value_as = { name = tm_feud_nid_price value = tm_feud_nid_price_value }
+		if = {	# the man who carries her suit stands at her right; else the speaker does
+			limit = { scope:tm_feud_bearer ?= { is_alive = yes } }
+			scope:tm_feud_bearer = { save_scope_as = tm_feud_right }
+		}
+		else = {
+			scope:tm_flyter = { save_scope_as = tm_feud_right }
+		}
 	}
 
 	option = {	# Every word is to be as it is spoken (K §237): the speaker is outlawed
@@ -162,6 +223,10 @@ tm_feud.0021 = {
 			opinion_modifier = { opinion_target = scope:tm_flyter multiplier = -0.5 }
 			modifier = { add = 30 has_trait = just }
 			modifier = { add = 50 faith = scope:tm_feud_plaintiff.faith }
+			modifier = {	# a good speaker carries a suit
+				exists = scope:tm_feud_bearer
+				add = scope:tm_feud_bearer.diplomacy
+			}
 			modifier = {
 				add = -30
 				has_trait = zealous
@@ -236,4 +301,208 @@ tm_feud.0030 = {
 	left_portrait = { character = root animation = personality_bold }
 
 	option = { name = tm_feud.0030.a }
+}
+
+# Self-judgment (sjálfdæmi) granted (tm_feud_grant_self_judgment_interaction). Root = the head of the house owed;
+# scope:actor = the granter, scope:recipient = root. "Paid in units of prestige and honor", so a moderate award is
+# the expected one (Miller p. 287). Snorri goði sets damages "so high that no man will have been dearer than Hoskuld"
+# (pp. 275-76): the over-reacher is the "uneven man" (p. 273). Thorgils sets a large sum, then remits it all (p. 287).
+tm_feud.0040 = {
+	type = character_event
+	title = tm_feud.0040.t
+	desc = tm_feud.0040.desc
+	theme = stewardship
+	left_portrait = { character = root animation = thinking }
+	right_portrait = { character = scope:actor animation = personality_honorable }
+
+	trigger = {
+		scope:actor ?= { is_alive = yes }
+		tm_feud_gifts_value > 0
+	}
+
+	immediate = {
+		save_scope_value_as = { name = tm_feud_modest_price value = tm_feud_bot_price_value }
+		save_scope_value_as = { name = tm_feud_heavy_price value = tm_feud_heavy_price_value }
+	}
+
+	option = {	# What the law would set
+		name = tm_feud.0040.a
+		save_scope_value_as = { name = tm_feud_price value = scope:tm_feud_modest_price }
+		custom_tooltip = tm_feud_offer_bot_interaction_tt
+		tm_feud_settle_effect = yes
+		scope:actor = { add_opinion = { target = root modifier = tm_feud_fair_judgment_opinion } }
+		tm_feud_self_judgment_toast_effect = { TITLE = tm_feud_sj_modest_toast TYPE = event_toast_effect_good }
+		tm_feud_tally_effect = { WHAT = self_judgment_modest }
+		ai_chance = {
+			base = 50
+			modifier = { add = 20 has_trait = just }
+			modifier = { add = 10 has_trait = humble }
+		}
+	}
+	option = {	# No one will have been dearer than our dead
+		name = tm_feud.0040.b
+		save_scope_value_as = { name = tm_feud_price value = scope:tm_feud_heavy_price }
+		custom_tooltip = tm_feud_offer_bot_interaction_tt
+		custom_tooltip = tm_feud.0040.b.tt
+		tm_feud_settle_effect = yes
+		hidden_effect = {
+			every_ruler = {
+				limit = {
+					NOT = { this = root }
+					NOT = { this = scope:actor }
+					OR = {
+						faith = root.faith
+						faith.religion = religion:germanic_religion
+					}
+					in_diplomatic_range = root
+				}
+				add_opinion = { target = root modifier = tm_feud_uneven_opinion }
+			}
+		}
+		tm_feud_self_judgment_toast_effect = { TITLE = tm_feud_sj_heavy_toast TYPE = event_toast_effect_bad }
+		tm_feud_tally_effect = { WHAT = self_judgment_heavy }
+		ai_chance = {
+			base = 15
+			modifier = { add = 60 has_trait = greedy }
+			modifier = { add = 20 has_trait = arrogant }
+			modifier = { add = 20 has_trait = vengeful }
+		}
+	}
+	option = {	# Remit it all
+		name = tm_feud.0040.c
+		save_scope_value_as = { name = tm_feud_price value = 0 }
+		custom_tooltip = tm_feud.0040.c.tt
+		tm_feud_settle_effect = yes
+		add_prestige = major_prestige_gain
+		scope:actor = { add_opinion = { target = root modifier = tm_feud_humbled_opinion } }
+		tm_feud_self_judgment_toast_effect = { TITLE = tm_feud_sj_remit_toast TYPE = event_toast_effect_neutral }
+		tm_feud_tally_effect = { WHAT = self_judgment_remit }
+		ai_chance = {
+			base = 10
+			modifier = { add = 50 has_trait = generous }
+			modifier = { add = 40 has_trait = forgiving }
+			modifier = { add = -20 has_trait = greedy }
+		}
+	}
+}
+
+# The refused Account. Root = a non-Bædling North-Germanic man of rank (AI) who has wronged a Bædling woman ruler of
+# another house (tm_feud_may_refuse_trigger); the scopes of tm_feud_wrong_effect. "A free man did not generally
+# compete for honor with... a man with a woman" (Miller p. 32); a man of rank wronged by a lesser person disciplines
+# rather than feuds (pp. 32-33). Most admit her to the field; the arrogant and the zealous refuse.
+tm_feud.0050 = {
+	hidden = yes
+
+	trigger = {
+		scope:tm_feud_victim ?= { is_alive = yes }
+		exists = scope:tm_feud_creditor
+		exists = scope:tm_feud_debtor
+	}
+
+	immediate = {
+		random_list = {
+			75 = {	# admit her to the field: the wrong is written, and the admission is honour to her
+				tm_feud_enter_wrong_effect = yes
+				scope:tm_feud_victim = {
+					add_prestige = minor_prestige_gain
+					if = {
+						limit = { is_ai = no }
+						send_interface_toast = {
+							type = event_toast_effect_good
+							title = tm_feud_admitted_toast
+							left_icon = scope:tm_feud_wrongdoer
+							right_icon = scope:tm_feud_victim
+						}
+					}
+				}
+				tm_feud_tally_effect = { WHAT = account_admitted }
+			}
+			25 = {	# refuse the Account: nothing is written
+				modifier = { add = 100 has_trait = arrogant }
+				modifier = { add = 100 has_trait = zealous }
+				modifier = { add = -15 has_trait = just }
+				scope:tm_feud_creditor = {
+					add_to_variable_list = { name = tm_acc_refused target = scope:tm_feud_debtor years = 30 }
+					set_variable = { name = tm_acc_refuser value = scope:tm_feud_wrongdoer years = 30 }
+				}
+				scope:tm_feud_victim = {
+					if = {
+						limit = { is_ai = no }
+						send_interface_toast = {
+							type = event_toast_effect_bad
+							title = tm_feud_refused_toast
+							left_icon = scope:tm_feud_wrongdoer
+							right_icon = scope:tm_feud_victim
+							custom_tooltip = tm_feud_refused_toast_tt
+						}
+					}
+				}
+				tm_feud_tally_effect = { WHAT = account_refused }
+			}
+		}
+	}
+}
+
+# Avenge Her (tm_feud_avenge_her_effect). Root = a sworn sister, one she fostered, or the Elder Sister of the House
+# where she died (scope:tm_feud_avenger_kind = sister, fostered or house); scope:tm_feud_dead = the Bædling outlaw;
+# scope:tm_feud_killer. The law counts no wrong: she had no standing at law (Ahola pp. 85-86). Kin may still take up
+# a private Account (pp. 108-9, 113: Þorbjörg avenges her brother "though he had once attacked her own farm"; Þórdís
+# first betrays Gísli, then avenges him). Flavour budget (spent when it is sent).
+tm_feud.0060 = {
+	type = character_event
+	title = tm_feud.0060.t
+	desc = {
+		desc = tm_feud.0060.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:tm_feud_avenger_kind = flag:sister }
+				desc = tm_feud.0060.desc.sister
+			}
+			triggered_desc = {
+				trigger = { scope:tm_feud_avenger_kind = flag:fostered }
+				desc = tm_feud.0060.desc.fostered
+			}
+			desc = tm_feud.0060.desc.house
+		}
+		desc = tm_feud.0060.desc.end
+	}
+	theme = death
+	override_background = { reference = terrain }
+	left_portrait = { character = root animation = grief }
+	right_portrait = { character = scope:tm_feud_killer animation = personality_callous }
+
+	trigger = {
+		scope:tm_feud_killer ?= {
+			is_alive = yes
+			exists = house
+		}
+		exists = house
+		NOT = { house = scope:tm_feud_killer.house }
+	}
+
+	option = {	# Take up her Account
+		name = tm_feud.0060.a
+		custom_tooltip = tm_feud.0060.a.tt
+		house = { tm_feud_add_one_effect = { DEBTOR = scope:tm_feud_killer.house } }
+		add_opinion = { target = scope:tm_feud_killer modifier = tm_feud_avenge_her_opinion }
+		tm_feud_tally_effect = { WHAT = avenge_taken }
+		ai_chance = {
+			base = 40
+			modifier = { add = 40 has_trait = vengeful }
+			modifier = { add = 20 has_trait = wrathful }
+			modifier = { add = 20 has_trait = brave }
+			modifier = { add = -20 has_trait = craven }
+		}
+	}
+	option = {	# Let it rest
+		name = tm_feud.0060.b
+		add_stress = minor_stress_loss
+		tm_feud_tally_effect = { WHAT = avenge_rested }
+		ai_chance = {
+			base = 40
+			modifier = { add = 40 has_trait = forgiving }
+			modifier = { add = 20 has_trait = calm }
+			modifier = { add = 20 has_trait = craven }
+		}
+	}
 }

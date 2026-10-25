@@ -141,8 +141,8 @@ The artifact is an ordinary artifact: it can be inherited, given or taken. A dau
 
 **Open questions.**
 1. *Decided:* any rival, as drafted (Assis's accusers were Jews; the text never names the rival's faith).
-2. In Catalan and Aragonese counties, should the officer be the *batlle* and the street's judges the *berurim* (Assis p. 39)? A desc variant could do it.
-3. Assis's "moral panic after a patron's fall" (Toledo 1281, pp. 27–28) is not built.
+2. ~~In Catalan and Aragonese counties, should the officer be the *batlle* and the street's judges the *berurim* (Assis p. 39)?~~ Built in wave 6 (`docs/wave6/ha-nehpakhot.md`).
+3. ~~Assis's "moral panic after a patron's fall" (Toledo 1281, pp. 27–28) is not built.~~ Built in wave 6 (`tm_hn4.0001`).
 4. Before 1260 the event does not fire. An earlier frame exists: Abba Mari, "bailiff of Count Raymond" at Saint-Gilles (Benjamin c. 1165, Adler p. 5), so a Jewish bailiff could hear the rival's complaint. I have not built it, because the Jewish officer would then be the one who fines her. Do you want that variant?
 
 ## 4. Carnival before Purim (drafted: `tm_hn2.0029`, `tm_hn2.0030`)
@@ -235,7 +235,7 @@ Until such reading is done, the honest position is the one in the docs: the sect
 The kahal never recruits (joins 0 all run) because the yearly join needs a Rabbanite Jew at a court with two or more members, and the sect's courts in the Maghreb hold few such Jews. Ideas for the later task:
 1. Let a **landed ruler of the sect** count as a kahal: Rabbanite Jews in her capital county, not only at her court, may join (same 4%).
 2. Let the matchmaking spouse come from the ruler's realm when the sect rules, not only from "outside the courts".
-3. A ruler of the sect could **invite a household of the street** (a decision, gold for travel, as the Arles contract of 1422 paid a man to bring a wife and child from Barcelona, Stouff "Les juifs d'Arles" §16). That is sourced and is service, not purchase of protection.
+3. *(Built in wave 6 as Send for a Household of the Street.)* A ruler of the sect could **invite a household of the street** (a decision, gold for travel, as the Arles contract of 1422 paid a man to bring a wife and child from Barcelona, Stouff "Les juifs d'Arles" §16). That is sourced and is service, not purchase of protection.
 4. The Carnival appeal (4) and the bailiff (3) give daughters in Christian lands a reason to stay near a patron; a won appeal could raise the court's draw for the pilgrimage. Tuning only.
 
 ---

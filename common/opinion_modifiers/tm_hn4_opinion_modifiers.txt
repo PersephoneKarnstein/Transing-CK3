@@ -1,0 +1,8 @@
+﻿# Crusader Dolls — Ha-Nehpakhot, wave 6 (docs/wave6/ha-nehpakhot.md).
+
+# The household she sent for: she paid their road (tm_hn4_send_for_household_effect).
+tm_hn4_household_opinion = {
+	opinion = 20
+	years = 20
+}
+

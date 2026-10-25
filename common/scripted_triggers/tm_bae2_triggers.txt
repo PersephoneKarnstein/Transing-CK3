@@ -7,6 +7,7 @@ tm_bae2_cell_prisoner_trigger = {
 	OR = {
 		tm_captive_daughter_trigger = yes
 		has_variable = tm_declared
+		has_variable = tm_bae2_secular_arm	# handed to the secular arm on a relapse (tm_bae2.0100): the Houses come for her too
 	}
 }
 
@@ -62,6 +63,7 @@ tm_bae2_outlawry_candidate_trigger = {
 	current_year >= 1100
 	NOT = { tm_bae2_is_outlaw_trigger = yes }
 	NOT = { has_variable = tm_bae2_outlawry_cooldown }
+	NOT = { has_variable = tm_bae2_pending_court }
 	OR = {
 		tm_bae2_seidr_charge_trigger = yes
 		tm_bae2_dress_charge_trigger = yes
@@ -94,6 +96,22 @@ tm_bae2_dress_charge_trigger = {
 				has_trait = shieldmaiden
 			}
 		}
+	}
+}
+
+# The Icelandic suit (wave 7, 1b): Icelandic law held the one who HIRED a seeress liable, not the seeress (Raudvere,
+# Athlone vol. 3, pp. 155-61). Her client: the last seeker she sat for, var:tm_bae2_last_seeker on the seeress (scope).
+# Nothing in the mod sets it yet (the seiðr rite, tm_seidr.0001, would; see docs/wave7): until it does, the Icelandic
+# sorcery suit has no defendant and falls (tm_bae2.0100).
+tm_bae2_has_client_trigger = {
+	exists = var:tm_bae2_last_seeker
+	var:tm_bae2_last_seeker = {
+		is_alive = yes
+		is_adult = yes
+		is_ruler = no
+		is_imprisoned = no
+		NOT = { tm_bae2_is_outlaw_trigger = yes }
+		NOT = { has_variable = tm_bae2_pending_court }
 	}
 }
 
@@ -187,6 +205,64 @@ tm_bae2_dress_accuser_trigger = {
 			is_councillor = yes
 			is_landed = yes
 			prestige_level >= 3
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The rest of outlawry (wave 7, docs/wave7/baedling.md §3).
+
+# A full outlaw's well-wisher who would pledge to her ride (Flóamanna saga 19; Ahola p. 100): a sworn sister, a friend,
+# or a ruler of the six faiths within reach who keeps a Sisters' House and thinks well of her (opinion 20+). Never her
+# accuser. Scope: the well-wisher; $OUTLAW$ the outlaw.
+tm_bae2_well_wisher_trigger = {
+	is_alive = yes
+	is_imprisoned = no
+	NOT = { this = $OUTLAW$ }
+	NOT = { $OUTLAW$.var:tm_bae2_accuser ?= this }
+	OR = {
+		has_relation_tm_sister = $OUTLAW$
+		has_relation_friend = $OUTLAW$
+		AND = {
+			is_ruler = yes
+			rite ?= { rite_has_parameter = tm_sisters_faith }
+			tm_holds_sisters_house_trigger = yes
+			in_diplomatic_range = $OUTLAW$
+			opinion = { target = $OUTLAW$ value >= 20 }
+		}
+	}
+}
+
+# May ride for sympathy: a full outlaw whose accuser lives, with at least two well-wishers (tm_bae2_well_wishers_value).
+tm_bae2_can_ride_trigger = {
+	has_character_modifier = tm_bae2_full_outlaw_modifier
+	is_imprisoned = no
+	exists = var:tm_bae2_accuser
+	var:tm_bae2_accuser = { is_alive = yes }
+	tm_bae2_well_wishers_value >= 2
+}
+
+# Harbouring (Grágás §1.3; Ahola p. 97): a full outlaw at the court of a ruler who keeps a Sisters' House. One "who may
+# be given passage" (Grágás K §110, tm_feud_passage) is not harboured; nor is a lesser outlaw, who is abroad by her
+# sentence. Scope: the outlaw.
+tm_bae2_harboured_trigger = {
+	has_character_modifier = tm_bae2_full_outlaw_modifier
+	NOT = { has_variable = tm_feud_passage }
+	is_ruler = no
+	exists = employer
+	employer = { tm_holds_sisters_house_trigger = yes }
+}
+
+# The outlaw's holm (Ahola pp. 249-56: islands, and the ground the outlaw holds). A county (scope) whose camp province
+# $PROV$ is mountain, or which is an island: coastal, with no county beside it by land. Vanilla has no island trigger;
+# this is the approximation (docs/wave7).
+tm_bae2_holm_ground_trigger = {
+	OR = {
+		$PROV$ = { terrain = mountains }
+		$PROV$ = { terrain = desert_mountains }
+		AND = {
+			is_coastal_county = yes
+			NOT = { any_title_to_title_neighboring_county = { always = yes } }
 		}
 	}
 }

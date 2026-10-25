@@ -1,0 +1,61 @@
+﻿# Crusader Dolls — Bædling, wave 7: Weave the Warding Shirt (docs: scratchpad wave7_lore.md, item 4b).
+# "Special shirts woven by female magicians offered protection in battle"; "women wove shirts while men prepared
+# swords" (Jochens, Images of Women, p. 122). Hrolleifr's mother gives him a shirt no iron bites (Ahola p. 222). A
+# craft and a song, not a pact (rule 25); Jochens's sexual reading of the staff is not used (Jochens row 3).
+# A modifier, not an artifact: an artifact would need a visual.
+tm_bae3_warding_shirt_interaction = {
+	interface_priority = 50
+	icon = icon_scheme_befriend
+	category = interaction_category_friendly
+	desc = tm_bae3_warding_shirt_interaction_desc
+	use_diplomatic_range = yes
+	cooldown = { years = 3 }
+
+	is_shown = {
+		NOT = { scope:actor = scope:recipient }
+		scope:actor = { tm_bae3_lore_shirt_weaver_trigger = yes }
+		scope:recipient = {
+			OR = {
+				has_relation_tm_sister = scope:actor
+				has_relation_guardian = scope:actor		# her ward
+				has_character_modifier = tm_house_friend_modifier
+			}
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		scope:actor = { is_imprisoned = no }
+		scope:recipient = {
+			is_imprisoned = no
+			NOT = { has_character_modifier = tm_bae3_warding_shirt_modifier }
+		}
+	}
+
+	cost = {
+		gold = 30
+	}
+
+	auto_accept = yes
+
+	on_accept = {
+		scope:recipient = {
+			add_character_modifier = { modifier = tm_bae3_warding_shirt_modifier years = 5 }
+			add_opinion = { target = scope:actor modifier = tm_bae3_warding_shirt_opinion }
+		}
+		scope:actor = {
+			add_piety = minor_piety_gain
+			tm_feud_tally_effect = { WHAT = bae3_warding_shirt }
+		}
+	}
+
+	ai_targets = { ai_recipients = family }
+	ai_targets = { ai_recipients = courtiers }
+	ai_frequency = 60
+	ai_will_do = {
+		base = 20
+		modifier = { factor = 0 scope:actor = { gold < 80 } }	# keep a purse for her own needs
+		modifier = { add = 30 scope:recipient = { is_knight = yes } }
+		modifier = { add = 20 scope:recipient = { has_relation_tm_sister = scope:actor } }
+		modifier = { add = -20 has_trait = greedy }
+	}
+}

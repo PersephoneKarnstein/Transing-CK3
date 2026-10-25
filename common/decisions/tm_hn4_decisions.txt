@@ -1,0 +1,49 @@
+﻿# Crusader Dolls — Ha-Nehpakhot: send for a household of the street (docs/wave6/ha-nehpakhot.md; the idea is
+# docs/stage2/ha-nehpakhot.md, "Survival balance", item 3). A ruler of the sect pays the road for a Jewish household
+# to settle at her court, as the Arles contract of 1422 paid a man to bring his wife and child from Barcelona (Stouff,
+# "Les juifs d'Arles" §16). They come as Rabbanite Jews; the kahal may take them in later. Once in ten years.
+tm_hn4_send_for_household_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"		# placeholder; TODO event art
+	}
+	sort_order = 61
+
+	is_shown = {
+		tm_hn4_can_send_for_household_trigger = yes
+	}
+
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+		is_adult = yes
+	}
+
+	is_valid = {
+		custom_description = {
+			text = tm_hn4_send_for_household_decision_cooldown_tt
+			NOT = { has_variable = tm_hn4_household_cd }
+		}
+	}
+
+	cost = {
+		gold = 50
+	}
+
+	effect = {
+		custom_tooltip = tm_hn4_send_for_household_decision_effect_tt
+		set_variable = { name = tm_hn4_household_cd value = yes years = 10 }
+		hidden_effect = { tm_hn4_send_for_household_effect = yes }
+	}
+
+	ai_check_interval = 120
+	ai_will_do = {
+		base = 25
+		modifier = {			# a court with Jews enough already has its kahal
+			factor = 0
+			any_courtier = {
+				count >= 3
+				tm_rabbanite_jew_trigger = yes
+			}
+		}
+		modifier = { factor = 0 gold < 100 }
+	}
+}

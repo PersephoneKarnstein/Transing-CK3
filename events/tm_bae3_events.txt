@@ -1,0 +1,581 @@
+﻿namespace = tm_bae3
+
+# Crusader Dolls — Bædling, wave 7: era news and lore (the README roadmap's "Larger" items 1a, 1d, 1e and 4a–4d; build
+# spec scratchpad baedling_spec.md). On-actions: common/on_action/tm_bae3_on_actions.txt. Every event is flavour and
+# spends the budget. No punishment is added here: the suit and outlawry stay in tm_bae2.
+#   0001  The King's Example: a realm in its conversion years (Mitchell pp. 33, 38, 190–91; Price pp. 80–81)
+#   0010  The Bishop's Letter: an edict against offerings at a House, from 1300 (Bergen 1319; contesting_orthodoxy §3b)
+#   0020  Word from the Islands: news of a burning, 1343 and 1407 (Mitchell pp. 122–23, 171–72)
+#   0100  They Say He Keeps Seiðmenn: a rival's charge (Tolley p. 154)
+#   0200–0204  The holy sites' stories: York, Trondheim, Kyiv, Uppsala, Gotland (Price rows 11, 18–22)
+#   0300  Calling Herself, and 0301 The Town Court: an echo of the Rykener record, never Rykener (Henningsen pp. 249–62)
+
+# The King's Example. Root = a Bædling in a realm whose top liege is a Christian, in its conversion years
+# (tm_bae3_lore_conversion_band_trigger); scope:tm_bae3_teller = the courtier who tells it. Mitchell row 1(a): at
+# conversion kings make an example of sorcerers, and Þorgeirr's rule leaves secret rites alone (p. 38). Rule 13: the
+# teller says the pagan kings burned too (Eiríkr and the Eighty, Price pp. 80–81). Óláfr is never named as the villain.
+# The "open" choice is flavour only: it does not open the suit early (the suit is tm_bae2's, and it reads no variable
+# set here).
+tm_bae3.0001 = {
+	type = character_event
+	title = tm_bae3.0001.t
+	desc = {
+		desc = tm_bae3.0001.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { location.county ?= { tm_bae3_county_icelandic_trigger = yes } }
+				desc = tm_bae3.0001.desc.iceland
+			}
+			triggered_desc = {
+				trigger = { location.county ?= { tm_bae3_county_norwegian_trigger = yes } }
+				desc = tm_bae3.0001.desc.norway
+			}
+			triggered_desc = {
+				trigger = { location.county ?= { target_is_de_jure_liege_or_above = title:k_denmark } }
+				desc = tm_bae3.0001.desc.denmark
+			}
+			desc = tm_bae3.0001.desc.sweden
+		}
+		desc = tm_bae3.0001.desc.end
+	}
+	theme = faith
+	override_background = { reference = feast }
+	left_portrait = { character = root animation = worry }
+	right_portrait = { character = scope:tm_bae3_teller animation = personality_rational }
+
+	trigger = {
+		scope:tm_bae3_teller ?= { is_alive = yes }
+	}
+
+	option = {	# Behind closed doors
+		name = tm_bae3.0001.a
+		custom_tooltip = tm_bae3.0001.a.tt
+		add_stress = 15
+		ai_chance = {
+			base = 50
+			modifier = { add = 30 has_trait = craven }
+			modifier = { add = 20 has_trait = deceitful }
+		}
+	}
+	option = {	# In the hall, where they have always been
+		name = tm_bae3.0001.b
+		add_piety = medium_piety_gain
+		add_stress = -10
+		if = {
+			limit = {
+				liege ?= {
+					NOT = { this = root }
+					NOT = { rite ?= { rite_has_parameter = tm_sisters_faith } }
+				}
+			}
+			liege = {
+				add_opinion = { target = root modifier = tm_bae3_open_rites_opinion }
+			}
+		}
+		ai_chance = {
+			base = 25
+			modifier = { add = 30 has_trait = zealous }
+			modifier = { add = 20 has_trait = brave }
+			modifier = { add = -20 has_trait = craven }
+		}
+	}
+	option = {	# To a court of the six faiths
+		name = tm_bae3.0001.c
+		trigger = { is_ruler = no }
+		custom_tooltip = tm_bae3.0001.c.tt
+		add_prestige = minor_prestige_loss
+		tm_bae3_leave_realm_effect = yes
+		ai_chance = {
+			base = 15
+			modifier = { add = 20 has_trait = paranoid }
+		}
+	}
+}
+
+# The Bishop's Letter. Root = a Bædling who holds a county with a House, in a Christian realm, from 1300;
+# scope:tm_bae3_bishop = who brings the letter (the realm's chaplain, else the king himself); scope:tm_bae3_house_county.
+# In 1319 Bishop Auðfinnr of Bergen forbade a cult "through offerings, pilgrimages… fasting or prayer": an edict, not a
+# trial (contesting_orthodoxy §3b; Mitchell pp. 123, 169–71). Before c. 1430 the clergy call it pagan illusion and sin,
+# never a pact (rule 25). The cult and the woman of 1319 are never named. No trial follows from any choice.
+tm_bae3.0010 = {
+	type = character_event
+	title = tm_bae3.0010.t
+	desc = tm_bae3.0010.desc
+	theme = faith
+	override_background = { reference = temple_church }
+	left_portrait = { character = root animation = worry }
+	right_portrait = { character = scope:tm_bae3_bishop animation = disapproval }
+
+	trigger = {
+		scope:tm_bae3_bishop ?= { is_alive = yes }
+		scope:tm_bae3_house_county ?= {
+			has_variable = tm_house
+			holder ?= root
+		}
+	}
+
+	option = {	# Obey the letter
+		name = tm_bae3.0010.a
+		custom_tooltip = tm_bae3.0010.a.tt
+		scope:tm_bae3_house_county = { change_variable = { name = tm_house_strain add = 1 } }
+		scope:tm_bae3_bishop = { add_opinion = { target = root modifier = respect_opinion opinion = 10 } }
+		ai_chance = {
+			base = 35
+			modifier = { add = 30 has_trait = craven }
+			modifier = { add = 10 has_trait = content }
+		}
+	}
+	option = {	# Close the doors and keep the rites inside
+		name = tm_bae3.0010.b
+		add_stress = 10
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = deceitful }
+			modifier = { add = 10 has_trait = patient }
+		}
+	}
+	option = {	# Answer the bishop
+		name = tm_bae3.0010.c
+		duel = {
+			skill = learning
+			target = scope:tm_bae3_bishop
+			50 = {
+				desc = tm_bae3.0010.c.success
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				add_prestige = minor_prestige_gain
+			}
+			50 = {
+				desc = tm_bae3.0010.c.failure
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				scope:tm_bae3_house_county = { change_variable = { name = tm_house_strain add = 1 } }
+				scope:tm_bae3_bishop = { add_opinion = { target = root modifier = tm_bae3_answered_bishop_opinion } }
+			}
+		}
+		ai_chance = {
+			base = 25
+			modifier = { add = 20 learning >= 12 }
+			modifier = { add = 20 has_trait = stubborn }
+		}
+	}
+}
+
+# Word from the Islands. Root = a Bædling in de jure Norway (Iceland included). Kirkjubær 1343 (a nun burned; the three
+# annals give three crimes) and Greenland 1407 (Kolgrímr) are merged into one piece of news (spec 1e). The text says
+# "burned on the bishop's sentence for sorcery" and nothing more: no pact, no host, no name (contesting_orthodoxy
+# guardrail 1). The narrator never says the dead was a sister. No burning on screen.
+tm_bae3.0020 = {
+	type = character_event
+	title = tm_bae3.0020.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { current_year >= 1407 }
+				desc = tm_bae3.0020.desc.1407
+			}
+			desc = tm_bae3.0020.desc.1343
+		}
+	}
+	theme = faith
+	override_background = { reference = terrain }
+	left_portrait = { character = root animation = fear }
+
+	immediate = {
+		if = {
+			limit = { current_year >= 1407 }
+			set_variable = tm_bae3_islands_1407
+		}
+		else = {
+			set_variable = tm_bae3_islands_1343
+		}
+		add_character_modifier = { modifier = tm_bae3_islands_fear_modifier years = 5 }
+	}
+
+	option = {	# Keep my head down
+		name = tm_bae3.0020.a
+		ai_chance = { base = 60 }
+	}
+	option = {	# Light a lamp for the dead
+		name = tm_bae3.0020.b
+		add_piety = minor_piety_gain
+		add_stress = 5
+		ai_chance = {
+			base = 40
+			modifier = { add = 30 has_trait = compassionate }
+		}
+	}
+}
+
+# They Say He Keeps Seiðmenn. Root = the lord (any faith, north Germanic or Anglo-Saxon); scope:tm_bae3_rival = who
+# spreads the charge; scope:tm_bae3_seidr_one = the daughter of seiðr or friend of the House at his court. "May be no
+# more than accusation spread by his enemies"; male seiðr was distasteful enough for "political discreditation"
+# (Tolley p. 154). The charge is the rival's voice only. The narrator never confirms that anyone keeps seiðmenn,
+# never calls anyone in it sisters or a third kind, and never ties it to Sámi descent (Tolley p. 61, guardrail 5).
+tm_bae3.0100 = {
+	type = character_event
+	title = tm_bae3.0100.t
+	desc = tm_bae3.0100.desc
+	theme = unfriendly
+	override_background = { reference = throne_room }
+	left_portrait = { character = root animation = anger }
+	right_portrait = { character = scope:tm_bae3_rival animation = scheme }
+	lower_right_portrait = scope:tm_bae3_seidr_one
+
+	trigger = {
+		scope:tm_bae3_rival ?= { is_alive = yes }
+	}
+
+	immediate = {
+		# Whatever the truth, vassals of another faith hear it.
+		every_vassal = {
+			limit = { NOT = { faith = root.faith } }
+			add_opinion = { target = root modifier = tm_bae3_seidmenn_rumour_opinion }
+		}
+	}
+
+	option = {	# Deny it
+		name = tm_bae3.0100.a
+		duel = {
+			skill = intrigue
+			target = scope:tm_bae3_rival
+			50 = {
+				desc = tm_bae3.0100.a.success
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				every_vassal = {
+					limit = { has_opinion_modifier = { target = root modifier = tm_bae3_seidmenn_rumour_opinion } }
+					remove_opinion = { target = root modifier = tm_bae3_seidmenn_rumour_opinion }
+				}
+				scope:tm_bae3_rival = { add_prestige = minor_prestige_loss }
+			}
+			50 = {
+				desc = tm_bae3.0100.a.failure
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				add_prestige = minor_prestige_loss
+			}
+		}
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 intrigue >= 12 }
+			modifier = { add = 20 has_trait = deceitful }
+		}
+	}
+	option = {	# Answer him with steel
+		name = tm_bae3.0100.b
+		custom_tooltip = tm_bae3.0100.b.tt
+		duel = {
+			skill = prowess
+			target = scope:tm_bae3_rival
+			50 = {
+				desc = tm_bae3.0100.b.success
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				add_prestige = medium_prestige_gain
+				scope:tm_bae3_rival = { add_prestige = minor_prestige_loss }
+			}
+			50 = {
+				desc = tm_bae3.0100.b.failure
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				add_prestige = medium_prestige_loss
+			}
+		}
+		ai_chance = {
+			base = 30
+			modifier = { add = 30 has_trait = brave }
+			modifier = { add = 20 prowess >= 12 }
+			modifier = { add = -30 has_trait = craven }
+		}
+	}
+	option = {	# Own it
+		name = tm_bae3.0100.c
+		trigger = { rite ?= { rite_has_parameter = tm_seidr_gate } }
+		custom_tooltip = tm_bae3.0100.c.tt
+		add_piety = medium_piety_gain
+		tm_feud_wrong_effect = { VICTIM = root WRONGDOER = scope:tm_bae3_rival REASON = tm_bae3_seidr_slander VANILLA = yes }
+		every_vassal = {
+			limit = { religion = religion:christianity_religion }
+			add_opinion = { target = root modifier = tm_bae3_owned_seidr_opinion }
+		}
+		ai_chance = {
+			base = 30
+			modifier = { add = 30 has_trait = zealous }
+			modifier = { add = 20 has_trait = arrogant }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The holy sites' stories. Root = a Bædling ruler who holds the site's county; once per character
+# (tm_bae3_site_story_effect). Each gives small piety and a ten-year county modifier. Counties checked against vanilla
+# 00_holy_site_types.txt (1.20): jorvik = c_north_riding, ranaheim = c_trandheim, konugardr = c_kiev, uppsala =
+# c_upland; Gotland (no holy site; the Bædling seat) = c_gutland.
+
+# York. Eiríkr Blóðøx, "later to be king of York", burned his brother "with 80 seiðmenn, and for this deed he was much
+# praised" (Price pp. 80–81): a pagan king's burning (rule 13). The narrator says "men he called seiðmenn" (Tolley
+# p. 154); the faith counts them kin in its own voice, never sisters. Gunnhildr learned sorcery (Price pp. 226, 273);
+# "Osferð hlytte", perhaps "the seer", fell at Tettenhall in 910 (pp. 342–43). Rǫgnvaldr is not named.
+tm_bae3.0200 = {
+	type = character_event
+	title = tm_bae3.0200.t
+	desc = tm_bae3.0200.desc
+	theme = faith
+	override_background = { reference = feast }
+	left_portrait = { character = root animation = personality_rational }
+
+	trigger = { has_title = title:c_north_riding }
+
+	immediate = {
+		set_variable = tm_bae3_site_york
+		title:c_north_riding = {
+			add_county_modifier = { modifier = tm_bae3_site_york_modifier years = 10 }
+		}
+	}
+
+	option = {	# York is held as a debt
+		name = tm_bae3.0200.a
+		add_piety = minor_piety_gain
+	}
+}
+
+# Trondheim. Jarl Hákon of Hlaðir calls on Þorgerðr Hǫlgabrúðr at Hjǫrungavágr (986): a hailstorm out of the north,
+# "an arrow flew from every finger" (Price pp. 288–90). Her idol is hooded; she gives prophecy like a völva. The
+# son-sacrifice of the source is left out (spec 4c); the battle-hail mechanic is dropped as too heavy.
+tm_bae3.0201 = {
+	type = character_event
+	title = tm_bae3.0201.t
+	desc = tm_bae3.0201.desc
+	theme = faith
+	override_background = { reference = terrain }
+	left_portrait = { character = root animation = personality_bold }
+
+	trigger = { has_title = title:c_trandheim }
+
+	immediate = {
+		set_variable = tm_bae3_site_trondheim
+		title:c_trandheim = {
+			add_county_modifier = { modifier = tm_bae3_site_trondheim_modifier years = 10 }
+		}
+	}
+
+	option = {	# Her hail from the north
+		name = tm_bae3.0201.a
+		add_piety = minor_piety_gain
+	}
+}
+
+# Kyiv. After the Rus' defeat of 971 the Byzantines "find the bodies of women in armour" (Skylitzes; Price p. 275).
+# Faith voice: "the Greeks did not know what they were" (Price row 19). The dead are not named or claimed as anyone.
+tm_bae3.0202 = {
+	type = character_event
+	title = tm_bae3.0202.t
+	desc = tm_bae3.0202.desc
+	theme = faith
+	override_background = { reference = terrain }
+	left_portrait = { character = root animation = personality_rational }
+
+	trigger = { has_title = title:c_kiev }
+
+	immediate = {
+		set_variable = tm_bae3_site_kyiv
+		title:c_kiev = {
+			add_county_modifier = { modifier = tm_bae3_site_kyiv_modifier years = 10 }
+		}
+	}
+
+	option = {	# The road south remembers them
+		name = tm_bae3.0202.a
+		add_piety = minor_piety_gain
+	}
+}
+
+# Uppsala. Starkaðr left Uppsala "disgusted by the effeminate gestures and the clapping of the mimes on the stage, and
+# by the unmanly clatter of the bells" (Saxo, Gesta Danorum Book 6, p. 135; norse_saxo_gesta_danorum.md). Saxo names
+# no priests and no dress, so neither does the text (norse_reading_list.md finding 1). Adam's Fricco is left out
+# (rule 5 in spirit). The hostile line is the old champion's, told as a story; no one at court speaks it.
+tm_bae3.0203 = {
+	type = character_event
+	title = tm_bae3.0203.t
+	desc = tm_bae3.0203.desc
+	theme = faith
+	override_background = { reference = feast }
+	left_portrait = { character = root animation = happiness }
+
+	trigger = { has_title = title:c_upland }
+
+	immediate = {
+		set_variable = tm_bae3_site_uppsala
+		title:c_upland = {
+			add_county_modifier = { modifier = tm_bae3_site_uppsala_modifier years = 10 }
+		}
+	}
+
+	option = {	# Ring them louder
+		name = tm_bae3.0203.a
+		add_piety = minor_piety_gain
+	}
+}
+
+# Gotland. Two picture stones from Lärbro Tängelgårda show bearded figures in women's dress, "conceivable" as a
+# gathering of seiðmenn (Price p. 175; Price row 21: "bearded, in women's gowns, holding the horn"). The narrator does
+# not say who they were; the faith counts them kin, never sisters.
+tm_bae3.0204 = {
+	type = character_event
+	title = tm_bae3.0204.t
+	desc = tm_bae3.0204.desc
+	theme = faith
+	override_background = { reference = terrain }
+	left_portrait = { character = root animation = personality_rational }
+
+	trigger = { has_title = title:c_gutland }
+
+	immediate = {
+		set_variable = tm_bae3_site_gotland
+		title:c_gutland = {
+			add_county_modifier = { modifier = tm_bae3_site_gotland_modifier years = 10 }
+		}
+	}
+
+	option = {	# Keep the stones swept
+		name = tm_bae3.0204.a
+		add_piety = minor_piety_gain
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Calling Herself. Root = a daughter, Marked or declared woman of any of the six faiths in an English county,
+# 1350–1453. An echo of the record only (v2 ground rule; rykener_and_mobilities.md): she worked as a tapster and an
+# embroideress (Henningsen pp. 251–52), a woman "first dressed" her and called her by name (p. 252), and in the record
+# she calls herself (p. 250). The older woman is generated (tm_bae3_make_broiderer_effect), never Eleanor, Anne or
+# Elizabeth, and she is a friend, not a procuress (rule: Anna and Elizabeth are not villains). No clients, no reveal,
+# and sex work is not her fate here. If she has no woman's name yet she may take the broiderer's, choose her own
+# (the declaration, tm_house.0001), or say not yet (rule 23).
+tm_bae3.0300 = {
+	type = character_event
+	title = tm_bae3.0300.t
+	desc = {
+		desc = tm_bae3.0300.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { var:tm_bae3_trade ?= flag:tapster }
+				desc = tm_bae3.0300.desc.tapster
+			}
+			desc = tm_bae3.0300.desc.broiderer
+		}
+		first_valid = {
+			triggered_desc = {
+				trigger = { tm_bae3_lore_has_her_name_trigger = yes }
+				desc = tm_bae3.0300.desc.named
+			}
+			desc = tm_bae3.0300.desc.unnamed
+		}
+	}
+	theme = friendly
+	override_background = { reference = market }
+	left_portrait = { character = root animation = happiness }
+	right_portrait = { character = scope:tm_bae3_broiderer animation = personality_rational }
+
+	immediate = {
+		tm_bae3_make_broiderer_effect = yes
+		random_list = {
+			50 = { set_variable = { name = tm_bae3_trade value = flag:tapster } }
+			50 = { set_variable = { name = tm_bae3_trade value = flag:broiderer } }
+		}
+	}
+
+	option = {	# Take the name she gives me
+		name = tm_bae3.0300.a
+		trigger = { tm_bae3_lore_has_her_name_trigger = no }
+		tm_bae3_english_woman_name_effect = yes
+		tm_declare_effect = yes
+		tm_bae3_calling_trade_effect = yes
+		ai_chance = { base = 40 }
+	}
+	option = {	# I have my own
+		name = tm_bae3.0300.b
+		trigger = { tm_bae3_lore_has_her_name_trigger = no }
+		tm_bae3_calling_trade_effect = yes
+		trigger_event = tm_house.0001
+		ai_chance = { base = 40 }
+	}
+	option = {	# Not yet
+		name = tm_bae3.0300.c
+		trigger = { tm_bae3_lore_has_her_name_trigger = no }
+		tm_bae3_calling_trade_effect = yes
+		ai_chance = { base = 20 }
+	}
+	option = {	# Learn the trade at her bench
+		name = tm_bae3.0300.d
+		trigger = { tm_bae3_lore_has_her_name_trigger = yes }
+		tm_bae3_calling_trade_effect = yes
+		add_stress = -10
+	}
+
+	after = {
+		# The open ending: now and then the night watch brings her before the town court. Never the default.
+		random = {
+			chance = 25
+			trigger_event = { id = tm_bae3.0301 days = { 60 400 } }
+		}
+	}
+}
+
+# The Town Court. Root = she of 0300. In the record she "insists on 'calling [herself] Eleanor' even within a hostile
+# juridical context" (Henningsen p. 250), and no sentence is recorded (p. 262). The court is the lord of the town's;
+# he asks a question and makes no charge. No list, no reveal, no sentence: the ending is open.
+tm_bae3.0301 = {
+	type = character_event
+	title = tm_bae3.0301.t
+	desc = tm_bae3.0301.desc
+	theme = friendly
+	override_background = { reference = courtyard }
+	left_portrait = { character = root animation = personality_bold }
+	right_portrait = { character = scope:tm_bae3_town_lord animation = personality_rational }
+
+	trigger = {
+		is_alive = yes
+		is_imprisoned = no
+		location ?= {
+			county ?= {
+				target_is_de_jure_liege_or_above = title:k_england
+				holder ?= { NOT = { this = root } }
+			}
+		}
+	}
+
+	immediate = {
+		location.county.holder = { save_scope_as = tm_bae3_town_lord }
+	}
+
+	option = {	# Give my own name
+		name = tm_bae3.0301.a
+		custom_tooltip = tm_bae3.0301.a.tt
+		add_stress = -10
+		add_prestige = minor_prestige_gain
+	}
+	option = {	# Say nothing
+		name = tm_bae3.0301.b
+		custom_tooltip = tm_bae3.0301.b.tt
+		add_stress = 5
+	}
+}

@@ -116,6 +116,9 @@ tm_seidr.0001 = {
 
 	option = {	# Wait for her answer
 		name = tm_seidr.0001.a
+		# The seeress remembers who she sat for: in Iceland the law charges the one who hired her (tm_bae2.0100/0101;
+		# Raudvere, Athlone vol. 3, pp. 155-61).
+		scope:tm_volva = { set_variable = { name = tm_bae2_last_seeker value = root } }
 		random_list = {
 			40 = {
 				modifier = { add = 15 any_relation = { type = tm_sister tm_is_daughter_trigger = yes } }	# her sworn sister stands as her sponsor (round 2, T21)

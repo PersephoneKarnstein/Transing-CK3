@@ -2,7 +2,8 @@
 
 # Crusader Dolls — Bædling stage 2 (docs/wave3/baedling.md).
 #   0001-0021  Spring the Cell (common/schemes/scheme_types/tm_bae2_schemes.txt); 0002 the AI's plotter search
-#   0100-0135  Outlawry: the suit, the sentence, an outlaw abroad, the settlement, forgiven for the war
+#   0100-0135  Outlawry: the suit, the sentence, the confiscation court (0105), an outlaw abroad, harbouring (0115),
+#              the settlement (and the ride for sympathy), forgiven for the war
 # Landless bands have no events: tm_bae2_answer_hall_decision and tm_bae2_title_gain (tm_bae2_on_actions.txt).
 
 # ===================================================================================================
@@ -283,34 +284,65 @@ tm_bae2.0021 = {
 # ===================================================================================================
 
 # The suit is brought at the lord's court. Root = the lord (a Christian lord of Norse heritage, from 1100).
+# Wave 7 (docs/wave7/baedling.md §1): the law of the lord's court decides the suit (tm_bae3_triggers.txt).
+#   Iceland, the sorcery charge: the one who hired her answers (scope:tm_bae2_seeress = the seeress, scope:tm_bae2_outlaw
+#   = her client); with no client known, scope:tm_bae2_no_client and the suit falls.
+#   A relapse where the law is capital (scope:tm_bae2_relapse): the secular arm, not the sentence.
 tm_bae2.0100 = {
 	type = character_event
 	title = tm_bae2.0100.t
 	desc = {
 		first_valid = {
 			triggered_desc = {
+				trigger = { exists = scope:tm_bae2_no_client }
+				desc = tm_bae2.0100.desc.iceland_none
+			}
+			triggered_desc = {
+				trigger = { exists = scope:tm_bae2_seeress }
+				desc = tm_bae2.0100.desc.iceland_client
+			}
+			triggered_desc = {
 				trigger = { scope:tm_bae2_charge = flag:seidr }
 				desc = tm_bae2.0100.desc.seidr
 			}
 			desc = tm_bae2.0100.desc.dress
 		}
-		desc = tm_bae2.0100.desc.end
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:tm_bae2_no_client }
+				desc = tm_bae2.0100.desc.iceland_none_end
+			}
+			triggered_desc = {
+				trigger = { exists = scope:tm_bae2_relapse }
+				desc = tm_bae2.0100.desc.relapse
+			}
+			desc = tm_bae2.0100.desc.end
+		}
 	}
 	theme = faith
 	override_background = { reference = terrain }
 	left_portrait = { character = scope:tm_bae2_accuser animation = disapproval }
 	right_portrait = { character = scope:tm_bae2_outlaw animation = personality_rational }
+	lower_right_portrait = scope:tm_bae2_seeress
 
 	trigger = {
 		scope:tm_bae2_outlaw = {
 			is_alive = yes
-			tm_bae2_outlawry_candidate_trigger = yes
+			is_imprisoned = no
+			trigger_if = {
+				limit = { NOT = { exists = scope:tm_bae2_seeress } }
+				tm_bae2_outlawry_candidate_trigger = yes
+			}
 		}
 		scope:tm_bae2_accuser = { is_alive = yes }
 	}
 
 	option = {	# Let the law take its course
 		name = tm_bae2.0100.a
+		trigger = {
+			NOT = { exists = scope:tm_bae2_no_client }
+			NOT = { exists = scope:tm_bae2_relapse }
+		}
 		custom_tooltip = tm_bae2.0100.a.tt
 		scope:tm_bae2_outlaw = { trigger_event = tm_bae2.0101 }
 		ai_chance = {
@@ -319,8 +351,20 @@ tm_bae2.0100 = {
 			modifier = { add = 20 has_trait = just }
 		}
 	}
+	option = {	# A relapse: the secular arm (Mitchell pp. 123, 169-71). The event ends at the cell door.
+		name = tm_bae2.0100.arm
+		trigger = { exists = scope:tm_bae2_relapse }
+		custom_tooltip = tm_bae2.0100.arm.tt
+		tm_bae2_secular_arm_effect = yes
+		ai_chance = {
+			base = 60
+			modifier = { add = 30 has_trait = zealous }
+			modifier = { add = 20 has_trait = just }
+		}
+	}
 	option = {	# Quash the suit
 		name = tm_bae2.0100.b
+		trigger = { NOT = { exists = scope:tm_bae2_no_client } }
 		scope:tm_bae2_accuser = {
 			if = {
 				limit = { NOT = { this = root } }
@@ -336,69 +380,86 @@ tm_bae2.0100 = {
 			modifier = { factor = 0 this = scope:tm_bae2_accuser }
 		}
 	}
+	option = {	# Iceland: no one is named as her client, so there is no one to sue
+		name = tm_bae2.0100.c
+		trigger = { exists = scope:tm_bae2_no_client }
+		tm_feud_tally_effect = { WHAT = out_iceland_no_client }
+	}
 }
 
-# The sentence. Root = the Bædling (always AI: she is no ruler).
+# The sentence. Root = the one sued (always AI: she is no ruler). Under Icelandic law this is the seeress's client
+# (scope:tm_bae2_seeress exists), who may be cleared by a jury of twelve (Grágás, Mitchell p. 159).
 tm_bae2.0101 = {
 	type = character_event
 	title = tm_bae2.0101.t
 	desc = {
 		first_valid = {
 			triggered_desc = {
+				trigger = { exists = scope:tm_bae2_seeress }
+				desc = tm_bae2.0101.desc.client
+			}
+			triggered_desc = {
 				trigger = { scope:tm_bae2_charge = flag:seidr }
 				desc = tm_bae2.0101.desc.seidr
 			}
 			desc = tm_bae2.0101.desc.dress
+		}
+		triggered_desc = {
+			trigger = {
+				scope:tm_bae2_charge = flag:seidr
+				current_year >= 1300
+			}
+			desc = tm_bae2.0101.desc.penance
 		}
 	}
 	theme = faith
 	override_background = { reference = terrain }
 	left_portrait = { character = root animation = personality_rational }
 	right_portrait = { character = scope:tm_bae2_accuser animation = disapproval }
+	lower_right_portrait = scope:tm_bae2_seeress
 
-	immediate = { save_scope_as = tm_bae2_outlaw }
+	trigger = { is_alive = yes }
+
+	immediate = {
+		save_scope_as = tm_bae2_outlaw
+		tm_feud_tally_effect = { WHAT = out_suits }
+		if = {
+			limit = { exists = scope:tm_bae2_seeress }
+			tm_feud_tally_effect = { WHAT = out_iceland_client }
+		}
+	}
 
 	option = {	# Six housewives will swear for me (the sorcery charge only: Gulaþing, Mitchell pp. 160-61)
 		name = tm_bae2.0101.a
-		trigger = { scope:tm_bae2_charge = flag:seidr }
-		custom_tooltip = tm_bae2.0101.a.tt
-		random_list = {
-			50 = {
-				modifier = { add = 20 tm_house_member_trigger = yes }
-				modifier = { add = 15 diplomacy >= 12 }
-				modifier = { add = -20 scope:tm_bae2_lord = { opinion = { target = root value < -20 } } }
-				# Cleared: the accuser is a slanderer (Mitchell p. 150).
-				set_variable = { name = tm_bae2_outlawry_cooldown value = yes years = 10 }
-				scope:tm_bae2_accuser = { add_prestige = minor_prestige_loss }
-				scope:tm_bae2_lord = {
-					send_interface_toast = {
-						title = tm_bae2.0101.cleared
-						left_icon = scope:tm_bae2_outlaw
-						right_icon = scope:tm_bae2_accuser
-					}
-				}
-			}
-			50 = {
-				# The oath fails: out of the realm.
-				tm_bae2_lesser_outlawry_effect = yes
-			}
+		trigger = {
+			scope:tm_bae2_charge = flag:seidr
+			NOT = { exists = scope:tm_bae2_seeress }
 		}
+		custom_tooltip = tm_bae2.0101.a.tt
+		tm_bae2_oath_effect = yes
 		ai_chance = { base = 60 }
 	}
-	option = {	# Pay the life-ring and go abroad for three winters
+	option = {	# Twelve jurors (Iceland: Grágás, Mitchell p. 159)
+		name = tm_bae2.0101.a_jury
+		trigger = { exists = scope:tm_bae2_seeress }
+		custom_tooltip = tm_bae2.0101.a_jury.tt
+		tm_bae2_oath_effect = yes
+		ai_chance = { base = 60 }
+	}
+	option = {	# Pay the life-ring and go abroad for three winters, once the court has sat
 		name = tm_bae2.0101.b
 		custom_tooltip = tm_bae2.0101.b.tt
-		tm_bae2_lesser_outlawry_effect = yes
+		tm_bae2_call_court_effect = { SENTENCE = flag:lesser }
 		ai_chance = {
 			base = 50
 			modifier = { add = 30 has_trait = calm }
 			modifier = { add = 30 has_trait = craven }
 		}
 	}
-	option = {	# Refuse the ring: the woods
+	option = {	# Refuse the ring: the woods, once the court has sat
 		name = tm_bae2.0101.c
 		custom_tooltip = tm_bae2.0101.c.tt
-		tm_bae2_full_outlawry_effect = yes
+		tm_bae2_call_court_effect = { SENTENCE = flag:full }
 		ai_chance = {
 			base = 15
 			modifier = { add = 40 has_trait = stubborn }
@@ -406,6 +467,116 @@ tm_bae2.0101 = {
 			modifier = { add = 20 has_trait = brave }
 			modifier = { factor = 0 has_trait = craven }
 		}
+	}
+	option = {	# Penance and the pilgrim roads (Bergen 1324-25; Mitchell pp. 123, 169-71), from 1300
+		name = tm_bae2.0101.d
+		trigger = {
+			scope:tm_bae2_charge = flag:seidr
+			current_year >= 1300
+		}
+		custom_tooltip = tm_bae2.0101.d.tt
+		tm_bae2_penance_effect = yes
+		ai_chance = {
+			base = 60	# women were "acquitted, sent on pilgrimage, or exiled" (Mitchell pp. 169, 197)
+			modifier = { add = 20 has_trait = humble }
+			modifier = { add = 20 has_trait = calm }
+			modifier = { factor = 0.5 has_trait = stubborn }
+		}
+	}
+}
+
+# The confiscation court (féránsdómr), a fortnight after the sentence (Grágás K §53; Ahola p. 97). Root = the accuser,
+# who must hold it; scope:tm_bae2_outlaw = the one sentenced; scope:tm_bae2_sentence = flag:lesser or flag:full. Text
+# only: the court is not a battle. If her friends stop it, no court is held lawfully and the sentence lapses.
+tm_bae2.0105 = {
+	type = character_event
+	title = tm_bae2.0105.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:tm_bae2_court_failed }
+				desc = tm_bae2.0105.desc.failed
+			}
+			triggered_desc = {
+				trigger = { scope:tm_bae2_sentence = flag:full }
+				desc = tm_bae2.0105.desc.full
+			}
+			desc = tm_bae2.0105.desc.lesser
+		}
+		triggered_desc = {
+			trigger = {
+				NOT = { exists = scope:tm_bae2_court_failed }
+				exists = scope:tm_bae2_magnus
+			}
+			desc = tm_bae2.0105.desc.magnus
+		}
+	}
+	theme = faith
+	override_background = { reference = terrain }
+	left_portrait = { character = root animation = personality_rational }
+	right_portrait = { character = scope:tm_bae2_outlaw animation = worry }
+
+	trigger = {
+		scope:tm_bae2_outlaw = {
+			is_alive = yes
+			has_variable = tm_bae2_pending_court
+		}
+	}
+
+	immediate = {
+		save_scope_as = tm_bae2_accuser
+		scope:tm_bae2_outlaw = {
+			remove_variable = tm_bae2_pending_court
+			random = {
+				chance = tm_bae2_court_fails_value
+				save_scope_value_as = { name = tm_bae2_court_failed value = yes }
+			}
+		}
+		if = {
+			limit = {
+				exists = scope:tm_bae2_lord
+				scope:tm_bae2_lord = {
+					is_alive = yes
+					tm_bae3_lord_magnus_law_trigger = yes
+				}
+			}
+			save_scope_value_as = { name = tm_bae2_magnus value = yes }
+		}
+	}
+
+	option = {
+		name = tm_bae2.0105.a
+		trigger = { NOT = { exists = scope:tm_bae2_court_failed } }
+		custom_tooltip = tm_bae2.0105.a.tt
+		hidden_effect = {
+			scope:tm_bae2_outlaw = {
+				if = {
+					limit = { scope:tm_bae2_sentence = flag:full }
+					save_scope_value_as = { name = tm_bae2_forfeit value = gold }
+					tm_bae2_forfeit_effect = yes
+					tm_bae2_full_outlawry_effect = yes
+				}
+				else = {	# the life-ring: one mark
+					save_scope_value_as = {
+						name = tm_bae2_forfeit
+						value = {
+							value = gold
+							max = 10
+						}
+					}
+					tm_bae2_forfeit_effect = yes
+					tm_bae2_lesser_outlawry_effect = yes
+				}
+			}
+			tm_feud_tally_effect = { WHAT = out_court_held }
+		}
+	}
+	option = {
+		name = tm_bae2.0105.b
+		trigger = { exists = scope:tm_bae2_court_failed }
+		add_prestige = minor_prestige_loss
+		scope:tm_bae2_outlaw = { tm_bae2_lift_outlawry_effect = yes }
+		hidden_effect = { tm_feud_tally_effect = { WHAT = out_court_failed } }
 	}
 }
 
@@ -439,12 +610,92 @@ tm_bae2.0110 = {
 	}
 }
 
+# Harbouring: the accuser summons the ruler who keeps the outlaw (wave 7, §3c). Root = the harbourer;
+# scope:tm_bae2_outlaw = the outlaw; scope:tm_bae2_accuser = the accuser. Grágás §1.3: a householder who names
+# witnesses and tells five neighbours is liable only for sharing quarters; Ahola p. 213: a summons settled "for a fee".
+tm_bae2.0115 = {
+	type = character_event
+	title = tm_bae2.0115.t
+	desc = tm_bae2.0115.desc
+	theme = stewardship
+	override_background = { reference = throne_room }
+	left_portrait = { character = scope:tm_bae2_accuser animation = disapproval }
+	right_portrait = { character = scope:tm_bae2_outlaw animation = worry }
+
+	trigger = {
+		scope:tm_bae2_outlaw = {
+			is_alive = yes
+			is_courtier_of = root
+			has_character_modifier = tm_bae2_full_outlaw_modifier
+		}
+		scope:tm_bae2_accuser = { is_alive = yes }
+	}
+
+	immediate = {
+		save_scope_value_as = { name = tm_bae2_harbour_price value = tm_bae2_harbour_price_value }
+	}
+
+	option = {	# Pay him for the summons
+		name = tm_bae2.0115.a
+		trigger = { gold >= scope:tm_bae2_harbour_price }
+		pay_short_term_gold = { target = scope:tm_bae2_accuser gold = scope:tm_bae2_harbour_price }
+		scope:tm_bae2_accuser = {
+			remove_opinion = { target = root modifier = tm_bae2_harbours_outlaw_opinion }
+		}
+		hidden_effect = { tm_feud_tally_effect = { WHAT = out_harbour_paid } }
+		ai_chance = {
+			base = 40
+			modifier = { add = 30 has_trait = just }
+			modifier = { add = 20 has_trait = calm }
+			modifier = { factor = 0.5 has_trait = greedy }
+		}
+	}
+	option = {	# Refuse: she stays, and it is a wrong between our houses
+		name = tm_bae2.0115.b
+		custom_tooltip = tm_bae2.0115.b.tt
+		tm_feud_wrong_effect = { VICTIM = scope:tm_bae2_accuser WRONGDOER = root REASON = tm_harboured VANILLA = yes }
+		scope:tm_bae2_accuser = {
+			add_opinion = { target = root modifier = tm_bae2_harbours_outlaw_opinion }
+		}
+		hidden_effect = { tm_feud_tally_effect = { WHAT = out_harbour_refused } }
+		ai_chance = {
+			base = 30
+			modifier = { add = 30 has_trait = stubborn }
+			modifier = { add = 30 has_trait = brave }
+			modifier = { add = 20 has_relation_tm_sister = scope:tm_bae2_outlaw }
+			modifier = { add = 20 has_relation_friend = scope:tm_bae2_outlaw }
+		}
+	}
+	option = {	# Name witnesses, tell five neighbours, and send her on: no liability
+		name = tm_bae2.0115.c
+		custom_tooltip = tm_bae2.0115.c.tt
+		scope:tm_bae2_outlaw = { tm_send_on_effect = { EXCLUDE = root } }
+		hidden_effect = { tm_feud_tally_effect = { WHAT = out_harbour_witnessed } }
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = craven }
+			modifier = { add = 20 has_trait = content }
+			modifier = { factor = 0.3 has_relation_tm_sister = scope:tm_bae2_outlaw }
+		}
+	}
+}
+
 # A full outlaw offers compensation for a settlement (Miller pp. 262-77; Ahola p. 100). Root = the accuser;
-# scope:tm_bae2_outlaw = the outlaw; scope:tm_bae2_price = the sum.
+# scope:tm_bae2_outlaw = the outlaw; scope:tm_bae2_price = the sum. On the ride for sympathy (wave 7, §3b;
+# tm_bae2_ride_effect) scope:tm_bae2_ride is set and scope:tm_bae2_pledgers counts her well-wishers: the pledged
+# silver is the price, she needs no purse, and refusing so many costs him honour.
 tm_bae2.0130 = {
 	type = character_event
 	title = tm_bae2.0130.t
-	desc = tm_bae2.0130.desc
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:tm_bae2_ride }
+				desc = tm_bae2.0130.desc.ride
+			}
+			desc = tm_bae2.0130.desc
+		}
+	}
 	theme = stewardship
 	override_background = { reference = study }
 	left_portrait = { character = scope:tm_bae2_outlaw animation = personality_rational }
@@ -453,14 +704,24 @@ tm_bae2.0130 = {
 		scope:tm_bae2_outlaw = {
 			is_alive = yes
 			has_character_modifier = tm_bae2_full_outlaw_modifier
-			gold >= scope:tm_bae2_price
+			trigger_if = {
+				limit = { NOT = { exists = scope:tm_bae2_ride } }
+				gold >= scope:tm_bae2_price
+			}
 		}
 	}
 
 	option = {	# Take the price
 		name = tm_bae2.0130.a
+		if = {
+			limit = { exists = scope:tm_bae2_ride }
+			add_gold = scope:tm_bae2_price	# the well-wishers' pledges
+			hidden_effect = { tm_feud_tally_effect = { WHAT = out_ride_settled } }
+		}
+		else = {
+			scope:tm_bae2_outlaw = { pay_short_term_gold = { target = root gold = scope:tm_bae2_price } }
+		}
 		scope:tm_bae2_outlaw = {
-			pay_short_term_gold = { target = root gold = scope:tm_bae2_price }
 			tm_bae2_lift_outlawry_effect = yes
 			add_opinion = { target = root modifier = tm_bae2_settled_with_me_opinion }
 		}
@@ -476,9 +737,21 @@ tm_bae2.0130 = {
 	option = {	# Refuse
 		name = tm_bae2.0130.b
 		scope:tm_bae2_outlaw = { set_variable = { name = tm_bae2_bot_refused value = yes years = 3 } }
+		if = {	# "pardoned against the chieftains' will" (Ahola p. 100): a district that rode for her sees him refuse
+			limit = { exists = scope:tm_bae2_pledgers }
+			add_prestige = {
+				value = minor_prestige_loss
+				multiply = scope:tm_bae2_pledgers
+			}
+			hidden_effect = { tm_feud_tally_effect = { WHAT = out_ride_refused } }
+		}
 		ai_chance = {
 			base = 50
 			modifier = { add = 30 has_trait = stubborn }
+			modifier = { add = -40 exists = scope:tm_bae2_ride }	# -20 a pledger: two at least
+			modifier = { add = -20 exists = scope:tm_bae2_pledgers scope:tm_bae2_pledgers >= 3 }
+			modifier = { add = -20 exists = scope:tm_bae2_pledgers scope:tm_bae2_pledgers >= 4 }
+			modifier = { add = -20 exists = scope:tm_bae2_pledgers scope:tm_bae2_pledgers >= 5 }
 		}
 	}
 }

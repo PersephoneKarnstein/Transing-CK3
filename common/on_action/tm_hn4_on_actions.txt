@@ -1,0 +1,27 @@
+﻿# Crusader Dolls — Ha-Nehpakhot: after a patron's fall (events/tm_hn4_events.txt; docs/wave6/ha-nehpakhot.md).
+# Appended to vanilla's on_death; the effect is our own on_action, so vanilla's are untouched.
+on_death = {
+	on_actions = { tm_hn4_on_death }
+}
+
+# A lord who took a daughter of the Turning's translations into his house (tm_translation_patron_modifier, from
+# tm_hipukh.0030, ten years) dies. The street has lost its friend at court, and is afraid for a year: the preachers read
+# the fall as God's anger at the street's sins. The model is Toledo, where the fall of the Jewish courtiers in 1279–80
+# was followed by an ordinance against immorality in 1281 (Assis 2001, pp. 27–28). Root: the dead patron.
+tm_hn4_on_death = {
+	trigger = {
+		has_character_modifier = tm_translation_patron_modifier
+	}
+	effect = {
+		save_scope_as = tm_hn4_patron
+		tm_hn4_tally_effect = { WHAT = falls }
+		every_living_character = {
+			limit = { tm_hn4_after_fall_target_trigger = { PATRON = scope:tm_hn4_patron } }
+			location ?= {
+				county ?= { set_variable = { name = tm_hn4_after_fall value = yes years = 1 } }
+			}
+			tm_flavour_spent_effect = yes
+			trigger_event = { id = tm_hn4.0001 days = { 3 30 } }
+		}
+	}
+}

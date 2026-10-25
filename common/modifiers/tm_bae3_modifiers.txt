@@ -1,0 +1,48 @@
+﻿# Crusader Dolls — Bædling, wave 7: era news and lore (events/tm_bae3_events.txt).
+
+# Word from the Islands: news of a burning on the bishop's sentence (Kirkjubær 1343, Greenland 1407; Mitchell
+# pp. 122–23, 171–72). Character, 5 years.
+tm_bae3_islands_fear_modifier = {
+	icon = stress_negative
+	stress_gain_mult = 0.15
+}
+
+# The Warding Shirt: "special shirts woven by female magicians offered protection in battle" (Jochens 1996 p. 122);
+# Hrolleifr's mother gives him a shirt no iron bites (Ahola p. 222). No knight death-risk modifier exists in 1.20
+# (ck3_docs), so health stands for the wounds it turns. Character, 5 years.
+tm_bae3_warding_shirt_modifier = {
+	icon = martial_positive
+	prowess = 3
+	health = 0.15
+}
+
+# The holy sites' stories (Price rows 11, 18–22). County, 10 years each.
+# York: the Eighty, burned by a king who sacrificed to the old gods (Price pp. 80–81).
+tm_bae3_site_york_modifier = {
+	icon = county_modifier_opinion_positive
+	county_opinion_add = 5
+}
+
+# Trondheim: Þorgerðr Hǫlgabrúðr's hail at Hjǫrungavágr, 986 (Price pp. 288–90).
+tm_bae3_site_trondheim_modifier = {
+	icon = county_modifier_control_positive
+	levy_size = 0.05
+}
+
+# Kyiv: the women in armour among the Rus' dead, 971 (Skylitzes; Price p. 275).
+tm_bae3_site_kyiv_modifier = {
+	icon = county_modifier_control_positive
+	garrison_size = 0.1
+}
+
+# Uppsala: the bells at the sacrifices (Saxo, Gesta Danorum Book 6, p. 135).
+tm_bae3_site_uppsala_modifier = {
+	icon = county_modifier_opinion_positive
+	county_opinion_add = 5
+}
+
+# Gotland: the Lärbro Tängelgårda stones (Price p. 175).
+tm_bae3_site_gotland_modifier = {
+	icon = county_modifier_development_positive
+	development_growth_factor = 0.1
+}

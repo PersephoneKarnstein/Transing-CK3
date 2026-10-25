@@ -83,6 +83,21 @@ How far to trust this scene is disputed. It was written down in the early thirte
 | *The Patent and the Robe*; *The Companions Choose* (`tm_band`, shared) | A lord may offer a band of the six faiths a county as his vassal, worded as his land knows it; a failing band's officers may hand it to a stronger companion. | Yaʿqūb's patent and robe, and his companions' choice (Tor 2007, pp. 109–111, 122); the rallied township (de la Vaissière 2005, pp. 152–153); Dobromir Chrysos and Momčilo (Sophoulis 2020, pp. 78–82) | [note](../wave4/bands.md) |
 | Holy sites | Uppsala, Trondheim, York, Kyiv. | Saxo, Book 6, p. 135; Price 2019, pp. 80–81, 275, 288–90 | [note](../research/norse_saxo_gesta_danorum.md) |
 
+
+**Wave 7 (2026-10-25, untested; `docs/wave7/baedling.md`).**
+
+| Mechanic or event | What it does in game | Source and page |
+|---|---|---|
+| The suit by region (`tm_bae2.0100`, `0101`) | Iceland: the client answers, twelve jurors; Norway: the seeress, six housewives; Magnus's law 1164–1200 sends goods to lord and chaplain | Raudvere (Athlone vol. 3) pp. 155–61; Mitchell pp. 159–61; Gade |
+| Penance and the pilgrim roads (option of `tm_bae2.0101`) | From 1300: seven years abroad, and a condition that never ends | Bergen 1324–25, Mitchell pp. 123, 169–71 |
+| Handed to the secular arm (`tm_bae2.0100`) | Capital law (Norway 1300, Scania 1328, Sweden 1350) on a relapse: the lord takes her into his keeping | Mitchell pp. 125, 156–57 |
+| The confiscation court (`tm_bae2.0105`) | A fortnight after a sentence; if it cannot sit, the sentence lapses | *Grágás* K §53 |
+| Ride for Sympathy (decision), harbouring (`tm_bae2.0115`), the Outlaw's Holm | Pledges buy a settlement; a House that keeps an outlaw bears strain and a summons; a band's island or mountain refuge is named | Ahola pp. 97, 100, 226, 249–56 |
+| Escalation by rank, Self-Judgment (`tm_feud.0040`), the refused Account (`tm_feud.0050`), fostering to seal | The rest of Miller's feud | Miller pp. 32, 123, 172, 183–84, 273–87 |
+| Avenge Her (`tm_feud.0060`), the suit-bearer | A sister may take up a private Account; under other lords a man carries her níð suit | Ahola p. 113; *Grágás*; Jochens 1995 p. 113 |
+| The King's Example, the Bishop's Letter, Word from the Islands (`tm_bae3.0001`, `0010`, `0020`) | The conversion kings; Bergen's edict; Kirkjubær 1343 and Greenland 1407 as news | Mitchell pp. 33, 122–23, 171–72; Price pp. 80–81 |
+| They Say He Keeps Seiðmenn (`tm_bae3.0100`); Weave the Warding Shirt (interaction) | A rival's charge; a shirt no blade bites | Tolley p. 154; Jochens 1996 p. 122 |
+| Holy-site stories (`tm_bae3.0200`–`0204`); Calling Herself (`tm_bae3.0300`, `0301`) | York, Trondheim, Kyiv, Uppsala, Gotland; the Rykener echo in England from 1350 | Price; Saxo; Henningsen 2019 |
 ## How it plays
 
 **The gate.** A Marked seeker, a eunuch or a declared sister of the faith takes *Ask a Völva to Sit for Me*. If no daughter of the High Seat is at court, a travelling völva is created and comes. The chain runs over three days, as a wedding does. First the feast: pay for the high seat and the full meal, offer plain hospitality, or send her away for the winter. Then the song: the best odds come from a courtier who already knows the *varðlokkur*. A woman of another faith who learned them as a girl may agree to sing (likelier if she likes the seeker) or refuse. Failing both, the women hum. Then the platform. Success gives the trait *Daughter of the High Seat* and, under the game rule, re-embodiment; failure costs some stress and nothing else, and the rite can be tried again next winter. Failure is the song's, not hers: nothing about the seeker counts against her.

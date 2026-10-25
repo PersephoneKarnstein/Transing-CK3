@@ -1,0 +1,83 @@
+﻿# Crusader Dolls — Bædling, wave 7: the sorcery law by date and region (docs/wave7/baedling.md). Shared by the suit
+# (tm_bae2.0100/0101), the confiscation court and the era's news events (tm_bae3).
+#
+# The law of a court is read from the lord's capital county (a landless lord: where he is). Sources:
+#   - Iceland (d_iceland de jure, under k_norway): Grágás; the one who HIRED a seeress is liable, and a jury of twelve
+#     clears her (Raudvere, Athlone vol. 3, pp. 155–61; research/v2/athlone_vol3_middle_ages.md); milder throughout,
+#     no death penalty attested for women (Mitchell pp. 153, 157).
+#   - Norway: the seeress is liable, and six housewives may clear her (Gulaþing; Mitchell pp. 160–61). Magnus's New Law,
+#     1164 until Sverrir (c. 1200), split confiscated goods between king and bishop (research/norse_gade_homosexuality_law.md).
+#     From c. 1300 the amended laws are capital (Mitchell pp. 125, 156).
+#   - Scania (c_skane): capital from 1328; Sweden (k_sweden de jure): capital from c. 1350, Magnus Eriksson's law, where
+#     sorcery stands among the high crimes (Mitchell pp. 156–57).
+# Trials stayed rare, and women were mostly acquitted, sent on pilgrimage or exiled (Mitchell pp. 169, 197, 204): the
+# capital branch is reached only on a relapse (tm_bae3_under_condition).
+
+# A county of Iceland. Scope: a county title.
+tm_bae3_county_icelandic_trigger = {
+	target_is_de_jure_liege_or_above = title:d_iceland
+}
+
+# A county under Norwegian law: de jure Norway, not Iceland. Scope: a county title.
+tm_bae3_county_norwegian_trigger = {
+	target_is_de_jure_liege_or_above = title:k_norway
+	NOT = { target_is_de_jure_liege_or_above = title:d_iceland }
+}
+
+# Sorcery is a capital crime in this county's law at this date. Scope: a county title.
+tm_bae3_county_capital_law_trigger = {
+	OR = {
+		AND = {
+			current_date >= 1300.1.1
+			tm_bae3_county_norwegian_trigger = yes
+		}
+		AND = {
+			current_date >= 1328.1.1
+			this = title:c_skane
+		}
+		AND = {
+			current_date >= 1350.1.1
+			target_is_de_jure_liege_or_above = title:k_sweden
+		}
+	}
+}
+
+# The law of this lord's court: his capital's, or where he is if he has none. Scope: the lord.
+tm_bae3_lord_icelandic_trigger = {
+	OR = {
+		capital_county ?= { tm_bae3_county_icelandic_trigger = yes }
+		AND = {
+			NOT = { exists = capital_county }
+			location ?= { county ?= { tm_bae3_county_icelandic_trigger = yes } }
+		}
+	}
+}
+
+tm_bae3_lord_capital_law_trigger = {
+	OR = {
+		capital_county ?= { tm_bae3_county_capital_law_trigger = yes }
+		AND = {
+			NOT = { exists = capital_county }
+			location ?= { county ?= { tm_bae3_county_capital_law_trigger = yes } }
+		}
+	}
+}
+
+# Magnus's New Law (Norway, 1164 to c. 1200): confiscated goods go to the king and the bishop. Scope: the lord.
+tm_bae3_lord_magnus_law_trigger = {
+	current_date >= 1164.1.1
+	current_date < 1200.1.1
+	OR = {
+		capital_county ?= { tm_bae3_county_norwegian_trigger = yes }
+		AND = {
+			NOT = { exists = capital_county }
+			location ?= { county ?= { tm_bae3_county_norwegian_trigger = yes } }
+		}
+	}
+}
+
+# She is under the condition of a penance (Bergen 1324–25: a relapse would make her "condemned of heresy" before the
+# secular arm; Mitchell pp. 123, 169–71). Scope: a character.
+tm_bae3_under_condition_trigger = {
+	has_variable = tm_bae3_under_condition
+}

@@ -19,7 +19,8 @@ yearly_global_pulse = {
 # A killing. Root = the one dying; scope:killer = who killed her, if known.
 # - An outlaw's death is no wrong: she had no standing at law (Ahola pp. 85-86). It may earn a reprieve instead
 #   (Grágás K §110): for the killer, if an outlaw, or else for a sworn sister or kinswoman of the killer who is one
-#   ("a free man may kill on his behalf").
+#   ("a free man may kill on his behalf"). The law still counts no wrong, but a Bædling outlaw's kin may take up a
+#   private Account for her (tm_feud_avenge_her_effect, tm_feud.0060; Ahola p. 113).
 # - Otherwise a killing outside a war is a gift to her house (Miller p. 182). Deaths in a war between the two realms are
 #   left to the war: "war is the top of the scale, not the default" (research/norse_miller_bloodtaking.md row 1).
 #   Vanilla moves the house relation for killings itself.
@@ -55,6 +56,10 @@ tm_feud_on_death = {
 						tm_feud_reprieve_credit_effect = yes
 					}
 				}
+			}
+			if = {
+				limit = { faith = faith:tm_baeddel }
+				tm_feud_avenge_her_effect = yes
 			}
 		}
 		else_if = {

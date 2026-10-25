@@ -1,0 +1,31 @@
+﻿l_english:
+ # Ha-Nehpakhot, wave 6: the bailiff's variants, the berurim, after a patron's fall, a household of the street
+ # (docs/wave6/ha-nehpakhot.md).
+
+ tm_kahal_judges_berurim:0 "the berurim of the street"
+ tm_kahal_judges_berurim_cap:0 "The berurim of the street"
+ tm_kahal_judges_berurim_title:0 "Berurim"
+
+ tm_hn4_bailiff_bailiff:0 "the bailiff"
+ tm_hn4_bailiff_bailiff_cap:0 "The bailiff"
+ tm_hn4_bailiff_bailiff_title:0 "Bailiff"
+ tm_hn4_bailiff_batlle:0 "the batlle"
+ tm_hn4_bailiff_batlle_cap:0 "The batlle"
+ tm_hn4_bailiff_batlle_title:0 "Batlle"
+
+ tm_hn4.0001.t:0 "After the Fall"
+ tm_hn4.0001.desc:0 "[tm_hn4_patron.GetTitledFirstName] is dead, who took my work into his house, and the street has lost its friend at court. Fear has come in where he stood. In the synagogue the preachers say that God's anger has fallen on the street for its sins, and that the street must mend its ways before worse comes. They do not name me. They do not need to: when I pass, the talk stops."
+ tm_hn4.0001.a:0 "Keep my name indoors until the fear passes."
+ tm_hn4.0001.a.tt:0 "For a year, the street's fear does not weigh on your hearing or your prayer."
+ tm_hn4.0001.b:0 "Answer them: God's anger is not on my name."
+ tm_hn4.0001.b.win:0 "The preachers let it rest, and the street breathes again"
+ tm_hn4.0001.b.lose:0 "They hear a woman arguing in a frightened year, and the talk grows"
+ tm_hn4.0001.c:0 "Go to the women of the street."
+ tm_hn4.0001.c.tt:0 "The women keep you company through the year. The street's fear does not weigh on your hearing or your prayer."
+
+ tm_hn4_send_for_household_decision:0 "Send for a Household of the Street"
+ tm_hn4_send_for_household_decision_desc:0 "A court needs a street around it. I can pay the road for a Jewish household to settle here: a man, his wife and their child. They come as what they are, to live and work under my roof. Some who come to a house like mine stay with it."
+ tm_hn4_send_for_household_decision_tooltip:0 "Pay the road for a Jewish household to settle at your court"
+ tm_hn4_send_for_household_decision_confirm:0 "Send for them"
+ tm_hn4_send_for_household_decision_effect_tt:0 "A Jewish household (a man, his wife and their child) settles at your court. They keep their own faith, and the kahal may take them in later."
+ tm_hn4_send_for_household_decision_cooldown_tt:0 "You have sent for a household in the last ten years"

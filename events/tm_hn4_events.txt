@@ -1,0 +1,63 @@
+﻿namespace = tm_hn4
+
+# Crusader Dolls — Ha-Nehpakhot, wave 6 (docs/wave6/ha-nehpakhot.md).
+#   0001  After the Fall: her patron is dead, and the street's preachers read his fall as God's anger (tm_hn4_on_actions.txt)
+# The street's fear lasts a year in her county (tm_hn4_after_fall): the hearing (tm_hipukh.0003) and the prayer
+# (tm_hipukh.0001) are harder there, unless she kept her name indoors or the women stood with her.
+# The preachers are afraid, not cruel: the street has lost its shelter, and fear looks for a cause. No one is punished.
+
+# After the Fall. Root = the daughter; scope:tm_hn4_patron = the dead patron.
+tm_hn4.0001 = {
+	type = character_event
+	title = tm_hn4.0001.t
+	desc = tm_hn4.0001.desc
+	theme = faith
+	left_portrait = { character = root animation = worry }
+
+	trigger = {
+		is_alive = yes
+		is_imprisoned = no
+	}
+
+	option = {	# Keep my name indoors until the fear passes
+		name = tm_hn4.0001.a
+		custom_tooltip = tm_hn4.0001.a.tt
+		add_stress = 10
+		set_variable = { name = tm_hn4_sheltered value = yes years = 1 }
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = craven }
+			modifier = { add = 20 has_trait = calm }
+		}
+	}
+	option = {	# Answer them: God's anger is not on my name
+		name = tm_hn4.0001.b
+		random_list = {
+			40 = {
+				modifier = { add = { value = learning multiply = 2 } }
+				desc = tm_hn4.0001.b.win
+				add_prestige = 30
+				location ?= { county ?= { remove_variable = tm_hn4_after_fall } }
+			}
+			50 = {
+				desc = tm_hn4.0001.b.lose
+				add_stress = 15
+				add_prestige = -20
+			}
+		}
+		ai_chance = {
+			base = 30
+			modifier = { add = 30 has_trait = brave }
+			modifier = { add = 20 has_trait = zealous }
+			modifier = { add = 20 learning >= 12 }
+		}
+	}
+	option = {	# Go to the women of the street
+		name = tm_hn4.0001.c
+		trigger = { tm_kahal_door_trigger = yes }
+		custom_tooltip = tm_hn4.0001.c.tt
+		add_stress = -10
+		set_variable = { name = tm_hn4_sheltered value = yes years = 1 }
+		ai_chance = { base = 50 }
+	}
+}

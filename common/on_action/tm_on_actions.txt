@@ -1034,6 +1034,10 @@ tm_yearly_growth = {
 				set_variable = { name = tm_conv_ours value = yes days = 1 }
 				set_character_faith = faith:tm_nehpakhot
 				tm_track_effect = { FAITH = faith:tm_nehpakhot WHAT = kahal_joins }
+				if = {	# one of a household she sent for (tm_hn4_send_for_household_effect)
+					limit = { has_variable = tm_hn4_household }
+					tm_hn4_tally_effect = { WHAT = household_joins }
+				}
 			}
 		}
 		every_living_character = {

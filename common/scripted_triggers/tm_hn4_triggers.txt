@@ -1,0 +1,49 @@
+﻿# Crusader Dolls — Ha-Nehpakhot, the bailiff's variants and the households of the street (docs/wave6/ha-nehpakhot.md).
+
+# The Crown of Aragon: a county de jure in Aragon (with Barcelona) or Valencia. Here the lord's officer is the *batlle*,
+# and from c. 1270 the street's judges are the *berurim* (Assis 2001, pp. 38–39; Adret's responsa, I:1187).
+# Scope: a county title.
+tm_hn4_county_in_aragon_trigger = {
+	OR = {
+		target_is_de_jure_liege_or_above = title:k_aragon
+		target_is_de_jure_liege_or_above = title:k_valencia
+	}
+}
+
+# She lives in the Crown of Aragon. Scope: a character.
+tm_hn4_in_aragon_trigger = {
+	location ?= { county ?= { tm_hn4_county_in_aragon_trigger = yes } }
+}
+
+# The street's judges are the berurim: in the Crown of Aragon from 1270. Scope: a character.
+tm_hn4_berurim_trigger = {
+	current_date >= 1270.1.1
+	tm_hn4_in_aragon_trigger = yes
+}
+
+# A daughter of the Turning who hears the preachers after her patron's fall: in his court or his realm, free, and not
+# already spent on flavour this year. Scope: the daughter. $PATRON$: the dead patron.
+tm_hn4_after_fall_target_trigger = {
+	has_trait = tm_daughter_of_the_turning
+	is_adult = yes
+	is_imprisoned = no
+	NOT = { this = $PATRON$ }
+	tm_flavour_ready_trigger = yes
+	OR = {
+		employer ?= { this = $PATRON$ }
+		employer ?= { top_liege ?= { this = $PATRON$ } }
+		location ?= { county ?= { holder ?= { top_liege ?= { this = $PATRON$ } } } }
+	}
+}
+
+# The street is frightened this year: a patron of the sect has fallen (tm_hn4.0001). Scope: a character.
+tm_hn4_street_afraid_trigger = {
+	location ?= { county ?= { has_variable = tm_hn4_after_fall } }
+}
+
+# A ruler of the sect who may send for a household of the street. Landed or landless (a camp keeps a court too).
+# Scope: the ruler.
+tm_hn4_can_send_for_household_trigger = {
+	faith = faith:tm_nehpakhot
+	is_ruler = yes
+}

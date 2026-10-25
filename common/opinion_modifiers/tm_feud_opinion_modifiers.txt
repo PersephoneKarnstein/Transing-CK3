@@ -27,3 +27,49 @@ tm_feud_nid_arbitrated_opinion = {
 	years = 5
 	decaying = yes
 }
+
+# Self-judgment (sjálfdæmi) granted and used with measure: the grant is paid "in units of prestige and honor"
+# (Miller p. 287). The granter's opinion of the one who judged.
+tm_feud_fair_judgment_opinion = {
+	opinion = 15
+	years = 10
+	decaying = yes
+}
+
+# Self-judgment used to the hilt: the "uneven man" (ójafnaðarmaðr), who over-reaches (Miller p. 273). Rulers of
+# the same faith or a Germanic one who heard of it.
+tm_feud_uneven_opinion = {
+	opinion = -15
+	years = 10
+	decaying = yes
+}
+
+# Self-judgment, and the whole sum remitted (Thorgils, Miller p. 287): the granter is outdone in honour and in debt
+# of a kind gold does not pay.
+tm_feud_humbled_opinion = {
+	opinion = 15
+	years = 15
+	decaying = yes
+}
+
+# She answered the man who would not keep an Account with her (Miller p. 188: honour is decided by "the
+# uninvolved"). Bædling and Germanic rulers who heard of it.
+tm_feud_answered_with_honour_opinion = {
+	opinion = 10
+	years = 10
+	decaying = yes
+}
+
+# A child of the other hall fostered to seal a settlement (Miller pp. 123, 172). Ward and guardian, both ways.
+tm_feud_foster_seal_opinion = {
+	opinion = 10
+	years = 15
+	decaying = yes
+}
+
+# She took up the Account for an outlaw the law would not avenge (Ahola p. 113).
+tm_feud_avenge_her_opinion = {
+	opinion = -30
+	years = 20
+	decaying = yes
+}

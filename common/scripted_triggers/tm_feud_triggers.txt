@@ -14,3 +14,113 @@ tm_feud_nid_suit_possible_trigger = {
 	}
 	NOT = { scope:tm_flyter = scope:tm_feud_lord }
 }
+
+# A woman as the hall reads her: a woman, a daughter by any gate, or a sister who has declared (rule 8: Marked and
+# declared sisters are sisters before the knife). Used where the world's reading is the point (the refused Account).
+tm_feud_woman_trigger = {
+	OR = {
+		is_female = yes
+		tm_is_daughter_trigger = yes
+		has_variable = tm_declared
+	}
+}
+
+# A man as the law reads him: not a woman, a daughter, or Marked. Scope: the character.
+tm_feud_man_trigger = {
+	is_female = no
+	tm_is_daughter_trigger = no
+	NOT = { has_trait = tm_transgender }
+	NOT = { has_variable = tm_declared }
+}
+
+# The refused Account (Miller, Bloodtaking, p. 32: "a free man did not generally compete for honor with... a man
+# with a woman"). A non-Bædling North-Germanic man of rank has wronged a Bædling woman ruler of another house,
+# and there is no Account yet between the houses either way, nor a settlement, nor an earlier refusal. The AI only:
+# a player wronging her plays the Account as it stands. Needs scope:tm_feud_victim, scope:tm_feud_wrongdoer,
+# scope:tm_feud_creditor and scope:tm_feud_debtor (tm_feud_wrong_effect).
+tm_feud_may_refuse_trigger = {
+	scope:tm_feud_victim = {
+		is_ruler = yes
+		faith = faith:tm_baeddel
+		tm_feud_woman_trigger = yes
+	}
+	scope:tm_feud_wrongdoer = {
+		is_ruler = yes
+		is_ai = yes
+		NOT = { faith = faith:tm_baeddel }
+		tm_feud_man_trigger = yes
+		culture ?= { has_cultural_pillar = heritage_north_germanic }
+	}
+	scope:tm_feud_creditor = {
+		NOT = { is_target_in_variable_list = { name = tm_acc_1 target = scope:tm_feud_debtor } }
+		NOT = { is_target_in_variable_list = { name = tm_acc_settled target = scope:tm_feud_debtor } }
+		NOT = { is_target_in_variable_list = { name = tm_acc_refused target = scope:tm_feud_debtor } }
+	}
+	scope:tm_feud_debtor = {
+		NOT = { is_target_in_variable_list = { name = tm_acc_1 target = scope:tm_feud_creditor } }
+	}
+}
+
+# The níð suit needs a man to carry it: the lord of the hall is not of one of the six faiths. Grágás §1.7: a woman
+# may be principal in a suit but "must transfer the conduct of a case to a man"; women "were not expected to
+# prosecute (sœkja) on their own but to delegate (selja)" (Jochens 1995 p. 113). Under a lord
+# of the six faiths the Sisters speak their own suits. Needs scope:tm_feud_lord.
+tm_feud_bearer_needed_trigger = {
+	exists = scope:tm_feud_lord
+	scope:tm_feud_lord = {
+		NOT = { rite ?= { rite_has_parameter = tm_sisters_faith } }
+	}
+}
+
+# Can carry her suit: a grown man at her court or the lord's, who is her husband, her close kinsman, or a friend of
+# a House (tm_house_friend_modifier). Scope: the candidate. Needs scope:tm_feud_plaintiff, scope:tm_feud_lord,
+# scope:tm_flyter.
+tm_feud_bearer_candidate_trigger = {
+	is_alive = yes
+	is_adult = yes
+	is_imprisoned = no
+	tm_feud_man_trigger = yes
+	tm_bae2_is_outlaw_trigger = no
+	NOT = { this = scope:tm_flyter }
+	NOT = { this = scope:tm_feud_lord }
+	NOT = { this = scope:tm_feud_plaintiff }
+	OR = {
+		is_spouse_of = scope:tm_feud_plaintiff
+		is_close_family_of = scope:tm_feud_plaintiff
+		has_character_modifier = tm_house_friend_modifier
+	}
+	OR = {
+		is_courtier_of = scope:tm_feud_lord
+		is_courtier_of = scope:tm_feud_plaintiff
+		scope:tm_feud_plaintiff.court_owner ?= { this = prev }
+		AND = {
+			exists = scope:tm_feud_plaintiff.court_owner
+			is_courtier_of = scope:tm_feud_plaintiff.court_owner
+		}
+	}
+}
+
+# One who may avenge a Bædling outlaw (tm_feud.0060): alive, grown, free, of a house that is not the killer's.
+# Scope: the candidate. Needs scope:tm_feud_dead and scope:tm_feud_killer.
+tm_feud_avenger_trigger = {
+	is_alive = yes
+	is_adult = yes
+	is_imprisoned = no
+	exists = house
+	NOT = { this = scope:tm_feud_killer }
+	NOT = { this = scope:tm_feud_dead }
+	scope:tm_feud_killer = { exists = house }
+	NOT = { house = scope:tm_feud_killer.house }
+	tm_flavour_ready_trigger = yes
+}
+
+# A child of the receiving hall who may be fostered to seal a settlement (tm_feud_find_ward_effect): unmarried, under
+# sixteen, without a guardian, free and unlanded. Scope: the child.
+tm_feud_foster_ward_trigger = {
+	is_alive = yes
+	age < 16
+	is_married = no
+	is_imprisoned = no
+	is_ruler = no
+	num_of_relation_guardian = 0
+}

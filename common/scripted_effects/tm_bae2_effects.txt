@@ -133,20 +133,44 @@ tm_bae2_ai_find_plotter_effect = {
 # Outlawry (Grágás K §§51-55; Mitchell pp. 159-61; Ahola ch. 5; Miller ch. 7). Scope: the outlaw. Needs
 # scope:tm_bae2_lord (the court where the suit was heard) and scope:tm_bae2_accuser.
 
-# Lesser outlawry: she pays the life-ring to the lord who held the court and goes abroad for three winters
-# (K §§51-53). The Gulaþing church law sends a sorceress out of the realm (Mitchell p. 160-61).
+# Lesser outlawry: she goes abroad for three winters (K §§51-53). The Gulaþing church law sends a sorceress out of the
+# realm (Mitchell p. 160-61). The life-ring is paid at the confiscation court (tm_bae2.0105, tm_bae2_forfeit_effect),
+# which runs this effect once it holds.
 tm_bae2_lesser_outlawry_effect = {
 	add_character_modifier = { modifier = tm_bae2_lesser_outlaw_modifier years = 3 }
 	set_variable = { name = tm_bae2_accuser value = scope:tm_bae2_accuser }
 	set_variable = { name = tm_bae2_outlawry_cooldown value = yes years = 10 }
-	if = {
-		limit = { gold >= 10 }
-		pay_short_term_gold = { target = scope:tm_bae2_lord gold = 10 }
-	}
 	scope:tm_bae2_accuser = {
 		add_opinion = { target = prev modifier = tm_bae2_outlawed_by_me_opinion }
 	}
 	tm_bae2_go_abroad_effect = yes
+}
+
+# The oath of compurgation: six good housewives, three on each side of her (Gulaþing, Mitchell pp. 160-61), or in
+# Iceland a jury of twelve (Grágás, Mitchell p. 159). Cleared, the accuser is the slanderer (p. 150); if the oath
+# fails, lesser outlawry, once the confiscation court has sat. Scope and root: the one sued. Needs scope:tm_bae2_lord
+# and scope:tm_bae2_accuser.
+tm_bae2_oath_effect = {
+	random_list = {
+		50 = {
+			modifier = { add = 20 tm_house_member_trigger = yes }
+			modifier = { add = 15 diplomacy >= 12 }
+			modifier = { add = -20 scope:tm_bae2_lord = { opinion = { target = root value < -20 } } }
+			set_variable = { name = tm_bae2_outlawry_cooldown value = yes years = 10 }
+			scope:tm_bae2_accuser = { add_prestige = minor_prestige_loss }
+			tm_feud_tally_effect = { WHAT = out_oath_held }
+			scope:tm_bae2_lord = {
+				send_interface_toast = {
+					title = tm_bae2.0101.cleared
+					left_icon = scope:tm_bae2_outlaw
+					right_icon = scope:tm_bae2_accuser
+				}
+			}
+		}
+		50 = {
+			tm_bae2_call_court_effect = { SENTENCE = flag:lesser }
+		}
+	}
 }
 
 # Full outlawry: she would not pay the ring, or would not go. Killable by anyone, no standing at law. A woman with a
@@ -214,12 +238,121 @@ tm_bae2_go_abroad_effect = {
 	}
 }
 
-# A reprieve: the sentence is lifted.
+# A reprieve: the sentence is lifted (or, before the court, lapses).
 tm_bae2_lift_outlawry_effect = {
 	remove_character_modifier = tm_bae2_lesser_outlaw_modifier
 	remove_character_modifier = tm_bae2_full_outlaw_modifier
 	remove_variable = tm_bae2_accuser
 	remove_variable = tm_feud_passage
+	remove_variable = tm_bae2_pending_court
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Wave 7 (docs/wave7/baedling.md §§1b-1d, 3a-3d).
+
+# The confiscation court (féránsdómr) is called. "A fortnight after the sentence, normally outside the outlaw's home";
+# in Hrafnkels saga a man is not fully outlawed until it is held (Grágás K §53, research/norse_gragas_laws.md §1.3;
+# Ahola p. 97). So the sentence waits: $SENTENCE$ is flag:lesser or flag:full. The accuser must hold it
+# (tm_bae2.0105, 14 days); if he dies first, no court is held and the flag runs out with nothing done. Scope: the one
+# sentenced. Needs scope:tm_bae2_lord and scope:tm_bae2_accuser.
+tm_bae2_call_court_effect = {
+	set_variable = { name = tm_bae2_pending_court value = $SENTENCE$ days = 30 }
+	set_variable = { name = tm_bae2_outlawry_cooldown value = yes years = 10 }
+	save_scope_value_as = { name = tm_bae2_sentence value = $SENTENCE$ }
+	tm_feud_tally_effect = { WHAT = out_court_called }
+	scope:tm_bae2_accuser = { trigger_event = { id = tm_bae2.0105 days = 14 } }
+}
+
+# The court holds: her silver is split (needs scope:tm_bae2_forfeit, the sum). Iceland sent half to the prosecutor and
+# half to the men of the assembly, "none to a king or a bishop" (Grágás K §53); the lord stands for the assembly here,
+# and the same split serves Norway before and after Magnus. Magnus's New Law (Norway 1164 to c. 1200) sent confiscated
+# goods half to the king and half to the bishop (research/norse_gade_homosexuality_law.md rows 5-6): here the lord and
+# his chaplain. Scope: the one sentenced. Needs scope:tm_bae2_lord and scope:tm_bae2_accuser.
+tm_bae2_forfeit_effect = {
+	if = {
+		limit = { scope:tm_bae2_forfeit > 0 }
+		if = {
+			limit = { scope:tm_bae2_lord = { is_alive = yes } }
+			scope:tm_bae2_lord = { save_scope_as = tm_bae2_share_a }
+		}
+		else = {
+			scope:tm_bae2_accuser = { save_scope_as = tm_bae2_share_a }
+		}
+		if = {
+			limit = {
+				scope:tm_bae2_lord = {
+					is_alive = yes
+					tm_bae3_lord_magnus_law_trigger = yes
+				}
+			}
+			scope:tm_bae2_lord.cp:councillor_court_chaplain ?= { save_scope_as = tm_bae2_share_b }
+			if = {
+				limit = { NOT = { exists = scope:tm_bae2_share_b } }
+				scope:tm_bae2_lord = { save_scope_as = tm_bae2_share_b }
+			}
+		}
+		else = {
+			scope:tm_bae2_accuser = { save_scope_as = tm_bae2_share_b }
+		}
+		pay_short_term_gold = {
+			target = scope:tm_bae2_share_a
+			gold = { value = scope:tm_bae2_forfeit multiply = 0.5 }
+		}
+		pay_short_term_gold = {
+			target = scope:tm_bae2_share_b
+			gold = { value = scope:tm_bae2_forfeit multiply = 0.5 }
+		}
+	}
+}
+
+# Penance and the pilgrim roads (Bergen 1324-25: lifelong fasts and "a seven-year pilgrimage outside Norway", on
+# condition that a relapse brings her before the secular arm; Mitchell pp. 123, 169-71). Seven years under penance,
+# abroad at once, and the condition never lapses (tm_bae3_under_condition, read by tm_bae3_under_condition_trigger).
+# Scope: the one sentenced. Needs scope:tm_bae2_lord and scope:tm_bae2_accuser.
+tm_bae2_penance_effect = {
+	add_character_modifier = { modifier = tm_bae2_penance_modifier years = 7 }
+	set_variable = tm_bae3_under_condition
+	set_variable = { name = tm_bae2_outlawry_cooldown value = yes years = 10 }
+	tm_feud_tally_effect = { WHAT = out_penance }
+	tm_bae2_go_abroad_effect = yes
+}
+
+# Handed to the secular arm: a relapse, in a land whose law has made sorcery capital (Norway c. 1300, Scania 1328,
+# Sweden c. 1350; Mitchell pp. 125, 156-57). The lord takes her into his prison. What follows is his to choose, by
+# vanilla's own prison interactions; the mod writes nothing past the cell door. Spring the Cell counts her
+# (tm_bae2_cell_prisoner_trigger). Scope: any. Needs scope:tm_bae2_lord and scope:tm_bae2_outlaw.
+tm_bae2_secular_arm_effect = {
+	scope:tm_bae2_outlaw = {
+		set_variable = tm_bae2_secular_arm
+		set_variable = { name = tm_bae2_outlawry_cooldown value = yes years = 10 }
+	}
+	scope:tm_bae2_lord = {
+		imprison = {
+			target = scope:tm_bae2_outlaw
+			type = dungeon
+		}
+	}
+	tm_feud_tally_effect = { WHAT = out_secular_arm }
+}
+
+# Ride for Sympathy (Flóamanna saga 19, Ahola p. 100: Kolr "rides the district, raises the compensation and is pardoned
+# against the chieftains' will"). Her well-wishers pledge 25 gold each, and the price goes to her accuser as a
+# settlement (tm_bae2.0130, which needs no purse of hers on this path). The pledges are promised, not taken from anyone:
+# the gold is created only if he accepts. Scope: the outlaw.
+tm_bae2_ride_effect = {
+	save_scope_as = tm_bae2_outlaw
+	set_variable = { name = tm_bae2_ride_cooldown value = yes years = 5 }
+	save_scope_value_as = { name = tm_bae2_pledgers value = tm_bae2_well_wishers_value }
+	save_scope_value_as = {
+		name = tm_bae2_price
+		value = {
+			value = tm_bae2_well_wishers_value
+			multiply = 25
+		}
+	}
+	save_scope_value_as = { name = tm_bae2_ride value = yes }
+	tm_feud_tally_effect = { WHAT = out_rides }
+	var:tm_bae2_accuser = { trigger_event = tm_bae2.0130 }
 }
 
 # ---------------------------------------------------------------------------------------------------

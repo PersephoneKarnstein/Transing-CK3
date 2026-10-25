@@ -8,7 +8,8 @@ What it reads (written by common/scripted_effects/tm_tracking_effects.txt and tm
   - the seats (tm_seat_branch on the seat county: vassal, lord or unheld) and who holds them now;
   - the characters made at game start (global lists tm_seeds_<seat>): alive or dead, faith, court;
   - the Women's Chamber's run-wide counts (globals tm_dl3_n_<step>, from tm_dl3_effects.txt);
-  - the Bædling Account's run-wide counts (globals tm_feud_n_<step>, from tm_feud_effects.txt).
+  - the Bædling Account's run-wide counts (globals tm_feud_n_<step>, from tm_feud_effects.txt);
+  - Ha-Nehpakhot's households and patrons' falls (globals tm_hn4_n_<step>, from tm_hn4_effects.txt).
 Saves must be plain text: turn off "compress saves" in the game settings, and do not play ironman.
 """
 import re
@@ -245,6 +246,38 @@ def main(path):
         print('No counts (the save predates the Account, or nothing has been entered).')
     print()
 
+    # Bædling, wave 7 (tm_feud_tally_effect): the rest of the feud, outlawry and the law, the era's news and lore.
+    def wave7(title, names, legend):
+        print(f'== {title} ==')
+        if any(f'tm_feud_n_{s}' in gvars for s in names):
+            print('  '.join(f'{s} {int(gvars.get(f"tm_feud_n_{s}") or 0)}' for s in names))
+            print(legend)
+        else:
+            print('No counts (the save predates wave 7, or nothing has happened yet).')
+        print()
+    wave7('Bædling: the feud (wave 7)',
+          ('requital_higher', 'requital_lower', 'account_admitted', 'account_refused', 'refused_unwritten', 'refused_answered',
+           'self_judgment_modest', 'self_judgment_heavy', 'self_judgment_remit', 'fostered_seal',
+           'avenge_offered', 'avenge_taken', 'avenge_rested', 'nid_borne', 'nid_no_bearer'),
+          'requital_higher / _lower: requitals on someone of higher or lower rank; account_admitted / _refused: a lord who\n'
+          'wronged a Bædling woman ruler kept or refused her Account; refused_unwritten / _answered: wrongs not written, and her\n'
+          'answers with honour; self_judgment_*: awards set; fostered_seal: settlements sealed by fostering; avenge_*: an\n'
+          "outlaw's kin offered, took or let rest a private Account; nid_borne / nid_no_bearer: suits a man carried, or none could.")
+    wave7('Bædling: outlawry and the law (wave 7)',
+          ('out_suits', 'out_iceland_client', 'out_iceland_no_client', 'out_oath_held', 'out_court_called', 'out_court_held',
+           'out_court_failed', 'out_penance', 'out_secular_arm', 'out_rides', 'out_ride_settled', 'out_ride_refused',
+           'out_harboured', 'out_harbour_paid', 'out_harbour_refused', 'out_harbour_witnessed', 'out_holms'),
+          'out_suits: suits brought; out_iceland_*: Icelandic suits on a client, or with none; out_oath_held: cleared by oath;\n'
+          'out_court_*: confiscation courts called, held, failed (the sentence lapses); out_penance: penance taken;\n'
+          'out_secular_arm: relapses handed over; out_ride*: rides for sympathy, and their outcomes; out_harbour*: outlaws\n'
+          "kept by a House's lord, and the summons answered; out_holms: outlaws' holms named.")
+    wave7('Bædling: the era and lore (wave 7)',
+          ('bae3_kings_example', 'bae3_bishops_letter', 'bae3_islands_news', 'bae3_seidmenn_charge', 'bae3_site_story',
+           'bae3_calling_herself', 'bae3_warding_shirt'),
+          "kings_example: the King's Example told; bishops_letter: edicts on a House; islands_news: Word from the Islands;\n"
+          "seidmenn_charge: They Say He Keeps Seiðmenn; site_story: holy-site stories; calling_herself: the Rykener echo;\n"
+          'warding_shirt: shirts woven.')
+
     # The Council of the Two Schools (tm_dl4_tally_effect): Adelphai Dorleyaiou, run-wide.
     print('== Council of the Two Schools ==')
     gy = gvars.get('tm_dl2_galenic_year')
@@ -269,6 +302,17 @@ def main(path):
               'chrysobull: charters won for a House; estate: counties the throne granted.')
     else:
         print('No counts (the save predates the tally, or the chamber has never written).')
+    print()
+
+    # Ha-Nehpakhot, wave 6 (tm_hn4_tally_effect): run-wide.
+    print('== Ha-Nehpakhot: households and falls ==')
+    hsteps = ('households', 'household_joins', 'falls')
+    if any(f'tm_hn4_n_{s}' in gvars for s in hsteps):
+        print('  '.join(f'{s} {int(gvars.get(f"tm_hn4_n_{s}") or 0)}' for s in hsteps))
+        print('households: households of the street sent for; household_joins: members of those households the kahal took in;\n'
+              'falls: patrons of the sect who died while holding the translation patronage.')
+    else:
+        print('No counts (the save predates wave 6, or nothing has happened yet).')
     print()
 
     # Seeds.

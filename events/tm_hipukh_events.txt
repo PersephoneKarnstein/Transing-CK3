@@ -199,6 +199,11 @@ tm_hipukh.0001 = {
 				modifier = { add = 20 has_personal_tenet_flag = tm_personal_turning_easier }
 				modifier = { add = 10 has_variable = tm_turning_women_synagogue }
 				modifier = { add = 10 has_variable = tm_hn2_women_seat }	# a seat of her own below (Arles 1409/1452; tm_hn2.0050)
+				modifier = {							# the street is afraid after a patron's fall (tm_hn4.0001), unless she was sheltered
+					add = -10
+					tm_hn4_street_afraid_trigger = yes
+					NOT = { has_variable = tm_hn4_sheltered }
+				}
 				modifier = { add = 20 has_variable = tm_turning_kept_dress }
 				modifier = { add = 10 has_variable = tm_hn3_purim_fire }	# she leapt the Purim fire (wave 3; Hirschberg p. 170)
 				modifier = { add = 15 has_variable = tm_hevrah_taught }
@@ -363,6 +368,11 @@ tm_hipukh.0003 = {
 				modifier = { add = 10 scope:tm_council_women = yes }	# the women of the street sit in the council
 				modifier = { add = 20 has_character_modifier = tm_taught_answers_modifier }	# Teach Her the Answers (tm_mech_interactions.txt)
 				modifier = { add = 10 scope:tm_hn2_spindle_heard = yes }	# argued before at the spindle (tm_hn2.0002)
+				modifier = {							# the street is afraid after a patron's fall (tm_hn4.0001)
+					add = -15
+					tm_hn4_street_afraid_trigger = yes
+					NOT = { has_variable = tm_hn4_sheltered }
+				}
 				desc = tm_hipukh.0003.a.win
 				add_prestige = 75
 				location ?= { county ?= { set_variable = { name = tm_worthies_licence value = yes years = 10 } } }
@@ -384,6 +394,11 @@ tm_hipukh.0003 = {
 				modifier = { add = 10 scope:tm_council_women = yes }
 				modifier = { add = 20 has_character_modifier = tm_taught_answers_modifier }	# Teach Her the Answers (tm_mech_interactions.txt)
 				modifier = { add = 10 scope:tm_hn2_spindle_heard = yes }	# argued before at the spindle (tm_hn2.0002)
+				modifier = {							# the street is afraid after a patron's fall (tm_hn4.0001)
+					add = -15
+					tm_hn4_street_afraid_trigger = yes
+					NOT = { has_variable = tm_hn4_sheltered }
+				}
 				desc = tm_hipukh.0003.e.win
 				add_prestige = 75
 				location ?= { county ?= { set_variable = { name = tm_worthies_licence value = yes years = 10 } } }

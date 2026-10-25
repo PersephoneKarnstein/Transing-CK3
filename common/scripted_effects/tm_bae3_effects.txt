@@ -1,0 +1,139 @@
+﻿# Crusader Dolls — Bædling, wave 7: era news and lore (events/tm_bae3_events.txt; triggers tm_bae3_lore_triggers.txt).
+
+# Out of a realm whose king has taken the cross, to a court of the six faiths beyond it; else the road. Like
+# tm_bae2_go_abroad_effect, but she is no outlaw, so no host is told she is one (tm_bae2.0110 is not fired).
+# Scope: the one who leaves. She is a courtier.
+tm_bae3_leave_realm_effect = {
+	save_scope_as = tm_bae3_leaver
+	top_liege = { save_scope_as = tm_bae3_realm_top }
+	if = {
+		limit = {
+			any_ruler = {
+				NOT = { top_liege = scope:tm_bae3_realm_top }
+				is_imprisoned = no
+				rite ?= { rite_has_parameter = tm_sisters_faith }
+			}
+		}
+		random_ruler = {
+			limit = {
+				NOT = { top_liege = scope:tm_bae3_realm_top }
+				is_imprisoned = no
+				rite ?= { rite_has_parameter = tm_sisters_faith }
+			}
+			weight = {
+				base = 1
+				modifier = { add = 4 tm_holds_sisters_house_trigger = yes }
+				modifier = { add = 2 faith = scope:tm_bae3_leaver.faith }
+			}
+			add_courtier = scope:tm_bae3_leaver
+		}
+	}
+	else = {
+		move_to_pool = yes
+	}
+}
+
+# The story of a holy site the Bædling ruler holds and has not yet heard told: the first in order, once per character.
+# Scope: the ruler. Fired from the yearly pulse (she held it already) and on_title_gain (tm_bae3_on_actions.txt). The
+# caller checks the flavour budget; this spends it when an event fires.
+tm_bae3_site_story_effect = {
+	if = {
+		limit = {
+			NOT = { has_variable = tm_bae3_site_york }
+			has_title = title:c_north_riding
+		}
+		tm_bae3_site_story_fire_effect = { EVENT = tm_bae3.0200 }
+	}
+	else_if = {
+		limit = {
+			NOT = { has_variable = tm_bae3_site_trondheim }
+			has_title = title:c_trandheim
+		}
+		tm_bae3_site_story_fire_effect = { EVENT = tm_bae3.0201 }
+	}
+	else_if = {
+		limit = {
+			NOT = { has_variable = tm_bae3_site_kyiv }
+			has_title = title:c_kiev
+		}
+		tm_bae3_site_story_fire_effect = { EVENT = tm_bae3.0202 }
+	}
+	else_if = {
+		limit = {
+			NOT = { has_variable = tm_bae3_site_uppsala }
+			has_title = title:c_upland
+		}
+		tm_bae3_site_story_fire_effect = { EVENT = tm_bae3.0203 }
+	}
+	else_if = {
+		limit = {
+			NOT = { has_variable = tm_bae3_site_gotland }
+			has_title = title:c_gutland
+		}
+		tm_bae3_site_story_fire_effect = { EVENT = tm_bae3.0204 }
+	}
+}
+
+# Scope: the ruler. $EVENT$ = the site's event; it sets its own once-per-character variable in its immediate.
+tm_bae3_site_story_fire_effect = {
+	tm_flavour_spent_effect = yes
+	tm_feud_tally_effect = { WHAT = bae3_site_story }
+	trigger_event = { id = $EVENT$ days = { 7 60 } }
+}
+
+# An English woman's name, given at the broiderer's bench (Calling Herself). Vanilla name_list_english keys. Never
+# Eleanor (the v2 ground rule: no echo is named for her), and not Anne, Elizabeth or Alice, the names of the women of
+# the record (Henningsen p. 252; rykener_and_mobilities.md). Scope: the one named.
+tm_bae3_english_woman_name_effect = {
+	random_list = {
+		10 = { change_first_name = Juliana }
+		10 = { change_first_name = Isabel }
+		10 = { change_first_name = Beatrice }
+		10 = { change_first_name = Constance }
+		10 = { change_first_name = Emma }
+		10 = { change_first_name = Margaret }
+	}
+}
+
+# The broiderer: an older Englishwoman of the town's own faith, who keeps a bench of fine work. Generated, never a
+# woman of the record, so never Elizabeth, Anne or Eleanor. Scope: the one she takes on; saves scope:tm_bae3_broiderer.
+tm_bae3_make_broiderer_effect = {
+	save_scope_as = tm_bae3_apprentice
+	location.county = { save_scope_as = tm_bae3_town_county }
+	create_character = {
+		gender = female
+		age = { 45 62 }
+		culture = scope:tm_bae3_town_county.culture
+		faith = scope:tm_bae3_town_county.faith
+		dynasty = none
+		location = scope:tm_bae3_apprentice.location
+		save_scope_as = tm_bae3_broiderer
+	}
+	scope:tm_bae3_broiderer = {
+		random_list = {
+			10 = { change_first_name = Amice }
+			10 = { change_first_name = Hawise }
+			10 = { change_first_name = Cecilia }
+			10 = { change_first_name = Joan }
+			10 = { change_first_name = Matilda }
+		}
+		add_stewardship_lifestyle_xp = 300
+	}
+}
+
+# The trade at the broiderer's bench or the inn: women's work, a road to standing that is not holy office (rule 7;
+# Henningsen pp. 251–52, 260). Scope: she of tm_bae3.0300; scope:tm_bae3_broiderer.
+tm_bae3_calling_trade_effect = {
+	if = {
+		limit = { var:tm_bae3_trade ?= flag:tapster }
+		add_diplomacy_lifestyle_xp = 100
+	}
+	else = {
+		add_stewardship_lifestyle_xp = 100
+	}
+	add_gold = 15
+	add_opinion = { target = scope:tm_bae3_broiderer modifier = tm_bae3_broiderer_opinion }
+	scope:tm_bae3_broiderer = {
+		add_opinion = { target = scope:tm_bae3_apprentice modifier = tm_bae3_broiderer_opinion }
+	}
+}

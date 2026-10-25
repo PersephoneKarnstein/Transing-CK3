@@ -44,3 +44,25 @@ tm_feud_nid_price_value = {
 	value = 50
 	multiply = scope:tm_feud_stakes
 }
+
+# A victim's rank, for escalation (Miller pp. 183-84: in the Bergthora-Hallgerd feud each killing is one rank higher
+# than the last). The highest landed tier held (0 unlanded, 1 baron... 5 emperor), +1 for a knight or a councillor.
+# Scope: the victim.
+tm_feud_rank_value = {
+	value = highest_held_title_tier
+	if = {
+		limit = {
+			OR = {
+				is_knight = yes
+				is_councillor = yes
+			}
+		}
+		add = 1
+	}
+}
+
+# Self-judgment, the heavy award: twice the bót (Miller pp. 275-76, Snorri goði's "no man will have been dearer").
+tm_feud_heavy_price_value = {
+	value = tm_feud_bot_price_value
+	multiply = 2
+}

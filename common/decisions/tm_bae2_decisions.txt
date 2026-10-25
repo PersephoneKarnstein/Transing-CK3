@@ -74,3 +74,52 @@ tm_bae2_answer_hall_decision = {
 		modifier = { factor = 0 current_military_strength < 300 }
 	}
 }
+
+# Ride for Sympathy (wave 7, docs/wave7/baedling.md §3b). "Kolr rides the district, raises the compensation and is
+# pardoned against the chieftains' will" (Flóamanna saga 19; Ahola p. 100). A full outlaw with two or more well-wishers
+# (sworn sisters, friends, rulers of the six faiths within reach who keep a Sisters' House and think well of her) rides
+# to them; each pledges 25 gold, and the sum goes to her accuser as a settlement (tm_bae2.0130). Once in five years.
+# The AI rides from tm_bae2_yearly_bands.
+tm_bae2_ride_for_sympathy_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/fp2_decision_struggle_hostility.dds"
+	}
+	decision_group_type = adventurer
+	sort_order = 394
+	desc = tm_bae2_ride_for_sympathy_decision_desc
+	selection_tooltip = tm_bae2_ride_for_sympathy_decision_tooltip
+
+	is_shown = {
+		has_character_modifier = tm_bae2_full_outlaw_modifier
+	}
+
+	is_valid = {
+		custom_description = {
+			text = tm_bae2_ride_cooldown_tt
+			NOT = { has_variable = tm_bae2_ride_cooldown }
+		}
+		custom_description = {
+			text = tm_bae2_ride_accuser_tt
+			exists = var:tm_bae2_accuser
+			var:tm_bae2_accuser = { is_alive = yes }
+		}
+		custom_description = {
+			text = tm_bae2_ride_wishers_tt
+			tm_bae2_well_wishers_value >= 2
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+		is_incapable = no
+	}
+
+	effect = {
+		custom_tooltip = tm_bae2_ride_for_sympathy_decision.tt
+		hidden_effect = { tm_bae2_ride_effect = yes }
+	}
+
+	ai_check_interval = 0	# the AI rides from tm_bae2_yearly_bands instead
+	ai_potential = { always = no }
+	ai_will_do = { base = 0 }
+}

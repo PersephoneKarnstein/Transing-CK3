@@ -6,6 +6,8 @@ yearly_global_pulse = {
 		tm_bae2_yearly_outlawry
 		tm_bae2_yearly_bands
 		tm_bae2_yearly_pardon
+		tm_bae2_yearly_harbour
+		tm_bae2_yearly_holm
 	}
 }
 
@@ -94,12 +96,44 @@ tm_bae2_yearly_outlawry = {
 				if = {
 					limit = { exists = scope:tm_bae2_accuser }
 					set_variable = { name = tm_bae2_outlawry_cooldown value = yes years = 10 }
+					# Wave 7 (docs/wave7/baedling.md §1b): Icelandic law held the one who HIRED a seeress liable (Raudvere
+					# pp. 155-61). The sorcery charge passes to her client if one is known; else the suit has no
+					# defendant and falls (tm_bae2.0100).
+					if = {
+						limit = {
+							scope:tm_bae2_charge = flag:seidr
+							scope:tm_bae2_lord = { tm_bae3_lord_icelandic_trigger = yes }
+						}
+						if = {
+							limit = { tm_bae2_has_client_trigger = yes }
+							save_scope_as = tm_bae2_seeress
+							var:tm_bae2_last_seeker = {
+								set_variable = { name = tm_bae2_outlawry_cooldown value = yes years = 10 }
+								save_scope_as = tm_bae2_outlaw
+							}
+						}
+						else = {
+							save_scope_value_as = { name = tm_bae2_no_client value = yes }
+						}
+					}
+					# §1c-1d: a second suit against a woman under a penance's condition, where the law is capital,
+					# goes to the secular arm.
+					else_if = {
+						limit = {
+							tm_bae3_under_condition_trigger = yes
+							scope:tm_bae2_lord = { tm_bae3_lord_capital_law_trigger = yes }
+						}
+						save_scope_value_as = { name = tm_bae2_relapse value = yes }
+					}
 					scope:tm_bae2_lord = {
 						tm_flavour_spent_effect = yes
 						trigger_event = tm_bae2.0100
 					}
 				}
 				clear_saved_scope = tm_bae2_accuser
+				clear_saved_scope = tm_bae2_seeress
+				clear_saved_scope = tm_bae2_no_client
+				clear_saved_scope = tm_bae2_relapse
 			}
 		}
 	}
@@ -171,6 +205,122 @@ tm_bae2_yearly_bands = {
 				save_scope_as = tm_bae2_outlaw
 				save_scope_value_as = { name = tm_bae2_price value = 100 }
 				var:tm_bae2_accuser = { trigger_event = tm_bae2.0130 }
+			}
+		}
+		# Ride for Sympathy for the AI (wave 7, §3b; tm_bae2_ride_for_sympathy_decision for players). Low odds.
+		every_living_character = {
+			limit = {
+				has_character_modifier = tm_bae2_full_outlaw_modifier
+				is_ai = yes
+				NOT = { has_variable = tm_bae2_bot_refused }
+				NOT = { has_variable = tm_bae2_ride_cooldown }
+				tm_bae2_can_ride_trigger = yes
+			}
+			random = {
+				chance = 10
+				tm_bae2_ride_effect = yes
+			}
+		}
+	}
+}
+
+# Harbouring (wave 7, docs/wave7/baedling.md §3c). "Assistance" to an outlaw is shelter, food and ferrying, and was
+# prosecuted (Grágás §1.3, research/norse_gragas_laws.md; Miller p. 238); it is "limited by his popularity" (Ahola
+# p. 97). Each year a full outlaw stays at the court of a ruler who keeps a Sisters' House: the House bears the strain;
+# the honour moves from the pursuer to the one who helps her (Ahola p. 226); and at times the accuser summons the
+# harbourer (tm_bae2.0115, a flavour event).
+tm_bae2_yearly_harbour = {
+	effect = {
+		every_living_character = {
+			limit = { tm_bae2_harboured_trigger = yes }
+			save_scope_as = tm_bae2_outlaw
+			employer = { save_scope_as = tm_bae2_holder }
+			scope:tm_bae2_holder = {
+				random_held_title = {
+					limit = {
+						tier = tier_county
+						has_variable = tm_house
+					}
+					if = {
+						limit = { has_variable = tm_house_strain }
+						change_variable = { name = tm_house_strain add = 1 }
+					}
+					else = {
+						set_variable = { name = tm_house_strain value = 1 }
+					}
+				}
+				add_prestige = 5
+			}
+			tm_feud_tally_effect = { WHAT = out_harboured }
+			if = {
+				limit = {
+					exists = var:tm_bae2_accuser
+					var:tm_bae2_accuser = {
+						is_alive = yes
+						NOT = { this = scope:tm_bae2_holder }
+					}
+				}
+				var:tm_bae2_accuser = {
+					save_scope_as = tm_bae2_accuser
+					add_prestige = -5
+				}
+				if = {
+					limit = { scope:tm_bae2_holder = { tm_flavour_ready_trigger = yes } }
+					random = {
+						chance = 25
+						scope:tm_bae2_holder = {
+							tm_flavour_spent_effect = yes
+							trigger_event = tm_bae2.0115
+						}
+					}
+				}
+				clear_saved_scope = tm_bae2_accuser
+			}
+		}
+	}
+}
+
+# The Outlaw's Holm (wave 7, §3d; Ahola pp. 249-56). A full outlaw's band whose camp has stood three years in one place,
+# on an island or in the mountains (tm_bae2_holm_ground_trigger), holds it well: a small defence while the camp stays,
+# and the county keeps the name. The camp is the band's domicile location (as tm_bae2_hall_in_reach_trigger reads it).
+tm_bae2_yearly_holm = {
+	effect = {
+		every_ruler = {
+			limit = {
+				is_landed = no
+				government_has_flag = government_is_landless_adventurer
+				has_character_modifier = tm_bae2_full_outlaw_modifier
+			}
+			remove_character_modifier = tm_bae2_holm_modifier
+			if = {
+				limit = { exists = domicile.domicile_location }
+				domicile.domicile_location = { save_scope_as = tm_bae2_camp }
+				if = {
+					limit = {
+						exists = var:tm_bae2_camp_at
+						var:tm_bae2_camp_at = { this = scope:tm_bae2_camp }
+					}
+					change_variable = { name = tm_bae2_camp_years add = 1 }
+				}
+				else = {
+					set_variable = { name = tm_bae2_camp_at value = scope:tm_bae2_camp }
+					set_variable = { name = tm_bae2_camp_years value = 1 }
+				}
+				if = {
+					limit = {
+						var:tm_bae2_camp_years >= 3
+						scope:tm_bae2_camp.county ?= { tm_bae2_holm_ground_trigger = { PROV = scope:tm_bae2_camp } }
+					}
+					add_character_modifier = { modifier = tm_bae2_holm_modifier years = 1 }
+					scope:tm_bae2_camp.county = {
+						if = {
+							limit = { NOT = { has_county_modifier = tm_bae2_outlaws_holm_county_modifier } }
+							add_county_modifier = tm_bae2_outlaws_holm_county_modifier
+							tm_feud_tally_effect = { WHAT = out_holms }
+						}
+					}
+				}
+				clear_saved_scope = tm_bae2_camp
 			}
 		}
 	}

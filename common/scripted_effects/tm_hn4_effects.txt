@@ -1,0 +1,72 @@
+﻿# Crusader Dolls — Ha-Nehpakhot, the bailiff's variants and the households of the street (docs/wave6/ha-nehpakhot.md).
+
+# Run-wide counts for the census (tools/census_report.py): households sent for, falls heard.
+tm_hn4_tally_effect = {
+	if = {
+		limit = { NOT = { has_global_variable = tm_hn4_n_$WHAT$ } }
+		set_global_variable = { name = tm_hn4_n_$WHAT$ value = 0 }
+	}
+	change_global_variable = { name = tm_hn4_n_$WHAT$ add = 1 }
+}
+
+# Send for a household of the street. A Jewish household comes to her court with the cost of the road paid: a man, his
+# wife and their child, Rabbanite Jews, not members of the sect. The model is the Arles contract of 1422, which paid a
+# man to bring his wife and child from Barcelona (Stouff, "Les juifs d'Arles" §16). It is service and settlement, not
+# the purchase of protection. At her court the kahal may take them in later (tm_on_actions.txt, the kahal's 4%).
+# Where they come from: Barcelona, or Arles for a ruler in the Crown of Aragon; a ruler in the Maghreb or the Sahel
+# sends to a Jewish quarter of the coast, and the household is of her own land's culture, as the refugees of wave 3 are.
+# Scope: the ruler.
+tm_hn4_send_for_household_effect = {
+	save_scope_as = tm_hn4_host
+	if = {
+		limit = { tm_hn3_capital_in_west_trigger = yes }
+		capital_county.culture = { save_scope_as = tm_hn4_household_culture }
+	}
+	else_if = {
+		limit = { capital_county ?= { tm_hn4_county_in_aragon_trigger = yes } }
+		culture:occitan = { save_scope_as = tm_hn4_household_culture }		# from the street at Arles
+	}
+	else = {
+		culture:sephardi = { save_scope_as = tm_hn4_household_culture }	# from the call at Barcelona
+	}
+	create_character = {
+		gender = male
+		age = { 24 40 }
+		culture = scope:tm_hn4_household_culture
+		faith = faith:rabbinic_faith
+		dynasty = generate
+		employer = scope:tm_hn4_host
+		save_scope_as = tm_hn4_householder
+	}
+	create_character = {
+		gender = female
+		age = { 20 34 }
+		culture = scope:tm_hn4_household_culture
+		faith = faith:rabbinic_faith
+		dynasty = none
+		employer = scope:tm_hn4_host
+		save_scope_as = tm_hn4_householder_wife
+	}
+	scope:tm_hn4_householder = { marry = scope:tm_hn4_householder_wife }
+	create_character = {
+		gender_female_chance = 50
+		age = { 2 9 }
+		culture = scope:tm_hn4_household_culture
+		faith = faith:rabbinic_faith
+		father = scope:tm_hn4_householder
+		mother = scope:tm_hn4_householder_wife
+		dynasty = inherit
+		employer = scope:tm_hn4_host
+		save_scope_as = tm_hn4_householder_child
+	}
+	scope:tm_hn4_householder = {
+		set_variable = tm_hn4_household
+		add_opinion = { target = scope:tm_hn4_host modifier = tm_hn4_household_opinion }
+	}
+	scope:tm_hn4_householder_wife = {
+		set_variable = tm_hn4_household
+		add_opinion = { target = scope:tm_hn4_host modifier = tm_hn4_household_opinion }
+	}
+	scope:tm_hn4_householder_child = { set_variable = tm_hn4_household }
+	tm_hn4_tally_effect = { WHAT = households }
+}

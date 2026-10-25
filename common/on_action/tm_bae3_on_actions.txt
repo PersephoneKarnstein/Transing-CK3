@@ -1,0 +1,285 @@
+﻿# Crusader Dolls — Bædling, wave 7: era news and lore (events/tm_bae3_events.txt). Appended to vanilla on_actions;
+# the effects are our own on_actions, so vanilla's are untouched. Every event here is flavour and spends the budget.
+yearly_global_pulse = {
+	on_actions = { tm_bae3_yearly }
+}
+
+on_title_gain = {
+	on_actions = { tm_bae3_on_title_gain }
+}
+
+tm_bae3_yearly = {
+	effect = {
+		# The Bædling loop: the rite filter first, so the loop stays cheap (as tm_bae5_on_actions.txt).
+		every_living_character = {
+			limit = {
+				rite ?= { rite_has_parameter = tm_seidr_gate }
+				is_adult = yes
+				is_imprisoned = no
+			}
+			save_scope_as = tm_bae3_me			# root is no character in the global pulse
+			clear_saved_scope = tm_bae3_teller	# saved scopes outlive one character of the loop
+			clear_saved_scope = tm_bae3_bishop
+			clear_saved_scope = tm_bae3_house_county
+			clear_saved_scope = tm_bae3_keeper
+			clear_saved_scope = tm_bae3_rival
+			clear_saved_scope = tm_bae3_seidr_one
+			# Word from the Islands: news of a burning, once in 1343–45 and once (rarer) in 1407–09. News, not law.
+			if = {
+				limit = {
+					tm_flavour_ready_trigger = yes
+					tm_bae3_lore_islands_hear_trigger = yes
+					OR = {
+						AND = {
+							current_year >= 1343
+							current_year <= 1345
+							NOT = { has_variable = tm_bae3_islands_1343 }
+						}
+						AND = {
+							current_year >= 1407
+							current_year <= 1409
+							NOT = { has_variable = tm_bae3_islands_1407 }
+						}
+					}
+				}
+				random = {
+					chance = 50
+					modifier = { add = -25 current_year >= 1407 }
+					tm_flavour_spent_effect = yes
+					tm_feud_tally_effect = { WHAT = bae3_islands_news }
+					trigger_event = { id = tm_bae3.0020 days = { 1 200 } }
+				}
+			}
+			# The King's Example: a realm in its conversion years, its king a Christian and not herself. Once in a life.
+			else_if = {
+				limit = {
+					tm_flavour_ready_trigger = yes
+					NOT = { has_variable = tm_bae3_kings_example }
+					top_liege ?= {
+						NOT = { this = scope:tm_bae3_me }
+						religion = religion:christianity_religion
+					}
+					location ?= {
+						county ?= { tm_bae3_lore_conversion_band_trigger = yes }
+					}
+				}
+				random = {
+					chance = 4
+					# The teller: someone at her court, a woman of the faith first.
+					if = {
+						limit = { is_ruler = yes }
+						random_courtier = {
+							limit = {
+								is_adult = yes
+								is_imprisoned = no
+								NOT = { this = scope:tm_bae3_me }
+							}
+							weight = {
+								base = 1
+								modifier = { add = 4 rite ?= { rite_has_parameter = tm_seidr_gate } }
+								modifier = { add = 2 is_female = yes }
+							}
+							save_scope_as = tm_bae3_teller
+						}
+					}
+					else = {
+						employer ?= {
+							random_courtier = {
+								limit = {
+									is_adult = yes
+									is_imprisoned = no
+									NOT = { this = scope:tm_bae3_me }
+								}
+								weight = {
+									base = 1
+									modifier = { add = 4 rite ?= { rite_has_parameter = tm_seidr_gate } }
+									modifier = { add = 2 is_female = yes }
+								}
+								save_scope_as = tm_bae3_teller
+							}
+						}
+					}
+					if = {
+						limit = { exists = scope:tm_bae3_teller }
+						set_variable = tm_bae3_kings_example
+						tm_flavour_spent_effect = yes
+						tm_feud_tally_effect = { WHAT = bae3_kings_example }
+						trigger_event = { id = tm_bae3.0001 days = { 1 200 } }
+					}
+				}
+			}
+			# The Bishop's Letter: from 1300 a Christian realm's bishop forbids offerings at her House (Bergen 1319, the
+			# edict: contesting_orthodoxy §3b). An edict, never a trial. Once in twenty years.
+			else_if = {
+				limit = {
+					is_ruler = yes
+					current_year >= 1300
+					tm_flavour_ready_trigger = yes
+					NOT = { has_variable = tm_bae3_bishops_letter_cd }
+					tm_holds_sisters_house_trigger = yes
+					top_liege ?= {
+						NOT = { this = scope:tm_bae3_me }
+						religion = religion:christianity_religion
+					}
+				}
+				random = {
+					chance = 2
+					top_liege = {
+						if = {
+							limit = { cp:councillor_court_chaplain ?= { religion = religion:christianity_religion } }
+							cp:councillor_court_chaplain = { save_scope_as = tm_bae3_bishop }
+						}
+						else = {
+							save_scope_as = tm_bae3_bishop
+						}
+					}
+					random_held_title = {
+						limit = {
+							tier = tier_county
+							has_variable = tm_house
+						}
+						save_scope_as = tm_bae3_house_county
+					}
+					if = {
+						limit = {
+							exists = scope:tm_bae3_house_county
+							NOT = { scope:tm_bae3_bishop = scope:tm_bae3_me }
+						}
+						set_variable = { name = tm_bae3_bishops_letter_cd value = yes years = 20 }
+						tm_flavour_spent_effect = yes
+						tm_feud_tally_effect = { WHAT = bae3_bishops_letter }
+						trigger_event = { id = tm_bae3.0010 days = { 1 200 } }
+					}
+				}
+			}
+			# The holy sites' stories: a Bædling ruler who already holds a site's county (on_title_gain covers new ones).
+			else_if = {
+				limit = {
+					is_ruler = yes
+					tm_flavour_ready_trigger = yes
+					OR = {
+						AND = {
+							has_title = title:c_north_riding
+							NOT = { has_variable = tm_bae3_site_york }
+						}
+						AND = {
+							has_title = title:c_trandheim
+							NOT = { has_variable = tm_bae3_site_trondheim }
+						}
+						AND = {
+							has_title = title:c_kiev
+							NOT = { has_variable = tm_bae3_site_kyiv }
+						}
+						AND = {
+							has_title = title:c_upland
+							NOT = { has_variable = tm_bae3_site_uppsala }
+						}
+						AND = {
+							has_title = title:c_gutland
+							NOT = { has_variable = tm_bae3_site_gotland }
+						}
+					}
+				}
+				random = {
+					chance = 25
+					tm_bae3_site_story_effect = yes
+				}
+			}
+			# They Say He Keeps Seiðmenn: a daughter of seiðr or a friend of the House at a northern or English court,
+			# and her lord's rival spreads the charge. The event goes to the lord, any faith. Once in ten years.
+			else_if = {
+				limit = {
+					is_ruler = no
+					OR = {
+						has_trait = tm_daughter_of_seidr
+						has_character_modifier = tm_house_friend_modifier
+					}
+					employer ?= { tm_bae3_lore_seidmenn_keeper_trigger = yes }
+				}
+				random = {
+					chance = 2
+					employer = { save_scope_as = tm_bae3_keeper }
+					scope:tm_bae3_keeper = {
+						if = {
+							limit = {
+								any_relation = {
+									type = rival
+									tm_bae3_lore_seidmenn_rival_trigger = { KEEPER = scope:tm_bae3_keeper }
+								}
+							}
+							random_relation = {
+								type = rival
+								limit = { tm_bae3_lore_seidmenn_rival_trigger = { KEEPER = scope:tm_bae3_keeper } }
+								save_scope_as = tm_bae3_rival
+							}
+						}
+						else_if = {
+							limit = {
+								any_neighboring_and_across_water_top_liege_realm_owner = {
+									tm_bae3_lore_seidmenn_rival_trigger = { KEEPER = scope:tm_bae3_keeper }
+								}
+							}
+							random_neighboring_and_across_water_top_liege_realm_owner = {
+								limit = { tm_bae3_lore_seidmenn_rival_trigger = { KEEPER = scope:tm_bae3_keeper } }
+								save_scope_as = tm_bae3_rival
+							}
+						}
+					}
+					if = {
+						limit = { exists = scope:tm_bae3_rival }
+						scope:tm_bae3_me = { save_scope_as = tm_bae3_seidr_one }
+						scope:tm_bae3_keeper = {
+							set_variable = { name = tm_bae3_seidmenn_cd value = yes years = 10 }
+							tm_flavour_spent_effect = yes
+							tm_feud_tally_effect = { WHAT = bae3_seidmenn_charge }
+							trigger_event = { id = tm_bae3.0100 days = { 1 200 } }
+						}
+					}
+				}
+			}
+		}
+
+		# Calling Herself, 1350–1453: any of the six faiths, in an English county. The date first, then the rite, so
+		# the loop runs only in the window and only over the faiths.
+		if = {
+			limit = {
+				current_year >= 1350
+				current_year <= 1453
+			}
+			every_living_character = {
+				limit = {
+					rite ?= { rite_has_parameter = tm_sisters_faith }
+					tm_bae3_lore_calling_candidate_trigger = yes
+				}
+				random = {
+					chance = 3
+					set_variable = tm_bae3_called_herself
+					tm_flavour_spent_effect = yes
+					tm_feud_tally_effect = { WHAT = bae3_calling_herself }
+					trigger_event = { id = tm_bae3.0300 days = { 1 200 } }
+				}
+			}
+		}
+	}
+}
+
+# The holy sites' stories when a Bædling ruler gains a site's county. Root = the one who gains it; scope:title
+# (vanilla, title_on_actions.txt).
+tm_bae3_on_title_gain = {
+	trigger = {
+		rite ?= { rite_has_parameter = tm_seidr_gate }
+		tm_flavour_ready_trigger = yes
+		scope:title = {
+			OR = {
+				this = title:c_north_riding
+				this = title:c_trandheim
+				this = title:c_kiev
+				this = title:c_upland
+				this = title:c_gutland
+			}
+		}
+	}
+	effect = {
+		tm_bae3_site_story_effect = yes
+	}
+}

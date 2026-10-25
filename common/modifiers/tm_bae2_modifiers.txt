@@ -35,3 +35,25 @@ tm_bae2_hall_returned_county_modifier = {
 	levy_size = 0.2
 	monthly_county_control_growth_add = 0.5
 }
+
+# Penance and the pilgrim roads (wave 7, docs/wave7/baedling.md §1d): seven years of fasting and pilgrimage outside the
+# realm, as the bishop of Bergen set for a woman of Bergen in 1324-25 (Mitchell pp. 123, 169-71). Character modifier,
+# 7 years. Not outlawry: no one may kill her for it. The condition it leaves behind does not lapse.
+tm_bae2_penance_modifier = {
+	icon = piety_negative
+	monthly_prestige = -0.2
+	stress_gain_mult = 0.1
+}
+
+# The Outlaw's Holm (wave 7, §3d): a full outlaw's band has held its camp three years or more on an island or in the
+# mountains (Gísli on Hergilsey, "a curse that forgot the islands"; the outlaw names the ground he holds: Ahola
+# pp. 249-56). Character modifier, renewed each year while the camp stays (tm_bae2_yearly_holm).
+tm_bae2_holm_modifier = {
+	icon = martial_positive
+	defender_advantage = 2
+}
+
+# The county remembers that an outlaw held it. Permanent county modifier; flavour only.
+tm_bae2_outlaws_holm_county_modifier = {
+	icon = county_modifier_control_mixed
+}

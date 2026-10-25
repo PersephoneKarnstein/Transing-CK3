@@ -1,0 +1,42 @@
+﻿# Crusader Dolls — Bædling, wave 7: era news and lore (events/tm_bae3_events.txt).
+
+# The King's Example: she keeps the old rites open in a realm whose king has taken the cross.
+tm_bae3_open_rites_opinion = {
+	opinion = -15
+	years = 10
+	decaying = yes
+}
+
+# The Bishop's Letter: she answered the bishop's letter instead of obeying it.
+tm_bae3_answered_bishop_opinion = {
+	opinion = -15
+	years = 10
+	decaying = yes
+}
+
+# They Say He Keeps Seiðmenn: the rival's charge, heard by vassals of another faith (Tolley p. 154). True or not.
+tm_bae3_seidmenn_rumour_opinion = {
+	opinion = -10
+	years = 5
+}
+
+# She owned the charge before the Christian vassals.
+tm_bae3_owned_seidr_opinion = {
+	opinion = -10
+	years = 10
+	decaying = yes
+}
+
+# The Warding Shirt: woven for me.
+tm_bae3_warding_shirt_opinion = {
+	opinion = 20
+	years = 10
+	decaying = yes
+}
+
+# Calling Herself: the broiderer took me on.
+tm_bae3_broiderer_opinion = {
+	opinion = 25
+	years = 20
+	decaying = yes
+}

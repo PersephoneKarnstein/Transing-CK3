@@ -11,6 +11,14 @@
 # A wrong. $VICTIM$ the one wronged, $WRONGDOER$ the one who did it, $REASON$ a house-relation reason
 # (house_relation_reason_<REASON>_desc) or none, $VANILLA$ yes when vanilla's house relation should move too (the
 # wrongs vanilla does not count itself). Scope: any.
+# Before the Account is written (tm_feud_enter_wrong_effect), two questions of honour (wave 7):
+# - The refused Account (Miller p. 32: "a free man did not generally compete for honor with... a man with a woman";
+#   pp. 32-33, a man of rank wronged by a lesser person disciplines rather than feuds). A North-Germanic man of
+#   rank who wrongs a Bædling woman ruler may refuse to keep an Account with her (tm_feud.0050). If he did, her
+#   house's next wrong against his is answered with honour, and his further wrongs go unwritten.
+# - Her answer: the first wrong her house does his after he refused is "a requital with honour", decided by "the
+#   uninvolved" (p. 188).
+# Vanilla's house relation moves in every case: what the hall reckons is not what the world saw.
 tm_feud_wrong_effect = {
 	if = {
 		limit = {
@@ -26,56 +34,28 @@ tm_feud_wrong_effect = {
 		$WRONGDOER$.house = { save_scope_as = tm_feud_debtor }
 		$VICTIM$ = { save_scope_as = tm_feud_victim }
 		$WRONGDOER$ = { save_scope_as = tm_feud_wrongdoer }
-		# The truce-breaker, "one of the lowest of the low" (Miller p. 280): a wrong within ten years of a settlement.
-		if = {
-			limit = {
-				scope:tm_feud_creditor = {
-					is_target_in_variable_list = { name = tm_acc_settled target = scope:tm_feud_debtor }
-				}
-			}
-			scope:tm_feud_wrongdoer = { add_prestige = major_prestige_loss }
-			scope:tm_feud_creditor = { remove_list_variable = { name = tm_acc_settled target = scope:tm_feud_debtor } }
-			scope:tm_feud_debtor = { remove_list_variable = { name = tm_acc_settled target = scope:tm_feud_creditor } }
-			scope:tm_feud_victim = {
-				add_opinion = { target = scope:tm_feud_wrongdoer modifier = tm_feud_truce_broken_opinion }
-			}
-			tm_feud_tally_effect = { WHAT = truce_broken }
-		}
-		# A requital: her house owed his, and this pays one off. Else his house now owes hers one more.
-		if = {
+		if = {	# her house answers the man who refused her: a requital with honour
 			limit = {
 				scope:tm_feud_debtor = {
-					is_target_in_variable_list = { name = tm_acc_1 target = scope:tm_feud_creditor }
+					is_target_in_variable_list = { name = tm_acc_refused target = scope:tm_feud_creditor }
 				}
 			}
-			scope:tm_feud_debtor = { tm_feud_pay_one_effect = { DEBTOR = scope:tm_feud_creditor } }
-			tm_feud_tally_effect = { WHAT = requitals }
+			tm_feud_answer_with_honour_effect = yes
+		}
+		else_if = {	# he keeps no Account with her house: nothing is written
+			limit = {
+				scope:tm_feud_creditor = {
+					is_target_in_variable_list = { name = tm_acc_refused target = scope:tm_feud_debtor }
+				}
+			}
+			tm_feud_tally_effect = { WHAT = refused_unwritten }
+		}
+		else_if = {
+			limit = { tm_feud_may_refuse_trigger = yes }
+			scope:tm_feud_wrongdoer = { trigger_event = tm_feud.0050 }
 		}
 		else = {
-			scope:tm_feud_creditor = { tm_feud_add_one_effect = { DEBTOR = scope:tm_feud_debtor } }
-			tm_feud_tally_effect = { WHAT = wrongs }
-			scope:tm_feud_creditor.house_head ?= {
-				if = {
-					limit = { is_ai = no }
-					send_interface_toast = {
-						type = event_toast_effect_bad
-						title = tm_feud_gift_owed_toast
-						left_icon = scope:tm_feud_victim
-						right_icon = scope:tm_feud_wrongdoer
-					}
-				}
-			}
-			scope:tm_feud_debtor.house_head ?= {
-				if = {
-					limit = { is_ai = no }
-					send_interface_toast = {
-						type = event_toast_effect_neutral
-						title = tm_feud_gift_given_toast
-						left_icon = scope:tm_feud_wrongdoer
-						right_icon = scope:tm_feud_victim
-					}
-				}
-			}
+			tm_feud_enter_wrong_effect = yes
 		}
 		if = {
 			limit = { always = $VANILLA$ }
@@ -91,6 +71,189 @@ tm_feud_wrong_effect = {
 			}
 		}
 	}
+}
+
+# The wrong written in the Account. Scope: any. Needs scope:tm_feud_creditor, scope:tm_feud_debtor (the houses),
+# scope:tm_feud_victim and scope:tm_feud_wrongdoer, as saved by tm_feud_wrong_effect.
+# Escalation by rank (Miller pp. 183-84: in the Bergthora-Hallgerd feud each killing is one rank higher than the last;
+# each side overvalues its own dead, p. 200). The debtor house keeps the rank of the last one it wronged
+# (tm_acc_last_rank, tm_feud_rank_value). A requital on someone of higher rank overbalances: it pays one off and
+# puts one back the other way. One on someone lower is "not a worthy object" and pays nothing. A child is never the
+# higher target (p. 207: women and children are not proper targets). One variable per house, not per pair of
+# houses: most houses keep only one Account, so the approximation rarely shows.
+tm_feud_enter_wrong_effect = {
+	scope:tm_feud_victim = { save_scope_value_as = { name = tm_feud_rank value = tm_feud_rank_value } }
+	# The truce-breaker, "one of the lowest of the low" (Miller p. 280): a wrong within the years of a settlement.
+	# The bót the wronged house took now "finances the return blow" (p. 184): its head arms for two years.
+	if = {
+		limit = {
+			scope:tm_feud_creditor = {
+				is_target_in_variable_list = { name = tm_acc_settled target = scope:tm_feud_debtor }
+			}
+		}
+		scope:tm_feud_wrongdoer = { add_prestige = major_prestige_loss }
+		scope:tm_feud_creditor = { remove_list_variable = { name = tm_acc_settled target = scope:tm_feud_debtor } }
+		scope:tm_feud_debtor = { remove_list_variable = { name = tm_acc_settled target = scope:tm_feud_creditor } }
+		scope:tm_feud_victim = {
+			add_opinion = { target = scope:tm_feud_wrongdoer modifier = tm_feud_truce_broken_opinion }
+		}
+		scope:tm_feud_creditor.house_head ?= {
+			add_character_modifier = { modifier = tm_feud_bot_spent_on_spears_modifier years = 2 }
+		}
+		tm_feud_tally_effect = { WHAT = truce_broken }
+	}
+	# A requital: her house owed his, and this pays one off. Else his house now owes hers one more.
+	if = {
+		limit = {
+			scope:tm_feud_debtor = {
+				is_target_in_variable_list = { name = tm_acc_1 target = scope:tm_feud_creditor }
+			}
+		}
+		if = {	# higher: it overbalances
+			limit = {
+				scope:tm_feud_victim = { is_adult = yes }
+				scope:tm_feud_creditor = { has_variable = tm_acc_last_rank }
+				scope:tm_feud_rank > scope:tm_feud_creditor.var:tm_acc_last_rank
+			}
+			scope:tm_feud_debtor = { tm_feud_pay_one_effect = { DEBTOR = scope:tm_feud_creditor } }
+			scope:tm_feud_creditor = { tm_feud_add_one_effect = { DEBTOR = scope:tm_feud_debtor } }
+			scope:tm_feud_debtor = { set_variable = { name = tm_acc_last_rank value = scope:tm_feud_rank } }
+			scope:tm_feud_wrongdoer = { add_prestige = minor_prestige_gain }
+			tm_feud_rank_toast_effect = { TITLE = tm_feud_overbalance_toast TYPE = event_toast_effect_neutral }
+			tm_feud_tally_effect = { WHAT = requital_higher }
+		}
+		else_if = {	# lower: not a worthy object
+			limit = {
+				scope:tm_feud_creditor = { has_variable = tm_acc_last_rank }
+				scope:tm_feud_rank < scope:tm_feud_creditor.var:tm_acc_last_rank
+			}
+			scope:tm_feud_wrongdoer = { add_prestige = minor_prestige_loss }
+			tm_feud_rank_toast_effect = { TITLE = tm_feud_unworthy_toast TYPE = event_toast_effect_bad }
+			tm_feud_tally_effect = { WHAT = requital_lower }
+		}
+		else = {
+			scope:tm_feud_debtor = { tm_feud_pay_one_effect = { DEBTOR = scope:tm_feud_creditor } }
+		}
+		tm_feud_tally_effect = { WHAT = requitals }
+	}
+	else = {
+		scope:tm_feud_creditor = { tm_feud_add_one_effect = { DEBTOR = scope:tm_feud_debtor } }
+		scope:tm_feud_debtor = { set_variable = { name = tm_acc_last_rank value = scope:tm_feud_rank } }
+		tm_feud_tally_effect = { WHAT = wrongs }
+		scope:tm_feud_creditor.house_head ?= {
+			if = {
+				limit = { is_ai = no }
+				send_interface_toast = {
+					type = event_toast_effect_bad
+					title = tm_feud_gift_owed_toast
+					left_icon = scope:tm_feud_victim
+					right_icon = scope:tm_feud_wrongdoer
+				}
+			}
+		}
+		scope:tm_feud_debtor.house_head ?= {
+			if = {
+				limit = { is_ai = no }
+				send_interface_toast = {
+					type = event_toast_effect_neutral
+					title = tm_feud_gift_given_toast
+					left_icon = scope:tm_feud_wrongdoer
+					right_icon = scope:tm_feud_victim
+				}
+			}
+		}
+	}
+}
+
+# An off-screen word that a requital was weighed by rank: to the requiter and the head of the house requited, if
+# players. $TITLE$ the toast, $TYPE$ its kind. Needs the scopes of tm_feud_enter_wrong_effect.
+tm_feud_rank_toast_effect = {
+	scope:tm_feud_debtor.house_head ?= {
+		if = {
+			limit = { is_ai = no }
+			send_interface_toast = {
+				type = $TYPE$
+				title = $TITLE$
+				left_icon = scope:tm_feud_wrongdoer
+				right_icon = scope:tm_feud_victim
+			}
+		}
+	}
+	scope:tm_feud_creditor.house_head ?= {
+		if = {
+			limit = { is_ai = no }
+			send_interface_toast = {
+				type = $TYPE$
+				title = $TITLE$
+				left_icon = scope:tm_feud_wrongdoer
+				right_icon = scope:tm_feud_victim
+			}
+		}
+	}
+}
+
+# Her house answers the man who refused to keep an Account with her (tm_feud.0050): a requital with honour. Nothing is
+# written; the refusal is closed. She who answers gains what he loses, and the uninvolved (Bædling and Germanic
+# rulers in her range) think better of her (Miller p. 188). Needs the scopes of tm_feud_wrong_effect, with her house
+# as scope:tm_feud_debtor.
+tm_feud_answer_with_honour_effect = {
+	scope:tm_feud_debtor = {
+		remove_list_variable = { name = tm_acc_refused target = scope:tm_feud_creditor }
+	}
+	scope:tm_feud_wrongdoer = { add_prestige = medium_prestige_gain }
+	if = {
+		limit = {
+			scope:tm_feud_debtor = {
+				has_variable = tm_acc_refuser
+				var:tm_acc_refuser = {
+					is_alive = yes
+					house ?= scope:tm_feud_creditor
+				}
+			}
+		}
+		scope:tm_feud_debtor.var:tm_acc_refuser = { save_scope_as = tm_feud_refuser }
+	}
+	else = {
+		scope:tm_feud_creditor.house_head ?= { save_scope_as = tm_feud_refuser }
+	}
+	scope:tm_feud_refuser ?= { add_prestige = medium_prestige_loss }
+	scope:tm_feud_debtor = { remove_variable = tm_acc_refuser }
+	every_ruler = {
+		limit = {
+			NOT = { this = scope:tm_feud_wrongdoer }
+			NOT = { this = scope:tm_feud_refuser }
+			OR = {
+				faith = faith:tm_baeddel
+				faith.religion = religion:germanic_religion
+			}
+			in_diplomatic_range = scope:tm_feud_wrongdoer
+		}
+		add_opinion = { target = scope:tm_feud_wrongdoer modifier = tm_feud_answered_with_honour_opinion }
+	}
+	scope:tm_feud_wrongdoer = {
+		if = {
+			limit = { is_ai = no }
+			send_interface_toast = {
+				type = event_toast_effect_good
+				title = tm_feud_answered_toast
+				left_icon = scope:tm_feud_wrongdoer
+				right_icon = scope:tm_feud_victim
+				custom_tooltip = tm_feud_answered_toast_tt
+			}
+		}
+	}
+	scope:tm_feud_refuser ?= {
+		if = {
+			limit = { is_ai = no }
+			send_interface_toast = {
+				type = event_toast_effect_bad
+				title = tm_feud_answered_toast
+				left_icon = scope:tm_feud_wrongdoer
+				right_icon = scope:tm_feud_victim
+			}
+		}
+	}
+	tm_feud_tally_effect = { WHAT = refused_answered }
 }
 
 # One more unanswered wrong owed to this house by $DEBTOR$ (a house). Three at most. Scope: the wronged house.
@@ -135,7 +298,8 @@ tm_feud_clear_effect = {
 # Bót is paid and taken (Miller pp. 262-63: arbitration and compensation end most feuds). Scope: any. Needs
 # scope:actor (the payer) and scope:recipient (the one paid), as in the interaction; scope:tm_feud_price the sum.
 # The receiver gains prestige; the payer loses none (p. 184: and the gold "finances the return blow"). Ten years'
-# truce between the houses (tm_acc_settled), after which a new wrong is an ordinary wrong again.
+# truce between the houses (tm_acc_settled), after which a new wrong is an ordinary wrong again; fifteen when a child
+# of the receiving hall is fostered to seal it (scope:tm_feud_ward, tm_feud_foster_seal_effect).
 tm_feud_settle_effect = {
 	scope:actor = {
 		pay_short_term_gold = { target = scope:recipient gold = scope:tm_feud_price }
@@ -147,7 +311,6 @@ tm_feud_settle_effect = {
 	}
 	scope:recipient.house = {
 		tm_feud_clear_effect = { DEBTOR = scope:actor.house }
-		add_to_variable_list = { name = tm_acc_settled target = scope:actor.house years = 10 }
 		change_house_relation_effect = {
 			HOUSE = scope:actor.house
 			CHAR = scope:actor
@@ -157,14 +320,59 @@ tm_feud_settle_effect = {
 			REASON = tm_bot
 		}
 	}
-	scope:actor.house = {
-		add_to_variable_list = { name = tm_acc_settled target = scope:recipient.house years = 10 }
+	if = {
+		limit = { exists = scope:tm_feud_ward }
+		scope:recipient.house = { add_to_variable_list = { name = tm_acc_settled target = scope:actor.house years = 15 } }
+		scope:actor.house = { add_to_variable_list = { name = tm_acc_settled target = scope:recipient.house years = 15 } }
+	}
+	else = {
+		scope:recipient.house = { add_to_variable_list = { name = tm_acc_settled target = scope:actor.house years = 10 } }
+		scope:actor.house = { add_to_variable_list = { name = tm_acc_settled target = scope:recipient.house years = 10 } }
 	}
 	tm_feud_tally_effect = { WHAT = settled }
 }
 
+# A child of the receiving hall fostered by the payer to seal the settlement (Miller p. 123: fostering "to heal
+# breaches... or to confirm and buttress settlements"; p. 172, Laxdæla 27: "he who fosters another's child is always
+# considered the lesser man"; Njal fosters the son of a man his sons had killed). The payer becomes the child's
+# guardian through vanilla's guardian relation, and the child goes to his court as vanilla's education does
+# (educate_child_event_effect). Not the Sisters' fostering of girls (tm_foster_daughter_interaction): this is a
+# ward, of either sex, and no matriline. Scope: any. Needs scope:actor, scope:recipient, scope:tm_feud_ward.
+tm_feud_foster_seal_effect = {
+	scope:tm_feud_ward = {
+		set_relation_guardian = scope:actor
+		if = {
+			limit = {
+				is_playable_character = no
+				NOT = { host ?= scope:actor }
+			}
+			visit_court_of = scope:actor
+		}
+		add_opinion = { target = scope:actor modifier = tm_feud_foster_seal_opinion }
+	}
+	scope:actor = {
+		add_prestige = minor_prestige_loss
+		add_opinion = { target = scope:tm_feud_ward modifier = tm_feud_foster_seal_opinion }
+	}
+	tm_feud_tally_effect = { WHAT = fostered_seal }
+}
+
+# The best child of the receiving hall to foster: unmarried, under sixteen, of the recipient's house, without a
+# guardian, not imprisoned and not a ruler. Scope: any. Needs scope:recipient. Saves scope:tm_feud_ward, if any.
+tm_feud_find_ward_effect = {
+	scope:recipient.house = {
+		ordered_house_member = {
+			limit = { tm_feud_foster_ward_trigger = yes }
+			order_by = age
+			save_scope_as = tm_feud_ward
+		}
+	}
+}
+
 # Run-wide counts for tools/census_report.py: wrongs, requitals, settled, truce_broken, nid_suits, nid_outlawed,
-# reprieve_kills, reprieves. Scope: any.
+# reprieve_kills, reprieves; wave 7: requital_higher, requital_lower, account_refused, account_admitted,
+# refused_unwritten, refused_answered, self_judgment_modest, self_judgment_heavy, self_judgment_remit, fostered_seal,
+# avenge_offered, avenge_taken, avenge_rested, nid_no_bearer, nid_borne. Scope: any.
 tm_feud_tally_effect = {
 	if = {
 		limit = { NOT = { has_global_variable = tm_feud_n_$WHAT$ } }
@@ -250,5 +458,119 @@ tm_feud_reprieve_step_effect = {
 	if = {
 		limit = { is_ai = no }
 		trigger_event = tm_feud.0030
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The suit-bearer (wave 7). Under a lord not of the six faiths a woman's níð suit is carried by a man: "she must
+# transfer the conduct of a case to a man" (Grágás §1.7, research/norse_gragas_laws.md); women "were not expected to
+# prosecute (sœkja) on their own but to delegate (selja)", and "only powerful men could enforce the law" (Jochens
+# 1995 pp. 113, 39). The best speaker among her husband, her close kinsmen and the friends of a
+# House at her court or the lord's, by diplomacy. Scope: any. Needs scope:tm_feud_plaintiff, scope:tm_feud_lord,
+# scope:tm_flyter. Saves scope:tm_feud_bearer, if any.
+tm_feud_find_bearer_effect = {
+	scope:tm_feud_plaintiff = {
+		every_spouse = {
+			limit = { tm_feud_bearer_candidate_trigger = yes }
+			add_to_temporary_list = tm_feud_bearers
+		}
+		every_close_family_member = {
+			limit = { tm_feud_bearer_candidate_trigger = yes }
+			add_to_temporary_list = tm_feud_bearers
+		}
+		court_owner ?= {
+			every_courtier = {
+				limit = {
+					has_character_modifier = tm_house_friend_modifier
+					tm_feud_bearer_candidate_trigger = yes
+				}
+				add_to_temporary_list = tm_feud_bearers
+			}
+		}
+	}
+	scope:tm_feud_lord = {
+		every_courtier = {
+			limit = {
+				has_character_modifier = tm_house_friend_modifier
+				tm_feud_bearer_candidate_trigger = yes
+			}
+			add_to_temporary_list = tm_feud_bearers
+		}
+	}
+	ordered_in_list = {
+		list = tm_feud_bearers
+		order_by = diplomacy
+		save_scope_as = tm_feud_bearer
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The sister's revenge (wave 7). An outlaw's death is no wrong at law: no truce is broken and no house relation moves
+# (tm_feud_on_death). But kin may take up a private Account. Hörðr's sister Þorbjörg organised his revenge "though he
+# had once attacked her own farm"; Þórdís first betrays Gísli, then avenges him (Ahola pp. 108-9,
+# 113; research/norse_ahola_outlawry.md). Who is asked, in order: a sworn sister (tm_sister, even one she quarrelled with), one
+# she fostered (var tm_fostered_by), the Elder Sister of the House in the county where she died. Flavour budget.
+# Scope: the dead outlaw (root of on_death). Needs scope:killer.
+tm_feud_avenge_her_effect = {
+	save_scope_as = tm_feud_dead
+	scope:killer = { save_scope_as = tm_feud_killer }
+	if = {
+		limit = { any_relation = { type = tm_sister tm_feud_avenger_trigger = yes } }
+		random_relation = {
+			type = tm_sister
+			limit = { tm_feud_avenger_trigger = yes }
+			save_scope_as = tm_feud_avenger
+		}
+		save_scope_value_as = { name = tm_feud_avenger_kind value = flag:sister }
+	}
+	else_if = {
+		limit = {
+			any_living_character = {
+				has_variable = tm_fostered_by
+				var:tm_fostered_by = scope:tm_feud_dead
+				tm_feud_avenger_trigger = yes
+			}
+		}
+		random_living_character = {
+			limit = {
+				has_variable = tm_fostered_by
+				var:tm_fostered_by = scope:tm_feud_dead
+				tm_feud_avenger_trigger = yes
+			}
+			save_scope_as = tm_feud_avenger
+		}
+		save_scope_value_as = { name = tm_feud_avenger_kind value = flag:fostered }
+	}
+	else_if = {
+		limit = {
+			location.county ?= {
+				has_variable = tm_house
+				var:tm_elder_sister ?= { tm_feud_avenger_trigger = yes }
+			}
+		}
+		location.county.var:tm_elder_sister = { save_scope_as = tm_feud_avenger }
+		save_scope_value_as = { name = tm_feud_avenger_kind value = flag:house }
+	}
+	scope:tm_feud_avenger ?= {
+		tm_flavour_spent_effect = yes
+		tm_feud_tally_effect = { WHAT = avenge_offered }
+		trigger_event = { id = tm_feud.0060 days = 7 }
+	}
+}
+
+# Word to the granter of self-judgment (tm_feud.0040), if a player, of what was named. $TITLE$ the toast, $TYPE$ its
+# kind. Needs scope:actor, scope:recipient, scope:tm_feud_price.
+tm_feud_self_judgment_toast_effect = {
+	scope:actor = {
+		if = {
+			limit = { is_ai = no }
+			send_interface_toast = {
+				type = $TYPE$
+				title = $TITLE$
+				left_icon = scope:recipient
+				right_icon = scope:actor
+				custom_tooltip = $TITLE$_tt
+			}
+		}
 	}
 }

@@ -1096,3 +1096,68 @@ The full scenarios (C1-C6) are in docs/wave5/chamber.md.
 **AB4. The claiming mother.** The woman who claims her in tm_badenya.0011 is never a prisoner or a concubine.
 
 The full list is in docs/faiths/badenya.md, "Guardrails".
+
+## AG. Ha-Nehpakhot: the batlle, the berurim, after the fall, a household of the street (wave 6, added 2026-10-25, untested)
+
+Design: `docs/wave6/ha-nehpakhot.md`. The census prints run-wide counts under "Ha-Nehpakhot: households and falls".
+
+- **AG1. Send for a Household.** Play a ruler of Ha-Nehpakhot (the 867 bookmark's Bonadonna leads a landless camp). The decision shows, costs 50 gold, and brings a man, his wife and their child (2–9) to her court as Rabbanite Jews of `sephardi` culture (from Barcelona); married, the child theirs. It is greyed out for ten years after. In an observe run: `households` above 0, and some `household_joins` over the decades.
+- **AG2. The batlle.** At 1260 or later, a daughter of the Turning with a rival, in a county of Aragon, Barcelona or Valencia under a Christian lord: *Before the Batlle*, "to the batlle of …". Elsewhere it still reads "bailiff".
+- **AG3. The berurim.** A Turning in the Crown of Aragon from 1270: the hearing reads "The berurim of the street"; at Arles, the worthies, rectors or baylons by date as before.
+- **AG4. After the fall.** Give a lord `tm_translation_patron_modifier` (or let *A book in Arabic* fire), keep a daughter of the Turning at his court, and kill him: within a month *After the Fall* fires; her county has `tm_hn4_after_fall` for a year; option a or c sets `tm_hn4_sheltered`; option b's win removes the county variable. `falls` counts it.
+- **AG5. Errors.** No new error.log lines from `tm_hn4_*` files; the bailiff's and judges' loc show no raw `Custom(...)` keys.
+
+
+## AH. Bædling: the sorcery law, the feud, outlawry and lore (wave 7, added 2026-10-25, untested)
+
+Design: `docs/wave7/baedling.md`. The census prints three "wave 7" sections.
+
+**AH1. The suit and outlawry**
+
+1. **Norway 1150 suit.**
+   - (b): no gold paid at once. Fourteen days later the accuser gets 0105, then the ring is paid (lord and accuser get 5 each) and she goes abroad.
+   - (c): she forms a band only after 0105.
+2. **Court fails:** a House member in a House county with 2 sworn sisters at court has about a 70% fail chance. The sentence lapses, the accuser loses prestige, and she has no modifier.
+3. **Accuser dies inside the fortnight:** no 0105; the flag clears after 30 days.
+4. **Magnus 1180:** with a Norwegian lord who has a chaplain, the chaplain gets half and the lord half.
+5. **Iceland:** a seeress charged under a lord with an Icelandic capital gets the "no suit" text. Set `tm_bae2_last_seeker` by console to check the client branch: 0101 goes to the client, with the twelve-jurors option.
+6. **Penance:** from 1300, (d) gives the modifier, the condition var and exile. A second suit under a Norwegian lord (from 1300) gives "Take her into my keeping", and she is imprisoned. Spring the Cell can target that jailer.
+7. **Ride:** a full outlaw band player with 2 sworn sisters sees the decision; the accuser gets 0130 with ride text and price 50. Refusing costs 2 × minor prestige.
+8. **Harbouring:** a full outlaw courtier of a House holder adds strain +1 a year and +5/−5 prestige; 0115 fires. Check the house relation on refuse when one party is Bædling.
+9. **Holm:** a full outlaw band camped 3 years in a mountain or island county (e.g. Gotland) gets the modifier and the county modifier.
+
+**AH2. The feud**
+
+1. **Escalation:** a Bædling count's house wronged by a baron's house, then a requital on that house's duke (adult) shows "It Overbalances", and the Account flips. A requital on an unlanded child is equal or lower, never higher.
+2. **Self-judgment:** as a player who owes, Grant Self-Judgment to an AI.
+   - Prestige cost is taken.
+   - 0040 fires and the toast arrives.
+   - Each option settles the Account (`tm_acc_settled`, 10 years).
+   - The heavy option gives "Uneven" from same-faith or Germanic rulers in range.
+3. **Refused Account:** an AI arrogant Norse Christian ruler imprisons or raids a Bædling queen.
+   - The toast shows his line.
+   - `tm_acc_refused` is on her house.
+   - His next wrong is not written.
+   - Her house's next wrong against his gives "Answered with Honour" opinions and the prestige swap.
+4. **Fostering:** Offer Bót with the foster option.
+   - The child becomes the ward and moves to court.
+   - The truce lasts 15 years.
+   - The actor loses minor prestige.
+   - The option is greyed out when no child qualifies.
+5. **Truce broken:** the victim's house head gets "Bót Spent on Spears" for 2 years.
+6. **Avenge Her:** kill a full-outlaw Bædling who has a sworn sister. 0060 reaches the sister in 7 days; "take up" writes the Account against the killer's house, and no truce-breaker penalty applies.
+7. **Suit-bearer:**
+   - A níð suit under a Catholic lord with a husband at court: the bearer portrait appears in 0020 and 0021.
+   - The same with no eligible man: the option is greyed out ("No man would carry it").
+   - Under a Bædling lord: no bearer is needed.
+
+**AH3. The era and lore**
+
+1. Start 867 and run to 995+ with a Bædling courtier in Norway under a Christian king, to see 0001. Check that the Norway variant shows, and that "leave" moves her out of the realm.
+2. Iceland, 1000–1010: the Iceland variant shows.
+3. From 1300, a Bædling vassal holding a House under a Catholic king gets 0010. Each option works; strain rises on obey or on a lost argument.
+4. 1343: Bædlings in Norway or Iceland get 0020 once (1343 text). 1407: the 1407 text. The fear modifier lasts 5 years.
+5. A Norse lord with a daughter of seiðr at court and a rival gets 0100. Vassals of another faith take −10. "Own it" appears only for a Bædling lord, and the Account entry is made.
+6. The warding shirt interaction appears on a sister, ward or friend of the House; costs 30 gold; has a 3-year cooldown; the modifier lasts 5 years.
+7. Give a Bædling ruler Gotland (`c_gutland`) by console: 0204 fires once, and the county modifier lasts 10 years. Repeat for the other four sites.
+8. 1350+: put a declared or Marked woman of any of the six faiths in an English county. In 0300, the broiderer's name is never Eleanor, Anne or Elizabeth, and "I have my own" opens `tm_house.0001`. 0301 sometimes follows and ends open.

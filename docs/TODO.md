@@ -58,12 +58,12 @@ Built: shared daughter trigger and per-faith daughter traits; Bæddel faith (Got
 - [ ] Níðhöggr shows as the Bædling devil; feminised names apply (vanilla Norse name keys)
 
 ## Stage 2 inputs from the Norse reading
-- [ ] Sorcery law era arc (conversion examples; church outlawry 1100–1300; death penalty Norway c. 1300, Sweden c. 1350), rare dated trials (Óláfr Tryggvason; Bergen 1324–25; Kirkjubær 1343; Greenland 1407) (Mitchell)
-- [ ] "Six Housewives" compurgation; women's suits carried by a friend of the House; dress clause needs a powerful prosecutor (Mitchell; Jochens). Six housewives built in the outlawry suit (`tm_bae2.0101`, wave 3); the friend of the House carrying a suit is not.
+- [x] Sorcery law era arc (conversion examples; church outlawry 1100–1300; death penalty Norway c. 1300, Sweden c. 1350), rare dated trials (Óláfr Tryggvason; Bergen 1324–25; Kirkjubær 1343; Greenland 1407) (Mitchell) Built in wave 7 (2026-10-25, `docs/wave7/baedling.md`; Wulfstan's sermon is `tm_bae5.0030`).
+- [x] "Six Housewives" compurgation; women's suits carried by a friend of the House; dress clause needs a powerful prosecutor (Mitchell; Jochens). Six housewives built in the outlawry suit (`tm_bae2.0101`, wave 3); the friend of the House carrying a suit is not. Built in wave 7 (2026-10-25, `docs/wave7/baedling.md`; Wulfstan's sermon is `tm_bae5.0030`).
 - [ ] Pour the Cup: end a flyting / first cup / inheritance toast at the high seat (Damico; Evans & Hancock)
-- [ ] Events: "They Say He Keeps Seiðmenn" (Tolley); "Weave the Warding Shirt" (Jochens); English reaction text, Wulfstan 1014 (Damico)
+- [x] Events: "They Say He Keeps Seiðmenn" (Tolley); "Weave the Warding Shirt" (Jochens); English reaction text, Wulfstan 1014 (Damico) Built in wave 7 (2026-10-25, `docs/wave7/baedling.md`; Wulfstan's sermon is `tm_bae5.0030`).
 - [x] Insult duel: 3 rounds, charges checked against real traits, owning the word strongest, stakes by witnesses and venue (Lögberg doubles); Raise the Níð-Pole scheme (Clover; Meulengracht Sørensen; Grágás)
-- [x] Feud ledger (the Account) and Offer Bót (Miller), built 2026-10-23 (`tm_feud`). Not built: fostering to seal a settlement, Self-Judgment, escalation by rank.
+- [x] Feud ledger (the Account) and Offer Bót (Miller), built 2026-10-23 (`tm_feud`). Fostering to seal a settlement, Self-Judgment and escalation by rank built in wave 7 (2026-10-25).
 - [x] Outlawry: lesser (life-ring, three winters) and full; three endings: time, settlement, the war's pardon, the high seat (Grágás; Ahola; `tm_bae2`, wave 3). Reprieve by killing outlaws (K §110): built 2026-10-23 (`tm_feud`).
 - [x] Dress clause as a Christian-era / law pressure; covers weapon-bearing women (Grágás; outlawry suit from 1100 at Christian Norse courts, `tm_bae2`, wave 3)
 - [ ] Holy-site lore: York (Eiríkr's 80 seiðmenn, Gunnhildr), Trondheim (Þorgerðr Hǫlgabrúðr), Kyiv (armed women among the Rus' dead, 971) (Price)
@@ -125,8 +125,8 @@ A 1178 bookmark with:
 
   Sources: `research/later_starts/region_south-asia-maritime-sea.md` §1 and §3 (start sketch "The Street of Rubies" kept for reference).
 - Not re-seated: Ha-Nehpakhot keeps Arles and gets new starter characters plus the coronation, Alan of Lille and Lateran III events if time allows (`region_latin-christendom-jewish-europe.md` §1.3); Adelphai (House in Exile, Mysia), Badenya (Kirina) and Bædling (no seat) keep the existing stand-in seeding.
-- [ ] **Bædling fixes from the witchcraft comparanda** (game files; apply when the game is closed): *A Suit at Law* (`tm_bae2.0100`/`0101`) splits by region (Iceland: the hirer is liable and twelve jurors clear her; Norway: six housewives clear the seeress); Raudvere's caveats in narrator text (`faith_design.md` §18)
-- [ ] **Ha-Nehpakhot loc:** write the two approved lines ("a prayer, not a deed"; the physician's medicine) where the sect speaks of the Turning and the physician (`faith_design.md` §18)
+- [x] **Bædling fixes from the witchcraft comparanda:** *A Suit at Law* splits by region (built in wave 7). Still open: Raudvere's caveats in narrator text (`faith_design.md` §18)
+- [x] **Ha-Nehpakhot loc:** wrote the two approved lines (2026-10-25: the Turning tenet, and both physician events) ("a prayer, not a deed"; the physician's medicine) where the sect speaks of the Turning and the physician (`faith_design.md` §18)
 - [ ] **Name list:** fix the *Matrona* comment (`tm_name_lists.txt:94`; Matrona of Perge crossed toward manhood)
 - Deferred: the Visayan House (*the Lambong*), kept for later (`research/v2/visayan_design.md`).
 - **Shelved until *Silk & Silver* is out (17 November 2026), which adds content to both the 1066 and 1178 bookmarks:** whether v2 also gets a 1066 layer. The candidates are:

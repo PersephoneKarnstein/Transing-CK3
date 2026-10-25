@@ -1,0 +1,9 @@
+﻿# Crusader Dolls — the Account (common/scripted_effects/tm_feud_effects.txt).
+
+# A settlement broken: the bót that was taken now buys spears. "The compensation received is available to finance the
+# return blow" (Miller, Bloodtaking, p. 184). On the head of the wronged house, 2 years (tm_feud_wrong_effect).
+tm_feud_bot_spent_on_spears_modifier = {
+	icon = martial_positive
+	levy_size = 0.1
+	martial = 1
+}

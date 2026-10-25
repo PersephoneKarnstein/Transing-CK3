@@ -1,0 +1,108 @@
+﻿# Crusader Dolls — Bædling, wave 7: era news and lore (events/tm_bae3_events.txt). The era's law by date and region is
+# in tm_bae3_triggers.txt (shared); these are the lore events' own.
+
+# A realm in its conversion years, read from the county where she lives. Scope: a county title. Bands:
+#   - Norway 995–1030: Óláfr Tryggvason to Óláfr Haraldsson. Óláfr Tryggvason burns sorcerers at a feast and drowns
+#     Eyvindr kelda's crew of seiðmenn on a skerry (Mitchell pp. 33, 190–91).
+#   - Iceland 1000–1010: Þorgeirr's ruling (999/1000) bans open heathen practice and leaves secret practice alone; secret
+#     practice is banned "within a few years" (Mitchell p. 38).
+#   - Denmark 965–1000: Poppo's hot iron before Haraldr (Mitchell pp. 32–37); the Jelling date is conventional.
+#   - Sweden 1080–1130: the end of the Uppsala cult (conventional date, the lead's band; no page in our notes).
+# The kings burned before conversion too: Eiríkr, a pagan king, burned his brother "with 80 seiðmenn, and for this deed
+# he was much praised" (Price pp. 80–81). The event says so (rule 13).
+tm_bae3_lore_conversion_band_trigger = {
+	OR = {
+		AND = {
+			current_date >= 995.1.1
+			current_date < 1031.1.1
+			tm_bae3_county_norwegian_trigger = yes
+		}
+		AND = {
+			current_date >= 1000.1.1
+			current_date < 1011.1.1
+			tm_bae3_county_icelandic_trigger = yes
+		}
+		AND = {
+			current_date >= 965.1.1
+			current_date < 1001.1.1
+			target_is_de_jure_liege_or_above = title:k_denmark
+		}
+		AND = {
+			current_date >= 1080.1.1
+			current_date < 1131.1.1
+			target_is_de_jure_liege_or_above = title:k_sweden
+		}
+	}
+}
+
+# The islands' news reaches her: she lives in de jure Norway, Iceland included (Kirkjubær 1343, Mitchell pp. 122–23,
+# 171; Greenland 1407, pp. 171–72; Greenland is off the map, so the news comes to Norway). Scope: a character.
+tm_bae3_lore_islands_hear_trigger = {
+	location ?= {
+		county ?= { target_is_de_jure_liege_or_above = title:k_norway }
+	}
+}
+
+# Would be charged by a rival with keeping seiðmenn: a lord of the north or of the English (Tolley p. 154: the label
+# was "political discreditation"). Any faith. Scope: the keeper.
+tm_bae3_lore_seidmenn_keeper_trigger = {
+	is_ruler = yes
+	is_adult = yes
+	is_imprisoned = no
+	tm_flavour_ready_trigger = yes
+	NOT = { has_variable = tm_bae3_seidmenn_cd }
+	culture ?= {
+		OR = {
+			has_cultural_pillar = heritage_north_germanic
+			this = culture:anglo_saxon
+		}
+	}
+}
+
+# A rival who would spread the charge against $KEEPER$. Scope: the would-be speaker.
+tm_bae3_lore_seidmenn_rival_trigger = {
+	is_adult = yes
+	is_imprisoned = no
+	NOT = { this = $KEEPER$ }
+	OR = {
+		has_relation_rival = $KEEPER$
+		opinion = { target = $KEEPER$ value <= -30 }
+	}
+}
+
+# Could weave the warding shirt: a Bædling who knows the warding songs, or a House's Elder Sister. "Women wove shirts
+# while men prepared swords" (Jochens 1996 p. 122). Scope: the weaver.
+tm_bae3_lore_shirt_weaver_trigger = {
+	is_adult = yes
+	rite ?= { rite_has_parameter = tm_seidr_gate }
+	OR = {
+		tm_knows_vardlokkur_trigger = yes
+		has_character_modifier = tm_elder_sister_modifier
+	}
+}
+
+# Calling Herself (Henningsen pp. 249–52; echo only, never Rykener herself): a daughter, Marked or declared woman of
+# any of the six faiths, living (not ruling) in an English county, 1350–1453. Scope: a character.
+tm_bae3_lore_calling_candidate_trigger = {
+	is_adult = yes
+	is_ruler = no
+	is_imprisoned = no
+	NOT = { has_variable = tm_bae3_called_herself }
+	OR = {
+		tm_is_daughter_trigger = yes
+		has_trait = tm_transgender
+		has_variable = tm_declared
+	}
+	location ?= {
+		county ?= { target_is_de_jure_liege_or_above = title:k_england }
+	}
+	tm_flavour_ready_trigger = yes
+}
+
+# She already answers to a woman's name: a daughter, or declared. Scope: a character.
+tm_bae3_lore_has_her_name_trigger = {
+	OR = {
+		tm_is_daughter_trigger = yes
+		has_variable = tm_declared
+	}
+}
