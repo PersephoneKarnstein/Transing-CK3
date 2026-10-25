@@ -112,6 +112,26 @@ Built: shared daughter trigger and per-faith daughter traits; Bæddel faith (Got
 - [ ] Catholic reaction: a canonist event on Huguccio's "prevailing sex" by conduct (women's company and work) and the Susa oath before the bishop of Turin (`research/cmp_vanderlugt_sex_difference.md`; Rolker); Peter the Chanter's woman's name at confirmation; whether Catholic hostility to daughters hardens around 1200
 - [ ] Andalusi reaction: Ibn Ḥazm's charge against al-Ḥakam I as a reaction to Grandmother's House (`research/cmp_delapuente_alhakam.md`)
 
+## Version 2.0.0 plan (user, 2026-10-25)
+A 1178 bookmark with:
+- [ ] **Japan**, *Imayō no Ie* (`research/v2/japan_design.md`; open decisions there)
+- [ ] **The Good Ladies** (`research/v2/witch_design.md`; ten open decisions; no J. K. Rowling or Harry Potter except disparaging, §10)
+- [ ] **Yutai Dao, a second house at Lin'an** (outside the New Gate), alongside Dunhuang. **Chosen over the Garland (user, 2026-10-25)**: its position changes, not just its world. It is a landless urban House in the Song capital, with a guild head the prefecture summons in "not a man" suits, a fading informer threat (the Zhenghe article), needlework, a stage route to palace banquets, gate variants, and a possible *Silk & Silver* embroidery company. Cost: v2 leans East Asian (Kyoto and Hangzhou), and the evidence is hostile and a century late. This is the Southern Song capital at peace since 1165, with nine Daoist women's houses, a Lingbao society and private Daoist halls under patrons. Zhou Mi's quarter of people "addressed as women", with a guild head the courts consulted, is placed here by inference across about a century (`research/later_starts/linan_1178.md`)
+- [ ] **The Worn Garland's 1178 changes as era events in every start**, not a new start. Its seat, faith and gate stay the same, and what changes is the world. These unlock by date in any campaign that reaches them:
+  - hereditary temple deals and bought singing rights (Orr's 1178–1300 period);
+  - the Piḷḷāṉ "guise" quarrel and the men-only *araiyar* performance;
+  - men's sectarian titles hardening, and Śaiva–Vaiṣṇava friction making "both temples" provocative;
+  - Chola decline, with temple women thriving where royal power is weak.
+
+  Sources: `research/later_starts/region_south-asia-maritime-sea.md` §1 and §3 (start sketch "The Street of Rubies" kept for reference).
+- Not re-seated: Ha-Nehpakhot keeps Arles and gets new starter characters plus the coronation, Alan of Lille and Lateran III events if time allows (`region_latin-christendom-jewish-europe.md` §1.3); Adelphai (House in Exile, Mysia), Badenya (Kirina) and Bædling (no seat) keep the existing stand-in seeding.
+- Deferred: the Visayan House (*the Lambong*), kept for later (`research/v2/visayan_design.md`).
+- **Shelved until *Silk & Silver* is out (17 November 2026), which adds content to both the 1066 and 1178 bookmarks:** whether v2 also gets a 1066 layer. The candidates are:
+  - "Through the Curtain", an Adelphai starter set at Fatimid Cairo under Rasad (`research/later_starts/region_islamic-world.md` §2, sketch A);
+  - "The Mothers of the Drum", the Baghdad/Rayy *mukhannathūn* troupe as an event pack, never a faith, with one Rūm-born Adelphai daughter in it (`research/later_starts/mukhannathun_baghdad_1066.md`).
+
+  A 1178 Cairo set (survivors of the palace Saladin dissolved in 1171) is set aside: "more a novel than a playthrough" (user). Adelphai's 1178 position stays the House in Exile (Mysia).
+
 ## Possible new faiths for the 1178 start (user, 2026-10-24)
 Tied to the 1178 bookmark, which waits until after the Silk & Silver DLC (17 November 2026), if ever. Neither is planned for the 867 start.
 **Update (2026-10-25).** A survey of religion c. 1178 (`research/v2/survey_1178.md`) ranked a Japanese faith first, the Visayan second, and dropped the Wendish (no Slav pagan county is left in vanilla 1178; an Old Prussian substitute rests on two lines of Dusburg and repeats the Bædling's pagan North). Designs with open decisions for the user: `research/v2/japan_design.md` (with the sex-work, Orientalism and modern-identity notes beside it) and `research/v2/visayan_design.md`.

@@ -512,7 +512,7 @@ A 867–1188 observe run: the five small faiths (all but Yutai Dao) kept collaps
 
 ## 18. The reading of 2026-10-25 (proposals, not yet approved)
 
-**Decided (user, 2026-10-25):** writing rule 25 amended. Travel in spirit with the Ladies, the body at home, is allowed; Sabbat, pact, familiar, broom and bodily flight to a gathering stay out.
+**Decided (user, 2026-10-25):** writing rule 25 amended. Travel in spirit with the Ladies, the body at home, is allowed; Sabbat, pact, familiar, broom and bodily flight to a gathering stay out. Also for the Good Ladies: no J. K. Rowling or Harry Potter references in any text or name, except disparaging ones under the in-group comedy terms (achievements §11, Dorley easter eggs). See `research/v2/witch_design.md` §10.
 
 **Proposed, awaiting approval:**
 - **Cracked Ivory rows CI1–CI14** (`research/cracked_ivory_podcast.md`): Bhatt, Zakharuk and Serano on Nanda and on Chu. The new items are:

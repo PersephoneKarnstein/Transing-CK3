@@ -108,7 +108,7 @@ The Rhineland and France stay mostly in the penance register, as the sources do 
 
 ## 8. Open decisions (recommendation first)
 
-1. **Is a Latin folk faith a v2 faith at all, beside Japan and the Visayan House?** It is the strongest Latin candidate the project has found. The survey's Cathar "House of Good Women" conflicts with rule 25's Cathar clause. Recommended: a third v2 faith, or the second if the Visayan faith slips.
+1. ~~**Is a Latin folk faith a v2 faith at all?**~~ **Decided (user, 2026-10-25):** yes. Version 2.0.0 is Japan plus the Good Ladies, with the Visayan House deferred.
 2. **Name:** *the Good Ladies* (recommended) / *the Lady's Table* / *the Company*.
 3. **The daughters' word:** a vernacular word for the Lady's women. Recommended: *the Lady's women* in English loc, with a period word to be found (MHG *nahtvrouwen*, "night women", is attested for the spirits themselves; check before use).
 4. **Witchcraft doctrine:** shunned (recommended) / accepted.
@@ -136,3 +136,4 @@ The Rhineland and France stay mostly in the penance register, as the sources do 
 - Accusers' fantasies (child-eating, devil-sex, orgy) appear nowhere, not even as allegation. Rule 25 already bans pact and sabbat. The cursus orgy is Roland's penitents' report, not the Ladies.
 - If a death toll ever appears: about 40,000–60,000 executions for 1450–1750, nearly all after the game ends. Never "nine million".
 - Joan of Arc is not claimed, and her gender is left unresolved. Rykener is not claimed.
+- **No J. K. Rowling or Harry Potter** (user, 2026-10-25). No reference in any loc, name, event, title or art direction, even though the books place Hogwarts's founding (c. 990) inside the game's window. The one exception is a **disparaging** reference, written under the same terms as the mod's in-group comedy (the dark-comedy achievement events, §11 and §12 revision 8; the Dorley easter eggs, `../../dorley_precedent.md`). In practice, no seeded or generated character of this faith is named Godric, Helga, Rowena or Salazar together with a founder-like role, and no Scottish or highland school of the Ladies.

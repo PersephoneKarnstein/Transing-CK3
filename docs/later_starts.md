@@ -1,6 +1,6 @@
 # Later starts: 1066 and 1178
 
-**Status (2026-10-20): not being built.** Work stays on the 867 start, kept current with *Silk & Silver*. This research is kept for later. If the mod comes to require the DLC that allows landless starts, several faiths could simply start unlanded in 1178, using the dossiers here. The seeding fixes below stay in, because players can still pick the vanilla 1066 and 1178 bookmarks.
+**Status (2026-10-25): partly revived for version 2.0.0** (user): the 1178 bookmark will give Yutai Dao a house at Lin'an, and the Worn Garland's 1178 changes become era events in every start; see `TODO.md`, *Version 2.0.0 plan*. The rest of this note stands as research. **Earlier status (2026-10-20): not being built.** Work stays on the 867 start, kept current with *Silk & Silver*. This research is kept for later. If the mod comes to require the DLC that allows landless starts, several faiths could simply start unlanded in 1178, using the dossiers here. The seeding fixes below stay in, because players can still pick the vanilla 1066 and 1178 bookmarks.
 
 A research summary, written 2026-10-20. *Silk & Silver* centres the 1066 and 1178 bookmarks. The question here is whether the 300 years after our 867 start changed **culture and gender politics** enough, anywhere on the map, to justify designing a new start or new starter characters. Notable events alone don't count.
 

@@ -370,7 +370,7 @@ Built so far is described in the faith sections above. What was planned and not 
 
 ### After the Silk & Silver DLC (17 November 2026), if ever
 
-- [ ] Version 2.0.0: a 1178 start, with its hooks for the Worn Garland, Ha-Nehpakhot and Badenya, and two new faiths there: the singers' houses of the Yodo river ports in Japan (*Imayō no Ie*) and a Visayan House at Cebu (*the Lambong*). Researched, not built; designs and open decisions in `docs/research/v2/` (see `docs/TODO.md`)
+- [ ] Version 2.0.0: a 1178 start with two new faiths, the singers' houses of the Yodo river ports in Japan (*Imayō no Ie*) and *the Good Ladies*, a Latin household devotion of the night company; a new 1178 house for Yutai Dao at Lin'an, the Song capital; and the Worn Garland's world of 1178 as era events in every start. Researched, not built; designs and open decisions in `docs/research/v2/` (see `docs/TODO.md`)
 - [ ] Silk & Silver ideas for Yutai Dao and the Worn Garland (traders, caravans, guilds)
 - [ ] Merchant companies: a charter for a trading post held by contract, a third road for the bands
 
