@@ -489,7 +489,7 @@ Sources: `research/book_bhatt_brown_trans_les.md`, `research/serano_blog_essays.
 22. No gate tests her pain. No decision, gate or trial requires high stress, a stress trait or a misery event as proof, and no text says her suffering earns her the name. Suffering may come from the world, never from the faith as an entrance fee. (Hornsby and Stone row 2)
 23. No gate requires an oath of permanence or a probation judged by outsiders. Stepping back ("Not today.", Set Down the Name) is honoured equally with going ahead; vows are for now, not "for ever". (Nirta row 5)
 24. Dress and law by date. Hostile law in 867 is canon (Trullo 62, Deut. 22:5), not statute; no "sumptuary" before the first Latin statute (1157). No skirts-against-trousers imagery before 1300: outward change is hair, veil, beardlessness, girdle, jewellery, colour and name. Latin hostility before 1123 leans on the Penitentials, not canon law. (Ford rows 1, 3; Federici row 11)
-25. Witch-hunt limits, any date: no Sabbat, devil's pact, familiar, broom or night flight; before c. 1430 Latin clergy may call a seer's seat pagan illusion and sin, never a pact. No "castrating witch" or stolen-member line. No "sabbat" or "synagogue" for a hostile night gathering. No claim that Kabbalah came from the Cathars or that any sect has Cathar ties. (Federici rows 6, 9, 10)
+25. Witch-hunt limits, any date: no Sabbat, devil's pact, familiar or broom, and no bodily flight to a gathering. Travelling in spirit with the Ladies while the body stays home is attested from c. 906 (Regino's Canon *Episcopi*; Hutton 2014 p. 174): it may appear in a faith's own voice, and in clergy's mouths only as "illusion" before c. 1430 (amended 2026-10-25, user; was "no … night flight"; see `research/v2/witch_design.md`). Before c. 1430 Latin clergy may call a seer's seat pagan illusion and sin, never a pact. No "castrating witch" or stolen-member line. No "sabbat" or "synagogue" for a hostile night gathering. No claim that Kabbalah came from the Cathars or that any sect has Cathar ties. (Federici rows 6, 9, 10)
 26. No faith takes Israel's bride-title: the Adelphai Bride is the soul of the Song (Origen), the Garland's bride is the devotee before the god; only Ha-Nehpakhot cites the prophets' bride. From the marriage metaphor quote only betrothal and reconciliation (Hos. 2:16–25, Jer. 31:3–5), never Hos. 2:4–15, Ezek. 16 or 23, in any voice. The Garland's bridegroom is never jealous or punishing. (Macwilliam rows 4, 5)
 
 ### Collapse fixes (approved by user 2026-10-21)
@@ -509,3 +509,19 @@ A 867–1188 observe run: the five small faiths (all but Yutai Dao) kept collaps
 **Built.** `common/on_action/tm_conv_on_actions.txt`, on the game's `on_rite_change`, which is called for every change of faith or rite but a birth (until run 12 it sat on `on_faith_conversion`, which only the adventurer's conversion interaction calls: 9 rulers counted in 350 years). The mod's own conversions set `tm_conv_ours` for a day and are let be. An AI ruler who converts to one of the six from outside them, with no tie to the community (`tm_conv_outsider_trigger`: not a woman, Marked or daughter herself, so not a sister of a House by `tm_house_member_trigger`; no House in hand; no Marked or daughter of the Sisters at court or in the close family), is turned away one time in three and keeps her old faith and rite. Where the game converted her vassals or court with her in the same stroke (`set_character_faith_with_conversion`), they keep the new faith; only she turns back. Run 12 also found that some nine in ten of the Yutai alive in 1219 were born to it, not converted, so this reaches only a narrow part of a bloom. Uniform across the six faiths: it falls only where outsiders convert, which is where the two large faiths grow. Counted per faith (`tm_n_ruler_converts`, `tm_n_outsider_converts`, `tm_n_turned_away`); `tools/census_report.py` prints them.
 
 **Not changed.** Birth, inheritance, county conversion and the call. The player is never turned away. If the next run shows the window is not how the AI converts (few `ruler_converts` while the faiths still bloom), the conversion runs elsewhere (the East Asian tributary decision, the mandala missionaries) and this does nothing: look there next.
+
+## 18. The reading of 2026-10-25 (proposals, not yet approved)
+
+**Decided (user, 2026-10-25):** writing rule 25 amended. Travel in spirit with the Ladies, the body at home, is allowed; Sabbat, pact, familiar, broom and bodily flight to a gathering stay out.
+
+**Proposed, awaiting approval:**
+- **Cracked Ivory rows CI1–CI14** (`research/cracked_ivory_podcast.md`): Bhatt, Zakharuk and Serano on Nanda and on Chu. The new items are:
+  - a writing-rule candidate (27): a daughter's words in a hostile record stand as she said them, and the narrator never adopts the writer's gloss;
+  - a hostile shape, "the admirer";
+  - events: "Kept from the Bride" and "The Mummers";
+  - a build check: no rite is framed as a feminist duty or a blow against men.
+
+  The rest confirm rules 2, 6, 16, 18, 19 and H7.
+- **The Good Ladies** (`research/v2/witch_design.md`), a possible third v2 faith, with ten open decisions.
+- **The trans-history notes** (`research/v2/rykener_and_mobilities.md`, `trans_hagiography.md`, `trans_historical.md`): flavour and hostile voices for Adelphai (Betancourt's sources; Ignatios' miracles for women), Ha-Nehpakhot (the bestiary hyena as a hostile figure for Jews), and Rykener-echo events. None of them claims a historical figure.
+- **Name list:** `tm_name_lists.txt:94` credits *Matrona* to Matrona of Perge, who crossed toward manhood. Fix the comment only, since the name is an ordinary Greek woman's name. Not done: game files are untouched while the observe run plays.

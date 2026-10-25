@@ -11,6 +11,8 @@ Running list of beliefs drawn from the research, each mapped to a CK3 slot. Sour
 | **TQ** | `tsq_*.md`, `wsq_libby_wondrous_bodies.md` (TSQ articles and issues: Keywords 2014, Decolonizing 2014, Transpsychoanalytics 2017, and single articles; design proposals there, not yet applied) |
 | **TR** | transreads.org books (2026-10-21): `book_heaney_feminism_against_cisness.md`, `book_oyewumi_invention_of_women.md`, `book_federici_caliban_witch.md`, `book_nirta_marginal_bodies.md`, `book_hornsby_stone_bible_trouble.md`, `book_macwilliam_prophetic_marriage.md`, `book_ford_dress_codes.md`, `tsq_lavery_egg_theory.md`, `pfeil_trans_anarchism.md`, `tsq_adair_before_trans_studies.md`, `transreads_triage.md` (proposals there, not yet applied) |
 | **CH** | `book_bhatt_chu.md` part II (Andrea Long Chu, *Females*) |
+| **CI** | `cracked_ivory_podcast.md` (Bhatt and Zakharuk, *Cracked Ivory*, S1E16 with Julia Serano, and S2E6, 2026; rows CI1–CI14, design proposals there, not yet applied) |
+| **V2** | `v2/` notes of 2026-10-25: the Good Ladies (`v2/witch_design.md` and its sources), `v2/rykener_and_mobilities.md`, `v2/trans_hagiography.md`, `v2/trans_historical.md` (proposals there, not yet applied) |
 | **ST** | `book_stryker_history.md` (Stryker, *Transgender History*) |
 | **T1** | `book_tsr_1_2.md` (Transgender Studies Reader vol. 1; the PDF does not contain vol. 2) |
 | **TR** | `book_tsr_remix.md` (TSR Remix) |

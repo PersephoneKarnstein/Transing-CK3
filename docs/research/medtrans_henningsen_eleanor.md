@@ -1,5 +1,7 @@
 # Henningsen, "Calling [herself] Eleanor" (2019): design reading
 
+> **See also (2026-10-25):** `v2/rykener_and_mobilities.md` (Bychowski's Palgrave entry, Khoury in *Medieval Mobilities*, date and detail checks) and `v2/trans_historical.md` (Bychowski, "The Transgender Turn").
+
 Source: Kadin Henningsen, "'Calling [herself] Eleanor': Gender Labor and Becoming a Woman in the Rykener Case," *Medieval Feminist Forum: A Journal of Gender and Sexuality* 55, no. 1 (2019), special issue *Medieval Trans Feminism*, ed. M. W. Bychowski and Dorothy Kim: 249-266. DOI: [10.17077/1536-8742.2189](https://doi.org/10.17077/1536-8742.2189).
 
 Citation verified against the article's running footers ("mff, vol. 55 no. 1, 2019: 249-266") and the PDF metadata. The DOI is not printed in the PDF; it was taken from the issue's table of contents on ScholarWorks. Read in full, notes included. Quotes are verbatim, with the journal's page numbers. Quotations from the court record are Karras and Boyd's translation, as Henningsen cites it.
@@ -9,7 +11,7 @@ Citation verified against the article's running footers ("mff, vol. 55 no. 1, 20
 ## 1. The argument in brief
 
 - **The case.** "John Britby of the county of York and John Rykener, calling [herself] Eleanor, having been detected in women's clothing" were brought before the Mayor of London (p. 249). They had been found in Soper's Lane committing "that detestable, unmentionable and ignominious vice."
-- **Thesis.** Scholars have read the case as sodomy and male transvestism. Henningsen argues that "Rykener ought to be understood as a transgender woman because she lived and worked for periods of her life as a woman, and other people in her social milieu accepted her as such" (p. 250).
+- **Thesis.** Scholars have read the case as sodomy and male transvestism. Henningsen argues that "Rykener ought to be understood as a transgender woman" because she lived and worked as a woman for periods of her life and "other people in her social milieu accepted her as such" (p. 250).
 - **She named herself in a hostile court.** She "insists on 'calling [herself] Eleanor' even within a hostile juridical context" (p. 250). By this "she strategically—and perhaps even defiantly—inscribes herself into the historical record as a woman" (p. 251).
 - **Women's work.** She worked six weeks as a **tapster** at the Swan in Burford, and five weeks in Oxford "in women's clothing and calling himself Eleanor, worked as an embroideress" (pp. 251-252). Sewing was "the quintessential" women's labour (p. 252). She made "no mention of doing any form of 'men's' work" (p. 260).
 - **Women made her a woman with her.** A certain Anna taught her; "a certain Elizabeth Brouderer first dressed him in women's clothing" and called her Eleanor (p. 252). "In modern terms, we might say that Anna and Elizabeth helped Eleanor socially transition" (p. 252). The tavern-keeper John Clerk hired her as a woman.

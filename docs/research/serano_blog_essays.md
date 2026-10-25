@@ -1,5 +1,7 @@
 # Serano, blog and Medium essays (2007–2026): design reading
 
+> **Update 2026-10-25.** On *Cracked Ivory* (S1E16, March 2026) Serano attacks Nanda alongside Bhatt and distinguishes a third category chosen from below (the 1990s transgender coalition) from one imposed from above. That revises "Where they part" (1) below. See `cracked_ivory_podcast.md` §2 and row CI8.
+
 ## 1. What was surveyed, and how it is cited
 
 **Sources.**
