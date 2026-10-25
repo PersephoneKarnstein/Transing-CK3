@@ -125,6 +125,9 @@ A 1178 bookmark with:
 
   Sources: `research/later_starts/region_south-asia-maritime-sea.md` §1 and §3 (start sketch "The Street of Rubies" kept for reference).
 - Not re-seated: Ha-Nehpakhot keeps Arles and gets new starter characters plus the coronation, Alan of Lille and Lateran III events if time allows (`region_latin-christendom-jewish-europe.md` §1.3); Adelphai (House in Exile, Mysia), Badenya (Kirina) and Bædling (no seat) keep the existing stand-in seeding.
+- [ ] **Bædling fixes from the witchcraft comparanda** (game files; apply when the game is closed): *A Suit at Law* (`tm_bae2.0100`/`0101`) splits by region (Iceland: the hirer is liable and twelve jurors clear her; Norway: six housewives clear the seeress); Raudvere's caveats in narrator text (`faith_design.md` §18)
+- [ ] **Ha-Nehpakhot loc:** write the two approved lines ("a prayer, not a deed"; the physician's medicine) where the sect speaks of the Turning and the physician (`faith_design.md` §18)
+- [ ] **Name list:** fix the *Matrona* comment (`tm_name_lists.txt:94`; Matrona of Perge crossed toward manhood)
 - Deferred: the Visayan House (*the Lambong*), kept for later (`research/v2/visayan_design.md`).
 - **Shelved until *Silk & Silver* is out (17 November 2026), which adds content to both the 1066 and 1178 bookmarks:** whether v2 also gets a 1066 layer. The candidates are:
   - "Through the Curtain", an Adelphai starter set at Fatimid Cairo under Rasad (`research/later_starts/region_islamic-world.md` §2, sketch A);

@@ -40,7 +40,7 @@ The faith is a **household devotion**, not a church: the laid table, the night j
 - **A faith of the Christian religion**, not pagan. Believers were baptised Christians who also kept the Lady's nights, and the clergy treated them as erring Christians, not heathens.
 - **Practised in secret** under a Catholic public faith, using CK3's secret-faith (crypto) mechanic: publicly Catholic, privately the Lady's. This matches the record. It is also the one faith of the seven to play this way, which serves the uniqueness memory.
 - **No head of faith.** There is no church.
-- **`doctrine_witchcraft_shunned`** (recommended; open decision 4). The Ladies' people healed and undid harm. They did not see themselves as sorcerers, and the Milan women counteracted *maleficium*. "Accepted" would invite vanilla's coven events and its "Witch God" into the faith.
+- **`doctrine_witchcraft_accepted`** (decided 2026-10-25; §8 item 4). The Ladies' people healed and undid harm, and "witch" is the accusers' word for them. Vanilla's coven content is trait-driven, so the doctrine does not invite it.
 
 ### 3.3 Tenets (three; keys to verify against `tenet_types` when built)
 1. **The Lady's Table** (custom): leaving food and drink out on the Lady's nights; uncovered vessels; the house kept clean and open-handed. Mechanic: a household modifier for abundance or stewardship, and a stress or piety benefit on the nights.
@@ -77,9 +77,9 @@ Ghent (`b_gent`, `c_brugge`) is a "lore known here" county, not a holy site (`wi
 | Phase | Dates | What the Church does | Mechanic sketch |
 |---|---|---|---|
 | Illusion | to c. 1230 | Confessors ask the penitential's question (paraphrased: has she believed she rides with Diana?) and give penance | Penance events: piety cost, a fast; no trial |
-| Tools forged | c. 1230–1320 | Mendicant preachers; masters dispute whether riders really go; the Amalrician template makes secret gatherings with ecstatic claims suspect | "A Master's Quaestio" event; regular gatherings raise suspicion earlier (`witch_even_ezra.md` §5) |
+| Tools forged | c. 1230–1320 (from c. 1250 a cleric may speak of a *tacit pact*: rule 25 exception) | Mendicant preachers; masters dispute whether riders really go; the Amalrician template makes secret gatherings with ecstatic claims suspect | "A Master's Quaestio" event; regular gatherings raise suspicion earlier (`witch_even_ezra.md` §5) |
 | Recoding | c. 1320–1430 | 1326 papal ruling on demon-summoning; Milan: the same story given penance (1384), then death (1390) | Lombardy and the Alps first; a second accusation of the same woman is graver |
-| The sect | from c. 1430 | Valais, Nider: a sect of witches | Accusers' text may say "sect" and "night gatherings", never *sabbat*, *synagogue*, pact, familiar or broom (rule 25), and never castration lines |
+| The sect | from c. 1430 | Valais, Nider: a sect of witches | Accusers' text may say "sect", "night gatherings" and "pact" (rule 25 exception: Good Ladies only, never of Jews), never *sabbat*, *synagogue*, familiar or broom, and never castration lines |
 
 The Rhineland and France stay mostly in the penance register, as the sources do (Hutton p. 174).
 
@@ -111,7 +111,7 @@ The Rhineland and France stay mostly in the penance register, as the sources do 
 1. ~~**Is a Latin folk faith a v2 faith at all?**~~ **Decided (user, 2026-10-25):** yes. Version 2.0.0 is Japan plus the Good Ladies, with the Visayan House deferred.
 2. **Name:** *the Good Ladies* (recommended) / *the Lady's Table* / *the Company*.
 3. **The daughters' word:** a vernacular word for the Lady's women. Recommended: *the Lady's women* in English loc, with a period word to be found (MHG *nahtvrouwen*, "night women", is attested for the spirits themselves; check before use).
-4. **Witchcraft doctrine:** shunned (recommended) / accepted.
+4. ~~**Witchcraft doctrine**~~ **Decided (user, 2026-10-25): accepted.** Vanilla's coven content runs off the `witch` trait (the convert scheme, guardians converting wards, the ritual activity) under any doctrine, so shunned would not keep it out. "Witch" is the accusers' word; the Ladies do not condemn whom the Church calls witches.
 5. **Third tenet:** pick from vanilla keys when building.
 6. **Gate:** going out with the Ladies plus the table (recommended) / the table alone (no night).
 7. **Playable seed:** courtiers plus a landless household (recommended) / a fictional minor countess / courtiers only.
@@ -135,5 +135,7 @@ The Rhineland and France stay mostly in the penance register, as the sources do 
 - No living community is the faith or its continuation: Wicca, Stregheria, heathenry, Leland's *Aradia*, Perchten runs.
 - Accusers' fantasies (child-eating, devil-sex, orgy) appear nowhere, not even as allegation. Rule 25 already bans pact and sabbat. The cursus orgy is Roland's penitents' report, not the Ladies.
 - If a death toll ever appears: about 40,000–60,000 executions for 1450–1750, nearly all after the game ends. Never "nine million".
+- Hostile visions of hell punish men and women alike before c. 1200; only after may they single out women (Thurkill 1206; `daughters_of_hecate.md`).
+- Arras (1459–60) burned 12 people, not "more than 20" (`athlone_vol3_middle_ages.md`).
 - Joan of Arc is not claimed, and her gender is left unresolved. Rykener is not claimed.
 - **No J. K. Rowling or Harry Potter** (user, 2026-10-25). No reference in any loc, name, event, title or art direction, even though the books place Hogwarts's founding (c. 990) inside the game's window. The one exception is a **disparaging** reference, written under the same terms as the mod's in-group comedy (the dark-comedy achievement events, §11 and §12 revision 8; the Dorley easter eggs, `../../dorley_precedent.md`). In practice, no seeded or generated character of this faith is named Godric, Helga, Rowena or Salazar together with a founder-like role, and no Scottish or highland school of the Ladies.
