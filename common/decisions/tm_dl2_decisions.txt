@@ -104,6 +104,8 @@ tm_dl2_adopt_galenic_decision = {
 		modifier = { add = 10 has_variable = tm_suppression }
 		modifier = { add = 10 var:tm_suppression ?= 3 }
 		modifier = { add = 10 liege ?= { rite ?= { rite_has_doctrine = tm_body_galenic } } }
+		modifier = { add = 10 has_global_variable = tm_dl4_count_allowed }		# the council allowed the third estate
+		modifier = { factor = 0.5 has_global_variable = tm_dl4_register_upheld }	# the council kept the Mother's book
 		modifier = { add = 5 has_trait = content }
 		modifier = { add = -50 has_trait = zealous }
 		modifier = { add = -50 tm_is_daughter_trigger = yes }
@@ -152,5 +154,6 @@ tm_dl2_return_aristotelian_decision = {
 		modifier = { add = 10 has_trait = zealous }
 		modifier = { add = 10 tm_is_daughter_trigger = yes }
 		modifier = { add = 10 NOT = { liege ?= { faith = { religion_tag = christianity_religion } } } }
+		modifier = { add = 5 has_global_variable = tm_dl4_register_upheld }
 	}
 }

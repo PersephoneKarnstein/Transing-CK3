@@ -1,0 +1,54 @@
+﻿l_english:
+ ### Decision (tm_dl4_decisions.txt) ###
+ tm_dl4_call_council_decision:0 "Call the Council of the Two Schools"
+ tm_dl4_call_council_decision_desc:0 "The Galenic Sisters take the Emperor's third estate, and the rite of Dorleyaion says the Houses were built so that no one would. Call the Houses to sit and settle it, for a generation at least."
+ tm_dl4_call_council_decision_tooltip:0 "Call a council of both wings of the Sisters on the Emperor's third estate."
+ tm_dl4_call_council_decision_confirm:0 "Call the Houses"
+ tm_dl4_call_council_decision_effect_tt:0 "The most learned Sister of each wing speaks for it, and the Houses vote. The motion carries for one wing, or the council breaks."
+ tm_dl4_call_council_decision_cd_tt:0 "No council of the two schools in the last 25 years"
+ tm_dl4_call_council_decision_wings_tt:0 "Both wings have an adult free to speak for them"
+
+ ### Opinions (tm_dl4_opinion_modifiers.txt) ###
+ tm_dl4_broke_council_opinion:0 "Broke the Council"
+ tm_dl4_kept_count_opinion:0 "Kept the Emperor's Count After the Council"
+
+ ### The council opens (tm_dl4.0001) ###
+ tm_dl4.0001.t:0 "The Council of the Two Schools"
+ tm_dl4.0001.desc:0 "The Houses have answered your call. [tm_dl4_ari.GetName] will speak for the rite of Dorleyaion, and [tm_dl4_gal.GetName] for the Galenic wing.\n\nThe motion is the Emperor's third estate: its offices, its peace, and its column in his register. May a House take them and keep its seat at the Mother's council? No daughter's name is on the table. The question is what the Houses owe the Emperor, and what they may take from him."
+ tm_dl4.0001.a:0 "Let both schools speak, and let the Houses decide."
+ tm_dl4.0001.b:0 "Open by reminding them: the Mother's book has two columns."
+ tm_dl4.0001.b.tt:0 "The rite of Dorleyaion starts with the benches' ear"
+ tm_dl4.0001.c:0 "The Houses are tired of bishops. Let the Galenic Sisters be heard first."
+ tm_dl4.0001.c.tt:0 "The Galenic wing starts with the benches' ear"
+
+ ### The champions (tm_dl4.0010, 0011) ###
+ tm_dl4.0010.t:0 "For the Rite of Dorleyaion"
+ tm_dl4.0010.desc:0 "[tm_dl4_gal.GetName] will open with Galen: take from a body what made it male, or female, and what is left is some third thing, neither. The third estate, she will say, is only the Emperor's law agreeing with his physicians.\n\nThe benches will want an answer they can carry home."
+ tm_dl4.0010.a:0 "Read the Philosopher: \"All animals when castrated change to the female character.\""
+ tm_dl4.0010.a.tt:0 "Your [learning|E] adds to the rite of Dorleyaion's case"
+ tm_dl4.0010.b:0 "Galen called the cut something less than a beast. They have made his insult a creed."
+ tm_dl4.0010.b.tt:0 "Your [diplomacy|E] adds to the rite of Dorleyaion's case"
+ tm_dl4.0010.c:0 "The Holy Mountain shut its gates to the cut. The third estate buys nothing."
+ tm_dl4.0010.c.tt:0 "Athos (1083) adds to the rite of Dorleyaion's case, and from 1120 the convent of the Kecharitomene, closed even to eunuchs"
+ tm_dl4.0011.t:0 "For the Galenic Wing"
+ tm_dl4.0011.desc:0 "[tm_dl4_ari.GetName] will open with Aristotle, and say the third column is the old cage with a new name.\n\nThe Galenic Sisters have their own answer. The Emperor's law counts three kinds of people. A House that has a column in his register has offices, and a House with offices has peace."
+ tm_dl4.0011.a:0 "Read Galen: what is left is some third thing, neither. Take the word, and leave his contempt."
+ tm_dl4.0011.a.tt:0 "Your [learning|E] adds to the Galenic wing's case"
+ tm_dl4.0011.b:0 "Ask the benches which of their Houses the bishops have left alone, and why."
+ tm_dl4.0011.b.tt:0 "Your [diplomacy|E] adds to the Galenic wing's case"
+ tm_dl4.0011.c:0 "Read them Theophylact: a eunuch answers a monk, and the old laws are dead."
+ tm_dl4.0011.c.tt:0 "The archbishop of Ochrid's dialogue (c. 1107) adds to the Galenic wing's case"
+
+ ### The vote (tm_dl4.0020, 0021) ###
+ tm_dl4.0020.t:0 "The Houses Vote"
+ tm_dl4.result.ari:0 "The motion fails. The Mother's book keeps two columns: a House may deal with the Emperor's officers as it must, but it does not take his third estate, nor write anyone of the Houses in his third column.\n\n[tm_dl4_gal.GetName] heard the vote standing. One of her own benches said, loud enough to carry, that the Galenic place is the last row of men or the first row of women, and never a row of its own."
+ tm_dl4.result.gal:0 "The motion carries. A House may take the Emperor's third estate, its offices and its peace, and keep its seat at the Mother's council. The rite of Dorleyaion keeps its own book. It no longer calls the other one a betrayal, at least on the record.\n\n[tm_dl4_ari.GetName] said the Houses had bought a column, and would find out what it cost."
+ tm_dl4.result.broke:0 "The council broke before the vote. [tm_dl4_ari.GetName] called the third column the old cage with a new name. [tm_dl4_gal.GetName] answered that the Houses could not eat a principle. Half the benches walked out, and each school went home saying the other had left first."
+ tm_dl4.0020.a:0 "So it is written, until the next council."
+
+ ### Come home, or keep the count (tm_dl4.0030) ###
+ tm_dl4.0030.t:0 "After the Council"
+ tm_dl4.0030.desc:0 "The council has kept the Mother's book. The Galenic rite stands, and no one has been put out of the faith, but the Houses voted against the third estate, and [tm_dl4_ari.GetName] writes that she would be glad to see you home."
+ tm_dl4.0030.a:0 "I will come home to the Mother House."
+ tm_dl4.0030.a.tt:0 "You return to the main rite of the Sisters"
+ tm_dl4.0030.b:0 "The Emperor's peace still holds my land. I keep his count."

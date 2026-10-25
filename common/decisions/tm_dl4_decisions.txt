@@ -1,0 +1,45 @@
+﻿# Crusader Dolls — the Council of the Two Schools (events/tm_dl4_events.txt). A player of the faith may call it; the AI
+# calls it through tm_dl4_yearly_global.
+tm_dl4_call_council_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"		# placeholder; TODO event art
+	}
+	sort_order = 70
+
+	ai_potential = { always = no }
+
+	is_shown = {
+		is_landed = yes
+		faith = faith:transbian_maximalism
+		has_global_variable = tm_dl2_galenic_founded
+	}
+
+	is_valid = {
+		custom_tooltip = {
+			text = tm_dl4_call_council_decision_cd_tt
+			NOT = { has_global_variable = tm_dl4_council_cd }
+		}
+		custom_tooltip = {
+			text = tm_dl4_call_council_decision_wings_tt
+			any_living_character = { tm_dl4_champion_trigger = { BODY = tm_body_aristotelian } }
+			any_living_character = { tm_dl4_champion_trigger = { BODY = tm_body_galenic } }
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+		is_adult = yes
+	}
+
+	cost = {
+		piety = 150
+	}
+
+	effect = {
+		custom_tooltip = tm_dl4_call_council_decision_effect_tt
+		tm_dl4_call_council_effect = yes
+	}
+
+	ai_check_interval = 0		# the AI never takes it; the council comes from the yearly pulse
+	ai_will_do = { base = 0 }
+}

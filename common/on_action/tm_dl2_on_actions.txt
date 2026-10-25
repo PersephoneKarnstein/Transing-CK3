@@ -5,7 +5,7 @@ on_game_start_after_lobby = {
 }
 
 yearly_global_pulse = {
-	on_actions = { tm_dl2_yearly_global }
+	on_actions = { tm_dl2_yearly_global tm_dl2_galenic_teacher_yearly }
 }
 
 yearly_playable_pulse = {
@@ -42,6 +42,40 @@ tm_dl2_yearly_global = {
 			limit = { exists = scope:tm_dl2_mother }
 			set_global_variable = tm_dl2_athos_seen
 			tm_dl2_send_to_faith_effect = { EVENT = tm_dl2.0040 DAYS = 90 }
+		}
+	}
+}
+
+# The Galenic teacher (tm_dl2.0003): the schism without a landed founder. A learned member of the faith on the main
+# rite, landed or not, takes up the Emperor's count and may write the new rite. Rare: 2 in 100 a year from 886, and
+# twenty years' quiet after a teacher declines. The decision (tm_dl2_found_galenic_decision) stays the other road.
+# Runs 11, 12 and 14 never saw the rite: the faith seldom has a landed ruler besides the Mother of Mothers.
+tm_dl2_galenic_teacher_yearly = {
+	trigger = {
+		current_date >= 886.1.1
+		NOT = { has_global_variable = tm_dl2_galenic_founded }
+		NOT = { has_global_variable = tm_dl2_teacher_cd }
+	}
+	effect = {
+		random = {
+			chance = 2
+			random_living_character = {
+				limit = { tm_dl2_galenic_teacher_trigger = yes }
+				weight = {
+					base = 1
+					modifier = { add = learning }
+					modifier = { add = 10 is_landed = yes }
+					modifier = {
+						add = 10
+						liege ?= {
+							NOT = { faith = faith:transbian_maximalism }	# no root in the global pulse
+							faith = { religion_tag = christianity_religion }
+						}
+					}
+					modifier = { add = 10 has_trait = content }
+				}
+				trigger_event = { id = tm_dl2.0003 days = { 1 60 } }
+			}
 		}
 	}
 }

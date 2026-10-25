@@ -130,3 +130,23 @@ tm_life_cannot_trigger = {
 		has_variable = tm_pavai_companions
 	}
 }
+
+# Root (a newborn) is of $PARENT$'s house: the house the marriage gives the child (raised in the faith, tm_on_actions.txt).
+tm_born_of_house_trigger = {
+	exists = house
+	exists = $PARENT$.house
+	house = $PARENT$.house
+}
+
+# Who may take up the Emperor's count and write the Galenic rite by event (tm_dl2.0003): an adult of the faith on the
+# main rite, read in the law, neither the Mother of Mothers, nor a daughter, nor a zealot. Scope: the character.
+tm_dl2_galenic_teacher_trigger = {
+	faith = faith:transbian_maximalism
+	rite ?= { rite_has_doctrine = tm_body_aristotelian }
+	is_adult = yes
+	is_imprisoned = no
+	learning >= 10
+	NOT = { has_title = title:d_tm_mother_house }
+	tm_is_daughter_trigger = no
+	NOT = { has_trait = zealous }
+}

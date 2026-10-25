@@ -245,6 +245,20 @@ def main(path):
         print('No counts (the save predates the Account, or nothing has been entered).')
     print()
 
+    # The Council of the Two Schools (tm_dl4_tally_effect): Adelphai Dorleyaiou, run-wide.
+    print('== Council of the Two Schools ==')
+    gy = gvars.get('tm_dl2_galenic_year')
+    print(f'Galenic rite: founded {int(gy)}' + (' by a teacher\'s event' if 'tm_dl4_n_teacher' in gvars else ' by decision') if gy is not None
+          else ('Galenic rite: founded (year not recorded)' if 'tm_dl2_galenic_founded' in gvars else 'Galenic rite: never founded'))
+    csteps = ('called', 'ari', 'gal', 'broke', 'home', 'held')
+    if any(f'tm_dl4_n_{s}' in gvars for s in csteps):
+        print('  '.join(f'{s} {int(gvars.get(f"tm_dl4_n_{s}") or 0)}' for s in csteps))
+        print('called: councils opened; ari / gal / broke: the Mother\'s book kept, the third estate allowed, or no vote;\n'
+              'home / held: Galenic rulers who came home after the book was kept, or kept the Emperor\'s count.')
+    else:
+        print('No counts (the save predates the council, or none has been called).')
+    print()
+
     # The Women's Chamber (tm_dl3_tally_effect): run-wide counts of each step.
     print("== Women's Chamber ==")
     steps = ('rolled', 'fired', 'took', 'stayed', 'lost', 'worked', 'chrysobull', 'estate')

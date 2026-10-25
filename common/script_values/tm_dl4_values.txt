@@ -1,0 +1,54 @@
+﻿# Crusader Dolls — the Council of the Two Schools (events/tm_dl4_events.txt). The floor of each school: how many
+# landed rulers each wing brings to the benches, before the champions speak.
+
+# The rite of Dorleyaion: 10, +3 a landed ruler of the main rite, +10 if the Mother of Mothers keeps it.
+tm_dl4_ari_floor_value = {
+	value = 10
+	every_ruler = {
+		limit = {
+			is_landed = yes
+			faith = faith:transbian_maximalism
+			rite ?= { rite_has_doctrine = tm_body_aristotelian }
+		}
+		add = 3
+	}
+	if = {
+		limit = { title:d_tm_mother_house.holder ?= { rite ?= { rite_has_doctrine = tm_body_aristotelian } } }
+		add = 10
+	}
+}
+
+# The Galenic wing: 10, +3 a landed Galenic ruler, +2 a landed ruler of the faith under a liege of another Christian
+# faith (the Houses that live on the Emperor's peace).
+tm_dl4_gal_floor_value = {
+	value = 10
+	every_ruler = {
+		limit = {
+			is_landed = yes
+			faith = faith:transbian_maximalism
+			rite ?= { rite_has_doctrine = tm_body_galenic }
+		}
+		add = 3
+	}
+	every_ruler = {
+		limit = {
+			is_landed = yes
+			faith = faith:transbian_maximalism
+			liege ?= {
+				NOT = { faith = faith:transbian_maximalism }
+				faith = { religion_tag = christianity_religion }
+			}
+		}
+		add = 2
+	}
+}
+
+# Order of the champions (tm_dl4_pick_champions_effect): learning, a landed member ahead of an unlanded one, then title.
+tm_dl4_champion_value = {
+	value = learning
+	if = {
+		limit = { is_landed = yes }
+		add = 5
+	}
+	add = highest_held_title_tier
+}

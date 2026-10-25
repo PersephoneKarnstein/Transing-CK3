@@ -188,13 +188,13 @@ tm_bae2_yearly_pardon = {
 				NOT = { has_variable = tm_bae2_pardon_asked }
 				exists = var:tm_bae2_accuser
 				var:tm_bae2_accuser = { is_alive = yes }
-				var:tm_bae2_accuser.top_liege = { is_allied_in_war = prev }
+				var:tm_bae2_accuser.top_liege ?= { is_allied_in_war = prev }	# an accuser in the pool has no liege
 			}
 			random = {
 				chance = 50
 				set_variable = { name = tm_bae2_pardon_asked value = yes }
 				save_scope_as = tm_bae2_outlaw
-				var:tm_bae2_accuser.top_liege = { trigger_event = tm_bae2.0135 }
+				var:tm_bae2_accuser.top_liege ?= { trigger_event = tm_bae2.0135 }
 			}
 		}
 	}

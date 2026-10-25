@@ -3,6 +3,7 @@
 # Adelphai Dorleyaiou, stage 2 (wave 3). Design note: docs/wave3/dorley.md.
 #   0001  The Emperor's count: the Galenic rite is founded (tm_dl2_found_galenic_decision). Novel 98, 886 on.
 #   0002  The Mother of Mothers answers the Galenic founding or a joining.
+#   0003  The Galenic teacher: a learned member of the faith, landed or not, may write the new rite (886 on).
 #   0010  Ignatios returns as patriarch (November 867).
 #   0020  The train to Tarsus: a slaver's train of Rum boys bound for the Cilician frontier, 867-989.
 #   0030  The Galenic wing's book: Theophylact's In Defence of Eunuchs (c. 1100-07), from 1107.
@@ -69,6 +70,57 @@ tm_dl2.0002 = {
 			base = 50
 			modifier = { add = 30 has_trait = forgiving }
 			modifier = { add = 20 has_trait = compassionate }
+		}
+	}
+}
+
+######################################################################
+# 0003 The Galenic teacher. Root = an adult of the faith on the main rite, landed or not (tm_dl2_galenic_teacher_trigger;
+# tm_dl2_galenic_teacher_yearly). The same reading as the decision: Leo VI's Novel 98 counts men, women and eunuchs
+# (Sidéris 2010, p. 89), and the wing writes the register his way. The question is the register, never whether she
+# is a woman. Writing it founds the rite through tm_dl2_found_galenic_effect, as the decision does.
+######################################################################
+tm_dl2.0003 = {
+	type = character_event
+	title = tm_dl2.0003.t
+	desc = tm_dl2.0003.desc
+	theme = learning
+	override_background = { reference = study }
+	left_portrait = { character = root animation = personality_rational }
+
+	trigger = {
+		NOT = { has_global_variable = tm_dl2_galenic_founded }
+		tm_dl2_galenic_teacher_trigger = yes
+	}
+
+	option = {	# Write the new rite
+		name = tm_dl2.0003.a
+		custom_tooltip = tm_dl2.0003.a.tt
+		tm_dl2_found_galenic_effect = yes
+		tm_dl4_tally_effect = { WHAT = teacher }
+		trigger_event = tm_dl2.0001
+		ai_chance = {
+			base = 60
+			modifier = {
+				add = 30
+				liege ?= {
+					NOT = { faith = root.faith }
+					faith = { religion_tag = christianity_religion }
+				}
+			}
+			modifier = { add = 20 has_trait = content }
+			modifier = { add = 20 has_trait = craven }
+			modifier = { add = -30 has_trait = stubborn }
+		}
+	}
+	option = {	# Leave the book shut
+		name = tm_dl2.0003.b
+		set_global_variable = { name = tm_dl2_teacher_cd value = yes years = 20 }
+		add_piety = minor_piety_gain
+		ai_chance = {
+			base = 40
+			modifier = { add = 30 has_trait = stubborn }
+			modifier = { add = 20 has_trait = brave }
 		}
 	}
 }

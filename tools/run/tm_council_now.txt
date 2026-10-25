@@ -1,0 +1,26 @@
+﻿# Run from the console:  run tm_council_now.txt
+# Calls the Council of the Two Schools now, with you as host (tm_dl4_events.txt). If the Galenic rite has not been
+# founded, another landed ruler of the main rite (not the Mother of Mothers) founds it first. Logs to debug.log as "TMDL4".
+save_scope_as = tm_dl4_runner
+if = {
+	limit = { NOT = { has_global_variable = tm_dl2_galenic_founded } }
+	random_ruler = {
+		limit = {
+			is_landed = yes
+			is_adult = yes
+			NOT = { this = scope:tm_dl4_runner }
+			faith = faith:transbian_maximalism
+			rite ?= { rite_has_doctrine = tm_body_aristotelian }
+			NOT = { has_title = title:d_tm_mother_house }
+		}
+		tm_dl2_found_galenic_effect = yes
+		debug_log = "TMDL4 founded the Galenic rite"
+		debug_log_scopes = yes
+	}
+}
+remove_global_variable = tm_dl4_council_cd
+tm_dl4_call_council_effect = yes
+if = {
+	limit = { NOT = { has_global_variable = tm_dl4_council_cd } }
+	debug_log = "TMDL4 FAIL no council: one wing has no landed adult ruler to speak for it"
+}

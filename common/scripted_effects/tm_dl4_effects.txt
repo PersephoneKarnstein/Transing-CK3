@@ -1,0 +1,45 @@
+﻿# Crusader Dolls — the Council of the Two Schools (events/tm_dl4_events.txt; docs/wave3/dorley.md §Council).
+
+# Run-wide counts for tools/census_report.py (globals tm_dl4_n_<step>).
+tm_dl4_tally_effect = {
+	if = {
+		limit = { NOT = { has_global_variable = tm_dl4_n_$WHAT$ } }
+		set_global_variable = { name = tm_dl4_n_$WHAT$ value = 0 }
+	}
+	change_global_variable = { name = tm_dl4_n_$WHAT$ add = 1 }
+}
+
+# A champion for each school: the most learned adult of that rite, landed or not; a landed member is preferred, and a
+# higher title breaks ties. Run 15 (1210): the faith seldom had more than one ruler after 950, so a council that wanted
+# a landed ruler in each wing never met. Saves scope:tm_dl4_ari and scope:tm_dl4_gal when there is one.
+tm_dl4_pick_champions_effect = {
+	clear_saved_scope = tm_dl4_ari
+	clear_saved_scope = tm_dl4_gal
+	ordered_living_character = {
+		limit = { tm_dl4_champion_trigger = { BODY = tm_body_aristotelian } }
+		order_by = tm_dl4_champion_value
+		save_scope_as = tm_dl4_ari
+	}
+	ordered_living_character = {
+		limit = { tm_dl4_champion_trigger = { BODY = tm_body_galenic } }
+		order_by = tm_dl4_champion_value
+		save_scope_as = tm_dl4_gal
+	}
+}
+
+# Call the council. Scope: the one who calls it (the host). Does nothing unless both schools have a champion.
+tm_dl4_call_council_effect = {
+	save_scope_as = tm_dl4_host
+	tm_dl4_pick_champions_effect = yes
+	if = {
+		limit = {
+			exists = scope:tm_dl4_ari
+			exists = scope:tm_dl4_gal
+		}
+		set_global_variable = { name = tm_dl4_council_cd value = yes years = 25 }
+		set_global_variable = { name = tm_dl4_ari_score value = tm_dl4_ari_floor_value }
+		set_global_variable = { name = tm_dl4_gal_score value = tm_dl4_gal_floor_value }
+		tm_dl4_tally_effect = { WHAT = called }
+		trigger_event = tm_dl4.0001
+	}
+}

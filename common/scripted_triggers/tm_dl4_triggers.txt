@@ -1,0 +1,9 @@
+﻿# Crusader Dolls — the Council of the Two Schools (events/tm_dl4_events.txt).
+
+# Who may speak for a school: an adult of the faith on the rite whose body doctrine is $BODY$, free to come.
+tm_dl4_champion_trigger = {
+	is_adult = yes
+	is_imprisoned = no
+	faith = faith:transbian_maximalism
+	rite ?= { rite_has_doctrine = $BODY$ }
+}

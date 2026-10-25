@@ -1,0 +1,336 @@
+﻿namespace = tm_dl4
+
+# Crusader Dolls — Adelphai Dorleyaiou: the Council of the Two Schools (README roadmap; docs/wave3/dorley.md §Council).
+#   0001  The host opens the council
+#   0010  The champion of the rite of Dorleyaion chooses her proof
+#   0011  The champion of the Galenic wing chooses hers
+#   0020  The vote (host)
+#   0021  The vote, for players of the faith
+#   0030  A Galenic ruler, after the council kept the Mother's book: come home, or keep the Emperor's count
+# The motion is the Emperor's third estate (its offices, its peace and its column in his register), never whether a
+# daughter is a woman: no daughter's name is on the table (research/serano_blog_essays.md row 18). Each school's reason
+# is its proof-text, Aristotle GA 787b against Galen, De semine K IV 585 (research/byz_galen_on_semen.md row 4). The
+# Galenic wing is the accommodationist one (book_bhatt_third_sex.md row 2), and the accommodation buys nothing
+# (hist_sanders_khuntha.md rows 2-3; Athos, 1083; the Kecharitomene, 1120).
+# Scopes: scope:tm_dl4_host, scope:tm_dl4_ari, scope:tm_dl4_gal. Scores: global variables tm_dl4_ari_score and
+# tm_dl4_gal_score (floors in tm_dl4_values.txt), to which the host's lean and the champions' proofs add.
+
+# The host opens the council. Root = the host.
+tm_dl4.0001 = {
+	type = character_event
+	title = tm_dl4.0001.t
+	desc = tm_dl4.0001.desc
+	theme = faith
+	override_background = { reference = council_chamber }
+	left_portrait = { character = scope:tm_dl4_ari animation = personality_rational }
+	right_portrait = { character = scope:tm_dl4_gal animation = personality_rational }
+
+	option = {	# Let both schools speak
+		name = tm_dl4.0001.a
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = just }
+			modifier = { add = 20 has_trait = humble }
+		}
+	}
+	option = {	# The Mother's book has two columns
+		name = tm_dl4.0001.b
+		custom_tooltip = tm_dl4.0001.b.tt
+		change_global_variable = { name = tm_dl4_ari_score add = 10 }
+		ai_chance = {
+			base = 10
+			modifier = { add = 40 rite ?= { rite_has_doctrine = tm_body_aristotelian } }
+			modifier = { add = 20 has_trait = zealous }
+		}
+	}
+	option = {	# Let the Galenic Sisters be heard first
+		name = tm_dl4.0001.c
+		custom_tooltip = tm_dl4.0001.c.tt
+		change_global_variable = { name = tm_dl4_gal_score add = 10 }
+		ai_chance = {
+			base = 10
+			modifier = { add = 40 rite ?= { rite_has_doctrine = tm_body_galenic } }
+			modifier = { add = 10 has_trait = content }
+		}
+	}
+
+	after = {
+		scope:tm_dl4_ari = { trigger_event = { id = tm_dl4.0010 days = { 5 10 } } }
+		scope:tm_dl4_gal = { trigger_event = { id = tm_dl4.0011 days = { 5 10 } } }
+		trigger_event = { id = tm_dl4.0020 days = 40 }
+	}
+}
+
+# The champion of the rite of Dorleyaion. Root = scope:tm_dl4_ari.
+tm_dl4.0010 = {
+	type = character_event
+	title = tm_dl4.0010.t
+	desc = tm_dl4.0010.desc
+	theme = learning
+	override_background = { reference = study }
+	left_portrait = { character = root animation = thinking }
+	right_portrait = { character = scope:tm_dl4_gal animation = personality_rational }
+
+	option = {	# The Philosopher's text
+		name = tm_dl4.0010.a
+		custom_tooltip = tm_dl4.0010.a.tt
+		change_global_variable = { name = tm_dl4_ari_score add = learning }
+		ai_chance = {
+			base = 10
+			modifier = { add = learning }
+		}
+	}
+	option = {	# Galen's insult made a creed
+		name = tm_dl4.0010.b
+		custom_tooltip = tm_dl4.0010.b.tt
+		change_global_variable = { name = tm_dl4_ari_score add = diplomacy }
+		ai_chance = {
+			base = 10
+			modifier = { add = diplomacy }
+		}
+	}
+	option = {	# The third estate buys nothing: Athos, and the Kecharitomene
+		name = tm_dl4.0010.c
+		trigger = { current_date >= 1083.1.1 }
+		custom_tooltip = tm_dl4.0010.c.tt
+		change_global_variable = { name = tm_dl4_ari_score add = 15 }
+		if = {
+			limit = { current_date >= 1120.1.1 }
+			change_global_variable = { name = tm_dl4_ari_score add = 5 }
+		}
+		ai_chance = { base = 20 }
+	}
+}
+
+# The champion of the Galenic wing. Root = scope:tm_dl4_gal.
+tm_dl4.0011 = {
+	type = character_event
+	title = tm_dl4.0011.t
+	desc = tm_dl4.0011.desc
+	theme = learning
+	override_background = { reference = physicians_study }
+	left_portrait = { character = root animation = thinking }
+	right_portrait = { character = scope:tm_dl4_ari animation = personality_rational }
+
+	option = {	# Galen's text
+		name = tm_dl4.0011.a
+		custom_tooltip = tm_dl4.0011.a.tt
+		change_global_variable = { name = tm_dl4_gal_score add = learning }
+		ai_chance = {
+			base = 10
+			modifier = { add = learning }
+		}
+	}
+	option = {	# The Emperor's peace
+		name = tm_dl4.0011.b
+		custom_tooltip = tm_dl4.0011.b.tt
+		change_global_variable = { name = tm_dl4_gal_score add = diplomacy }
+		ai_chance = {
+			base = 10
+			modifier = { add = diplomacy }
+		}
+	}
+	option = {	# Theophylact's book
+		name = tm_dl4.0011.c
+		trigger = { current_date >= 1107.1.1 }
+		custom_tooltip = tm_dl4.0011.c.tt
+		change_global_variable = { name = tm_dl4_gal_score add = 15 }
+		ai_chance = { base = 20 }
+	}
+}
+
+# The vote. Root = the host. The outcome is drawn once, here, and kept in scope:tm_dl4_outcome for the notices.
+tm_dl4.0020 = {
+	type = character_event
+	title = tm_dl4.0020.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:tm_dl4_outcome = flag:ari }
+				desc = tm_dl4.result.ari
+			}
+			triggered_desc = {
+				trigger = { scope:tm_dl4_outcome = flag:gal }
+				desc = tm_dl4.result.gal
+			}
+			desc = tm_dl4.result.broke
+		}
+	}
+	theme = faith
+	override_background = { reference = council_chamber }
+	left_portrait = { character = scope:tm_dl4_ari animation = personality_bold }
+	right_portrait = { character = scope:tm_dl4_gal animation = personality_bold }
+
+	trigger = {
+		scope:tm_dl4_ari ?= { is_alive = yes }
+		scope:tm_dl4_gal ?= { is_alive = yes }
+	}
+
+	immediate = {
+		random_list = {
+			0 = {
+				modifier = { add = global_var:tm_dl4_ari_score }
+				save_scope_value_as = { name = tm_dl4_outcome value = flag:ari }
+			}
+			0 = {
+				modifier = { add = global_var:tm_dl4_gal_score }
+				save_scope_value_as = { name = tm_dl4_outcome value = flag:gal }
+			}
+			15 = {
+				save_scope_value_as = { name = tm_dl4_outcome value = flag:broke }
+			}
+		}
+		if = {
+			limit = { scope:tm_dl4_outcome = flag:ari }
+			tm_dl4_tally_effect = { WHAT = ari }
+			set_global_variable = { name = tm_dl4_register_upheld value = yes years = 25 }
+			scope:tm_dl4_ari = {
+				add_prestige = medium_prestige_gain
+				add_piety = medium_piety_gain
+			}
+			scope:tm_dl4_gal = { add_prestige = minor_prestige_loss }
+		}
+		else_if = {
+			limit = { scope:tm_dl4_outcome = flag:gal }
+			tm_dl4_tally_effect = { WHAT = gal }
+			set_global_variable = { name = tm_dl4_count_allowed value = yes years = 25 }
+			scope:tm_dl4_gal = {
+				add_prestige = medium_prestige_gain
+				add_piety = medium_piety_gain
+			}
+			scope:tm_dl4_ari = { add_prestige = minor_prestige_loss }
+		}
+		else = {
+			tm_dl4_tally_effect = { WHAT = broke }
+			set_global_variable = { name = tm_dl4_council_cd value = yes years = 15 }	# the Houses will try again sooner
+			scope:tm_dl4_ari = { add_opinion = { target = scope:tm_dl4_gal modifier = tm_dl4_broke_council_opinion } }
+			scope:tm_dl4_gal = { add_opinion = { target = scope:tm_dl4_ari modifier = tm_dl4_broke_council_opinion } }
+		}
+		remove_global_variable = tm_dl4_ari_score
+		remove_global_variable = tm_dl4_gal_score
+	}
+
+	option = {
+		name = tm_dl4.0020.a
+	}
+
+	after = {
+		if = {
+			limit = { scope:tm_dl4_outcome = flag:ari }
+			every_ruler = {
+				limit = {
+					is_landed = yes
+					faith = faith:transbian_maximalism
+					rite ?= { rite_has_doctrine = tm_body_galenic }
+				}
+				trigger_event = { id = tm_dl4.0030 days = { 5 30 } }
+			}
+		}
+		every_player = {
+			limit = {
+				faith = faith:transbian_maximalism
+				NOT = { this = root }
+				NOT = {
+					AND = {
+						scope:tm_dl4_outcome = flag:ari
+						is_landed = yes
+						rite ?= { rite_has_doctrine = tm_body_galenic }
+					}
+				}
+			}
+			trigger_event = tm_dl4.0021
+		}
+	}
+}
+
+# The vote, for a player of the faith who did not host. Root = the player.
+tm_dl4.0021 = {
+	type = character_event
+	title = tm_dl4.0020.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:tm_dl4_outcome = flag:ari }
+				desc = tm_dl4.result.ari
+			}
+			triggered_desc = {
+				trigger = { scope:tm_dl4_outcome = flag:gal }
+				desc = tm_dl4.result.gal
+			}
+			desc = tm_dl4.result.broke
+		}
+	}
+	theme = faith
+	override_background = { reference = council_chamber }
+	left_portrait = { character = scope:tm_dl4_ari animation = personality_bold }
+	right_portrait = { character = scope:tm_dl4_gal animation = personality_bold }
+
+	option = {
+		name = tm_dl4.0020.a
+	}
+}
+
+# The council kept the Mother's book. Root = a landed Galenic ruler. Coming home and keeping the count are both
+# honoured choices; only the champion of the main rite takes it ill.
+tm_dl4.0030 = {
+	type = character_event
+	title = tm_dl4.0030.t
+	desc = tm_dl4.0030.desc
+	theme = faith
+	left_portrait = { character = root animation = thinking }
+	right_portrait = { character = scope:tm_dl4_ari animation = personality_rational }
+
+	trigger = {
+		rite ?= { rite_has_doctrine = tm_body_galenic }
+	}
+
+	option = {	# Come home
+		name = tm_dl4.0030.a
+		custom_tooltip = tm_dl4.0030.a.tt
+		set_character_rite_with_conversion = faith.main_rite
+		add_piety = minor_piety_gain
+		tm_dl4_tally_effect = { WHAT = home }
+		if = {
+			limit = {
+				title:d_tm_mother_house.holder ?= {
+					NOT = { this = root }
+					faith = root.faith
+				}
+			}
+			title:d_tm_mother_house.holder = {
+				add_opinion = { target = root modifier = tm_dl2_came_home_opinion }
+			}
+		}
+		ai_chance = {
+			base = 30
+			modifier = { add = 30 has_trait = zealous }
+			modifier = { add = 30 tm_is_daughter_trigger = yes }
+			modifier = { add = 20 NOT = { liege ?= { faith = { religion_tag = christianity_religion } } } }
+			modifier = {
+				add = -30
+				liege ?= {
+					NOT = { faith = root.faith }
+					faith = { religion_tag = christianity_religion }
+				}
+			}
+		}
+	}
+	option = {	# Keep the Emperor's count
+		name = tm_dl4.0030.b
+		tm_dl4_tally_effect = { WHAT = held }
+		if = {
+			limit = {
+				scope:tm_dl4_ari ?= {
+					is_alive = yes
+					NOT = { this = root }
+				}
+			}
+			scope:tm_dl4_ari = { add_opinion = { target = root modifier = tm_dl4_kept_count_opinion } }
+		}
+		ai_chance = {
+			base = 50
+			modifier = { add = 20 has_trait = stubborn }
+			modifier = { add = 20 has_trait = content }
+		}
+	}
+}

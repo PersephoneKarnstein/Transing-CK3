@@ -350,7 +350,7 @@ Built so far is described in the faith sections above. What was planned and not 
 
 ### Larger: needs a dedicated pass
 
-- [ ] Adelphai Dorleyaiou: the council fight between the Aristotelian and Galenic wings
+- [x] Adelphai Dorleyaiou: the Council of the Two Schools, between the Aristotelian and Galenic wings (built, not yet tested in game)
 - [ ] Schisms planned in the design notes: "cis is not a caste" against the estates of the Touched; call-outs as scapegoat rituals; whether eunuchs who seek the Bædling faith count as sisters
 - [ ] Adelphai Dorleyaiou: the founding charter as a house legacy; the Tower on the Condition; the Dorley precedent's disclosure, ward schooling and washouts sent to a holy order
 - [ ] Bædling: raising a níð-pole oneself (a scheme, with a proxy carver) and the Níð of the Land against a persecuting liege; vows over the cup that are kept or broken
@@ -370,7 +370,7 @@ Built so far is described in the faith sections above. What was planned and not 
 
 ### After the Silk & Silver DLC (17 November 2026), if ever
 
-- [ ] A 1178 start, with its hooks for the Worn Garland, Ha-Nehpakhot and Badenya, and perhaps two new faiths there (Wendish and Visayan; see `docs/TODO.md`)
+- [ ] Version 2.0.0: a 1178 start, with its hooks for the Worn Garland, Ha-Nehpakhot and Badenya, and two new faiths there: the singers' houses of the Yodo river ports in Japan (*Imayō no Ie*) and a Visayan House at Cebu (*the Lambong*). Researched, not built; designs and open decisions in `docs/research/v2/` (see `docs/TODO.md`)
 - [ ] Silk & Silver ideas for Yutai Dao and the Worn Garland (traders, caravans, guilds)
 - [ ] Merchant companies: a charter for a trading post held by contract, a third road for the bands
 

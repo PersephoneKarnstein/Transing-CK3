@@ -1,0 +1,28 @@
+﻿# Crusader Dolls — the Council of the Two Schools (events/tm_dl4_events.txt). Appended to vanilla on_actions.
+yearly_global_pulse = {
+	on_actions = { tm_dl4_yearly_global }
+}
+
+# Once the Galenic rite has stood ten years (tm_dl2_found_galenic_effect sets the first cooldown), and at most every
+# 25 years, the Mother of Mothers (or the greatest ruler of the faith; with no ruler, the main rite's champion) calls the
+# Houses. About one year in ten.
+tm_dl4_yearly_global = {
+	trigger = {
+		has_global_variable = tm_dl2_galenic_founded
+		NOT = { has_global_variable = tm_dl4_council_cd }
+	}
+	effect = {
+		random = {
+			chance = 10
+			tm_dl2_pick_mother_effect = yes
+			if = {
+				limit = { exists = scope:tm_dl2_mother }
+				scope:tm_dl2_mother = { tm_dl4_call_council_effect = yes }
+			}
+			else = {	# no ruler of the faith at all: the main rite's champion calls the Houses herself
+				tm_dl4_pick_champions_effect = yes
+				scope:tm_dl4_ari ?= { tm_dl4_call_council_effect = yes }
+			}
+		}
+	}
+}

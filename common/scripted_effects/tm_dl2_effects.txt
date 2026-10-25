@@ -13,6 +13,8 @@ tm_dl2_found_galenic_effect = {
 		convert = yes
 	}
 	set_global_variable = { name = tm_dl2_galenic_founded value = yes }
+	set_global_variable = { name = tm_dl2_galenic_year value = current_year }		# for tools/census_report.py
+	set_global_variable = { name = tm_dl4_council_cd value = yes years = 10 }	# no council of the two schools for ten years
 	# Keep the founder's House of the knife: the wings split on the body, not on who may be cut.
 	scope:tm_dl2_new_rite = {
 		if = {

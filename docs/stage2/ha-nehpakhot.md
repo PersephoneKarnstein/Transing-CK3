@@ -272,3 +272,12 @@ All edits are in the worktree only, and each is marked with a `tm_hn2` comment.
 - `set_variable` on an artifact scope (after `create_artifact … save_scope_as`) and `any_character_artifact = { has_variable = … }`: xTiger accepts both; unverified in game.
 - `create_artifact` with `type = necklace` and `visuals = necklace` and no features: vanilla does the same (`tour_phase_cultural_festival_james.txt`), so the required features should be filled automatically.
 - The Carnival court list is guarded with `is_in_list` before `add_to_list`, so each court rolls once a year whatever the engine does with duplicates.
+
+## Survival fixes after run 15 (2026-10-25, untested)
+
+Run 15 (867–1210) lost the sect in the 1040s. Its only home was Bonadonna's camp, which passed in 906 to an eight-year-old great-grandson of another faith and was dissolved that day; the members scattered over ten courts, married out, and all ten children of member mothers died in another faith. Run 13 survived only because a member took a Breton mercenary band in 897.
+
+- **Descent through the mother.** The born-in-faith rule skips a child born into the house of a father of another faith (the fix for Yutai's Mandate). Ha-Nehpakhot mothers are now exempt: the child of a Jewish mother is Jewish (Mishnah Kiddushin 3:12). The sect is landless, so no throne follows from it.
+- **The camp passes to the community** (`common/on_action/tm_hn_camp_on_actions.txt`). An AI camp leader of the sect whose heir is a child or of another faith adopts the ablest grown woman of the community in her camp and names her heir, as the faith's Houses continue by adoption. A player decides for herself.
+
+Held back unless the next run still shows no newcomers: a weak yearly draw of an unmarried young Jew to the community's court when it has no land, and a gathering that prefers the community's court to another faith's House.

@@ -113,3 +113,20 @@ New block:
 - [ ] Ignatios lands in late November 867; Tarsus train gates (990, Muslim Cilicia); Athos once 1083-89; the steward from 1120; the Consul's Letter 1063-78
 - [ ] Watch observe runs: how often the AI founds the Galenic rite (should be rare)
 ```
+
+## Council of the Two Schools (built 2026-10-24, untested)
+Files: `events/tm_dl4_events.txt`, `common/{on_action,scripted_effects,script_values,decisions,opinion_modifiers}/tm_dl4_*.txt`, `localization/english/tm_dl4_l_english.yml`, console helper `tools/run/tm_council_now.txt`.
+
+- **When.** Ten years after the Galenic rite is founded, then at most every 25 years (15 after a broken council). Each year without a cooldown, a 10% chance that the Mother of Mothers (or the greatest ruler of the faith) calls it. A player of the faith may call it by decision (150 piety). Both wings need a landed adult ruler.
+- **The motion.** The Emperor's third estate: its offices, its peace, its column in his register. No daughter's name is on the table (Serano row 18). The schools give their reasons with their proof-texts, GA 787b against *De semine* K IV 585 (Galen note row 4).
+- **Who speaks.** The most learned landed ruler of each rite. The host may lean (+10). Each champion picks a proof: the school's text (adds learning), the polemic or the appeal to peace (adds diplomacy), or dated evidence (15: Athos 1083 and, from 1120, the Kecharitomene, +5, for the main rite; Theophylact 1107 for the Galenic). The benches' floor: 10, +3 a landed ruler of the wing, +10 for the main rite if the Mother of Mothers keeps it, +2 for the Galenic per landed ruler of the faith under a liege of another Christian faith.
+- **The vote.** Weighted draw: main-rite score, Galenic score, and a fixed 15 for a broken council. Kept: 25 years of `tm_dl4_register_upheld` (AI joins the Galenic rite half as often, returns more often), and each landed Galenic ruler chooses whether to come home or keep the count. Allowed: 25 years of `tm_dl4_count_allowed` (+10 to the AI's join weight). Broken: mutual −20 between the champions.
+- **Not built.** No fervor change: both wings share the faith's fervor. No faith split or expulsion: losing the vote never puts anyone out of the faith.
+
+## The Galenic teacher (added 2026-10-24, untested)
+
+Runs 11, 12 and 14 never founded the Galenic rite: the founding decision needs a landed ruler of the main rite who is not the Mother of Mothers, and the faith seldom has one. A second road now exists. Each year from 886 there is a 2 in 100 chance that a learned member of the faith on the main rite takes up Novel 98 (`tm_dl2.0003`). This can be a courtier, and lords, rulers under Christian lieges and content characters are favoured. Excluded: the Mother of Mothers, daughters, zealots, and anyone under learning 10. Writing the rite runs the same effect as the decision. Declining gives twenty quiet years. A courtier's rite has a handful of followers until landed rulers join it by decision. The council needs a landed ruler in each wing, so it waits until then.
+
+### Champions need not be landed (2026-10-24, after run 15)
+
+Run 15 (867–1210) founded the Galenic rite in 902 but never held a council: after 950 the faith seldom had more than one ruler, and the council wanted a landed ruler in each wing. Each school's champion is now its most learned adult, landed or not; a landed member is preferred (+5 in the order), and a higher title breaks ties (`tm_dl4_champion_trigger`, `tm_dl4_champion_value`). The host is still the Mother of Mothers or the greatest ruler of the faith; with no ruler at all, the main rite's champion calls the Houses herself. The decision's check follows the same rule. By 1210 the Galenic rite had no living members, so the wing can still die out; the teacher event only founds it once.

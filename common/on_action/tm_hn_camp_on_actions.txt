@@ -1,0 +1,36 @@
+﻿# Crusader Dolls — Ha-Nehpakhot: the camp passes to the community. Appended to vanilla on_actions.
+# In the 1210 observe run the sect lived in Bonadonna's camp (d_laamp_tm_lamp) and nowhere else. In 906 the camp passed
+# by blood to an eight-year-old of another faith and was dissolved the same day; the members scattered over ten courts
+# and the sect was gone by the 1040s (scratchpad run 15, hn_extinction). The House continues by adoption, as the faith's
+# Houses do: when an AI camp leader's heir is a child or of another faith, she adopts the ablest grown woman of the
+# community in her camp and names her heir. A player decides for herself.
+yearly_playable_pulse = {
+	on_actions = { tm_hn_camp_heir_yearly }
+}
+
+tm_hn_camp_heir_yearly = {
+	trigger = {
+		is_ai = yes
+		government_has_flag = government_is_landless_adventurer
+		rite ?= { rite_has_parameter = tm_turning_gate }
+		NOT = { designated_heir ?= { tm_hn_camp_heir_trigger = { CAMP = root } } }
+		NOT = { primary_heir ?= { tm_hn_camp_heir_trigger = { CAMP = root } } }
+		any_courtier = { tm_hn_camp_heir_trigger = { CAMP = root } }
+	}
+	effect = {
+		ordered_courtier = {
+			limit = { tm_hn_camp_heir_trigger = { CAMP = root } }
+			order_by = {
+				value = diplomacy
+				add = stewardship
+				add = learning
+			}
+			save_scope_as = tm_hn_camp_heir
+		}
+		if = {
+			limit = { NOT = { scope:tm_hn_camp_heir = { is_child_of = root } } }
+			adopt_effect = { CHILD = scope:tm_hn_camp_heir ADOPTER = root }
+		}
+		set_designated_heir = scope:tm_hn_camp_heir
+	}
+}

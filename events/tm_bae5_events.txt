@@ -91,7 +91,10 @@ tm_bae5.0010 = {
 
 	option = {	# Take the cup and her counsel
 		name = tm_bae5.0010.a
-		add_legitimacy = minor_legitimacy_gain
+		if = {	# a landless adventurer has none
+			limit = { has_legitimacy = yes }
+			add_legitimacy = minor_legitimacy_gain
+		}
 		add_opinion = { target = scope:tm_cup_lady modifier = tm_bae5_first_cup_opinion }
 		scope:tm_cup_lady = {
 			add_opinion = { target = root modifier = tm_bae5_first_cup_opinion }
@@ -148,7 +151,10 @@ tm_bae5.0020 = {
 	option = {	# Drain the cup and take the high seat
 		name = tm_bae5.0020.a
 		add_prestige = medium_prestige_gain
-		add_legitimacy = medium_legitimacy_gain
+		if = {
+			limit = { has_legitimacy = yes }
+			add_legitimacy = medium_legitimacy_gain
+		}
 		if = {
 			limit = { exists = scope:tm_cup_bearer }
 			scope:tm_cup_bearer = {

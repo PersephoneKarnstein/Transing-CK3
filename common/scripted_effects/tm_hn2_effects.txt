@@ -6,6 +6,8 @@
 # The event's text is dated (tm_hn2.0010); the artifact's own text cites no book, so it reads true at any date.
 # Scope: the daughter who receives it. $GIVER$ = who has it made.
 tm_hn2_give_adornment_effect = {
+	save_scope_value_as = { name = wealth value = 30 }		# the artifact features read these (vanilla does the same)
+	save_scope_value_as = { name = quality value = 30 }
 	create_artifact = {
 		name = tm_hn2_adornment_name
 		description = tm_hn2_adornment_desc
@@ -14,8 +16,8 @@ tm_hn2_give_adornment_effect = {
 		rarity = common
 		modifier = tm_hn2_adornment_modifier
 		decaying = no
-		wealth = 30
-		quality = 30
+		wealth = scope:wealth
+		quality = scope:quality
 		creator = $GIVER$
 		save_scope_as = tm_hn2_new_adornment
 	}

@@ -789,6 +789,13 @@ on_death = {
 # brought up in the parent's faith, as children of an ethnoreligion are. In the 1135 observe run the faiths that grew
 # (Yutai Dao, Badenya) were mostly born into; the rest were converts whose land passed to heirs of other faiths
 # (Gotland went to the count's Finnish pagan daughter in 895). The mother is asked first. Root = the child.
+# Not when the other parent, of another faith, keeps the child at their court and the child is of that parent's house:
+# the house the marriage gives the child decides, as the game does. In the 1140 observe run a Yutai consort's son by a
+# Shangqing Son of Heaven was born Yutai, held the Mandate from 1052, and Yutai noble families came to hold 213 of
+# China's 437 counties with 22 of them Yutai.
+# Ha-Nehpakhot's mothers are the exception: the child of a Jewish mother is Jewish whatever the father's house
+# (Mishnah Kiddushin 3:12). In the 1210 observe run all ten children of member mothers died in another faith, and
+# the sect died out in the 1040s. The sect is landless, so no throne follows from this.
 on_birth_child = {
 	on_actions = {
 		tm_on_birth_raised_in_faith
@@ -811,6 +818,17 @@ tm_on_birth_raised_in_faith = {
 						AND = { exists = employer root.employer = employer }
 					}
 				}
+				NOT = {		# a father of another faith, at the same court, whose house the child is born into
+					scope:mother = { NOT = { rite ?= { rite_has_parameter = tm_turning_gate } } }	# not Ha-Nehpakhot: below
+					scope:father ?= {
+						NOT = { rite ?= { rite_has_parameter = tm_sisters_faith } }
+						OR = {
+							root.employer ?= this
+							AND = { exists = employer root.employer ?= employer }
+						}
+					}
+					NOT = { tm_born_of_house_trigger = { PARENT = scope:mother } }
+				}
 			}
 			set_variable = { name = tm_conv_ours value = yes days = 1 }
 			set_character_faith = scope:mother.faith
@@ -824,6 +842,10 @@ tm_on_birth_raised_in_faith = {
 						root.employer ?= this
 						AND = { exists = employer root.employer ?= employer }
 					}
+				}
+				NOT = {		# a mother of another faith whose house the child is born into (a matrilineal marriage)
+					scope:mother ?= { NOT = { rite ?= { rite_has_parameter = tm_sisters_faith } } }
+					tm_born_of_house_trigger = { PARENT = scope:mother }
 				}
 			}
 			set_variable = { name = tm_conv_ours value = yes days = 1 }

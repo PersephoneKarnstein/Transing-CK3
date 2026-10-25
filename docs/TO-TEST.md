@@ -1042,6 +1042,23 @@ The full scenarios (C1-C6) are in docs/wave5/chamber.md.
 - The selector's map banner for Huijing is the tiger; in play, Guasha shows vanilla's Sha seal and Huijing's own arms the tiger.
 - The two portraits are dumped (2026-10-23). Hovering each lights up her county: the highlight images are named for the bookmark entry (`gfx/interface/bookmarks/bm_867_crusader_dolls_bookmark_tm_<name>.dds`), renamed from Steinn's and Xun's.
 
+## AF. After the 1140 observe run (added 2026-10-24, untested)
+
+**AF1. Raised in the faith.** A child born at a court of another faith to a mother of the six and a father who keeps that court, in his house, takes the father's faith; with a matrilineal marriage, or no father at the court, the mother's. In a long run Yutai Dao should no longer hold the Mandate through a consort's son, and Yutai rulers in China should hold about as many counties as there are Yutai counties there, not ten times as many.
+**AF2. The cup.** A landless adventurer of the Bædling who inherits her company's title still drinks the bragarfull, with no legitimacy error in error.log.
+**AF3. Pardon.** No `tm_bae2_accuser.top_liege` context-switch errors in error.log.
+**AF4. The council, forced.** As a landed Adelphai ruler, `run tm_council_now.txt` (from `tools/run/`). If no Galenic rite exists, another ruler founds it. The host gets *The Council of the Two Schools* (`tm_dl4.0001`); the most learned landed ruler of each wing gets her champion's event (0010 or 0011) 5-10 days later; the vote (0020) comes at day 40. The Athos option shows from 1083, Theophylact's from 1107. With no landed ruler on one side, debug.log says `TMDL4 FAIL`.
+**AF5. After the vote.** If the Mother's book is kept, every landed Galenic ruler gets *After the Council* (0030); a player of the faith who did not host gets the result (0021). If the council breaks, the two champions have *Broke the Council* towards each other, and the next council can come after 15 years, not 25.
+**AF6. The council, unforced.** In an observe run where the Galenic rite is founded, a council comes about ten years or more after the founding. The census's *Council of the Two Schools* line counts councils and outcomes. Neither wing should win every time.
+
+**AF6b. Landless champions** (after run 15). With the Galenic rite founded and living members in both wings, a council comes even when one wing (or the faith) has no landed ruler; a courtier can be a champion. The census counts it under *called*.
+
+**AF8. Ha-Nehpakhot mothers** (after run 15). A child of a Ha-Nehpakhot mother and a father of another faith, born into the father's house at his court, is born Ha-Nehpakhot. The Yutai rule is unchanged: a Yutai consort's son in a Han house is not born Yutai.
+
+**AF9. The camp passes to the community** (after run 15). An AI Ha-Nehpakhot camp leader whose heir is a child or of another faith adopts a grown woman of the community in her camp and names her heir (`tm_hn_camp_heir_yearly`). Check in game that adopting an adult works and that the camp passes to her on the leader's death, not to the blood heir. If `set_designated_heir` does not hold for a camp, the fix needs another road.
+
+**AF7. The Galenic teacher.** In a long observe run (867 to past 1000), the Galenic rite is founded even when the faith has no landed ruler besides the Mother of Mothers. The census's *Council of the Two Schools* section prints "Galenic rite: founded YEAR by a teacher's event" or "by decision". It should not come early in every run: about 2 in 100 a year from 886, with twenty quiet years after a teacher declines. If a courtier founded it, the faith view shows 2 rites, and landed rulers join it later by decision.
+
 ## AE. The small roadmap items (added 2026-10-24, untested)
 
 **AE1. Galenic.** In a long observe run the Galenic rite is founded at least sometimes (save: a rite with `tm_body_galenic`). With it founded, the three Dorleyaian tenets show on the Galenic rite in the faith view, and the suppression ladder fires about half as often for its rulers.

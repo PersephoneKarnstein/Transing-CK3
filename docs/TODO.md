@@ -114,7 +114,11 @@ Built: shared daughter trigger and per-faith daughter traits; Bæddel faith (Got
 
 ## Possible new faiths for the 1178 start (user, 2026-10-24)
 Tied to the 1178 bookmark, which waits until after the Silk & Silver DLC (17 November 2026), if ever. Neither is planned for the 867 start.
-- [ ] Wendish (Baltic Slav): women's ash divination (Saxo 14.39.11); "a pythoness as war-leader" who led a Polish army in 1209, confirmed in the Latin; goddess banners; Arkona took a third of spoils; Poznań's carnival dress ban (15th c.) (`research/cmp_alvarezpedrosa_slavic_rituals.md`, `research/cmp_alvarezpedrosa_sources_slavic.md`). Check first where Slav paganism still stands on the 1178 map: Arkona fell to the Danes in 1168.
+**Update (2026-10-25).** A survey of religion c. 1178 (`research/v2/survey_1178.md`) ranked a Japanese faith first, the Visayan second, and dropped the Wendish (no Slav pagan county is left in vanilla 1178; an Old Prussian substitute rests on two lines of Dusburg and repeats the Bædling's pagan North). Designs with open decisions for the user: `research/v2/japan_design.md` (with the sex-work, Orientalism and modern-identity notes beside it) and `research/v2/visayan_design.md`.
+- [ ] Japanese: the singers' houses (asobi) of Eguchi, Kanzaki, Aohaka and Muro, *Imayō no Ie*; 14 open decisions plus the gate split, the trait name and the *ane* office (`research/v2/japan_modern_identity.md`)
+- [ ] Visayan: *the Lambong* at Sikatuna's court; 12 open decisions (`research/v2/visayan_design.md`)
+- [x] ~~Wendish~~ dropped for 1178 (`research/v2/wendish_dossier.md`, `prussian_primary_sources.md`); keep the material for 867/1066 flavour
+- [ ] Wendish (Baltic Slav), superseded: women's ash divination (Saxo 14.39.11); "a pythoness as war-leader" who led a Polish army in 1209, confirmed in the Latin; goddess banners; Arkona took a third of spoils; Poznań's carnival dress ban (15th c.) (`research/cmp_alvarezpedrosa_slavic_rituals.md`, `research/cmp_alvarezpedrosa_sources_slavic.md`). Check first where Slav paganism still stands on the 1178 map: Arkona fell to the Danes in 1168.
 - [ ] Visayan (Southeast Asia): a babaylan/asog faith at Cebu, marked as a reconstruction (deferred by the user, 2026-10-19). Check that the map reaches Cebu.
 
 ## Second comparanda reading (added 2026-10-19, untested in-game)

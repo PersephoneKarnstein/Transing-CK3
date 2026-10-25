@@ -121,3 +121,14 @@ tm_hn2_seat_candidate_trigger = {
 		exists = employer
 	}
 }
+
+# Who may carry a Ha-Nehpakhot camp on (tm_hn_camp_heir_yearly): a grown woman of the community in $CAMP$'s camp,
+# free, and not a ruler already. Scope: the candidate.
+tm_hn_camp_heir_trigger = {
+	is_adult = yes
+	is_female = yes
+	is_imprisoned = no
+	is_ruler = no
+	NOT = { this = $CAMP$ }
+	rite ?= { rite_has_parameter = tm_turning_gate }
+}

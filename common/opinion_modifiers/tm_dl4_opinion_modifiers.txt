@@ -1,0 +1,14 @@
+﻿# Crusader Dolls — the Council of the Two Schools (events/tm_dl4_events.txt).
+
+# Between the two champions, when the council breaks before the vote (tm_dl4.0020).
+tm_dl4_broke_council_opinion = {
+	opinion = -20
+	years = 15
+}
+
+# The champion of the main rite, toward a Galenic ruler who keeps the Emperor's count after the council kept the
+# Mother's book (tm_dl4.0030).
+tm_dl4_kept_count_opinion = {
+	opinion = -15
+	years = 10
+}

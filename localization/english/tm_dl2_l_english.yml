@@ -28,6 +28,13 @@
  tm_dl2_counted_eunuch_opinion:0 "Registered Me as a Eunuch"
  tm_dl2_came_home_opinion:0 "Came Home to the Mother House"
 
+ ### The Galenic teacher (tm_dl2.0003) ###
+ tm_dl2.0003.t:0 "A Reader of the Emperor's Law"
+ tm_dl2.0003.desc:0 "You have read Leo's Novel 98 until you know it by heart. The Emperor's law names three kinds of people: men, women and eunuchs. You have read Galen too, who calls the cut some third thing.\n\nThe bishops keep asking what to write beside the names in the Houses' adoption rolls. Give them the Emperor's word, and they may stop asking. The knife, the Houses and the adoptions would stay as they are. Only the register would change. The Mother House will call it the old cage with a new name. If you write the rite, they will say it to you."
+ tm_dl2.0003.a:0 "Write the new rite, and count as the Emperor counts."
+ tm_dl2.0003.a.tt:0 "You found and join the #V Galenic Rite#!. Other members of the faith may join it later."
+ tm_dl2.0003.b:0 "Leave the book shut. The Houses wrote it the way they meant it."
+
  ### The Emperor's count (tm_dl2.0001) ###
  tm_dl2.0001.t:0 "The Emperor's Count"
  tm_dl2.0001.desc:0 "The new rite is written. Its books open with the Emperor's law, which names three kinds of people: men, women and eunuchs. After Galen, the Galenic Sisters say the cut are some third thing. The knife, the Houses and the adoptions stay as they were. What changes is the register: the word the Houses write beside each daughter's name.\n\nAt the Mother House they are already saying it. A third kind can be honoured, employed and kept apart. They call it the old cage with a new name."
