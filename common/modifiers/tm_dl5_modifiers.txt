@@ -1,0 +1,29 @@
+﻿# Crusader Dolls — Adelphai Dorleyaiou, wave 8: the Tower on the Condition (docs/wave8/adelphai.md).
+
+# The tower is being rebuilt: the road is watched again, a little. County modifier, until the condition is kept.
+tm_dl5_tower_rebuilding_modifier = {
+	icon = county_modifier_control_positive
+	hostile_raid_time = 0.1
+}
+
+# The tower stands, kept by the House on the condition of the grant. County modifier.
+tm_dl5_tower_kept_modifier = {
+	icon = county_modifier_control_positive
+	garrison_size = 0.2
+	hostile_raid_time = 0.25
+	development_growth_factor = 0.05
+}
+
+# The sister who asked for the tower and answers for the condition.
+tm_dl5_keeper_modifier = {
+	icon = social_positive
+	monthly_prestige = 0.2
+	stress_gain_mult = 0.05
+}
+
+# The men who used to rob the road keep the tower's flocks (tm_dl5.0020). County modifier.
+tm_dl5_shepherds_modifier = {
+	icon = county_modifier_development_positive
+	development_growth_factor = 0.05
+	levy_size = 0.05
+}

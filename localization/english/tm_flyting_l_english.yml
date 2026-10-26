@@ -1,13 +1,13 @@
 ﻿l_english:
  tm_flyting_interaction:0 "Challenge to a Flyting"
- tm_flyting_interaction_desc:0 "Stand up and battle [recipient.GetFirstName] with words: three rounds of charge and answer, until one of you falls silent. In the hall the whole court hears it. At the thing in June, the stakes double."
+ tm_flyting_interaction_desc:0 "Stand up and battle [recipient.GetFirstName] with words: three rounds of charge and answer, until one of you falls silent. In the hall the whole court hears it. At the þing in June, the stakes double."
 
  tm_flyting.0001.t:0 "Wound-Words"
  tm_flyting.0001.desc.challenged:0 "[tm_flyter.GetFirstName] has stood up at the drinking and asked, loud enough for everyone, who my father is and what I think I am. That is how a flyting starts. Whoever falls silent first has lost."
  tm_flyting.0001.desc.challenger:0 "I have stood up and named [tm_flyter.GetFirstName] before the benches. A flyting has no weapons but words, and whoever falls silent first has lost."
  tm_flyting.0001.desc.alone:0 "\n\nNo one else is here to hear it. The law says that words with no witnesses are paid with words, and nothing more."
  tm_flyting.0001.desc.hall:0 "\n\nThe hall has gone quiet to listen. Whatever is said tonight will be repeated tomorrow."
- tm_flyting.0001.desc.thing:0 "\n\nThis is the thing, and half the district is listening. Words spoken at the assembly count double."
+ tm_flyting.0001.desc.thing:0 "\n\nThis is the þing, and half the district is listening. Words spoken at the assembly count double."
  tm_flyting.0001.a:0 "Answer."
  tm_flyting.0001.b:0 "Say nothing, and let the hall decide what that means."
  tm_flyting.0001.c:0 "Think better of it."
@@ -44,7 +44,7 @@
  tm_flyting.0020.draw:0 "Let it stand."
  tm_flyting.0020.cup:0 "Take the cup from [tm_cup_lady.GetFirstName], and let it end there."
  tm_flyting.0020.cup.tt:0 "The flyting ends with no winner and no one silenced. Both of us think better of the one who poured."
- tm_flyting.0020.thing.tt:0 "It was said at the thing: the whole district will repeat it."
+ tm_flyting.0020.thing.tt:0 "It was said at the þing: the whole district will repeat it."
 
  tm_last_word_modifier:0 "Had the Last Word"
  tm_last_word_modifier_desc:0 "This character won a flyting. The hall still repeats what was said."

@@ -1,0 +1,13 @@
+﻿# Crusader Dolls — Adelphai Dorleyaiou, wave 8: the Tower on the Condition (docs/wave8/adelphai.md).
+
+# A lord who gave the Sisters a tower on the condition (tm_dl5.0001).
+tm_dl5_gave_tower_opinion = {
+	opinion = 25
+	years = 20
+}
+
+# A lord who took the tower back when the condition was not kept (tm_dl5.0011).
+tm_dl5_took_tower_opinion = {
+	opinion = -15
+	years = 10
+}

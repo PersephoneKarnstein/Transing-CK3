@@ -1,0 +1,36 @@
+﻿l_english:
+ # Adelphai Dorleyaiou, wave 8: the Tower on the Condition (docs/wave8/adelphai.md).
+
+ tm_dl5.0001.t:0 "A Tower on the Condition"
+ tm_dl5.0001.desc:0 "[tm_dl5_petitioner.GetName] has asked to speak with me for the Sisters. There is an old tower in [tm_dl5_county.GetName], burned out by raiders and empty since, and a village under it with no one to watch the road.\n\nThe Sisters ask for it on a condition: they will rebuild it and keep it manned, and if they do not, it comes back to me. Monks have taken towers on such terms before. A tower kept is a road kept, and this one would cost my treasury nothing."
+ tm_dl5.0001.a:0 "Grant it on the condition."
+ tm_dl5.0001.a.tt:0 "A Sisters' House stands in [tm_dl5_county.GetName], under your rule and by your leave. If two of its sisters live at your court for five years, the tower is theirs to keep. If it stands empty two years running, you may take it back."
+ tm_dl5.0001.b:0 "Not on my land."
+
+ tm_dl5.0010.t:0 "The Tower Stands"
+ tm_dl5.0010.desc:0 "The Sisters have kept their condition. The tower in [tm_dl5_county.GetName] has a roof again, a fire on its top on the long nights, and someone at the window whenever a rider comes up the road. The village under it has begun to plant the far fields.\n\nThe grant is kept in the House's chest. It says the tower is theirs for as long as they keep it."
+ tm_dl5.0010.a:0 "A road kept."
+
+ tm_dl5.0011.t:0 "The Tower Stands Empty"
+ tm_dl5.0011.desc:0 "I gave the Sisters the tower in [tm_dl5_county.GetName] on a condition, and for two years nobody has kept it. The House is too few to man it. The roof is going again, and the road is watched by no one."
+ tm_dl5.0011.a:0 "Take the tower back."
+ tm_dl5.0011.a.tt:0 "The House in [tm_dl5_county.GetName] closes. Its sisters go to another House, or to the road."
+ tm_dl5.0011.b:0 "Give them one more year."
+ tm_dl5.0011.b.tt:0 "The condition stands. If the tower is still empty in two years, this comes back to you."
+
+ tm_dl5.0020.t:0 "The Tower's Herders"
+ tm_dl5.0020.desc:0 "Three men who used to rob travellers on the road below the tower in [tm_dl5_county.GetName] have come to the House with nothing in their hands. The Sisters have put them to keeping the flocks.\n\nThe Sisters do not say the men have repented. They say the sheep are counted every evening, and none have gone missing yet."
+ tm_dl5.0020.a:0 "Let them keep the flocks."
+ tm_dl5.0020.b:0 "Send them on their way."
+
+ tm_dl5_tower_rebuilding_modifier:0 "A Tower Being Rebuilt"
+ tm_dl5_tower_rebuilding_modifier_desc:0 "The Sisters are rebuilding the tower here, on the condition that they keep it manned."
+ tm_dl5_tower_kept_modifier:0 "The Sisters' Tower"
+ tm_dl5_tower_kept_modifier_desc:0 "A tower kept by a Sisters' House on the condition of a lord's grant. The road below is watched."
+ tm_dl5_keeper_modifier:0 "Keeper of the Tower"
+ tm_dl5_keeper_modifier_desc:0 "She asked for the tower, and she answers for the condition."
+ tm_dl5_shepherds_modifier:0 "The Tower's Herders"
+ tm_dl5_shepherds_modifier_desc:0 "Men who robbed the road keep the tower's flocks."
+ tm_dl5_gave_tower_opinion:0 "Gave Us the Tower"
+ tm_dl5_took_tower_opinion:0 "Took the Tower Back"
+ tm_house.0050.desc.tower:0 "\n\nThe House holds a tower here by a grant, on the condition that it be kept manned, and it has kept it. The grant is in the House's chest."

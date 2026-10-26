@@ -1,0 +1,65 @@
+﻿# Crusader Dolls — Adelphai Dorleyaiou, wave 8: the Tower on the Condition (docs/wave8/adelphai.md). Sources: an empty
+# tower or village granted to monks "on the condition" that they rebuild and man it (Alypiou 1313; Mariskin c. 1418;
+# Komitissa, manned by peasant watchmen; Sophoulis, Banditry in the Medieval Balkans, p. 111;
+# research/byz_sophoulis_banditry.md row 6). The grant makes a Sisters' House under a lord of another faith.
+#
+# County variables:
+#   tm_dl5_tower            the tower was granted here (and stands, once kept)
+#   tm_dl5_tower_years      years manned toward the condition (5 keeps it)
+#   tm_dl5_tower_missed     years unmanned in a row (2 calls the holder)
+#   tm_dl5_tower_keeper     the sister who asked for it
+#   tm_dl5_tower_kept       the condition is met: the House holds the tower by the grant
+
+tm_dl5_tally_effect = {
+	if = {
+		limit = { NOT = { has_global_variable = tm_dl5_n_$WHAT$ } }
+		set_global_variable = { name = tm_dl5_n_$WHAT$ value = 0 }
+	}
+	change_global_variable = { name = tm_dl5_n_$WHAT$ add = 1 }
+}
+
+# The grant. Scope: the county; scope:tm_dl5_petitioner, root = the lord.
+tm_dl5_grant_tower_effect = {
+	tm_found_house_effect = yes
+	set_variable = { name = tm_house_tolerated_by value = root }
+	set_variable = tm_dl5_tower
+	set_variable = { name = tm_dl5_tower_years value = 0 }
+	set_variable = { name = tm_dl5_tower_missed value = 0 }
+	set_variable = { name = tm_dl5_tower_keeper value = scope:tm_dl5_petitioner }
+	add_county_modifier = { modifier = tm_dl5_tower_rebuilding_modifier }
+	scope:tm_dl5_petitioner = { add_character_modifier = { modifier = tm_dl5_keeper_modifier } }
+}
+
+# The condition kept. Scope: the county; scope:tm_dl5_holder.
+tm_dl5_tower_kept_effect = {
+	set_variable = tm_dl5_tower_kept
+	remove_variable = tm_dl5_tower_years
+	remove_variable = tm_dl5_tower_missed
+	remove_county_modifier = tm_dl5_tower_rebuilding_modifier
+	add_county_modifier = { modifier = tm_dl5_tower_kept_modifier }
+	tm_dl5_tally_effect = { WHAT = kept }
+}
+
+# The condition broken: the holder takes the tower back and the House closes. Scope: the county;
+# scope:tm_dl5_holder (saved as scope:tm_house_holder for tm_close_house_effect).
+tm_dl5_tower_revoke_effect = {
+	scope:tm_dl5_holder = { save_scope_as = tm_house_holder }
+	tm_dl5_tower_clear_effect = yes
+	tm_close_house_effect = yes
+	tm_dl5_tally_effect = { WHAT = revoked }
+}
+
+# Clears the tower's variables and modifiers (also when the House closes another way). Scope: the county.
+tm_dl5_tower_clear_effect = {
+	if = {
+		limit = { var:tm_dl5_tower_keeper ?= { is_alive = yes } }
+		var:tm_dl5_tower_keeper = { remove_character_modifier = tm_dl5_keeper_modifier }
+	}
+	remove_variable = tm_dl5_tower
+	remove_variable = tm_dl5_tower_years
+	remove_variable = tm_dl5_tower_missed
+	remove_variable = tm_dl5_tower_keeper
+	remove_variable = tm_dl5_tower_kept
+	remove_county_modifier = tm_dl5_tower_rebuilding_modifier
+	remove_county_modifier = tm_dl5_tower_kept_modifier
+}

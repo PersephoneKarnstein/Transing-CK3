@@ -11,7 +11,7 @@
  tm_dl2_found_galenic_decision_desc:0 "The Emperor's law counts three kinds of people: men, women and eunuchs. Some of the Sisters would count as he counts. Give the bishops a kind to write us down as, and they may stop hunting for one. The Mother of Mothers will call it the old cage with a new name."
  tm_dl2_found_galenic_decision_tooltip:0 "Found the Galenic Rite, the wing of the Sisters that agrees with the Emperor."
  tm_dl2_found_galenic_decision_confirm:0 "Count as the Emperor counts"
- tm_dl2_found_galenic_decision_effect_tt:0 "You found and join the #V Galenic Rite#!:\n- It keeps your House of the knife and every tenet of the faith\n- The cut are counted a third kind, as the Emperor's law counts them\n- A [liege|E] of another Christian faith thinks better of you\n- The Mother of Mothers will answer"
+ tm_dl2_found_galenic_decision_effect_tt:0 "You found and join the #V Galenic Rite#!:\n- It keeps your House of the knife and every tenet of the faith\n- The cut are counted a third kind, as the Emperor's law counts them\n- Up to three members of the faith who read with you take it with you\n- A [liege|E] of another Christian faith thinks better of you\n- The Mother of Mothers will answer"
  tm_dl2_adopt_galenic_decision:0 "Join the Galenic Rite"
  tm_dl2_adopt_galenic_decision_desc:0 "The Galenic Sisters count the cut as the Emperor's law counts them: a kind of their own. It buys the Houses some peace with the bishops. It costs the daughters a name."
  tm_dl2_adopt_galenic_decision_tooltip:0 "Join the Galenic Rite, the wing of the Sisters that agrees with the Emperor."
@@ -32,7 +32,7 @@
  tm_dl2.0003.t:0 "A Reader of the Emperor's Law"
  tm_dl2.0003.desc:0 "You have read Leo's Novel 98 until you know it by heart. The Emperor's law names three kinds of people: men, women and eunuchs. You have read Galen too, who calls the cut some third thing.\n\nThe bishops keep asking what to write beside the names in the Houses' adoption rolls. Give them the Emperor's word, and they may stop asking. The knife, the Houses and the adoptions would stay as they are. Only the register would change. The Mother House will call it the old cage with a new name. If you write the rite, they will say it to you."
  tm_dl2.0003.a:0 "Write the new rite, and count as the Emperor counts."
- tm_dl2.0003.a.tt:0 "You found and join the #V Galenic Rite#!. Other members of the faith may join it later."
+ tm_dl2.0003.a.tt:0 "You found and join the #V Galenic Rite#!. Up to three members of the faith who read with you take it with you, and others may be talked round in later years."
  tm_dl2.0003.b:0 "Leave the book shut. The Houses wrote it the way they meant it."
 
  ### The Emperor's count (tm_dl2.0001) ###

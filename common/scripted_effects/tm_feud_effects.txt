@@ -504,6 +504,26 @@ tm_feud_find_bearer_effect = {
 	}
 }
 
+# No man at either court: a husband or close kinsman elsewhere who could be sent for (tm_feud.0020 option c). The best
+# speaker. Scope: any. Needs scope:tm_feud_plaintiff, scope:tm_feud_lord, scope:tm_flyter. Saves scope:tm_feud_far_kin.
+tm_feud_find_far_kin_effect = {
+	scope:tm_feud_plaintiff = {
+		every_spouse = {
+			limit = { tm_feud_far_kin_trigger = yes }
+			add_to_temporary_list = tm_feud_far_kins
+		}
+		every_close_family_member = {
+			limit = { tm_feud_far_kin_trigger = yes }
+			add_to_temporary_list = tm_feud_far_kins
+		}
+	}
+	ordered_in_list = {
+		list = tm_feud_far_kins
+		order_by = diplomacy
+		save_scope_as = tm_feud_far_kin
+	}
+}
+
 # ---------------------------------------------------------------------------------------------------
 # The sister's revenge (wave 7). An outlaw's death is no wrong at law: no truce is broken and no house relation moves
 # (tm_feud_on_death). But kin may take up a private Account. Hörðr's sister Þorbjörg organised his revenge "though he

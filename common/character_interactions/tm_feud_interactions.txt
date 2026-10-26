@@ -22,6 +22,7 @@ tm_feud_offer_bot_interaction = {
 		scope:recipient = { is_imprisoned = no }
 	}
 
+	send_options_exclusive = no	# one optional box: the engine wants two or more exclusive options
 	# And foster a child of their hall (wave 7; Miller pp. 123, 172): the payer takes a child of the recipient's house as
 	# ward, is "the lesser", and the truce runs fifteen years (tm_feud_foster_seal_effect).
 	send_option = {

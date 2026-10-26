@@ -1,0 +1,109 @@
+﻿# Crusader Dolls — Adelphai Dorleyaiou, wave 8: the Tower on the Condition (docs/wave8/adelphai.md). Appended to vanilla.
+yearly_global_pulse = {
+	on_actions = { tm_dl5_yearly_petition tm_dl5_yearly_towers }
+}
+
+# A sister asks her lord for an empty tower. Rare: once in fifteen years at most, 10 in 100 a year when anyone could ask,
+# and once per lord. No date gate: the practice is attested from the 14th century, but the narration cites no case.
+tm_dl5_yearly_petition = {
+	trigger = { NOT = { has_global_variable = tm_dl5_petition_cd } }
+	effect = {
+		random = {
+			chance = 10
+			random_living_character = {
+				limit = { tm_dl5_petitioner_trigger = yes }
+				weight = {
+					base = 1
+					modifier = { add = diplomacy }
+					modifier = { add = 5 tm_is_daughter_trigger = yes }
+					modifier = { add = 5 court_owner = { opinion = { target = prev value >= 20 } } }
+				}
+				save_scope_as = tm_dl5_petitioner
+				court_owner = {
+					save_scope_as = tm_dl5_lord
+					ordered_held_title = {
+						limit = {
+							tier = tier_county
+							NOT = { has_variable = tm_house }
+						}
+						order_by = {		# the emptiest county, and not his seat if he has another
+							value = 0
+							subtract = development_level
+							if = {
+								limit = { this = scope:tm_dl5_lord.capital_county }
+								subtract = 100
+							}
+						}
+						save_scope_as = tm_dl5_county
+					}
+				}
+				if = {
+					limit = { exists = scope:tm_dl5_county }
+					set_global_variable = { name = tm_dl5_petition_cd value = yes years = 15 }
+					scope:tm_dl5_lord = {
+						set_variable = tm_dl5_asked
+						tm_flavour_spent_effect = yes
+						trigger_event = { id = tm_dl5.0001 days = { 1 60 } }
+					}
+					tm_dl5_tally_effect = { WHAT = petitions }
+				}
+			}
+		}
+	}
+}
+
+# The condition, year by year. Five manned years keep the tower; two unmanned years in a row call the holder.
+tm_dl5_yearly_towers = {
+	effect = {
+		every_county = {
+			limit = { has_variable = tm_dl5_tower }
+			if = {
+				limit = { NOT = { has_variable = tm_house } }		# the House was closed some other way
+				tm_dl5_tower_clear_effect = yes
+			}
+			else_if = {
+				limit = {
+					exists = holder
+					NOT = { has_variable = tm_dl5_tower_kept }
+				}
+				holder = { save_scope_as = tm_dl5_holder }
+				save_scope_as = tm_dl5_county
+				if = {
+					limit = { tm_dl5_tower_manned_trigger = yes }
+					change_variable = { name = tm_dl5_tower_years add = 1 }
+					set_variable = { name = tm_dl5_tower_missed value = 0 }
+					if = {
+						limit = { var:tm_dl5_tower_years >= 5 }
+						tm_dl5_tower_kept_effect = yes
+						scope:tm_dl5_holder = { trigger_event = { id = tm_dl5.0010 days = { 1 30 } } }
+					}
+				}
+				else = {
+					change_variable = { name = tm_dl5_tower_missed add = 1 }
+					if = {
+						limit = { var:tm_dl5_tower_missed >= 2 }
+						scope:tm_dl5_holder = { trigger_event = { id = tm_dl5.0011 days = { 1 30 } } }
+					}
+				}
+			}
+		}
+		# Men who robbed the road, taken on as the tower's herders: a kept tower's holder, rarely.
+		every_county = {
+			limit = {
+				has_variable = tm_dl5_tower_kept
+				has_variable = tm_house
+				NOT = { has_variable = tm_dl5_shepherds_cd }
+				holder ?= { tm_flavour_ready_trigger = yes }
+			}
+			random = {
+				chance = 3
+				save_scope_as = tm_dl5_county
+				set_variable = { name = tm_dl5_shepherds_cd value = yes years = 30 }
+				holder = {
+					tm_flavour_spent_effect = yes
+					trigger_event = { id = tm_dl5.0020 days = { 1 120 } }
+				}
+			}
+		}
+	}
+}

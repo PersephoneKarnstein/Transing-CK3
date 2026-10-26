@@ -1161,3 +1161,21 @@ Design: `docs/wave7/baedling.md`. The census prints three "wave 7" sections.
 6. The warding shirt interaction appears on a sister, ward or friend of the House; costs 30 gold; has a 3-year cooldown; the modifier lasts 5 years.
 7. Give a Bædling ruler Gotland (`c_gutland`) by console: 0204 fires once, and the county modifier lasts 10 years. Repeat for the other four sites.
 8. 1350+: put a declared or Marked woman of any of the six faiths in an English county. In 0300, the broiderer's name is never Eleanor, Anne or Elizabeth, and "I have my own" opens `tm_house.0001`. 0301 sometimes follows and ends open.
+
+## AI. Galenic rite divergence (added 2026-10-25, untested)
+
+- [ ] **AI1.** Faith Details > Rites: the Galenic Rite shows Divergence 25%, not 0%. `doctrine_tm_body` is a sequence group, so divergence is the difference of its doctrines (Aristotelian 0, Galenic 25); both were 25 before. Check an existing save too, to see whether divergence is recomputed on load.
+- [ ] **AI2.** The teacher's students: found the rite (decision or `event tm_dl2.0003`). Up to three adult non-ruler members of the main rite take the Galenic rite with her, her own court first, and each has +20 opinion of her. The census prints `students`.
+- [ ] **AI3.** The school's reach: in an observe run past the founding, the census shows `school_joins` above 0 and "now N of M Galenic". The rite keeps members after its founder dies, and the Council of the Two Schools is called (`called` > 0). Watch the share: if it passes about a third, build a flow back. In the run-17 save (rite founded, no members) the yearly roll should revive the rite at the base chance.
+- [ ] **AI4.** Offer Bót's fostering is now a checkbox (`send_options_exclusive = no`): the error "Exclusive send options should at least be two" is gone, and the box can be ticked or left.
+- [ ] **AI5.** Wider suit-bearers: a níð suit under a Catholic lord with a man of the six faiths at court, or a man with opinion 20+ of her, finds him as bearer. The greyed-out text lists the new kinds.
+- [ ] **AI6.** Send for him: with no man at either court and a husband or brother elsewhere, 0020 shows the far-kin desc line and option c. In 60–150 days, a toast says he came (then 0021 fires with him as bearer) or will not come. Census: `nid_kin_sent` = `nid_kin_came` + `nid_kin_refused` (minus any lapsed because she, the speaker or the lord died).
+- [ ] **AI7.** "þing" renders in every event that used "the thing" (feud, flyting, seiðr 0003, bae5). Check the Þ in "Before the Þing" and "Named at the Þing".
+
+## AJ. Adelphai: the Tower on the Condition (wave 8, added 2026-10-25, untested)
+
+- [ ] **AJ1.** Petition: an Adelphai sister at an Orthodox count's court in Asia Minor. With the global cooldown clear, the count gets *A Tower on the Condition* for his least-developed non-capital county. Grant: a House is founded there, tolerated by him; the county shows "A Tower Being Rebuilt"; she is Keeper of the Tower, pays 50 gold if she has it, has +25 opinion of him. He is never asked twice.
+- [ ] **AJ2.** The condition: with two sisters at his court for five years, *The Tower Stands* fires and the county shows "The Sisters' Tower". With fewer than two for two years running, *The Tower Stands Empty*: take it back closes the House (sisters go elsewhere); one more year resets the count.
+- [ ] **AJ3.** A kept tower's county passing to another Christian lord: 0050 shows the tower line, and AI lords mostly let it stand.
+- [ ] **AJ4.** The herders (0020) on a kept tower: the modifier lasts twenty years; no repeat in that county for thirty.
+- [ ] **AJ5.** Observe run: the census "Tower on the Condition" counts; does a granted tower draw sisters (gathering), and do the Adelphai hold more members than in runs 16–17 (13–18)?

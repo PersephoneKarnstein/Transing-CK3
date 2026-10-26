@@ -1,0 +1,81 @@
+﻿# Crusader Dolls — Adelphai Dorleyaiou: the Galenic school (docs/wave3/dorley.md §1b).
+
+# Who reads with the founder: nearest first. Scope: the candidate; scope:tm_dl2_founder, scope:tm_dl2_school (her court).
+tm_dl2_student_value = {
+	value = learning
+	if = {
+		limit = {
+			exists = scope:tm_dl2_school
+			court_owner ?= scope:tm_dl2_school
+		}
+		add = 40
+	}
+	if = {
+		limit = { is_close_or_extended_family_of = scope:tm_dl2_founder }
+		add = 20
+	}
+	if = {
+		limit = {
+			exists = top_liege
+			scope:tm_dl2_founder = { exists = top_liege }
+			top_liege = scope:tm_dl2_founder.top_liege
+		}
+		add = 10
+	}
+	if = {
+		limit = { has_trait = content }	# the wing of accommodation
+		add = 5
+	}
+}
+
+# A member's yearly chance, in percent, of taking the Emperor's count (tm_dl2_galenic_school_yearly). The school
+# persuades: by how much of the faith already counts its way, by a Galenic sister at her own court, and by who holds
+# power over her. About 0.4 with nothing for it; a sister at court under a Galenic lord, with half the faith Galenic,
+# about 4. Nothing pulls back but the main rite's own lords and the Mother of Mothers. Scope: the character.
+tm_dl2_school_join_chance_value = {
+	value = 0.4
+	if = {
+		limit = { global_var:tm_dl2_n_faith > 0 }
+		add = {
+			value = global_var:tm_dl2_n_galenic
+			divide = global_var:tm_dl2_n_faith
+			multiply = 2
+		}
+	}
+	if = {
+		limit = { tm_dl2_galenic_at_court_trigger = yes }
+		add = 1
+	}
+	liege_or_court_owner ?= {
+		if = {
+			limit = { rite ?= { rite_has_doctrine = tm_body_galenic } }
+			add = 1
+		}
+		else_if = {
+			limit = { rite ?= { rite_has_doctrine = tm_body_aristotelian } }
+			add = -0.2
+		}
+	}
+	if = {
+		limit = { title:d_tm_mother_house.holder ?= { rite ?= { rite_has_doctrine = tm_body_galenic } } }
+		add = 0.5
+	}
+	else_if = {
+		limit = { title:d_tm_mother_house.holder ?= { rite ?= { rite_has_doctrine = tm_body_aristotelian } } }
+		add = -0.2
+	}
+	if = {	# the Emperor's count is the law of the land she lives in
+		limit = {
+			top_liege ?= {
+				NOT = { faith = faith:transbian_maximalism }
+				faith = { religion_tag = christianity_religion }
+			}
+		}
+		add = 0.3
+	}
+	if = {
+		limit = { has_trait = content }
+		add = 0.2
+	}
+	min = 0
+}

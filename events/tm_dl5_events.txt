@@ -1,0 +1,177 @@
+﻿namespace = tm_dl5
+
+# Crusader Dolls — Adelphai Dorleyaiou, wave 8: the Tower on the Condition (docs/wave8/adelphai.md).
+#   0001  a sister asks her lord for an empty tower, on the condition that the House rebuild and man it
+#   0010  the condition is kept: the tower stands
+#   0011  the tower stands empty: the holder may take it back
+#   0020  the men who robbed the road keep the tower's flocks (Gregory of Sinai's robbers "became humble shepherds",
+#         Sophoulis p. 61; the narrator does not say they repented)
+
+# The petition. Root = the lord; scope:tm_dl5_petitioner, scope:tm_dl5_county.
+tm_dl5.0001 = {
+	type = character_event
+	title = tm_dl5.0001.t
+	desc = tm_dl5.0001.desc
+	theme = faith
+	override_background = { reference = terrain }
+	left_portrait = { character = scope:tm_dl5_petitioner animation = personality_rational }
+	right_portrait = { character = root animation = thinking }
+
+	trigger = {
+		scope:tm_dl5_petitioner ?= {
+			is_alive = yes
+			is_imprisoned = no
+		}
+		scope:tm_dl5_county ?= {
+			holder = root
+			NOT = { has_variable = tm_house }
+		}
+	}
+
+	option = {	# Grant it on the condition
+		name = tm_dl5.0001.a
+		custom_tooltip = tm_dl5.0001.a.tt
+		scope:tm_dl5_county = { tm_dl5_grant_tower_effect = yes }
+		add_piety = minor_piety_gain
+		scope:tm_dl5_petitioner = {
+			add_opinion = { target = root modifier = tm_dl5_gave_tower_opinion }
+			if = {
+				limit = { gold >= 50 }
+				remove_short_term_gold = 50
+			}
+		}
+		tm_dl5_tally_effect = { WHAT = granted }
+		ai_chance = {
+			base = 40
+			opinion_modifier = { opinion_target = scope:tm_dl5_petitioner multiplier = 0.5 }
+			modifier = { add = 30 has_trait = compassionate }
+			modifier = { add = 20 has_trait = content }
+			modifier = { add = 20 is_at_war = yes }			# a tower kept is a road kept
+			modifier = { add = 15 has_trait = generous }
+			modifier = { add = -40 has_trait = zealous }
+			modifier = { add = -20 has_trait = paranoid }
+		}
+	}
+	option = {	# Not on my land
+		name = tm_dl5.0001.b
+		tm_dl5_tally_effect = { WHAT = refused }
+		ai_chance = {
+			base = 40
+			modifier = { add = 30 has_trait = zealous }
+			modifier = { add = 20 has_trait = greedy }
+			modifier = { add = 15 has_trait = paranoid }
+		}
+	}
+}
+
+# The condition kept. Root = the holder; scope:tm_dl5_county.
+tm_dl5.0010 = {
+	type = character_event
+	title = tm_dl5.0010.t
+	desc = tm_dl5.0010.desc
+	theme = faith
+	override_background = { reference = terrain }
+	left_portrait = { character = root animation = personality_rational }
+	right_portrait = { character = scope:tm_dl5_county.var:tm_dl5_tower_keeper trigger = { scope:tm_dl5_county.var:tm_dl5_tower_keeper ?= { is_alive = yes } } animation = happiness }
+
+	option = {
+		name = tm_dl5.0010.a
+		add_prestige = minor_prestige_gain
+		scope:tm_dl5_county.var:tm_dl5_tower_keeper ?= {
+			if = {
+				limit = { is_alive = yes }
+				add_piety = medium_piety_gain
+			}
+		}
+	}
+}
+
+# The tower stands empty. Root = the holder; scope:tm_dl5_county.
+tm_dl5.0011 = {
+	type = character_event
+	title = tm_dl5.0011.t
+	desc = tm_dl5.0011.desc
+	theme = faith
+	override_background = { reference = terrain }
+	left_portrait = { character = root animation = personality_rational }
+
+	trigger = {
+		scope:tm_dl5_county ?= {
+			holder = root
+			has_variable = tm_dl5_tower
+			NOT = { has_variable = tm_dl5_tower_kept }
+		}
+	}
+
+	immediate = {
+		save_scope_as = tm_dl5_holder
+	}
+
+	option = {	# Take it back
+		name = tm_dl5.0011.a
+		custom_tooltip = tm_dl5.0011.a.tt
+		scope:tm_dl5_county.var:tm_dl5_tower_keeper ?= {
+			if = {
+				limit = { is_alive = yes }
+				add_opinion = { target = root modifier = tm_dl5_took_tower_opinion }
+			}
+		}
+		scope:tm_dl5_county = { tm_dl5_tower_revoke_effect = yes }
+		ai_chance = {
+			base = 50
+			modifier = { add = 20 has_trait = greedy }
+			modifier = { add = 20 has_trait = zealous }
+			modifier = { add = -30 has_trait = compassionate }
+			modifier = { add = -20 has_trait = patient }
+		}
+	}
+	option = {	# One more year
+		name = tm_dl5.0011.b
+		custom_tooltip = tm_dl5.0011.b.tt
+		scope:tm_dl5_county = { set_variable = { name = tm_dl5_tower_missed value = 0 } }
+		tm_dl5_tally_effect = { WHAT = extended }
+		ai_chance = {
+			base = 40
+			modifier = { add = 30 has_trait = compassionate }
+			modifier = { add = 20 has_trait = patient }
+			modifier = { add = 10 has_trait = forgiving }
+		}
+	}
+}
+
+# The tower's herders. Root = the holder; scope:tm_dl5_county.
+tm_dl5.0020 = {
+	type = character_event
+	title = tm_dl5.0020.t
+	desc = tm_dl5.0020.desc
+	theme = faith
+	override_background = { reference = terrain }
+	left_portrait = { character = root animation = thinking }
+
+	trigger = {
+		scope:tm_dl5_county ?= {
+			holder = root
+			has_variable = tm_house
+		}
+	}
+
+	option = {	# Let them keep the flocks
+		name = tm_dl5.0020.a
+		scope:tm_dl5_county = { add_county_modifier = { modifier = tm_dl5_shepherds_modifier years = 20 } }
+		tm_dl5_tally_effect = { WHAT = shepherds }
+		ai_chance = {
+			base = 60
+			modifier = { add = 20 has_trait = forgiving }
+			modifier = { add = -30 has_trait = vengeful }
+		}
+	}
+	option = {	# Send them on their way
+		name = tm_dl5.0020.b
+		add_prestige = minor_prestige_gain
+		ai_chance = {
+			base = 40
+			modifier = { add = 30 has_trait = vengeful }
+			modifier = { add = 20 has_trait = paranoid }
+		}
+	}
+}

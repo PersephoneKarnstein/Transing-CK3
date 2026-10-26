@@ -23,3 +23,9 @@ tm_dl2_came_home_opinion = {
 	opinion = 15
 	years = 10
 }
+
+# One who read with the founder of the Galenic rite and took it with her (tm_dl2_gather_students_effect).
+tm_dl2_student_opinion = {
+	opinion = 20
+	years = 20
+}

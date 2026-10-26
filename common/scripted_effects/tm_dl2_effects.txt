@@ -31,7 +31,45 @@ tm_dl2_found_galenic_effect = {
 		limit = { capital_county ?= { faith = scope:tm_dl2_founder.faith } }
 		capital_county = { set_county_rite = scope:tm_dl2_new_rite }
 	}
+	tm_dl2_gather_students_effect = yes
 	tm_dl2_galenic_reactions_effect = yes
+}
+
+# The teacher's school (run 17: a rite founded by one woman died with her, and the Council of the Two Schools was never
+# called). Up to three members of the faith who read with the founder take the rite with her: nearest first, her own
+# court, then her kin, then her liege's realm, then those who read her by letter. Rulers are left to the decisions.
+# Scope: the founder (scope:tm_dl2_founder, scope:tm_dl2_new_rite).
+tm_dl2_gather_students_effect = {
+	court_owner ?= { save_scope_as = tm_dl2_school }
+	every_living_character = {
+		limit = { tm_dl2_student_candidate_trigger = yes }
+		add_to_temporary_list = tm_dl2_student_pool
+	}
+	ordered_in_list = {
+		list = tm_dl2_student_pool
+		order_by = tm_dl2_student_value
+		max = 3
+		check_range_bounds = no
+		set_character_rite = scope:tm_dl2_new_rite
+		set_variable = tm_dl2_galenic_student
+		add_opinion = { target = scope:tm_dl2_founder modifier = tm_dl2_student_opinion }
+		tm_dl4_tally_effect = { WHAT = students }
+	}
+}
+
+# The school's yearly reach (tm_dl2_galenic_school_yearly): count the faith on each wing, for the join chance's
+# share term. Global, since the roll runs in a global pulse.
+tm_dl2_count_wings_effect = {
+	set_global_variable = { name = tm_dl2_n_faith value = 0 }
+	set_global_variable = { name = tm_dl2_n_galenic value = 0 }
+	every_living_character = {
+		limit = { faith = faith:transbian_maximalism }
+		change_global_variable = { name = tm_dl2_n_faith add = 1 }
+		if = {
+			limit = { rite ?= { rite_has_doctrine = tm_body_galenic } }
+			change_global_variable = { name = tm_dl2_n_galenic add = 1 }
+		}
+	}
 }
 
 # Join the Galenic rite once it exists. Scope: the ruler.

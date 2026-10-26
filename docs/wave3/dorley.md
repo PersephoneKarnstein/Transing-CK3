@@ -1,4 +1,4 @@
-# Wave 3: Adelphai Dorleyaiou, stage 2
+﻿# Wave 3: Adelphai Dorleyaiou, stage 2
 
 Prefix `tm_dl2_`, namespace `tm_dl2`. Roadmap item: "the Galenic splinter rite; more events from the reading (Ignatios, the Tarsus boy-train)". Untested in game.
 
@@ -18,6 +18,22 @@ Prefix `tm_dl2_`, namespace `tm_dl2`. Roadmap item: "the Galenic splinter rite; 
   - `tm_byz.0012.e` (the wills): register the adoptions under Leo's adoption law and enter each daughter as a eunuch. Free; sets `tm_wills_registered`; each daughter who is the ruler's child gains −15 "Registered Me as a Eunuch".
   - `tm_byz.0001.b` (Cybele in Christian clothes) existed already and is now reachable.
 - **Its book** (`tm_dl2.0030`, from 1107): Theophylact of Ochrid's *In Defence of Eunuchs*. Galenic rulers: "This is our book" (+50 piety, learning xp). Aristotelian rulers: "The archbishop defended the uncle. No one asked the boy." A learned ruler of either wing can shelve it with the answer beside it. Yearly 2%, +8% for Galenic rulers, +2% at learning 12. Once per ruler.
+
+### 1b. The Galenic school (added 2026-10-25 after run 17, untested)
+
+Run 17 founded the rite in 974 by the teacher's event, and by 1144 it had no members: the teacher was its only adherent, only rulers could join, and the faith had almost no rulers after the 990s. With no Galenic champion, the Council of the Two Schools was never called. The story is now *the teacher's school, which now and then wins some women over to its politics*:
+
+- **Students at the founding** (`tm_dl2_gather_students_effect`, both the teacher's event and the decision). Up to three adults of the faith on the main rite, not rulers and not zealous, take the rite with the founder. They are ranked nearest first: her own court (+40), her kin (+20), her liege's realm (+10), then learning; content +5. Each gets `tm_dl2_student_opinion` (+20 for twenty years) of her. Tally `students`.
+- **Talked round later** (`tm_dl2_galenic_school_yearly`, `tm_dl2_school_join_chance_value`). Every year, each adult non-ruler of the main rite who is not zealous may move to the Galenic rite. The yearly chance in percent:
+  - base 0.4;
+  - plus twice the Galenic share of the faith (global `tm_dl2_n_galenic` / `tm_dl2_n_faith`, recounted yearly);
+  - +1 with a Galenic sister at her court;
+  - who holds power: +1 if her liege or court owner is Galenic, −0.2 if Aristotelian; +0.5 if the Mother of Mothers is Galenic, −0.2 if Aristotelian; +0.3 under a Christian top liege of another faith (the Emperor's count is the law of her land);
+  - content +0.2. Never below 0.
+
+  So about 0.4% with nothing for it, and about 4% for a woman at a Galenic court with half the faith Galenic. Tally `school_joins`. No transparent cap: the main rite's lords and the Mother of Mothers are the only brake.
+- The narrator does not endorse the move: it is the accommodationist wing gaining ground, not a conversion to the truth.
+- **Open:** a flow back to the main rite (for example under an Aristotelian Mother of Mothers) is not built. If the Galenic share climbs past a third in observe runs, add it.
 
 ### 2. Events from the Byzantine reading (`events/tm_dl2_events.txt`, hooks in `common/on_action/tm_dl2_on_actions.txt`)
 - **Ignatios returns** (`tm_dl2.0010`). 867 start only, around 20 November 867. To the Mother of Mothers (or the greatest ruler of the faith) and every human player of the faith. Options: "so long as it may call him father" (Aristotelian); "the court cuts its princes as we cut our captives" (Grandmother's House); "pray for him; he was Niketas once" (everyone).

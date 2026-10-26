@@ -1,0 +1,48 @@
+﻿# Crusader Dolls — Adelphai Dorleyaiou, wave 8: the Tower on the Condition (docs/wave8/adelphai.md).
+
+# A Christian lord in the Byzantine world, not of the six faiths, who could grant the Sisters an empty tower: count
+# or above, settled, with no House in his hand yet, asked only once. Scope: the lord.
+tm_dl5_grantor_trigger = {
+	is_landed = yes
+	highest_held_title_tier >= tier_county
+	is_imprisoned = no
+	religion = religion:christianity_religion
+	NOT = { rite ?= { rite_has_parameter = tm_sisters_faith } }
+	tm_settled_court_trigger = yes
+	capital_province ?= {
+		OR = {
+			geographical_region = world_asia_minor
+			geographical_region = world_europe_south_east
+		}
+	}
+	NOT = { tm_holds_sisters_house_trigger = yes }
+	NOT = { has_variable = tm_dl5_asked }
+	any_held_title = {
+		tier = tier_county
+		NOT = { has_variable = tm_house }
+	}
+	tm_flavour_ready_trigger = yes
+}
+
+# A sister of the Adelphai who could ask her lord for the tower. Scope: the character.
+tm_dl5_petitioner_trigger = {
+	faith = faith:transbian_maximalism
+	is_adult = yes
+	is_ruler = no
+	is_imprisoned = no
+	tm_house_member_trigger = yes
+	NOT = { has_variable = tm_world_keep_quiet }
+	court_owner ?= { tm_dl5_grantor_trigger = yes }
+}
+
+# The tower is manned this year: two grown sisters of a House at the holder's court, or its keeper and one more.
+# Scope: the county; needs scope:tm_dl5_holder.
+tm_dl5_tower_manned_trigger = {
+	scope:tm_dl5_holder = {
+		any_courtier = {
+			count >= 2
+			is_adult = yes
+			tm_house_member_trigger = yes
+		}
+	}
+}

@@ -5,7 +5,7 @@ on_game_start_after_lobby = {
 }
 
 yearly_global_pulse = {
-	on_actions = { tm_dl2_yearly_global tm_dl2_galenic_teacher_yearly }
+	on_actions = { tm_dl2_yearly_global tm_dl2_galenic_teacher_yearly tm_dl2_galenic_school_yearly }
 }
 
 yearly_playable_pulse = {
@@ -75,6 +75,28 @@ tm_dl2_galenic_teacher_yearly = {
 					modifier = { add = 10 has_trait = content }
 				}
 				trigger_event = { id = tm_dl2.0003 days = { 1 60 } }
+			}
+		}
+	}
+}
+
+# The Galenic school (docs/wave3/dorley.md §1b): once the rite exists, any adult of the faith on the main rite who is
+# not a ruler may be talked round to the Emperor's count (tm_dl2_school_join_chance_value). Rulers take the decisions.
+tm_dl2_galenic_school_yearly = {
+	trigger = { has_global_variable = tm_dl2_galenic_founded }
+	effect = {
+		tm_dl2_count_wings_effect = yes
+		every_living_character = {
+			limit = {
+				faith = faith:transbian_maximalism
+				tm_dl2_school_candidate_trigger = yes
+			}
+			random = {
+				chance = 0
+				modifier = { add = tm_dl2_school_join_chance_value }
+				set_character_rite = rite:tm_galenic_rite
+				set_variable = tm_dl2_galenic_convinced
+				tm_dl4_tally_effect = { WHAT = school_joins }
 			}
 		}
 	}

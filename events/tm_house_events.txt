@@ -242,7 +242,13 @@ tm_house.0040 = {
 tm_house.0050 = {
 	type = character_event
 	title = tm_house.0050.t
-	desc = tm_house.0050.desc
+	desc = {
+		desc = tm_house.0050.desc
+		triggered_desc = {	# a tower kept on the condition of a grant (tm_dl5, wave 8)
+			trigger = { scope:tm_house_county = { has_variable = tm_dl5_tower_kept } }
+			desc = tm_house.0050.desc.tower
+		}
+	}
 	theme = faith
 	left_portrait = { character = root animation = personality_rational }
 
@@ -266,6 +272,7 @@ tm_house.0050 = {
 			modifier = { add = 30 has_trait = compassionate }
 			modifier = { add = 20 has_trait = content }
 			modifier = { add = -30 has_trait = zealous }
+			modifier = { add = 40 scope:tm_house_county = { has_variable = tm_dl5_tower_kept } }	# the grant is kept, and the road with it
 		}
 	}
 	option = {	# Close it
@@ -318,6 +325,7 @@ tm_house.0050 = {
 			modifier = { add = 30 has_trait = zealous }
 			modifier = { add = 20 has_trait = callous }
 			modifier = { add = -40 scope:tm_house_county = { has_variable = tm_house_named } }
+			modifier = { add = -30 scope:tm_house_county = { has_variable = tm_dl5_tower_kept } }
 			modifier = { add = -30 has_trait = compassionate }
 		}
 	}

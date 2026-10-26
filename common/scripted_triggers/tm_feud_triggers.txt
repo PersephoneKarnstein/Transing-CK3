@@ -72,9 +72,10 @@ tm_feud_bearer_needed_trigger = {
 	}
 }
 
-# Can carry her suit: a grown man at her court or the lord's, who is her husband, her close kinsman, or a friend of
-# a House (tm_house_friend_modifier). Scope: the candidate. Needs scope:tm_feud_plaintiff, scope:tm_feud_lord,
-# scope:tm_flyter.
+# Can carry her suit: a grown man at her court or the lord's, who is her husband, her close kinsman, a friend of a
+# House (tm_house_friend_modifier), a brother in one of the six faiths, or a man who thinks well of her (opinion 20+;
+# widened after run 17, where 34 suits found no bearer). Scope: the candidate. Needs scope:tm_feud_plaintiff,
+# scope:tm_feud_lord, scope:tm_flyter.
 tm_feud_bearer_candidate_trigger = {
 	is_alive = yes
 	is_adult = yes
@@ -88,6 +89,8 @@ tm_feud_bearer_candidate_trigger = {
 		is_spouse_of = scope:tm_feud_plaintiff
 		is_close_family_of = scope:tm_feud_plaintiff
 		has_character_modifier = tm_house_friend_modifier
+		rite ?= { rite_has_parameter = tm_sisters_faith }
+		opinion = { target = scope:tm_feud_plaintiff value >= 20 }
 	}
 	OR = {
 		is_courtier_of = scope:tm_feud_lord
@@ -123,4 +126,21 @@ tm_feud_foster_ward_trigger = {
 	is_imprisoned = no
 	is_ruler = no
 	num_of_relation_guardian = 0
+}
+
+# A kinsman who could carry her suit but is not at either court: her husband or a close kinsman, anywhere. He may be
+# sent for (tm_feud.0020 option c, tm_feud.0022); he travels to the thing, as suitors did. Scope: the candidate.
+# Needs scope:tm_feud_plaintiff, scope:tm_feud_lord, scope:tm_flyter.
+tm_feud_far_kin_trigger = {
+	is_alive = yes
+	is_adult = yes
+	is_imprisoned = no
+	tm_feud_man_trigger = yes
+	tm_bae2_is_outlaw_trigger = no
+	NOT = { this = scope:tm_flyter }
+	NOT = { this = scope:tm_feud_lord }
+	OR = {
+		is_spouse_of = scope:tm_feud_plaintiff
+		is_close_family_of = scope:tm_feud_plaintiff
+	}
 }

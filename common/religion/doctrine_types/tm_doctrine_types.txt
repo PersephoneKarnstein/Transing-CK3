@@ -91,11 +91,12 @@ tm_knife_gift_alone = {
 # doctrine_tm_body
 #############################
 
+# doctrine_tm_body is a sequence group: divergence is the difference (0 vs 25), so the Galenic rite stands at 25%.
 # Aristotle: castration renders the body female. The cut are women in every law of the faith.
 tm_body_aristotelian = {
 	doctrine_group_type = doctrine_tm_body
 	index = 0
-	divergence = 25
+	divergence = 0
 	icon = "doctrine_gender_female_dominated"
 
 	piety_cost = {

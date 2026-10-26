@@ -1,0 +1,34 @@
+﻿# Crusader Dolls — Adelphai Dorleyaiou: the Galenic school (docs/wave3/dorley.md §1b).
+
+# Can read with the founder and take the rite with her. Scope: the candidate; needs scope:tm_dl2_founder.
+tm_dl2_student_candidate_trigger = {
+	faith = faith:transbian_maximalism
+	rite ?= { rite_has_doctrine = tm_body_aristotelian }
+	is_adult = yes
+	is_imprisoned = no
+	is_ruler = no
+	NOT = { this = scope:tm_dl2_founder }
+	NOT = { has_trait = zealous }
+}
+
+# May be talked round to the Emperor's count in a later year. Rulers have the decisions instead. Scope: the character.
+tm_dl2_school_candidate_trigger = {
+	rite ?= { rite_has_doctrine = tm_body_aristotelian }
+	is_adult = yes
+	is_ruler = no
+	NOT = { has_trait = zealous }
+}
+
+# A Galenic sister at her court to argue it with her: the court's owner or a courtier. Scope: the character.
+tm_dl2_galenic_at_court_trigger = {
+	court_owner ?= {
+		OR = {
+			rite ?= { rite_has_doctrine = tm_body_galenic }
+			any_courtier = {
+				NOT = { this = root }
+				faith = faith:transbian_maximalism
+				rite ?= { rite_has_doctrine = tm_body_galenic }
+			}
+		}
+	}
+}

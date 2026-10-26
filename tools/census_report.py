@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """Reads an uncompressed CK3 save and prints how the six faiths have fared over the run.
 
     python3 tools/census_report.py "<path to save>.ck3"
@@ -258,11 +258,13 @@ def main(path):
     wave7('Bædling: the feud (wave 7)',
           ('requital_higher', 'requital_lower', 'account_admitted', 'account_refused', 'refused_unwritten', 'refused_answered',
            'self_judgment_modest', 'self_judgment_heavy', 'self_judgment_remit', 'fostered_seal',
-           'avenge_offered', 'avenge_taken', 'avenge_rested', 'nid_borne', 'nid_no_bearer'),
+           'avenge_offered', 'avenge_taken', 'avenge_rested', 'nid_borne', 'nid_no_bearer',
+           'nid_kin_sent', 'nid_kin_came', 'nid_kin_refused'),
           'requital_higher / _lower: requitals on someone of higher or lower rank; account_admitted / _refused: a lord who\n'
           'wronged a Bædling woman ruler kept or refused her Account; refused_unwritten / _answered: wrongs not written, and her\n'
           'answers with honour; self_judgment_*: awards set; fostered_seal: settlements sealed by fostering; avenge_*: an\n'
-          "outlaw's kin offered, took or let rest a private Account; nid_borne / nid_no_bearer: suits a man carried, or none could.")
+          "outlaw's kin offered, took or let rest a private Account; nid_borne / nid_no_bearer: suits a man carried, or none was at hand;\n"
+          "nid_kin_*: kinsmen sent for from afar, and whether they came.")
     wave7('Bædling: outlawry and the law (wave 7)',
           ('out_suits', 'out_iceland_client', 'out_iceland_no_client', 'out_oath_held', 'out_court_called', 'out_court_held',
            'out_court_failed', 'out_penance', 'out_secular_arm', 'out_rides', 'out_ride_settled', 'out_ride_refused',
@@ -290,6 +292,19 @@ def main(path):
               'home / held: Galenic rulers who came home after the book was kept, or kept the Emperor\'s count.')
     else:
         print('No counts (the save predates the council, or none has been called).')
+    school = ('students', 'school_joins')
+    if any(f'tm_dl4_n_{s}' in gvars for s in school):
+        print('  '.join(f'{s} {int(gvars.get(f"tm_dl4_n_{s}") or 0)}' for s in school)
+              + f'  (now {int(gvars.get("tm_dl2_n_galenic") or 0)} of {int(gvars.get("tm_dl2_n_faith") or 0)} Galenic)')
+        print('students: who took the rite with its founder; school_joins: members talked round in later years.')
+    print()
+
+    # The Tower on the Condition (tm_dl5_tally_effect): Adelphai Dorleyaiou, run-wide.
+    print('== Adelphai: the Tower on the Condition ==')
+    tsteps = ('petitions', 'granted', 'refused', 'kept', 'extended', 'revoked', 'shepherds')
+    print('  '.join(f'{s} {int(gvars.get(f"tm_dl5_n_{s}") or 0)}' for s in tsteps))
+    print('petitions: sisters who asked a lord for an empty tower; granted / refused: his answer; kept: five manned years;\n'
+          'extended / revoked: an empty tower given another year, or taken back; shepherds: robbers taken on as herders.')
     print()
 
     # The Women's Chamber (tm_dl3_tally_effect): run-wide counts of each step.

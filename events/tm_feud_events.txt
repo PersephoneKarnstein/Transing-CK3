@@ -78,6 +78,13 @@ tm_feud.0020 = {
 				desc = tm_feud.0020.desc.court_bearer
 			}
 			triggered_desc = {
+				trigger = {
+					tm_feud_nid_suit_possible_trigger = yes
+					exists = scope:tm_feud_far_kin
+				}
+				desc = tm_feud.0020.desc.court_farkin
+			}
+			triggered_desc = {
 				trigger = { tm_feud_nid_suit_possible_trigger = yes }
 				desc = tm_feud.0020.desc.court_nobearer
 			}
@@ -105,6 +112,7 @@ tm_feud.0020 = {
 			if = {
 				limit = { NOT = { exists = scope:tm_feud_bearer } }
 				tm_feud_tally_effect = { WHAT = nid_no_bearer }
+				tm_feud_find_far_kin_effect = yes
 			}
 		}
 	}
@@ -139,6 +147,23 @@ tm_feud.0020 = {
 			modifier = { add = -30 has_trait = craven }
 		}
 	}
+	option = {	# Send for him: a kinsman far off may ride to the thing and carry it (tm_feud.0022)
+		name = tm_feud.0020.c
+		trigger = {
+			tm_feud_nid_suit_possible_trigger = yes
+			NOT = { exists = scope:tm_feud_bearer }
+			exists = scope:tm_feud_far_kin
+		}
+		custom_tooltip = tm_feud.0020.c.tt
+		tm_feud_tally_effect = { WHAT = nid_kin_sent }
+		scope:tm_feud_far_kin = { trigger_event = { id = tm_feud.0022 days = { 60 150 } } }
+		ai_chance = {
+			base = 50
+			modifier = { add = 30 has_trait = vengeful }
+			modifier = { add = 20 has_trait = patient }
+			modifier = { add = -30 has_trait = forgiving }
+		}
+	}
 	option = {	# Let it stand in the Account
 		name = tm_feud.0020.b
 		custom_tooltip = tm_feud.0020.b.tt
@@ -146,6 +171,61 @@ tm_feud.0020 = {
 			base = 30
 			modifier = { add = 30 has_trait = forgiving }
 			modifier = { add = 20 has_trait = calm }
+		}
+	}
+}
+
+# The kinsman sent for (tm_feud.0020 option c). Hidden. Root = the kinsman; the scopes of 0020. He comes or he does
+# not; nothing is moved, the road is the delay. If he comes he carries the suit as a bearer would (tm_feud.0021).
+tm_feud.0022 = {
+	type = character_event
+	hidden = yes
+
+	trigger = { scope:tm_feud_plaintiff ?= { is_alive = yes } }
+
+	immediate = {
+		if = {
+			limit = {
+				is_alive = yes
+				is_imprisoned = no
+				tm_feud_nid_suit_possible_trigger = yes
+			}
+			random_list = {
+				50 = {	# he comes
+					modifier = { add = 30 opinion = { target = scope:tm_feud_plaintiff value >= 25 } }
+					modifier = { add = 20 has_trait = just }
+					modifier = { add = 20 has_trait = brave }
+					modifier = { add = 10 is_spouse_of = scope:tm_feud_plaintiff }
+					save_scope_as = tm_feud_bearer
+					tm_feud_tally_effect = { WHAT = nid_kin_came }
+					tm_feud_tally_effect = { WHAT = nid_borne }
+					tm_feud_tally_effect = { WHAT = nid_suits }
+					scope:tm_feud_plaintiff = {
+						send_interface_toast = {
+							type = event_toast_effect_good
+							title = tm_feud_kin_came_toast
+							left_icon = root
+							custom_tooltip = tm_feud_kin_came_toast.tt
+						}
+					}
+					scope:tm_feud_lord = { trigger_event = { id = tm_feud.0021 days = 1 } }
+				}
+				50 = {	# he does not
+					modifier = { add = 40 opinion = { target = scope:tm_feud_plaintiff value < 0 } }
+					modifier = { add = 20 has_trait = craven }
+					modifier = { add = 20 has_trait = lazy }
+					modifier = { add = 20 is_ruler = yes }	# a lord has his own hall to keep
+					tm_feud_tally_effect = { WHAT = nid_kin_refused }
+					scope:tm_feud_plaintiff = {
+						send_interface_toast = {
+							type = event_toast_effect_bad
+							title = tm_feud_kin_refused_toast
+							left_icon = root
+							custom_tooltip = tm_feud_kin_refused_toast.tt
+						}
+					}
+				}
+			}
 		}
 	}
 }
