@@ -465,7 +465,7 @@ Cited in the notes, not read: Feinberg, Leslie, *Transgender Warriors* (in the R
 </details>
 
 <details>
-<summary><strong>Byzantium, Cybele and the eunuch traditions</strong> (29 works)</summary>
+<summary><strong>Byzantium, Cybele and the eunuch traditions</strong> (30 works)</summary>
 
 - Betancourt, Roland. 2020. *Byzantine Intersectionality: Sexuality, Gender, and Race in the Middle Ages*. Princeton University Press.
 - Blessing, Patricia, and Rachel Goshgarian (eds.). 2017. *Architecture and Landscape in Medieval Anatolia, 1100–1500*. Edinburgh University Press.
@@ -485,6 +485,7 @@ Cited in the notes, not read: Feinberg, Leslie, *Transgender Warriors* (in the R
 - Peacock, A. C. S. 2021. "Urban Agency and the City Notables of Medieval Anatolia." *Medieval Worlds* 14: 22–34.
 - Rapp, Claudia. 2016. *Brother-Making in Late Antiquity and Byzantium: Monks, Laymen, and Christian Ritual*. Oxford University Press.
 - Ringrose, Kathryn M. 2003. *The Perfect Servant: Eunuchs and the Social Construction of Gender in Byzantium*. University of Chicago Press.
+- Ringrose, Kathryn M. 2003. "Reconfiguring the Prophet Daniel: Gender, Sanctity, and Castration in Byzantium." In Sharon Farmer and Carol Braun Pasternack (eds.), *Gender and Difference in the Middle Ages*, 73–106. Medieval Cultures 32. University of Minnesota Press.
 - Roller, Lynn E. 1997. "The Ideology of the Eunuch Priest." *Gender & History* 9.3: 542–559.
 - Roller, Lynn E. 1999. *In Search of God the Mother: The Cult of Anatolian Cybele*. University of California Press.
 - Sidéris, Georges. 2010. "Les eunuques de Byzance (IVe–XIIe siècle) : de la société de cour à la société urbaine." In Élisabeth Malamut (ed.), *Dynamiques sociales au Moyen Âge*, 89–116. Presses universitaires de Provence.
@@ -510,26 +511,66 @@ Cited in the notes, not read: Kuefler, *The Manly Eunuch* (2001); Messis, *Les e
 </details>
 
 <details>
-<summary><strong>Islamic comparanda</strong> (16 works)</summary>
+<summary><strong>Islamic world and Fatimid Egypt</strong> (32 works, with primary sources and modern guardrail reading)</summary>
 
 - Almarri, Saqer A. 2016. "'You Have Made Her a Man among Men': Translating the Khuntha's Anatomy in Fatimid Jurisprudence." *TSQ: Transgender Studies Quarterly* 3.3–4: 578–586.
+- Almarri, Saqer A. 2018. "Identities of a Single Root: The Triad of the Khuntha, Mukhannath, and Khanith." *Women & Language* 41.1: 97–109. (Read in the online reprint on *Arcade*, Stanford Humanities Center.)
 - Ayalon, David. 1999. *Eunuchs, Caliphs and Sultans: A Study in Power Relationships*. Jerusalem: Magnes Press.
 - Bouchakour Ali Amar, Amina, and Rabah Lounici. 2025. "Sufi Brotherhoods (Turuq) and Their Functional Transformations." *Science, Education and Innovations in the Context of Modern Problems* 8.8: 626–634. (Leads only: its references are unreliable.)
+- Cortese, Delia, and Simonetta Calderini. 2006. *Women and the Fatimids in the World of Islam*. Edinburgh University Press. (Chapters 3 and 6 read in full; the rest in part.)
 - Davis, Natalie Zemon. 2006. *Trickster Travels: A Sixteenth-Century Muslim between Worlds*. Hill and Wang.
 - de la Puente, Cristina. 2023. "Al-Ḥakam I in the Andalusi Sources: His Slaves, Eunuchs, and Concubines." *Slavery & Abolition* 44.4: 593–615.
 - El-Azhari, Taef. 2019. *Queens, Eunuchs and Concubines in Islamic History, 661–1257*. Edinburgh University Press.
+- Gesink, Indira Falk. 2018. "Intersex Bodies in Premodern Islamic Discourse: Complicating the Binary." *Journal of Middle East Women's Studies* 14.2: 152–173.
+- Halm, Heinz. 1996. *The Empire of the Mahdi: The Rise of the Fatimids*. Trans. Michael Bonner. Handbook of Oriental Studies 1.26. Brill. (Read in part: the household, the eunuch Jawdhar, the women's sessions, Byzantium.)
+- Halm, Heinz. 2014. *Kalifen und Assassinen: Ägypten und der Vordere Orient zur Zeit der ersten Kreuzzüge 1074–1171*. C. H. Beck.
+- Hirsch, Hadas. 2023. "The Construction of Other Genders by Means of Personal Appearance in Medieval Islam: The Case of Mukhannathūn (Effeminates) and Kuntha (Hermaphrodites)." *Acta ad archaeologiam et artium historiam pertinentia* 33: 387–403. (Open access.)
 - Lecoquierre, Marion. 2023. "Ribāṭ in Palestine: Life on the Frontier." *Contemporary Levant* 8.2: 157–173.
+- Lev, Yaacov. 1991. *State and Society in Fatimid Egypt*. Arab History and Civilization 1. Brill.
 - Marmon, Shaun. 1995. *Eunuchs and Sacred Boundaries in Islamic Society*. Oxford University Press.
+- Moreh, Shmuel. 1992. *Live Theatre and Dramatic Literature in the Medieval Arab World*. New York University Press and Edinburgh University Press.
 - Mortel, Richard T. 1998. "Ribāṭs in Mecca during the Medieval Period: A Descriptive Study Based on Literary Sources." *Bulletin of the School of Oriental and African Studies* 61.1: 29–50.
 - Negre, Joan. 2024. "Ribāṭ in the Furthermost Coasts of Early Al-Andalus." *Religions* 15.1: 124.
-- Rowson, Everett K. 2003. "Gender Irregularity as Entertainment: Institutionalized Transvestism at the Caliphal Court in Medieval Baghdad." In Sharon Farmer and Carol Braun Pasternack (eds.), *Gender and Difference in the Middle Ages*, 45–72. University of Minnesota Press.
-- Rowson, Everett K. 2008. "Homoerotic Liaisons among the Mamluk Elite in Late Medieval Egypt and Syria." In Babayan and Najmabadi (eds.), *Islamicate Sexualities: Translations across Temporal Geographies of Desire*, 204–238. Harvard University Press.
+- Omar, Sara. 2025. "'He Was Penetrated like a Woman': The Evolution of a Companion Report." *Bulletin of the School of Oriental and African Studies* 88.3: 455–476. (Open access.)
 - Rowson, Everett K. 1991. "The Categorization of Gender and Sexual Irregularity in Medieval Arabic Vice Lists." In Julia Epstein and Kristina Straub (eds.), *Body Guards: The Cultural Politics of Gender Ambiguity*, 50–79. Routledge.
 - Rowson, Everett K. 1991. "The Effeminates of Early Medina." *Journal of the American Oriental Society* 111.4: 671–693.
+- Rowson, Everett K. 1994. Review of Moreh, *Live Theatre and Dramatic Literature in the Medieval Arab World*. *Journal of the American Oriental Society* 114.3: 466–468.
+- Rowson, Everett K. 2003. "Gender Irregularity as Entertainment: Institutionalized Transvestism at the Caliphal Court in Medieval Baghdad." In Sharon Farmer and Carol Braun Pasternack (eds.), *Gender and Difference in the Middle Ages*, 45–72. University of Minnesota Press.
+- Rowson, Everett K. 2008. "Homoerotic Liaisons among the Mamluk Elite in Late Medieval Egypt and Syria." In Babayan and Najmabadi (eds.), *Islamicate Sexualities: Translations across Temporal Geographies of Desire*, 204–238. Harvard University Press.
 - Sanders, Paula. 1991. "Gendering the Ungendered Body: Hermaphrodites in Medieval Islamic Law." In Nikki R. Keddie and Beth Baron (eds.), *Women in Middle Eastern History: Shifting Boundaries in Sex and Gender*, 74–95. Yale University Press.
+- Sanders, Paula. 1994. *Ritual, Politics, and the City in Fatimid Cairo*. SUNY Press.
+- Şen, Muhammed Seyyit. 2023. "Black Eunuchs, Slave Soldiers and Concubines in Fātimid Egypt." *İslâm Araştırmaları Dergisi* 50: 75–91. (Open access.)
+- Shoshan, Boaz. 1993. *Popular Culture in Medieval Cairo*. Cambridge Studies in Islamic Civilization. Cambridge University Press. (Chapter 3 read in full; chapters 4–5 in part.)
+- Tolino, Serena. 2018. "Eunuchs in the Fatimid Empire: Ambiguities, Gender and Sacredness." In Almut Höfert, Matthew M. Mesley and Serena Tolino (eds.), *Celibate and Childless Men in Power: Ruling Eunuchs and Bishops in the Pre-Modern World*, 246–267. Routledge.
+- Tolino, Serena. 2022. "Eunuchs in the Sunnī Legal Discourse: Reflections on the Gender of Castrated Men." *Studi Magrebini* 20.2: 117–136. (Read in the author's manuscript.)
+- Tolino, Serena. 2023. "Naming Eunuchs in Islamicate Societies." In Jeannine Bischoff and Stephan Conermann (eds.), *Naming, Defining, Phrasing Strong Asymmetrical Dependencies*, 69–84. De Gruyter. (Open access.)
 - Tor, D. G. 2007. *Violent Order: Religious Warfare, Chivalry, and the ʿAyyār Phenomenon in the Medieval Islamic World*. Istanbuler Texte und Studien 11. Würzburg: Ergon Verlag, for the Orient-Institut Istanbul. (Chapters 1–3, 7 and 8 and the Conclusions read in full; chapters 4–6 in part.)
+- *Primary sources read in the original or in translation (Fatimid Egypt; raw texts kept outside the repo):*
+  - al-Anṭākī, Yaḥyā b. Saʿīd. *Taʾrīkh*. Ed. ʿUmar ʿAbd al-Salām Tadmurī. Tripoli: Jarrous Press, 1990.
+  - Ibn Abī Zayd al-Qayrawānī. *al-Nawādir wa-l-ziyādāt*. 15 vols. Beirut: Dār al-Gharb al-Islāmī, 1999. (Searched; the passages on *mukhannathūn* read.)
+  - Ibn Bassām al-Muḥtasib. *Nihāyat al-rutba fī ṭalab al-ḥisba*. Beirut: Dār al-Kutub al-ʿIlmiyya, 2003.
+  - Ibn Riḍwān. *Medieval Islamic Medicine: Ibn Riḍwān's Treatise "On the Prevention of Bodily Ills in Egypt"*. Trans. Michael W. Dols; Arabic text ed. Adil S. Gamal. Comparative Studies of Health Systems and Medical Care. University of California Press, 1984.
+  - Ibn al-Ukhuwwa. *Maʿālim al-qurba fī aḥkām al-ḥisba*. Ed. Reuben Levy. Gibb Memorial Series, n.s. 12. Cambridge, 1938.
+  - al-Maqrīzī. *Ittiʿāẓ al-ḥunafāʾ bi-akhbār al-aʾimma al-Fāṭimiyyīn al-khulafāʾ*. Ed. Jamāl al-Dīn al-Shayyāl and Muḥammad Ḥilmī Muḥammad Aḥmad. 3 vols. Cairo, 1967–73.
+  - al-Maqrīzī. *al-Mawāʿiẓ wa-l-iʿtibār fī dhikr al-khiṭaṭ wa-l-āthār*. Ed. Ayman Fuʾād Sayyid. 5 vols. London: Al-Furqān, 2002–04.
+  - al-Muqaddasī. *Aḥsan al-taqāsīm fī maʿrifat al-aqālīm*. Ed. M. J. de Goeje. BGA 3. Leiden: Brill, 1906.
+  - al-Musabbiḥī. *Tome quarantième de la Chronique d'Égypte de Musabbiḥī* (*al-Juzʾ al-arbaʿūn min Akhbār Miṣr*), I: *Partie historique*. Ed. Ayman Fuʾād Sayyid and Thierry Bianquis. Textes arabes et études islamiques 13/1. Cairo: IFAO, 1978.
+  - Nāṣir-i Khusraw. *Sefer nameh: relation du voyage de Nassiri Khosrau*. Trans. Charles Schefer. Paris: Leroux, 1881.
+  - al-Nuʿmān, al-Qāḍī. *Daʿāʾim al-Islām*. Ed. A. A. A. Fyzee. 2 vols. Cairo: Dār al-Maʿārif, 1951–61. English: *The Pillars of Islam*, trans. Asaf A. A. Fyzee, rev. Ismail Kurban Husein Poonawala. 2 vols. Oxford University Press, 2002–04. (The books on *ḥudūd*, testimony, marriage and music.)
+  - al-Nuʿmān, al-Qāḍī. *Taʾwīl al-Daʿāʾim*. Read in the OpenITI text.
+  - *al-Sijillāt al-Mustanṣiriyya*. Ed. ʿAbd al-Munʿim Mājid. Cairo: Dār al-Fikr al-ʿArabī, 1954. (Read from a scan, OCR'd by us.)
+  - al-Shayzarī. *Nihāyat al-rutba fī ṭalab al-ḥisba*. Ed. al-Sayyid al-Bāz al-ʿArīnī. Cairo, 1946. English: *The Book of the Islamic Market Inspector*, trans. R. P. Buckley. Journal of Semitic Studies Supplement 9. Oxford University Press, 1999.
+- *Modern Egypt and the Arabic-speaking world (read for the guardrails on how the mod writes Cairo, not as evidence for the period):*
+  - Abdelmoez, Joel W. 2021. "Deviants, Queers, or Scissoring Sisters of Men?: Translating and Locating Queer and Trans Feminisms in the Contemporary Arabic-Speaking World." In Tiina Rosenberg, Sandra D'Urso and Anna Renée Winget (eds.), *The Palgrave Handbook of Queer and Trans Feminisms in Contemporary Performance*, 283–301. Palgrave Macmillan.
+  - Fortier, Corinne. 2025. "Introduction: From Third Gender to Trans and Queer People in Muslim Societies." *Anthropology of the Middle East* 20.1: 1–24. (Open access.)
+  - Hayat, Imran, Asif Ali, and Nabeel Ahmed Nabeel. 2025. "Constructing Transgender Marital Capacity in Pakistan: A Foucauldian Analysis of Khunsa, Nikah, Islamic Family Law, and Human Rights." *Al-Jamei* 3.1: 558–571. (Skimmed for medieval law only.)
+  - Noralla, Nora. 2023. "Gender Trouble in the Land of the Nile: Transgender Identities, the Judiciary and Islam in Egypt." *Yearbook of Islamic and Middle Eastern Law*, advance article. Brill. (Open access.)
+  - Noralla, Nora. 2025. "Navigating Sharia with Condemned Bodies: A Comparative Study between Egypt and Iran on the Application of Sharia on Transgender Policy." In Nikhil Deb, Manjusha Nair and Glenn W. Muschert (eds.), *Handbook of Social Justice in the Global South*, 204–216. Edward Elgar.
+  - Noralla, Nora. 2025. "Transition Like an Egyptian: Investigating Transgender Experiences with Violence in Egypt." *Feminist Africa* 6.1: 82–113.
+  - Revelo La Rotta, Fernando. 2013. "'Are You Gay?': A Queer Ethnography of Sex and Sexuality in Cairo." Undergraduate thesis, Duke University.
+  - Zaharin, Aisya Aymanee M., and Maria Pallotta-Chiarolli. 2020. "Countering Islamic Conservatism on Being Transgender: Clarifying Tantawi's and Khomeini's Fatwas from the Progressive Muslim Standpoint." *International Journal of Transgender Health* 21.3: 235–241.
 
-Cited in the notes, not read: Ayalon, David, "On the Eunuchs in Islam," *Jerusalem Studies in Arabic and Islam* 1 (1979): 67–124; El-Rouayheb, *Before Homosexuality*; Babayan and Najmabadi (eds.), *Islamicate Sexualities*.
+Cited in the notes, not read: Ayalon, David, "On the Eunuchs in Islam," *Jerusalem Studies in Arabic and Islam* 1 (1979): 67–124; El-Rouayheb, *Before Homosexuality*; Halm, Heinz, *Die Kalifen von Kairo* (2003); al-Shayyāl, *Majmūʿat al-wathāʾiq al-Fāṭimiyya* (1958); Schacht and Meyerhof, *The Medico-Philosophical Controversy between Ibn Butlan and Ibn Ridwan* (1937); Aziz, Moses, "Gender Diverse Performativity in Classical Islam" (BA dissertation, Manchester; read, but not relied on). Arab trans and queer writing to read next: *Bareed Mista3jil* (Meem, 2009); *Kohl: A Journal for Body and Gender Research*; Amer, Sahar, *Journal of Lesbian Studies* 16 (2012).
 
 </details>
 

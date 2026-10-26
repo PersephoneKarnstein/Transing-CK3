@@ -62,7 +62,7 @@ Ratings are honest. "Hub for trans women" is a stronger claim than "place where 
   - Rasad sat behind a curtain in council and "would send out a eunuch who would always support the opinion of" her vizier (El-Azhari p. 208).
   - Sitt al-Mulk had ruled through the eunuchs Nassim and Miʿdad in 1021 (pp. 204–205, 260).
   - El-Azhari calls this "the rise of the first queens of Islam" (ch. 4 title).
-- **Gender category.** Tolino 2018 (pp. 246–266) argues that Fatimid eunuchs were "not understood as a 'third gender'" but "gendered according to the different contexts in which they acted" (BORIS abstract). That is the best fit in the region for the mod's anti-third-sexing line, because the person's gender shifts with the room she is in.
+- **Gender category.** Tolino 2018 (pp. 246–267, read 2026-10-26; `isl_tolino_eunuchs.md`) argues that Fatimid eunuchs were "not understood as a 'third gender'" but "gendered according to the different contexts in which they acted or were represented" (p. 248). That is the best fit in the region for the mod's anti-third-sexing line: the sources gender each eunuch by context. (An earlier wording here read more into Tolino than she says.)
 - **Festival.** The Fatimids celebrated Nawruz "with tremendous jubilation", and caliphs had at times to "rein in their subjects" (Virani 2020, pp. 456, 461, citing Shoshan 1993, pp. 40–45, and Sanders 1994, p. 83). Shoshan's chapter is titled "a world turned upside down". *Unverified:* whether it records cross-dressing at Fatimid Nawruz. I could not see the chapter. Check before use.
 - **Why only "plausible".** These are eunuch and slave institutions. They are Adelphai Dorleyaiou's ground, and the project already rejects the eunuch estate as a cage (`book_bhatt_third_sex.md`). There is no evidence of anyone living *as a woman* in them.
 
@@ -138,7 +138,7 @@ My recommendation: if anything is built, build **A as an Adelphai Dorleyaiou sta
 - **Who they are** (fictional, she/her):
   - **Sawsan al-Rūmiyya**, about 40, Rum-born, of the Adelphai. She was sold through Antioch as a boy and is now a *muḥannak* in the women's palace, where she serves as Rasad's curtain voice in council. Her name is attested as a eunuch name (El-Azhari pp. 148–149), and the Sisters keep it as a woman's name (El-Azhari row 6).
   - **Lu'lu'**, about 19, her adopted daughter (Take as Daughter), not yet through any rite. The gate is her choice, not her owner's.
-  - **Bishāra**, about 55, a palace musician who keeps the palace's Nawruz music. Her Nawruz role is *unverified*; see §2 A.
+  - **Bishāra**, about 55, a palace musician who keeps the palace's Nawruz music. Her Nawruz role is *unverified*; see §2 A. **Note (2026-10-26):** Nasab "the drummer-woman", rewarded by al-Mustanṣir in 1058, is attested (`mukhannathun_fatimid_cairo.md` §3.2); a palace drummer fits the sources better than a Nawrūz music-keeper.
   - **A hostile voice:** a fictional Sunni qadi of Fusṭāṭ who speaks Sanders's procedural line ("a castrated man, whatever she calls herself").
 - **Pressures (in the window):**
   - the civil war between the Turkish and Black regiments, and the great famine and treasury looting of the later 1060s (standard narrative, e.g. Brett, *The Fatimid Empire*, 2017; pages *unverified*);

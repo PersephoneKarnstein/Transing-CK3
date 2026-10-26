@@ -47,7 +47,7 @@ Arabic texts were read in page-numbered digital editions at turath.io (which sta
 - Makdisi, George. 1997. *Ibn ʿAqīl: Religion and Culture in Classical Islam*. Edinburgh. Pp. 152f., 240–248, 332–337, as cited by Cook.
 - Moreh, Shmuel. 1992. *Live Theatre and Dramatic Literature in the Medieval Arab World*. Pp. 27–37 (the *kurraj* hobby-horse) and 90–91 (*mukhannathūn* as performers), known through Harris 2003 and Kanno 2021. Rowson's review (*JAOS* 114.3, 1994: 466–468) is reported to find Moreh's reading of them as actors over-extended.
 - Emily Selove's English study of al-Azdī's *Ḥikāyat Abī l-Qāsim* (Edinburgh UP).
-- Kecia Ali, *Sexual Ethics and Islam* (2006/2016); Indira Gesink, "Intersex in Islamic Law" (*AHR* 2018).
+- Kecia Ali, *Sexual Ethics and Islam* (2006/2016); Indira Falk Gesink, "Intersex Bodies in Premodern Islamic Discourse: Complicating the Binary" (*JMEWS* 14.2, 2018: 152–173; read 2026-10-26, see `../isl_gesink_intersex_premodern.md`).
 
 ---
 
@@ -179,7 +179,7 @@ The base texts are themselves of the window and the region. Rowson's three vice-
   - **Ibn ʿAqīl** (d. 1119). He sorts sounds into forbidden, disliked and permitted, and allows only the *duff* (*Devil's Deceptions* p. 356). His 488/1095 letter names the *mukhānīth* (17:16–17).
   - **Al-Ghazālī's *kūba*** (above).
   - **Ibn al-Jawzī himself:** clapping "is also an act of imitating women" (*Devil's Deceptions* p. 369), and "the *mukhannathūn* of Baghdad" are an example of artifice (*Talbīs* p. 330).
-  - **Al-Shayzarī** (Syria, c. 1180). The *muḥtasib* banishes "effeminate men … well known for their perversions", forbids the *mukhannath* "from shaving off or plucking out his beard and from going amongst women" (Buckley p. 127), and forbids the barber to cut the *mukhannath*'s beard (p. 106).
+  - **Al-Shayzarī** (Syria, c. 1180). The *muḥtasib* banishes "effeminate men … well known for their perversions", forbids the *mukhannath* "from shaving off or plucking out his beard and from going amongst women" (Buckley p. 127), and forbids the barber to cut the *mukhannath*'s beard (p. 106). **Correction (2026-10-26):** in the Arabic (al-ʿArīnī ed. p. 110) that sentence names *al-khunthā*, not *al-mukhannath*; Buckley renders it "effeminate". The barber rule (p. 88) does say *mukhannath*. See `mukhannathun_fatimid_cairo.md` §2.6.
 
 ### 1.4 Is there a household or communal life to build on, and in what idiom?
 
@@ -434,7 +434,7 @@ The troupe does not vanish: *mukhānīth* still appear in 517 and 532 AH (17:216
 
 ## 5. Open questions
 
-1. **Rowson 2003, nn. 62–63.** Which eleventh-century Egyptian source reports the paraded procurer and the murdered rich *mukhannath* musician (possibly al-Musabbiḥī; *unverified*)? Our extraction stops at n. 61.
+1. ~~**Rowson 2003, nn. 62–63.**~~ **Answered (2026-10-26):** both are al-Musabbiḥī, *Akhbār Miṣr*, ed. Sayyid–Bianquis (IFAO 1978), pp. 68 and 104, Shawwāl 415 / December 1024, Fusṭāṭ. See `mukhannathun_fatimid_cairo.md` §1.1–1.2.
 2. **Al-Mafarrūkhī's *Maḥāsin Iṣfahān*.** Translate the six *mukhannath* anecdotes Browne summarises (pp. 672–674): Dukhandī and the shroud. This is the best Isfahan-specific material.
 3. **Al-Rāghib, ḥadd 16.** Fix the page numbers against a paginated print (Beirut, Dār al-Arqam, 2:264–304).
 4. **The *kūba* and the *ṭubūl al-makhānīth*.** Are they the same instrument? Check the Ikhwān al-Ṣafāʾ, *Rasāʾil* 1:193, and organology (Farmer).
