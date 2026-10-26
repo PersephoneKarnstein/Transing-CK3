@@ -38,6 +38,12 @@ dest="${1:-$HOME/ck3-crusader-dolls-release}"
 game_dirs=(common events gfx history localization)
 
 cd "$repo"
+# Releases come from master only: work in progress lives on other branches (v2-1066, the 1066 start) until it is ready.
+branch="$(git rev-parse --abbrev-ref HEAD)"
+if [ "$branch" != "master" ]; then
+	echo "On branch '$branch': releases are made from master only (git switch master)." >&2
+	exit 1
+fi
 if [ -n "$(git status --porcelain -- "${game_dirs[@]}" descriptor.mod thumbnail.png)" ]; then
 	echo "Uncommitted changes in the mod's files; commit them first so the release matches the repository:" >&2
 	git status --short -- "${game_dirs[@]}" descriptor.mod thumbnail.png >&2
