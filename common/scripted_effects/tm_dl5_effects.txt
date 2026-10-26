@@ -28,6 +28,31 @@ tm_dl5_grant_tower_effect = {
 	set_variable = { name = tm_dl5_tower_keeper value = scope:tm_dl5_petitioner }
 	add_county_modifier = { modifier = tm_dl5_tower_rebuilding_modifier }
 	scope:tm_dl5_petitioner = { add_character_modifier = { modifier = tm_dl5_keeper_modifier } }
+	root = { save_scope_as = tm_dl5_holder }
+	tm_dl5_gather_effect = { MAX = 2 }
+}
+
+# Sisters come to man the tower: up to $MAX$ members (tm_dl5_tower_comer_trigger), nearest first, join the holder's
+# court. The Sisters are few and scattered, so the House calls them in (run 18: with no gathering, no tower ever had two).
+# Scope: the county; needs scope:tm_dl5_holder.
+tm_dl5_gather_effect = {
+	scope:tm_dl5_holder = {
+		if = {
+			limit = { exists = location }
+			ordered_living_character = {
+				limit = { tm_dl5_tower_comer_trigger = yes }
+				order_by = {
+					value = 0
+					subtract = "location.squared_distance(scope:tm_dl5_holder.location)"
+				}
+				max = $MAX$
+				check_range_bounds = no
+				save_scope_as = tm_dl5_comer
+				scope:tm_dl5_holder = { add_courtier = scope:tm_dl5_comer }
+				tm_dl5_tally_effect = { WHAT = came }
+			}
+		}
+	}
 }
 
 # The condition kept. Scope: the county; scope:tm_dl5_holder.

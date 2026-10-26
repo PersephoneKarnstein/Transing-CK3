@@ -46,3 +46,21 @@ tm_dl5_tower_manned_trigger = {
 		}
 	}
 }
+
+# A sister who would come to man a granted tower (tm_dl5_gather_effect): a grown member of a House who is not a ruler,
+# a ruler's wife or a councillor, and not already at a court of her faith or at the tower. Added after run 18, where no
+# second sister ever reached a tower and all seven granted were taken back. Scope: the character; needs
+# scope:tm_dl5_holder.
+tm_dl5_tower_comer_trigger = {
+	faith = faith:transbian_maximalism
+	is_adult = yes
+	is_ruler = no
+	is_imprisoned = no
+	is_councillor = no
+	tm_house_member_trigger = yes
+	exists = location
+	NOT = { has_variable = tm_world_keep_quiet }
+	NOT = { employer ?= scope:tm_dl5_holder }
+	NOT = { court_owner ?= { faith = faith:transbian_maximalism } }
+	NOT = { any_spouse = { is_ruler = yes } }
+}

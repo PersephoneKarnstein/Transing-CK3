@@ -68,6 +68,13 @@ tm_dl5_yearly_towers = {
 				}
 				holder = { save_scope_as = tm_dl5_holder }
 				save_scope_as = tm_dl5_county
+				if = {	# short of hands: one more sister may come this year
+					limit = { NOT = { tm_dl5_tower_manned_trigger = yes } }
+					random = {
+						chance = 25
+						tm_dl5_gather_effect = { MAX = 1 }
+					}
+				}
 				if = {
 					limit = { tm_dl5_tower_manned_trigger = yes }
 					change_variable = { name = tm_dl5_tower_years add = 1 }

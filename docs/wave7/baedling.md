@@ -173,6 +173,7 @@ Sources: Ahola pp. 85–86, 108–9, 113.
 - **Wider bearers.** Besides her husband, close kin and friends of a House, any man of the six faiths, or any man with opinion of her 20 or more, at her court or the lord's, may carry it.
 - **Send for him** (`tm_feud.0020` option c, `tm_feud.0022`). With no man at hand, her husband or a close kinsman elsewhere (`tm_feud_far_kin_trigger`, the best speaker) may be sent for. Nothing moves: after 60–150 days he either comes, and the suit goes to the lord with him as bearer, or sends word that he will not. He is likelier to come with opinion 25+, if just or brave, or if he is her husband; less likely with negative opinion, if craven or lazy, or if he is a ruler with his own hall. Toasts: "He Came to the Þing" and "He Will Not Come". Tallies `nid_kin_sent`, `nid_kin_came`, `nid_kin_refused`. Kinsmen rode to the assembly to prosecute, as suitors did.
 - **"The thing" is now "the þing"** in all player-facing text (18 lines): the Old Norse word, not its English rendering.
+- **Run 18 (to 1314): the widening did not reach the search.** 2 suits borne, 50 with no bearer. `tm_feud_find_bearer_effect` still listed only courtiers with `tm_house_friend_modifier`, so the six-faith and opinion paths in the trigger were never tried. It now lists every courtier of her court and the lord's who passes `tm_feud_bearer_candidate_trigger`.
 
 ### New tally names (tm_feud_n_*)
 

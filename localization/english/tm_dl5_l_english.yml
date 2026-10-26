@@ -4,7 +4,7 @@
  tm_dl5.0001.t:0 "A Tower on the Condition"
  tm_dl5.0001.desc:0 "[tm_dl5_petitioner.GetName] has asked to speak with me for the Sisters. There is an old tower in [tm_dl5_county.GetName], burned out by raiders and empty since, and a village under it with no one to watch the road.\n\nThe Sisters ask for it on a condition: they will rebuild it and keep it manned, and if they do not, it comes back to me. Monks have taken towers on such terms before. A tower kept is a road kept, and this one would cost my treasury nothing."
  tm_dl5.0001.a:0 "Grant it on the condition."
- tm_dl5.0001.a.tt:0 "A Sisters' House stands in [tm_dl5_county.GetName], under your rule and by your leave. If two of its sisters live at your court for five years, the tower is theirs to keep. If it stands empty two years running, you may take it back."
+ tm_dl5.0001.a.tt:0 "A Sisters' House stands in [tm_dl5_county.GetName], under your rule and by your leave. Up to two sisters come to your court to man it. If two of its sisters live at your court for five years, the tower is theirs to keep. If it stands empty two years running, you may take it back."
  tm_dl5.0001.b:0 "Not on my land."
 
  tm_dl5.0010.t:0 "The Tower Stands"

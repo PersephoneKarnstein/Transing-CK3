@@ -301,10 +301,11 @@ def main(path):
 
     # The Tower on the Condition (tm_dl5_tally_effect): Adelphai Dorleyaiou, run-wide.
     print('== Adelphai: the Tower on the Condition ==')
-    tsteps = ('petitions', 'granted', 'refused', 'kept', 'extended', 'revoked', 'shepherds')
+    tsteps = ('petitions', 'granted', 'refused', 'came', 'kept', 'extended', 'revoked', 'shepherds')
     print('  '.join(f'{s} {int(gvars.get(f"tm_dl5_n_{s}") or 0)}' for s in tsteps))
-    print('petitions: sisters who asked a lord for an empty tower; granted / refused: his answer; kept: five manned years;\n'
-          'extended / revoked: an empty tower given another year, or taken back; shepherds: robbers taken on as herders.')
+    print('petitions: sisters who asked a lord for an empty tower; granted / refused: his answer; came: sisters who moved\n'
+          "to a tower's court to man it; kept: five manned years; extended / revoked: an empty tower given another year,\n"
+          'or taken back; shepherds: robbers taken on as herders.')
     print()
 
     # The Women's Chamber (tm_dl3_tally_effect): run-wide counts of each step.

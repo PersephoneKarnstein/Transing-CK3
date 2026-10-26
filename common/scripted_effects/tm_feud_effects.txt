@@ -465,9 +465,10 @@ tm_feud_reprieve_step_effect = {
 # The suit-bearer (wave 7). Under a lord not of the six faiths a woman's níð suit is carried by a man: "she must
 # transfer the conduct of a case to a man" (Grágás §1.7, research/norse_gragas_laws.md); women "were not expected to
 # prosecute (sœkja) on their own but to delegate (selja)", and "only powerful men could enforce the law" (Jochens
-# 1995 pp. 113, 39). The best speaker among her husband, her close kinsmen and the friends of a
-# House at her court or the lord's, by diplomacy. Scope: any. Needs scope:tm_feud_plaintiff, scope:tm_feud_lord,
-# scope:tm_flyter. Saves scope:tm_feud_bearer, if any.
+# 1995 pp. 113, 39). The best speaker, by diplomacy, among her husband, her close kinsmen and the men at her court or
+# the lord's who pass tm_feud_bearer_candidate_trigger (friends of a House, brothers of the six faiths, men who think
+# well of her; before run 18 only friends of a House were searched, so the wider trigger found no one). Scope: any.
+# Needs scope:tm_feud_plaintiff, scope:tm_feud_lord, scope:tm_flyter. Saves scope:tm_feud_bearer, if any.
 tm_feud_find_bearer_effect = {
 	scope:tm_feud_plaintiff = {
 		every_spouse = {
@@ -480,20 +481,14 @@ tm_feud_find_bearer_effect = {
 		}
 		court_owner ?= {
 			every_courtier = {
-				limit = {
-					has_character_modifier = tm_house_friend_modifier
-					tm_feud_bearer_candidate_trigger = yes
-				}
+				limit = { tm_feud_bearer_candidate_trigger = yes }
 				add_to_temporary_list = tm_feud_bearers
 			}
 		}
 	}
 	scope:tm_feud_lord = {
 		every_courtier = {
-			limit = {
-				has_character_modifier = tm_house_friend_modifier
-				tm_feud_bearer_candidate_trigger = yes
-			}
+			limit = { tm_feud_bearer_candidate_trigger = yes }
 			add_to_temporary_list = tm_feud_bearers
 		}
 	}

@@ -21,7 +21,7 @@ Sophoulis, *Banditry in the Medieval Balkans*, p. 111: in 1313 Alypiou received 
 
 Each year, while the House stands: if two grown sisters of a House are at the holder's court, the year counts. Five such years keep the tower (`tm_dl5.0010`): the county gets "The Sisters' Tower" (garrison +20%, hostile raids slower, development +5%), the keeper gains piety, the holder minor prestige. Two empty years in a row call the holder (`tm_dl5.0011`): take it back (the House closes; the keeper −15 opinion of him) or give them one more year. A House closed any other way clears the tower.
 
-The petitioner herself counts toward the two. A lord who holds a House is the faith's second choice of home in the yearly gathering (`tm_surv_find_home_effect`), so a granted tower draws wandering sisters to his court: that is how it is meant to be manned.
+The petitioner herself counts toward the two. A lord who holds a House is the faith's second choice of home in the yearly gathering (`tm_surv_find_home_effect`), so a granted tower draws wandering sisters to his court: that is how it was meant to be manned. Run 18 (to 1314) showed it is not enough: 7 towers granted, none kept, all 7 taken back, because the sisters are few and the gathering takes only those with no court. Since then the House calls them in (`tm_dl5_gather_effect`): at the grant, up to two grown members who are not rulers, rulers' wives or councillors, and are not at a court of the faith, move to the lord's court, nearest first; while the tower is short of hands, one more comes at 25% a year. The census counts them as `came`.
 
 ## 3. After
 
