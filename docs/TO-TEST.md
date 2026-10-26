@@ -1182,3 +1182,16 @@ Design: `docs/wave7/baedling.md`. The census prints three "wave 7" sections.
 - [ ] **AJ3.** A kept tower's county passing to another Christian lord: 0050 shows the tower line, and AI lords mostly let it stand.
 - [ ] **AJ4.** The herders (0020) on a kept tower: the modifier lasts twenty years; no repeat in that county for thirty.
 - [ ] **AJ5.** Observe run: the census "Tower on the Condition" counts; does a granted tower draw sisters (gathering), and do the Adelphai hold more members than in runs 16–17 (13–18)?
+
+## AK. Badenya: the Rock at Koulikoro and the fall of the associate (wave 9, added 2026-10-26, untested)
+
+See `docs/wave9/badenya.md`.
+
+- [ ] **AK1. Coming to the rock.** A Badenya courtier (or a daughter of any faith) in the Sahel whose spouse has opinion of her −25 or lower: within a few years she joins the court of `c_sibi_mali`'s holder, is Under the Rock (modifier), and gets *Under the Rock* (`tm_bd3.0010`). The text says the refuge is recorded from the nineteenth century. Test fast with `effect = { tm_bd3_come_to_rock_effect = yes }` on her.
+- [ ] **AK2. Sent for.** The spouse or lord she left gets *At the Rock* (0011) in 20–60 days; option b sends *They Ask at the Rock* (0012) to the keeper. Keep the custom: piety (if the keeper is Badenya), prestige, the asker's −20. Give her up: she moves to the asker's court (or the asker's lord's), loses the modifier, −40 to the keeper. A Badenya keeper's AI keeps her.
+- [ ] **AK3. Joining at the rock.** A woman Under the Rock who is not of the faith, at a keeper's court with a Badenya member: about one in twenty a year takes Badenya (`rock_joins`).
+- [ ] **AK4. The quarrel.** From 1352, a Badenya ruler with an associate and a spouse or concubine with opinion 40+ of the ruler: `trigger_event = tm_bd3.0020`. Raise the other: the old associate loses the honour and is Kept by a Commander (3 years); the new one is named (the existing tm_bd2 effects: modifier, vassal opinions). 0021 *Ashes and Dust* follows in 30–90 days: with women of the dynasty at court who favour the fallen one, the dust text and the ruler's prestige loss; otherwise ashes.
+- [ ] **AK5. The fallen associate.** 0022 in 60–180 days: ride (0024 later lets the ruler restore her: she is associate again, the raised one is not); write to the exile (a dynasty member away from court gains an unpressed claim on the ruler's primary title; half the time 0023 *The Preacher's House*); bide. No option kills her; send her away moves her to her father's or mother's court or the pool.
+- [ ] **AK6. Guardrails.** No nakedness, no slave-woman witness, no "Qasa" in loc; no fugitive or plantation words at the rock; she/her for the associates; the runaway's text uses her name, not pronouns.
+- [ ] **AK7. Observe run.** The census "Badenya: the Rock and the associate" counts; does Badenya hold more members than run 19's 18?
+

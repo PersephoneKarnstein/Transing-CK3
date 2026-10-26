@@ -308,6 +308,17 @@ def main(path):
           'or taken back; shepherds: robbers taken on as herders.')
     print()
 
+    # Badenya, wave 9 (tm_bd3_tally_effect): the Rock at Koulikoro and the fall of the associate.
+    print('== Badenya: the Rock and the associate ==')
+    bsteps = ('rock_came', 'rock_asked', 'rock_kept', 'rock_given', 'rock_joins', 'quarrels', 'raised', 'dust', 'ashes',
+              'rides', 'restored', 'letters', 'sanctuary')
+    print('  '.join(f'{s} {int(gvars.get(f"tm_bd3_n_{s}") or 0)}' for s in bsteps))
+    print('rock_came: came to the rock at Koulikoro; rock_asked / _kept / _given: the one left sent for her, and the keeper kept\n'
+          'the custom or gave her up; rock_joins: took the faith at the rock; quarrels / raised: quarrels with an associate, and\n'
+          'another raised in her place; dust / ashes: whom the women of the house honoured; rides / restored: the fallen\n'
+          'associate rode to the audience, and was restored; letters / sanctuary: wrote to a kinsman in exile, and was found out.')
+    print()
+
     # The Women's Chamber (tm_dl3_tally_effect): run-wide counts of each step.
     print("== Women's Chamber ==")
     steps = ('rolled', 'fired', 'took', 'stayed', 'lost', 'worked', 'chrysobull', 'estate')

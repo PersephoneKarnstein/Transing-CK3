@@ -149,7 +149,7 @@ Three answers:
 
 **Standing rules.** No nakedness at court (pp. 417–418, 423–424) appears. The narrator claims no historical woman; the decision text cites "a traveller at Mali's court". The faith gains no "matriarchy": it is one ruler's honour to one woman, ended at will. The Muslim reaction is an opinion, not a scheme.
 
-**Optional later add, not built: the fall.** Source, pp. 417–419: the king confines Qasa and raises another wife, Banju, "not among the daughters of kings"; his female cousins honour Banju with ashes only and Qasa with dust when she is freed; Qasa is charged with urging an exiled cousin to take the throne, and takes sanctuary in the preacher's house. A chain could let a ruler raise a second woman over the associate, with the women of the dynasty choosing whom to honour (dust only, never nakedness), and sanctuary as the release. No slave woman's testimony as a mechanic. Build only if the user asks.
+**The fall: built in wave 9 (`tm_bd3.0020`–`0024`, `docs/wave9/badenya.md`).** Originally an optional later add: Source, pp. 417–419: the king confines Qasa and raises another wife, Banju, "not among the daughters of kings"; his female cousins honour Banju with ashes only and Qasa with dust when she is freed; Qasa is charged with urging an exiled cousin to take the throne, and takes sanctuary in the preacher's house. A chain could let a ruler raise a second woman over the associate, with the women of the dynasty choosing whom to honour (dust only, never nakedness), and sanctuary as the release. No slave woman's testimony as a mechanic. Build only if the user asks.
 
 **Open questions.**
 9. Should the decision be open below kingdom tier? As drafted, a count may use it (player only: the AI needs kingdom tier).

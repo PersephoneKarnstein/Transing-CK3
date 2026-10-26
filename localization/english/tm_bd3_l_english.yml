@@ -1,0 +1,68 @@
+﻿l_english:
+ # Badenya, wave 9: the Rock at Koulikoro and the fall of the associate (docs/wave9/badenya.md).
+
+ tm_bd3.0010.t:0 "Under the Rock"
+ tm_bd3.0010.desc:0 "I came to the hill at Koulikoro, where the smith-king became stone and the mansa's sons may not come near. [tm_bd3_keeper.GetTitledFirstName] holds the land below it, and the custom holds above any lord: whoever comes to the rock is not taken from it. They have set a field apart for me.\n\nThe Mother's Children say the rock has always kept whoever comes to it. (The refuge at Koulikoro is recorded from the nineteenth century.)"
+ tm_bd3.0010.a:0 "I will work the field."
+ tm_bd3.0010.a.tt:0 "You are Under the Rock: less stress, and a field of your own."
+
+ tm_bd3.0011.t:0 "At the Rock"
+ tm_bd3.0011.desc:0 "[tm_bd3_runaway.GetFirstName] has gone to the hill at Koulikoro, to the court of [tm_bd3_keeper.GetTitledFirstName]. By the custom of the place, no one is taken from the rock. I could still send and ask."
+ tm_bd3.0011.a:0 "Let [tm_bd3_runaway.GetFirstName] be."
+ tm_bd3.0011.b:0 "Send to [tm_bd3_keeper.GetFirstName] for [tm_bd3_runaway.GetFirstName]."
+ tm_bd3.0011.b.tt:0 "[tm_bd3_keeper.GetFirstName] will decide whether to keep the custom of the rock."
+
+ tm_bd3.0012.t:0 "They Ask at the Rock"
+ tm_bd3.0012.desc:0 "[tm_bd3_asker.GetTitledFirstName] has sent to ask for [tm_bd3_runaway.GetFirstName], who came to the rock and works a field below it. The custom of the hill is older than my house: whoever comes to the rock is not taken from it."
+ tm_bd3.0012.a:0 "The rock keeps whoever comes to it."
+ tm_bd3.0012.b:0 "Give [tm_bd3_runaway.GetFirstName] up."
+ tm_bd3.0012.b.tt:0 "[tm_bd3_runaway.GetFirstName] goes back, and will not forgive you."
+
+ tm_bd3.0020.t:0 "A Quarrel with the Associate"
+ tm_bd3.0020.desc:0 "At Mali, a traveller wrote, the king quarrelled with the woman who shared his rule. He gave her to a commander to keep, and raised another wife in her place, one who was not among the daughters of kings.\n\n[tm_bd3_fallen.GetFirstName] and I have quarrelled. Her name is still said with mine at every feast."
+ tm_bd3.0020.a:0 "Raise [tm_bd3_raised.GetFirstName] in her place."
+ tm_bd3.0020.a.tt:0 "[tm_bd3_fallen.GetFirstName] is no longer your associate, and is kept by a commander for three years. [tm_bd3_raised.GetFirstName] is named in her place. The women of your house will choose whom to honour."
+ tm_bd3.0020.b:0 "Make peace with her."
+ tm_bd3.0020.c:0 "Let the quarrel pass."
+
+ tm_bd3.0021.t:0 "Ashes and Dust"
+ tm_bd3.0021.desc:0 "The women of my house went to greet [tm_bd3_raised.GetFirstName] with ashes on their arms, as the custom asks."
+ tm_bd3.0021.desc.dust:0 " But not one of them put dust on her head. When [tm_bd3_fallen.GetFirstName] came out from the commander's house, they covered their heads with dust for her. The whole court saw whom they honour."
+ tm_bd3.0021.desc.ashes:0 " They put dust on their heads for her too. The court saw that my house stands with my choice."
+ tm_bd3.0021.a:0 "So be it."
+ tm_bd3.0021.b:0 "Free [tm_bd3_fallen.GetFirstName] from the commander."
+
+ tm_bd3.0022.t:0 "The Associate Rides Out"
+ tm_bd3.0022.desc:0 "[tm_bd3_ruler.GetTitledFirstName] has raised [tm_bd3_raised.GetFirstName] in my place, and gave me to a commander to keep. At Mali, they say, a woman put down like this rode to the audience every day, veiled, her people with dust on their heads. They say too that she sent word to a cousin of the king in exile."
+ tm_bd3.0022.a:0 "I will ride to the audience every day, veiled."
+ tm_bd3.0022.a.tt:0 "Everyone will see it. [tm_bd3_ruler.GetFirstName] may restore you."
+ tm_bd3.0022.b:0 "Write to [tm_bd3_exile.GetFirstName], who is far from this court."
+ tm_bd3.0022.b.tt:0 "[tm_bd3_exile.GetFirstName] gains a claim on [tm_bd3_ruler.GetFirstName]'s seat. Word of the letter may reach [tm_bd3_ruler.GetFirstName]."
+ tm_bd3.0022.c:0 "I will bide my time."
+
+ tm_bd3.0023.t:0 "The Preacher's House"
+ tm_bd3.0023.desc:0 "Word has reached me that [tm_bd3_fallen.GetFirstName] wrote to [tm_bd3_exile.GetFirstName] and urged the seat. My commanders say she deserves death. She has gone into the preacher's house, where no one may be taken."
+ tm_bd3.0023.a:0 "Let the sanctuary stand."
+ tm_bd3.0023.b:0 "Pardon her."
+ tm_bd3.0023.c:0 "Send her to her own people."
+ tm_bd3.0023.c.tt:0 "She leaves your court for her father's or mother's, or goes her own way."
+
+ tm_bd3.0024.t:0 "Every Day at the Audience"
+ tm_bd3.0024.desc:0 "Every day [tm_bd3_fallen.GetFirstName] rides to the audience, veiled, and her people come behind her with dust on their heads. The court has stopped pretending not to see her."
+ tm_bd3.0024.a:0 "Restore her."
+ tm_bd3.0024.a.tt:0 "[tm_bd3_fallen.GetFirstName] is your associate again, and [tm_bd3_raised.GetFirstName] is not."
+ tm_bd3.0024.b:0 "Let her ride."
+
+ tm_bd3_under_rock_modifier:0 "Under the Rock"
+ tm_bd3_under_rock_modifier_desc:0 "Came to the hill at Koulikoro, where whoever comes is not taken, and works a field set apart."
+ tm_bd3_kept_by_commander_modifier:0 "Kept by a Commander"
+ tm_bd3_kept_by_commander_modifier_desc:0 "No longer the associate in rule, and given to a commander to keep."
+ tm_bd3_dust_modifier:0 "Dust on Their Heads"
+ tm_bd3_dust_modifier_desc:0 "The women of the house covered their heads with dust for her."
+
+ tm_bd3_kept_from_me_opinion:0 "Kept Her at the Rock"
+ tm_bd3_gave_me_up_opinion:0 "Gave Me Up at the Rock"
+ tm_bd3_kept_me_opinion:0 "Kept Me at the Rock"
+ tm_bd3_raised_over_me_opinion:0 "The Quarrel of the Associate"
+ tm_bd3_wrote_to_me_opinion:0 "Wrote to Me in Exile"
+ tm_bd3_reconciled_opinion:0 "Made Peace"

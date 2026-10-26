@@ -1,0 +1,37 @@
+﻿# Crusader Dolls — Badenya, wave 9 (docs/wave9/badenya.md).
+
+# The keeper of the rock would not give her back.
+tm_bd3_kept_from_me_opinion = {
+	opinion = -20
+	years = 10
+}
+
+# The keeper of the rock gave her up.
+tm_bd3_gave_me_up_opinion = {
+	opinion = -40
+	years = 30
+}
+
+# The keeper of the rock kept her.
+tm_bd3_kept_me_opinion = {
+	opinion = 25
+	years = 20
+}
+
+# Raised over her, or fallen from her: the two women of the quarrel.
+tm_bd3_raised_over_me_opinion = {
+	opinion = -30
+	years = 20
+}
+
+# She wrote to me, urging the seat.
+tm_bd3_wrote_to_me_opinion = {
+	opinion = 20
+	years = 10
+}
+
+# Restored, pardoned, or made peace with.
+tm_bd3_reconciled_opinion = {
+	opinion = 15
+	years = 10
+}

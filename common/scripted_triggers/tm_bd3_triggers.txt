@@ -1,0 +1,89 @@
+﻿# Crusader Dolls — Badenya, wave 9: the Rock at Koulikoro and the fall of the associate (docs/wave9/badenya.md).
+
+# The rock has a keeper: whoever holds Kirina's county (c_sibi_mali, which holds b_koulikoro), free and settled. Any
+# faith: the refuge is the hill's custom, and the faith keeps it in its own voice. Scope: any.
+tm_bd3_rock_kept_trigger = {
+	title:c_sibi_mali.holder ?= {
+		is_imprisoned = no
+		tm_settled_court_trigger = yes
+	}
+}
+
+# One the rock may take in (Bulman et al. 2023, ch. 2, p. 63: "of either sex", fleeing "a master or … a spouse";
+# the mod keeps it to the faith and to daughters, Marked and declared sisters). Grown, not a ruler, free, in the
+# Sahel, not already under the rock, and with a cause (tm_bd3_has_cause_trigger). Scope: the character.
+tm_bd3_runaway_trigger = {
+	is_adult = yes
+	is_ruler = no
+	is_imprisoned = no
+	NOT = { has_variable = tm_reborn }
+	NOT = { has_variable = tm_bd3_at_rock }
+	OR = {
+		faith = faith:tm_badenya
+		tm_is_daughter_trigger = yes
+		has_trait = tm_transgender
+		has_variable = tm_declared
+	}
+	location ?= { county ?= { tm_hn3_county_in_sahel_trigger = yes } }
+	NOT = { court_owner ?= title:c_sibi_mali.holder }
+	NOT = { this = title:c_sibi_mali.holder }
+	tm_bd3_has_cause_trigger = yes
+}
+
+# A cause to go to the rock: a spouse who thinks ill of her, a spouse she cannot bear, or a lord of her court who
+# thinks ill of her. Scope: the character.
+tm_bd3_has_cause_trigger = {
+	OR = {
+		any_spouse = { opinion = { target = prev value <= -25 } }
+		any_spouse = { reverse_opinion = { target = prev value <= -40 } }
+		court_owner ?= {
+			NOT = { this = prev }
+			opinion = { target = prev value <= -30 }
+		}
+	}
+}
+
+# The fall of the associate (from 1352; Ibn Battuta IV, p. 417). Another woman the ruler might raise in her place: a
+# spouse or concubine she favours, who could be an associate (tm_bd2_associate_ok_trigger), not the associate.
+# Scope: the candidate; prev = the ruler.
+tm_bd3_rival_ok_trigger = {
+	tm_bd2_associate_ok_trigger = yes
+	NOT = { this = prev.var:tm_bd2_associate }		# only called while the ruler has an associate
+	OR = {
+		is_spouse_of = prev
+		is_concubine_of = prev
+	}
+	reverse_opinion = { target = prev value >= 40 }
+}
+
+# An exiled kinsman for the fallen associate to write to (p. 419: a cousin of the king, in exile): a grown member of
+# the ruler's dynasty, free, not at the ruler's court and not her vassal, not the ruler or the associate. Scope: the
+# candidate; needs scope:tm_bd3_ruler and scope:tm_bd3_fallen.
+tm_bd3_exile_trigger = {
+	is_adult = yes
+	is_imprisoned = no
+	NOT = { this = scope:tm_bd3_ruler }
+	NOT = { this = scope:tm_bd3_fallen }
+	exists = dynasty
+	scope:tm_bd3_ruler = { exists = dynasty }
+	dynasty = scope:tm_bd3_ruler.dynasty
+	NOT = { is_courtier_of = scope:tm_bd3_ruler }
+	NOT = { liege ?= scope:tm_bd3_ruler }
+	NOT = { top_liege ?= scope:tm_bd3_ruler }
+}
+
+# A grown woman of the ruler's dynasty, for the ashes and the dust (p. 417: the king's cousins). Not the two women of
+# the quarrel. Scope: the candidate; root = the ruler.
+tm_bd3_dynasty_woman_trigger = {
+	is_adult = yes
+	OR = {
+		is_female = yes
+		tm_is_daughter_trigger = yes
+	}
+	exists = dynasty
+	root = { exists = dynasty }
+	dynasty = root.dynasty
+	NOT = { this = root }
+	NOT = { this = scope:tm_bd3_fallen }
+	NOT = { this = scope:tm_bd3_raised }
+}
