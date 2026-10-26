@@ -135,6 +135,15 @@ tm_feud.0020 = {
 			limit = { exists = scope:tm_feud_bearer }
 			custom_tooltip = tm_feud.0020.a.bearer_tt
 			tm_feud_tally_effect = { WHAT = nid_borne }
+			if = {	# a hired bearer: she pays what she has, up to 15 gold
+				limit = { exists = scope:tm_feud_bearer_hired }
+				custom_tooltip = tm_feud.0020.a.hired_tt
+				tm_feud_tally_effect = { WHAT = nid_hired }
+				if = {
+					limit = { tm_feud_bearer_fee_value > 0 }
+					pay_short_term_gold = { target = scope:tm_feud_bearer gold = tm_feud_bearer_fee_value }
+				}
+			}
 		}
 		tm_feud_tally_effect = { WHAT = nid_suits }
 		scope:tm_feud_lord = { trigger_event = { id = tm_feud.0021 days = 1 } }

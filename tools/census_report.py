@@ -259,11 +259,11 @@ def main(path):
           ('requital_higher', 'requital_lower', 'account_admitted', 'account_refused', 'refused_unwritten', 'refused_answered',
            'self_judgment_modest', 'self_judgment_heavy', 'self_judgment_remit', 'fostered_seal',
            'avenge_offered', 'avenge_taken', 'avenge_rested', 'nid_borne', 'nid_no_bearer',
-           'nid_kin_sent', 'nid_kin_came', 'nid_kin_refused'),
+           'nid_hired', 'nid_kin_sent', 'nid_kin_came', 'nid_kin_refused'),
           'requital_higher / _lower: requitals on someone of higher or lower rank; account_admitted / _refused: a lord who\n'
           'wronged a Bædling woman ruler kept or refused her Account; refused_unwritten / _answered: wrongs not written, and her\n'
           'answers with honour; self_judgment_*: awards set; fostered_seal: settlements sealed by fostering; avenge_*: an\n'
-          "outlaw's kin offered, took or let rest a private Account; nid_borne / nid_no_bearer: suits a man carried, or none was at hand;\n"
+          "outlaw's kin offered, took or let rest a private Account; nid_borne / nid_no_bearer: suits a man carried, or none was at hand; nid_hired: of those borne, by a man hired for a fee;\n"
           "nid_kin_*: kinsmen sent for from afar, and whether they came.")
     wave7('Bædling: outlawry and the law (wave 7)',
           ('out_suits', 'out_iceland_client', 'out_iceland_no_client', 'out_oath_held', 'out_court_called', 'out_court_held',
