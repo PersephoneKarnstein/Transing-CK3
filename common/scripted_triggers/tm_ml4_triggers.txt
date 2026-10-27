@@ -57,11 +57,13 @@ tm_ml4_hall_band_trigger = {
 	}
 }
 
-# The lord in whose capital the hall is raised: alive, Hindu, with a capital county. Scope: the lord.
+# The lord in whose capital the hall is raised: alive, Hindu, with a capital county that has no guild hall yet.
+# Scope: the lord.
 tm_ml4_hall_lord_trigger = {
 	is_alive = yes
 	faith ?= { religion = religion:hinduism_religion }
 	exists = capital_county
+	capital_county = { NOT = { has_variable = tm_ml4_hall } }
 }
 
 # A band in Lanka, after Vijayabahu I drove out the Colas (by 1069–70; Hall 1980, p. 174), in a county a Buddhist

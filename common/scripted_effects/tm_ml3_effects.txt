@@ -25,6 +25,7 @@ tm_ml3_caravan_done_effect = {
 		set_variable = { name = tm_ml3_caravans value = 0 }
 	}
 	change_variable = { name = tm_ml3_caravans add = 1 }
+	tm_ml4_tally_effect = { WHAT = caravans_done }	# run-wide count for the census
 	if = {	# the lord whose merchants the band guarded, for the oath and the hall (tm_ml4, wave 10)
 		limit = { exists = scope:employer }
 		set_variable = { name = tm_ml4_merchant_lord value = scope:employer years = 20 }

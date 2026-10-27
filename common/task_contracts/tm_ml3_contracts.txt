@@ -81,6 +81,7 @@ tm_ml3_caravan_contract = {
 		save_scope_as = task_contract
 		task_contract_employer = { save_scope_as = employer }
 		task_contract_taker ?= { trigger_event = tm_ml3.0020 }
+		tm_ml4_tally_effect = { WHAT = caravans_taken }	# run-wide count for the census (run 22 had no trace of any)
 	}
 
 	task_contract_reward = {

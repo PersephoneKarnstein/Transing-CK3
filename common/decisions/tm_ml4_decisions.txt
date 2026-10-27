@@ -62,7 +62,8 @@ tm_ml4_swear_decision = {
 		trigger_event = tm_ml4.0010
 	}
 
-	ai_potential = { always = no }		# AI bands are offered the oath by the yearly pulse
+	ai_check_interval = 0				# never checked: AI bands are offered the oath by the yearly pulse
+	ai_potential = { always = no }
 	ai_will_do = { base = 0 }
 }
 
