@@ -248,6 +248,12 @@ Use these scholars' data, never their category labels, in loc.
 
 ---
 
+### 4.1 The Cairo house's flag and motto (user, 2026-10-27)
+
+The flag is a spinoff of the Adelphai House for the Cairo set: a gold falcon on a white roundel, on near-black, with the motto in lilac Kufic around it (`docs/images/v2/dorley-cairo.png`, the user's art).
+
+**Motto:** اجمع شملنا، ففي التفرق وحشة وانقطاع (*ijmaʿ shamlanā, fa-fī l-tafarruqi waḥshatun wa-nqiṭāʿ*), "Gather us together, for in separation there is loneliness and being cut off." Built from al-Qāḍī al-Nuʿmān, *al-Majālis wa-l-musāyarāt* (Tunis 1978), pp. 545–6. That passage has *li-yajmaʿa shamlahum* and "in separation (*al-tafarruq*) there is loneliness and being cut off (*al-waḥsha wa-l-inqiṭāʿ*)". It is al-Nuʿmān's account of his household's request (al-Manṣūriyya, 950s), not the women's own words. The imperative form and the indefinite nouns are the house's wording. See `isl_cortese_calderini_fatimid_women.md` §1 for the check. On the flag it reads counter-clockwise from the bottom right, with the letters joined; it was checked by eye on 2026-10-27.
+
 ## 5. Requests
 
 **Received and read (2026-10-26):** Rowson 2003's endnotes (nn. 62–63 confirmed: Millward ed. p. 187; Sayyid–Bianquis 1:104); Tolino 2018, 2022 and 2023; Cortese and Calderini 2006; Shoshan 1993; Sanders 1994; Lev 1991; Moreh 1992 with Rowson's 1994 review; Omar 2025; Hirsch 2023; Almarri 2018; Fortier 2025; Gesink 2018; *al-Sijillāt al-Mustanṣiriyya* (OCR'd); Halm, *Kalifen und Assassinen* (2014) and *The Empire of the Mahdi* (1996); Noralla (three works), Abdelmoez 2021, Zaharin and Pallotta-Chiarolli 2020, Revelo La Rotta 2013; Dols and Gamal 1984 (Ibn Riḍwān; note `isl_dols_ibn_ridwan.md`). See the per-source notes.
