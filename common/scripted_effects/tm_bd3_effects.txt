@@ -1,0 +1,91 @@
+﻿# Crusader Dolls — Badenya, wave 9: the Rock at Koulikoro and the fall of the associate (docs/wave9/badenya.md).
+
+tm_bd3_tally_effect = {
+	if = {
+		limit = { NOT = { has_global_variable = tm_bd3_n_$WHAT$ } }
+		set_global_variable = { name = tm_bd3_n_$WHAT$ value = 0 }
+	}
+	change_global_variable = { name = tm_bd3_n_$WHAT$ add = 1 }
+}
+
+# She comes to the rock: the court of Kirina's holder takes her in, and a field is set apart for her. The one she left
+# is told (tm_bd3.0011): a spouse who thinks ill of her first, else her court's lord. Scope: the character.
+tm_bd3_come_to_rock_effect = {
+	save_scope_as = tm_bd3_runaway
+	clear_saved_scope = tm_bd3_left
+	if = {
+		limit = { any_spouse = { opinion = { target = scope:tm_bd3_runaway value <= -25 } } }
+		random_spouse = {
+			limit = { opinion = { target = scope:tm_bd3_runaway value <= -25 } }
+			save_scope_as = tm_bd3_left
+		}
+	}
+	else_if = {
+		limit = { any_spouse = { reverse_opinion = { target = scope:tm_bd3_runaway value <= -40 } } }
+		random_spouse = {
+			limit = { reverse_opinion = { target = scope:tm_bd3_runaway value <= -40 } }
+			save_scope_as = tm_bd3_left
+		}
+	}
+	else = {
+		court_owner ?= {
+			if = {
+				limit = { NOT = { this = scope:tm_bd3_runaway } }
+				save_scope_as = tm_bd3_left
+			}
+		}
+	}
+	title:c_sibi_mali.holder = {
+		save_scope_as = tm_bd3_keeper
+		add_courtier = scope:tm_bd3_runaway
+	}
+	set_variable = tm_bd3_at_rock
+	add_character_modifier = { modifier = tm_bd3_under_rock_modifier }
+	if = {
+		limit = { exists = scope:tm_bd3_left }
+		set_variable = { name = tm_bd3_left value = scope:tm_bd3_left years = 30 }
+		scope:tm_bd3_left = { trigger_event = { id = tm_bd3.0011 days = { 20 60 } } }
+	}
+	trigger_event = { id = tm_bd3.0010 days = 1 }
+	tm_bd3_tally_effect = { WHAT = rock_came }
+}
+
+# She leaves the rock: the keeper gave her up, or she went back. Scope: the character.
+tm_bd3_leave_rock_effect = {
+	remove_variable = tm_bd3_at_rock
+	remove_variable = tm_bd3_left
+	remove_character_modifier = tm_bd3_under_rock_modifier
+}
+
+# The fall. The ruler raises scope:tm_bd3_raised over her associate (scope:tm_bd3_fallen), who is kept by a commander.
+# Root: the ruler.
+tm_bd3_raise_other_effect = {
+	tm_bd2_clear_associate_effect = yes
+	scope:tm_bd3_fallen = {
+		set_variable = { name = tm_bd3_fallen_of value = root years = 20 }
+		add_character_modifier = { modifier = tm_bd3_kept_by_commander_modifier years = 3 }
+		add_opinion = { target = root modifier = tm_bd3_raised_over_me_opinion }
+		add_opinion = { target = scope:tm_bd3_raised modifier = tm_bd3_raised_over_me_opinion }
+	}
+	scope:tm_bd3_raised = { save_scope_as = tm_bd2_associate }
+	tm_bd2_name_associate_effect = yes
+	set_variable = { name = tm_bd3_fallen value = scope:tm_bd3_fallen years = 20 }
+	tm_bd3_tally_effect = { WHAT = raised }
+}
+
+# The fallen associate is restored in place of the one raised. Root: the ruler; scope:tm_bd3_fallen.
+tm_bd3_restore_effect = {
+	tm_bd2_clear_associate_effect = yes
+	scope:tm_bd3_fallen = {
+		remove_variable = tm_bd3_fallen_of
+		remove_character_modifier = tm_bd3_kept_by_commander_modifier
+		add_opinion = { target = root modifier = tm_bd3_reconciled_opinion }
+		save_scope_as = tm_bd2_associate
+	}
+	remove_variable = tm_bd3_fallen
+	if = {
+		limit = { scope:tm_bd3_fallen = { tm_bd2_associate_ok_trigger = yes } }
+		tm_bd2_name_associate_effect = yes
+	}
+	tm_bd3_tally_effect = { WHAT = restored }
+}

@@ -259,11 +259,11 @@ def main(path):
           ('requital_higher', 'requital_lower', 'account_admitted', 'account_refused', 'refused_unwritten', 'refused_answered',
            'self_judgment_modest', 'self_judgment_heavy', 'self_judgment_remit', 'fostered_seal',
            'avenge_offered', 'avenge_taken', 'avenge_rested', 'nid_borne', 'nid_no_bearer',
-           'nid_kin_sent', 'nid_kin_came', 'nid_kin_refused'),
+           'nid_hired', 'nid_kin_sent', 'nid_kin_came', 'nid_kin_refused'),
           'requital_higher / _lower: requitals on someone of higher or lower rank; account_admitted / _refused: a lord who\n'
           'wronged a Bædling woman ruler kept or refused her Account; refused_unwritten / _answered: wrongs not written, and her\n'
           'answers with honour; self_judgment_*: awards set; fostered_seal: settlements sealed by fostering; avenge_*: an\n'
-          "outlaw's kin offered, took or let rest a private Account; nid_borne / nid_no_bearer: suits a man carried, or none was at hand;\n"
+          "outlaw's kin offered, took or let rest a private Account; nid_borne / nid_no_bearer: suits a man carried, or none was at hand; nid_hired: of those borne, by a man hired for a fee;\n"
           "nid_kin_*: kinsmen sent for from afar, and whether they came.")
     wave7('Bædling: outlawry and the law (wave 7)',
           ('out_suits', 'out_iceland_client', 'out_iceland_no_client', 'out_oath_held', 'out_court_called', 'out_court_held',
@@ -306,6 +306,27 @@ def main(path):
     print('petitions: sisters who asked a lord for an empty tower; granted / refused: his answer; came: sisters who moved\n'
           "to a tower's court to man it; kept: five manned years; extended / revoked: an empty tower given another year,\n"
           'or taken back; shepherds: robbers taken on as herders.')
+    print()
+
+    # Badenya, wave 9 (tm_bd3_tally_effect): the Rock at Koulikoro and the fall of the associate.
+    print('== Badenya: the Rock and the associate ==')
+    bsteps = ('rock_came', 'rock_asked', 'rock_kept', 'rock_given', 'rock_joins', 'quarrels', 'raised', 'dust', 'ashes',
+              'rides', 'restored', 'letters', 'sanctuary')
+    print('  '.join(f'{s} {int(gvars.get(f"tm_bd3_n_{s}") or 0)}' for s in bsteps))
+    print('rock_came: came to the rock at Koulikoro; rock_asked / _kept / _given: the one left sent for her, and the keeper kept\n'
+          'the custom or gave her up; rock_joins: took the faith at the rock; quarrels / raised: quarrels with an associate, and\n'
+          'another raised in her place; dust / ashes: whom the women of the house honoured; rides / restored: the fallen\n'
+          'associate rode to the audience, and was restored; letters / sanctuary: wrote to a kinsman in exile, and was found out.')
+    print()
+
+    # Worn Garland, wave 10 (tm_ml4_tally_effect): the Tai bath, the band and the merchants, the road to Kanchi.
+    print('== Worn Garland: wave 10 ==')
+    gsteps = ('tai_kept', 'tai_not_now', 'tai_rain', 'tai_love', 'tai_nothing', 'sworn', 'oath_refused', 'sworn_caravans',
+              'relic_guard', 'halls', 'pepper_vowed', 'pepper_paid', 'pepper_forgot', 'pepper_paid_late')
+    print('  '.join(f'{s} {int(gvars.get(f"tm_ml4_n_{s}") or 0)}' for s in gsteps))
+    print('tai_*: Tai baths kept or put off, and what was asked of Kama; sworn / oath_refused: bands that swore with the\n'
+          'merchants or would not; sworn_caravans: caravans done for a sworn lord; relic_guard: bands guarding a relic temple\n'
+          'in Lanka; halls: halls raised in a guild\'s name; pepper_*: vows on the road to Kanchi, paid, forgotten, paid late.')
     print()
 
     # The Women's Chamber (tm_dl3_tally_effect): run-wide counts of each step.

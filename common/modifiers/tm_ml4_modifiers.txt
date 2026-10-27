@@ -1,0 +1,46 @@
+﻿# Crusader Dolls — the Worn Garland, wave 10 (events/tm_ml4_events.txt; docs/wave10/garland.md).
+
+# Keeping the Tai bath: kolam on the street before dawn, a bath before sunrise, one meal a day (Hardy 1983, p. 418).
+# A month. No cost in health or stress: the bath is not a test of pain (writing rule 22).
+tm_ml4_tai_keeping_modifier = {
+	icon = piety_positive
+	monthly_piety = 1
+	stress_loss_mult = 0.25
+}
+
+# She asked Kama for a love of her own.
+tm_ml4_kama_modifier = {
+	icon = love_positive
+	attraction_opinion = 10
+	stress_gain_mult = -0.1
+}
+
+# The rain asked for the country (Tiruppavai 3; Hardy 1983, pp. 415–16). County modifier, 5 years.
+tm_ml4_tai_rain_county_modifier = {
+	icon = county_modifier_development_positive
+	development_growth_factor = 0.05
+	county_opinion_add = 5
+}
+
+# The band that always accompanies the merchants keeps the road to the market (Polonnaruwa; Hall 1980, pp. 191–93).
+# County modifier, 20 years.
+tm_ml4_accompanied_county_modifier = {
+	icon = county_modifier_control_positive
+	monthly_county_control_growth_add = 0.2
+	development_growth_factor = 0.05
+}
+
+# Guarding a relic temple for a Buddhist king, a third temple for the street's two (design; after Hall 1980,
+# pp. 191–92). 10 years.
+tm_ml4_relic_guard_modifier = {
+	icon = prestige_positive
+	monthly_prestige = 0.5
+	monthly_income = 0.5
+}
+
+# Her goods turned to green gram in the market until she pays the vow (the Virincipuram story; Hall 1980, p. 151).
+tm_ml4_green_gram_modifier = {
+	icon = prestige_negative
+	monthly_prestige = -0.5
+	monthly_income_mult = -0.1
+}

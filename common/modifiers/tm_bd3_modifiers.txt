@@ -1,0 +1,22 @@
+﻿# Crusader Dolls — Badenya, wave 9 (docs/wave9/badenya.md).
+
+# Under the Rock: she came to Koulikoro, which keeps whoever comes to it, and was given a field (Bulman et al. 2023,
+# ch. 2, p. 63: fields set apart for those who came).
+tm_bd3_under_rock_modifier = {
+	icon = social_positive
+	stress_gain_mult = -0.25
+	stewardship = 1
+}
+
+# Kept by a commander: the fallen associate, confined (Ibn Battuta IV, p. 417). Not imprisonment.
+tm_bd3_kept_by_commander_modifier = {
+	icon = stress_negative
+	diplomacy = -2
+	monthly_prestige = -0.5
+}
+
+# Dust on their heads: the women of the dynasty honoured her with dust (p. 417).
+tm_bd3_dust_modifier = {
+	icon = prestige_positive
+	monthly_prestige = 0.5
+}

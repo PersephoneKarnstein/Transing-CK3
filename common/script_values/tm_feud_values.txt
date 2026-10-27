@@ -40,6 +40,13 @@ tm_feud_bot_price_value = {
 
 # What the speaker of the three words pays the woman he named if the lord arbitrates instead (Miller p. 262:
 # arbitration beat law three to one). Doubled at the thing (Grágás K §237). Needs scope:tm_feud_stakes.
+# A hired bearer's fee: what she has, up to 15 gold. Scope: the plaintiff.
+tm_feud_bearer_fee_value = {
+	value = gold
+	max = 15
+	min = 0
+}
+
 tm_feud_nid_price_value = {
 	value = 50
 	multiply = scope:tm_feud_stakes

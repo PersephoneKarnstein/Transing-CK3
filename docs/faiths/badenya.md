@@ -100,7 +100,9 @@ Women held real power at this court: Sulaymān's chief wife, Qāsā, shared the 
 
 **Neighbours.** Most of the faith's neighbours are Muslim. Under the shared rules, Islamic courts value a daughter as a trusted servant and think less of her as a ruler; in the Sahel, and for a daughter of Badenya anywhere, the servant scene and the jester's mimicry do not fire (Guardrails 4, 7). That reaction leans partly on Leo Africanus's Fez of the early 16th century, where, as Davis reads him, people Leo calls men, in women's dress, cooked for the army and lamented the dead but were barred from the mosques (Davis 2006, chs. 4 and 7). The Maliki jurist at the mansa's court is the hostile voice. Since wave 4 a daughter at a Muslim court may also put herself under the lord's word, and a lord who keeps the code will not give her up to a demanding liege or neighbour. In the Sahel this is always *A Free Man's Word*: Tor's *futuwwa* belongs to Iran and Iraq before 1056, so the word *fityan* never appears here (Tor 2007, pp. 248–250; [docs/wave4/protection.md](../wave4/protection.md)). Jewish and Indic reactions apply as for every faith.
 
-**Designed, not yet built.** A refuge at the rock of Koulikoro, which from 1819 to about 1930 sheltered runaways of either sex fleeing a master or a spouse (Bulman et al. 2023, ch. 2, p. 63), without its shrine and without any Underground Railroad imagery (Guardrail 11); and a warm misreading by the Orisha faith, which would see a daughter as a bride of the god (Matory 2005, pp. 7, 216–217).
+**The Rock (wave 9, built 2026-10-26, untested).** A refuge at the rock of Koulikoro, which from 1819 to about 1930 sheltered runaways of either sex fleeing a master or a spouse (Bulman et al. 2023, ch. 2, p. 63), without its shrine and without any Underground Railroad imagery (Guardrail 11): members, daughters and Marked or declared sisters in the Sahel with a hostile spouse or lord go to the court of Kirina's holder, whatever his faith, and a keeper may be asked to give them up. From 1352 the associate in rule may also fall, after Ibn Baṭṭūṭa's account (dust and ashes, the ride to the audience, the letter to the exile, the preacher's house). See [docs/wave9/badenya.md](../wave9/badenya.md).
+
+**Designed, not yet built.** A warm misreading by the Orisha faith, which would see a daughter as a bride of the god (Matory 2005, pp. 7, 216–217).
 
 ## What is attested and what is invented
 
@@ -191,3 +193,24 @@ Read from Snorton, *Black on Both Sides*; Gill-Peterson, *A Short History of Tra
 - Serano, Julia. 2016 [2007]. *Whipping Girl: A Transsexual Woman on Sexism and the Scapegoating of Femininity*. 2nd ed. Seal Press. [note](../research/book_serano_whipping_girl.md)
 
 Also read for this faith, and not drawn on here: Samuel Johnson's *History of the Yorubas* (1921), whose Ọ̀yọ́ palace is 19th-century ([note](../research/waf_johnson_yoruba.md)); Jansen's tribute to the griotte Siramori Diabate (1996); further contemporary studies by Broqua, Geoffrion, Mackin, Pierce and Bertolt ([note](../research/waf_contemporary_gender.md)); and a popular booklet on Mansa Musa without footnotes, set aside ([note](../research/cmp_charles_river_mansa_musa.md)).
+
+## In the game: the summary that was on the README
+
+Moved here on 2026-10-26, when the README's faith sections were cut to short overviews. It lists what the mod builds for this faith, feature by feature, as the README described it.
+
+*Working name.* A Mande faith inside the West African religion, seated at Kirina in Mali. In Mande speech *badenya*, mother-childness, is the bond of those who share a mother; *fadenya*, father-childness, the rivalry of those who share a father. Badenya takes the first as its law. Its god names replace the vanilla religion's, which come from Marcel Griaule's Dogon studies, since discredited.
+
+In the Sunjata tradition a woman named Tenenba claimed a hero she had not borne: "I have given birth to a child without getting pregnant." Twentieth-century Bamana sculptors told of a djinn that asks a life of the household, and of a sculptor who gave up their own manhood instead and was called, in the tale, less than a man after. Badenya says she is not less. Ibn Baṭṭūṭa saw bird-masked bards before the king of Mali in 1352, and the line passed through a sister's son at Ghana and Walata. No source shows anyone assigned male becoming a woman here before 1453; the faith is built on institutions that are attested, and says so.
+
+- **The gate: the crossing.** *Go to the Smith*. She is "hot", as the Mande say of one between states, until the word cools her:
+  - **The smith's bargain.** The djinn asks a life of her house; she gives instead the manhood she was assigned. The djinn returns once, a year later, for a second price.
+  - **My mother's child.** A woman of her family or the court must claim her, and she pays bracelets for her crossing. If no woman will, she waits.
+  - **The word that cools.** A jeli speaks her name before the lord, her claiming mother's name before it. Paid well, it is praise; paid badly, it may be a joke the court remembers.
+- **The line.** Through a sister or a daughter. When a daughter dies, her blood kin may come for her body and her birth name; the House would bury her under her own.
+- **The world.** Naming feasts: a daughter first serves at others', then hosts her own while a jeli speaks for her. This texture comes from contemporary West African studies and is marked as reconstruction; the faith borrows roles, never the identity of any living community.
+- **Tenets.** The Crossing, Mother's Children, and Ancestor Worship.
+- **The New Roof.** Every seventh dry season a court of the faith re-roofs its house and gathers the daughters who crossed since the last roof into a named age-set.
+- **At court.** When a ruler of the faith dies, the heir answers the sister's line: pay the sister's share, honour it in words, or refuse, and the sister's child gains a claim. A new ruler's realm is hot until a jelimuso's cool word settles it. The court's jelimuso sings the ruler's line, mother's name first, and must be paid before everyone; at a child's naming one may come uninvited. From 1352 a ruler may name her spouse, a sister, her mother or her claiming mother associate in rule, and her name is said with the ruler's at the feast. The associate may also fall: another woman raised in her place, the women of the house choosing whom to honour with dust, a daily ride to the audience, a letter to an exiled kinsman, and sanctuary in the preacher's house.
+- **The Rock.** Members and daughters in the Sahel with a hostile husband or lord may go to the hill at Koulikoro, below Kirina, where whoever comes is not taken (a refuge recorded from the nineteenth century). The keeper, of any faith, may be asked to give them up.
+- **Holy sites.** Kirina, Niani, Awkar, Walata and Do.
+- **What it leaves out.** No Ṣàngó priests, *'yan daudu*, *góor-jigéen*, *woubi* or *sasso* are mapped onto it; no Griaule cosmology; none of the Kangaba sanctuary's rites.

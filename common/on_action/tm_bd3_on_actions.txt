@@ -1,0 +1,72 @@
+﻿# Crusader Dolls — Badenya, wave 9 (docs/wave9/badenya.md). Appended to vanilla.
+yearly_global_pulse = {
+	on_actions = { tm_bd3_yearly_rock }
+}
+
+yearly_playable_pulse = {
+	on_actions = { tm_bd3_yearly_quarrel }
+}
+
+# Who comes to the rock, 5 in 100 a year for each with a cause (15 until run 20: 1,264 came, the keeper asked every eight months); and the rock's people taking the faith, 5 in 100.
+tm_bd3_yearly_rock = {
+	trigger = { tm_bd3_rock_kept_trigger = yes }
+	effect = {
+		every_living_character = {
+			limit = { tm_bd3_runaway_trigger = yes }
+			random = {
+				chance = 5
+				tm_bd3_come_to_rock_effect = yes
+			}
+		}
+		title:c_sibi_mali.holder = {
+			save_scope_as = tm_bd3_keeper
+			every_courtier = {
+				limit = {
+					has_variable = tm_bd3_at_rock
+					NOT = { faith = faith:tm_badenya }
+					OR = {
+						scope:tm_bd3_keeper = { faith = faith:tm_badenya }
+						scope:tm_bd3_keeper = { any_courtier = { faith = faith:tm_badenya } }
+					}
+				}
+				random = {
+					chance = 5
+					set_variable = { name = tm_conv_ours value = yes days = 1 }
+					set_character_faith = faith:tm_badenya
+					tm_track_effect = { FAITH = faith:tm_badenya WHAT = joins }
+					tm_bd3_tally_effect = { WHAT = rock_joins }
+				}
+			}
+		}
+	}
+}
+
+# The quarrel with the associate (Ibn Battuta IV, p. 417). From 1352, as the honour itself; flavour budget.
+tm_bd3_yearly_quarrel = {
+	trigger = {
+		current_year >= 1352
+		faith = faith:tm_badenya
+		has_variable = tm_bd2_associate
+		NOT = { has_variable = tm_bd3_fallen }
+		is_imprisoned = no
+		tm_flavour_ready_trigger = yes
+	}
+	effect = {
+		random = {
+			chance = 3
+			modifier = {
+				add = 5
+				var:tm_bd2_associate ?= { reverse_opinion = { target = root value < 0 } }
+			}
+			modifier = {
+				add = 5
+				OR = {
+					any_spouse = { tm_bd3_rival_ok_trigger = yes }
+					any_concubine = { tm_bd3_rival_ok_trigger = yes }
+				}
+			}
+			tm_flavour_spent_effect = yes
+			trigger_event = { id = tm_bd3.0020 days = { 1 120 } }
+		}
+	}
+}

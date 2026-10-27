@@ -19,13 +19,14 @@ tm_dl2_school_candidate_trigger = {
 	NOT = { has_trait = zealous }
 }
 
-# A Galenic sister at her court to argue it with her: the court's owner or a courtier. Scope: the character.
+# A Galenic sister at her court to argue it with her: the court's owner or a courtier. Scope: the character, who is
+# of the main rite (tm_dl2_school_candidate_trigger), so she is never the Galenic courtier found. No `root` here: the
+# yearly pulse has none (run 19: 7,974 errors, and the school talked round one member instead of eleven).
 tm_dl2_galenic_at_court_trigger = {
 	court_owner ?= {
 		OR = {
 			rite ?= { rite_has_doctrine = tm_body_galenic }
 			any_courtier = {
-				NOT = { this = root }
 				faith = faith:transbian_maximalism
 				rite ?= { rite_has_doctrine = tm_body_galenic }
 			}

@@ -1,0 +1,90 @@
+﻿# Crusader Dolls — the Worn Garland, wave 10 (events/tm_ml4_events.txt; docs/wave10/garland.md).
+
+# The Tai bath, for a playable daughter of the Garland. Courtiers are offered it through their host's pulse.
+tm_ml4_tai_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"		# placeholder; TODO event art
+	}
+	sort_order = 84
+
+	is_shown = {
+		faith = faith:tm_garland
+		tm_is_daughter_trigger = yes
+		is_adult = yes
+	}
+
+	is_valid_showing_failures_only = {
+		custom_description = {
+			text = tm_ml4_is_tai_custom
+			tm_ml4_is_tai_trigger = yes
+		}
+		custom_description = {
+			text = tm_ml4_tai_keeper_custom
+			tm_ml4_tai_keeper_trigger = yes
+		}
+	}
+
+	effect = {
+		trigger_event = tm_ml4.0002
+	}
+
+	ai_check_interval = 60
+	ai_potential = { tm_ml4_is_tai_trigger = yes }
+	ai_will_do = {
+		base = 20
+		modifier = { add = 20 has_trait = zealous }
+		modifier = { add = 10 stress >= 50 }
+	}
+}
+
+# Swear with the merchants: a band of the Garland and the lord whose caravans it has guarded.
+tm_ml4_swear_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"		# placeholder; TODO event art
+	}
+	sort_order = 83
+	cooldown = { years = 5 }
+
+	is_shown = {
+		tm_ml3_garland_band_trigger = yes
+		has_variable = tm_ml4_merchant_lord
+	}
+
+	is_valid_showing_failures_only = {
+		custom_description = {
+			text = tm_ml4_could_swear_custom
+			tm_ml4_could_swear_trigger = yes
+		}
+	}
+
+	effect = {
+		var:tm_ml4_merchant_lord = { save_scope_as = tm_ml4_lord }
+		trigger_event = tm_ml4.0010
+	}
+
+	ai_potential = { always = no }		# AI bands are offered the oath by the yearly pulse
+	ai_will_do = { base = 0 }
+}
+
+# Pay the pepper vow, late.
+tm_ml4_pay_vow_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"		# placeholder; TODO event art
+	}
+	sort_order = 82
+
+	is_shown = { has_character_modifier = tm_ml4_green_gram_modifier }
+
+	is_valid_showing_failures_only = { gold >= 30 }
+
+	effect = {
+		remove_short_term_gold = 30
+		remove_character_modifier = tm_ml4_green_gram_modifier
+		add_piety = 20
+		tm_ml4_tally_effect = { WHAT = pepper_paid_late }
+	}
+
+	ai_check_interval = 24
+	ai_potential = { gold >= 60 }
+	ai_will_do = { base = 50 }
+}

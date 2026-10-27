@@ -15,7 +15,7 @@ Everything reaches a courtier through her host's `yearly_playable_pulse`, as `tm
 | 3 | She of the Illustrious Staff (title) | Drafted in script and loc |
 | 4 | Reaction layers: Food and Clothing (Hindu), Of the Third Feeling (Jain), the Order's Terms (Śvetāmbara) | Drafted in script and loc |
 | 5 | The Reciter: Kāraikkāl Ammaiyār and Basavaṇṇa at Shaiva courts | Drafted in script and loc |
-| – | Solitary Tai vow to Kāma at Kanchi | Option only, not built (user: "either or") |
+| – | Solitary Tai vow to Kāma | Built in wave 10 (`docs/wave10/garland.md`, 2026-10-27), with no location gate (+15 piety at Kanchipuram) |
 
 **Files (all new).**
 - `events/tm_ml2_events.txt`: tm_ml2.0001, 0003, 0004, 0010, 0011, 0030, 0031, 0032, 0040
@@ -198,7 +198,7 @@ Options: **the faith's word** (+20 piety, −10 stress): "She asked, and was giv
 
 **Open questions.** Should the Kannada variant need `faith:shaiva_faith` too, or any Hindu Kannada lord? Should a Vaiṣṇava court get a counterpart (the Mārkaḻi recitation; Narayanan 1994)? Not drafted.
 
-## Option, not built: the solitary Tai vow
+## The solitary Tai vow (built in wave 10: `docs/wave10/garland.md`)
 
 The user left this "either or". Hardy keeps the Mārkaḻi and Tai baths apart (Hardy 1983, p. 512); NT 1 runs through Tai and Māci, addressed to Kāma, with *kōlam* on the street, a sunrise bath and one meal a day (p. 418 and n. 18), and is solitary where Mārkaḻi is kept with friends (`ind_hardy_viraha_bhakti.md` items 3 and 5). As an option it would be a decision open in Tai (mid-January to mid-February) for a daughter who kept the Mārkaḻi vow, at Kanchipuram, with no gate effect: piety and stress relief, and the dream moved here. The Tai bath asks for "rain and a husband" (p. 512), so the text would need care with rule 26. Not built.
 

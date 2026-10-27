@@ -168,3 +168,29 @@ In game the name is spelled *Cūtikkotutta Mālai*, and Āṇṭāḷ and Mārka
 ### Theory
 
 - Bhatt, Talia. 2025. *Trans/Rad/Fem: Essays on Transfeminism, Book 1*. Self-published. ("The Third Sex" and "Degendering and Regendering".) [note](../research/book_bhatt_third_sex.md)
+
+## In the game: the summary that was on the README
+
+Moved here on 2026-10-26, when the README's faith sections were cut to short overviews. It lists what the mod builds for this faith, feature by feature, as the README described it.
+
+*Cūṭikkoṭutta Mālai* is "the garland worn and given": Āṇṭāḷ's father named her *cūṭikkoṭutta nācciyār*, "the lady who gave what she had worn" (Dehejia p. 8; Govindacharya pp. 46–47; Ramanujan p. 148 n. 5). In English the faith is the Worn Garland. In game it is spelled *Cūtikkotutta Mālai*: the interface font has no dotted letters.
+
+*Working name.* A current of Tamil devotion inside Hinduism that crosses Śiva's temples and Viṣṇu's, seated on the temple street of Kanchipuram. The bride and the worn garland come from the Vaiṣṇava poets; the "daughter of God" and the women's song from Śiva's temples, whose inscriptions share one vocabulary with Viṣṇu's.
+
+Tamil poets, men among them, sang to the god as girls in love from the seventh century; a Kannada Śaiva poet of the twelfth asked to be the devotees' bride, and a thirteenth-century commentator wrote that before God the devotee "loses his own male nature and will wear the dress of a woman". In period this was a rite or a reading. The Garland holds that it was a life. Its scripture is King Bhaṅgāśvana of the Mahābhārata, turned into a woman, who was offered her old body back and said, "I desire to remain a woman." Chola temples called their women "daughters of God" and gave them houses and shares on the temple street; no record shows anyone assigned male among them, so the Garland is a reconstruction, and says so.
+
+- **The gate: the pāvai vow.** *Keep the Pāvai Vow* can only be taken in Mārkaḻi (December or January). It is a month-long vow kept with companions, the women of the court:
+  - **The waking.** Before dawn she goes from door to door and wakes the girls of the street.
+  - **The song.** The Śaiva *Tiruvempāvai*, which temple women paid to sing, or Āṇṭāḷ's *Tiruppāvai*. Cold dawns thin the circle.
+  - **The garland.** She may wear the god's garland before it is offered, as Āṇṭāḷ did, and risk being seen.
+  - **The dream** of the wedding: a sign, not the success. Āṇṭāḷ woke from the same dream.
+  - **The staff and the name.** The old rite of Śiva's temples touched a staff to a girl's head and named her a daughter of God. What decides it is how many of the circle held to the end.
+- **The line: a share on the temple street.** A Hindu lord may grant a daughter of the Garland at his court a house and a share on the temple street, written in her name, not his; from 1070 she may buy one herself. It pays a little gold each year while she lives in its county. From 1070 it passes to her eldest daughter of the Garland, born or taken; before that, or with no daughter, the women of the street choose who holds it. If she is away three years running, it goes to those who do the work.
+- **A gift in her own name.** A daughter with gold of her own may light a lamp before the god, endow a feeding house that bears her name, or, from 1119, set up the Lady beside the god, which brings a share. From 1100 the Lady also brings the title *She of the Illustrious Staff*: pay the priests' fee and have it cut in stone, or let the eldest of the street lay the staff.
+- **Other courts.** A Hindu lord's pandit may read the law books over the lord's own daughter: food and clothing only, an appointed daughter who stays his heir, or a share in her own name. A Jain monk may say his Order will not house her; under a Śvetāmbara lord the Order's own rule may admit her for her skill, and she can take the place on her terms or refuse it. At Shaiva courts from 1135 a reciter tells of the merchant's wife of Kāraikkāl, given the form she asked for; at Kannada courts from 1160 a singer brings Basavaṇṇa's sayings.
+- **The market and the road.** A daughter with no land can give a lamp through the market assembly of her county, which keeps it burning in her name wherever she goes. A poor Hindu lord may settle a daughter in an emptied quarter of his capital, free of its dues, at half a share's pay for ten years. A band of the Garland in the south can take a contract to guard merchants' caravans to the coast. After three, the merchants' lord may offer the band a frontier county as a guild town. A guild town that joins a faction against its liege hears what happened at Valikandapuram.
+- **The world.** A name in stone: gold given to the temple buys an inscription and lasting piety. Orthodox pandits answer with Ilā, the king turned woman who was turned back in every telling.
+- **Tenets.** The Pāvai Vow, The Temple Street, and Bhakti.
+- **The temple's deal.** As temple women did in the inscriptions of 1070–1300, a daughter may buy a hereditary honour with a gift: a verse to sing in Mārkaḻi, the flywhisk, or the first house. It passes to her eldest daughter.
+- **Holy sites.** Kanchipuram, Srirangam, Thanjavur and Madurai.
+- **What it leaves out.** No link to hijra communities; Āṇṭāḷ is venerated, never cast as founder or a trans figure; temple women are not "brides of God" (a 17th-century idea) or courtesans.

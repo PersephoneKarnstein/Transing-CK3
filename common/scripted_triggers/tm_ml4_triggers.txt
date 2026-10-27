@@ -1,0 +1,90 @@
+﻿# Crusader Dolls — the Worn Garland, wave 10: the Tai bath, the band and the merchants, the road to Kanchi
+# (events/tm_ml4_events.txt; docs/wave10/garland.md). Sources: Hardy, Viraha-Bhakti (1983); Hall, Trade and
+# Statecraft in the Age of the Colas (1980), §11 proposals 5, 6 and 8 of research/ind_hall_cola_trade.md.
+
+# Tai, the Tamil month after Markali, mid-January to mid-February; the game's calendar puts it in January or
+# February. The Tai bath is a rite apart from the Markali bath (Hardy 1983, p. 512).
+tm_ml4_is_tai_trigger = {
+	OR = {
+		current_month = 1
+		current_month = 2
+	}
+}
+
+# Could keep the Tai bath: a grown daughter of the Garland, free, not keeping the pavai vow now, and not in the last
+# three years. No gate: the bath is kept by one who has already crossed. Scope: the character.
+tm_ml4_tai_keeper_trigger = {
+	faith = faith:tm_garland
+	tm_is_daughter_trigger = yes
+	is_adult = yes
+	is_imprisoned = no
+	NOT = { has_character_modifier = tm_pavai_vow_modifier }
+	NOT = { has_variable = tm_ml4_tai_kept }
+	NOT = { has_variable = tm_ml4_tai_waiting }
+	NOT = { has_character_modifier = tm_ml4_tai_keeping_modifier }
+}
+
+# A band of the Garland sworn with a merchants' lord who is still alive. Scope: the band's leader.
+tm_ml4_sworn_trigger = {
+	has_variable = tm_ml4_sworn_to
+	var:tm_ml4_sworn_to ?= { is_alive = yes }
+}
+
+# A band that could swear with the merchants: it has guarded a caravan for a lord who is alive and landed, and is
+# not sworn already. Scope: the band's leader.
+tm_ml4_could_swear_trigger = {
+	tm_ml3_garland_band_trigger = yes
+	has_variable = tm_ml4_merchant_lord
+	var:tm_ml4_merchant_lord ?= {
+		is_alive = yes
+		is_landed = yes
+	}
+	tm_ml4_sworn_trigger = no
+}
+
+# A band that could raise a hall in the name of its guild: of the Garland, with 150 gold, and with a Hindu merchants'
+# lord, sworn or last hired, holding a capital county. Scope: the band's leader.
+tm_ml4_hall_band_trigger = {
+	tm_ml3_garland_band_trigger = yes
+	gold >= 150
+	NOT = { has_variable = tm_ml4_hall_given }
+	OR = {
+		AND = {
+			tm_ml4_sworn_trigger = yes
+			var:tm_ml4_sworn_to = { tm_ml4_hall_lord_trigger = yes }
+		}
+		var:tm_ml4_merchant_lord ?= { tm_ml4_hall_lord_trigger = yes }
+	}
+}
+
+# The lord in whose capital the hall is raised: alive, Hindu, with a capital county. Scope: the lord.
+tm_ml4_hall_lord_trigger = {
+	is_alive = yes
+	faith ?= { religion = religion:hinduism_religion }
+	exists = capital_county
+}
+
+# A band in Lanka, after Vijayabahu I drove out the Colas (by 1069–70; Hall 1980, p. 174), in a county a Buddhist
+# ruler holds. Scope: the band's leader.
+tm_ml4_lanka_band_trigger = {
+	current_year >= 1070
+	tm_ml3_garland_band_trigger = yes
+	NOT = { has_variable = tm_ml4_relic_offered }
+	location ?= { geographical_region = custom_lanka }
+	location.county.holder ?= {
+		is_landed = yes
+		faith ?= { religion = religion:buddhism_religion }
+	}
+}
+
+# A ruler setting out for Kanchipuram, from 1200: the pepper merchant's story at Virincipuram is a thirteenth-century
+# local tradition (Hall 1980, p. 151, p. 160 n. 54). Scope: the traveller.
+tm_ml4_kanchi_road_trigger = {
+	current_year >= 1200
+	is_adult = yes
+	NOT = { has_variable = tm_ml4_pepper_vow }
+	NOT = { has_variable = tm_ml4_pepper_cooldown }
+	exists = current_travel_plan
+	current_travel_plan.final_destination_province ?= { county = title:c_kanchipuram }
+	NOT = { location.county ?= title:c_kanchipuram }
+}

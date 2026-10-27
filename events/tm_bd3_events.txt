@@ -1,0 +1,466 @@
+﻿namespace = tm_bd3
+
+# Crusader Dolls — Badenya, wave 9: the Rock at Koulikoro and the fall of the associate (docs/wave9/badenya.md).
+# The rock: Bulman et al. 2023, ch. 2, p. 63 (recorded 1819–c. 1930; the asylum only, no shrine, no flute rite,
+# guardrail 11). The fall: Ibn Battuta, Voyages IV, pp. 417–419 (from 1352; dust and ashes only, no nakedness, no
+# slave woman's testimony, no death).
+
+# She came to the rock. Root = she.
+tm_bd3.0010 = {
+	type = character_event
+	title = tm_bd3.0010.t
+	desc = tm_bd3.0010.desc
+	theme = faith
+	override_background = { reference = wilderness }
+	left_portrait = { character = root animation = happiness }
+	right_portrait = { character = scope:tm_bd3_keeper animation = personality_rational }
+
+	option = {
+		name = tm_bd3.0010.a
+		custom_tooltip = tm_bd3.0010.a.tt
+		add_stress = -20
+	}
+}
+
+# She is at the rock. Root = the one she left; scope:tm_bd3_runaway, scope:tm_bd3_keeper.
+tm_bd3.0011 = {
+	type = character_event
+	title = tm_bd3.0011.t
+	desc = tm_bd3.0011.desc
+	theme = faith
+	override_background = { reference = wilderness }
+	left_portrait = { character = root animation = anger }
+	right_portrait = { character = scope:tm_bd3_runaway animation = worry }
+
+	trigger = {
+		scope:tm_bd3_runaway ?= {
+			is_alive = yes
+			has_variable = tm_bd3_at_rock
+		}
+		scope:tm_bd3_keeper ?= { is_alive = yes }
+	}
+
+	option = {	# Let her be
+		name = tm_bd3.0011.a
+		ai_chance = {
+			base = 40
+			modifier = { add = 30 has_trait = forgiving }
+			modifier = { add = 20 has_trait = content }
+			modifier = { add = 20 has_trait = craven }
+		}
+	}
+	option = {	# Send to the keeper for her
+		name = tm_bd3.0011.b
+		custom_tooltip = tm_bd3.0011.b.tt
+		save_scope_as = tm_bd3_asker
+		tm_bd3_tally_effect = { WHAT = rock_asked }
+		scope:tm_bd3_keeper = { trigger_event = { id = tm_bd3.0012 days = { 10 30 } } }
+		ai_chance = {
+			base = 40
+			modifier = { add = 30 has_trait = vengeful }
+			modifier = { add = 20 has_trait = arrogant }
+			modifier = { add = 20 has_trait = wrathful }
+			modifier = { add = 20 opinion = { target = scope:tm_bd3_runaway value <= -50 } }
+		}
+	}
+}
+
+# They ask for her at the rock. Root = the keeper; scope:tm_bd3_runaway, scope:tm_bd3_asker.
+tm_bd3.0012 = {
+	type = character_event
+	title = tm_bd3.0012.t
+	desc = tm_bd3.0012.desc
+	theme = faith
+	override_background = { reference = throne_room }
+	left_portrait = { character = root animation = thinking }
+	right_portrait = { character = scope:tm_bd3_runaway animation = worry }
+	lower_right_portrait = scope:tm_bd3_asker
+
+	trigger = {
+		scope:tm_bd3_runaway ?= {
+			is_alive = yes
+			has_variable = tm_bd3_at_rock
+			is_courtier_of = root
+		}
+		scope:tm_bd3_asker ?= { is_alive = yes }
+	}
+
+	option = {	# The rock keeps whoever comes to it
+		name = tm_bd3.0012.a
+		add_prestige = minor_prestige_gain
+		if = {
+			limit = { faith = faith:tm_badenya }
+			add_piety = medium_piety_gain
+		}
+		scope:tm_bd3_asker = { add_opinion = { target = root modifier = tm_bd3_kept_from_me_opinion } }
+		scope:tm_bd3_runaway = { add_opinion = { target = root modifier = tm_bd3_kept_me_opinion } }
+		tm_bd3_tally_effect = { WHAT = rock_kept }
+		ai_chance = {
+			base = 60
+			modifier = { add = 1000 faith = faith:tm_badenya }
+			modifier = { add = 30 has_trait = just }
+			modifier = { add = 20 has_trait = compassionate }
+			modifier = { add = 20 has_trait = brave }
+		}
+	}
+	option = {	# Give her up
+		name = tm_bd3.0012.b
+		custom_tooltip = tm_bd3.0012.b.tt
+		scope:tm_bd3_runaway = {
+			add_opinion = { target = root modifier = tm_bd3_gave_me_up_opinion }
+			tm_bd3_leave_rock_effect = yes
+		}
+		if = {
+			limit = { scope:tm_bd3_asker = { is_ruler = yes } }
+			scope:tm_bd3_asker = { add_courtier = scope:tm_bd3_runaway }
+		}
+		else_if = {
+			limit = { scope:tm_bd3_asker = { exists = court_owner } }
+			scope:tm_bd3_asker.court_owner = { add_courtier = scope:tm_bd3_runaway }
+		}
+		add_prestige = minor_prestige_loss
+		tm_bd3_tally_effect = { WHAT = rock_given }
+		ai_chance = {
+			base = 40
+			modifier = { add = 30 has_trait = greedy }
+			modifier = { add = 30 has_trait = craven }
+			modifier = { add = 20 opinion = { target = scope:tm_bd3_asker value >= 50 } }
+		}
+	}
+}
+
+# A quarrel with the associate (Ibn Battuta IV, p. 417). Root = the ruler.
+tm_bd3.0020 = {
+	type = character_event
+	title = tm_bd3.0020.t
+	desc = tm_bd3.0020.desc
+	theme = court
+	override_background = { reference = throne_room }
+	left_portrait = { character = root animation = anger }
+	right_portrait = { character = scope:tm_bd3_fallen animation = disapproval }
+	lower_right_portrait = { character = scope:tm_bd3_raised trigger = { exists = scope:tm_bd3_raised } }
+
+	trigger = {
+		has_variable = tm_bd2_associate
+		var:tm_bd2_associate ?= { is_alive = yes }
+	}
+
+	immediate = {
+		save_scope_as = tm_bd3_ruler
+		var:tm_bd2_associate = { save_scope_as = tm_bd3_fallen }
+		if = {
+			limit = {
+				OR = {
+					any_spouse = { tm_bd3_rival_ok_trigger = yes }
+					any_concubine = { tm_bd3_rival_ok_trigger = yes }
+				}
+			}
+			every_spouse = {
+				limit = { tm_bd3_rival_ok_trigger = yes }
+				add_to_temporary_list = tm_bd3_rivals
+			}
+			every_concubine = {
+				limit = { tm_bd3_rival_ok_trigger = yes }
+				add_to_temporary_list = tm_bd3_rivals
+			}
+			ordered_in_list = {
+				list = tm_bd3_rivals
+				order_by = "reverse_opinion(root)"			# whom the ruler favours most
+				save_scope_as = tm_bd3_raised
+			}
+		}
+		tm_bd3_tally_effect = { WHAT = quarrels }
+	}
+
+	option = {	# Raise the other in her place
+		name = tm_bd3.0020.a
+		trigger = { exists = scope:tm_bd3_raised }
+		custom_tooltip = tm_bd3.0020.a.tt
+		tm_bd3_raise_other_effect = yes
+		trigger_event = { id = tm_bd3.0021 days = { 30 90 } }
+		scope:tm_bd3_fallen = { trigger_event = { id = tm_bd3.0022 days = { 60 180 } } }
+		ai_chance = {
+			base = 30
+			modifier = { add = 40 opinion = { target = scope:tm_bd3_fallen value < 0 } }
+			modifier = { add = 20 has_trait = arrogant }
+			modifier = { add = 20 has_trait = fickle }
+		}
+	}
+	option = {	# Make peace with her
+		name = tm_bd3.0020.b
+		add_stress = 10
+		scope:tm_bd3_fallen = { add_opinion = { target = root modifier = tm_bd3_reconciled_opinion } }
+		add_opinion = { target = scope:tm_bd3_fallen modifier = tm_bd3_reconciled_opinion }
+		ai_chance = {
+			base = 40
+			modifier = { add = 30 has_trait = forgiving }
+			modifier = { add = 20 has_trait = calm }
+			modifier = { add = 20 opinion = { target = scope:tm_bd3_fallen value >= 20 } }
+		}
+	}
+	option = {	# Let it pass
+		name = tm_bd3.0020.c
+		ai_chance = { base = 20 }
+	}
+}
+
+# Ashes and dust (p. 417): the women of the dynasty choose whom to honour. Root = the ruler; scope:tm_bd3_fallen,
+# scope:tm_bd3_raised.
+tm_bd3.0021 = {
+	type = character_event
+	title = tm_bd3.0021.t
+	desc = {
+		desc = tm_bd3.0021.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:tm_bd3_dust_for ?= flag:fallen }
+				desc = tm_bd3.0021.desc.dust
+			}
+			desc = tm_bd3.0021.desc.ashes
+		}
+	}
+	theme = court
+	override_background = { reference = courtyard }
+	left_portrait = { character = scope:tm_bd3_fallen animation = sadness }
+	lower_left_portrait = scope:tm_bd3_raised
+	right_portrait = { character = root animation = thinking }
+
+	trigger = {
+		scope:tm_bd3_fallen ?= { is_alive = yes }
+		scope:tm_bd3_raised ?= { is_alive = yes }
+	}
+
+	immediate = {
+		# The grown women of the dynasty, at court or in the realm, by whom they think better of.
+		every_courtier_or_guest = {
+			limit = { tm_bd3_dynasty_woman_trigger = yes }
+			add_to_temporary_list = tm_bd3_cousins
+		}
+		every_vassal = {
+			limit = { tm_bd3_dynasty_woman_trigger = yes }
+			add_to_temporary_list = tm_bd3_cousins
+		}
+		if = {
+			limit = {
+				any_in_list = {
+					list = tm_bd3_cousins
+					count >= 1
+				}
+			}
+			if = {
+				limit = {
+					any_in_list = {
+						list = tm_bd3_cousins
+						percent >= 0.5
+						opinion = { target = scope:tm_bd3_fallen value > 0 }
+						NOT = { opinion = { target = scope:tm_bd3_raised value > 50 } }
+					}
+				}
+				save_scope_value_as = { name = tm_bd3_dust_for value = flag:fallen }
+			}
+		}
+	}
+
+	option = {
+		name = tm_bd3.0021.a
+		if = {
+			limit = { scope:tm_bd3_dust_for ?= flag:fallen }
+			add_prestige = medium_prestige_loss
+			scope:tm_bd3_fallen = {
+				add_prestige = medium_prestige_gain
+				add_character_modifier = { modifier = tm_bd3_dust_modifier years = 5 }
+			}
+			tm_bd3_tally_effect = { WHAT = dust }
+		}
+		else = {
+			add_prestige = minor_prestige_gain
+			tm_bd3_tally_effect = { WHAT = ashes }
+		}
+	}
+	option = {	# Free her from the commander
+		name = tm_bd3.0021.b
+		trigger = { scope:tm_bd3_fallen = { has_character_modifier = tm_bd3_kept_by_commander_modifier } }
+		scope:tm_bd3_fallen = { remove_character_modifier = tm_bd3_kept_by_commander_modifier }
+		add_prestige = minor_prestige_loss
+		ai_chance = {
+			base = 10
+			modifier = { add = 40 scope:tm_bd3_dust_for ?= flag:fallen }
+		}
+	}
+}
+
+# The fallen associate's answer (pp. 418–419). Root = the fallen; scope:tm_bd3_ruler, scope:tm_bd3_raised.
+tm_bd3.0022 = {
+	type = character_event
+	title = tm_bd3.0022.t
+	desc = tm_bd3.0022.desc
+	theme = court
+	override_background = { reference = throne_room }
+	left_portrait = { character = root animation = personality_bold }
+	right_portrait = { character = scope:tm_bd3_ruler animation = disapproval }
+	lower_right_portrait = { character = scope:tm_bd3_exile trigger = { exists = scope:tm_bd3_exile } }
+
+	trigger = {
+		has_variable = tm_bd3_fallen_of
+		scope:tm_bd3_ruler ?= {
+			is_alive = yes
+			is_ruler = yes
+		}
+	}
+
+	immediate = {
+		save_scope_as = tm_bd3_fallen
+		ordered_living_character = {
+			limit = { tm_bd3_exile_trigger = yes }
+			order_by = "reverse_opinion(scope:tm_bd3_fallen)"		# whom she trusts most
+			save_scope_as = tm_bd3_exile
+		}
+	}
+
+	option = {	# Ride veiled to the audience every day, my people with dust on their heads
+		name = tm_bd3.0022.a
+		custom_tooltip = tm_bd3.0022.a.tt
+		add_prestige = minor_prestige_gain
+		tm_bd3_tally_effect = { WHAT = rides }
+		scope:tm_bd3_ruler = { trigger_event = { id = tm_bd3.0024 days = { 60 180 } } }
+		ai_chance = {
+			base = 50
+			modifier = { add = 20 has_trait = patient }
+			modifier = { add = 20 has_trait = humble }
+		}
+	}
+	option = {	# Write to the kinsman in exile
+		name = tm_bd3.0022.b
+		trigger = { exists = scope:tm_bd3_exile }
+		custom_tooltip = tm_bd3.0022.b.tt
+		scope:tm_bd3_exile = {
+			add_opinion = { target = root modifier = tm_bd3_wrote_to_me_opinion }
+			scope:tm_bd3_ruler.primary_title = { save_scope_as = tm_bd3_seat }
+			if = {
+				limit = { NOT = { has_claim_on = scope:tm_bd3_seat } }
+				add_unpressed_claim = scope:tm_bd3_seat
+			}
+		}
+		tm_bd3_tally_effect = { WHAT = letters }
+		random = {
+			chance = 50
+			scope:tm_bd3_ruler = { trigger_event = { id = tm_bd3.0023 days = { 30 120 } } }
+		}
+		ai_chance = {
+			base = 15
+			modifier = { add = 30 has_trait = ambitious }
+			modifier = { add = 20 has_trait = vengeful }
+			modifier = { add = -15 has_trait = craven }
+		}
+	}
+	option = {	# Bide my time
+		name = tm_bd3.0022.c
+		add_stress = 10
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = content }
+		}
+	}
+}
+
+# Sanctuary in the preacher's house (p. 419). Root = the ruler; scope:tm_bd3_fallen, scope:tm_bd3_exile.
+tm_bd3.0023 = {
+	type = character_event
+	title = tm_bd3.0023.t
+	desc = tm_bd3.0023.desc
+	theme = court
+	override_background = { reference = temple }
+	left_portrait = { character = root animation = anger }
+	right_portrait = { character = scope:tm_bd3_fallen animation = fear }
+
+	trigger = {
+		scope:tm_bd3_fallen ?= { is_alive = yes }
+	}
+
+	immediate = {
+		tm_bd3_tally_effect = { WHAT = sanctuary }
+	}
+
+	option = {	# Let the sanctuary stand
+		name = tm_bd3.0023.a
+		add_piety = minor_piety_gain
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = zealous }
+			modifier = { add = 20 has_trait = just }
+		}
+	}
+	option = {	# Pardon her
+		name = tm_bd3.0023.b
+		add_prestige = minor_prestige_loss
+		scope:tm_bd3_fallen = {
+			add_opinion = { target = root modifier = tm_bd3_reconciled_opinion }
+			remove_character_modifier = tm_bd3_kept_by_commander_modifier
+		}
+		ai_chance = {
+			base = 30
+			modifier = { add = 30 has_trait = forgiving }
+			modifier = { add = 20 has_trait = compassionate }
+		}
+	}
+	option = {	# Send her to her own people
+		name = tm_bd3.0023.c
+		trigger = { scope:tm_bd3_fallen = { is_courtier_of = root } }
+		custom_tooltip = tm_bd3.0023.c.tt
+		scope:tm_bd3_fallen = {
+			if = {
+				limit = { father ?= { is_ruler = yes is_alive = yes NOT = { this = root } } }
+				father = { add_courtier = scope:tm_bd3_fallen }
+			}
+			else_if = {
+				limit = { mother ?= { is_ruler = yes is_alive = yes NOT = { this = root } } }
+				mother = { add_courtier = scope:tm_bd3_fallen }
+			}
+			else = {
+				select_and_move_to_pool_effect = yes
+			}
+		}
+		ai_chance = {
+			base = 30
+			modifier = { add = 30 has_trait = wrathful }
+			modifier = { add = 20 has_trait = paranoid }
+		}
+	}
+}
+
+# She rides to the audience every day (p. 418): restore her? Root = the ruler; scope:tm_bd3_fallen, scope:tm_bd3_raised.
+tm_bd3.0024 = {
+	type = character_event
+	title = tm_bd3.0024.t
+	desc = tm_bd3.0024.desc
+	theme = court
+	override_background = { reference = throne_room }
+	left_portrait = { character = scope:tm_bd3_fallen animation = personality_bold }
+	right_portrait = { character = root animation = thinking }
+
+	trigger = {
+		scope:tm_bd3_fallen ?= {
+			is_alive = yes
+			has_variable = tm_bd3_fallen_of
+		}
+	}
+
+	option = {	# Restore her
+		name = tm_bd3.0024.a
+		custom_tooltip = tm_bd3.0024.a.tt
+		tm_bd3_restore_effect = yes
+		ai_chance = {
+			base = 30
+			modifier = { add = 30 opinion = { target = scope:tm_bd3_fallen value >= 0 } }
+			modifier = { add = 20 has_trait = forgiving }
+		}
+	}
+	option = {	# Let her ride
+		name = tm_bd3.0024.b
+		add_prestige = minor_prestige_loss
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = stubborn }
+		}
+	}
+}

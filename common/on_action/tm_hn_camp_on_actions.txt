@@ -15,11 +15,17 @@ tm_hn_camp_heir_yearly = {
 		rite ?= { rite_has_parameter = tm_turning_gate }
 		NOT = { designated_heir ?= { tm_hn_camp_heir_trigger = { CAMP = root } } }
 		NOT = { primary_heir ?= { tm_hn_camp_heir_trigger = { CAMP = root } } }
-		any_courtier = { tm_hn_camp_heir_trigger = { CAMP = root } }
+		any_courtier = {
+			tm_hn_camp_heir_trigger = { CAMP = root }
+			tm_hn_camp_adoptable_trigger = yes
+		}
 	}
 	effect = {
 		ordered_courtier = {
-			limit = { tm_hn_camp_heir_trigger = { CAMP = root } }
+			limit = {
+				tm_hn_camp_heir_trigger = { CAMP = root }
+				tm_hn_camp_adoptable_trigger = yes
+			}
 			order_by = {
 				value = diplomacy
 				add = stewardship

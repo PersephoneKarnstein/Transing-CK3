@@ -497,6 +497,42 @@ tm_feud_find_bearer_effect = {
 		order_by = diplomacy
 		save_scope_as = tm_feud_bearer
 	}
+	# None of those: a man who will take the suit for a fee (tm_feud_hired_bearer_trigger). The best speaker, and a just
+	# or a greedy man before others. Saves scope:tm_feud_bearer_hired as a flag; she pays at the suit (tm_feud.0020 a).
+	if = {
+		limit = { NOT = { exists = scope:tm_feud_bearer } }
+		scope:tm_feud_plaintiff.court_owner ?= {
+			every_courtier = {
+				limit = { tm_feud_hired_bearer_trigger = yes }
+				add_to_temporary_list = tm_feud_hirelings
+			}
+		}
+		scope:tm_feud_lord = {
+			every_courtier = {
+				limit = {
+					tm_feud_hired_bearer_trigger = yes
+					NOT = { is_in_list = tm_feud_hirelings }
+				}
+				add_to_temporary_list = tm_feud_hirelings
+			}
+		}
+		ordered_in_list = {
+			list = tm_feud_hirelings
+			order_by = {
+				value = diplomacy
+				if = {
+					limit = { has_trait = just }
+					add = 5
+				}
+				if = {
+					limit = { has_trait = greedy }
+					add = 5
+				}
+			}
+			save_scope_as = tm_feud_bearer
+			save_scope_value_as = { name = tm_feud_bearer_hired value = yes }
+		}
+	}
 }
 
 # No man at either court: a husband or close kinsman elsewhere who could be sent for (tm_feud.0020 option c). The best
