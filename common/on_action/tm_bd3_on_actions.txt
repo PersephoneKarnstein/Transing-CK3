@@ -7,14 +7,14 @@ yearly_playable_pulse = {
 	on_actions = { tm_bd3_yearly_quarrel }
 }
 
-# Who comes to the rock, 15 in 100 a year for each with a cause; and the rock's people taking the faith, 5 in 100.
+# Who comes to the rock, 5 in 100 a year for each with a cause (15 until run 20: 1,264 came, the keeper asked every eight months); and the rock's people taking the faith, 5 in 100.
 tm_bd3_yearly_rock = {
 	trigger = { tm_bd3_rock_kept_trigger = yes }
 	effect = {
 		every_living_character = {
 			limit = { tm_bd3_runaway_trigger = yes }
 			random = {
-				chance = 15
+				chance = 5
 				tm_bd3_come_to_rock_effect = yes
 			}
 		}

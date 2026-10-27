@@ -104,11 +104,12 @@ tm_feud_bearer_candidate_trigger = {
 }
 
 # Can take her suit as a hired bearer, when no husband, kinsman, friend or brother will (tm_feud_find_bearer_effect):
-# any grown free man at her court or the lord's who bears her no ill will. A woman "must transfer the conduct of a
-# case to a man" (Grágás §1.7) and was expected to delegate (*selja*) it (Jochens 1995 p. 113); the passages read for
-# wave 7 name no kinship requirement for the man who takes it (design reading). Added after run 19 (2 suits borne, 49 without a bearer): at a foreign court
-# the kinds above are rarely present. Scope: the candidate. Needs scope:tm_feud_plaintiff, scope:tm_feud_lord,
-# scope:tm_flyter.
+# any grown free man at her court or the lord's who is not her rival and not the speaker's friend or kin. A woman "must
+# transfer the conduct of a case to a man" (Grágás §1.7) and was expected to delegate (*selja*) it (Jochens 1995
+# p. 113); the passages read for wave 7 name no kinship requirement for the man who takes it (design reading). Added
+# after run 19 (2 suits borne, 49 without a bearer): at a foreign court the kinds above are rarely present. Run 20
+# (1 hired, 40 without): an opinion floor of 0 failed at courts of another faith, so the fee, not liking, decides.
+# Scope: the candidate. Needs scope:tm_feud_plaintiff, scope:tm_feud_lord, scope:tm_flyter.
 tm_feud_hired_bearer_trigger = {
 	is_alive = yes
 	is_adult = yes
@@ -119,7 +120,9 @@ tm_feud_hired_bearer_trigger = {
 	NOT = { this = scope:tm_flyter }
 	NOT = { this = scope:tm_feud_lord }
 	NOT = { this = scope:tm_feud_plaintiff }
-	opinion = { target = scope:tm_feud_plaintiff value >= 0 }
+	NOT = { has_relation_rival = scope:tm_feud_plaintiff }
+	NOT = { has_relation_friend = scope:tm_flyter }
+	NOT = { is_close_or_extended_family_of = scope:tm_flyter }
 	OR = {
 		is_courtier_of = scope:tm_feud_lord
 		AND = {

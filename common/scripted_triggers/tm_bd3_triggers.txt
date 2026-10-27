@@ -26,6 +26,8 @@ tm_bd3_runaway_trigger = {
 	}
 	location ?= { county ?= { tm_hn3_county_in_sahel_trigger = yes } }
 	NOT = { court_owner ?= title:c_sibi_mali.holder }
+	NOT = { is_courtier_of = title:c_sibi_mali.holder }
+	NOT = { is_spouse_of = title:c_sibi_mali.holder }
 	NOT = { this = title:c_sibi_mali.holder }
 	tm_bd3_has_cause_trigger = yes
 }
