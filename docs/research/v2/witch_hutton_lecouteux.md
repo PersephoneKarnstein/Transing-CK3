@@ -1,4 +1,4 @@
-﻿# Witches for v2: Hutton (2014) and Lecouteux (2011) on night processions
+# Witches for v2: Hutton (2014) and Lecouteux (2011) on night processions
 
 Scope: a close reading of two sources on medieval night processions, done as a follow-up to `witch_papers_and_timeline.md` (the "prior note"). The question is the same: what can a CK3 faith of the "Good Ladies" night company rest on, inside 867–1453?
 
@@ -193,17 +193,17 @@ All are clerical moral tales.
 - **Domrémy's "ladies' tree" now has older parallels.** Raoul de Presles (1370s) places fairies "in stables and in trees." The *Ysengrimus* (c. 1148) has Herodias resting on oaks and hazels (Lecouteux ch. 11; ch. 1).
 
 **Changes.**
-1. **Milan date.** Hutton gives "a pair of women at Milan in 1370" (p. 172). Lecouteux gives "around 1380–1390" (ch. 11). The prior note's 1384 (Sibilla) and 1390 (Pierina) matches Lecouteux and the standard literature (Muraro; Verga 1899, cited in Lecouteux's notes). Treat Hutton's "1370" as a slip. Lecouteux's "Petrina … since sixteen" is Pierina, the 1390 case. The name "Madonna Oriente" in the prior note appears as *Horiens/Horiente* in Lecouteux.
+1. **Milan date.** Hutton gives "a pair of women at Milan in 1370" (p. 172). Lecouteux gives "around 1380–1390" (ch. 11). The prior note's 1384 (Sibilla) and 1390 (Pierina) matches Lecouteux and the standard literature (Muraro; Verga 1899, cited in Lecouteux's notes). Treat Hutton's "1370" as a slip. Lecouteux's "Petrina … since sixteen" is Pierina, the 1390 case. The name "Madonna Oriente" in the prior note appears as *Horiens/Horiente* in Lecouteux. **Settled (2026-10-27):** Hutton himself now gives 1384 and 1390 (*Queens of the Wild*, 2022, p. 123).
 2. **The company is not exclusively women.** The prior note's statement that "the company is a multitude of women" and that no male-assigned person appears needs softening. Men appear as **participants**, not only as believers:
    - the Pyrenean sacristan of 1319, who travelled with the good ladies (Hutton p. 172);
    - Stephen of Bourbon's man with the *bonae res* (13th c.; Lecouteux ch. 13);
    - the executed dead men in the Milan company (Lecouteux ch. 11).
 
    The leader and the core are female, and clerics gender the belief as women's. **No pre-1453 source shows a male-assigned person joining *as a woman* or in women's dress.**
-3. **Add the 10th-century Italian evidence.** Rather of Verona (d. 974) knows the Herodias belief (Lecouteux ch. 1). This adds Lombardy/Verona as a pre-1000 region and slightly strengthens an 867 start. Hutton also says the women's company is recorded "from the ninth century onward" (p. 174), though he cites no 9th-century text. Lecouteux's 872 Charles the Bald claim would help an 867 start if it were verified. As it stands it is unverified.
+3. **Add the 10th-century Italian evidence.** Rather of Verona (d. 974) knows the Herodias belief (Lecouteux ch. 1). This adds Lombardy/Verona as a pre-1000 region and slightly strengthens an 867 start. Hutton also says the women's company is recorded "from the ninth century onward" (p. 174), though he cites no 9th-century text. Lecouteux's 872 Charles the Bald claim would help an 867 start if it were verified. As it stands it is unverified. **Update (2026-10-27):** Rather says many people, women and men, held Herodias "as a queen, even as a goddess" with "a third of the world" her realm. He does not mention night rides (Hutton 2022, pp. 114–15; *Praeloquia* I.10, PL 136).
 4. **Add Flanders and the name Pharaildis** (*Ysengrimus*, Ghent, c. 1148).
-5. **Add the Bavarian/Austrian line.** Berthold of Regensburg's table "for the blessed ladies" (13th c.) gives a pre-1300 **table rite east of the Rhine**. **Percht** is first named c. 1350, and there is a Viennese reference with salt among the offerings (c. 1440s; Lecouteux ch. 1).
-6. **Seasonal timing.** The prior note does not fix dates. The earliest sources give only "fixed nights" (Regino) or "three nights a week" (Jean de Meun). The **Twelve Nights / Epiphany** timing is attested for the Ladies from **c. 1350** in German lands (Lecouteux ch. 1). Hutton's point that seasonality is "not found earlier" than the 16th century (p. 170) applies to the army of the dead, not to the Ladies.
+5. **Add the Bavarian/Austrian line.** Berthold of Regensburg's table "for the blessed ladies" (13th c.) gives a pre-1300 **table rite east of the Rhine**. **Percht** is first named c. 1350, and there is a Viennese reference with salt among the offerings (c. 1440s; Lecouteux ch. 1). **Update (2026-10-27):** Percht's bare name appears in the 13th century, "Lady Perchten" (Hutton 2022, p. 122, via Rumpf 1991, p. 61); the developed figure dates from c. 1350.
+6. **Seasonal timing.** The prior note does not fix dates. The earliest sources give only "fixed nights" (Regino) or "three nights a week" (Jean de Meun). The **Twelve Nights / Epiphany** timing is attested for the Ladies from **c. 1350** in German lands (Lecouteux ch. 1). Hutton's point that seasonality is "not found earlier" than the 16th century (p. 170) applies to the army of the dead, not to the Ladies. **Update (2026-10-27):** northern Italy too, before 1453: at Padua in 1423 Bernardino of Siena attacked old women who said they travelled "in the ride of Herodias on the night of Epiphany" (Hutton 2022, p. 123).
 7. **Separate the army of the dead.** The prior note mixes Holda with the night-ride complex. Following Hutton, the Hellequin/Herla/*wütendes Heer* tradition is a **separate, chiefly 11th–12th-century clerical penitential strand**. It is centred on knights, is mostly male, and has a different geography (England, northern France, the Rhineland). It "rarely" appears in witch trials (Hutton pp. 166–69, 174).
 8. **Where the persecution phase happens.** Hutton places women's-company trial cases in the Alps and northern Italy, the cradle of the early 15th-century sabbath (p. 174). The prior note's escalation chain should centre the flip on **Lombardy and the Alpine dioceses**, not on the Rhineland where the belief was first written down.
 9. **What the sabbath took from the company.** Hutton narrows it: the company most plausibly gave the sabbath the **flight** (p. 174), not the whole stereotype. This supports the prior note's "accusers' fantasy" framing for everything else.
@@ -231,7 +231,7 @@ The straw-for-heart detail is in Lecouteux's paraphrase, not in his quotation. S
 | England / northern France | 1159 | *noctiluca*, Herodias | John of Salisbury |
 | Île-de-France | 1230s–1370s | Domina Abundia, Satia; Dame Abonde / Habonde; *bonae dominae* | William of Auvergne; Jean de Meun; Raoul de Presles |
 | South-east France | mid-13th c. | *bonae res* ("Good Things") | Stephen of Bourbon |
-| Bavaria / Austria | 13th c.; c. 1350+ | *felices dominae*, *nahtvrouwen*; **Percht / Perchta** (c. 1350); Habundia (Vienna) | Berthold; *Mirror of Souls*; Ebendorfer |
+| Bavaria / Austria | 13th c.; c. 1350+ | *felices dominae*, *nahtvrouwen*; **Percht / Perchta** (bare name 13th c.; developed c. 1350); Habundia (Vienna) | Berthold; *Mirror of Souls*; Ebendorfer |
 | Lombardy (Milan) | 1380s–90 | Madonna Oriente / Horiens ("Lady of the East") | Beltramino trials |
 | Tyrol / Fassa | 1457 (post) | Richella, *bona domina* | Nicholas of Cusa |
 
@@ -245,7 +245,7 @@ A good in-game approach is a single deity with **regional names**: Holda in Germ
 - **Ritual greeting of the Lady** ("May you fare well…", Milan).
 - **The Lady's staff reviving slaughtered animals** (Milan). This is a strong miracle or event hook.
 - **Knowledge for healing and divination gained from the company.** The 1319 sacristan and the Milan women were consulted as cunning folk (Hutton pp. 172–73).
-- **Twelve Nights / Epiphany timing**, only after c. 1350 and only in German lands. Before that, use "fixed nights."
+- **Twelve Nights / Epiphany timing**, only after c. 1350, in German lands, and in northern Italy by 1423 (Hutton 2022, p. 123). Before that, use "fixed nights."
 - **Trees as the Ladies' resting places** (*Ysengrimus*; Raoul de Presles; the Domrémy tree, 1431).
 
 **Regions.** The core regions are the Rhineland and Lotharingia (Worms, Trier, Prüm), Île-de-France, and Lombardy. The secondary regions are Flanders, Bavaria and Austria, south-east France, and the Pyrenees (Foix, 1319). The Alps are best treated as the **persecution theatre after c. 1400** rather than as a founding region.
@@ -269,13 +269,13 @@ A good in-game approach is a single deity with **regional names**: Holda in Germ
 
 ## 5. Open questions
 
-1. **Canon Episcopi before Regino.** Is there any real text behind Lecouteux's "872, capitularies of Charles the Bald" (via Harmening, *Superstitio*, p. 97)? If so, an 867 start gets a document.
-2. **Rather of Verona.** What is the exact text and date of his Herodias passage (the *Praeloquia*, c. 935?), and does it say "a third" of humanity serves her?
+1. **Canon Episcopi before Regino.** Is there any real text behind Lecouteux's "872, capitularies of Charles the Bald" (via Harmening, *Superstitio*, p. 97)? If so, an 867 start gets a document. *Hutton 2022 (p. 111) dates the canon to Regino's compilation for the archbishop of Trier, soon after 900, and gives no support for 872.*
+2. **Rather of Verona.** What is the exact text and date of his Herodias passage (the *Praeloquia*, c. 935?), and does it say "a third" of humanity serves her? **Answered:** *Praeloquia* I.10 (PL 136); yes, "a third of the world"; believers women and men; no night ride (Hutton 2022, pp. 114–15).
 3. **The 1319 sacristan.** He is unnamed in Hutton; elsewhere he is identified as Arnaud Gélis of Pamiers. Check Duvernoy 1:137–39 for his exact words about the "good ladies," whether he describes women or the dead, and any detail on tidy houses.
-4. **Hutton's "Milan 1370."** Confirm against Muraro (*La signora del gioco*, 1976) and Verga (1899) that the two trials are 1384 and 1390.
+4. **Hutton's "Milan 1370."** Confirm against Muraro (*La signora del gioco*, 1976) and Verga (1899) that the two trials are 1384 and 1390. **Answered:** 1384 and 1390 (Hutton 2022, p. 123).
 5. **Stephen of Bourbon no. 97.** What are the diocese and the exact words for the man who travelled with the *bonae res*? This is the clearest pre-1453 male participant in the Ladies strand.
-6. **"Bensozia."** What is the source (a Couserans synodal text?) and the date? Do not use the name until then.
+6. **"Bensozia."** What is the source (a Couserans synodal text?) and the date? Do not use the name until then. **Answered:** a council of the bishop of Couserans in 1280 (Hutton 2022, p. 120). Hutton doubts the bishop met the name locally, so use it only in a cleric's voice.
 7. **Crokesou's gender** in Adam de la Halle: male (Hutton) or female (Lecouteux)? Check the text if the mod uses the herald figure.
-8. **Twelve Nights gating.** Does any pre-1350 source tie the Ladies to Christmas–Epiphany, or should a seasonal mechanic unlock only after about 1350 and only in German-speaking areas?
+8. **Twelve Nights gating.** Does any pre-1350 source tie the Ladies to Christmas–Epiphany, or should a seasonal mechanic unlock only after about 1350 and only in German-speaking areas? **Partly answered:** Padua 1423 adds northern Italy; no pre-1350 source found (Hutton 2022, pp. 122–23).
 9. **Persecution geography.** Should the escalation chain fire mainly in Lombardy and the Alpine dioceses, following Hutton p. 174, with the Rhineland and France staying in the "penance" register throughout?
 10. **Event flavour from the army-of-the-dead strand.** Is it worth an optional "the Host of the dead passes" event in Normandy, England or the Rhineland, clearly separate from the faith, or does that blur Hutton's distinction for players?

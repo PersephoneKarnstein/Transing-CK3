@@ -516,7 +516,7 @@ Cited in the notes, not read: Ayalon, David, "On the Eunuchs in Islam," *Jerusal
 </details>
 
 <details>
-<summary><strong>Latin Europe: witches, the Good Ladies and the Rhineland</strong> (23 works; research for version 2)</summary>
+<summary><strong>Latin Europe: witches, the Good Ladies and the Rhineland</strong> (26 works; research for version 2)</summary>
 
 - Cadden, Joan. 1984. "It Takes All Kinds: Sexuality and Gender Differences in Hildegard of Bingen's 'Book of Compound Medicine'." *Traditio* 40: 149–174.
 - Caviness, Madeline H. 2013. "Giving 'the Middle Ages' a Bad Name: Blood Punishments in the *Sachsenspiegel* and Town Lawbooks." *Studies in Iconography* 34: 175–235.
@@ -534,9 +534,12 @@ Cited in the notes, not read: Ayalon, David, "On the Eunuchs in Islam," *Jerusal
 - Hutton, Ronald. 2022. *Queens of the Wild: Pagan Goddesses in Christian Europe: An Investigation*. Yale University Press. (Introduction, the chapter on the Lady of the Night and the conclusion read in full; the rest by search.)
 - Jolly, Karen, Catharina Raudvere, and Edward Peters. 2002. *Witchcraft and Magic in Europe, Volume 3: The Middle Ages*. Athlone History of Witchcraft and Magic in Europe 3. Athlone Press.
 - Kallestrup, Louise Nyholm, and Raisa Maria Toivo (eds.). 2017. *Contesting Orthodoxy in Medieval and Early Modern Europe: Heresy, Magic and Witchcraft*. Palgrave Macmillan.
+- Korsvoll, Nils Hallvard. 2018. "Official Teaching and Popular Practice: Are Church Opinions on Magic Reflected in the Surviving Amulets from the Early Middle Ages?" In Sarah Kiyanrad, Christoffer Theis and Laura Willer (eds.), *Bild und Schrift auf 'magischen' Artefakten*, 149–163. De Gruyter.
 - Lecouteux, Claude. 2011. *Phantom Armies of the Night: The Wild Hunt and the Ghostly Processions of the Undead*. Trans. Jon E. Graham. Inner Traditions.
+- MacLean, Simon (trans.). 2009. *History and Politics in Late Carolingian and Ottonian Europe: The Chronicle of Regino of Prüm and Adalbert of Magdeburg*. Manchester Medieval Sources. Manchester University Press. (Introduction in full; the chronicle by search.)
 - Mann, Jill (ed. and trans.). 1987. *Ysengrimus: Text with Translation, Commentary and Introduction*. Mittellateinische Studien und Texte 12. Brill. (Read in part: the Pharaildis passage and its commentary.)
 - Motz, Lotte. 1984. "The Winter Goddess: Percht, Holda, and Related Figures." *Folklore* 95.2: 151–166.
+- Raiswell, Richard, and David R. Winter (eds.). 2022. *The Medieval Devil: A Reader*. Readings in Medieval Civilizations and Cultures. University of Toronto Press. (Introductions and all headnotes read; 34 selections in full.)
 - Schilling, Michael (ed. and trans.). 2020. *Ysengrimus. Lateinisch–deutsch*. Sammlung Tusculum. De Gruyter. (Read in part.)
 - Stratton, Kimberly B. 2007. *Naming the Witch: Magic, Ideology, and Stereotype in the Ancient World*. Columbia University Press.
 - Stratton, Kimberly B., with Dayna S. Kalleres (eds.). 2014. *Daughters of Hecate: Women and Magic in the Ancient World*. Oxford University Press.
@@ -794,12 +797,16 @@ Cited in the notes, not read: Davies, Sharyn Graham, *Challenging Gender Norms: 
 </details>
 
 <details>
-<summary><strong>General and comparative history</strong> (13 works)</summary>
+<summary><strong>General and comparative history</strong> (17 works)</summary>
 
 - Adkins, Evelyn. 2020. "The Politics of Transgender Representation in Apuleius' *Golden Ass* and *Loukios, or the Ass*." In Surtees and Dyer (eds.), *Exploring Gender Diversity in the Ancient World*, 157–168.
+- Baldwin, John W. 1970. *Masters, Princes and Merchants: The Social Views of Peter the Chanter and His Circle*. 2 vols. Princeton University Press. (Vol. 1 only: introduction and conclusion, the rest by search.)
+- Barney, Stephen A. (trans.). 2021. *Peter the Chanter: The Abel Distinctions*. Corpus Christianorum in Translation 37. Brepols. (Introduction read; entries by search.)
 - Betancourt, Roland. 2021. "Where Are All the Trans Women in Byzantium?" In LaFleur, Raskolnikov and Kłosowska (eds.), *Trans Historical*.
+- Boswell, John. 1980. *Christianity, Social Tolerance, and Homosexuality: Gay People in Western Europe from the Beginning of the Christian Era to the Fourteenth Century*. University of Chicago Press. (Introduction and conclusion read; the rest by search, for law by date and hostile categories.)
 - Federici, Silvia. 2004. *Caliban and the Witch: Women, the Body and Primitive Accumulation*. Autonomedia. (Chapter 1 and the witch-hunt chapter read in full.)
 - Ford, Richard Thompson. 2021. *Dress Codes: How the Laws of Fashion Made History*. Simon & Schuster. (Introduction and chapters 1–4 and 14 read in full.)
+- Goodich, Michael. 1979. *The Unmentionable Vice: Homosexuality in the Later Medieval Period*. Ross-Erikson. (Read as Boswell.)
 - Krass, Andreas. 2012. "Saying It with Flowers: Post-Foucauldian Literary History and the Poetics of Taboo in a Premodern German Love Song." In Spector, Puff and Herzog (eds.), *After The History of Sexuality: German Genealogies With and Beyond Foucault*, 63–75. Berghahn.
 - LaFleur, Greta, Masha Raskolnikov, and Anna Kłosowska (eds.). 2021. *Trans Historical: Gender Plurality Before the Modern*. Cornell University Press.
 - Levin, Eve. 1989. *Sex and Society in the World of the Orthodox Slavs, 900–1700*. Cornell University Press.

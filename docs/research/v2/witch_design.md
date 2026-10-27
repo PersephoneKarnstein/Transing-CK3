@@ -4,8 +4,8 @@ Written 2026-10-25. Consolidates the six witch notes (listed in §9) and the use
 
 ## 1. Premise
 
-From Regino of Prüm (c. 906) to the Milan trials (1384, 1390), churchmen describe the same belief, held mostly by women. On set nights they go out in spirit, while their bodies lie in bed, in a great company of women following a Lady:
-- **Her names:** Diana or Herodias in the clerics' Latin; Holda on the Rhine; Abundia and Satia, Dame Abonde, in France; Madonna Oriente in Lombardy; Percht in Bavaria after c. 1350.
+From Regino of Prüm (906–913) to the Milan trials (1384, 1390), churchmen describe the same belief, held mostly by women. On set nights they go out in spirit, while their bodies lie in bed, in a great company of women following a Lady:
+- **Her names:** Diana or Herodias in the clerics' Latin; Holda on the Rhine; Abundia and Satia, Dame Abonde, in France; Madonna Oriente in Lombardy; Percht in Bavaria (a bare name from the 13th century; the developed figure after c. 1350).
 - **What the company does:** it visits houses at night, eats and drinks what is left out without lessening it, and blesses the clean, orderly and generous houses with abundance.
 - **The knowledge it gives:** in the later trials, women of the company are consulted for healing and finding things.
 
@@ -19,7 +19,7 @@ The faith is a **household devotion**, not a church: the laid table, the night j
 
 | | What | Grade | Source note |
 |---|---|---|---|
-| **Attested** | The Lady and her company of women; set nights; travel in spirit while the body stays home; Diana/Herodias as the clerics' names; penance, not death | A, from c. 906 | `witch_papers_and_timeline.md` §3; Hutton p. 164 |
+| **Attested** | The Lady and her company of women; set nights; travel in spirit while the body stays home; Diana/Herodias as the clerics' names; penance, not death | A, from 906–913 | `witch_papers_and_timeline.md` §3; Hutton p. 164 |
 | **Attested** | Holda (Rhine, c. 1010); Abundia/Satia and the laid tables (Paris, 1230s); Berthold's table "for the blessed ladies" (Bavaria, 13th c.) | A | `witch_hutton_lecouteux.md` §2, §4 |
 | **Attested** | Men as participants, as men (Pyrenees 1319; Stephen of Bourbon; the Milan dead) | A/B | `witch_hutton_lecouteux.md` §3 change 2 |
 | **Attested** | Milan: "Madonna Oriente", the greeting, the staff that revives slaughtered beasts, blessing well-kept houses; first penance (1384), then death (1390) | A | Hutton pp. 172–73; Lecouteux ch. 11 |
@@ -28,12 +28,13 @@ The faith is a **household devotion**, not a church: the laid table, the night j
 | **Read** | Roland of Cremona (c. 1232–34): *cursus*, an ointment-driven night flight of "both men and women", which he keeps separate from the Ladies and half-credits as natural magic | A for the text; it is not the Ladies | `witch_cursus.md` |
 | **Invented** | That daughters (trans women) belong to the company. No source puts anyone male-assigned in it *as a woman*. The faith says "the Lady decides who her women are." | design choice; label it | `witch_hutton_lecouteux.md` §4 |
 | **Invented** | Any priesthood, holy order, scripture or organised hierarchy | design | (none attested) |
+| **Invented (pairing)** | The laid table and the night ride as one rite at 1066. Hutton no longer treats the house-visiting ladies and the riders as one tradition (2022, p. 121, n. 25). The nearest attested table near 1066 is Burchard's, for "the three Fates, sisters" (Worms, c. 1008–12) | design choice; label it | `witch_hutton_queens_of_the_wild.md`; `athlone_vol3_middle_ages.md` |
 
 ## 3. Faith setup (proposals)
 
 ### 3.1 Names
 - **Faith:** *the Good Ladies* (Latin *bonae dominae*), the recommended working name. Alternatives: *the Lady's Table*; *the Company*. In the faith's own voice the Lady is the ***hera***, the mistress of the house (*Ysengrimus* II 90). That suits the table rite better than *domina*.
-- **The Lady, by culture:** Holda (German), Abonde/Habonde (French), Oriente (Lombard), Herodias or Diana (clerical, and in every hostile voice). Percht only for Bavarian culture after c. 1350. "Pharaildis" only in a mocking cleric's voice.
+- **The Lady, by culture:** Holda (German), Abonde/Habonde (French), Oriente (Lombard), Herodias or Diana (clerical, and in every hostile voice). Percht only for Bavarian culture: a bare name from the 13th century (Hutton 2022, p. 122), and the developed figure, with offerings on Epiphany night, after c. 1350. "Pharaildis" only in a mocking cleric's voice.
 - **Daughters:** a word of the faith's own is needed (open decision 3). Every faith keeps its own word (rule 6).
 
 ### 3.2 Religion placement and secrecy
@@ -51,7 +52,7 @@ The faith is a **household devotion**, not a church: the laid table, the night j
 | Barony | County | Why |
 |---|---|---|
 | `b_worms` | `c_worms` | Burchard's diocese, Holda (c. 1010) |
-| `b_prum` | `c_aachen` | Regino's abbey (c. 906) |
+| `b_prum` | `c_aachen` | Regino's house (abbot 892–899); he compiled the canon later, at Trier, 906–913 (MacLean 2009, pp. 4–7; `prum_regino_chronicle.md`) |
 | `b_paris` | `c_ile_de_france` | William of Auvergne's Abundia; Jean de Meun; Raoul de Presles |
 | `b_milano` | `c_lombardia` | Madonna Oriente (1384–90) |
 | `b_regensburg` | `c_regensburg` | Berthold's table for the blessed ladies |
@@ -104,7 +105,7 @@ The Rhineland and France stay mostly in the penance register, as the sources do 
 - **All seeded characters are fictional**, lowborn or in one fictional house. No historical person is converted or claimed. The 1178 holders of the counties above are to be read from vanilla history with the survey's parser before building.
 - **A playable character** needs either a landless household (Roads to Power, which the mod already requires) or a fictional minor ruler. Open decision 7. Note that Ha-Nehpakhot's landless camp died out in run 15, before the camp fix.
 - **Growth:** slow, by household and kin, with no size caps (memory). "A third of mankind serves her" is a doctrine boast, not a target.
-- **Other starts:** 1066 works (Burchard is fresh; Rather of Verona gives an Italian foothold). 867 rests on inference: Regino writes c. 906.
+- **Other starts:** 1066 works (Burchard is fresh; Rather of Verona gives an Italian foothold). 867 rests on inference: Regino compiled the canon at Trier, 906–913.
 
 ## 8. Open decisions (recommendation first)
 
@@ -127,12 +128,17 @@ The Rhineland and France stay mostly in the penance register, as the sources do 
 - `witch_ysengrimus.md`: Mann (1987) and Schilling (2020) editions; the Pharaildis passage.
 - `witch_even_ezra.md`: Even-Ezra, *Ecstasy in the Classroom* (2019).
 - `witch_cursus.md`: Even-Ezra, "*Cursus*" (*MRW* 12.3, 2017).
+- Added 2026-10-27: `witch_hutton_queens_of_the_wild.md` (Hutton 2022: no pagan goddess behind the Lady), `witch_motz_winter_goddess.md`, `witch_horsley_folk_religion.md`, and the Rhineland and law notes (`rhine_*.md`, `law_caviness_sachsenspiegel.md`).
 - Also: `../book_federici_caliban_witch.md` (rule 25's origin), `../cracked_ivory_podcast.md` (CI3, CI4, CI12), and `rykener_and_mobilities.md` (a Latin daughter's life, 1394, not witchcraft).
 
 ## 10. Guardrails (in addition to rules 1–26)
 
 - No Murray: no coven, horned god, Old Religion, or continuity from paganism in any voice.
+- **The Lady is never made a saint or the Virgin** in the faith's voice or the narrator's (user, 2026-10-27; Hutton 2022, p. 142, calls her one of the great counter-cultural figures). A hostile or mocking voice may do it, as the satirist does (§6 event 5).
 - No living community is the faith or its continuation: Wicca, Stregheria, heathenry, Leland's *Aradia*, Perchten runs.
+- **From Regino's chronicle** (user, 2026-10-27; `prum_regino_chronicle.md`): the rumour that a Jewish physician, Zedechias, poisoned Charles the Bald stays out in every voice. The charges in Lothar II's divorce case (incest, and the "witchcraft" of MacLean's summary) are never reused against the Lady's women. Theutberga, Richgard, Engiltrude and Friderada are never claimed.
+- **Tertullian's "Whatever has been modified is the devil's business"** (*The Medieval Devil*, p. 77) may be used as a hostile voice, under the transformation rule below (user, 2026-10-27).
+- **Transformation and "likeness" accusations** (user, 2026-10-27): Burchard's company "transformed into the likeness of women" (c. 1008–12), the canon's clause that only the Creator changes a creature's likeness, Simon Magus "changed in sex and age", Aquinas on real change or illusion, Caesarius's demon as a shining Virgin. **Hostile or learned voices only.** They are aimed at the company as a whole or at the Lady, never at a daughter alone. The faith gets an answer, and the narrator never leaves a daughter's womanhood in doubt. No magic ever changes a daughter's body: the Lady recognises her women. Incubus and succubus stay out under the next rule (`witch_raiswell_winter_medieval_devil.md` §4 row 1).
 - Accusers' fantasies (child-eating, devil-sex, orgy) appear nowhere, not even as allegation. Rule 25 already bans pact and sabbat. The cursus orgy is Roland's penitents' report, not the Ladies.
 - If a death toll ever appears: about 40,000–60,000 executions for 1450–1750, nearly all after the game ends. Never "nine million".
 - Hostile visions of hell punish men and women alike before c. 1200; only after may they single out women (Thurkill 1206; `daughters_of_hecate.md`).
