@@ -132,3 +132,13 @@ tm_hn_camp_heir_trigger = {
 	NOT = { this = $CAMP$ }
 	rite ?= { rite_has_parameter = tm_turning_gate }
 }
+
+# She can become the camp leader's heir: already her child, or younger than the leader, so the adoption takes. Run 21's
+# log: the ablest woman was often older ("Parent can't be younger than their offspring"); the adoption failed, the
+# heir could not be named, and the sect was gone by the 1140s. Scope: the candidate; root = the camp leader.
+tm_hn_camp_adoptable_trigger = {
+	OR = {
+		is_child_of = root
+		age < root.age
+	}
+}
