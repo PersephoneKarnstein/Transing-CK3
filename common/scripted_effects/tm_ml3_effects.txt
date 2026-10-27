@@ -25,6 +25,11 @@ tm_ml3_caravan_done_effect = {
 		set_variable = { name = tm_ml3_caravans value = 0 }
 	}
 	change_variable = { name = tm_ml3_caravans add = 1 }
+	if = {	# the lord whose merchants the band guarded, for the oath and the hall (tm_ml4, wave 10)
+		limit = { exists = scope:employer }
+		set_variable = { name = tm_ml4_merchant_lord value = scope:employer years = 20 }
+	}
+	tm_ml4_caravan_bonus_effect = yes
 	if = {
 		limit = {
 			var:tm_ml3_caravans >= 3

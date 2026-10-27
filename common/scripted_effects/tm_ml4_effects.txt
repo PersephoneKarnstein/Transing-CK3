@@ -1,0 +1,78 @@
+﻿# Crusader Dolls — the Worn Garland, wave 10 (events/tm_ml4_events.txt; docs/wave10/garland.md).
+
+# Count for the census (tools/census_report.py, "Worn Garland: wave 10").
+tm_ml4_tally_effect = {
+	if = {
+		limit = { NOT = { has_global_variable = tm_ml4_n_$WHAT$ } }
+		set_global_variable = { name = tm_ml4_n_$WHAT$ value = 0 }
+	}
+	change_global_variable = { name = tm_ml4_n_$WHAT$ add = 1 }
+}
+
+# Wait for Tai, then begin the bath (tm_ml4.0002). Checked again each month, for up to a year, as the pavai seeker
+# waits for Markali. Scope: the daughter.
+tm_ml4_await_tai_effect = {
+	if = {
+		limit = { tm_ml4_is_tai_trigger = yes }
+		remove_variable = tm_ml4_tai_waiting
+		trigger_event = tm_ml4.0002
+	}
+	else = {
+		set_variable = { name = tm_ml4_tai_waiting value = yes months = 13 }
+		trigger_event = { id = tm_ml4.0001 days = 30 }
+	}
+}
+
+# The band swears with the merchants of its lord (tm_ml4.0010). Scope: the band's leader; scope:tm_ml4_lord.
+tm_ml4_swear_effect = {
+	set_variable = { name = tm_ml4_sworn_to value = scope:tm_ml4_lord }
+	add_opinion = { target = scope:tm_ml4_lord modifier = tm_ml4_accompany_opinion }
+	scope:tm_ml4_lord = {
+		add_opinion = { target = root modifier = tm_ml4_accompany_opinion }
+		if = {
+			limit = { exists = capital_county }
+			capital_county = {
+				add_county_modifier = { modifier = tm_ml4_accompanied_county_modifier years = 20 }
+			}
+		}
+	}
+	tm_ml4_tally_effect = { WHAT = sworn }
+}
+
+# A caravan done for the lord the band is sworn with pays the merchants' share as well (called from
+# tm_ml3_caravan_done_effect). Scope: the band's leader; scope:employer.
+tm_ml4_caravan_bonus_effect = {
+	if = {
+		limit = {
+			tm_ml4_sworn_trigger = yes
+			exists = scope:employer
+			var:tm_ml4_sworn_to = scope:employer
+		}
+		add_gold = 25
+		add_prestige = 25
+		tm_ml4_tally_effect = { WHAT = sworn_caravans }
+	}
+}
+
+# The hall in the name of the guild (tm_ml4.0020). Scope: the band's leader; scope:tm_ml4_hall_lord.
+tm_ml4_raise_hall_effect = {
+	remove_short_term_gold = 150
+	add_prestige = 100
+	set_variable = { name = tm_ml4_hall_given value = yes years = 20 }
+	scope:tm_ml4_hall_lord = {
+		add_opinion = { target = root modifier = tm_ml4_hall_opinion }
+		capital_county = {
+			save_scope_as = tm_ml4_hall_county
+			tm_ml2_mark_street_effect = yes
+			set_variable = { name = tm_ml4_hall value = yes }
+		}
+	}
+	every_living_character = {
+		limit = {
+			has_variable = tm_ml2_share
+			var:tm_ml2_share = scope:tm_ml4_hall_county
+		}
+		add_opinion = { target = root modifier = tm_ml4_band_and_street_opinion }
+	}
+	tm_ml4_tally_effect = { WHAT = halls }
+}

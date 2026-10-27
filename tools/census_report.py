@@ -319,6 +319,16 @@ def main(path):
           'associate rode to the audience, and was restored; letters / sanctuary: wrote to a kinsman in exile, and was found out.')
     print()
 
+    # Worn Garland, wave 10 (tm_ml4_tally_effect): the Tai bath, the band and the merchants, the road to Kanchi.
+    print('== Worn Garland: wave 10 ==')
+    gsteps = ('tai_kept', 'tai_not_now', 'tai_rain', 'tai_love', 'tai_nothing', 'sworn', 'oath_refused', 'sworn_caravans',
+              'relic_guard', 'halls', 'pepper_vowed', 'pepper_paid', 'pepper_forgot', 'pepper_paid_late')
+    print('  '.join(f'{s} {int(gvars.get(f"tm_ml4_n_{s}") or 0)}' for s in gsteps))
+    print('tai_*: Tai baths kept or put off, and what was asked of Kama; sworn / oath_refused: bands that swore with the\n'
+          'merchants or would not; sworn_caravans: caravans done for a sworn lord; relic_guard: bands guarding a relic temple\n'
+          'in Lanka; halls: halls raised in a guild\'s name; pepper_*: vows on the road to Kanchi, paid, forgotten, paid late.')
+    print()
+
     # The Women's Chamber (tm_dl3_tally_effect): run-wide counts of each step.
     print("== Women's Chamber ==")
     steps = ('rolled', 'fired', 'took', 'stayed', 'lost', 'worked', 'chrysobull', 'estate')

@@ -112,8 +112,10 @@ Built: shared daughter trigger and per-faith daughter traits; Bæddel faith (Got
 - [ ] Catholic reaction: a canonist event on Huguccio's "prevailing sex" by conduct (women's company and work) and the Susa oath before the bishop of Turin (`research/cmp_vanderlugt_sex_difference.md`; Rolker); Peter the Chanter's woman's name at confirmation; whether Catholic hostility to daughters hardens around 1200
 - [ ] Andalusi reaction: Ibn Ḥazm's charge against al-Ḥakam I as a reaction to Grandmother's House (`research/cmp_delapuente_alhakam.md`)
 
-## Version 2.0.0 plan (user, 2026-10-25)
-A 1178 bookmark with:
+## Version 2.0.0 plan (user, 2026-10-25; revised 2026-10-26)
+**Revised (user, 2026-10-26): a single 1066 start, not 1178.** Its faiths: the Good Ladies in the Rhineland (Prüm), *Imayō no Ie* in Japan (Settsu), and Adelphai Dorleyaiou at Fatimid Cairo ("Through the Curtain"; research in `research/later_starts/mukhannathun_fatimid_cairo.md` and the `isl_*` notes). The bookmark art is on branch `v2-1066`. Open: Yutai's second house (Kaifeng, which later moves to Lin'an, or Dunhuang alone). The 1178 plan below is kept for reference; its Lin'an house does not fit 1066 as written.
+
+The earlier 1178 plan:
 - [ ] **Japan**, *Imayō no Ie* (`research/v2/japan_design.md`; open decisions there)
 - [ ] **The Good Ladies** (`research/v2/witch_design.md`; ten open decisions; no J. K. Rowling or Harry Potter except disparaging, §10)
 - [ ] **Yutai Dao, a second house at Lin'an** (outside the New Gate), alongside Dunhuang. **Chosen over the Garland (user, 2026-10-25)**: its position changes, not just its world. It is a landless urban House in the Song capital, with a guild head the prefecture summons in "not a man" suits, a fading informer threat (the Zhenghe article), needlework, a stage route to palace banquets, gate variants, and a possible *Silk & Silver* embroidery company. Cost: v2 leans East Asian (Kyoto and Hangzhou), and the evidence is hostile and a century late. This is the Southern Song capital at peace since 1165, with nine Daoist women's houses, a Lingbao society and private Daoist halls under patrons. Zhou Mi's quarter of people "addressed as women", with a guild head the courts consulted, is placed here by inference across about a century (`research/later_starts/linan_1178.md`)
@@ -129,7 +131,7 @@ A 1178 bookmark with:
 - [x] **Ha-Nehpakhot loc:** wrote the two approved lines (2026-10-25: the Turning tenet, and both physician events) ("a prayer, not a deed"; the physician's medicine) where the sect speaks of the Turning and the physician (`faith_design.md` §18)
 - [ ] **Name list:** fix the *Matrona* comment (`tm_name_lists.txt:94`; Matrona of Perge crossed toward manhood)
 - Deferred: the Visayan House (*the Lambong*), kept for later (`research/v2/visayan_design.md`).
-- **Shelved until *Silk & Silver* is out (17 November 2026), which adds content to both the 1066 and 1178 bookmarks:** whether v2 also gets a 1066 layer. The candidates are:
+- ~~Shelved until *Silk & Silver*: whether v2 also gets a 1066 layer.~~ Decided 2026-10-26: v2 *is* the 1066 start, with Cairo (above). The candidates are:
   - "Through the Curtain", an Adelphai starter set at Fatimid Cairo under Rasad (`research/later_starts/region_islamic-world.md` §2, sketch A);
   - "The Mothers of the Drum", the Baghdad/Rayy *mukhannathūn* troupe as an event pack, never a faith, with one Rūm-born Adelphai daughter in it (`research/later_starts/mukhannathun_baghdad_1066.md`).
 
@@ -185,7 +187,7 @@ Tied to the 1178 bookmark, which waits until after the Silk & Silver DLC (17 Nov
 - [ ] Mārkaḻi window; companions falling away; the staff roll; names of the temple street; the endowment and the pandit's objection
 - [ ] Badenya: the three-party gate; no claimant; the jeli's satire; the djinn's single return (and on the new body); naming feasts; burial skipping re-embodied bodies
 - [ ] Badenya's god names (Ala, the ancestors, the bush spirits): check with a Mande speaker; check every vanilla god-name key is overridden
-- [ ] Optional, not built: a solitary Tai vow to Kāma at Kanchi after the Mārkaḻi vow (user: "either or")
+- [x] A solitary Tai vow to Kāma after the Mārkaḻi vow (built in wave 10, `docs/wave10/garland.md`)
 - [ ] Commissioned faith icons for both (placeholders: hinduism, mande_reformed)
 
 ## Branch faiths, stage 2 (next)
@@ -315,7 +317,7 @@ In-game checks for everything built on 2026-10-21. Scenarios are in TO-TEST.md �
 
 ## The Worn Garland, wave 4 (added 2026-10-21, untested in-game; docs/wave4/garland.md)
 - [ ] Garland wave 4 (`tm_ml3`): a lamp kept by the market (`tm_ml2.0010` option e); the quarter that dwindled (0010); Heroes of the Road contract (0020–0022) → guild town by vanilla settlement (0030–0031); the Lord of Vannadu (0040)
-- [ ] Garland, from Hall §11, not built: Those Who Always Accompany Us (band sworn to merchants; Polonnaruwa); A Hall in the Name of the Five Hundred (a band's *maṇḍapa* marks a street); the Pepper Merchant's Vow; a company of the Thousand Directions (waits for merchant companies)
+- [x] Garland wave 10 (`tm_ml4`, `docs/wave10/garland.md`): Those Who Always Accompany Us (band sworn to merchants; a relic temple in Lanka); A Hall in the Name of the Five Hundred; the Pepper Merchant's Vow. Still waiting for merchant companies: a company of the Thousand Directions
 - [ ] Badenya could borrow the caravan contract (a Mande trader as employer, not "the Dyula")
 
 ## Yutai and the Sogdians (wave 4, added 2026-10-21, untested in-game; docs/wave4/yutai-sogdians.md)

@@ -207,7 +207,7 @@ The Worn Garland is an invented current of Tamil devotion inside Hinduism, seate
 
 A seeker becomes a daughter through the pāvai vow, kept for a month in Mārkaḻi (December or January) with the women of her court. Before dawn she wakes her companions door to door; they sing Śiva's *Tiruvempāvai* or Āṇṭāḷ's *Tiruppāvai* while cold mornings thin the circle; she may wear the god's garland before it is offered, as Āṇṭāḷ did. At the end a staff is touched to her head and she is given a name, an old rite of Śiva's temples. What decides it is how many friends held to the end.
 
-Her scripture is King Bhaṅgāśvana of the *Mahābhārata*, turned into a woman and offered her old body back, who answered: "I desire to remain a woman." Orthodox pandits reply with Ilā, turned back in every telling; the Garland, following Talia Bhatt, calls Ilā's half-and-half state a cage. A Hindu lord may grant a daughter a house and a share on the temple street in her own name; from 1070 she may buy one and pass it to a daughter of her choosing. Her gold becomes gifts cut in the temple wall: a lamp, a feeding house, the Lady set beside the god. Reciters bring Kāraikkāl Ammaiyār's story and Basavaṇṇa's sayings, which the faith hears as its own, and landless daughters endow lamps through market assemblies or guard caravans to the coast.
+Her scripture is King Bhaṅgāśvana of the *Mahābhārata*, turned into a woman and offered her old body back, who answered: "I desire to remain a woman." Orthodox pandits reply with Ilā, turned back in every telling; the Garland, following Talia Bhatt, calls Ilā's half-and-half state a cage. A Hindu lord may grant a daughter a house and a share on the temple street in her own name; from 1070 she may buy one and pass it to a daughter of her choosing. Her gold becomes gifts cut in the temple wall: a lamp, a feeding house, the Lady set beside the god. Reciters bring Kāraikkāl Ammaiyār's story and Basavaṇṇa's sayings, which the faith hears as its own, and landless daughters endow lamps through market assemblies or guard caravans to the coast. A band that has kept the merchants' road may swear to be among "those who always accompany" them, raise a hall in its guild's name on a temple street, or, in Lanka, guard a Buddhist king's relic temple. After Mārkaḻi a daughter may keep the old Tai bath alone, addressed to Kāma.
 
 What sets the Garland apart is that it answers to both gods: Śiva's temples give it its daughters, rite and women's song, Viṣṇu's poets the bride. And where every human bride of the god in the old myths merges with the image or dies, its daughters stay in the world, own a share, and give. Āṇṭāḷ is venerated but never cast as its founder; the faith claims her vow, not her person.
 
@@ -264,16 +264,16 @@ Built so far is described in the faith sections above. What was planned and not 
 - [ ] Bædling and the bands: the Strumica peace, Merope's command, the Vigla; flight to a petty coastal lord; The Sword Is My Patent and the darker Companions
 - [ ] Yutai Dao: the Liao and Ming levers, Cui Yin's 902 proposal, the Boy from Min, the repair levy; the women's chains (Xue Xuantong, Wang Fengxian, the abbess of Mo-shan, Empress Chengtian); regency rules by culture
 - [ ] Yutai Dao: the Sogdian rows (Master of the Caravan, Sabao to Office, the Network's Post, the Town of the Grape, the Rallied Township)
-- [ ] Worn Garland: the solitary Tai vow to Kāma; Hall's company of the Five Hundred and the Pepper Merchant's Vow
+- [x] Worn Garland: the solitary Tai vow to Kāma; a band sworn with the merchants, a hall in the name of the Five Hundred, and the Pepper Merchant's Vow (built, not yet tested in game)
 - [x] Ha-Nehpakhot: the bailiff's variants (Catalonia's *batlle* and *berurim*, the panic after a patron's fall); send for a household of the street (built, not yet tested in game)
 - [x] Badenya: the refuge at Koulikoro; the fall of the associate in rule (built, not yet tested in game)
 - [ ] Reactions from the wider world: the Abbasid court (the jester, the plucked beard, the barber) and the comparanda (Huguccio, Ibn Ḥazm, the Orthodox Slavs' penances, the Mamluks, Hostiensis, Walther)
 - [ ] Survival balance from observe runs (first pass built; checked each run)
 - [ ] Commissioned art: faith and trait icons, tenets and doctrines, event pictures, map colours
 
-### After the Silk & Silver DLC (17 November 2026), if ever
+### Version 2, and after the Silk & Silver DLC (17 November 2026)
 
-- [ ] Version 2.0.0: a 1178 start with two new faiths, the singers' houses of the Yodo river ports in Japan (*Imayō no Ie*) and *the Good Ladies*, a Latin household devotion of the night company; a new 1178 house for Yutai Dao at Lin'an, the Song capital; and the Worn Garland's world of 1178 as era events in every start. Researched, not built; designs and open decisions in `docs/research/v2/` (see `docs/TODO.md`)
+- [ ] Version 2.0.0: a 1066 start with two new faiths, the singers' houses of the Yodo river ports in Japan (*Imayō no Ie*, seated at Settsu) and *the Good Ladies*, a Latin household devotion of the night company (the Rhineland, Prüm); and Adelphai Dorleyaiou at Fatimid Cairo, among the palace's *mukhannathūn*. The other faiths keep their 867 seats, and the Worn Garland's later changes come as era events in every start. Being built on the `v2-1066` branch; designs and open decisions in `docs/research/v2/` and `docs/research/later_starts/` (see `docs/TODO.md`)
 - [ ] Silk & Silver ideas for Yutai Dao and the Worn Garland (traders, caravans, guilds)
 - [ ] Merchant companies: a charter for a trading post held by contract, a third road for the bands
 

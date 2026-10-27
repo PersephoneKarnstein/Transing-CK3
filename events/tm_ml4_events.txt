@@ -1,0 +1,329 @@
+﻿namespace = tm_ml4
+
+# Crusader Dolls — the Worn Garland, wave 10 (docs/wave10/garland.md).
+#   0001        waiting for Tai (hidden)
+#   0002-0003   the Tai bath, kept alone, addressed to Kama (Hardy 1983, pp. 418, 512)
+#   0010-0011   Those Who Always Accompany Us: a band sworn with the merchants (Hall 1980, pp. 191–93)
+#   0012        a third temple: a relic temple in Lanka, after 1070 (Hall 1980, pp. 174, 191–92)
+#   0020        a hall in the name of the guild (Hall 1980, pp. 144, 154, 192)
+#   0030-0031   the pepper merchant's vow on the road to Kanchi (Hall 1980, p. 151, p. 160 n. 54)
+
+# Waiting for Tai. Root = the daughter.
+tm_ml4.0001 = {
+	type = character_event
+	hidden = yes
+
+	trigger = {
+		has_variable = tm_ml4_tai_waiting
+		faith = faith:tm_garland
+		is_imprisoned = no
+	}
+
+	immediate = {
+		tm_ml4_await_tai_effect = yes
+	}
+}
+
+# The Tai bath. Root = the daughter.
+tm_ml4.0002 = {
+	type = character_event
+	title = tm_ml4.0002.t
+	desc = tm_ml4.0002.desc
+	theme = faith
+	override_background = { reference = terrain }
+	left_portrait = { character = root animation = personality_rational }
+
+	trigger = { tm_ml4_tai_keeper_trigger = yes }
+
+	option = {	# Keep it alone
+		name = tm_ml4.0002.a
+		add_character_modifier = { modifier = tm_ml4_tai_keeping_modifier days = 30 }
+		set_variable = { name = tm_ml4_tai_kept value = yes years = 3 }
+		if = {
+			limit = { location.county ?= title:c_kanchipuram }
+			add_piety = 15
+		}
+		trigger_event = { id = tm_ml4.0003 days = 30 }
+		tm_ml4_tally_effect = { WHAT = tai_kept }
+		ai_chance = {
+			base = 60
+			modifier = { add = 20 has_trait = zealous }
+			modifier = { add = 10 has_trait = patient }
+		}
+	}
+	option = {	# Not this Tai
+		name = tm_ml4.0002.b
+		add_stress = -5
+		set_variable = { name = tm_ml4_tai_kept value = yes years = 1 }
+		tm_ml4_tally_effect = { WHAT = tai_not_now }
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = lazy }
+			modifier = { add = 10 has_trait = impatient }
+		}
+	}
+}
+
+# What she asks of Kama. Root = the daughter.
+tm_ml4.0003 = {
+	type = character_event
+	title = tm_ml4.0003.t
+	desc = tm_ml4.0003.desc
+	theme = faith
+	override_background = { reference = terrain }
+	left_portrait = { character = root animation = happiness }
+
+	option = {	# Rain for the country
+		name = tm_ml4.0003.a
+		trigger = { exists = location.county }
+		add_piety = 20
+		location.county = {
+			add_county_modifier = { modifier = tm_ml4_tai_rain_county_modifier years = 5 }
+		}
+		tm_ml4_tally_effect = { WHAT = tai_rain }
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = compassionate }
+			modifier = { add = 10 is_landed = yes }
+		}
+	}
+	option = {	# A love of her own
+		name = tm_ml4.0003.b
+		add_character_modifier = { modifier = tm_ml4_kama_modifier years = 10 }
+		add_stress = -20
+		tm_ml4_tally_effect = { WHAT = tai_love }
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = lustful }
+			modifier = { add = 10 is_married = no }
+		}
+	}
+	option = {	# Ask nothing
+		name = tm_ml4.0003.c
+		add_stress = -30
+		add_piety = 10
+		tm_ml4_tally_effect = { WHAT = tai_nothing }
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = content }
+			modifier = { add = 10 has_trait = humble }
+		}
+	}
+}
+
+# Those Who Always Accompany Us. Root = the band's leader; scope:tm_ml4_lord = the merchants' lord.
+tm_ml4.0010 = {
+	type = character_event
+	title = tm_ml4.0010.t
+	desc = tm_ml4.0010.desc
+	theme = martial
+	override_background = { reference = market_india }
+	left_portrait = { character = root animation = marshal }
+	right_portrait = { character = scope:tm_ml4_lord animation = personality_rational }
+
+	trigger = {
+		exists = scope:tm_ml4_lord
+		tm_ml4_could_swear_trigger = yes
+		NOT = { has_relation_rival = scope:tm_ml4_lord }
+	}
+
+	option = {	# Swear with the merchants
+		name = tm_ml4.0010.a
+		tm_ml4_swear_effect = yes
+		save_scope_as = tm_ml4_band
+		scope:tm_ml4_lord = { trigger_event = { id = tm_ml4.0011 days = 1 } }
+		ai_chance = {
+			base = 60
+			modifier = { add = 20 has_trait = loyal }
+			modifier = { add = 10 has_trait = honest }
+			modifier = { add = -30 has_trait = disloyal }
+		}
+	}
+	option = {	# Hired, not sworn
+		name = tm_ml4.0010.b
+		add_prestige = 10
+		tm_ml4_tally_effect = { WHAT = oath_refused }
+		ai_chance = {
+			base = 20
+			modifier = { add = 20 has_trait = arrogant }
+			modifier = { add = 20 has_trait = disloyal }
+		}
+	}
+}
+
+# The lord hears of the oath. Root = the merchants' lord; scope:tm_ml4_band = the band's leader.
+tm_ml4.0011 = {
+	type = character_event
+	title = tm_ml4.0011.t
+	desc = tm_ml4.0011.desc
+	theme = stewardship
+	override_background = { reference = market_india }
+	left_portrait = { character = root animation = happiness }
+	right_portrait = { character = scope:tm_ml4_band animation = marshal }
+
+	option = {
+		name = tm_ml4.0011.a
+	}
+}
+
+# A third temple. Root = the band's leader; scope:tm_ml4_king = a Buddhist ruler in Lanka.
+tm_ml4.0012 = {
+	type = character_event
+	title = tm_ml4.0012.t
+	desc = {
+		desc = tm_ml4.0012.desc
+		triggered_desc = {
+			trigger = { tm_ml4_sworn_trigger = yes }
+			desc = tm_ml4.0012.desc.sworn
+		}
+	}
+	theme = faith
+	override_background = { reference = temple }
+	left_portrait = { character = root animation = marshal }
+	right_portrait = { character = scope:tm_ml4_king animation = personality_zealous }
+
+	trigger = {
+		exists = scope:tm_ml4_king
+		scope:tm_ml4_king = { is_alive = yes }
+		tm_ml3_garland_band_trigger = yes
+	}
+
+	option = {	# Guard the third temple
+		name = tm_ml4.0012.a
+		add_character_modifier = { modifier = tm_ml4_relic_guard_modifier years = 10 }
+		scope:tm_ml4_king = { add_opinion = { target = root modifier = tm_ml4_relic_guard_opinion } }
+		if = {
+			limit = { tm_ml4_sworn_trigger = yes }
+			add_prestige = 50
+		}
+		tm_ml4_tally_effect = { WHAT = relic_guard }
+		ai_chance = {
+			base = 60
+			modifier = { add = 20 has_trait = zealous }
+			modifier = { add = 10 has_trait = greedy }
+		}
+	}
+	option = {	# The road is the band's temple
+		name = tm_ml4.0012.b
+		add_prestige = 10
+		ai_chance = {
+			base = 20
+			modifier = { add = 20 has_trait = cynical }
+		}
+	}
+}
+
+# A hall in the name of the guild. Root = the band's leader; scope:tm_ml4_hall_lord = the Hindu lord.
+tm_ml4.0020 = {
+	type = character_event
+	title = tm_ml4.0020.t
+	desc = tm_ml4.0020.desc
+	theme = faith
+	override_background = { reference = temple }
+	left_portrait = { character = root animation = marshal }
+	right_portrait = { character = scope:tm_ml4_hall_lord animation = personality_rational }
+
+	trigger = {
+		exists = scope:tm_ml4_hall_lord
+		scope:tm_ml4_hall_lord = { tm_ml4_hall_lord_trigger = yes }
+		gold >= 150
+		tm_ml3_garland_band_trigger = yes
+	}
+
+	option = {	# Raise the hall
+		name = tm_ml4.0020.a
+		tm_ml4_raise_hall_effect = yes
+		ai_chance = {
+			base = 50
+			modifier = { add = 20 has_trait = generous }
+			modifier = { add = 15 has_trait = zealous }
+			modifier = { add = -30 has_trait = greedy }
+		}
+	}
+	option = {	# The gold stays with the band
+		name = tm_ml4.0020.b
+		set_variable = { name = tm_ml4_hall_given value = yes years = 5 }
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = greedy }
+		}
+	}
+}
+
+# The road to Kanchi. Root = the traveller.
+tm_ml4.0030 = {
+	type = character_event
+	title = tm_ml4.0030.t
+	desc = tm_ml4.0030.desc
+	theme = faith
+	override_background = { reference = terrain }
+	left_portrait = { character = root animation = worry }
+
+	trigger = { exists = current_travel_plan }
+
+	immediate = {
+		set_variable = { name = tm_ml4_pepper_cooldown value = yes years = 10 }
+	}
+
+	option = {	# Vow ten bags of pepper
+		name = tm_ml4.0030.a
+		set_variable = { name = tm_ml4_pepper_vow value = yes years = 2 }
+		add_stress = -10
+		tm_ml4_tally_effect = { WHAT = pepper_vowed }
+		ai_chance = {
+			base = 50
+			modifier = { add = 20 has_trait = craven }
+			modifier = { add = 20 has_trait = paranoid }
+		}
+	}
+	option = {	# Trust the guards
+		name = tm_ml4.0030.b
+		add_prestige = 5
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = brave }
+			modifier = { add = 10 has_trait = cynical }
+		}
+	}
+}
+
+# Safe at Kanchi. Root = the traveller.
+tm_ml4.0031 = {
+	type = character_event
+	title = tm_ml4.0031.t
+	desc = tm_ml4.0031.desc
+	theme = faith
+	override_background = { reference = market_india }
+	left_portrait = { character = root animation = happiness }
+
+	trigger = { has_variable = tm_ml4_pepper_vow }
+
+	immediate = {
+		remove_variable = tm_ml4_pepper_vow
+	}
+
+	option = {	# Pay the vow
+		name = tm_ml4.0031.a
+		trigger = { gold >= 30 }
+		show_as_unavailable = { always = yes }
+		remove_short_term_gold = 30
+		add_piety = 30
+		add_prestige = 10
+		tm_ml4_tally_effect = { WHAT = pepper_paid }
+		ai_chance = {
+			base = 60
+			modifier = { add = 20 has_trait = honest }
+			modifier = { add = 20 has_trait = zealous }
+		}
+	}
+	option = {	# Safe is safe
+		name = tm_ml4.0031.b
+		add_character_modifier = { modifier = tm_ml4_green_gram_modifier years = 5 }
+		tm_ml4_tally_effect = { WHAT = pepper_forgot }
+		ai_chance = {
+			base = 20
+			modifier = { add = 30 has_trait = greedy }
+			modifier = { add = 10 has_trait = cynical }
+		}
+	}
+}

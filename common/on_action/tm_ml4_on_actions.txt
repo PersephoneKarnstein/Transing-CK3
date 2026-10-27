@@ -1,0 +1,115 @@
+﻿# Crusader Dolls — the Worn Garland, wave 10 (events/tm_ml4_events.txt; docs/wave10/garland.md). Appended to vanilla.
+
+yearly_playable_pulse = {
+	on_actions = { tm_ml4_yearly }
+}
+
+on_travel_plan_start = {
+	on_actions = { tm_ml4_travel_start }
+}
+
+on_travel_plan_complete = {
+	on_actions = { tm_ml4_travel_complete }
+}
+
+tm_ml4_yearly = {
+	effect = {
+		# The Tai bath: a courtier daughter of the Garland, through her host's pulse (a playable daughter has the
+		# decision). 10 in 100 a year; the flavour budget is spent on her.
+		every_courtier = {
+			limit = {
+				tm_ml4_tai_keeper_trigger = yes
+				tm_flavour_ready_trigger = yes
+			}
+			random = {
+				chance = 10
+				tm_flavour_spent_effect = yes
+				tm_ml4_await_tai_effect = yes
+			}
+		}
+
+		# Those Who Always Accompany Us: an AI band offered the oath by the merchants it guarded for. A player's band
+		# swears by the decision.
+		if = {
+			limit = {
+				is_ai = yes
+				tm_ml4_could_swear_trigger = yes
+				NOT = { has_variable = tm_ml4_oath_offered }
+			}
+			random = {
+				chance = 25
+				set_variable = { name = tm_ml4_oath_offered value = yes years = 10 }
+				var:tm_ml4_merchant_lord = { save_scope_as = tm_ml4_lord }
+				trigger_event = { id = tm_ml4.0010 days = { 1 60 } }
+			}
+		}
+		if = {	# the lord died or lost his land: the oath lapses
+			limit = {
+				has_variable = tm_ml4_sworn_to
+				tm_ml4_sworn_trigger = no
+			}
+			remove_variable = tm_ml4_sworn_to
+		}
+
+		# A third temple: a band in Lanka, after 1070.
+		if = {
+			limit = {
+				tm_ml4_lanka_band_trigger = yes
+				tm_flavour_ready_trigger = yes
+			}
+			random = {
+				chance = 20
+				tm_flavour_spent_effect = yes
+				set_variable = { name = tm_ml4_relic_offered value = yes years = 30 }
+				location.county.holder = { save_scope_as = tm_ml4_king }
+				trigger_event = { id = tm_ml4.0012 days = { 1 60 } }
+			}
+		}
+
+		# A hall in the name of the guild.
+		if = {
+			limit = {
+				tm_ml4_hall_band_trigger = yes
+				tm_flavour_ready_trigger = yes
+			}
+			random = {
+				chance = 15
+				modifier = { add = 15 tm_ml4_sworn_trigger = yes }
+				tm_flavour_spent_effect = yes
+				if = {
+					limit = {
+						tm_ml4_sworn_trigger = yes
+						var:tm_ml4_sworn_to = { tm_ml4_hall_lord_trigger = yes }
+					}
+					var:tm_ml4_sworn_to = { save_scope_as = tm_ml4_hall_lord }
+				}
+				else = {
+					var:tm_ml4_merchant_lord = { save_scope_as = tm_ml4_hall_lord }
+				}
+				trigger_event = { id = tm_ml4.0020 days = { 1 60 } }
+			}
+		}
+	}
+}
+
+# The pepper merchant's vow: a ruler (vanilla's trigger on this on_action) setting out for Kanchipuram. 20 in 100.
+tm_ml4_travel_start = {
+	trigger = { tm_ml4_kanchi_road_trigger = yes }
+	effect = {
+		random = {
+			chance = 20
+			trigger_event = { id = tm_ml4.0030 days = { 3 10 } }
+		}
+	}
+}
+
+# Safe at Kanchipuram with a vow made on the road.
+tm_ml4_travel_complete = {
+	trigger = {
+		has_variable = tm_ml4_pepper_vow
+		location.county ?= title:c_kanchipuram
+	}
+	effect = {
+		trigger_event = { id = tm_ml4.0031 days = { 1 5 } }
+	}
+}

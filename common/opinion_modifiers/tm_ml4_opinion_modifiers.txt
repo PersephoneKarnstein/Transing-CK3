@@ -1,0 +1,24 @@
+﻿# Crusader Dolls — the Worn Garland, wave 10 (docs/wave10/garland.md).
+
+# The band and the merchants' lord: "who always accompany us" (Hall 1980, p. 192).
+tm_ml4_accompany_opinion = {
+	opinion = 25
+}
+
+# The band raised a hall in my capital in its guild's name.
+tm_ml4_hall_opinion = {
+	opinion = 20
+	years = 20
+}
+
+# The band raised a hall on my temple street.
+tm_ml4_band_and_street_opinion = {
+	opinion = 10
+	years = 20
+}
+
+# The band guards my relic temple.
+tm_ml4_relic_guard_opinion = {
+	opinion = 20
+	years = 10
+}
