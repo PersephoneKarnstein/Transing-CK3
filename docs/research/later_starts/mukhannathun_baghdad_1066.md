@@ -31,7 +31,7 @@ Arabic texts were read in page-numbered digital editions at turath.io (which sta
 - **Ghars al-Niʿma Muḥammad b. Hilāl al-Ṣābiʾ** (d. 1088, Baghdad), *al-Hafawāt al-nādira*, ed. Ṣāliḥ al-Ashtar (Damascus, 1967): §§105, 113, 238, 291 (pp. 21, 23–24, 64, 75).
 - **Hilāl al-Ṣābiʾ** (d. 1056), *Rusūm dār al-khilāfa*, ed. Mīkhāʾīl ʿAwwād: pp. 7–8, 136–137. Elie Salem's English translation (1977) was not seen.
 - **al-Ghazālī** (d. 1111), *Iḥyāʾ ʿulūm al-dīn* (Dār al-Maʿrifa, Beirut), Kitāb ādāb al-samāʿ wa-l-wajd: 2:272, 2:282; and 3:59, 3:72, 3:353. D. B. Macdonald (trans.), "Emotional Religion in Islam as Affected by Music and Singing," *JRAS* 1901: 195–252, 705–748, at pp. 213–214, 237.
-- **E. G. Browne**, "Account of a Rare Manuscript History of Iṣfahán," *JRAS* 1901: 411–446, 661–704, at pp. 672–674 (on al-Mafarrūkhī's *Maḥāsin Iṣfahān*, c. 1030). Browne summarises the anecdotes and prints them in Persian; he does not translate them.
+- **E. G. Browne**, "Account of a Rare Manuscript History of Iṣfahán," *JRAS* 1901: 411–446, 661–704, at pp. 672–674 (on al-Mafarrūkhī's *Maḥāsin Iṣfahān*, c. 1030). Of the chapter's fourteen stories, the first six have a *mukhannath* hero. Browne prints the Persian of only two of them, No. 3 (Dukhandī and the jester of Kirmān) and No. 5 (the fine shroud), and omits the other four "as objectionable, or pointless, or both" (p. 673). His English summaries are of the fools' stories only. The text is a later Persian translation (probably Ilkhanid) with additions, so the stories cannot be firmly dated to c. 1030 (`isl_browne_isfahan_history.md`).
 - **Ibn Buṭlān** (d. c. 1066), *Risāla jāmiʿa li-funūn nāfiʿa fī shirāʾ al-raqīq*, ed. ʿAbd al-Salām Hārūn, *Nawādir al-makhṭūṭāt* I (Cairo, 1972), pp. 351–389, read for eunuchs and performers only. His *Daʿwat al-aṭibbāʾ* (1058), Tehran facsimile, pp. 44–45.
 - **al-Sarakhsī** (d. c. 1090), *al-Mabsūṭ* (Cairo: Saʿāda; repr. Dār al-Maʿrifa): 10:158, 16:131, 30:103–108. **al-Qudūrī** (d. 1037, Baghdad), *al-Mukhtaṣar*, ed. ʿUwayḍa (1997), p. 220. **al-Shāfiʿī**, *al-Umm* (Dār al-Fikr, 1983), 6:146.
 - **Ibn ʿAbdūn** (Seville, c. 1100), Arabic in É. Lévi-Provençal (ed.), *Trois traités hispaniques de ḥisba* (Cairo: IFAO, 1955), p. 51 ll. 8–10 and apparatus n. 191 (read from the page image). The Spanish (García Gómez and Lévi-Provençal, *Sevilla a comienzos del siglo XII*, 1948, pp. 157–158) is known only through Bollo-Panadero; the French (1947) was not found.
@@ -132,7 +132,7 @@ The base texts are themselves of the window and the region. Rowson's three vice-
   - the *ʿayyārūn* hire *mukhannathūn* at Hamadan (16:82).
   
   No source shows the caliph al-Qāʾim keeping *mukhannathūn*. After the ninth century, court *mukhannath* musicians had too little celebrity "even to have their names preserved" (Rowson 1991a, p. 693).
-- **Isfahan.** Al-Mafarrūkhī's local history (c. 1030) has a chapter of anecdotes on "women, *mukhannathān*, and fools". It includes a "celebrated *mukhannath* named Dukhandī" and "the *mukhannath* who wanted a fine shroud" (Browne 1901, pp. 672–674; *unverified* beyond Browne's summary).
+- **Isfahan.** Al-Mafarrūkhī's local history (c. 1030) has a chapter of anecdotes on "women, *mukhannathān*, and fools". It includes a "celebrated *mukhannath* named Dukhandī" and "the *mukhannath* who wanted a fine shroud" (Browne 1901, pp. 672–674). Nos. 3 and 5 were read in Browne's printed Persian; the working translations in `isl_browne_isfahan_history.md` should be checked by a Persian reader. Nos. 1, 2, 4 and 6 are not printed.
 
 **e. Weddings, brokering and mourning.**
 - **Weddings.**
@@ -435,7 +435,7 @@ The troupe does not vanish: *mukhānīth* still appear in 517 and 532 AH (17:216
 ## 5. Open questions
 
 1. ~~**Rowson 2003, nn. 62–63.**~~ **Answered (2026-10-26):** both are al-Musabbiḥī, *Akhbār Miṣr*, ed. Sayyid–Bianquis (IFAO 1978), pp. 68 and 104, Shawwāl 415 / December 1024, Fusṭāṭ. See `mukhannathun_fatimid_cairo.md` §1.1–1.2.
-2. **Al-Mafarrūkhī's *Maḥāsin Iṣfahān*.** Translate the six *mukhannath* anecdotes Browne summarises (pp. 672–674): Dukhandī and the shroud. This is the best Isfahan-specific material.
+2. **Al-Mafarrūkhī's *Maḥāsin Iṣfahān*.** Only Nos. 3 and 5 of the six *mukhannath* anecdotes are in Browne (pp. 673–674); see `isl_browne_isfahan_history.md`. The other four need the RAS manuscript or the Paris copy (Supplément persan 1573). This is still the best Isfahan-specific material.
 3. **Al-Rāghib, ḥadd 16.** Fix the page numbers against a paginated print (Beirut, Dār al-Arqam, 2:264–304).
 4. **The *kūba* and the *ṭubūl al-makhānīth*.** Are they the same instrument? Check the Ikhwān al-Ṣafāʾ, *Rasāʾil* 1:193, and organology (Farmer).
 5. **Makdisi's Ibn al-Bannāʾ diary** (BSOAS 1956–57) and *Ibn ʿAqīl* (1997). Read them directly for any *mukhannath* entry in 1068–69 Baghdad.

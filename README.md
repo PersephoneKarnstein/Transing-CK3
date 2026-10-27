@@ -361,7 +361,7 @@ Cited in the notes, not read: Feinberg, Leslie, *Transgender Warriors* (in the R
 </details>
 
 <details>
-<summary><strong>Byzantium, Cybele and the eunuch traditions</strong> (30 works)</summary>
+<summary><strong>Byzantium, Cybele and the eunuch traditions</strong> (31 works)</summary>
 
 - Betancourt, Roland. 2020. *Byzantine Intersectionality: Sexuality, Gender, and Race in the Middle Ages*. Princeton University Press.
 - Blessing, Patricia, and Rachel Goshgarian (eds.). 2017. *Architecture and Landscape in Medieval Anatolia, 1100–1500*. Edinburgh University Press.
@@ -371,6 +371,7 @@ Cited in the notes, not read: Feinberg, Leslie, *Transgender Warriors* (in the R
 - De Nicola, Bruno. 2024. *The Chobanids of Kastamonu: Politics, Patronage and Religion in Thirteenth-Century Anatolia*. Routledge. (Open access.)
 - Garland, Lynda. 1999. *Byzantine Empresses: Women and Power in Byzantium, AD 527–1204*. Routledge.
 - Guilland, Rodolphe. 1943. "Les eunuques dans l'Empire byzantin." *Études byzantines* 1: 197–238.
+- James, Liz (ed.). 1997. *Women, Men and Eunuchs: Gender in Byzantium*. Routledge. (Webb, Tougher and Barber chapters read in full; the rest in part.)
 - Jeffreys, Michael, and Marc D. Lauxtermann (eds.). 2017. *The Letters of Psellos: Cultural Networks and Historical Realities*. Oxford Studies in Byzantium. Oxford University Press. (Read in part: the summaries of the letters used, the excursus on gender, and parts of chapters 3–6.)
 - King, Helen. 2013. *The One-Sex Body on Trial: The Classical and Early Modern Evidence*. Ashgate.
 - Latham, Jacob. 2012. "'Fabulous Clap-Trap': Roman Masculinity, the Cult of Magna Mater, and Literary Constructions of the *galli* at Rome." *Journal of Religion* 92.1: 84–122.
@@ -407,20 +408,24 @@ Cited in the notes, not read: Kuefler, *The Manly Eunuch* (2001); Messis, *Les e
 </details>
 
 <details>
-<summary><strong>Islamic world and Fatimid Egypt</strong> (32 works, with primary sources and modern guardrail reading)</summary>
+<summary><strong>Islamic world and Fatimid Egypt</strong> (36 works, with primary sources and modern guardrail reading)</summary>
 
 - Almarri, Saqer A. 2016. "'You Have Made Her a Man among Men': Translating the Khuntha's Anatomy in Fatimid Jurisprudence." *TSQ: Transgender Studies Quarterly* 3.3–4: 578–586.
 - Almarri, Saqer A. 2018. "Identities of a Single Root: The Triad of the Khuntha, Mukhannath, and Khanith." *Women & Language* 41.1: 97–109. (Read in the online reprint on *Arcade*, Stanford Humanities Center.)
+- Amer, Sahar. 2009. "Medieval Arab Lesbians and Lesbian-Like Women." *Journal of the History of Sexuality* 18.2: 215–236.
 - Ayalon, David. 1999. *Eunuchs, Caliphs and Sultans: A Study in Power Relationships*. Jerusalem: Magnes Press.
 - Bouchakour Ali Amar, Amina, and Rabah Lounici. 2025. "Sufi Brotherhoods (Turuq) and Their Functional Transformations." *Science, Education and Innovations in the Context of Modern Problems* 8.8: 626–634. (Leads only: its references are unreliable.)
+- Browne, Edward G. 1901. "Account of a Rare Manuscript History of Iṣfahán." *Journal of the Royal Asiatic Society* (October): 661–704. (Read by search: the chapter of anecdotes.)
 - Cortese, Delia, and Simonetta Calderini. 2006. *Women and the Fatimids in the World of Islam*. Edinburgh University Press. (Chapters 3 and 6 read in full; the rest in part.)
 - Davis, Natalie Zemon. 2006. *Trickster Travels: A Sixteenth-Century Muslim between Worlds*. Hill and Wang.
 - de la Puente, Cristina. 2023. "Al-Ḥakam I in the Andalusi Sources: His Slaves, Eunuchs, and Concubines." *Slavery & Abolition* 44.4: 593–615.
+- Doubleday, Veronica. 1999. "The Frame Drum in the Middle East: Women, Musical Instruments and Power." *Ethnomusicology* 43.1: 101–134.
 - El-Azhari, Taef. 2019. *Queens, Eunuchs and Concubines in Islamic History, 661–1257*. Edinburgh University Press.
 - Gesink, Indira Falk. 2018. "Intersex Bodies in Premodern Islamic Discourse: Complicating the Binary." *Journal of Middle East Women's Studies* 14.2: 152–173.
 - Halm, Heinz. 1996. *The Empire of the Mahdi: The Rise of the Fatimids*. Trans. Michael Bonner. Handbook of Oriental Studies 1.26. Brill. (Read in part: the household, the eunuch Jawdhar, the women's sessions, Byzantium.)
 - Halm, Heinz. 2014. *Kalifen und Assassinen: Ägypten und der Vordere Orient zur Zeit der ersten Kreuzzüge 1074–1171*. C. H. Beck.
 - Hirsch, Hadas. 2023. "The Construction of Other Genders by Means of Personal Appearance in Medieval Islam: The Case of Mukhannathūn (Effeminates) and Kuntha (Hermaphrodites)." *Acta ad archaeologiam et artium historiam pertinentia* 33: 387–403. (Open access.)
+- Kapitaikin, Lev A. 2019. "David's Dancers in Palermo: Islamic Dance Imagery and Its Christian Recontextualization in the Ceilings of the Cappella Palatina." *Early Music* 47.1: 3–23.
 - Lecoquierre, Marion. 2023. "Ribāṭ in Palestine: Life on the Frontier." *Contemporary Levant* 8.2: 157–173.
 - Lev, Yaacov. 1991. *State and Society in Fatimid Egypt*. Arab History and Civilization 1. Brill.
 - Marmon, Shaun. 1995. *Eunuchs and Sacred Boundaries in Islamic Society*. Oxford University Press.
@@ -449,6 +454,8 @@ Cited in the notes, not read: Kuefler, *The Manly Eunuch* (2001); Messis, *Les e
   - Ibn al-Ukhuwwa. *Maʿālim al-qurba fī aḥkām al-ḥisba*. Ed. Reuben Levy. Gibb Memorial Series, n.s. 12. Cambridge, 1938.
   - al-Maqrīzī. *Ittiʿāẓ al-ḥunafāʾ bi-akhbār al-aʾimma al-Fāṭimiyyīn al-khulafāʾ*. Ed. Jamāl al-Dīn al-Shayyāl and Muḥammad Ḥilmī Muḥammad Aḥmad. 3 vols. Cairo, 1967–73.
   - al-Maqrīzī. *al-Mawāʿiẓ wa-l-iʿtibār fī dhikr al-khiṭaṭ wa-l-āthār*. Ed. Ayman Fuʾād Sayyid. 5 vols. London: Al-Furqān, 2002–04.
+  - al-Maqrīzī. *al-Mawāʿiẓ wa-l-iʿtibār fī dhikr al-khiṭaṭ wa-l-āthār*. 2 vols. Būlāq, 1853. (Vol. 1, Princeton copy, page OCR; searched.)
+  - al-Maqrīzī. *Towards a Shiʿi Mediterranean Empire: Fatimid Egypt and the Founding of Cairo* (the reign of al-Muʿizz from the *Ittiʿāẓ*). Trans. Shainool Jiwa. Ismaili Texts and Translations 11. I.B. Tauris, 2009. (Introduction in full; the translation by search.)
   - al-Muqaddasī. *Aḥsan al-taqāsīm fī maʿrifat al-aqālīm*. Ed. M. J. de Goeje. BGA 3. Leiden: Brill, 1906.
   - al-Musabbiḥī. *Tome quarantième de la Chronique d'Égypte de Musabbiḥī* (*al-Juzʾ al-arbaʿūn min Akhbār Miṣr*), I: *Partie historique*. Ed. Ayman Fuʾād Sayyid and Thierry Bianquis. Textes arabes et études islamiques 13/1. Cairo: IFAO, 1978.
   - Nāṣir-i Khusraw. *Sefer nameh: relation du voyage de Nassiri Khosrau*. Trans. Charles Schefer. Paris: Leroux, 1881.
@@ -458,7 +465,9 @@ Cited in the notes, not read: Kuefler, *The Manly Eunuch* (2001); Messis, *Les e
   - al-Shayzarī. *Nihāyat al-rutba fī ṭalab al-ḥisba*. Ed. al-Sayyid al-Bāz al-ʿArīnī. Cairo, 1946. English: *The Book of the Islamic Market Inspector*, trans. R. P. Buckley. Journal of Semitic Studies Supplement 9. Oxford University Press, 1999.
 - *Modern Egypt and the Arabic-speaking world (read for the guardrails on how the mod writes Cairo, not as evidence for the period):*
   - Abdelmoez, Joel W. 2021. "Deviants, Queers, or Scissoring Sisters of Men?: Translating and Locating Queer and Trans Feminisms in the Contemporary Arabic-Speaking World." In Tiina Rosenberg, Sandra D'Urso and Anna Renée Winget (eds.), *The Palgrave Handbook of Queer and Trans Feminisms in Contemporary Performance*, 283–301. Palgrave Macmillan.
+  - Botros, Beshouy. 2023. "Transition and Trans\*lation beyond Binary History in Mid-century Upper Egypt; or, Portraits of Transfemininity in Asyut." *WSQ: Women's Studies Quarterly* 51.3–4: 133–155.
   - Fortier, Corinne. 2025. "Introduction: From Third Gender to Trans and Queer People in Muslim Societies." *Anthropology of the Middle East* 20.1: 1–24. (Open access.)
+  - Hammad, Hanan, and Francesca Biancani. 2017. "Prostitution in Cairo." In Magaly Rodríguez García, Lex Heerma van Voss and Elise van Nederveen Meerkerk (eds.), *Selling Sex in the City: A Global History of Prostitution, 1600s–2000s*, 233–260. Brill. (Open access.)
   - Hayat, Imran, Asif Ali, and Nabeel Ahmed Nabeel. 2025. "Constructing Transgender Marital Capacity in Pakistan: A Foucauldian Analysis of Khunsa, Nikah, Islamic Family Law, and Human Rights." *Al-Jamei* 3.1: 558–571. (Skimmed for medieval law only.)
   - Noralla, Nora. 2023. "Gender Trouble in the Land of the Nile: Transgender Identities, the Judiciary and Islam in Egypt." *Yearbook of Islamic and Middle Eastern Law*, advance article. Brill. (Open access.)
   - Noralla, Nora. 2025. "Navigating Sharia with Condemned Bodies: A Comparative Study between Egypt and Iran on the Application of Sharia on Transgender Policy." In Nikhil Deb, Manjusha Nair and Glenn W. Muschert (eds.), *Handbook of Social Justice in the Global South*, 204–216. Edward Elgar.
@@ -503,6 +512,37 @@ Cited in the notes, not read: Ayalon, David, "On the Eunuchs in Islam," *Jerusal
   - Fulk, R. D., and Stefan Jurasinski (eds.). 2012. *The Old English Canons of Theodore*. Early English Text Society S.S. 25. Oxford University Press.
   - Kunz, Keneva (trans.). 2008. *The Vinland Sagas*. Introduction by Gísli Sigurðsson. Penguin Classics.
   - Saxo Grammaticus. *The Danish History, Books I–IX*. Trans. Oliver Elton (1894). Read in a public-domain electronic edition.
+
+</details>
+
+<details>
+<summary><strong>Latin Europe: witches, the Good Ladies and the Rhineland</strong> (23 works; research for version 2)</summary>
+
+- Cadden, Joan. 1984. "It Takes All Kinds: Sexuality and Gender Differences in Hildegard of Bingen's 'Book of Compound Medicine'." *Traditio* 40: 149–174.
+- Caviness, Madeline H. 2013. "Giving 'the Middle Ages' a Bad Name: Blood Punishments in the *Sachsenspiegel* and Town Lawbooks." *Studies in Iconography* 34: 175–235.
+- Chaudhuri, Soma, and Jane Ward (eds.). 2025. *The Witch Studies Reader*. Duke University Press.
+- Clark, Anne L. 2002. "The Priesthood of the Virgin Mary: Gender Trouble in the Twelfth Century." *Journal of Feminist Studies in Religion* 18.1: 5–24.
+- De Lis, Iris S. 2021. "Witches as Queer(ed) Comrades: How Patriarchy, Sexism and Religious Fanaticism Fueled the Early Modern European Witch Hunts." University Honors Thesis 1138, Portland State University.
+- Dobozy, Maria (trans.). 1999. *The Saxon Mirror: A* Sachsenspiegel *of the Fourteenth Century*. The Middle Ages Series. University of Pennsylvania Press. (Read by search: the inheritance and criminal-law clauses.)
+- Epiney-Burgard, Georgette, and Emilie Zum Brunn. 1989. *Women Mystics in Medieval Europe*. Trans. Sheila Hughes. Paragon House. (Introduction, the Hildegard material, the four beguine introductions and the conclusion read.)
+- Even-Ezra, Ayelet. 2017. "Cursus: An Early Thirteenth-Century Source for Nocturnal Flights and Ointments in the Work of Roland of Cremona." *Magic, Ritual, and Witchcraft* 12.3: 314–330.
+- Even-Ezra, Ayelet. 2019. *Ecstasy in the Classroom: Trance, Self, and the Academic Profession in Medieval Paris*. Fordham University Press.
+- Flint, Valerie, Richard Gordon, Georg Luck, and Daniel Ogden. 1999. *Witchcraft and Magic in Europe: Ancient Greece and Rome*. Athlone History of Witchcraft and Magic in Europe 2. Athlone Press.
+- Hollister, Reese. 2022. "Lenses, Focus, and Fluidity: Lessons from Medieval Queer History." *The Gettysburg Historical Journal* 21: 45–62.
+- Horsley, Richard A. 1979. "Further Reflections on Witchcraft and European Folk Religion." *History of Religions* 19.1: 71–95.
+- Hutton, Ronald. 2014. "The Wild Hunt and the Witches' Sabbath." *Folklore* 125.2: 161–178.
+- Hutton, Ronald. 2022. *Queens of the Wild: Pagan Goddesses in Christian Europe: An Investigation*. Yale University Press. (Introduction, the chapter on the Lady of the Night and the conclusion read in full; the rest by search.)
+- Jolly, Karen, Catharina Raudvere, and Edward Peters. 2002. *Witchcraft and Magic in Europe, Volume 3: The Middle Ages*. Athlone History of Witchcraft and Magic in Europe 3. Athlone Press.
+- Kallestrup, Louise Nyholm, and Raisa Maria Toivo (eds.). 2017. *Contesting Orthodoxy in Medieval and Early Modern Europe: Heresy, Magic and Witchcraft*. Palgrave Macmillan.
+- Lecouteux, Claude. 2011. *Phantom Armies of the Night: The Wild Hunt and the Ghostly Processions of the Undead*. Trans. Jon E. Graham. Inner Traditions.
+- Mann, Jill (ed. and trans.). 1987. *Ysengrimus: Text with Translation, Commentary and Introduction*. Mittellateinische Studien und Texte 12. Brill. (Read in part: the Pharaildis passage and its commentary.)
+- Motz, Lotte. 1984. "The Winter Goddess: Percht, Holda, and Related Figures." *Folklore* 95.2: 151–166.
+- Schilling, Michael (ed. and trans.). 2020. *Ysengrimus. Lateinisch–deutsch*. Sammlung Tusculum. De Gruyter. (Read in part.)
+- Stratton, Kimberly B. 2007. *Naming the Witch: Magic, Ideology, and Stereotype in the Ancient World*. Columbia University Press.
+- Stratton, Kimberly B., with Dayna S. Kalleres (eds.). 2014. *Daughters of Hecate: Women and Magic in the Ancient World*. Oxford University Press.
+- Thomsen, Marie-Louise, and Frederick H. Cryer. 2001. *Witchcraft and Magic in Europe: Biblical and Pagan Societies*. Athlone History of Witchcraft and Magic in Europe 1. Athlone Press.
+
+Federici, *Caliban and the Witch*, is under General and comparative history.
 
 </details>
 
