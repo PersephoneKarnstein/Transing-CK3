@@ -243,45 +243,37 @@ Each voice speaks in its own century and its own lands, and each leaves the daug
 
 ## Roadmap
 
-Built so far is described in the faith sections above. What was planned and not yet built:
+Everything in the faith sections above is built. Most of the newer content has not yet been tested in game.
 
-### Small: a script change, or one event or decision each (built, not yet tested in game)
+<details>
+<summary>Done</summary>
 
-- [x] Adelphai Dorleyaiou: the AI founds the Galenic rite now and then; the three Dorleyaian tenets show on the Galenic rite; the Galenic wing feels the suppression ladder less; tolerance starts to decay from 1050
-- [x] Tenet texts match what the tenets do: the temple street, the three lamps and the House burying its own now drive their events; rectified names and sisterhood say less
-- [x] Ha-Nehpakhot: the Two Parties decree reaches daughters at her vassals' courts; a Rabbinic Jewish ruler may also license or lift the ban; a daughter may commission the adornment herself
-- [x] Worn Garland: one gift event a year, not two; an elder who holds the staff is preferred for the vow; the growth call notices temple streets; kovil honours pass to a woman the street chooses
-- [x] Bædling: the níð-pole raised against a Bædling ruler; the first cup; the bragarfull at an inheritance; Wulfstan's sermon in English counties; the dress clause needs a powerful accuser; AI bands spare a sworn island
-- [x] Badenya: Makuria's *ngonnen*; the passed-over sister's child is told of her claim; a kingdom taken by conquest or usurpation is taken hot; a jelimuso of the House sings at other West African courts
+- [x] Adelphai Dorleyaiou: the Galenic rite and school, the Council of the Two Schools, the Tower on the Condition, decaying tolerance from 1050
+- [x] Bædling: the níð-pole, the first cup and the bragarfull, Wulfstan's sermon; the sorcery-law arc; the rest of the feud and of outlawry; the Norse lore events
+- [x] Ha-Nehpakhot: the Two Parties decree, the bailiff's variants, a household of the street
+- [x] Worn Garland: the Tai vow, bands sworn with the merchants, the hall of the Five Hundred, the Pepper Merchant's Vow; the world after 1178 as era events in every start
+- [x] Badenya: Makuria's *ngonnen*, a kingdom taken hot, the jelimuso, the refuge at Koulikoro, the fall of the associate in rule
+- [x] Shared: tenet texts that match what the tenets do; reactions from the Latin church, the Paris schools, Perugia, al-Andalus, the Mamluks and the Orthodox Slavs
 
-### Larger: needs a dedicated pass
+</details>
 
-- [x] Adelphai Dorleyaiou: the Council of the Two Schools, between the Aristotelian and Galenic wings (built, not yet tested in game)
-- [ ] Schisms planned in the design notes: "cis is not a caste" against the estates of the Touched; call-outs as scapegoat rituals; whether eunuchs who seek the Bædling faith count as sisters
-- [x] Adelphai Dorleyaiou: the Tower on the Condition, and the Galenic school (built, not yet tested in game)
-- [ ] Adelphai Dorleyaiou: the founding charter as a house legacy; the Dorley precedent's disclosure, ward schooling and washouts sent to a holy order
-- [ ] Bædling: raising a níð-pole oneself (a scheme, with a proxy carver) and the Níð of the Land against a persecuting liege; vows over the cup that are kept or broken
-- [x] Bædling: the sorcery-law arc (death penalty in Norway c. 1300 and Sweden c. 1350; the trials at Bergen, Kirkjubær and Greenland) (built, not yet tested in game)
-- [x] Bædling: the rest of the feud (escalation by rank, Self-Judgment, the refused Account, fostering to seal a settlement, a reopened Account's martial bonus) (built, not yet tested in game)
-- [x] Bædling: the rest of outlawry (the confiscation court, Ride for Sympathy, Houses harbouring outlaws, the lair, the sister's revenge, a woman's suit carried by a friend of the House) (built, not yet tested in game)
-- [x] Bædling: Norse lore events (They Say He Keeps Seiðmenn, Weave the Warding Shirt, the holy sites' stories, Eleanor Rykener) (built, not yet tested in game)
-- [ ] Bædling and the bands: the Strumica peace, Merope's command, the Vigla; flight to a petty coastal lord; The Sword Is My Patent and the darker Companions
-- [ ] Yutai Dao: the Liao and Ming levers, Cui Yin's 902 proposal, the Boy from Min, the repair levy; the women's chains (Xue Xuantong, Wang Fengxian, the abbess of Mo-shan, Empress Chengtian); regency rules by culture
+### Still to do
+
+- [ ] Schisms from the design notes: "cis is not a caste" against the estates of the Touched; call-outs as scapegoat rituals; whether eunuchs who seek the Bædling faith count as sisters
+- [ ] Adelphai Dorleyaiou: the founding charter as a house legacy; the Dorley precedent's disclosure, ward schooling, and washouts sent to a holy order
+- [ ] Bædling: raising a níð-pole oneself (a scheme with a proxy carver), the Níð of the Land, vows over the cup kept or broken
+- [ ] Bædling bands: the Vigla, flight to a petty coastal lord, The Sword Is My Patent, the darker Companions
+- [ ] Yutai Dao: the Liao and Ming levers, Cui Yin's 902 proposal, the Boy from Min, the repair levy; the women's chains; regency rules by culture
 - [ ] Yutai Dao: the Sogdian rows (Master of the Caravan, Sabao to Office, the Network's Post, the Town of the Grape, the Rallied Township)
-- [x] Worn Garland: the solitary Tai vow to Kāma; a band sworn with the merchants, a hall in the name of the Five Hundred, and the Pepper Merchant's Vow (built, not yet tested in game)
-- [x] Ha-Nehpakhot: the bailiff's variants (Catalonia's *batlle* and *berurim*, the panic after a patron's fall); send for a household of the street (built, not yet tested in game)
-- [x] Badenya: the refuge at Koulikoro; the fall of the associate in rule (built, not yet tested in game)
-- [x] Reactions from the wider world: Huguccio and Hostiensis, the Chanter's school, Baldus, Ibn Ḥazm, the Mamluk qadis, the Orthodox Slavs' penances (built, not yet tested in game)
 - [ ] More reactions: the Abbasid court (the jester, the plucked beard, the barber); Walther's "Under the Linden"
-- [x] Worn Garland: the world after 1178 as era events in every start (honours to her and her descendants, the commentator's word, the girl's part, both temples, the first house, the council's guard) (built, not yet tested in game)
-- [ ] Survival balance from observe runs (first pass built; checked each run)
+- [ ] Survival balance, tuned after each observe run
 - [ ] Commissioned art: faith and trait icons, tenets and doctrines, event pictures, map colours
 
 ### Version 2, and after the Silk & Silver DLC (17 November 2026)
 
-- [ ] Version 2.0.0: a 1066 start with two new faiths, the singers' houses of the Yodo river ports in Japan (*Imayō no Ie*, seated at Settsu) and *the Good Ladies*, a Latin household devotion of the night company (the Rhineland, Prüm); and Adelphai Dorleyaiou at Fatimid Cairo, among the palace's *mukhannathūn*. The other faiths keep their 867 seats; the Worn Garland's later changes are already built as era events in every start. Being built on the `v2-1066` branch; designs and open decisions in `docs/research/v2/` and `docs/research/later_starts/` (see `docs/TODO.md`)
+- [ ] Version 2.0.0: a 1066 start with two new faiths, the singers' houses of the Yodo river ports (*Imayō no Ie*, at Settsu) and *the Good Ladies* of the Rhineland, and Adelphai Dorleyaiou at Fatimid Cairo. In progress on the `v2-1066` branch (see `docs/TODO.md`)
 - [ ] Silk & Silver ideas for Yutai Dao and the Worn Garland (traders, caravans, guilds)
-- [ ] Merchant companies: a charter for a trading post held by contract, a third road for the bands
+- [ ] Merchant companies: a trading-post charter as a third road for the bands
 
 See the [open issues](https://github.com/PersephoneKarnstein/Transing-CK3/issues) for everything else.
 
