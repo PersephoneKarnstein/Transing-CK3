@@ -30,6 +30,25 @@ tm_ml3_garland_band_trigger = {
 	is_imprisoned = no
 }
 
+# Could be hired to raise a band for the merchants' road (tm_ml3.0050): a grown AI daughter of the Garland at court,
+# not a ruler, councillor or ruler's wife, with a sword arm (the Bædling outlaw's bar, tm_bae2_full_outlawry_effect).
+# Scope: the daughter.
+tm_ml3_road_captain_trigger = {
+	faith = faith:tm_garland
+	tm_is_daughter_trigger = yes
+	is_ai = yes
+	is_adult = yes
+	age < 50
+	is_ruler = no
+	is_imprisoned = no
+	is_councillor = no
+	NOT = { any_spouse = { is_ruler = yes } }
+	OR = {
+		martial >= 8
+		prowess >= 10
+	}
+}
+
 # A merchant's lord in the south who would hire a caravan guard: a landed Hindu or Jain ruler with a market town,
 # in the Deccan, Tamil country or Lanka (the Five Hundred's country; Hall 1980, pp. 141–54). Scope: the employer.
 tm_ml3_caravan_employer_trigger = {

@@ -31,6 +31,38 @@ tm_ml3_yearly = {
 			}
 		}
 
+		# A captain for the road (0050): the merchants of a southern lord's market hire a daughter of the Garland at his
+		# court to raise a band. The faith's only way to a band of its own (run 23: none in six centuries), and so into
+		# the caravans below and wave 10's oath, hall and relic guard. 2 in 100 a year each, 5 while the faith has no band.
+		if = {
+			limit = {
+				has_dlc_feature = roads_to_power
+				tm_ml3_caravan_employer_trigger = yes
+				any_courtier = {
+					tm_ml3_road_captain_trigger = yes
+					NOT = { has_variable = tm_ml3_road_asked }
+				}
+			}
+			save_scope_as = tm_ml3_road_lord
+			every_courtier = {
+				limit = {
+					tm_ml3_road_captain_trigger = yes
+					NOT = { has_variable = tm_ml3_road_asked }
+					tm_flavour_ready_trigger = yes
+				}
+				random = {
+					chance = 2
+					modifier = {
+						add = 3
+						NOT = { any_ruler = { tm_ml3_garland_band_trigger = yes } }
+					}
+					tm_flavour_spent_effect = yes
+					set_variable = { name = tm_ml3_road_asked value = yes years = 15 }
+					trigger_event = { id = tm_ml3.0050 days = { 1 60 } }
+				}
+			}
+		}
+
 		# Heroes of the road: an AI band of the Garland with no contract under way is hired by the lord of the county
 		# where it camps, or by that lord's liege. Players find the same contract on the contract map.
 		if = {

@@ -12,8 +12,9 @@
 #   0030  where the heroes of the road conduct trade: after three caravans, the employer offers a frontier town
 #   0031  the band's answer; settling runs vanilla Negotiate Settlement's effect (negotiate_settlement_interaction_effect)
 #   0040  the lord of Vannadu: a guild town in a faction hears what happened at Valikandapuram
+#   0050  a captain for the road: a southern lord's merchants hire a daughter at his court to raise a band
 # Saved scopes: tm_ml3_settler (0010); task_contract, employer, tm_ml3_outcome (0020–0022);
-# tm_ml3_band, tm_ml3_giver, tm_ml3_town (0030, 0031); tm_ml3_liege (0040).
+# tm_ml3_band, tm_ml3_giver, tm_ml3_town (0030, 0031); tm_ml3_liege (0040); tm_ml3_road_lord (0050).
 
 # ---------------------------------------------------------------------------------------------------
 # The quarter that dwindled. Root = a Hindu lord whose capital is poor or out of hand; scope:tm_ml3_settler = a
@@ -345,6 +346,78 @@ tm_ml3.0040 = {
 			base = 30
 			modifier = { add = 20 has_trait = ambitious }
 			modifier = { add = 10 has_trait = brave }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# A captain for the road. Root = an AI daughter of the Garland at a southern Hindu or Jain lord's court, with a sword
+# arm; scope:tm_ml3_road_lord = that lord. The guilds hired troops for their caravans (Hall 1980, pp. 154, 167–68,
+# 191–93). She is hired, not a guild member (no guild member in Hall's records is a woman, note §8); the two swords
+# the merchants lend her are of the lord's faith, not the Garland's. Without this the faith had no band in run 23,
+# and so no caravans, oath, hall or relic guard.
+tm_ml3.0050 = {
+	type = character_event
+	title = tm_ml3.0050.t
+	desc = tm_ml3.0050.desc
+	theme = martial
+	override_background = { reference = market_india }
+	left_portrait = { character = root animation = marshal }
+	right_portrait = { character = scope:tm_ml3_road_lord animation = personality_honorable }
+
+	trigger = {
+		exists = scope:tm_ml3_road_lord
+		tm_ml3_road_captain_trigger = yes
+		employer ?= scope:tm_ml3_road_lord
+	}
+
+	option = {	# Raise a band and take the road
+		name = tm_ml3.0050.a
+		create_landless_adventurer_title_tooltip_effect = yes
+		hidden_effect = {
+			scope:tm_ml3_road_lord = { save_scope_as = host }	# vanilla's band-naming reads it
+			create_landless_adventurer_title_effect = {
+				REASON = flag:voluntary
+				FLAVOR_CHAR = scope:tm_ml3_road_lord
+			}
+			while = {
+				count = 2
+				create_character = {
+					template = mercenary
+					employer = root
+					culture = scope:tm_ml3_road_lord.culture
+					faith = scope:tm_ml3_road_lord.faith
+					gender_female_chance = root_soldier_female_chance
+				}
+			}
+			scope:tm_ml3_road_lord = {
+				if = {
+					limit = { is_ai = no }
+					send_interface_toast = {
+						type = event_toast_effect_neutral
+						title = tm_ml3.0050.toast
+						left_icon = root
+					}
+				}
+			}
+		}
+		add_gold = 25
+		tm_ml4_tally_effect = { WHAT = bands_founded }
+		ai_chance = {
+			base = 50
+			modifier = { add = 25 has_trait = ambitious }
+			modifier = { add = 15 has_trait = brave }
+			modifier = { add = 10 has_trait = arrogant }
+		}
+	}
+	option = {	# Stay on the temple street
+		name = tm_ml3.0050.b
+		tm_ml4_tally_effect = { WHAT = bands_declined }
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = content }
+			modifier = { add = 20 has_trait = craven }
+			modifier = { add = 10 has_trait = shy }
 		}
 	}
 }

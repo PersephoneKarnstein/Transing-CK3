@@ -321,10 +321,11 @@ def main(path):
 
     # Worn Garland, wave 10 (tm_ml4_tally_effect): the Tai bath, the band and the merchants, the road to Kanchi.
     print('== Worn Garland: wave 10 ==')
-    gsteps = ('tai_kept', 'tai_not_now', 'tai_rain', 'tai_love', 'tai_nothing', 'caravans_taken', 'caravans_done', 'sworn', 'oath_refused', 'sworn_caravans',
+    gsteps = ('tai_kept', 'tai_not_now', 'tai_rain', 'tai_love', 'tai_nothing', 'bands_founded', 'bands_declined', 'caravans_taken', 'caravans_done', 'sworn', 'oath_refused', 'sworn_caravans',
               'relic_guard', 'halls', 'pepper_vowed', 'pepper_paid', 'pepper_forgot', 'pepper_paid_late')
     print('  '.join(f'{s} {int(gvars.get(f"tm_ml4_n_{s}") or 0)}' for s in gsteps))
-    print('tai_*: Tai baths kept or put off, and what was asked of Kama; caravans_taken / _done: wave 4 caravan contracts\n'
+    print('tai_*: Tai baths kept or put off, and what was asked of Kama; bands_founded / _declined: daughters hired by a southern\n'
+          'lord\'s merchants to raise a band (wave 4, tm_ml3.0050), and those who stayed; caravans_taken / _done: wave 4 caravan contracts\n'
           'taken by Garland bands, and brought to the coast (the oath and the hall need one); sworn / oath_refused: bands that swore with the\n'
           'merchants or would not; sworn_caravans: caravans done for a sworn lord; relic_guard: bands guarding a relic temple\n'
           'in Lanka; halls: halls raised in a guild\'s name; pepper_*: vows on the road to Kanchi, paid, forgotten, paid late.')
