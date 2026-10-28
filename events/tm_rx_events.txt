@@ -1,0 +1,594 @@
+﻿namespace = tm_rx
+
+# Crusader Dolls — how the surrounding religious authorities react, wave 12 (docs/wave12/reactions.md). Hooked in
+# common/on_action/tm_rx_on_actions.txt; gates in common/scripted_triggers/tm_rx_triggers.txt.
+#   0001  the bishop's court: Huguccio's questions by conduct (1188-1249), Hostiensis's oath before the bishop
+#         (1250-1390) (van der Lugt 2010, p. 111 n. 34; DeVun 2021, p. 128)
+#   0002  a master from Paris: the Chanter's "not both in one" and "choose one and keep it", harder after Lateran IV
+#         (1191-1300) (van der Lugt pp. 106, 112-113; Baldwin pp. 13-15; Barney p. 517; Goodich p. 52)
+#   0003  a consilium from Perugia: Baldus's "settled choice" rule for an heir, from 1395 (DeVun pp. 128-129)
+#   0010  within our borders: Ibn Hazm's charge against al-Hakam I, at an Andalusi court (1030-1250)
+#         (de la Puente 2023, nn. 15, 73-74)
+#   0020  the forbidden made permitted: istihlal al-muharramat at a Mamluk court, from 1250; Ibn al-Baqaqi charged
+#         1287, put to death 1302 (Rowson in Islamicate Sexualities, pp. 213-214)
+#   0030  the penance ladder under a Slavic Orthodox liege, from 900, in place of the Byzantine heresy ladder
+#         (Levin 1989, pp. 29-34, 73, 209, 257, 260, 297)
+#
+# Every hostile line belongs to a named speaker of a vanilla faith or court (faith_design.md §16 rule 3), and is
+# tagged here by family and shape. The narrator does not endorse it. Where the source's category is the hermaphrodite
+# or the castrate, the text says that is the speaker's book reaching for the one rule it has; she never claims it. No
+# one looks at her: the canonists judged by what anyone could see and by what a person said (van der Lugt p. 110).
+# No hostile line calls her "he". Daughters of Ha-Nehpakhot are never drawn into the Latin events (0001-0003).
+#
+# Scopes: root = the daughter (0001-0020) or the Dorleyite ruler (0030). scope:tm_rx_court = the world's court (her
+# host, or her liege). scope:tm_rx_cleric = its chaplain, if any. scope:tm_rx_kin (0003) and scope:tm_rx_friend
+# (0020), if any.
+
+# ---------------------------------------------------------------------------------------------------
+# The bishop's court. A will before the bishop's court needs her witness, and a church court counts a woman's witness
+# by its own rules, so the canonist must write down which she is. His rule was made for a person "of doubtful sex";
+# the text says it is the only rule he has (the canonist's category, not hers).
+#   Huguccio (Summa, c. 1188-90): beard, company and "women's work" decide which sex prevails (van der Lugt n. 34).
+#     Birth family; the canonist is pragmatic, not hostile (van der Lugt p. 104).
+#   Hostiensis (mid-13th c.): swear an oath before the bishop to keep to one sex, with no change after (DeVun p. 128).
+#     "The canons fear only a turning back": the bishop's line, after Peter the Chanter (van der Lugt p. 113).
+# Rule 23: no gate asks an oath of permanence. This is not a gate; it is the world's demand, and refusing it, or not
+# coming at all, is honoured. The oath records her choice; the bishop grants nothing.
+tm_rx.0001 = {
+	type = character_event
+	title = tm_rx.0001.t
+	desc = {
+		desc = tm_rx.0001.desc
+		first_valid = {
+			triggered_desc = { trigger = { tm_rx_huguccio_era_trigger = yes } desc = tm_rx.0001.desc_huguccio }
+			desc = tm_rx.0001.desc_hostiensis
+		}
+	}
+	theme = faith
+	left_portrait = { character = root animation = personality_rational }
+	right_portrait = { character = scope:tm_rx_court animation = personality_honorable }
+
+	trigger = {
+		exists = scope:tm_rx_court
+		scope:tm_rx_court = { is_alive = yes }
+		is_imprisoned = no
+	}
+
+	option = {	# Huguccio: her company and her work
+		name = tm_rx.0001.a
+		trigger = { tm_rx_huguccio_era_trigger = yes }
+		add_character_modifier = { modifier = tm_rx_counted_among_women_modifier years = 20 }
+		add_prestige = 10
+		if = {
+			limit = { exists = scope:tm_rx_cleric }
+			scope:tm_rx_cleric = { add_opinion = { target = root modifier = tm_rx_canonist_opinion } }
+		}
+		tm_rx_tally_effect = { WHAT = counted }
+		ai_chance = {
+			base = 50
+			modifier = { add = 20 has_trait = honest }
+			modifier = { add = 10 has_trait = content }
+		}
+	}
+	option = {	# Huguccio: she will not be weighed by her spindle
+		name = tm_rx.0001.b
+		trigger = { tm_rx_huguccio_era_trigger = yes }
+		add_prestige = 15
+		add_stress = 5
+		tm_rx_tally_effect = { WHAT = weighed_refused }
+		ai_chance = {
+			base = 25
+			modifier = { add = 20 has_trait = stubborn }
+			modifier = { add = 10 has_trait = arrogant }
+		}
+	}
+	option = {	# Hostiensis: swear it, since it was hers already
+		name = tm_rx.0001.c
+		trigger = { tm_rx_huguccio_era_trigger = no }
+		custom_tooltip = tm_rx.0001.c.tt
+		add_character_modifier = { modifier = tm_rx_sworn_before_bishop_modifier years = 30 }
+		if = {
+			limit = { exists = scope:tm_rx_cleric }
+			scope:tm_rx_cleric = { add_opinion = { target = root modifier = tm_rx_sworn_opinion } }
+		}
+		tm_rx_tally_effect = { WHAT = sworn }
+		ai_chance = {
+			base = 45
+			modifier = { add = 20 has_trait = honest }
+			modifier = { add = 10 has_trait = zealous }
+		}
+	}
+	option = {	# Hostiensis: she swears to today, not to the rest of her life
+		name = tm_rx.0001.d
+		trigger = { tm_rx_huguccio_era_trigger = no }
+		add_prestige = 20
+		if = {
+			limit = { exists = scope:tm_rx_cleric }
+			scope:tm_rx_cleric = { add_opinion = { target = root modifier = tm_rx_refused_oath_opinion } }
+		}
+		tm_rx_tally_effect = { WHAT = oath_refused }
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = stubborn }
+			modifier = { add = 10 has_trait = cynical }
+		}
+	}
+	option = {	# Not today (rule 23)
+		name = tm_rx.0001.e
+		custom_tooltip = tm_rx.0001.e.tt
+		tm_rx_tally_effect = { WHAT = not_today }
+		ai_chance = {
+			base = 20
+			modifier = { add = 20 has_trait = shy }
+			modifier = { add = 10 has_trait = craven }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# A master from Paris. A theologian of the Chanter's school, the harsh voice where the canonists were calm
+# (van der Lugt pp. 104, 113). His two lines: "not both in one" (the Chanter's gloss, "non androgynos", n. 19; birth
+# family, unpersoning shape) and "choose one, and keep it" (p. 113). His sodomy rationale and the Verbum abbreviatum's
+# ch. 138 are never quoted: they classify men who have sex with men, not daughters (hist_baldwin_peter_chanter.md §1).
+# From 1215 the master reminds the hall of Lateran IV's parish inquest (Goodich p. 52): the hardening of c. 1200 is
+# the theologians' and the inquest's, while the canonists stay pragmatic (DeVun p. 11; on_action chances).
+# Her answers: God made the second; the Chanter's own rule lets a name take its woman's form at confirmation (van der
+# Lugt p. 112 n. 39, a Dorleyite only, as a Christian); the Chanter's own word-book's Valley Gate, where "the weaker
+# sex" overcame (Barney p. 517); or she keeps to her rooms.
+tm_rx.0002 = {
+	type = character_event
+	title = tm_rx.0002.t
+	desc = {
+		desc = tm_rx.0002.desc
+		triggered_desc = { trigger = { tm_rx_inquest_era_trigger = yes } desc = tm_rx.0002.desc_inquest }
+	}
+	theme = faith
+	left_portrait = { character = root animation = anger }
+	right_portrait = { character = scope:tm_rx_court animation = personality_zealous }
+
+	trigger = {
+		exists = scope:tm_rx_court
+		scope:tm_rx_court = { is_alive = yes }
+		is_imprisoned = no
+	}
+
+	option = {	# God made the second
+		name = tm_rx.0002.a
+		add_prestige = 15
+		add_stress = -5
+		tm_rx_tally_effect = { WHAT = master_answered }
+		ai_chance = { base = 40 }
+	}
+	option = {	# The Chanter's own rule for a name at confirmation
+		name = tm_rx.0002.b
+		trigger = { rite ?= { rite_has_parameter = tm_day_of_blood_active } }
+		add_piety = 25
+		tm_rx_tally_effect = { WHAT = master_name }
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = zealous }
+		}
+	}
+	option = {	# The Valley Gate
+		name = tm_rx.0002.c
+		trigger = { learning >= 10 }
+		add_prestige = 25
+		add_stress = 5
+		if = {
+			limit = { exists = scope:tm_rx_cleric }
+			scope:tm_rx_cleric = { add_opinion = { target = root modifier = tm_rx_valley_gate_opinion } }
+		}
+		tm_rx_tally_effect = { WHAT = master_valley_gate }
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = education_learning_4 }
+			modifier = { add = 10 has_trait = arrogant }
+		}
+	}
+	option = {	# Let him preach
+		name = tm_rx.0002.d
+		tm_rx_tally_effect = { WHAT = master_away }
+		ai_chance = {
+			base = 25
+			modifier = { add = 20 has_trait = shy }
+			modifier = { add = 10 has_trait = calm }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# A consilium from Perugia. A kinsman (or, with none, a clerk of the liege's chancery) asks the liege's judges to hold
+# her inheritance void: she took her lands as a son. The judges send for Baldus de Ubaldis's consilium on Giovanni
+# Malaspina (1390s; DeVun pp. 128-129): an heir the doctors called of "mixed" sex succeeded because the settled
+# choice, made after puberty and kept, was plain. The text names Malaspina as the jurist's past case and says he
+# lived as a man; the narrator never claims him. Baldus measured by riding, arms and counsel, and would have judged a
+# "fragile and feminine" heir female: that is the jurist's test, not hers, and the text says so (DeVun proposal 4).
+# The judges read it for its rule: a settled will, kept, decides.
+tm_rx.0003 = {
+	type = character_event
+	title = tm_rx.0003.t
+	desc = {
+		first_valid = {
+			triggered_desc = { trigger = { exists = scope:tm_rx_kin } desc = tm_rx.0003.desc_kin }
+			desc = tm_rx.0003.desc_clerk
+		}
+		desc = tm_rx.0003.desc
+	}
+	theme = diplomacy
+	left_portrait = { character = root animation = personality_rational }
+	right_portrait = { character = scope:tm_rx_court animation = personality_rational }
+
+	trigger = {
+		exists = scope:tm_rx_court
+		scope:tm_rx_court = { is_alive = yes }
+		is_landed = yes
+	}
+
+	option = {	# Let the court read the consilium (the doctor's fee)
+		name = tm_rx.0003.a
+		trigger = { gold >= 50 }
+		remove_short_term_gold = 50
+		add_character_modifier = { modifier = tm_rx_settled_will_modifier years = 20 }
+		scope:tm_rx_court = { add_opinion = { target = root modifier = tm_rx_consilium_opinion } }
+		tm_rx_tally_effect = { WHAT = consilium }
+		ai_chance = {
+			base = 50
+			modifier = { add = 20 has_trait = diligent }
+		}
+	}
+	option = {	# No doctor needed; the kinsman keeps a claim
+		name = tm_rx.0003.b
+		add_prestige = 25
+		if = {
+			limit = { exists = scope:tm_rx_kin }
+			scope:tm_rx_kin = { add_unpressed_claim = root.primary_title }
+		}
+		tm_rx_tally_effect = { WHAT = no_doctor }
+		ai_chance = {
+			base = 25
+			modifier = { add = 20 has_trait = arrogant }
+			modifier = { add = 20 has_trait = stubborn }
+		}
+	}
+	option = {	# His test is his own
+		name = tm_rx.0003.c
+		trigger = {
+			OR = {
+				diplomacy >= 12
+				martial >= 12
+			}
+		}
+		add_prestige = 40
+		scope:tm_rx_court = { add_opinion = { target = root modifier = respect_opinion opinion = 10 } }
+		tm_rx_tally_effect = { WHAT = own_test }
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = brave }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Within our borders. A jurist at an Andalusi court who has read Ibn Hazm recalls his charge that al-Hakam I "used to
+# castrate the children of his subjects who stood out for their beauty" and named mosques after them, "an apogee of
+# regnal cruelty"; every school forbids castration in Islamic lands, though not buying eunuchs cut beyond them
+# (de la Puente 2023, nn. 73-74). A Muslim character's legal argument (trace family; unpersoning shape). Al-Hakam's
+# servants are his victims, never claimed. The House lines follow research/cmp_delapuente_alhakam.md §2 row 2.
+# Her answers: no knife within your borders; the first mazalim judge of Cordoba was a eunuch, Masarra (n. 15); for
+# Grandmother's House, that al-Hakam's sin is its own (the one condemned way, faith_design.md §16 decisions); for the
+# Gift Alone, that the asking was hers.
+tm_rx.0010 = {
+	type = character_event
+	title = tm_rx.0010.t
+	desc = {
+		desc = tm_rx.0010.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { rite ?= { rite_has_doctrine = tm_knife_grandmother } }
+				desc = tm_rx.0010.desc_grandmother
+			}
+			triggered_desc = {
+				trigger = { rite ?= { rite_has_doctrine = tm_knife_gift_alone } }
+				desc = tm_rx.0010.desc_gift_alone
+			}
+			desc = tm_rx.0010.desc_other
+		}
+	}
+	theme = faith
+	left_portrait = { character = root animation = worry }
+	right_portrait = { character = scope:tm_rx_court animation = personality_zealous }
+
+	trigger = {
+		exists = scope:tm_rx_court
+		scope:tm_rx_court = { is_alive = yes }
+		is_imprisoned = no
+	}
+
+	option = {	# Not here
+		name = tm_rx.0010.a
+		add_prestige = 10
+		scope:tm_rx_court = { add_opinion = { target = root modifier = tm_rx_no_knife_here_opinion } }
+		tm_rx_tally_effect = { WHAT = no_knife_here }
+		ai_chance = { base = 40 }
+	}
+	option = {	# Masarra
+		name = tm_rx.0010.b
+		trigger = {
+			OR = {
+				learning >= 10
+				diplomacy >= 12
+			}
+		}
+		add_prestige = 30
+		scope:tm_rx_court = { add_opinion = { target = root modifier = respect_opinion opinion = 15 } }
+		tm_rx_tally_effect = { WHAT = masarra }
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = ambitious }
+		}
+	}
+	option = {	# Grandmother's House: the sin is ours too
+		name = tm_rx.0010.c
+		trigger = { rite ?= { rite_has_doctrine = tm_knife_grandmother } }
+		add_piety = 30
+		add_prestige = -15
+		tm_rx_tally_effect = { WHAT = owned_charge }
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = honest }
+			modifier = { add = 10 has_trait = humble }
+		}
+	}
+	option = {	# The Gift Alone: I asked for it
+		name = tm_rx.0010.d
+		trigger = { rite ?= { rite_has_doctrine = tm_knife_gift_alone } }
+		add_prestige = 20
+		add_stress = -5
+		tm_rx_tally_effect = { WHAT = asked_it }
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = brave }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The forbidden made permitted. A qadi of a Mamluk court warns its Muslims that whoever calls her life lawful "declares
+# illicit things licit" (istihlal al-muharramat), "legally understood to imply apostasy" (Rowson pp. 213-214). The
+# charge falls on Muslims, not on her: she is not of their law. A Muslim's legal argument (inner family; exposing
+# shape). From 1287 the qadi names Ibn al-Baqaqi, charged that year; from 1302 he says only that the sultan's court put
+# him to death, as past news, without detail. No examination, no barracks scene: Rowson's al-Maqrizi anecdote of the
+# eunuch officer (p. 227) is never used.
+# Her answers protect the Muslims around her: let no one speak for her; her faith teaches among its own; or she asks
+# her Muslim friend at that court to say nothing for her.
+tm_rx.0020 = {
+	type = character_event
+	title = tm_rx.0020.t
+	desc = {
+		desc = tm_rx.0020.desc
+		first_valid = {
+			triggered_desc = { trigger = { tm_rx_baqaqi_dead_trigger = yes } desc = tm_rx.0020.desc_baqaqi_dead }
+			triggered_desc = { trigger = { tm_rx_baqaqi_charged_trigger = yes } desc = tm_rx.0020.desc_baqaqi_charged }
+			desc = tm_rx.0020.desc_plain
+		}
+		desc = tm_rx.0020.desc_end
+	}
+	theme = faith
+	left_portrait = { character = root animation = worry }
+	right_portrait = { character = scope:tm_rx_court animation = personality_zealous }
+
+	trigger = {
+		exists = scope:tm_rx_court
+		scope:tm_rx_court = { is_alive = yes }
+		is_imprisoned = no
+	}
+
+	option = {	# Let no one speak for me
+		name = tm_rx.0020.a
+		add_prestige = 20
+		add_stress = 5
+		tm_rx_tally_effect = { WHAT = for_herself }
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = brave }
+			modifier = { add = 10 has_trait = arrogant }
+		}
+	}
+	option = {	# My faith teaches among its own
+		name = tm_rx.0020.b
+		add_prestige = -10
+		add_stress = -10
+		tm_rx_tally_effect = { WHAT = among_own }
+		ai_chance = {
+			base = 35
+			modifier = { add = 20 has_trait = calm }
+			modifier = { add = 10 has_trait = patient }
+		}
+	}
+	option = {	# Tell my friend to say nothing
+		name = tm_rx.0020.c
+		trigger = {
+			exists = scope:tm_rx_friend
+			scope:tm_rx_friend = { is_alive = yes }
+		}
+		add_prestige = 10
+		scope:tm_rx_friend = { add_opinion = { target = root modifier = tm_rx_spared_friend_opinion } }
+		tm_rx_tally_effect = { WHAT = spared_friend }
+		ai_chance = {
+			base = 50
+			modifier = { add = 20 has_trait = compassionate }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The penance ladder. Root = a Dorleyite ruler; scope:tm_rx_court = her Slavic Orthodox liege; scope:tm_rx_cleric =
+# his chaplain, standing for the bishop's court. The church enforced alone, by confession and penance; princes rarely
+# enforced canon law (Levin pp. 4, 21-35, 297-298). No burned books and no voided wills. var:tm_rx_penance counts the
+# rungs borne or refused (none, 1, 2; 3 ends it):
+#   rung 1  the confessor's questions, in the later form "Did you not...?" (p. 29); the bishop's court takes its view
+#           of her and her daughters of the knife by House (tm_rx_penance_opinions_effect)
+#   rung 2  the dry fast on Mondays, Wednesdays and Fridays, with counted prostrations (p. 31). The world's penance,
+#           not the faith's gate (rule 22): bearing it costs stress and earns piety.
+#   rung 3  barred from communion, with excommunication and ostracism the next step (p. 34)
+# Each rung may be commuted, as the books allowed (p. 32): by alms ("ninety nogaty" for a year), or by vows, which the
+# Houses claim, as a jab, for their own rule.
+tm_rx.0030 = {
+	type = character_event
+	title = {
+		first_valid = {
+			triggered_desc = { trigger = { NOT = { has_variable = tm_rx_penance } } desc = tm_rx.0030.t1 }
+			triggered_desc = { trigger = { var:tm_rx_penance = 1 } desc = tm_rx.0030.t2 }
+			desc = tm_rx.0030.t3
+		}
+	}
+	desc = {
+		first_valid = {
+			triggered_desc = { trigger = { NOT = { has_variable = tm_rx_penance } } desc = tm_rx.0030.desc1 }
+			triggered_desc = { trigger = { var:tm_rx_penance = 1 } desc = tm_rx.0030.desc2 }
+			desc = tm_rx.0030.desc3
+		}
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { has_variable = tm_rx_penance }
+					rite ?= { rite_has_doctrine = tm_knife_gift_alone }
+				}
+				desc = tm_rx.0030.desc1_gift_alone
+			}
+			triggered_desc = {
+				trigger = {
+					NOT = { has_variable = tm_rx_penance }
+					rite ?= { rite_has_doctrine = tm_knife_grandmother }
+				}
+				desc = tm_rx.0030.desc1_grandmother
+			}
+			triggered_desc = {
+				trigger = {
+					NOT = { has_variable = tm_rx_penance }
+					rite ?= { rite_has_doctrine = tm_knife_aunt_bea }
+				}
+				desc = tm_rx.0030.desc1_aunt_bea
+			}
+		}
+	}
+	theme = faith
+	left_portrait = { character = root animation = worry }
+	right_portrait = { character = scope:tm_rx_court animation = personality_callous }
+
+	trigger = {
+		exists = scope:tm_rx_court
+		scope:tm_rx_court = { is_alive = yes }
+		exists = liege
+		liege = scope:tm_rx_court
+		NOT = { var:tm_rx_penance ?= 3 }
+	}
+
+	immediate = {
+		if = {
+			limit = { NOT = { has_variable = tm_rx_penance } }
+			tm_rx_penance_opinions_effect = yes
+			tm_rx_tally_effect = { WHAT = penance_1 }
+		}
+		else_if = {
+			limit = { var:tm_rx_penance = 1 }
+			tm_rx_tally_effect = { WHAT = penance_2 }
+		}
+		else = {
+			tm_rx_tally_effect = { WHAT = penance_3 }
+		}
+	}
+
+	option = {	# Commute by alms: ninety nogaty for a year
+		name = tm_rx.0030.a
+		trigger = {
+			OR = {
+				AND = { NOT = { has_variable = tm_rx_penance } gold >= 30 }
+				AND = { var:tm_rx_penance ?= 1 gold >= 60 }
+				AND = { var:tm_rx_penance ?= 2 gold >= 90 }
+			}
+		}
+		if = {
+			limit = { NOT = { has_variable = tm_rx_penance } }
+			remove_short_term_gold = 30
+		}
+		else_if = {
+			limit = { var:tm_rx_penance = 1 }
+			remove_short_term_gold = 60
+		}
+		else = {
+			remove_short_term_gold = 90
+		}
+		add_piety = 10
+		tm_rx_penance_commute_effect = yes
+		tm_rx_tally_effect = { WHAT = commuted_alms }
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = generous }
+			modifier = { add = -20 has_trait = greedy }
+		}
+	}
+	option = {	# Bear it (rungs 1 and 2)
+		name = tm_rx.0030.b
+		trigger = { NOT = { var:tm_rx_penance ?= 2 } }
+		add_piety = 25
+		if = {
+			limit = { var:tm_rx_penance ?= 1 }
+			add_stress = 10	# the dry fast: the world's penance, not an entrance fee
+		}
+		tm_rx_penance_climb_effect = yes
+		tm_rx_tally_effect = { WHAT = borne }
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = patient }
+			modifier = { add = 10 has_trait = temperate }
+		}
+	}
+	option = {	# Our House keeps a rule, as any convent does
+		name = tm_rx.0030.c
+		trigger = { tm_holds_sisters_house_trigger = yes }
+		random_list = {
+			50 = {
+				desc = tm_rx.0030.c.accepted
+				add_prestige = 20
+				tm_rx_penance_commute_effect = yes
+				tm_rx_tally_effect = { WHAT = commuted_house }
+			}
+			50 = {
+				desc = tm_rx.0030.c.refused
+				add_prestige = 10
+				tm_rx_penance_climb_effect = yes
+				tm_rx_tally_effect = { WHAT = house_refused }
+			}
+		}
+		ai_chance = {
+			base = 35
+			modifier = { add = 10 has_trait = ambitious }
+		}
+	}
+	option = {	# I confess to my own Mothers (rungs 1 and 2)
+		name = tm_rx.0030.d
+		trigger = { NOT = { var:tm_rx_penance ?= 2 } }
+		add_prestige = 15
+		if = {
+			limit = { exists = scope:tm_rx_cleric }
+			scope:tm_rx_cleric = { add_opinion = { target = root modifier = tm_rx_slav_refused_opinion } }
+		}
+		tm_rx_penance_climb_effect = yes
+		tm_rx_tally_effect = { WHAT = refused }
+		ai_chance = {
+			base = 25
+			modifier = { add = 20 has_trait = stubborn }
+			modifier = { add = 10 has_trait = zealous }
+		}
+	}
+	option = {	# Rung 3: then I will eat at my own table
+		name = tm_rx.0030.e
+		trigger = { var:tm_rx_penance ?= 2 }
+		add_prestige = 25
+		add_character_modifier = { modifier = tm_rx_barred_from_chalice_modifier years = 10 }
+		tm_rx_penance_climb_effect = yes
+		tm_rx_tally_effect = { WHAT = excluded }
+		ai_chance = { base = 40 }
+	}
+}

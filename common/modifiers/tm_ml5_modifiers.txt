@@ -1,0 +1,49 @@
+﻿# Crusader Dolls — the Worn Garland, wave 11 (events/tm_ml5_events.txt; docs/wave11/garland.md).
+
+# The singing of a verse of the Tiruvempavai in Markali, bought "for her and her descendants": Tirupampuram 1213
+# (NK 134) and Nallur, 12th c. (ARE 1940–41 nos. 143–176); Orr 2000, pp. 17–18, 56, 105–08. Permanent; passes.
+tm_ml5_verse_modifier = {
+	icon = piety_positive
+	monthly_piety = 0.3
+	monthly_prestige = 0.1
+}
+
+# A place near the god in procession and the flywhisk, bought from the temple (Orr 2000, pp. 74–75). Permanent; passes.
+tm_ml5_procession_modifier = {
+	icon = prestige_positive
+	monthly_prestige = 0.3
+}
+
+# The first house in the temple quarter and first place at the festivals, for gold (ARE 29 of 1940–41; Orr 2000,
+# p. 151). Permanent; passes.
+tm_ml5_first_house_modifier = {
+	icon = economy_positive
+	monthly_income = 0.3
+	monthly_prestige = 0.1
+}
+
+# She answered the commentator out of his own book (0010). 10 years.
+tm_ml5_answered_modifier = {
+	icon = learning_positive
+	learning = 1
+	monthly_prestige = 0.2
+}
+
+# The street sings the girl's part itself, at night, in the women's own voices (0011). County modifier, 5 years.
+tm_ml5_street_song_county_modifier = {
+	icon = county_modifier_opinion_positive
+	county_opinion_add = 5
+	development_growth_factor = 0.05
+}
+
+# The keeper of the share registers takes his time with her paddy (0020). 5 years.
+tm_ml5_registers_slow_modifier = {
+	icon = economy_negative
+	monthly_income = -0.3
+}
+
+# A band of the Garland keeps the temple's road while the king's men are away (0031). County modifier, 10 years.
+tm_ml5_council_guard_county_modifier = {
+	icon = county_modifier_control_positive
+	monthly_county_control_growth_add = 0.2
+}

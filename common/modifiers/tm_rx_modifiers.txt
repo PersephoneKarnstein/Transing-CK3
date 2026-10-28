@@ -1,0 +1,29 @@
+﻿# Crusader Dolls — how the surrounding religious authorities react, wave 12 (docs/wave12/reactions.md).
+
+# The bishop's canonist wrote her a woman by Huguccio's rule: her company and her work (tm_rx.0001; van der Lugt
+# 2010, p. 111 n. 34). 20 years.
+tm_rx_counted_among_women_modifier = {
+	icon = piety_positive
+	clergy_opinion = 5
+}
+
+# She swore before the bishop, as Hostiensis asked, to what she already was (tm_rx.0001; DeVun 2021, p. 128). The
+# oath is her word written down; the bishop grants nothing. 30 years.
+tm_rx_sworn_before_bishop_modifier = {
+	icon = piety_positive
+	clergy_opinion = 10
+}
+
+# The judges read Baldus's consilium for its rule: a settled will, kept, decides (tm_rx.0003; DeVun 2021,
+# pp. 128-129). 20 years.
+tm_rx_settled_will_modifier = {
+	icon = prestige_positive
+	vassal_opinion = 5
+}
+
+# Barred from the chalice by a Slavic bishop, and the parish keeps from her table (tm_rx.0030; Levin 1989, p. 34).
+# 10 years.
+tm_rx_barred_from_chalice_modifier = {
+	icon = county_modifier_opinion_negative
+	county_opinion_add = -5
+}

@@ -1,0 +1,459 @@
+﻿namespace = tm_ml5
+
+# Crusader Dolls — the Worn Garland, wave 11: the world after 1178, as era events in every start (docs/wave11/garland.md).
+# The seat, the faith and the gate are the same; only the world changes. Every gate is a date in a source, given at
+# each event; a date that is inferred says so. The narrator does not claim the temple women of the record, the
+# reciting families, the commentators or any living community for the faith. "Guise" is the commentary's word, said
+# by a hostile reciter, never the narrator's word for her.
+#   0001  to her and her descendants: the temple sells an honour, a verse or the flywhisk, 1178–1300 (Orr 2000)
+#   0002  the honour passes to her daughter, born or taken
+#   0010  the commentator's word: a reciter reads the "guise" against her, from 1150 (Carman and Narayanan 1989)
+#   0011  the girl's part: the men's performance of the girl at the festival of recitation, from 1150 (Narayanan 1994)
+#   0020  both temples: the men's sectarian titles and a keeper of registers who wants one house, from 1178 (Orr 2000)
+#   0030  the first house in the quarter: where the king's hand is light, 1178–1300 (Orr 2000)
+#   0031  the council's guard: a band of the Garland walks beside the temple's paddy, from 1200 (Hall 1980)
+# Saved scopes: tm_ml5_temple_county (0001, 0030); tm_ml5_mother (0002); tm_ml5_host (0010, 0011, 0020);
+# tm_ml5_council_county (0031).
+
+# ---------------------------------------------------------------------------------------------------
+# To her and her descendants. Root = a daughter of the Garland living on the street of her share.
+# All 21 of Orr's "deals" fall in 1070–1300: a temple woman's gift exchanged for honours, a place near the god in
+# procession, the flywhisk, consecrated food, the right to sing a set verse; ten are hereditary, "to her
+# descendants" (Orr 2000, pp. 74–75, 151). The verse is the Tiruvempavai's, bought at Nallur in the 12th c. and at
+# Tirupampuram in 1213 (pp. 17–18, 56, 105–08). The 1178 gate is Orr's period break (pp. 46, 67–73, 161–63); after
+# 1300 temple women stop giving (pp. 174–77). Stage 2's share (tm_ml2.0001) already sells from 1070; this is the
+# honour on top of it.
+tm_ml5.0001 = {
+	type = character_event
+	title = tm_ml5.0001.t
+	desc = tm_ml5.0001.desc
+	theme = faith
+	override_background = { reference = temple }
+	left_portrait = { character = root animation = personality_rational }
+
+	trigger = {
+		tm_ml5_street_daughter_trigger = yes
+		gold >= 30
+	}
+
+	immediate = {
+		var:tm_ml2_share = { save_scope_as = tm_ml5_temple_county }
+	}
+
+	option = {	# The verse in Markali
+		name = tm_ml5.0001.a
+		trigger = {
+			gold >= 60
+			NOT = { has_variable = tm_ml5_verse }
+		}
+		show_as_unavailable = { NOT = { has_variable = tm_ml5_verse } }
+		remove_short_term_gold = 60
+		add_piety = 20
+		tm_ml5_give_honour_effect = { HONOUR = verse COUNTY = scope:tm_ml5_temple_county }
+		custom_tooltip = tm_ml5_honour_passes_tt
+		tm_ml5_tally_effect = { WHAT = deal_verse }
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = zealous }
+			modifier = { add = 10 has_trait = gregarious }
+		}
+	}
+	option = {	# A place near the god, and the flywhisk
+		name = tm_ml5.0001.b
+		trigger = { NOT = { has_variable = tm_ml5_procession } }
+		remove_short_term_gold = 30
+		add_prestige = 10
+		tm_ml5_give_honour_effect = { HONOUR = procession COUNTY = scope:tm_ml5_temple_county }
+		custom_tooltip = tm_ml5_honour_passes_tt
+		tm_ml5_tally_effect = { WHAT = deal_procession }
+		ai_chance = {
+			base = 30
+			modifier = { add = 15 has_trait = ambitious }
+			modifier = { add = 10 has_trait = arrogant }
+		}
+	}
+	option = {	# The gold stays in my house
+		name = tm_ml5.0001.c
+		tm_ml5_tally_effect = { WHAT = deal_declined }
+		ai_chance = {
+			base = 20
+			modifier = { add = 30 has_trait = greedy }
+			modifier = { add = 10 gold < 80 }
+		}
+	}
+}
+
+# The honour passes. Root = the daughter who takes it up; scope:tm_ml5_mother = the one who held it (dead).
+tm_ml5.0002 = {
+	type = character_event
+	title = tm_ml5.0002.t
+	desc = tm_ml5.0002.desc
+	theme = faith
+	override_background = { reference = temple }
+	left_portrait = { character = root animation = sadness }
+
+	trigger = { exists = scope:tm_ml5_mother }
+
+	option = {
+		name = tm_ml5.0002.a
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The commentator's word. Root = a daughter of the Garland at court; scope:tm_ml5_host = her lord.
+# Pillan's Six Thousand, the first commentary on the Tiruvaymoli, was "written between 1100 and 1150" (Carman and
+# Narayanan 1989, p. xi): the 1150 gate is the date by which it exists. Pillan says the poet speaks "in the guise of
+# another" (p. 96), yet tells decad 6.2 with the poet as "she" (p. 99), and the friend knows the girl "by her exceeding
+# love" (6.5.10; p. 76). The reciter is invented and hostile; the word is his. The faith's answer is its own
+# inversion (the guise was the truth), said plainly as the faith's.
+tm_ml5.0010 = {
+	type = character_event
+	title = tm_ml5.0010.t
+	desc = tm_ml5.0010.desc
+	theme = faith
+	override_background = { reference = throne_room }
+	left_portrait = { character = root animation = personality_rational }
+	right_portrait = { character = scope:tm_ml5_host animation = debating }
+
+	trigger = {
+		exists = scope:tm_ml5_host
+		faith = faith:tm_garland
+		employer ?= scope:tm_ml5_host
+		is_imprisoned = no
+	}
+
+	option = {	# Read on: your teacher calls her "she"
+		name = tm_ml5.0010.a
+		random_list = {
+			45 = {
+				modifier = { add = 20 learning >= 12 }
+				modifier = { add = 15 learning >= 18 }
+				add_prestige = 40
+				add_character_modifier = { modifier = tm_ml5_answered_modifier years = 10 }
+				scope:tm_ml5_host = { add_opinion = { target = root modifier = respect_opinion opinion = 10 } }
+				send_interface_toast = {
+					type = event_toast_effect_good
+					title = tm_ml5.0010.a.won
+				}
+				tm_ml5_tally_effect = { WHAT = guise_won }
+			}
+			40 = {
+				modifier = { add = 15 learning < 8 }
+				add_piety = 10
+				send_interface_toast = {
+					type = event_toast_effect_neutral
+					title = tm_ml5.0010.a.lost
+				}
+				tm_ml5_tally_effect = { WHAT = guise_lost }
+			}
+		}
+		ai_chance = {
+			base = 30
+			modifier = { add = 25 learning >= 12 }
+			modifier = { add = 10 has_trait = arrogant }
+		}
+	}
+	option = {	# A guise is put on and taken off; she has nothing to take off
+		name = tm_ml5.0010.b
+		add_piety = 30
+		if = {
+			limit = { scope:tm_ml5_host = { faith = faith:vaishnava_faith } }
+			scope:tm_ml5_host = { add_opinion = { target = root modifier = disappointed_opinion opinion = -10 } }
+		}
+		tm_ml5_tally_effect = { WHAT = guise_face }
+		ai_chance = {
+			base = 30
+			modifier = { add = 25 has_trait = zealous }
+			modifier = { add = 10 has_trait = brave }
+		}
+	}
+	option = {	# Let him finish
+		name = tm_ml5.0010.c
+		add_stress = -10
+		tm_ml5_tally_effect = { WHAT = guise_let_pass }
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = shy }
+			modifier = { add = 20 has_trait = calm }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The girl's part. Root = a daughter of the Garland at court; scope:tm_ml5_host = her lord.
+# At the festival of recitation a man of the hereditary reciting families sings and dances the poet's girl, her mother
+# and her friend (Narayanan 1994, p. 130). In-period evidence is 12th-c. anecdote told in 13th-c. commentary: Empar
+# corrects a performer, who accepts (p. 126); Nanjiyar learns from his teacher's weeping (p. 132). The 1150 gate is
+# inferred from those anecdotes; no inscription read here dates the service. Women were not allowed to perform (ch. 8
+# n. 14), and only three temples have the service (p. 123), so she goes to "the island temple" with the pilgrims.
+# The office is not named in the text: the word names a living hereditary office (research note, design implications).
+tm_ml5.0011 = {
+	type = character_event
+	title = tm_ml5.0011.t
+	desc = tm_ml5.0011.desc
+	theme = faith
+	override_background = { reference = temple }
+	left_portrait = { character = root animation = personality_rational }
+
+	trigger = {
+		exists = scope:tm_ml5_host
+		faith = faith:tm_garland
+		employer ?= scope:tm_ml5_host
+		is_imprisoned = no
+	}
+
+	immediate = {
+		if = {
+			limit = { has_variable = tm_ml2_share }
+			var:tm_ml2_share = { save_scope_as = tm_ml5_song_county }
+		}
+		else_if = {
+			limit = { exists = location.county }
+			location.county = { save_scope_as = tm_ml5_song_county }
+		}
+	}
+
+	option = {	# Say it at the temple gate
+		name = tm_ml5.0011.a
+		add_prestige = 25
+		add_piety = 10
+		if = {
+			limit = { scope:tm_ml5_host = { faith = faith:vaishnava_faith } }
+			scope:tm_ml5_host = { add_opinion = { target = root modifier = disappointed_opinion opinion = -10 } }
+		}
+		tm_ml5_tally_effect = { WHAT = part_spoken }
+		ai_chance = {
+			base = 25
+			modifier = { add = 20 has_trait = zealous }
+			modifier = { add = 15 has_trait = brave }
+			modifier = { add = 10 has_trait = arrogant }
+		}
+	}
+	option = {	# Call out how the girl should grieve
+		name = tm_ml5.0011.b
+		random_list = {
+			50 = {
+				modifier = { add = 20 learning >= 12 }
+				modifier = { add = 10 diplomacy >= 12 }
+				add_prestige = 40
+				add_piety = 10
+				send_interface_toast = {
+					type = event_toast_effect_good
+					title = tm_ml5.0011.b.taken
+				}
+				tm_ml5_tally_effect = { WHAT = part_taken }
+			}
+			50 = {
+				add_piety = 10
+				send_interface_toast = {
+					type = event_toast_effect_neutral
+					title = tm_ml5.0011.b.ignored
+				}
+				tm_ml5_tally_effect = { WHAT = part_ignored }
+			}
+		}
+		ai_chance = {
+			base = 25
+			modifier = { add = 20 has_trait = gregarious }
+			modifier = { add = 15 learning >= 12 }
+		}
+	}
+	option = {	# Bring the song home to the street
+		name = tm_ml5.0011.c
+		trigger = { exists = scope:tm_ml5_song_county }
+		add_stress = -15
+		scope:tm_ml5_song_county = {
+			add_county_modifier = { modifier = tm_ml5_street_song_county_modifier years = 5 }
+			tm_ml2_mark_street_effect = yes
+		}
+		tm_ml5_tally_effect = { WHAT = part_street }
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_variable = tm_ml2_share }
+			modifier = { add = 10 has_trait = content }
+		}
+	}
+	option = {	# It was beautiful; leave it there
+		name = tm_ml5.0011.d
+		add_stress = -10
+		tm_ml5_tally_effect = { WHAT = part_watched }
+		ai_chance = {
+			base = 20
+			modifier = { add = 20 has_trait = shy }
+			modifier = { add = 10 has_trait = calm }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Both temples. Root = a daughter of the Garland at a Shaiva or Vaishnava court, with a share or a gift on record;
+# scope:tm_ml5_host = her lord. Men of status are renamed mahesvara, sivabrahmana or srivaisnava, groups that exclude
+# women, while tevaratiyar becomes a woman's word: 91% of its uses name individual women in 1178–1300 (Orr 2000,
+# pp. 55–56); hence the 1178 gate. Saiva and Vaishnava contend at court for patronage in the 13th-c. Kannada witness
+# (Ben-Herut via Anandakichenin 2020, p. 253). The image-in-the-sea boast is unverified (region note §5.2) and not used.
+# The market's way through is Hall's: Saiva quarters kept a lamp in a Vishnu temple through the nagaram (1980, p. 91).
+tm_ml5.0020 = {
+	type = character_event
+	title = tm_ml5.0020.t
+	desc = tm_ml5.0020.desc
+	theme = faith
+	override_background = { reference = temple }
+	left_portrait = { character = root animation = worry }
+	right_portrait = { character = scope:tm_ml5_host animation = idle }
+
+	trigger = {
+		exists = scope:tm_ml5_host
+		faith = faith:tm_garland
+		employer ?= scope:tm_ml5_host
+		is_imprisoned = no
+	}
+
+	option = {	# Both temples, as the street always has
+		name = tm_ml5.0020.a
+		add_piety = 30
+		random = {
+			chance = 40
+			add_character_modifier = { modifier = tm_ml5_registers_slow_modifier years = 5 }
+			tm_ml5_tally_effect = { WHAT = both_slowed }
+		}
+		if = {
+			limit = { scope:tm_ml5_host = { has_trait = zealous } }
+			scope:tm_ml5_host = { add_opinion = { target = root modifier = disappointed_opinion opinion = -10 } }
+		}
+		tm_ml5_tally_effect = { WHAT = both_kept }
+		ai_chance = {
+			base = 35
+			modifier = { add = 20 has_trait = zealous }
+			modifier = { add = 15 has_trait = stubborn }
+		}
+	}
+	option = {	# Let the market keep my lamp in the other house
+		name = tm_ml5.0020.b
+		trigger = {
+			gold >= 30
+			location.county ?= { tm_ml3_nagaram_county_trigger = yes }
+		}
+		remove_short_term_gold = 30
+		add_piety = 15
+		add_prestige = 10
+		tm_ml5_tally_effect = { WHAT = both_market }
+		ai_chance = {
+			base = 35
+			modifier = { add = 15 stewardship >= 10 }
+			modifier = { add = 10 has_trait = diligent }
+		}
+	}
+	option = {	# This year, one house
+		name = tm_ml5.0020.c
+		add_stress = -5
+		tm_ml5_tally_effect = { WHAT = both_one }
+		ai_chance = {
+			base = 25
+			modifier = { add = 20 has_trait = craven }
+			modifier = { add = 10 has_trait = content }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The first house in the quarter. Root = a daughter of the Garland on the street of her share, where the king's hand is
+# light. A woman received "the first house in the temple quarter" and precedence in festivals, for her and her
+# descendants, in return for gold (ARE 29 of 1940–41; Orr 2000, p. 151). Temple women did best "under non-Chola kings,
+# and where royal power is weak" (pp. 80–82, 161, 163–64); in war the temple councils grew stronger in the court men's
+# absence (region note §3). 1178–1300 as for 0001. Not a liberation story: the deal does well, the roads do not.
+tm_ml5.0030 = {
+	type = character_event
+	title = tm_ml5.0030.t
+	desc = tm_ml5.0030.desc
+	theme = stewardship
+	override_background = { reference = market_india }
+	left_portrait = { character = root animation = personality_rational }
+
+	trigger = {
+		tm_ml5_street_daughter_trigger = yes
+		NOT = { has_variable = tm_ml5_first_house }
+	}
+
+	immediate = {
+		var:tm_ml2_share = { save_scope_as = tm_ml5_temple_county }
+	}
+
+	option = {	# Take the first house
+		name = tm_ml5.0030.a
+		trigger = { gold >= 40 }
+		show_as_unavailable = { always = yes }
+		remove_short_term_gold = 40
+		add_prestige = 10
+		tm_ml5_give_honour_effect = { HONOUR = first_house COUNTY = scope:tm_ml5_temple_county }
+		custom_tooltip = tm_ml5_honour_passes_tt
+		tm_ml5_tally_effect = { WHAT = first_house }
+		ai_chance = {
+			base = 50
+			modifier = { add = 20 has_trait = ambitious }
+			modifier = { add = 10 has_trait = greedy }		# a house that pays
+		}
+	}
+	option = {	# Not while the roads are like this
+		name = tm_ml5.0030.b
+		tm_ml5_tally_effect = { WHAT = first_house_declined }
+		ai_chance = {
+			base = 25
+			modifier = { add = 20 has_trait = compassionate }
+			modifier = { add = 10 has_trait = paranoid }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The council's guard. Root = the leader of a band of the Garland (wave 4's bands, tm_ml3.0050) in Tamil country where
+# the king's hand is light; scope:tm_ml5_council_county = where. Hall's market towns raised troops first "hired to
+# police the local market-place and the overland trade routes" (1980, p. 81); in the 13th c. merchants and their
+# armies backed men seeking power (p. 206), and under Rajaraja III (1216–60) Hoysala generals put down a rebel chief
+# and a merchants' town (p. 195). The 1200 gate is "the 13th c." of p. 206. A temple council hiring a band is design:
+# no source joins the two, and no guild member in Hall's records is a woman (note §8). The band walks beside the
+# paddy and the festival car; nothing is fought on screen.
+tm_ml5.0031 = {
+	type = character_event
+	title = tm_ml5.0031.t
+	desc = tm_ml5.0031.desc
+	theme = martial
+	override_background = { reference = temple }
+	left_portrait = { character = root animation = marshal }
+
+	trigger = {
+		exists = scope:tm_ml5_council_county
+		tm_ml3_garland_band_trigger = yes
+	}
+
+	option = {	# Walk beside the paddy and the car
+		name = tm_ml5.0031.a
+		add_gold = 30
+		add_prestige = 20
+		scope:tm_ml5_council_county = {
+			add_county_modifier = { modifier = tm_ml5_council_guard_county_modifier years = 10 }
+			tm_ml2_mark_street_effect = yes
+		}
+		every_living_character = {
+			limit = {
+				has_variable = tm_ml2_share
+				var:tm_ml2_share = scope:tm_ml5_council_county
+			}
+			add_opinion = { target = root modifier = tm_ml4_band_and_street_opinion }
+		}
+		tm_ml5_tally_effect = { WHAT = council_guard }
+		ai_chance = {
+			base = 60
+			modifier = { add = 20 has_trait = zealous }
+			modifier = { add = 10 has_trait = greedy }
+		}
+	}
+	option = {	# The band is spoken for
+		name = tm_ml5.0031.b
+		add_prestige = 5
+		tm_ml5_tally_effect = { WHAT = council_declined }
+		ai_chance = {
+			base = 20
+			modifier = { add = 20 has_trait = arrogant }
+		}
+	}
+}

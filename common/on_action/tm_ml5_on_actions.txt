@@ -1,0 +1,59 @@
+﻿# Crusader Dolls — the Worn Garland, wave 11 (events/tm_ml5_events.txt; docs/wave11/garland.md). Appended to vanilla.
+# Every gate is a date, so the same events come in any start that reaches it.
+
+yearly_playable_pulse = {
+	on_actions = { tm_ml5_yearly }
+}
+
+on_death = {
+	on_actions = { tm_ml5_on_death }
+}
+
+tm_ml5_yearly = {
+	effect = {
+		# The daughters' year: a playable daughter herself, and the daughters at this court (tm_ml5_daughter_year_effect).
+		save_scope_as = tm_ml5_host
+		if = {
+			limit = {
+				faith = faith:tm_garland
+				tm_is_daughter_trigger = yes
+			}
+			tm_ml5_daughter_year_effect = yes
+		}
+		every_courtier = {
+			limit = {
+				faith = faith:tm_garland
+				tm_is_daughter_trigger = yes
+				tm_flavour_ready_trigger = yes
+			}
+			tm_ml5_daughter_year_effect = yes
+		}
+
+		# The council's guard (0031): from 1200, a band of the Garland in Tamil country where the king's hand is light.
+		if = {
+			limit = {
+				current_year >= 1200
+				tm_ml5_council_band_trigger = yes
+				tm_flavour_ready_trigger = yes
+			}
+			random = {
+				chance = 15
+				tm_flavour_spent_effect = yes
+				set_variable = { name = tm_ml5_council_asked value = yes years = 10 }
+				location.county = { save_scope_as = tm_ml5_council_county }
+				trigger_event = { id = tm_ml5.0031 days = { 1 60 } }
+			}
+		}
+	}
+}
+
+# The honours pass to her daughter, or go back to the temple. A body she left at re-embodiment passes nothing.
+tm_ml5_on_death = {
+	trigger = {
+		tm_ml5_honour_holder_trigger = yes
+		NOT = { has_variable = tm_reborn }
+	}
+	effect = {
+		tm_ml5_pass_honours_effect = yes
+	}
+}

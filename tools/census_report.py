@@ -331,6 +331,42 @@ def main(path):
           'in Lanka; halls: halls raised in a guild\'s name; pepper_*: vows on the road to Kanchi, paid, forgotten, paid late.')
     print()
 
+    # Worn Garland, wave 11 (tm_ml5_tally_effect): the world after 1178, as era events.
+    print('== Worn Garland: wave 11 ==')
+    gsteps = ('deal_verse', 'deal_procession', 'deal_declined', 'first_house', 'first_house_declined', 'honour_passed',
+              'honour_lapsed', 'guise_won', 'guise_lost', 'guise_face', 'guise_let_pass', 'part_spoken', 'part_taken',
+              'part_ignored', 'part_street', 'part_watched', 'both_kept', 'both_slowed', 'both_market', 'both_one',
+              'council_guard', 'council_declined')
+    print('  '.join(f'{s} {int(gvars.get(f"tm_ml5_n_{s}") or 0)}' for s in gsteps))
+    print('deal_*: honours bought from the temple, 1178-1300 (a verse in Markali, the flywhisk), or declined; first_house /\n'
+          '_declined: the first house in the quarter where the king\'s hand is light; honour_passed / _lapsed: honours that\n'
+          'went to a daughter at the holder\'s death, or back to the temple; guise_*: the commentator\'s word, answered and\n'
+          'won or lost, turned ("nothing to take off"), or let pass; part_*: the girl\'s part at the festival, spoken against, corrected\n'
+          '(taken / ignored), brought home to the street, or watched; both_*: the keeper of registers asks for one house\n'
+          '(kept both, of which slowed; through the market; one); council_guard / _declined: bands hired by a temple council.')
+    print()
+
+    # Reactions, wave 12 (tm_rx_tally_effect): how the surrounding religious authorities react.
+    print('== Reactions: wave 12 ==')
+    rsteps = ('counted', 'weighed_refused', 'sworn', 'oath_refused', 'not_today',
+              'master_answered', 'master_name', 'master_valley_gate', 'master_away',
+              'consilium', 'no_doctor', 'own_test',
+              'no_knife_here', 'masarra', 'owned_charge', 'asked_it',
+              'for_herself', 'among_own', 'spared_friend',
+              'penance_1', 'penance_2', 'penance_3', 'commuted_alms', 'commuted_house', 'house_refused', 'borne', 'refused', 'excluded')
+    if any(f'tm_rx_n_{s}' in gvars for s in rsteps):
+        print('  '.join(f'{s} {int(gvars.get(f"tm_rx_n_{s}") or 0)}' for s in rsteps))
+        print('counted / weighed_refused: the bishop\'s court, Huguccio\'s questions (1188-1249), answered or refused; sworn / oath_refused:\n'
+              'Hostiensis\'s oath (1250-1390), sworn or refused; not_today: either era, not today; master_*: the Paris master (1191-1300),\n'
+              'answered, the confirmation name (Dorleyites), the Valley Gate, or kept away; consilium / no_doctor / own_test: the Perugia\n'
+              'consilium (from 1395); no_knife_here / masarra / owned_charge / asked_it: Ibn Hazm\'s charge at an Andalusi court (1030-1250);\n'
+              'for_herself / among_own / spared_friend: istihlal at a Mamluk court (from 1250); penance_1/2/3: rungs of the Slavic penance\n'
+              'ladder reached; commuted_alms / commuted_house / house_refused: commutations by alms or by the House\'s rule, and the bishop\'s\n'
+              'refusals; borne / refused: rungs borne or refused; excluded: rulers who ended the ladder barred from the chalice.')
+    else:
+        print('No counts (the save predates wave 12, or no voice has spoken yet).')
+    print()
+
     # The Women's Chamber (tm_dl3_tally_effect): run-wide counts of each step.
     print("== Women's Chamber ==")
     steps = ('rolled', 'fired', 'took', 'stayed', 'lost', 'worked', 'chrysobull', 'estate')

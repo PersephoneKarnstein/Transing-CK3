@@ -109,8 +109,8 @@ Built: shared daughter trigger and per-faith daughter traits; Bæddel faith (Got
 
 ## Stage 2 inputs from the comparanda round (2026-10-19)
 - [ ] Ha-Nehpakhot: a source for Provençal Jewish women's names (Iancu; Shatzmiller); the *aylonit* chapter of *Trans Talmud*; community roles from the medieval codes; Karaite text; the moonlit spinning circle as a recurring sisterhood event; "the adornment" (a gold ornament) as an artifact. The spinning circle and the adornment are built in stage 2 (`tm_hn2.0001`, `0010`).
-- [ ] Catholic reaction: a canonist event on Huguccio's "prevailing sex" by conduct (women's company and work) and the Susa oath before the bishop of Turin (`research/cmp_vanderlugt_sex_difference.md`; Rolker); Peter the Chanter's woman's name at confirmation; whether Catholic hostility to daughters hardens around 1200
-- [ ] Andalusi reaction: Ibn Ḥazm's charge against al-Ḥakam I as a reaction to Grandmother's House (`research/cmp_delapuente_alhakam.md`)
+- [x] (built as wave 12, `tm_rx.0001`–`0003`; Walther and the Abbasid pack still open) Catholic reaction: a canonist event on Huguccio's "prevailing sex" by conduct (women's company and work) and the Susa oath before the bishop of Turin (`research/cmp_vanderlugt_sex_difference.md`; Rolker); Peter the Chanter's woman's name at confirmation; whether Catholic hostility to daughters hardens around 1200
+- [x] (wave 12, `tm_rx.0010`) Andalusi reaction: Ibn Ḥazm's charge against al-Ḥakam I as a reaction to Grandmother's House (`research/cmp_delapuente_alhakam.md`)
 
 ## Version 2.0.0 plan (user, 2026-10-25; revised 2026-10-26)
 **Revised (user, 2026-10-26): a single 1066 start, not 1178.** Its faiths: the Good Ladies in the Rhineland (Prüm), *Imayō no Ie* in Japan (Settsu), and Adelphai Dorleyaiou at Fatimid Cairo ("Through the Curtain"; research in `research/later_starts/mukhannathun_fatimid_cairo.md` and the `isl_*` notes). The bookmark art is on branch `v2-1066`. Open: Yutai's second house (Kaifeng, which later moves to Lin'an, or Dunhuang alone). The 1178 plan below is kept for reference; its Lin'an house does not fit 1066 as written.
@@ -119,7 +119,7 @@ The earlier 1178 plan:
 - [ ] **Japan**, *Imayō no Ie* (`research/v2/japan_design.md`; open decisions there)
 - [ ] **The Good Ladies** (`research/v2/witch_design.md`; ten open decisions; no J. K. Rowling or Harry Potter except disparaging, §10)
 - [ ] **Yutai Dao, a second house at Lin'an** (outside the New Gate), alongside Dunhuang. **Chosen over the Garland (user, 2026-10-25)**: its position changes, not just its world. It is a landless urban House in the Song capital, with a guild head the prefecture summons in "not a man" suits, a fading informer threat (the Zhenghe article), needlework, a stage route to palace banquets, gate variants, and a possible *Silk & Silver* embroidery company. Cost: v2 leans East Asian (Kyoto and Hangzhou), and the evidence is hostile and a century late. This is the Southern Song capital at peace since 1165, with nine Daoist women's houses, a Lingbao society and private Daoist halls under patrons. Zhou Mi's quarter of people "addressed as women", with a guild head the courts consulted, is placed here by inference across about a century (`research/later_starts/linan_1178.md`)
-- [ ] **The Worn Garland's 1178 changes as era events in every start**, not a new start. Its seat, faith and gate stay the same, and what changes is the world. These unlock by date in any campaign that reaches them:
+- [x] **The Worn Garland's 1178 changes as era events in every start** (built 2026-10-27 as wave 11, `tm_ml5`, docs/wave11/garland.md; untested in game), not a new start. Its seat, faith and gate stay the same, and what changes is the world. These unlock by date in any campaign that reaches them:
   - hereditary temple deals and bought singing rights (Orr's 1178–1300 period);
   - the Piḷḷāṉ "guise" quarrel and the men-only *araiyar* performance;
   - men's sectarian titles hardening, and Śaiva–Vaiṣṇava friction making "both temples" provocative;
@@ -153,10 +153,10 @@ Tied to the 1178 bookmark, which waits until after the Silk & Silver DLC (17 Nov
 - [ ] The Wills only under Byzantine-heritage lieges
 
 ## Stage 2 inputs from the second comparanda reading
-- [ ] Orthodox Slavs: a penance ladder for Slavic Orthodox lieges in place of The Wills; opinions by House (Gift Alone most condemned: self-castration as suicide, a boy cut by force still ordainable; `research/cmp_levin_orthodox_slavs.md`); `christian_syncretic_recipient` would also hit Dorleyites, so cancel it as for the sect
+- [x] (wave 12, `tm_rx.0030`) Orthodox Slavs: a penance ladder for Slavic Orthodox lieges in place of The Wills; opinions by House (Gift Alone most condemned: self-castration as suicide, a boy cut by force still ordainable; `research/cmp_levin_orthodox_slavs.md`); `christian_syncretic_recipient` would also hit Dorleyites, so cancel it as for the sect
 - [x] Hindu and Jain reaction layers by event (klība: disinherited, owed food and clothing; Jain judgement by *veda*) (`tm_ml2.0030`–`0032`, stage 2)
-- [ ] Mamluk hostile event: *istiḥlāl al-muḥarramāt* (teaching the forbidden as permitted) as apostasy, after Ibn al-Baqaqi (1302) (`research/isl_islamicate_sexualities.md`)
-- [ ] Catholic: Hostiensis's oath before the bishop; Baldus on Giovanni Malaspina inheriting by settled choice (1390s) (`research/cmp_devun_shape_of_sex.md`)
+- [x] (wave 12, `tm_rx.0020`) Mamluk hostile event: *istiḥlāl al-muḥarramāt* (teaching the forbidden as permitted) as apostasy, after Ibn al-Baqaqi (1302) (`research/isl_islamicate_sexualities.md`)
+- [x] (wave 12, `tm_rx.0001`, `0003`) Catholic: Hostiensis's oath before the bishop; Baldus on Giovanni Malaspina inheriting by settled choice (1390s) (`research/cmp_devun_shape_of_sex.md`)
 - [ ] German court: Walther's "Under the Linden" (one manuscript: *herre frowe*) (`research/cmp_puff_german_genealogies.md`)
 - [ ] Ha-Nehpakhot: Sarah as *aylonit* (b. Yevamot 64b) as a matriarch; Rashi's glosses as the worthies' lines; whether the spinning circle's talk can reach the worthies (Mishnah Sotah 6:1) (these three built in stage 2, `tm_hn2.0001`–`0002`); the 1306 French expulsion for Narbonne and Montpellier; Hildenfinger's Arles documents; Iancu on the expulsion c. 1500
 - [x] Puff, *Sodomy in Reformation Germany and Switzerland* (2003): unavailable (user, 2026-10-19); rely on Rolker, Karras & Pierpont and DeVun for the German lands
@@ -355,3 +355,12 @@ In-game checks for everything built on 2026-10-21 in wave 4. Scenarios are in TO
 - [ ] **The Companions Choose fallback.** If the camp does not follow `change_title_holder` (§U6), limit the event to a companion who is the leader's child or heir?
 - [ ] **The Sword Is My Patent.** Build the decision (Tor proposal 2's last step), or leave it to the stored claim and vanilla CBs?
 - [ ] **The companion strikes first / the deposed leader's return.** Build the darker branch (the plot discovered) or Dirham's road (pilgrimage, then a lord's envoy)?
+
+## Wave 11: the Worn Garland after 1178 (added 2026-10-27, untested in-game; docs/wave11/garland.md)
+- [x] Garland wave 11 (`tm_ml5`): the 1178 changes as era events in every start: honours to her and her descendants (0001–0002) and the first house where the king's hand is light (0030), 1178–1300; the commentator's word (0010) and the girl's part (0011), from 1150; both temples (0020), from 1178; the council's guard (0031), from 1200 (built, not yet tested in game)
+- [ ] Garland, not built from the 1178 notes: Buy a Verse as a gate step (the gate is unchanged); "rank without gifts" after 1300; *A Name in Stone* weighted at 1178; Oṭṭakkūttar and Rāmānuja's exile (unverified)
+- [ ] Decide the inferred dates and links listed in docs/wave11/garland.md (1178 period breaks, 1150 for the girl's part, 1200 council guard, Kannada evidence at Tamil courts)
+
+## Wave 12: how the surrounding religious authorities react (added 2026-10-27, untested in-game; docs/wave12/reactions.md)
+- [x] Six voices (`tm_rx`): the bishop's court (Huguccio, Hostiensis), the Paris master, the Perugia consilium, Ibn Ḥazm at an Andalusi court, istiḥlāl at a Mamluk court, the Slavic penance ladder in place of the Byzantine ladder
+- [ ] Open questions (docs/wave12/reactions.md §10): opinions by House from the bishop's court; the whole Byzantine ladder swapped for Slavic lieges, not only The Wills; the dates; Ha-Nehpakhot kept out of the Latin events; the witness frame; the Masarra line

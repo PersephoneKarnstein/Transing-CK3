@@ -1,0 +1,151 @@
+﻿# Crusader Dolls — how the surrounding religious authorities react, wave 12 (events/tm_rx_events.txt;
+# docs/wave12/reactions.md). Each voice is gated to its date and its region or court.
+
+# A daughter one of these voices can address: an adult daughter of any gate or a declared sister, not in a cell, not
+# singled out by a hostile event of the world in the last three years (tm_world_rested_trigger), with flavour budget.
+# Scope: the daughter.
+tm_rx_daughter_trigger = {
+	tm_world_daughter_trigger = yes
+	tm_world_rested_trigger = yes
+	tm_flavour_ready_trigger = yes
+}
+
+# A court of the Latin Church: Catholic after the schism; before it (or if it never comes), the Chalcedonian faith
+# under a Western rite. Scope: the court's ruler.
+tm_rx_latin_court_trigger = {
+	OR = {
+		faith = faith:catholic
+		AND = {
+			faith = faith:christian_faith
+			NOT = { rite = rite:byzantine_rite }
+			NOT = { rite = rite:georgian_rite }
+			NOT = { rite = rite:slavic_rite }
+		}
+	}
+}
+
+# An Orthodox court of Slavic culture (Rus', Bulgaria, Serbia): the Orthodox faith after the schism; before it, the
+# Chalcedonian faith under the Greek or Slavic rite (research/cmp_levin_orthodox_slavs.md). Scope: the court's ruler.
+tm_rx_slav_orthodox_trigger = {
+	culture ?= {
+		OR = {
+			has_cultural_pillar = heritage_east_slavic
+			has_cultural_pillar = heritage_south_slavic
+			has_cultural_pillar = heritage_west_slavic
+		}
+	}
+	OR = {
+		faith = faith:orthodox
+		AND = {
+			faith = faith:christian_faith
+			OR = {
+				rite = rite:byzantine_rite
+				rite = rite:slavic_rite
+			}
+		}
+	}
+}
+
+# A Muslim court of al-Andalus. Scope: the court's ruler.
+tm_rx_andalusi_court_trigger = {
+	faith = { religion_tag = islam_religion }
+	capital_province ?= { geographical_region = world_europe_west_iberia }
+}
+
+# A Sunni court of Egypt or Syria, from 1250: the Mamluk lands. Scope: the court's ruler.
+tm_rx_mamluk_court_trigger = {
+	current_date >= 1250.1.1
+	faith = faith:sunni
+	capital_province ?= {
+		OR = {
+			geographical_region = world_africa_north_east
+			geographical_region = world_middle_east_jerusalem
+		}
+	}
+}
+
+# --- The bishop's court (tm_rx.0001): Huguccio's questions from 1188 (Summa, c. 1188-90), Hostiensis's oath from
+# 1250 (mid-13th c.; DeVun p. 128) to 1390. Never a daughter of Ha-Nehpakhot: the oath's "turning back" is the hyena
+# trope's word for Jews (research/cmp_devun_shape_of_sex.md §2.1 row 2). Scope: the daughter; scope:tm_rx_court.
+tm_rx_bishop_court_trigger = {
+	current_date >= 1188.1.1
+	current_date < 1391.1.1
+	NOT = { tm_world_nehpakhot_daughter_trigger = yes }
+	scope:tm_rx_court = { tm_rx_latin_court_trigger = yes }
+}
+tm_rx_huguccio_era_trigger = {
+	current_date < 1250.1.1
+}
+
+# --- The Paris master (tm_rx.0002): the Chanter's school, from the long Verbum abbreviatum (1191/92; Baldwin p. 15)
+# to 1300. Scope: the daughter; scope:tm_rx_court.
+tm_rx_paris_master_trigger = {
+	current_date >= 1191.1.1
+	current_date < 1301.1.1
+	NOT = { tm_world_nehpakhot_daughter_trigger = yes }
+	scope:tm_rx_court = { tm_rx_latin_court_trigger = yes }
+}
+# After Lateran IV (1215): the parish inquest of three men of good repute (Goodich p. 52).
+tm_rx_inquest_era_trigger = {
+	current_date >= 1215.1.1
+}
+
+# --- The consilium (tm_rx.0003): Baldus on Giovanni Malaspina, 1390s (DeVun pp. 128-129). A landed daughter under a
+# Latin liege. Scope: the daughter; scope:tm_rx_court = her liege.
+tm_rx_consilium_trigger = {
+	current_date >= 1395.1.1
+	is_landed = yes
+	exists = primary_title
+	NOT = { tm_world_nehpakhot_daughter_trigger = yes }
+	NOT = { has_variable = tm_rx_consilium_heard }
+	scope:tm_rx_court = { tm_rx_latin_court_trigger = yes }
+}
+# The kinsman who would take her inheritance: adult, of the Latin Church, not of the six faiths. Scope: the candidate.
+tm_rx_consilium_kin_trigger = {
+	is_adult = yes
+	is_imprisoned = no
+	tm_rx_latin_court_trigger = yes
+}
+
+# --- Ibn Hazm's charge (tm_rx.0010): a daughter of the knife at or under an Andalusi Muslim court, from 1030 (Ibn
+# Hazm wrote from the 1020s to his death in 1064) to 1250. Scope: the daughter; scope:tm_rx_court.
+tm_rx_ibn_hazm_trigger = {
+	current_date >= 1030.1.1
+	current_date < 1251.1.1
+	has_trait = tm_daughter_of_the_knife
+	scope:tm_rx_court = { tm_rx_andalusi_court_trigger = yes }
+}
+
+# --- Declaring the forbidden permitted (tm_rx.0020): a daughter at or under a Mamluk court. The qadi's charge falls
+# on the court's Muslims, not on her. Scope: the daughter; scope:tm_rx_court.
+tm_rx_istihlal_trigger = {
+	scope:tm_rx_court = { tm_rx_mamluk_court_trigger = yes }
+}
+# Ibn al-Baqaqi: charged 1287, put to death 1302 (Rowson, Islamicate Sexualities, pp. 213-214).
+tm_rx_baqaqi_charged_trigger = {
+	current_date >= 1287.1.1
+	current_date < 1302.1.1
+}
+tm_rx_baqaqi_dead_trigger = {
+	current_date >= 1302.1.1
+}
+# A Muslim friend of hers at that court who might speak for her. Scope: the candidate; scope:tm_rx_daughter.
+tm_rx_istihlal_friend_trigger = {
+	is_adult = yes
+	faith = { religion_tag = islam_religion }
+	has_relation_friend = scope:tm_rx_daughter
+}
+
+# --- The penance ladder (tm_rx.0030): a ruler of Adelphai Dorleyaiou under a Slavic Orthodox liege, from 900 (the
+# start of Levin's period). It takes the place of the Byzantine heresy ladder (tm_byz.0010-0012) for these lieges:
+# Slavic princes left sexual morality to the church (Levin p. 297). Scope: the ruler.
+tm_rx_penance_trigger = {
+	current_date >= 900.1.1
+	is_landed = yes
+	rite ?= { rite_has_parameter = tm_day_of_blood_active }
+	liege ?= { tm_rx_slav_orthodox_trigger = yes }
+	NOT = { var:tm_rx_penance ?= 3 }
+	NOT = { has_variable = tm_rx_penance_commuted }
+	NOT = { has_variable = tm_scapegoat_calm }	# a secure liege faith lets her be (tm_mech_scapegoat_effect)
+	tm_flavour_ready_trigger = yes
+}

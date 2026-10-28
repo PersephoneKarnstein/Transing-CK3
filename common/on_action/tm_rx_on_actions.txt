@@ -1,0 +1,67 @@
+﻿# Crusader Dolls — how the surrounding religious authorities react, wave 12 (events/tm_rx_events.txt;
+# docs/wave12/reactions.md). Appended to vanilla.
+# Every chance here is small: these are flavour, and spend the flavour budget of the daughter they reach. A daughter
+# one of them reaches is left alone by these and by the tm_world events for three years (tm_world_mark_effect).
+# Keep Quiet in This Land (tm_world_keeps_quiet_trigger) halves them for her.
+
+yearly_playable_pulse = {
+	on_actions = { tm_rx_yearly }
+}
+
+tm_rx_yearly = {
+	effect = {
+		# Daughters at this court, when it is one the voices speak for: Latin, Andalusi or Mamluk.
+		if = {
+			limit = {
+				tm_world_hostile_court_trigger = yes
+				OR = {
+					tm_rx_latin_court_trigger = yes
+					tm_rx_andalusi_court_trigger = yes
+					tm_rx_mamluk_court_trigger = yes
+				}
+				any_courtier = { tm_rx_daughter_trigger = yes }
+			}
+			save_scope_as = tm_rx_court
+			every_courtier = {
+				limit = { tm_rx_daughter_trigger = yes }
+				tm_rx_roll_effect = yes
+			}
+		}
+
+		# A landed daughter whose liege is such a court.
+		if = {
+			limit = {
+				tm_rx_daughter_trigger = yes
+				liege ?= {
+					tm_world_hostile_court_trigger = yes
+					OR = {
+						tm_rx_latin_court_trigger = yes
+						tm_rx_andalusi_court_trigger = yes
+						tm_rx_mamluk_court_trigger = yes
+					}
+				}
+			}
+			liege = { save_scope_as = tm_rx_court }
+			tm_rx_roll_effect = yes
+		}
+
+		# The penance ladder: a Dorleyite ruler under a Slavic Orthodox liege. It stands in for the Byzantine heresy
+		# ladder, which these lieges no longer draw (tm_on_actions.txt, tm_mech_effects.txt).
+		if = {
+			limit = { tm_rx_penance_trigger = yes }
+			random = {
+				chance = 3
+				clear_saved_scope = tm_rx_cleric
+				liege = {
+					save_scope_as = tm_rx_court
+					if = {
+						limit = { exists = cp:councillor_court_chaplain }
+						cp:councillor_court_chaplain = { save_scope_as = tm_rx_cleric }
+					}
+				}
+				tm_flavour_spent_effect = yes
+				trigger_event = { id = tm_rx.0030 days = { 1 300 } }
+			}
+		}
+	}
+}

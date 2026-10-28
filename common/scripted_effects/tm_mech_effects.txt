@@ -396,6 +396,7 @@ tm_mech_scapegoat_effect = {
 				limit = {
 					rite ?= { rite_has_parameter = tm_day_of_blood_active }
 					liege = { faith = { religion_tag = christianity_religion } }
+					NOT = { liege = { tm_rx_slav_orthodox_trigger = yes } }	# the penance ladder instead (tm_rx.0030)
 					NOT = { var:tm_suppression ?= 3 }
 				}
 				random = {

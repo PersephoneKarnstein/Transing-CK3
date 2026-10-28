@@ -1,0 +1,104 @@
+﻿# Crusader Dolls — the Worn Garland, wave 11: the world after 1178, as era events in every start
+# (events/tm_ml5_events.txt; docs/wave11/garland.md). The seat, the faith and the gate are the same; the world changes.
+# Sources: Orr, Donors, Devotees, and Daughters of God (2000), in research/ind_orr_temple_women.md; Carman and Narayanan,
+# The Tamil Veda (1989); Narayanan, The Vernacular Veda (1994); Hall, Trade and Statecraft in the Age of the Colas
+# (1980); research/later_starts/region_south-asia-maritime-sea.md §1, §3–5.
+
+# Tamil country: the four duchies of Tondai, Chola, Pandya and Chera nadu (vanilla k_tamilakam). Scope: a county title.
+tm_ml5_tamil_county_trigger = {
+	OR = {
+		duchy = title:d_tondai_nadu
+		duchy = title:d_chola_nadu
+		duchy = title:d_pandya_nadu
+		duchy = title:d_chera_nadu
+	}
+}
+
+# Orr's last period, 1178–1300: temple women most numerous, most often named and richest (Orr 2000, pp. 46, 67–73,
+# 161–63). All 21 "deals" fall in 1070–1300, ten hereditary "to her descendants" (pp. 74–75, 151). Orr's notes here do
+# not split the deals between 1070–1178 and 1178–1300 (open question 9 of the region note), so the 1178 gate is the
+# period's break, not a count; after 1300 temple women stop giving (pp. 174–77), and no new deal is offered.
+tm_ml5_deal_years_trigger = {
+	current_year >= 1178
+	current_year < 1300
+}
+
+# Where the king's hand is light: temple women did best "under non-Chola kings, and where royal power is weak" (Orr
+# 2000, pp. 80–82, 161, 163–64). Stands in for weak royal power: a county out of hand, or a top liege at war, whose men
+# are away. Scope: a county title.
+tm_ml5_light_crown_trigger = {
+	OR = {
+		county_control < 75
+		holder.top_liege ?= { is_at_war = yes }
+	}
+}
+
+# A daughter of the Garland living on the street of her share. Scope: the daughter.
+tm_ml5_street_daughter_trigger = {
+	faith = faith:tm_garland
+	tm_is_daughter_trigger = yes
+	is_adult = yes
+	is_imprisoned = no
+	tm_ml2_at_share_trigger = yes
+}
+
+# Holds an honour bought from the temple "to her and her descendants" (0001, 0030). Scope: a character.
+tm_ml5_honour_holder_trigger = {
+	OR = {
+		has_variable = tm_ml5_verse
+		has_variable = tm_ml5_procession
+		has_variable = tm_ml5_first_house
+	}
+}
+
+# Could take up a mother's honour: a living woman of the street's faith, her daughter born or taken (the share's own
+# heir rule, tm_ml2_share_heir_trigger, without the bar on a share of her own). Scope: the child.
+tm_ml5_honour_heir_trigger = {
+	is_alive = yes
+	is_female = yes
+	faith = { has_doctrine_parameter = tm_temple_street }
+}
+
+# A daughter of the Garland at court who could hear the quarrels of the age. Scope: the courtier.
+tm_ml5_court_daughter_trigger = {
+	faith = faith:tm_garland
+	tm_is_daughter_trigger = yes
+	is_adult = yes
+	is_imprisoned = no
+	tm_flavour_ready_trigger = yes
+}
+
+# A court where the commentaries on the Lord's songs are read: a Hindu lord in Tamil country, or a Vaishnava lord
+# anywhere in the south. Scope: the host.
+tm_ml5_commentary_court_trigger = {
+	faith ?= { religion = religion:hinduism_religion }
+	OR = {
+		capital_county ?= { tm_ml5_tamil_county_trigger = yes }
+		AND = {
+			faith ?= faith:vaishnava_faith
+			capital_province ?= { geographical_region = world_india_deccan }
+		}
+	}
+}
+
+# A court where one temple is enough: a Shaiva or Vaishnava lord in the south. Scope: the host.
+tm_ml5_one_temple_court_trigger = {
+	OR = {
+		faith ?= faith:shaiva_faith
+		faith ?= faith:vaishnava_faith
+	}
+	capital_province ?= { geographical_region = world_india_deccan }
+}
+
+# A band of the Garland camped in Tamil country where the king's hand is light, with a county lord who is not the
+# band. Scope: the band's leader.
+tm_ml5_council_band_trigger = {
+	tm_ml3_garland_band_trigger = yes
+	NOT = { has_variable = tm_ml5_council_asked }
+	location.county ?= {
+		tm_ml5_tamil_county_trigger = yes
+		tm_ml5_light_crown_trigger = yes
+		exists = holder
+		NOT = { holder = root }
+	}
+}

@@ -1,0 +1,180 @@
+﻿# Crusader Dolls — how the surrounding religious authorities react, wave 12 (events/tm_rx_events.txt;
+# docs/wave12/reactions.md).
+
+# Count for the census (tools/census_report.py, "Reactions: wave 12").
+tm_rx_tally_effect = {
+	if = {
+		limit = { NOT = { has_global_variable = tm_rx_n_$WHAT$ } }
+		set_global_variable = { name = tm_rx_n_$WHAT$ value = 0 }
+	}
+	change_global_variable = { name = tm_rx_n_$WHAT$ add = 1 }
+}
+
+# Roll the voices of the world's court for one daughter. The blocks run in order, and each spends the flavour budget
+# when it fires, so a daughter hears at most one voice a year. Scope: the daughter (saved as scope:tm_rx_daughter);
+# scope:tm_rx_court = the court whose clergy speak (her host if she is a courtier, her liege if she is landed).
+tm_rx_roll_effect = {
+	# The pulse calls this once per daughter of a court: clear what the last one left.
+	clear_saved_scope = tm_rx_cleric
+	clear_saved_scope = tm_rx_kin
+	clear_saved_scope = tm_rx_friend
+	save_scope_as = tm_rx_daughter
+	scope:tm_rx_court = {
+		if = {
+			limit = { exists = cp:councillor_court_chaplain }
+			cp:councillor_court_chaplain = { save_scope_as = tm_rx_cleric }
+		}
+	}
+
+	# The bishop's court: Huguccio's questions (1188-1249), Hostiensis's oath (1250-1390). The canonists' interest
+	# in the question fades after the early 13th century (van der Lugt p. 111), so it is rarer under Hostiensis.
+	if = {
+		limit = {
+			tm_rx_daughter_trigger = yes
+			tm_rx_bishop_court_trigger = yes
+		}
+		random = {
+			chance = 4
+			modifier = { factor = 0.5 current_date >= 1250.1.1 }
+			modifier = { factor = 0.5 tm_world_keeps_quiet_trigger = yes }
+			tm_rx_fire_effect = { EVENT = tm_rx.0001 }
+		}
+	}
+	# The Paris master: the theologians' voice, harder after Lateran IV (1215).
+	if = {
+		limit = {
+			tm_rx_daughter_trigger = yes
+			tm_rx_paris_master_trigger = yes
+		}
+		random = {
+			chance = 2
+			modifier = { add = 2 tm_rx_inquest_era_trigger = yes }
+			modifier = { factor = 0.5 tm_world_keeps_quiet_trigger = yes }
+			tm_rx_fire_effect = { EVENT = tm_rx.0002 }
+		}
+	}
+	# The consilium from Perugia: a landed daughter under a Latin liege, from 1395.
+	if = {
+		limit = {
+			tm_rx_daughter_trigger = yes
+			tm_rx_consilium_trigger = yes
+		}
+		random = {
+			chance = 5
+			if = {
+				limit = { any_close_or_extended_family_member = { tm_rx_consilium_kin_trigger = yes } }
+				random_close_or_extended_family_member = {
+					limit = { tm_rx_consilium_kin_trigger = yes }
+					save_scope_as = tm_rx_kin
+				}
+			}
+			set_variable = { name = tm_rx_consilium_heard value = yes }
+			tm_rx_fire_effect = { EVENT = tm_rx.0003 }
+		}
+	}
+	# Ibn Hazm's charge: a daughter of the knife at an Andalusi court, 1030-1250.
+	if = {
+		limit = {
+			tm_rx_daughter_trigger = yes
+			tm_rx_ibn_hazm_trigger = yes
+		}
+		random = {
+			chance = 6
+			modifier = { factor = 0.5 tm_world_keeps_quiet_trigger = yes }
+			tm_rx_fire_effect = { EVENT = tm_rx.0010 }
+		}
+	}
+	# Declaring the forbidden permitted: a Mamluk court, from 1250.
+	if = {
+		limit = {
+			tm_rx_daughter_trigger = yes
+			tm_rx_istihlal_trigger = yes
+		}
+		random = {
+			chance = 4
+			modifier = { add = 2 tm_rx_baqaqi_charged_trigger = yes }	# the case is the talk of Cairo
+			modifier = { factor = 0.5 tm_world_keeps_quiet_trigger = yes }
+			# A Muslim friend of hers who might speak for her: a courtier, else a vassal, else the ruler himself.
+			scope:tm_rx_court = {
+				if = {
+					limit = { any_courtier = { tm_rx_istihlal_friend_trigger = yes } }
+					random_courtier = {
+						limit = { tm_rx_istihlal_friend_trigger = yes }
+						save_scope_as = tm_rx_friend
+					}
+				}
+				else_if = {
+					limit = { any_vassal = { tm_rx_istihlal_friend_trigger = yes } }
+					random_vassal = {
+						limit = { tm_rx_istihlal_friend_trigger = yes }
+						save_scope_as = tm_rx_friend
+					}
+				}
+				else_if = {
+					limit = { tm_rx_istihlal_friend_trigger = yes }
+					save_scope_as = tm_rx_friend
+				}
+			}
+			tm_rx_fire_effect = { EVENT = tm_rx.0020 }
+		}
+	}
+}
+
+# Spend the budget, mark the daughter as singled out (shared with the tm_world events), and send the event.
+# Scope: the daughter.
+tm_rx_fire_effect = {
+	tm_flavour_spent_effect = yes
+	tm_world_mark_effect = yes
+	trigger_event = { id = $EVENT$ days = { 1 300 } }
+}
+
+# The confessor's penance by House (tm_rx.0030, first rung). The Slavic canons weigh the knife by who cut whom and
+# why (Levin pp. 73 n. 114, 209, 257, 260; research/cmp_levin_orthodox_slavs.md §4 item 4). The bishop's court
+# (scope:tm_rx_cleric, the liege's chaplain) takes its view of the ruler and of every daughter of the knife at her
+# court. Scope: the Dorleyite ruler.
+tm_rx_penance_opinions_effect = {
+	if = {
+		limit = { exists = scope:tm_rx_cleric }
+		save_scope_as = tm_rx_penitent
+		if = {	# Grandmother's House: the cutter sinned; the one cut as a child carries no sin (may even be ordained)
+			limit = { rite ?= { rite_has_doctrine = tm_knife_grandmother } }
+			scope:tm_rx_cleric = { add_opinion = { target = scope:tm_rx_penitent modifier = tm_rx_slav_cutter_opinion } }
+		}
+		else_if = {	# Aunt Bea's House: the cutter's sin, and a lesser stain on the one cut
+			limit = { rite ?= { rite_has_doctrine = tm_knife_aunt_bea } }
+			scope:tm_rx_cleric = { add_opinion = { target = scope:tm_rx_penitent modifier = tm_rx_slav_sponsor_opinion } }
+			every_courtier = {
+				limit = { has_trait = tm_daughter_of_the_knife }
+				scope:tm_rx_cleric = { add_opinion = { target = prev modifier = tm_rx_slav_cut_by_another_opinion } }
+			}
+		}
+		else_if = {	# The Gift Alone: her own asking is the gravest in the book. The most consensual House is the most
+					# condemned (Levin's irony).
+			limit = { rite ?= { rite_has_doctrine = tm_knife_gift_alone } }
+			if = {
+				limit = { has_trait = tm_daughter_of_the_knife }
+				scope:tm_rx_cleric = { add_opinion = { target = scope:tm_rx_penitent modifier = tm_rx_slav_own_knife_opinion } }
+			}
+			every_courtier = {
+				limit = { has_trait = tm_daughter_of_the_knife }
+				scope:tm_rx_cleric = { add_opinion = { target = prev modifier = tm_rx_slav_own_knife_opinion } }
+			}
+		}
+	}
+}
+
+# A rung borne or refused: the ladder climbs. Scope: the ruler.
+tm_rx_penance_climb_effect = {
+	if = {
+		limit = { has_variable = tm_rx_penance }
+		change_variable = { name = tm_rx_penance add = 1 }
+	}
+	else = {
+		set_variable = { name = tm_rx_penance value = 1 }
+	}
+}
+
+# A rung commuted: the ladder stays where it is, and the bishop lets her be ten years. Scope: the ruler.
+tm_rx_penance_commute_effect = {
+	set_variable = { name = tm_rx_penance_commuted value = yes years = 10 }
+}

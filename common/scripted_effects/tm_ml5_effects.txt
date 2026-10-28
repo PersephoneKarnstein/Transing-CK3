@@ -1,0 +1,149 @@
+﻿# Crusader Dolls — the Worn Garland, wave 11 (events/tm_ml5_events.txt; docs/wave11/garland.md).
+
+# Count for the census (run-wide; printed by tools/census_report.py once it has the wave 11 line).
+tm_ml5_tally_effect = {
+	if = {
+		limit = { NOT = { has_global_variable = tm_ml5_n_$WHAT$ } }
+		set_global_variable = { name = tm_ml5_n_$WHAT$ value = 0 }
+	}
+	change_global_variable = { name = tm_ml5_n_$WHAT$ add = 1 }
+}
+
+# Give an honour bought from the temple, or inherited. $HONOUR$ = verse, procession or first_house; $COUNTY$ = the
+# temple's county. Each is held "to her and her descendants" (Orr 2000, pp. 75, 151). Scope: the woman.
+tm_ml5_give_honour_effect = {
+	set_variable = { name = tm_ml5_$HONOUR$ value = $COUNTY$ }
+	if = {
+		limit = { NOT = { has_character_modifier = tm_ml5_$HONOUR$_modifier } }
+		add_character_modifier = { modifier = tm_ml5_$HONOUR$_modifier }
+	}
+}
+
+# The honours pass "to her descendants": to her eldest daughter of the street's faith, born or taken. With none, they go
+# back to the temple. Orr finds ten of the 21 deals hereditary (pp. 75, 151); the line is traced through the mother
+# (p. 156), and adoption before 1300 is Orr's guess (ch. 3 n. 28, p. 228), which the Garland claims as its own.
+# Scope: the holder, about to die. Saves scope:tm_ml5_mother and, if any, scope:tm_ml5_heir.
+tm_ml5_pass_honours_effect = {
+	save_scope_as = tm_ml5_mother
+	ordered_child = {
+		limit = { tm_ml5_honour_heir_trigger = yes }
+		order_by = age
+		save_scope_as = tm_ml5_heir
+	}
+	if = {
+		limit = { exists = scope:tm_ml5_heir }
+		if = {
+			limit = { has_variable = tm_ml5_verse }
+			scope:tm_ml5_heir = { tm_ml5_give_honour_effect = { HONOUR = verse COUNTY = scope:tm_ml5_mother.var:tm_ml5_verse } }
+		}
+		if = {
+			limit = { has_variable = tm_ml5_procession }
+			scope:tm_ml5_heir = { tm_ml5_give_honour_effect = { HONOUR = procession COUNTY = scope:tm_ml5_mother.var:tm_ml5_procession } }
+		}
+		if = {
+			limit = { has_variable = tm_ml5_first_house }
+			scope:tm_ml5_heir = { tm_ml5_give_honour_effect = { HONOUR = first_house COUNTY = scope:tm_ml5_mother.var:tm_ml5_first_house } }
+		}
+		scope:tm_ml5_heir = { trigger_event = { id = tm_ml5.0002 days = 3 } }
+		tm_ml5_tally_effect = { WHAT = honour_passed }
+	}
+	else = {
+		tm_ml5_tally_effect = { WHAT = honour_lapsed }
+	}
+}
+
+# A daughter's year: at most one of the era's events, through the flavour budget. Scope: the daughter (a courtier, or
+# a playable daughter herself); scope:tm_ml5_host = whose court.
+tm_ml5_daughter_year_effect = {
+	# To her and her descendants (0001): the temple sells an honour, 1178–1300.
+	if = {
+		limit = {
+			tm_ml5_deal_years_trigger = yes
+			tm_ml5_street_daughter_trigger = yes
+			tm_flavour_ready_trigger = yes
+			gold >= 30
+			NOT = { has_variable = tm_ml5_deal_asked }
+			OR = {
+				NOT = { has_variable = tm_ml5_verse }
+				NOT = { has_variable = tm_ml5_procession }
+			}
+		}
+		random = {
+			chance = 8
+			tm_flavour_spent_effect = yes
+			set_variable = { name = tm_ml5_deal_asked value = yes years = 10 }
+			trigger_event = { id = tm_ml5.0001 days = { 1 120 } }
+		}
+	}
+	# The first house in the quarter (0030): where the king's hand is light, the temple council sells it, 1178–1300.
+	if = {
+		limit = {
+			tm_ml5_deal_years_trigger = yes
+			tm_ml5_street_daughter_trigger = yes
+			tm_flavour_ready_trigger = yes
+			gold >= 30
+			NOT = { has_variable = tm_ml5_first_house }
+			NOT = { has_variable = tm_ml5_house_asked }
+			var:tm_ml2_share = { tm_ml5_light_crown_trigger = yes }
+		}
+		random = {
+			chance = 6
+			tm_flavour_spent_effect = yes
+			set_variable = { name = tm_ml5_house_asked value = yes years = 10 }
+			trigger_event = { id = tm_ml5.0030 days = { 1 120 } }
+		}
+	}
+	# The rest are heard at another's court.
+	if = {
+		limit = { NOT = { scope:tm_ml5_host = this } }
+		# The commentator's word (0010), from 1150.
+		if = {
+			limit = {
+				current_year >= 1150
+				tm_ml5_court_daughter_trigger = yes
+				NOT = { has_variable = tm_ml5_guise_heard }
+				scope:tm_ml5_host = { tm_ml5_commentary_court_trigger = yes }
+			}
+			random = {
+				chance = 4
+				tm_flavour_spent_effect = yes
+				set_variable = { name = tm_ml5_guise_heard value = yes years = 25 }
+				trigger_event = { id = tm_ml5.0010 days = { 1 300 } }
+			}
+		}
+		# The girl's part (0011), from 1150.
+		if = {
+			limit = {
+				current_year >= 1150
+				tm_ml5_court_daughter_trigger = yes
+				NOT = { has_variable = tm_ml5_part_seen }
+				scope:tm_ml5_host = { tm_ml5_commentary_court_trigger = yes }
+			}
+			random = {
+				chance = 3
+				tm_flavour_spent_effect = yes
+				set_variable = { name = tm_ml5_part_seen value = yes years = 25 }
+				trigger_event = { id = tm_ml5.0011 days = { 1 300 } }
+			}
+		}
+		# Both temples (0020), from 1178: a daughter with a share or a gift on record, at a Shaiva or Vaishnava court.
+		if = {
+			limit = {
+				current_year >= 1178
+				tm_ml5_court_daughter_trigger = yes
+				NOT = { has_variable = tm_ml5_both_asked }
+				OR = {
+					has_variable = tm_ml2_share
+					has_variable = tm_ml2_gifts
+				}
+				scope:tm_ml5_host = { tm_ml5_one_temple_court_trigger = yes }
+			}
+			random = {
+				chance = 5
+				tm_flavour_spent_effect = yes
+				set_variable = { name = tm_ml5_both_asked value = yes years = 15 }
+				trigger_event = { id = tm_ml5.0020 days = { 1 300 } }
+			}
+		}
+	}
+}

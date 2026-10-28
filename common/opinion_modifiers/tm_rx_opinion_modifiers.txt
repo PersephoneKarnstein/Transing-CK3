@@ -1,0 +1,70 @@
+﻿# Crusader Dolls — how the surrounding religious authorities react, wave 12 (docs/wave12/reactions.md).
+
+# The canonist who wrote her a woman by Huguccio's rule (tm_rx.0001).
+tm_rx_canonist_opinion = {
+	opinion = 10
+	years = 20
+}
+
+# The bishop's chaplain before whom she swore (tm_rx.0001, Hostiensis).
+tm_rx_sworn_opinion = {
+	opinion = 15
+	years = 30
+}
+
+# She would swear to today, not to the rest of her life (tm_rx.0001, Hostiensis).
+tm_rx_refused_oath_opinion = {
+	opinion = -10
+	years = 10
+}
+
+# She threw the Chanter's own Valley Gate back at the clergy (tm_rx.0002; Barney p. 517).
+tm_rx_valley_gate_opinion = {
+	opinion = -10
+	years = 10
+}
+
+# The liege whose judges read the consilium for her (tm_rx.0003).
+tm_rx_consilium_opinion = {
+	opinion = 10
+	years = 20
+}
+
+# The Andalusi lord to whom she promised no knife within his borders (tm_rx.0010; de la Puente n. 74).
+tm_rx_no_knife_here_opinion = {
+	opinion = 10
+	years = 20
+}
+
+# The Muslim friend she asked to say nothing for her before the qadi (tm_rx.0020).
+tm_rx_spared_friend_opinion = {
+	opinion = 20
+	years = 20
+}
+
+# The Slavic bishop's court, by House (tm_rx.0030; Levin 1989, pp. 73 n. 114, 209, 257, 260):
+# Grandmother's House: the cutter's sin; the one cut as a child carries none.
+tm_rx_slav_cutter_opinion = {
+	opinion = -20
+	years = 20
+}
+# Aunt Bea's House: the cutter's sin, on the ruler who keeps the House.
+tm_rx_slav_sponsor_opinion = {
+	opinion = -10
+	years = 20
+}
+# Aunt Bea's House: a lesser stain on the one cut by another.
+tm_rx_slav_cut_by_another_opinion = {
+	opinion = -5
+	years = 20
+}
+# The Gift Alone: her own asking, the gravest in the book.
+tm_rx_slav_own_knife_opinion = {
+	opinion = -15
+	years = 20
+}
+# She would confess only to her own Mothers.
+tm_rx_slav_refused_opinion = {
+	opinion = -15
+	years = 10
+}
