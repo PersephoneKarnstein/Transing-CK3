@@ -161,6 +161,7 @@ tm_bae5.0020 = {
 				add_opinion = { target = root modifier = tm_bae5_bragarfull_opinion }
 			}
 		}
+		tm_bae6_to_the_vow_effect = { DOOR = flag:bragarfull }	# the vow over the cup (wave 15, tm_bae6.0200)
 	}
 }
 

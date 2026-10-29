@@ -1,0 +1,308 @@
+﻿# Crusader Dolls — Bædling, wave 15: raising a níð-pole oneself, the Níð of the Land, vows over the cup
+# (events/tm_bae6_events.txt; docs/wave15/baedling.md). Counts go through tm_feud_tally_effect (globals
+# tm_feud_n_bae6_*), read by tools/census_report.py ("Bædling: wave 15").
+
+# ---------------------------------------------------------------------------------------------------
+# Raise the Níð-Pole (common/schemes/scheme_types/tm_bae6_schemes.txt).
+
+# Who carved it: the man in the carver's slot, else the best of her court by learning (the scheme cannot start
+# without one: tm_bae6_raise_pole allow). Scope: any. Needs scope:tm_bae6_raiser; reads scope:tm_bae6_scheme if any.
+# Saves scope:tm_bae6_carver.
+tm_bae6_find_carver_effect = {
+	scope:tm_bae6_scheme ?= {
+		random_scheme_agent_slot = {
+			limit = {
+				is_agent_slot_type = tm_bae6_agent_carver
+				is_filled = yes
+			}
+			slot_character = { save_scope_as = tm_bae6_carver }
+		}
+	}
+	if = {
+		limit = { NOT = { exists = scope:tm_bae6_carver } }
+		scope:tm_bae6_raiser = {
+			ordered_courtier = {
+				limit = { tm_bae6_carver_trigger = { RAISER = scope:tm_bae6_raiser } }
+				order_by = learning
+				save_scope_as = tm_bae6_carver
+			}
+		}
+	}
+}
+
+# The pole stands. The pole shames the raiser too, but a lord who paid a carver bears half of it (Evans and Hancock pp.
+# 168-69, 181). It goes into the Account as a wrong done by her house to his: where his house owed hers, a requital.
+# Carved níð weighs more than spoken (Gulaþing tréníð apart from tunguníð; Mitchell p. 71, row 9): a requital by a
+# pole pays off two of what he owed, not one. Scope: any. Needs scope:tm_bae6_raiser and scope:tm_bae6_target.
+tm_bae6_pole_stands_effect = {
+	scope:tm_bae6_target = {
+		set_variable = { name = tm_bae6_pole_cd value = yes years = 5 }
+		add_prestige = medium_prestige_loss
+	}
+	scope:tm_bae6_raiser = {
+		add_character_modifier = { modifier = tm_bae6_pole_paid_modifier years = 5 }
+	}
+	if = {
+		limit = { scope:tm_bae6_target = { tm_bae6_owes_trigger = { CREDITOR = scope:tm_bae6_raiser } } }
+		save_scope_value_as = { name = tm_bae6_was_owed value = yes }
+	}
+	tm_feud_wrong_effect = { VICTIM = scope:tm_bae6_target WRONGDOER = scope:tm_bae6_raiser REASON = tm_nid_pole VANILLA = yes }
+	if = {
+		limit = {
+			exists = scope:tm_bae6_was_owed
+			scope:tm_bae6_target = { tm_bae6_owes_trigger = { CREDITOR = scope:tm_bae6_raiser } }
+		}
+		scope:tm_bae6_raiser.house = { tm_feud_pay_one_effect = { DEBTOR = scope:tm_bae6_target.house } }
+		tm_feud_tally_effect = { WHAT = bae6_poles_weighed_two }
+	}
+	tm_feud_tally_effect = { WHAT = bae6_poles_raised }
+}
+
+# The carver before the law where the pole stood (the court of the target's top liege). Under Sverrir's Christian law
+# (Norway and Iceland, from c. 1270) raising a "scald-pole" is forfeiture with confession, or exile (Mitchell p. 164):
+# the carver chooses (tm_bae6.0030). Under the older northern law, carved níð is a wrong at law apart from spoken níð
+# (Gulaþing, Mitchell p. 71) and Grágás gives the raiser lesser outlawry (Meulengracht Sørensen p. 17): three winters
+# abroad, through the outlawry of tm_bae2 (reprieve and settlement apply). Not the three words, which carry full
+# outlawry: the pole is the heavier insult and the lighter crime (Evans and Hancock p. 168). Scope: any. Needs
+# scope:tm_bae6_carver, scope:tm_bae6_target (who sues), scope:tm_bae6_law_lord.
+tm_bae6_carver_at_law_effect = {
+	scope:tm_bae6_carver = {
+		set_variable = { name = tm_bae6_carved_once value = yes years = 5 }
+	}
+	tm_feud_tally_effect = { WHAT = bae6_pole_law }
+	if = {
+		limit = { scope:tm_bae6_law_lord = { tm_bae6_sverrir_law_trigger = yes } }
+		scope:tm_bae6_carver = { trigger_event = { id = tm_bae6.0030 days = 7 } }
+	}
+	else = {
+		scope:tm_bae6_target = { save_scope_as = tm_bae2_accuser }
+		scope:tm_bae6_law_lord = { save_scope_as = tm_bae2_lord }
+		scope:tm_bae6_carver = { tm_bae2_lesser_outlawry_effect = yes }
+		tm_feud_tally_effect = { WHAT = bae6_carver_outlawed }
+	}
+}
+
+# Forfeiture, as Sverrir's law has it: his silver to the lord who heard it, up to fifty. Scope: the carver. Needs
+# scope:tm_bae6_law_lord.
+tm_bae6_forfeit_effect = {
+	if = {
+		limit = { gold > 0 }
+		pay_short_term_gold = {
+			target = scope:tm_bae6_law_lord
+			gold = {
+				value = gold
+				max = 50
+			}
+		}
+	}
+}
+
+# The AI looks for someone to raise a pole against: the head of a house that owes hers, or her rival. Scope: the
+# raiser (tm_bae6.0002). Starts the scheme if it can.
+tm_bae6_ai_start_pole_effect = {
+	save_scope_as = tm_bae6_raiser
+	house ?= {
+		every_in_list = {
+			variable = tm_acc_1
+			house_head ?= {
+				if = {
+					limit = {
+						is_alive = yes
+						in_diplomatic_range = scope:tm_bae6_raiser
+						tm_bae6_pole_target_trigger = { RAISER = scope:tm_bae6_raiser }
+					}
+					add_to_list = tm_bae6_targets
+				}
+			}
+		}
+	}
+	every_relation = {
+		type = rival
+		limit = {
+			in_diplomatic_range = scope:tm_bae6_raiser
+			tm_bae6_pole_target_trigger = { RAISER = scope:tm_bae6_raiser }
+		}
+		add_to_list = tm_bae6_targets
+	}
+	random_in_list = {
+		list = tm_bae6_targets
+		limit = {
+			NOT = { is_at_war_with = scope:tm_bae6_raiser }
+			scope:tm_bae6_raiser = {
+				can_start_scheme = {
+					type = tm_bae6_raise_pole
+					target_character = prev
+				}
+			}
+		}
+		weight = {
+			base = 1
+			modifier = { add = 3 tm_bae6_owes_trigger = { CREDITOR = scope:tm_bae6_raiser } }
+		}
+		save_scope_as = tm_bae6_ai_target
+	}
+	scope:tm_bae6_ai_target ?= {
+		scope:tm_bae6_raiser = {
+			begin_scheme_with_agents_effect = {
+				SCHEME_TYPE = tm_bae6_raise_pole
+				TARGET_TYPE = target_character
+				TARGET_SCOPE = scope:tm_bae6_ai_target
+				AGENT_1 = tm_bae6_agent_carver
+				AGENT_2 = tm_bae6_agent_nightman
+				AGENT_3 = tm_bae6_agent_nightman
+				AGENT_4 = agent_lookout
+				AGENT_5 = agent_lookout
+			}
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The Níð of the Land (common/decisions/tm_bae6_decisions.txt). "A verse for every nose in the land": each Bædling
+# ruler in the king's realm, and the poet's own Bædling vassals, makes a verse and pays a little prestige for it.
+# Collective, so no one is outlawed for it (Evans and Hancock pp. 176-78, row 4). Scope: the poet. Needs
+# scope:tm_bae6_king. Saves scope:tm_bae6_noses (how many).
+tm_bae6_count_noses_effect = {
+	add_to_list = tm_bae6_nose_list
+	every_vassal_or_below = {
+		limit = {
+			is_adult = yes
+			rite ?= { rite_has_parameter = tm_seidr_gate }
+		}
+		add_to_list = tm_bae6_nose_list
+	}
+	scope:tm_bae6_king = {
+		every_vassal_or_below = {
+			limit = {
+				is_adult = yes
+				rite ?= { rite_has_parameter = tm_seidr_gate }
+				NOT = { is_in_list = tm_bae6_nose_list }
+			}
+			add_to_list = tm_bae6_nose_list
+		}
+	}
+	set_local_variable = { name = tm_bae6_n value = 0 }
+	every_in_list = {
+		list = tm_bae6_nose_list
+		change_local_variable = { name = tm_bae6_n add = 1 }
+		if = {
+			limit = { NOT = { this = root } }
+			add_prestige = minor_prestige_loss
+		}
+	}
+	save_scope_value_as = { name = tm_bae6_noses value = local_var:tm_bae6_n }
+	if = {
+		limit = { NOT = { has_global_variable = tm_feud_n_bae6_land_noses } }
+		set_global_variable = { name = tm_feud_n_bae6_land_noses value = 0 }
+	}
+	change_global_variable = { name = tm_feud_n_bae6_land_noses add = local_var:tm_bae6_n }
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Vows over the cup (heitstrenging). "The heir stands, vows over the bragarfull, drains it, and takes the high seat"
+# (Ynglinga saga ch. 36), and the cup after a flyting turns it into a vow (Beowulf 611-41): Damico pp. 10, 55-56,
+# research/norse_damico_wealhtheow_valkyrie.md rows 3-5. Vows over the full were held unbreakable (Grønbech, in
+# Damico p. 55). Kept for five years, not for ever (writing rule 23); she may drink without one.
+
+# A door to the vow: tm_bae5.0020 (the bragarfull) and tm_flyting.0020 (the cup after a flyting). $DOOR$ is
+# flag:bragarfull or flag:flyting. Scope: the one who drinks.
+tm_bae6_to_the_vow_effect = {
+	if = {
+		limit = {
+			is_adult = yes
+			NOT = { has_variable = tm_bae6_vow }
+		}
+		save_scope_value_as = { name = tm_bae6_door value = $DOOR$ }
+		trigger_event = { id = tm_bae6.0200 days = 1 }
+	}
+}
+
+# She swears. $VOW$ is flag:requital, flag:house or flag:land; $WHAT$ its tally. Scope: the vower. Reads
+# scope:tm_bae6_witness (who handed her the cup), if any. What the vow names (the house, the land she holds now) is
+# stored by the option that swears it (tm_bae6.0200).
+tm_bae6_swear_vow_effect = {
+	set_variable = { name = tm_bae6_vow value = $VOW$ }
+	set_variable = { name = tm_bae6_vow_until value = yes years = 5 }
+	if = {
+		limit = { exists = scope:tm_bae6_witness }
+		set_variable = { name = tm_bae6_vow_witness value = scope:tm_bae6_witness }
+	}
+	add_to_global_variable_list = { name = tm_bae6_vowers target = this }
+	tm_feud_tally_effect = { WHAT = bae6_vows }
+	tm_feud_tally_effect = { WHAT = $WHAT$ }
+}
+
+# Who handed her the cup, if still alive, for the portrait. Scope: the vower. Saves scope:tm_bae6_witness.
+tm_bae6_find_witness_effect = {
+	var:tm_bae6_vow_witness ?= {
+		if = {
+			limit = { is_alive = yes }
+			save_scope_as = tm_bae6_witness
+		}
+	}
+}
+
+# The vow is done with, kept or broken. Scope: the vower.
+tm_bae6_clear_vow_effect = {
+	remove_variable = tm_bae6_vow
+	remove_variable = tm_bae6_vow_until
+	remove_variable = tm_bae6_vow_house
+	remove_variable = tm_bae6_vow_base
+	remove_variable = tm_bae6_vow_witness
+	remove_list_global_variable = { name = tm_bae6_vowers target = this }
+}
+
+# Those who heard it: her courtiers and vassals, and the one who handed her the cup. $OPINION$ for them, $WITNESS$ for
+# the cup's bearer. Scope: the vower.
+tm_bae6_vow_heard_effect = {
+	every_courtier = {
+		limit = { is_adult = yes }
+		add_opinion = { target = prev modifier = $OPINION$ }
+	}
+	every_vassal = {
+		add_opinion = { target = prev modifier = $OPINION$ }
+	}
+	var:tm_bae6_vow_witness ?= {
+		if = {
+			limit = { is_alive = yes }
+			add_opinion = { target = prev modifier = $WITNESS$ }
+		}
+	}
+}
+
+# The níð-shout opens against one who broke her vow (Damico row 4): a man of her hall, or her lord's, who thinks
+# little of her opens a flyting (events/tm_flyting_events.txt). Scope: the vower.
+tm_bae6_vow_shout_effect = {
+	if = {
+		limit = {
+			NOT = { has_variable = tm_flyt_round }
+			is_imprisoned = no
+		}
+		if = {
+			limit = { is_ruler = yes }
+			save_scope_as = tm_bae6_hall
+		}
+		else = {
+			employer ?= { save_scope_as = tm_bae6_hall }
+		}
+		scope:tm_bae6_hall ?= {
+			random_courtier = {
+				limit = {
+					is_adult = yes
+					is_male = yes
+					is_imprisoned = no
+					NOT = { this = root }
+					NOT = { rite ?= { rite_has_parameter = tm_seidr_gate } }
+					opinion = { target = root value <= 10 }
+				}
+				save_scope_as = tm_flyter
+			}
+		}
+		if = {
+			limit = { exists = scope:tm_flyter }
+			set_variable = { name = tm_flyt_challenged value = yes }
+			trigger_event = { id = tm_flyting.0001 days = 7 }
+			tm_feud_tally_effect = { WHAT = bae6_vow_shout }
+		}
+	}
+}

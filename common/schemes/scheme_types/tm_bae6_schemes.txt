@@ -1,0 +1,142 @@
+﻿# Crusader Dolls — Raise the Níð-Pole (docs/wave15/baedling.md §1). The hostile pole of tm_bae5.0001 turned round: a
+# ruler of the Bædling rite has one raised against someone who wronged her house and has not answered (the Account,
+# tm_feud_effects.txt), or against her rival. She pays; a man of her court carves it (agents,
+# common/schemes/agent_types/tm_bae6_agent_types.txt), and night-men set it up facing his hall.
+# Sources: research/norse_gade_homosexuality_law.md rows 8-9 (the blue hat; the faith can raise one too);
+# research/norse_mitchell_witchcraft_magic.md row 9 (carved níð weighs more than spoken; tréníð apart from tunguníð;
+# Sverrir's Christian law); research/norse_evans_hancock_masculinities.md row 3 (the pole shames the raiser too; a
+# proxy takes the legal charge and the lord half the social cost); research/norse_miller_bloodtaking.md row 13 (an
+# insult is a gift that demands repayment).
+# A pole is public, so the target always learns who paid for it. What the scheme keeps secret is the carver's name,
+# and with it the charge at law. Template: tm_bae2_spring_cell (vanilla abduct, 1.20); the outcome is fired from our
+# own events (events/tm_bae6_events.txt, 0001-0021) instead of vanilla's critical-moment chain.
+tm_bae6_raise_pole = {
+	# Basic Setup
+	skill = intrigue
+	desc = tm_bae6_raise_pole_desc_general
+	success_desc = "TM_BAE6_RAISE_POLE_SUCCESS_DESC"
+	discovery_desc = "TM_BAE6_RAISE_POLE_DISCOVERY_DESC"
+	icon = icon_scheme_fabricate_hook
+	illustration = "gfx/interface/illustrations/event_scenes/bp3_coast.dds"
+	category = hostile
+	target_type = character
+	is_secret = yes
+	maximum_breaches = 5
+	cooldown = { years = 5 }
+
+	# Parameters (abduct's)
+	speed_per_skill_point = t2_spsp_owner_value
+	speed_per_target_skill_point = t2_spsp_target_value
+	base_progress_goal = t2_base_phase_length_value
+	maximum_secrecy = 85
+	base_maximum_success = t2_base_max_success_value
+	phases_per_agent_charge = 1
+	success_chance_growth_per_skill_point = t2_scgpsp_value
+
+	allow = {
+		tm_bae6_pole_raiser_trigger = yes
+		any_courtier = { tm_bae6_carver_trigger = { RAISER = scope:owner } }
+		scope:target = {
+			tm_bae6_pole_target_trigger = { RAISER = scope:owner }
+		}
+	}
+	valid = {
+		is_imprisoned = no
+		is_incapable = no
+		scope:target = {
+			is_alive = yes
+			in_diplomatic_range = scope:owner
+		}
+	}
+
+	# Agents
+	agent_leave_threshold = -25
+	agent_join_chance = {
+		base = 0
+		ai_agent_join_chance_basic_suite_modifier = yes
+		ai_agent_join_chance_hostile_grievous_modifier = yes
+		# Her own people carve for her.
+		modifier = {
+			add = 30
+			desc = tm_bae6_agent_join_faith
+			rite ?= { rite_has_parameter = tm_seidr_gate }
+		}
+		modifier = {
+			add = 20
+			desc = tm_bae6_agent_join_rival
+			has_relation_rival = scope:target
+		}
+	}
+	agent_groups_owner_perspective = { courtiers guests scripted_relations }
+	agent_groups_target_character_perspective = { courtiers }
+	valid_agent = { is_valid_agent_standard_trigger = yes }
+
+	odds_prediction = {
+		add = hostile_scheme_base_odds_prediction_target_is_char_value
+		add = odds_skill_contribution_intrigue_value
+		add = agent_groups_owner_perspective_value
+		min = 0
+	}
+
+	base_success_chance = {
+		base = 0
+		scheme_type_skill_success_chance_modifier = { SKILL = INTRIGUE }
+		hostile_scheme_base_chance_modifier = yes
+		apply_calculated_scheme_success_chance_adjustments_modifier = yes
+
+		# A pole is easier to set up than a ruler is to carry off: the headland is open ground.
+		modifier = {
+			add = 15
+			desc = tm_bae6_pole_open_ground
+			always = yes
+		}
+		# At war: his coast is watched.
+		modifier = {
+			add = -500
+			desc = "SCHEME_AT_WAR"
+			scope:target = { is_at_war_with = scope:owner }
+		}
+	}
+	base_secrecy = {
+		add = secrecy_base_value
+		add = countermeasure_apply_secrecy_maluses_value
+	}
+
+	on_start = {
+		set_variable = {
+			name = apply_countermeasures
+			value = flag:calculating
+		}
+		add_scheme_starting_opportunities_intrigue_effect = yes
+		# Fallback agents, for a scheme started from script without begin_scheme_with_agents_effect.
+		if = {
+			limit = {
+				scheme_owner = { NOT = { has_variable = agents_added } }
+			}
+			add_agent_slot = tm_bae6_agent_carver
+			add_agent_slot = tm_bae6_agent_nightman
+			add_agent_slot = tm_bae6_agent_nightman
+			add_agent_slot = agent_lookout
+			add_agent_slot = agent_lookout
+		}
+		tm_feud_tally_effect = { WHAT = bae6_poles_begun }
+	}
+	# Each phase brings a night when the pole could go up: now, or wait for a darker one (tm_bae6.0001).
+	on_phase_completed = {
+		save_scope_as = tm_bae6_scheme
+		scheme_owner = { trigger_event = tm_bae6.0001 }
+	}
+	on_monthly = {
+		hostile_scheme_monthly_discovery_chance_effect = yes
+	}
+	on_invalidated = {
+		scheme_target_character = { save_scope_as = target }
+		scheme_owner = {
+			send_interface_toast = {
+				title = tm_bae6_raise_pole_invalidated_title
+				left_icon = scope:target
+				custom_tooltip = tm_bae6_raise_pole_invalidated_tt
+			}
+		}
+	}
+}

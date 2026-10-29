@@ -1,0 +1,46 @@
+﻿# Crusader Dolls — Bædling, wave 15 (events/tm_bae6_events.txt; docs/wave15/baedling.md).
+
+# His man was caught carving a pole against me, and I sent him home with a word for his lord.
+tm_bae6_carver_caught_opinion = {
+	opinion = -20
+	years = 10
+	decaying = yes
+}
+
+# She made the Níð of the Land against her king. Níð against a king is a crime of its own (Evans and Hancock
+# pp. 176-78): her liege may lawfully imprison her or take back her titles.
+tm_bae6_nid_of_land_opinion = {
+	opinion = -40
+	years = 15
+	decaying = yes
+	imprisonment_reason = yes
+	revoke_title_reason = yes
+}
+
+# She did what she swore over the cup.
+tm_bae6_vow_kept_opinion = {
+	opinion = 10
+	years = 10
+	decaying = yes
+}
+
+# I handed her the cup, and she did what she swore over it.
+tm_bae6_vow_kept_witness_opinion = {
+	opinion = 20
+	years = 10
+	decaying = yes
+}
+
+# She did not do what she swore over the cup.
+tm_bae6_vow_broken_opinion = {
+	opinion = -10
+	years = 10
+	decaying = yes
+}
+
+# I handed her the cup, and she broke what she swore over it.
+tm_bae6_vow_broken_witness_opinion = {
+	opinion = -20
+	years = 10
+	decaying = yes
+}

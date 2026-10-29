@@ -1,0 +1,708 @@
+﻿namespace = tm_bae6
+
+# Crusader Dolls — Bædling, wave 15: raising a níð-pole oneself, the Níð of the Land, and vows over the cup kept or
+# broken (docs/wave15/baedling.md). On-actions: common/on_action/tm_bae6_on_actions.txt.
+#   0001  Raise the Níð-Pole: a night for it (scheme phase; common/schemes/scheme_types/tm_bae6_schemes.txt)
+#   0002  hidden: the AI looks for someone to raise a pole against
+#   0010  the pole stands (the raiser)      0011  the pole on his headland (the target answers)
+#   0020  the pole does not go up (the raiser)      0021  the carver caught (the target)
+#   0030  Sverrir's law: forfeiture and confession, or exile (the carver)
+#   0100  The Níð of the Land (the poet)      0101  the verses reach the king
+#   0200  the vow over the cup      0209 hidden: the yearly look      0210 the vow kept      0211 the vow broken
+# Sources: research/norse_gade_homosexuality_law.md rows 8-9; research/norse_mitchell_witchcraft_magic.md row 9;
+# research/norse_evans_hancock_masculinities.md rows 3, 4 and 9; research/norse_miller_bloodtaking.md row 13;
+# research/norse_damico_wealhtheow_valkyrie.md rows 3-5.
+
+# ===================================================================================================
+# Raise the Níð-Pole. Scopes: scope:tm_bae6_scheme; scope:tm_bae6_raiser = who paid; scope:tm_bae6_target = whom it
+# names; scope:tm_bae6_carver = the man who carved it; scope:tm_bae6_discovered = his name came out;
+# scope:tm_bae6_law_lord = the court that would hear it (the target's top liege).
+# ===================================================================================================
+
+# A night for it. Root = the raiser.
+tm_bae6.0001 = {
+	type = character_event
+	title = tm_bae6.0001.t
+	desc = tm_bae6.0001.desc
+	theme = intrigue
+	override_background = { reference = terrain }
+	left_portrait = { character = root animation = scheme }
+	right_portrait = { character = scope:tm_bae6_carver animation = personality_rational }
+
+	trigger = {
+		exists = scope:tm_bae6_scheme
+		scope:tm_bae6_scheme = {
+			scheme_target_character = { is_alive = yes }
+		}
+	}
+
+	immediate = {
+		save_scope_as = tm_bae6_raiser
+		scope:tm_bae6_scheme = {
+			scheme_target_character = { save_scope_as = tm_bae6_target }
+		}
+		tm_bae6_find_carver_effect = yes
+	}
+
+	option = {	# Set it up tonight
+		name = tm_bae6.0001.a
+		custom_tooltip = tm_bae6.0001.a.tt
+		hidden_effect = {
+			random = {
+				chance = scope:tm_bae6_scheme.scheme_success_chance
+				save_scope_value_as = { name = tm_bae6_success value = yes }
+			}
+			random = {
+				chance = {
+					value = 100
+					subtract = scope:tm_bae6_scheme.scheme_secrecy
+				}
+				save_scope_value_as = { name = tm_bae6_discovered value = yes }
+			}
+			scope:tm_bae6_target.top_liege = { save_scope_as = tm_bae6_law_lord }
+			if = {
+				limit = { exists = scope:tm_bae6_success }
+				trigger_event = tm_bae6.0010
+			}
+			else = {
+				trigger_event = tm_bae6.0020
+			}
+		}
+		ai_chance = {
+			base = 50
+			modifier = {
+				add = 100
+				scope:tm_bae6_scheme = { scheme_success_chance >= 60 }
+			}
+			modifier = {
+				add = -40
+				scope:tm_bae6_scheme = { scheme_success_chance < 30 }
+			}
+		}
+	}
+	option = {	# Wait for a darker night
+		name = tm_bae6.0001.b
+		custom_tooltip = tm_bae6.0001.b.tt
+		ai_chance = {
+			base = 30
+			modifier = { add = 30 has_trait = patient }
+			modifier = { add = -20 has_trait = impatient }
+		}
+	}
+}
+
+# The AI looks for someone to raise a pole against (tm_bae6_yearly). Root = the raiser.
+tm_bae6.0002 = {
+	hidden = yes
+	trigger = { tm_bae6_pole_raiser_trigger = yes }
+	immediate = {
+		tm_bae6_ai_start_pole_effect = yes
+	}
+}
+
+# The pole stands. Root = the raiser.
+tm_bae6.0010 = {
+	type = character_event
+	title = tm_bae6.0010.t
+	desc = {
+		desc = tm_bae6.0010.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:tm_bae6_discovered }
+				desc = tm_bae6.0010.desc.known
+			}
+			desc = tm_bae6.0010.desc.unknown
+		}
+	}
+	theme = intrigue
+	override_background = { reference = terrain }
+	left_portrait = { character = root animation = personality_bold }
+	right_portrait = { character = scope:tm_bae6_carver animation = happiness }
+
+	immediate = {
+		tm_bae6_pole_stands_effect = yes
+		if = {
+			limit = { exists = scope:tm_bae6_discovered }
+			tm_feud_tally_effect = { WHAT = bae6_carver_named }
+		}
+		scope:tm_bae6_target = { trigger_event = { id = tm_bae6.0011 days = 3 } }
+	}
+
+	option = {
+		name = tm_bae6.0010.a
+		scope:tm_bae6_scheme ?= { end_scheme = yes }
+	}
+}
+
+# The pole on his headland. Root = the one it names. He always knows who paid for it; whether he knows whose hand
+# carved it depends on the scheme's secrecy (scope:tm_bae6_discovered). The pole is a gift that wants repaying
+# (Miller p. 182): he may burn it, turn it with humility as a Christian (Evans and Hancock p. 170, row 9), bring the
+# carver to law where the law knows carved níð, or carry it to the þing as a wrong in the Account.
+tm_bae6.0011 = {
+	type = character_event
+	title = tm_bae6.0011.t
+	desc = {
+		desc = tm_bae6.0011.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:tm_bae6_discovered }
+				desc = tm_bae6.0011.desc.known
+			}
+			desc = tm_bae6.0011.desc.unknown
+		}
+	}
+	theme = unfriendly
+	override_background = { reference = terrain }
+	left_portrait = { character = root animation = anger }
+	right_portrait = { character = scope:tm_bae6_raiser animation = scheme }
+	lower_right_portrait = {
+		character = scope:tm_bae6_carver
+		trigger = { exists = scope:tm_bae6_discovered }
+	}
+
+	trigger = {
+		scope:tm_bae6_raiser ?= { is_alive = yes }
+	}
+
+	immediate = {
+		add_stress = 10
+	}
+
+	option = {	# Burn it
+		name = tm_bae6.0011.a
+		add_stress = -10
+		tm_feud_tally_effect = { WHAT = bae6_pole_burned }
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = wrathful }
+			modifier = { add = 10 has_trait = impatient }
+		}
+	}
+	option = {	# The hat is Óðinn's (a target of the rite himself)
+		name = tm_bae6.0011.b
+		trigger = { rite ?= { rite_has_parameter = tm_seidr_gate } }
+		custom_tooltip = tm_bae5.0001.b.tt
+		add_piety = medium_piety_gain
+		add_stress = -15
+		tm_feud_tally_effect = { WHAT = bae6_pole_turned }
+		ai_chance = {
+			base = 40
+			modifier = { add = 30 has_trait = zealous }
+			modifier = { add = 20 tm_is_daughter_trigger = yes }
+		}
+	}
+	option = {	# Turn it with humility
+		name = tm_bae6.0011.c
+		trigger = { religion = religion:christianity_religion }
+		custom_tooltip = tm_bae6.0011.c.tt
+		add_piety = minor_piety_gain
+		add_prestige = minor_prestige_gain
+		add_stress = -5
+		tm_feud_tally_effect = { WHAT = bae6_pole_humility }
+		ai_chance = {
+			base = 15
+			modifier = { add = 30 has_trait = humble }
+			modifier = { add = 20 has_trait = forgiving }
+			modifier = { add = 15 has_trait = calm }
+			modifier = { factor = 0 has_trait = arrogant }
+		}
+	}
+	option = {	# Bring the carver to law
+		name = tm_bae6.0011.d
+		trigger = {
+			exists = scope:tm_bae6_discovered
+			scope:tm_bae6_carver ?= {
+				is_alive = yes
+				is_imprisoned = no
+			}
+			scope:tm_bae6_law_lord ?= { tm_bae6_pole_law_trigger = yes }
+		}
+		custom_tooltip = tm_bae6.law.tt
+		tm_bae6_carver_at_law_effect = yes
+		ai_chance = {
+			base = 30
+			modifier = { add = 30 has_trait = just }
+			modifier = { add = 20 has_trait = vengeful }
+		}
+	}
+	option = {	# Carry it to the þing
+		name = tm_bae5.0001.c
+		custom_tooltip = tm_bae6.0011.e.tt
+		tm_feud_wrong_effect = { VICTIM = root WRONGDOER = scope:tm_bae6_raiser REASON = tm_nid_pole VANILLA = yes }
+		add_opinion = { target = scope:tm_bae6_raiser modifier = tm_bae5_nid_pole_opinion }
+		tm_feud_tally_effect = { WHAT = bae6_pole_suit }
+		ai_chance = {
+			base = 30
+			modifier = { add = 30 has_trait = vengeful }
+			modifier = { add = 20 has_trait = just }
+		}
+	}
+}
+
+# The pole does not go up. Root = the raiser.
+tm_bae6.0020 = {
+	type = character_event
+	title = tm_bae6.0020.t
+	desc = {
+		desc = tm_bae6.0020.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:tm_bae6_discovered }
+				desc = tm_bae6.0020.desc.known
+			}
+			desc = tm_bae6.0020.desc.unknown
+		}
+	}
+	theme = intrigue
+	override_background = { reference = terrain }
+	left_portrait = { character = root animation = stress }
+	right_portrait = { character = scope:tm_bae6_carver animation = shame }
+
+	immediate = {
+		tm_feud_tally_effect = { WHAT = bae6_poles_failed }
+		if = {
+			limit = { exists = scope:tm_bae6_discovered }
+			tm_feud_tally_effect = { WHAT = bae6_carver_named }
+			scope:tm_bae6_target = { trigger_event = { id = tm_bae6.0021 days = 3 } }
+		}
+	}
+
+	option = {	# Let it go
+		name = tm_bae6.0020.a
+		scope:tm_bae6_scheme ?= { end_scheme = yes }
+		ai_chance = { base = 60 }
+	}
+	option = {	# Cut another
+		name = tm_bae6.0020.b
+		trigger = { NOT = { exists = scope:tm_bae6_discovered } }
+		custom_tooltip = restart_scheme_tt
+		scope:tm_bae6_scheme ?= { reset_failed_scheme_effect = yes }
+		ai_chance = {
+			base = 40
+			modifier = { add = 60 has_trait = stubborn }
+			modifier = { add = 30 has_trait = vengeful }
+		}
+	}
+}
+
+# The carver caught with the pole half-raised. Root = the one it would have named. Nothing stands, so nothing enters
+# the Account; but he knows whose man it was.
+tm_bae6.0021 = {
+	type = character_event
+	title = tm_bae6.0021.t
+	desc = tm_bae6.0021.desc
+	theme = unfriendly
+	override_background = { reference = terrain }
+	left_portrait = { character = root animation = anger }
+	right_portrait = { character = scope:tm_bae6_carver animation = shame }
+	lower_right_portrait = scope:tm_bae6_raiser
+
+	trigger = {
+		scope:tm_bae6_carver ?= {
+			is_alive = yes
+			is_imprisoned = no
+		}
+	}
+
+	option = {	# Bring him to law
+		name = tm_bae6.0021.a
+		trigger = { scope:tm_bae6_law_lord ?= { tm_bae6_pole_law_trigger = yes } }
+		custom_tooltip = tm_bae6.law.tt
+		tm_bae6_carver_at_law_effect = yes
+		ai_chance = {
+			base = 50
+			modifier = { add = 30 has_trait = just }
+			modifier = { add = 20 has_trait = vengeful }
+		}
+	}
+	option = {	# Send him home with a word for his lady
+		name = tm_bae6.0021.b
+		add_prestige = minor_prestige_gain
+		add_opinion = { target = scope:tm_bae6_raiser modifier = tm_bae6_carver_caught_opinion }
+		scope:tm_bae6_raiser = { add_prestige = minor_prestige_loss }
+		tm_feud_tally_effect = { WHAT = bae6_carver_sent_home }
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = arrogant }
+		}
+	}
+}
+
+# Sverrir's Christian law: forfeiture with confession, or exile (Mitchell p. 164). Root = the carver.
+tm_bae6.0030 = {
+	type = character_event
+	title = tm_bae6.0030.t
+	desc = tm_bae6.0030.desc
+	theme = faith
+	override_background = { reference = temple_church }
+	left_portrait = { character = root animation = stress }
+	right_portrait = { character = scope:tm_bae6_law_lord animation = disapproval }
+
+	trigger = {
+		is_imprisoned = no
+		scope:tm_bae6_law_lord ?= { is_alive = yes }
+	}
+
+	option = {	# Forfeit and confess
+		name = tm_bae6.0030.a
+		tm_bae6_forfeit_effect = yes
+		add_character_modifier = { modifier = tm_bae6_confessed_modifier years = 3 }
+		tm_feud_tally_effect = { WHAT = bae6_sverrir_forfeit }
+		ai_chance = {
+			base = 60
+			modifier = { add = 20 gold >= 20 }
+			modifier = { add = 20 has_trait = humble }
+		}
+	}
+	option = {	# Take ship
+		name = tm_bae6.0030.b
+		scope:tm_bae6_law_lord = { save_scope_as = tm_bae2_lord }
+		tm_bae2_go_abroad_effect = yes
+		tm_feud_tally_effect = { WHAT = bae6_sverrir_exile }
+		ai_chance = {
+			base = 30
+			modifier = { add = 30 has_trait = stubborn }
+			modifier = { add = 20 has_trait = brave }
+		}
+	}
+}
+
+# ===================================================================================================
+# The Níð of the Land (common/decisions/tm_bae6_decisions.txt). Scopes: scope:tm_bae6_king; scope:tm_bae6_poet;
+# scope:tm_bae6_noses = how many made a verse.
+# ===================================================================================================
+
+# The verses are made. Root = the poet.
+tm_bae6.0100 = {
+	type = character_event
+	title = tm_bae6.0100.t
+	desc = tm_bae6.0100.desc
+	theme = unfriendly
+	override_background = { reference = feast }
+	left_portrait = { character = root animation = personality_bold }
+	right_portrait = { character = scope:tm_bae6_king animation = idle }
+
+	trigger = { scope:tm_bae6_king ?= { is_alive = yes } }
+
+	immediate = {
+		save_scope_as = tm_bae6_poet
+		tm_bae6_count_noses_effect = yes
+		scope:tm_bae6_king = { set_variable = { name = tm_bae6_land_nid_cd value = yes years = 10 } }
+		tm_feud_tally_effect = { WHAT = bae6_land_nid }
+	}
+
+	option = {	# Let it go from hall to hall
+		name = tm_bae6.0100.a
+		custom_tooltip = tm_bae6.0100.a.tt
+		scope:tm_bae6_king = { trigger_event = { id = tm_bae6.0101 days = { 10 30 } } }
+	}
+}
+
+# The verses reach the king. Root = the king. The loss grows with the noses: 100 prestige and 10 legitimacy, and 50
+# and 5 more for each verse, to at most 400 and 50.
+tm_bae6.0101 = {
+	type = character_event
+	title = tm_bae6.0101.t
+	desc = {
+		desc = tm_bae6.0101.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:tm_bae6_poet = { is_vassal_or_below_of = root } }
+				desc = tm_bae6.0101.desc.vassal
+			}
+			desc = tm_bae6.0101.desc.neighbour
+		}
+	}
+	theme = unfriendly
+	override_background = { reference = throne_room }
+	left_portrait = { character = root animation = rage }
+	right_portrait = { character = scope:tm_bae6_poet animation = personality_bold }
+
+	trigger = { scope:tm_bae6_poet ?= { is_alive = yes } }
+
+	immediate = {
+		add_prestige = {
+			value = scope:tm_bae6_noses
+			multiply = -50
+			subtract = 100
+			min = -400
+		}
+		if = {
+			limit = { has_legitimacy = yes }
+			add_legitimacy = {
+				value = scope:tm_bae6_noses
+				multiply = -5
+				subtract = 10
+				min = -50
+			}
+		}
+		add_character_modifier = { modifier = tm_bae6_nid_of_land_modifier years = 10 }
+	}
+
+	option = {	# Turn it with humility
+		name = tm_bae6.0101.a
+		trigger = { religion = religion:christianity_religion }
+		custom_tooltip = tm_bae6.0101.a.tt
+		add_piety = medium_piety_gain
+		remove_character_modifier = tm_bae6_nid_of_land_modifier
+		tm_feud_tally_effect = { WHAT = bae6_land_humility }
+		ai_chance = {
+			base = 15
+			modifier = { add = 30 has_trait = humble }
+			modifier = { add = 20 has_trait = zealous }
+			modifier = { add = 15 has_trait = forgiving }
+			modifier = { factor = 0 has_trait = arrogant }
+		}
+	}
+	option = {	# A crime against the crown
+		name = tm_bae6.0101.b
+		custom_tooltip = tm_bae6.0101.b.tt
+		add_opinion = { target = scope:tm_bae6_poet modifier = tm_bae6_nid_of_land_opinion }
+		tm_feud_wrong_effect = { VICTIM = root WRONGDOER = scope:tm_bae6_poet REASON = tm_bae6_land_nid VANILLA = yes }
+		tm_feud_tally_effect = { WHAT = bae6_land_crime }
+		ai_chance = {
+			base = 50
+			modifier = { add = 30 has_trait = vengeful }
+			modifier = { add = 20 has_trait = wrathful }
+			modifier = { add = 20 has_trait = arrogant }
+			modifier = { add = 10 has_trait = just }
+		}
+	}
+	option = {	# Bear it
+		name = tm_bae6.0101.c
+		add_stress = 20
+		tm_feud_tally_effect = { WHAT = bae6_land_borne }
+		ai_chance = {
+			base = 15
+			modifier = { add = 20 has_trait = calm }
+			modifier = { add = 10 has_trait = craven }
+		}
+	}
+}
+
+# ===================================================================================================
+# Vows over the cup (heitstrenging). Scopes: scope:tm_bae6_door = flag:bragarfull or flag:flyting; scope:tm_bae6_witness
+# = who handed her the cup (scope:tm_cup_bearer at the bragarfull, scope:tm_cup_lady after a flyting);
+# scope:tm_bae6_vow_foe = the head of a house that owes hers.
+# ===================================================================================================
+
+# The vow. Root = the one who drinks.
+tm_bae6.0200 = {
+	type = character_event
+	title = tm_bae6.0200.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:tm_bae6_door ?= flag:flyting }
+				desc = tm_bae6.0200.desc.flyting
+			}
+			desc = tm_bae6.0200.desc.bragarfull
+		}
+		desc = tm_bae6.0200.desc
+	}
+	theme = feast_activity
+	override_background = { reference = feast }
+	left_portrait = { character = root animation = personality_bold }
+	right_portrait = { character = scope:tm_bae6_witness animation = happiness }
+
+	trigger = {
+		is_alive = yes
+		NOT = { has_variable = tm_bae6_vow }
+	}
+
+	immediate = {
+		if = {
+			limit = { scope:tm_bae6_door ?= flag:flyting }
+			scope:tm_cup_lady ?= {
+				if = {
+					limit = { is_alive = yes }
+					save_scope_as = tm_bae6_witness
+				}
+			}
+		}
+		else = {
+			scope:tm_cup_bearer ?= {
+				if = {
+					limit = { is_alive = yes }
+					save_scope_as = tm_bae6_witness
+				}
+			}
+		}
+		if = {
+			limit = { tm_bae6_can_vow_requital_trigger = yes }
+			house = {
+				random_in_list = {
+					variable = tm_acc_1
+					limit = { exists = house_head }
+					house_head = { save_scope_as = tm_bae6_vow_foe }
+				}
+			}
+		}
+	}
+
+	option = {	# To answer the wrong his house did mine
+		name = tm_bae6.0200.a
+		trigger = { exists = scope:tm_bae6_vow_foe }
+		custom_tooltip = tm_bae6.0200.a.tt
+		set_variable = { name = tm_bae6_vow_house value = scope:tm_bae6_vow_foe.house }
+		tm_bae6_swear_vow_effect = { VOW = flag:requital WHAT = bae6_vow_requital }
+		ai_chance = {
+			base = 30
+			modifier = { add = 30 has_trait = vengeful }
+			modifier = { add = 10 has_trait = wrathful }
+		}
+	}
+	option = {	# To raise a Sisters' House
+		name = tm_bae6.0200.b
+		trigger = { tm_bae6_can_vow_house_trigger = yes }
+		custom_tooltip = tm_bae6.0200.b.tt
+		tm_bae6_swear_vow_effect = { VOW = flag:house WHAT = bae6_vow_house }
+		ai_chance = {
+			base = 20
+			modifier = { add = 20 has_trait = zealous }
+			modifier = { add = 20 tm_is_daughter_trigger = yes }
+		}
+	}
+	option = {	# To widen the hall's land
+		name = tm_bae6.0200.c
+		trigger = { is_landed = yes }
+		custom_tooltip = tm_bae6.0200.c.tt
+		set_variable = { name = tm_bae6_vow_base value = sub_realm_size }
+		tm_bae6_swear_vow_effect = { VOW = flag:land WHAT = bae6_vow_land }
+		ai_chance = {
+			base = 20
+			modifier = { add = 30 has_trait = ambitious }
+			modifier = { add = 10 has_trait = brave }
+		}
+	}
+	option = {	# Drink, and swear nothing
+		name = tm_bae6.0200.d
+		custom_tooltip = tm_bae6.0200.d.tt
+		tm_feud_tally_effect = { WHAT = bae6_vow_none }
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = content }
+			modifier = { add = 20 has_trait = craven }
+		}
+	}
+}
+
+# The yearly look (tm_bae6_yearly). Hidden. Root = a vower. Kept, broken, or still to do.
+tm_bae6.0209 = {
+	hidden = yes
+	trigger = { has_variable = tm_bae6_vow }
+	immediate = {
+		if = {
+			limit = { tm_bae6_vow_kept_trigger = yes }
+			trigger_event = tm_bae6.0210
+		}
+		else_if = {
+			limit = { NOT = { has_variable = tm_bae6_vow_until } }
+			trigger_event = tm_bae6.0211
+		}
+	}
+}
+
+# The vow kept. Root = the vower.
+tm_bae6.0210 = {
+	type = character_event
+	title = tm_bae6.0210.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { var:tm_bae6_vow = flag:requital }
+				desc = tm_bae6.0210.desc.requital
+			}
+			triggered_desc = {
+				trigger = { var:tm_bae6_vow = flag:house }
+				desc = tm_bae6.0210.desc.house
+			}
+			desc = tm_bae6.0210.desc.land
+		}
+	}
+	theme = feast_activity
+	override_background = { reference = feast }
+	left_portrait = { character = root animation = happiness }
+	right_portrait = { character = scope:tm_bae6_witness animation = happiness }
+
+	immediate = {
+		tm_bae6_find_witness_effect = yes
+	}
+
+	option = {
+		name = tm_bae6.0210.a
+		add_prestige = major_prestige_gain
+		if = {
+			limit = { has_legitimacy = yes }
+			add_legitimacy = medium_legitimacy_gain
+		}
+		tm_bae6_vow_heard_effect = { OPINION = tm_bae6_vow_kept_opinion WITNESS = tm_bae6_vow_kept_witness_opinion }
+		tm_feud_tally_effect = { WHAT = bae6_vow_kept }
+		hidden_effect = { tm_bae6_clear_vow_effect = yes }
+	}
+}
+
+# The vow broken: five years, and it is not done. Root = the vower. "That is the vow you drank" (the níð-shout,
+# Damico row 4). Saying it herself before the benches spares her the shout, not the shame.
+tm_bae6.0211 = {
+	type = character_event
+	title = tm_bae6.0211.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { var:tm_bae6_vow = flag:requital }
+				desc = tm_bae6.0211.desc.requital
+			}
+			triggered_desc = {
+				trigger = { var:tm_bae6_vow = flag:house }
+				desc = tm_bae6.0211.desc.house
+			}
+			desc = tm_bae6.0211.desc.land
+		}
+		desc = tm_bae6.0211.desc
+	}
+	theme = unfriendly
+	override_background = { reference = feast }
+	left_portrait = { character = root animation = shame }
+	right_portrait = { character = scope:tm_bae6_witness animation = disapproval }
+
+	immediate = {
+		tm_bae6_find_witness_effect = yes
+		add_character_modifier = { modifier = tm_bae6_vow_broken_modifier years = 5 }
+		# A broken vow to requite: the house that owed hers walks taller for it.
+		if = {
+			limit = {
+				var:tm_bae6_vow = flag:requital
+				has_variable = tm_bae6_vow_house
+			}
+			var:tm_bae6_vow_house.house_head ?= { add_prestige = minor_prestige_gain }
+		}
+		tm_feud_tally_effect = { WHAT = bae6_vow_broken }
+	}
+
+	option = {	# Say it before the benches
+		name = tm_bae6.0211.a
+		custom_tooltip = tm_bae6.0211.a.tt
+		add_prestige = minor_prestige_loss
+		add_stress = 10
+		tm_feud_tally_effect = { WHAT = bae6_vow_owned }
+		hidden_effect = { tm_bae6_clear_vow_effect = yes }
+		ai_chance = {
+			base = 50
+			modifier = { add = 30 has_trait = honest }
+			modifier = { add = 20 has_trait = humble }
+		}
+	}
+	option = {	# Say nothing
+		name = tm_bae6.0211.b
+		custom_tooltip = tm_bae6.0211.b.tt
+		tm_bae6_vow_heard_effect = { OPINION = tm_bae6_vow_broken_opinion WITNESS = tm_bae6_vow_broken_witness_opinion }
+		tm_bae6_vow_shout_effect = yes
+		hidden_effect = { tm_bae6_clear_vow_effect = yes }
+		ai_chance = {
+			base = 40
+			modifier = { add = 30 has_trait = arrogant }
+			modifier = { add = 20 has_trait = deceitful }
+		}
+	}
+}
