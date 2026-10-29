@@ -388,13 +388,15 @@ def main(path):
 
     # Baedling bands, wave 16 (tm_bae7_tally_effect): the Vigla, the harbour, the Sword Is My Patent.
     print('== Bædling bands: wave 16 ==')
-    bsteps = ('vigla_offered', 'vigla_taken', 'vigla_done', 'vigla_failed', 'robber_court', 'robber_home', 'toll_waived',
+    bsteps = ('vigla_offered', 'vigla_taken', 'vigla_done', 'vigla_failed', 'vigla_lord',
+              'vigla_left', 'robber_court', 'robber_home', 'toll_waived',
               'toll_kept', 'toll_double', 'habit_kept', 'habit_took', 'habit_found', 'harbour_offered', 'harbour_promised',
               'harbour_refused', 'harbour_camp', 'harbour_court', 'harbour_stayed', 'patent_refused', 'sword_drawn',
               'sword_granted', 'sword_war')
     print('  '.join(f'{s} {int(gvars.get(f"tm_bae7_n_{s}") or 0)}' for s in bsteps))
     print('vigla_offered: Keep the Road contracts given to AI bands; vigla_taken / _done / _failed: contracts taken by any band\n'
-          '(players too), terms served, watches ended early; robber_*: a road thief sent to the lord\'s court or home;\n'
+          '(players too), terms served, watches ended early; vigla_lord / _left: of those, the lord gone, lost the county or at\n'
+          'war with the band, or the camp moved away; robber_*: a road thief sent to the lord\'s court or home;\n'
           'toll_*: the toll quarrel (waived, as the letter says, doubled); habit_*: the guards\' habit from 1327 (kept faith,\n'
           'robbed the road, found out); harbour_*: a landed Baedling band losing its land offered a harbour by a petty coastal\n'
           'lord (promised or refused), then, with the land gone, to his coast with the camp, to his court, or her own way;\n'

@@ -586,8 +586,11 @@ tm_hipukh.0031 = {
 		}
 		remove_short_term_gold = 50
 		scope:tm_fisica = {
-			add_character_modifier = { modifier = tm_fisica_licensed_modifier years = 10 }
-			add_opinion = { target = root modifier = respect_opinion opinion = 20 }
+			if = {
+				limit = { is_alive = yes }		# may die before the answer (run 27)
+				add_character_modifier = { modifier = tm_fisica_licensed_modifier years = 10 }
+				add_opinion = { target = root modifier = respect_opinion opinion = 20 }
+			}
 		}
 	}
 	option = {	# Licence her to treat women only: "they are better suited to treat sick women than are men"
@@ -598,14 +601,17 @@ tm_hipukh.0031 = {
 		}
 		remove_short_term_gold = 25
 		scope:tm_fisica = {
-			add_character_modifier = { modifier = tm_fisica_women_modifier years = 10 }
-			add_opinion = { target = root modifier = respect_opinion opinion = 10 }
+			if = {
+				limit = { is_alive = yes }
+				add_character_modifier = { modifier = tm_fisica_women_modifier years = 10 }
+				add_opinion = { target = root modifier = respect_opinion opinion = 10 }
+			}
 		}
 	}
 	option = {	# No licence
 		name = tm_hipukh.0031.c
 		trigger = { tm_hn3_physician_lord_trigger = no }
-		scope:tm_fisica = { add_opinion = { target = root modifier = disappointed_opinion opinion = -10 } }
+		scope:tm_fisica = { if = { limit = { is_alive = yes } add_opinion = { target = root modifier = disappointed_opinion opinion = -10 } } }
 	}
 	# Wave 3, the physician as protector (Maghreb and Sahel, Muslim lord). Service, not a fee: she rides with her lord and
 	# speaks for her people; while she serves, a daughter shunned in his land can petition him to forbid the ban
@@ -614,8 +620,11 @@ tm_hipukh.0031 = {
 		name = tm_hn3.physician_a
 		trigger = { tm_hn3_physician_lord_trigger = yes }
 		scope:tm_fisica = {
-			add_character_modifier = { modifier = tm_hn3_physician_modifier years = 10 }
-			add_opinion = { target = root modifier = respect_opinion opinion = 20 }
+			if = {
+				limit = { is_alive = yes }
+				add_character_modifier = { modifier = tm_hn3_physician_modifier years = 10 }
+				add_opinion = { target = root modifier = respect_opinion opinion = 20 }
+			}
 		}
 		ai_chance = { base = 50 }
 	}
@@ -626,10 +635,13 @@ tm_hipukh.0031 = {
 			current_date >= 1075.1.1
 		}
 		scope:tm_fisica = {
-			add_character_modifier = { modifier = tm_hn3_vizier_modifier years = 10 }
-			add_prestige = 50
-			add_opinion = { target = root modifier = respect_opinion opinion = 30 }
-			save_scope_as = tm_hn3_vizier
+			if = {
+				limit = { is_alive = yes }
+				add_character_modifier = { modifier = tm_hn3_vizier_modifier years = 10 }
+				add_prestige = 50
+				add_opinion = { target = root modifier = respect_opinion opinion = 30 }
+				save_scope_as = tm_hn3_vizier
+			}
 		}
 		every_courtier = {
 			limit = {
@@ -647,7 +659,7 @@ tm_hipukh.0031 = {
 	option = {	# I have physicians enough
 		name = tm_hn3.physician_c
 		trigger = { tm_hn3_physician_lord_trigger = yes }
-		scope:tm_fisica = { add_opinion = { target = root modifier = disappointed_opinion opinion = -10 } }
+		scope:tm_fisica = { if = { limit = { is_alive = yes } add_opinion = { target = root modifier = disappointed_opinion opinion = -10 } } }
 		ai_chance = { base = 30 }
 	}
 }

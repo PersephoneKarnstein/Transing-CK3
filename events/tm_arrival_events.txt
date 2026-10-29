@@ -73,7 +73,10 @@ tm_arrival.0002 = {
 	option = {	# Stay at my court
 		name = tm_arrival.0002.a
 		if = {
-			limit = { NOT = { scope:tm_new_daughter = { is_courtier_of = root } } }
+			limit = {
+				NOT = { scope:tm_new_daughter = { is_courtier_of = root } }
+				NOT = { government_has_flag = government_is_herder }		# a herder keeps no court (run 27)
+			}
 			add_courtier = scope:tm_new_daughter
 		}
 		scope:tm_new_daughter = {
@@ -87,7 +90,10 @@ tm_arrival.0002 = {
 			age > scope:tm_new_daughter.age		# a parent can't be younger than her child
 		}
 		if = {
-			limit = { NOT = { scope:tm_new_daughter = { is_courtier_of = root } } }
+			limit = {
+				NOT = { scope:tm_new_daughter = { is_courtier_of = root } }
+				NOT = { government_has_flag = government_is_herder }		# a herder keeps no court (run 27)
+			}
 			add_courtier = scope:tm_new_daughter
 		}
 		adopt_effect = {

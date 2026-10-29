@@ -46,11 +46,18 @@ tm_bae7_vigla_holding_trigger = {
 	var:tm_bae7_vigla_lord = { is_alive = yes }
 	NOT = { is_at_war_with = var:tm_bae7_vigla_lord }
 	var:tm_bae7_vigla_county.holder ?= var:tm_bae7_vigla_lord
-	exists = domicile.domicile_location.county
 	OR = {
-		domicile.domicile_location.county = var:tm_bae7_vigla_county
-		var:tm_bae7_vigla_county = {
-			any_neighboring_county = { this = root.domicile.domicile_location.county }
+		# The AI moves its camp without knowing that the watch needs it near (run 27: 6 of 7 watches ended early,
+		# most likely so).
+		is_ai = yes
+		AND = {
+			exists = domicile.domicile_location.county
+			OR = {
+				domicile.domicile_location.county = var:tm_bae7_vigla_county
+				var:tm_bae7_vigla_county = {
+					any_neighboring_county = { this = root.domicile.domicile_location.county }
+				}
+			}
 		}
 	}
 }

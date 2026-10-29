@@ -60,7 +60,7 @@ tm_rx.0001 = {
 		add_character_modifier = { modifier = tm_rx_counted_among_women_modifier years = 20 }
 		add_prestige = 10
 		if = {
-			limit = { exists = scope:tm_rx_cleric }
+			limit = { scope:tm_rx_cleric ?= { is_alive = yes } }
 			scope:tm_rx_cleric = { add_opinion = { target = root modifier = tm_rx_canonist_opinion } }
 		}
 		tm_rx_tally_effect = { WHAT = counted }
@@ -88,7 +88,7 @@ tm_rx.0001 = {
 		custom_tooltip = tm_rx.0001.c.tt
 		add_character_modifier = { modifier = tm_rx_sworn_before_bishop_modifier years = 30 }
 		if = {
-			limit = { exists = scope:tm_rx_cleric }
+			limit = { scope:tm_rx_cleric ?= { is_alive = yes } }
 			scope:tm_rx_cleric = { add_opinion = { target = root modifier = tm_rx_sworn_opinion } }
 		}
 		tm_rx_tally_effect = { WHAT = sworn }
@@ -103,7 +103,7 @@ tm_rx.0001 = {
 		trigger = { tm_rx_huguccio_era_trigger = no }
 		add_prestige = 20
 		if = {
-			limit = { exists = scope:tm_rx_cleric }
+			limit = { scope:tm_rx_cleric ?= { is_alive = yes } }
 			scope:tm_rx_cleric = { add_opinion = { target = root modifier = tm_rx_refused_oath_opinion } }
 		}
 		tm_rx_tally_effect = { WHAT = oath_refused }
@@ -175,7 +175,7 @@ tm_rx.0002 = {
 		add_prestige = 25
 		add_stress = 5
 		if = {
-			limit = { exists = scope:tm_rx_cleric }
+			limit = { scope:tm_rx_cleric ?= { is_alive = yes } }
 			scope:tm_rx_cleric = { add_opinion = { target = root modifier = tm_rx_valley_gate_opinion } }
 		}
 		tm_rx_tally_effect = { WHAT = master_valley_gate }
@@ -571,7 +571,7 @@ tm_rx.0030 = {
 		trigger = { NOT = { var:tm_rx_penance ?= 2 } }
 		add_prestige = 15
 		if = {
-			limit = { exists = scope:tm_rx_cleric }
+			limit = { scope:tm_rx_cleric ?= { is_alive = yes } }
 			scope:tm_rx_cleric = { add_opinion = { target = root modifier = tm_rx_slav_refused_opinion } }
 		}
 		tm_rx_penance_climb_effect = yes

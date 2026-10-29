@@ -152,7 +152,7 @@ tm_on_game_start = {
 			# The Way of the Jade Embryo keeps Dunhuang (Shazhou, with the Mogao caves); a nüguan at court.
 			# At 867 the bookmark's Huijing takes Guasha from the vanilla duke Xun, a historical man the mod does not
 			# convert: he dies before the game begins, and she takes his son Chengxun (han_40016, aged 7) as her ward,
-			# adopted child and heir, raised in the Way (user, 2026-10-23). Suo's noble-family estate goes to Xun's heirs.
+			# adopted child and heir, raised in the Way (user, 2026-10-23). Suo's noble-family estate goes to Xun's nephew Chongji.
 			clear_saved_scope = tm_huijing
 			character:tm_yutai_huijing ?= {
 				if = {
@@ -172,11 +172,43 @@ tm_on_game_start = {
 				# Xun's realm is men-only; the game makes women to hold the baronies she grants out, and under that law
 				# every grant failed, daily, until she died (run 26: 1,176 "could not grant title b_baizhang" errors).
 				scope:tm_huijing = { add_realm_law_skip_effects = equal_law }
+				# The law's can_keep wants the culture or rite to allow it, or this variable (vanilla sets it for
+				# Wallada's Cordoba); without it the law lapsed and the grants failed again (run 27: b_mingshui).
+				scope:tm_huijing.primary_title = {
+					set_variable = { name = can_keep_realm_law value = flag:equal_law }
+				}
 				character:han_40016 ?= {
 					if = {
 						limit = { is_alive = yes }
 						save_scope_as = tm_chengxun
 					}
+				}
+				# Xun's noble-family estate would pass to Chengxun and make him a ruler, whom no court can take in and
+				# who cannot be her heir (run 27); it goes to Xun's nephew Chongji (han_40018) instead. Vanilla
+				# ends the estate in 868.
+				title:c_nf_guiyi_suo ?= {
+					if = {
+						limit = {
+							holder ?= { this = scope:tm_xun }
+							character:han_40018 ?= { is_alive = yes }
+						}
+						save_scope_as = tm_suo_estate
+					}
+				}
+				if = {
+					limit = { exists = scope:tm_suo_estate }
+					create_title_and_vassal_change = {
+						type = granted
+						save_scope_as = tm_suo_change
+						add_claim_on_loss = no
+					}
+					scope:tm_suo_estate = {
+						change_title_holder = {
+							holder = character:han_40018
+							change = scope:tm_suo_change
+						}
+					}
+					resolve_title_and_vassal_change = scope:tm_suo_change
 				}
 				scope:tm_xun = { death = { death_reason = death_natural_causes } }
 				if = {
@@ -473,8 +505,10 @@ tm_on_game_start = {
 			}
 			# The Mother of Mothers rules as a theocracy: in the 867 run Byzantium's administrative appointments
 			# revoked Phrygia and gave it to an Orthodox governor. Untested whether this alone holds it (TO-TEST G4).
+			# Since 1.20 a Christian faith's theocracy is ecclesiastical_government; theocracy_government was refused
+			# as illegal (run 27).
 			scope:tm_beatrike = {
-				change_government = theocracy_government
+				change_government = ecclesiastical_government
 			}
 			tm_seed_marked_courtiers_effect = { HOST = scope:tm_beatrike FAITH = faith:transbian_maximalism SEAT = phrygia }
 		}

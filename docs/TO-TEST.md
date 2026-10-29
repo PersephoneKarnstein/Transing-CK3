@@ -412,7 +412,7 @@ Several things depend on the date, so test in three periods if you can: **before
 
 **G3. Adoption by the AI.** `play` an AI daughter who rules (or make one), give her a female courtier of her faith, go back to your own character and let a few years pass. She should take the courtier as a daughter. Check the courtier's family panel.
 
-**G4. Phrygia.** At the 867 start, the Mother of Mothers should be a theocracy. Use `effect title:c_phrygia = { change_title_holder = { holder = <any Orthodox id> change = ... } }` or play on until Byzantium takes it, then run `run tm_growth_now.txt`: the Mother House holder should get a pressed claim on Phrygia.
+**G4. Phrygia.** At the 867 start, the Mother of Mothers should be a theocracy (ecclesiastical government, the Christian theocracy since 1.20; run 27 showed theocracy_government refused as illegal). Use `effect title:c_phrygia = { change_title_holder = { holder = <any Orthodox id> change = ... } }` or play on until Byzantium takes it, then run `run tm_growth_now.txt`: the Mother House holder should get a pressed claim on Phrygia.
 
 ---
 

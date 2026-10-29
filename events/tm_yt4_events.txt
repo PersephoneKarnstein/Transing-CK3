@@ -613,7 +613,10 @@ tm_yt4.0030 = {
 			add_opinion = { target = root modifier = grateful_opinion opinion = 25 }
 		}
 		scope:tm_yt4_lord = {
-			add_opinion = { target = root modifier = disappointed_opinion opinion = -15 }
+			if = {
+				limit = { is_alive = yes }		# may die before the answer (run 27)
+				add_opinion = { target = root modifier = disappointed_opinion opinion = -15 }
+			}
 		}
 		add_piety = 20
 		tm_yt4_tally_effect = { WHAT = anteroom_kept }
@@ -625,8 +628,11 @@ tm_yt4.0030 = {
 	option = {	# Register her as he asks
 		name = tm_yt4.0030.b
 		scope:tm_yt4_lord = {
-			add_courtier = scope:tm_yt4_woman
-			add_opinion = { target = root modifier = pleased_opinion opinion = 15 }
+			if = {
+				limit = { is_alive = yes }
+				add_courtier = scope:tm_yt4_woman
+				add_opinion = { target = root modifier = pleased_opinion opinion = 15 }
+			}
 		}
 		add_piety = -20
 		tm_yt4_tally_effect = { WHAT = anteroom_complied }
@@ -639,7 +645,10 @@ tm_yt4.0030 = {
 		name = tm_yt4.0030.c
 		custom_tooltip = tm_yt4_woman_home_tt
 		scope:tm_yt4_lord = {
-			add_opinion = { target = root modifier = disappointed_opinion opinion = -10 }
+			if = {
+				limit = { is_alive = yes }
+				add_opinion = { target = root modifier = disappointed_opinion opinion = -10 }
+			}
 		}
 		add_piety = 10
 		tm_yt4_tally_effect = { WHAT = anteroom_refused }

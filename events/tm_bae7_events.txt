@@ -367,6 +367,14 @@ tm_bae7.0021 = {
 		}
 		scope:task_contract ?= { complete_task_contract = failure_standard }
 		tm_bae7_tally_effect = { WHAT = vigla_failed }
+		if = {
+			limit = { scope:tm_bae7_end ?= flag:lord }
+			tm_bae7_tally_effect = { WHAT = vigla_lord }
+		}
+		else_if = {
+			limit = { scope:tm_bae7_end ?= flag:left }
+			tm_bae7_tally_effect = { WHAT = vigla_left }
+		}
 		tm_bae7_vigla_end_effect = yes
 	}
 

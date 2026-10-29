@@ -476,7 +476,10 @@ tm_house.0061 = {
 
 	option = {	# Stay
 		name = tm_house.0061.a
-		add_courtier = scope:tm_released
+		if = {
+			limit = { NOT = { scope:tm_released = { is_courtier_of = root } } }	# she may already be here (run 27)
+			add_courtier = scope:tm_released
+		}
 		scope:tm_released = {
 			if = {
 				limit = {

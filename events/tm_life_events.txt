@@ -69,7 +69,7 @@ tm_life.0001 = {
 		if = {
 			limit = {
 				NOT = { exists = scope:tm_life_patron }
-				exists = liege
+				liege ?= { NOT = { this = root } }		# an independent ruler is her own liege (run 27)
 			}
 			liege = { save_scope_as = tm_life_patron }
 		}
@@ -583,7 +583,7 @@ tm_life.0040 = {
 		add_piety = 10
 		scope:tm_life_mother = {
 			if = {
-				limit = { NOT = { this = root } }
+				limit = { NOT = { this = root } is_alive = yes }
 				add_opinion = { target = root modifier = grateful_opinion opinion = 15 }
 			}
 		}

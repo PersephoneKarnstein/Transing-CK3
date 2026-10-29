@@ -95,7 +95,7 @@ tm_palace.0002 = {
 			40 = {
 				desc = tm_palace.0002.a.lost
 				tm_palace_lose_office_effect = yes
-				top_liege ?= { primary_title = { tm_yt2_south_effect = yes } }
+				top_liege ?= { primary_title ?= { tm_yt2_south_effect = yes } }
 				add_prestige = -100
 				every_held_title = {
 					limit = { tier = tier_county has_variable = tm_house }
