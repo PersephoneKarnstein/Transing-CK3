@@ -1,0 +1,36 @@
+﻿# Crusader Dolls — bands, wave 16 (docs/wave16/baedling-bands.md).
+
+# Keep the Road: the lord's view of a watch that brought a road thief to his court.
+tm_bae7_kept_road_opinion = {
+	opinion = 10
+	years = 10
+	decaying = yes
+}
+
+# Keep the Road: the lord's view of a watch that took twice the toll from his merchants.
+tm_bae7_overcharged_opinion = {
+	opinion = -15
+	years = 5
+	decaying = yes
+}
+
+# Keep the Road: the lord's view of a watch that robbed the road it was paid to keep (Sophoulis pp. 60, 107).
+tm_bae7_guards_robbed_opinion = {
+	opinion = -30
+	years = 15
+	decaying = yes
+}
+
+# A harbour with a petty coastal lord: the promise, both ways (Dollinger p. 80).
+tm_bae7_harbour_opinion = {
+	opinion = 20
+	years = 15
+	decaying = yes
+}
+
+# The Sword Is My Patent: her view of the lord who refused her after she had moved on when he asked.
+tm_bae7_patent_refused_opinion = {
+	opinion = -20
+	years = 20
+	decaying = yes
+}

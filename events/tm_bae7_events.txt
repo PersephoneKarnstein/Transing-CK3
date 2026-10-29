@@ -1,0 +1,621 @@
+﻿namespace = tm_bae7
+
+# Crusader Dolls — bands, wave 16 (docs/wave16/baedling-bands.md).
+#   0001-0021  Keep the Road (the Vigla): a lord pays a band to keep one county's road for three to five years
+#              (Sophoulis pp. 60, 100-101, 105-112). Contract: common/task_contracts/tm_bae7_contracts.txt.
+#   0030-0033  A harbour with a petty coastal lord: a landed Baedling band losing its land is offered a harbour, and
+#              may take it up when the land is gone (Dollinger p. 80).
+#   0040       The Sword Is My Patent: a band refused after its patience sends the lord its last letter (Tor pp. 122,
+#              150-151). Decision: common/decisions/tm_bae7_decisions.txt.
+# Nothing is fought on screen. Robbers, toll-cheats and guards who rob are occupations, never a people.
+
+# ===================================================================================================
+# Keep the Road
+# ===================================================================================================
+
+# The watch is set. Root = the band's leader; scope:employer, scope:task_contract.
+tm_bae7.0001 = {
+	type = character_event
+	title = tm_bae7.0001.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					var:tm_bae7_vigla_county ?= {
+						OR = {
+							title_province = { geographical_region = world_europe_south_east }
+							title_province = { geographical_region = world_asia_minor }
+						}
+					}
+				}
+				desc = tm_bae7.0001.desc_vigla
+			}
+			desc = tm_bae7.0001.desc_road
+		}
+		desc = tm_bae7.0001.desc_end
+	}
+	theme = martial
+	override_background = { reference = terrain }
+	left_portrait = { character = root animation = marshal }
+	right_portrait = { character = scope:employer animation = personality_rational }
+
+	trigger = {
+		exists = scope:task_contract
+		exists = scope:employer
+	}
+
+	immediate = {
+		tm_bae7_vigla_begin_effect = yes
+	}
+
+	option = {
+		name = tm_bae7.0001.a
+		custom_tooltip = tm_bae7.0001.a.tt
+		trigger_event = { id = tm_bae7.0002 days = 365 }
+	}
+}
+
+# Hidden. The watch's year. Root = the band's leader; scope:employer, scope:task_contract. Checks the band still
+# keeps the road, pays the watch its share of the tax, and ends the term or brings one of the year's events.
+tm_bae7.0002 = {
+	type = character_event
+	hidden = yes
+
+	trigger = {
+		exists = var:tm_bae7_vigla_county
+	}
+
+	immediate = {
+		if = {
+			limit = { tm_bae7_vigla_holding_trigger = no }
+			if = {
+				limit = {
+					OR = {
+						NOT = { exists = var:tm_bae7_vigla_lord }
+						var:tm_bae7_vigla_lord = { is_alive = no }
+						NOT = { var:tm_bae7_vigla_county.holder ?= var:tm_bae7_vigla_lord }
+						is_at_war_with = var:tm_bae7_vigla_lord
+					}
+				}
+				save_scope_value_as = { name = tm_bae7_end value = flag:lord }
+			}
+			else = {
+				save_scope_value_as = { name = tm_bae7_end value = flag:left }
+			}
+			trigger_event = tm_bae7.0021
+		}
+		else = {
+			change_variable = { name = tm_bae7_vigla_served add = 1 }
+			var:tm_bae7_vigla_county = { save_scope_as = tm_bae7_vigla_county }
+			# The watch's share of the road tax.
+			scope:employer = {
+				if = {
+					limit = { gold >= 15 }
+					pay_short_term_gold = { target = root gold = 15 }
+				}
+			}
+			if = {
+				limit = { var:tm_bae7_vigla_served >= var:tm_bae7_vigla_term }
+				# A band that robbed the road may be found out when the lord's men count the caravans.
+				if = {
+					limit = { has_variable = tm_bae7_vigla_robbed }
+					random_list = {
+						25 = {
+							save_scope_value_as = { name = tm_bae7_end value = flag:found }
+							trigger_event = tm_bae7.0021
+						}
+						75 = { trigger_event = tm_bae7.0020 }
+					}
+				}
+				else = {
+					trigger_event = tm_bae7.0020
+				}
+			}
+			else = {
+				random_list = {
+					30 = { trigger_event = { id = tm_bae7.0010 days = { 10 120 } } }
+					25 = { trigger_event = { id = tm_bae7.0011 days = { 10 120 } } }
+					20 = {
+						trigger = {
+							current_year >= 1327
+							NOT = { has_variable = tm_bae7_vigla_habit_asked }
+						}
+						trigger_event = { id = tm_bae7.0012 days = { 10 120 } }
+					}
+					40 = {}
+				}
+				trigger_event = { id = tm_bae7.0002 days = 365 }
+			}
+		}
+	}
+}
+
+# A road thief brought in. Root = the band's leader; scope:employer, scope:tm_bae7_vigla_county. The Serbian law
+# made the road's keepers answer to the robbed (Zakonik arts. 157-160; Sophoulis pp. 100-101).
+tm_bae7.0010 = {
+	type = character_event
+	title = tm_bae7.0010.t
+	desc = tm_bae7.0010.desc
+	theme = martial
+	override_background = { reference = terrain }
+	left_portrait = { character = root animation = personality_rational }
+
+	trigger = {
+		exists = var:tm_bae7_vigla_county
+		exists = scope:employer
+	}
+
+	option = {	# To the lord's court
+		name = tm_bae7.0010.a
+		add_prestige = 10
+		scope:employer = { add_opinion = { target = root modifier = tm_bae7_kept_road_opinion } }
+		tm_bae7_tally_effect = { WHAT = robber_court }
+		stress_impact = {
+			compassionate = minor_stress_impact_gain
+		}
+		ai_chance = {
+			base = 50
+			modifier = { add = 20 has_trait = just }
+		}
+	}
+	option = {	# What he took goes back, and he goes home
+		name = tm_bae7.0010.b
+		custom_tooltip = tm_bae7.0010.b.tt
+		var:tm_bae7_vigla_county ?= { change_county_control = 5 }
+		tm_bae7_tally_effect = { WHAT = robber_home }
+		stress_impact = {
+			compassionate = minor_stress_impact_loss
+			forgiving = minor_stress_impact_loss
+			vengeful = minor_stress_impact_gain
+		}
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = compassionate }
+			modifier = { add = 20 has_trait = forgiving }
+		}
+	}
+}
+
+# A toll quarrel. The watch was paid by its own tax (the vigliatikon, Sophoulis pp. 105-112).
+tm_bae7.0011 = {
+	type = character_event
+	title = tm_bae7.0011.t
+	desc = tm_bae7.0011.desc
+	theme = stewardship
+	override_background = { reference = terrain }
+	left_portrait = { character = root animation = personality_rational }
+
+	trigger = {
+		exists = var:tm_bae7_vigla_county
+		exists = scope:employer
+	}
+
+	option = {	# Let him through
+		name = tm_bae7.0011.a
+		add_prestige = 10
+		tm_bae7_tally_effect = { WHAT = toll_waived }
+		stress_impact = {
+			greedy = minor_stress_impact_gain
+		}
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = generous }
+		}
+	}
+	option = {	# What the lord's letter says, no more
+		name = tm_bae7.0011.b
+		add_gold = 10
+		tm_bae7_tally_effect = { WHAT = toll_kept }
+		ai_chance = {
+			base = 50
+			modifier = { add = 20 has_trait = just }
+		}
+	}
+	option = {	# Twice it, for the trouble
+		name = tm_bae7.0011.c
+		add_gold = 25
+		custom_tooltip = tm_bae7.0011.c.tt
+		random = {
+			chance = 30
+			scope:employer = { add_opinion = { target = root modifier = tm_bae7_overcharged_opinion } }
+		}
+		tm_bae7_tally_effect = { WHAT = toll_double }
+		stress_impact = {
+			honest = minor_stress_impact_gain
+			just = minor_stress_impact_gain
+		}
+		ai_chance = {
+			base = 10
+			modifier = { add = 25 has_trait = greedy }
+			modifier = { add = 10 has_trait = arbitrary }
+		}
+	}
+}
+
+# The guards' habit. From 1327: hired road guards in the Strymon valley ambushed the travellers they were paid to
+# keep (Gregoras; Sophoulis pp. 60, 107). Once a term.
+tm_bae7.0012 = {
+	type = character_event
+	title = tm_bae7.0012.t
+	desc = tm_bae7.0012.desc
+	theme = martial
+	override_background = { reference = terrain }
+	left_portrait = { character = root animation = worry }
+
+	trigger = {
+		exists = var:tm_bae7_vigla_county
+		exists = scope:employer
+	}
+
+	immediate = {
+		set_variable = { name = tm_bae7_vigla_habit_asked value = yes }
+	}
+
+	option = {	# We keep the road we are paid to keep
+		name = tm_bae7.0012.a
+		add_prestige = 15
+		tm_bae7_tally_effect = { WHAT = habit_kept }
+		stress_impact = {
+			greedy = minor_stress_impact_gain
+		}
+		ai_chance = {
+			base = 70
+			modifier = { add = 20 has_trait = honest }
+			modifier = { add = 20 has_trait = just }
+		}
+	}
+	option = {	# Take it
+		name = tm_bae7.0012.b
+		add_gold = 60
+		custom_tooltip = tm_bae7.0012.b.tt
+		set_variable = { name = tm_bae7_vigla_robbed value = yes }
+		tm_bae7_tally_effect = { WHAT = habit_took }
+		stress_impact = {
+			honest = medium_stress_impact_gain
+			just = medium_stress_impact_gain
+		}
+		random = {
+			chance = 35
+			save_scope_value_as = { name = tm_bae7_end value = flag:found }
+			trigger_event = { id = tm_bae7.0021 days = { 30 90 } }
+		}
+		ai_chance = {
+			base = 10
+			modifier = { add = 25 has_trait = greedy }
+			modifier = { add = 10 gold < 0 }
+			modifier = { factor = 0 has_trait = honest }
+		}
+	}
+}
+
+# The term served. Root = the band's leader; scope:employer, scope:task_contract. The lord remembers the service, so
+# the Patent and the Robe (tm_band.0002) may later offer the band one of his counties: the settled garrison.
+tm_bae7.0020 = {
+	type = character_event
+	title = tm_bae7.0020.t
+	desc = {
+		desc = tm_bae7.0020.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { has_variable = tm_bae7_vigla_robbed }
+				desc = tm_bae7.0020.desc_robbed
+			}
+			desc = tm_bae7.0020.desc_clean
+		}
+	}
+	theme = martial
+	override_background = { reference = terrain }
+	left_portrait = { character = root animation = marshal }
+	right_portrait = { character = scope:employer animation = happiness }
+
+	trigger = {
+		exists = var:tm_bae7_vigla_county
+	}
+
+	immediate = {
+		scope:task_contract ?= { complete_task_contract = success_standard }
+		if = {
+			limit = {
+				NOT = { has_variable = tm_bae7_vigla_robbed }
+				scope:employer ?= { is_alive = yes }
+			}
+			set_variable = { name = tm_band_served value = scope:employer years = 10 }
+		}
+		tm_bae7_tally_effect = { WHAT = vigla_done }
+		tm_bae7_vigla_end_effect = yes
+	}
+
+	option = {
+		name = tm_bae7.0020.a
+	}
+}
+
+# The watch ends early. Root = the band's leader; scope:tm_bae7_end = flag:left (the camp moved away), flag:lord (the
+# lord died, lost the county or is at war with the band) or flag:found (the band robbed the road and was found out).
+tm_bae7.0021 = {
+	type = character_event
+	title = tm_bae7.0021.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:tm_bae7_end = flag:found }
+				desc = tm_bae7.0021.desc_found
+			}
+			triggered_desc = {
+				trigger = { scope:tm_bae7_end = flag:lord }
+				desc = tm_bae7.0021.desc_lord
+			}
+			desc = tm_bae7.0021.desc_left
+		}
+	}
+	theme = martial
+	override_background = { reference = terrain }
+	left_portrait = { character = root animation = worry }
+
+	trigger = {
+		exists = var:tm_bae7_vigla_county
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				scope:tm_bae7_end = flag:found
+				scope:employer ?= { is_alive = yes }
+			}
+			scope:employer = { add_opinion = { target = root modifier = tm_bae7_guards_robbed_opinion } }
+			tm_bae7_tally_effect = { WHAT = habit_found }
+		}
+		scope:task_contract ?= { complete_task_contract = failure_standard }
+		tm_bae7_tally_effect = { WHAT = vigla_failed }
+		tm_bae7_vigla_end_effect = yes
+	}
+
+	option = {
+		name = tm_bae7.0021.a
+	}
+}
+
+# ===================================================================================================
+# A harbour with a petty coastal lord
+# ===================================================================================================
+
+# Hidden. Root = a landed Baedling band losing a war over her land (quarterly pulse). Finds the nearest petty coastal
+# lord who would take her in, and brings his word (0031).
+tm_bae7.0030 = {
+	type = character_event
+	hidden = yes
+
+	trigger = {
+		tm_bae7_landed_band_trigger = yes
+		tm_bae7_losing_her_land_trigger = yes
+		NOT = { has_variable = tm_bae7_harbour }
+	}
+
+	immediate = {
+		ordered_ruler = {
+			limit = { tm_bae7_harbour_lord_trigger = { BAND = root } }
+			order_by = {
+				value = 0
+				subtract = "capital_province.squared_distance(root.capital_province)"
+			}
+			save_scope_as = tm_bae7_harbour_lord
+		}
+		if = {
+			limit = { exists = scope:tm_bae7_harbour_lord }
+			set_variable = { name = tm_bae7_harbour_asked value = yes years = 10 }
+			if = {
+				limit = { is_ai = no }
+				tm_flavour_spent_effect = yes
+			}
+			tm_bae7_tally_effect = { WHAT = harbour_offered }
+			trigger_event = tm_bae7.0031
+		}
+	}
+}
+
+# The petty lord's word. Root = the band's leader, still landed; scope:tm_bae7_harbour_lord. After the island was
+# cleared in 1398, the band's people found a last refuge with the count of Oldenburg and the East Frisian lords
+# (Dollinger p. 80). The narrator names neither.
+tm_bae7.0031 = {
+	type = character_event
+	title = tm_bae7.0031.t
+	desc = tm_bae7.0031.desc
+	theme = martial
+	override_background = { reference = docks }
+	left_portrait = { character = root animation = worry }
+	right_portrait = { character = scope:tm_bae7_harbour_lord animation = personality_rational }
+
+	trigger = {
+		is_landed = yes
+		scope:tm_bae7_harbour_lord = {
+			is_alive = yes
+			is_landed = yes
+		}
+	}
+
+	option = {	# Tell him we may come
+		name = tm_bae7.0031.a
+		custom_tooltip = tm_bae7.0031.a.tt
+		set_variable = { name = tm_bae7_harbour value = scope:tm_bae7_harbour_lord years = 10 }
+		add_opinion = { target = scope:tm_bae7_harbour_lord modifier = tm_bae7_harbour_opinion }
+		scope:tm_bae7_harbour_lord = { add_opinion = { target = root modifier = tm_bae7_harbour_opinion } }
+		tm_bae7_tally_effect = { WHAT = harbour_promised }
+		ai_chance = {
+			base = 70
+			modifier = { add = 20 has_trait = craven }
+			modifier = { add = 10 has_trait = patient }
+		}
+	}
+	option = {	# We hold the hall
+		name = tm_bae7.0031.b
+		add_prestige = 15
+		tm_bae7_tally_effect = { WHAT = harbour_refused }
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = stubborn }
+			modifier = { add = 20 has_trait = brave }
+		}
+	}
+}
+
+# Hidden. Root = the band's leader, a few days after she lost a county (on_title_lost). If the land is all gone and
+# the harbour lord still stands, she is asked (0033).
+tm_bae7.0032 = {
+	type = character_event
+	hidden = yes
+
+	trigger = {
+		is_landed = no
+		is_imprisoned = no
+		exists = var:tm_bae7_harbour
+		var:tm_bae7_harbour = {
+			is_alive = yes
+			is_landed = yes
+			exists = capital_province
+		}
+	}
+
+	immediate = {
+		var:tm_bae7_harbour = { save_scope_as = tm_bae7_harbour_lord }
+		trigger_event = tm_bae7.0033
+	}
+}
+
+# The harbour. Root = the band's leader, landless now; scope:tm_bae7_harbour_lord. If she has taken to the road again
+# (vanilla ep3_laamps.0002), the camp may go to his coast; if not, she may go to his court. Either way she may decline.
+tm_bae7.0033 = {
+	type = character_event
+	title = tm_bae7.0033.t
+	desc = {
+		desc = tm_bae7.0033.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { government_has_flag = government_is_landless_adventurer }
+				desc = tm_bae7.0033.desc_camp
+			}
+			desc = tm_bae7.0033.desc_court
+		}
+	}
+	theme = martial
+	override_background = { reference = docks }
+	left_portrait = { character = root animation = sadness }
+	right_portrait = { character = scope:tm_bae7_harbour_lord animation = personality_honorable }
+
+	trigger = {
+		is_landed = no
+		exists = scope:tm_bae7_harbour_lord
+	}
+
+	immediate = {
+		remove_variable = tm_bae7_harbour
+	}
+
+	option = {	# To his coast, with the camp
+		name = tm_bae7.0033.a
+		trigger = { government_has_flag = government_is_landless_adventurer }
+		tm_bae7_camp_to_harbour_effect = yes
+		add_prestige = 10
+		scope:tm_bae7_harbour_lord = {
+			send_interface_toast = {
+				type = event_toast_effect_neutral
+				title = tm_bae7.0033.toast
+				left_icon = root
+			}
+		}
+		tm_bae7_tally_effect = { WHAT = harbour_camp }
+		ai_chance = { base = 70 }
+	}
+	option = {	# To his court
+		name = tm_bae7.0033.b
+		trigger = { NOT = { government_has_flag = government_is_landless_adventurer } }
+		scope:tm_bae7_harbour_lord = {
+			add_courtier = root
+			send_interface_toast = {
+				type = event_toast_effect_neutral
+				title = tm_bae7.0033.toast
+				left_icon = root
+			}
+		}
+		tm_bae7_tally_effect = { WHAT = harbour_court }
+		ai_chance = { base = 70 }
+	}
+	option = {	# My own way
+		name = tm_bae7.0033.c
+		tm_bae7_tally_effect = { WHAT = harbour_stayed }
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = stubborn }
+		}
+	}
+}
+
+# ===================================================================================================
+# The Sword Is My Patent
+# ===================================================================================================
+
+# The last letter. Root = whoever holds the county; scope:tm_bae7_band (the wronged band), scope:tm_bae7_sword_county.
+# Yaqub, asked for a caliph's patent, showed a sword (Tor p. 150); Tor reads it as a claim to justice, not "might
+# makes right" (pp. 150-151). Here it is her line, never the narrator's.
+tm_bae7.0040 = {
+	type = character_event
+	title = tm_bae7.0040.t
+	desc = tm_bae7.0040.desc
+	theme = martial
+	override_background = { reference = throne_room }
+	left_portrait = { character = scope:tm_bae7_band animation = anger }
+
+	trigger = {
+		scope:tm_bae7_sword_county.holder ?= root
+		scope:tm_bae7_band = {
+			is_alive = yes
+			tm_bae2_faith_band_trigger = yes
+			is_at_war = no
+		}
+	}
+
+	option = {	# Give her the county now
+		name = tm_bae7.0040.a
+		trigger = {
+			tm_band_patron_trigger = { LORD = root }
+			scope:tm_bae7_sword_county = { tm_band_grantable_county_trigger = { LORD = root } }
+		}
+		custom_tooltip = tm_bae7.0040.a.tt
+		scope:tm_bae7_band = {
+			save_scope_as = tm_band_band
+			remove_variable = tm_bae7_wronged_by
+			remove_variable = tm_bae7_claim_county
+		}
+		scope:tm_bae7_sword_county = { save_scope_as = tm_band_county }
+		tm_band_grant_patent_effect = yes
+		tm_bae7_tally_effect = { WHAT = sword_granted }
+		ai_chance = {
+			base = 20
+			modifier = { add = 30 scope:tm_bae7_band.current_military_strength > current_military_strength }
+			modifier = { add = 20 has_trait = craven }
+			modifier = { add = 10 has_trait = just }
+			modifier = { factor = 0.5 has_trait = arrogant }
+			modifier = { factor = 0.5 has_trait = stubborn }
+		}
+	}
+	option = {	# Then let it be settled in the field
+		name = tm_bae7.0040.b
+		custom_tooltip = tm_bae7.0040.b.tt
+		scope:tm_bae7_band = {
+			remove_variable = tm_bae7_wronged_by
+			remove_variable = tm_bae7_claim_county
+			set_variable = { name = tm_bae2_was_band value = yes years = 3 }
+			start_war = {
+				cb = claim_cb
+				target = root
+				claimant = scope:tm_bae7_band
+				target_title = scope:tm_bae7_sword_county
+			}
+		}
+		tm_bae7_tally_effect = { WHAT = sword_war }
+		ai_chance = {
+			base = 60
+			modifier = { add = 20 has_trait = arrogant }
+			modifier = { add = 20 has_trait = wrathful }
+		}
+	}
+}
