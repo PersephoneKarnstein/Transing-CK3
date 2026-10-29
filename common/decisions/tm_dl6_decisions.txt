@@ -1,0 +1,59 @@
+﻿# Crusader Dolls — the Founding Rule of the Mother House (events/tm_dl6_events.txt 0100–0102; docs/wave14/adelphai.md §1).
+# The Mother of Mothers writes the House's rule in three stages, ten years apart. It is kept on d_tm_mother_house and
+# passes with the House, not with her family.
+tm_dl6_rule_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"		# placeholder; TODO event art
+	}
+	sort_order = 65
+
+	is_shown = {
+		faith = faith:transbian_maximalism
+		has_title = title:d_tm_mother_house
+		NOT = { tm_dl6_rule_stage_trigger = { STAGE = 3 } }
+	}
+
+	is_valid = {
+		custom_tooltip = {
+			text = tm_dl6_rule_decision_cd_tt
+			title:d_tm_mother_house = { NOT = { has_variable = tm_dl6_rule_cd } }
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+		is_adult = yes
+	}
+
+	cost = {
+		piety = tm_dl6_rule_cost
+	}
+
+	effect = {
+		if = {
+			limit = { NOT = { tm_dl6_rule_stage_trigger = { STAGE = 1 } } }
+			custom_tooltip = tm_dl6_rule_decision_effect_1_tt
+			trigger_event = tm_dl6.0100
+		}
+		else_if = {
+			limit = { NOT = { tm_dl6_rule_stage_trigger = { STAGE = 2 } } }
+			custom_tooltip = tm_dl6_rule_decision_effect_2_tt
+			trigger_event = tm_dl6.0101
+		}
+		else = {
+			custom_tooltip = tm_dl6_rule_decision_effect_3_tt
+			trigger_event = tm_dl6.0102
+		}
+	}
+
+	ai_check_interval = 60
+	ai_will_do = {
+		base = 40
+		modifier = { add = 20 has_trait = zealous }
+		modifier = { add = 20 learning >= 12 }
+		modifier = {
+			factor = 0
+			piety < { value = tm_dl6_rule_cost add = 100 }		# keep some piety in hand
+		}
+	}
+}

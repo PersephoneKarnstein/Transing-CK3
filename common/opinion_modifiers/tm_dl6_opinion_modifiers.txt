@@ -1,0 +1,20 @@
+﻿# Crusader Dolls — Adelphai Dorleyaiou, wave 14 (docs/wave14/adelphai.md).
+
+# Kin of another faith, when one of theirs is taken into the cells under the House (tm_dl6_intake_effect).
+tm_dl6_kin_in_the_cells_opinion = {
+	opinion = -30
+	decaying = yes
+	years = 20
+}
+
+# The ward and her sponsor, when she would rather keep her as a teacher than make her a sister (tm_dl6.0020).
+tm_dl6_my_teacher_opinion = {
+	opinion = 20
+	years = 20
+}
+
+# A daughter who left the House at the end of her third year, and was let go (tm_dl6.0030).
+tm_dl6_let_me_go_opinion = {
+	opinion = 15
+	years = 10
+}

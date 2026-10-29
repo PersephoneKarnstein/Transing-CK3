@@ -1,0 +1,101 @@
+﻿l_english:
+ # Adelphai Dorleyaiou, wave 14: the Founding Rule of the Mother House, and the rest of the Dorley precedent (docs/wave14/adelphai.md).
+
+ ### The disclosure ###
+ tm_dl6.0001.t:0 "Under the Knife He Fears"
+ tm_dl6.0001.desc:0 "[tm_sponsor.GetFirstName] has asked my leave to tell [tm_novice.GetFirstName] what every sponsor tells her charge in the end: that every woman who brings him his bread, sits through his silences and reads to him in the evenings has been under the knife he is waiting for."
+ tm_dl6.0001.desc_sponsor:0 " She would tell him herself, in her own words. How much of her own road she gives him is hers to decide."
+ tm_dl6.0001.desc_self:0 " I would tell him myself. How much of my own road I give him is mine to decide."
+ tm_dl6.0001.desc_graduate:0 " Some of them, [tm_sponsor.GetFirstName] among them, came up out of these same cells."
+ tm_dl6.0001.desc_end:0 "\n\nHe may hear it as a promise. He may hear it as a threat. It is both, and the House has never pretended otherwise: he did not choose this cell, and nothing said to him in it makes that otherwise."
+ tm_dl6.0001.a:0 "Tell him."
+ tm_dl6.0001.b:0 "Not yet. Let him come to ask."
+ tm_dl6.0001.c:0 "Let him see them: one evening at the House's table, with a sister at the door."
+
+ ### The second year ###
+ tm_dl6.0010.t:0 "The Upper Rooms"
+ tm_dl6.0010.desc:0 "A year ago [tm_dl6_ward.GetFirstName] came up from the cells. She sleeps now in the upper rooms of the House, among the women of her year, and the door at the foot of the stair is still locked at night. Nobody calls that freedom. It is the second year."
+ tm_dl6.0010.desc_sponsor:0 "\n\n[tm_dl6_sponsor.GetFirstName] still has the keeping of her, and now the teaching of her too. What shall she learn this year?"
+ tm_dl6.0010.desc_nosponsor:0 "\n\nThe woman who sponsored her is gone, and the House's elder sisters have the teaching of her now. What shall she learn this year?"
+ tm_dl6.0010.a:0 "Letters, and the Psalter."
+ tm_dl6.0010.b:0 "The House's accounts."
+ tm_dl6.0010.c:0 "The courtesies of the hall."
+
+ ### The third year ###
+ tm_dl6.0020.t:0 "Keeper, Teacher, Sister"
+ tm_dl6.0020.desc:0 "This is [tm_dl6_ward.GetFirstName]'s third year with the House. The stair door stands open now, and she comes and goes as the other women do."
+ tm_dl6.0020.desc_sponsor:0 "\n\n[tm_dl6_sponsor.GetFirstName] kept her in the cells, taught her in the upper rooms, and now walks beside her in the hall. Among the Sisters a sponsor's charge may ask her to be her sister before the altar, or may not. Either answer is hers, and either is an honour to the one who hears it."
+ tm_dl6.0020.desc_gone:0 "\n\nThe woman who sponsored her did not live to see this year. The elder sisters say she would have been glad of it."
+ tm_dl6.0020.a:0 "[tm_dl6_ward.GetFirstName] asks [tm_dl6_sponsor.GetFirstName] to be her sister."
+ tm_dl6.0020.b:0 "She keeps [tm_dl6_sponsor.GetFirstName] as her teacher, and thanks her."
+ tm_dl6.0020.c:0 "She lights a lamp for her sponsor."
+
+ ### The end of the third year ###
+ tm_dl6.0030.t:0 "Her Name in the House's Book"
+ tm_dl6.0030.desc:0 "Three years ago [tm_dl6_ward.GetFirstName] was brought down into the cells under the House. She did not ask to come, and nothing the House has given her since makes that otherwise. The Gift Alone would say so, and would be right.\n\nNow the House writes her into its book, as it writes every sister: where she came from, and who stood beside her. Her name there is the one she took at the knife. What the book says of the rest is for her to decide, and so is whether she stays."
+ tm_dl6.0030.a:0 "Write it as she tells it, and close the book."
+ tm_dl6.0030.b:0 "Write all of it, the cells too, for the next one to read."
+ tm_dl6.0030.c:0 "She asks to leave the House. Let her go."
+ tm_dl6.0030.c.tt:0 "She leaves this court with the House's blessing, for another House or for the road. No one goes after her."
+
+ ### The Founding Rule ###
+ tm_dl6_rule_decision:0 "The Rule of the Mother House"
+ tm_dl6_rule_decision_desc:0 "The Houses live by custom and by the Mother's word. A written rule outlives both: who keeps a House, how its elder is chosen, and what no Mother may undo. It is written in three parts, years apart, and it belongs to the Mother House, not to any family."
+ tm_dl6_rule_decision_tooltip:0 "Write the next part of the Mother House's rule."
+ tm_dl6_rule_decision_confirm:0 "Take up the pen"
+ tm_dl6_rule_decision_cd_tt:0 "Ten years since the last part of the rule was written"
+ tm_dl6_rule_decision_effect_1_tt:0 "The rule is written, and read aloud each month in every House of the faith: each such county gains #V The Rule Read Aloud#!."
+ tm_dl6_rule_decision_effect_2_tt:0 "The rule is copied three times. Every Protectress of a House of the faith keeps a copy: #V Keeper of the Rule's Copy#!."
+ tm_dl6_rule_decision_effect_3_tt:0 "The rule is sealed against amendment. You and every Mother of Mothers after you keep it: #V The Rule Sealed#!."
+
+ tm_dl6.0100.t:0 "The Rule of the Mother House"
+ tm_dl6.0100.desc:0 "The Houses have lived by custom and by the Mother's word. Founders of convents write a rule instead: who keeps the house, how its elder is chosen, what may never be sold, and that the rule be read aloud to the sisters month by month, so that none can say she did not know it.\n\nI will write ours, and every House of the faith will hear it read. What shall stand at its head?"
+ tm_dl6.0100.a:0 "\"Where this rule says sister, every daughter is meant, however she came to us.\""
+ tm_dl6.0100.b:0 "\"No one is bought into this House, and no one buys her way.\""
+ tm_dl6.0100.c:0 "\"She who protects a House shall keep it, not own it.\""
+
+ tm_dl6.0101.t:0 "Three Copies of the Rule"
+ tm_dl6.0101.desc:0 "A rule kept in one chest can be lost in one fire, or rewritten by one hand. The founders kept their rules in three copies: one in the house itself, one in a great church away from it, and one with the house's protector.\n\nThe Mother House keeps the first, and every House's Protectress will keep one of her own. Where shall the second go?"
+ tm_dl6.0101.a:0 "To the City, to any church there that will keep it."
+ tm_dl6.0101.a.lodged:0 "A notary in the City has lodged the rule"
+ tm_dl6.0101.a.returned:0 "The rule came back from the City unopened"
+ tm_dl6.0101.b:0 "To Pessinus, in the Mother's old country."
+
+ tm_dl6.0102.t:0 "Not Even at a Critical Moment"
+ tm_dl6.0102.desc:0 "The founders' rules close with a seal: no one may amend this rule, not even at a critical moment. The Houses have had critical moments, and will have more.\n\n"
+ tm_dl6.0102.desc_every:0 "The rule opens, \"Where this rule says sister, every daughter is meant, however she came to us.\" Once it is sealed, no Mother can take back a word of it."
+ tm_dl6.0102.desc_gift:0 "The rule opens, \"No one is bought into this House, and no one buys her way.\" Once it is sealed, no Mother can take back a word of it."
+ tm_dl6.0102.desc_keep:0 "The rule opens, \"She who protects a House shall keep it, not own it.\" Once it is sealed, no Mother can take back a word of it."
+ tm_dl6.0102.desc_end:0 "\n\nA sealed rule binds the House, not the sisters. Any sister may still leave it, this year or in twenty, and the rule says so."
+ tm_dl6.0102.a:0 "Seal it as it stands."
+ tm_dl6.0102.b:0 "One clause first: \"As long as the line of daughters lasts; and when it fails, let the sisters choose.\""
+
+ ### The washout and the order ###
+ tm_dl6.0200.order:0 "Give [tm_novice.GetFirstName] to the order."
+ tm_dl6.0200.order.tt:0 "He is released into a holy order of the faith, if one stands; otherwise into the Mother House's lay order, which works its estates and roads outside the wall. He is not kept in a cell, and no one is set to watch him."
+
+ tm_dl6.0210.t:0 "Word from the Order"
+ tm_dl6.0210.desc_kept:0 "A letter has come about [tm_dl6_brother.GetFirstName], whom I gave to the order some years ago when the cells could do no more for him. He keeps the hours, works where he is sent, and says little. The letter does not say he has changed, and the Sisters do not ask it to."
+ tm_dl6.0210.desc_asks:0 "A letter has come about [tm_dl6_brother.GetFirstName], whom I gave to the order some years ago when the cells could do no more for him. He keeps the hours and works where he is sent. Lately he has asked whether he might come to a House's door: not inside, only as far as the friends of the House come."
+ tm_dl6.0210.desc_left:0 "A letter has come about [tm_dl6_brother.GetFirstName], whom I gave to the order some years ago when the cells could do no more for him. He has left it. One morning he walked out of the gate with his cloak and a loaf, and no one went after him. The order writes that it is not a prison, and was not built to be one."
+ tm_dl6.0210.a:0 "Let him be."
+ tm_dl6.0210.b:0 "He may come to the door, as a friend of the House."
+
+ ### Modifiers ###
+ tm_dl6_ward_modifier:0 "In Her Sponsor's Care"
+ tm_dl6_ward_modifier_desc:0 "Her second and third years with the House, above ground. She learns, and she is taught."
+ tm_dl6_house_book_modifier:0 "Written in the House's Book"
+ tm_dl6_house_book_modifier_desc:0 "Her history stands in the House's book, written as she chose."
+ tm_dl6_given_to_order_modifier:0 "Given to the Order"
+ tm_dl6_given_to_order_modifier_desc:0 "Sent from the cells into religion. He keeps the hours; what he thinks of it is his own."
+ tm_dl6_rule_read_modifier:0 "The Rule Read Aloud"
+ tm_dl6_rule_read_modifier_desc:0 "Each month the Mother House's rule is read aloud to the sisters of this House."
+ tm_dl6_copy_keeper_modifier:0 "Keeper of the Rule's Copy"
+ tm_dl6_copy_keeper_modifier_desc:0 "As Protectress she keeps a copy of the Mother House's rule, against the day a lord asks what the House is owed."
+ tm_dl6_rule_sealed_modifier:0 "The Rule Sealed"
+ tm_dl6_rule_sealed_modifier_desc:0 "The Mother House's rule may not be amended, not even at a critical moment. It rests in her keeping."
+
+ ### Opinions ###
+ tm_dl6_kin_in_the_cells_opinion:0 "Took Our Kin into the Cells"
+ tm_dl6_my_teacher_opinion:0 "Teacher and Pupil"
+ tm_dl6_let_me_go_opinion:0 "Let Me Go Freely"

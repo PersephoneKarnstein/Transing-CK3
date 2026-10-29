@@ -1,0 +1,97 @@
+﻿# Crusader Dolls — Yutai Dao, wave 13: the levers, the women's chains and the regency rules (events/tm_yt4_events.txt;
+# docs/wave13/yutai.md).
+
+# A daughter of the Way whom the women's chains can reach: an adult daughter of the embryo (or of any gate) or a
+# declared sister, of the Way, free. Scope: a character.
+tm_yt4_way_daughter_trigger = {
+	faith = faith:tm_yutai
+	tm_world_daughter_trigger = yes
+}
+
+# Lives under a Chinese throne: her top liege (or she herself) keeps a celestial government. Scope: a character.
+tm_yt4_under_celestial_trigger = {
+	OR = {
+		has_government = celestial_government
+		top_liege ?= { has_government = celestial_government }
+	}
+}
+
+# A ruler of the Way who keeps a Sisters' House, under a celestial throne or on one. Scope: a character.
+tm_yt4_house_keeper_trigger = {
+	faith = faith:tm_yutai
+	is_adult = yes
+	is_imprisoned = no
+	tm_holds_sisters_house_trigger = yes
+	tm_yt4_under_celestial_trigger = yes
+}
+
+# Under a Chinese or Korean-style throne, but not the throne itself: the three routes into the abbeys need a lord
+# above the House. Scope: a character.
+tm_yt4_house_under_lord_trigger = {
+	faith = faith:tm_yutai
+	is_adult = yes
+	is_imprisoned = no
+	tm_holds_sisters_house_trigger = yes
+	exists = top_liege
+	NOT = { this = top_liege }
+	top_liege = {
+		OR = {
+			has_government = celestial_government
+			has_government = meritocratic_government
+		}
+	}
+}
+
+# A House under the steppe's custom: the holder's capital county is of a Khitan or Mongol culture (heritage_mongolic,
+# which holds both) or Jurchen. Mongol custom was that a widow took over the household (McMahon CW 62); the Jin
+# widow's vows were her refuge from the levirate (CW 44). Scope: a character.
+tm_yt4_steppe_house_trigger = {
+	tm_holds_sisters_house_trigger = yes
+	capital_county ?= {
+		culture ?= {
+			OR = {
+				has_cultural_pillar = heritage_mongolic
+				this = culture:jurchen
+			}
+		}
+	}
+}
+
+# --- Regency rules (McMahon WSNR 147, 261, 272; CW 11–16, 59, 62, 78, 93) ---
+
+# The regent is the ruler's mother or grandmother, or a wife of his father: the dowager of the record. Scope: the
+# diarch; scope:tm_yt4_liege = the ruler.
+tm_yt4_dowager_regent_trigger = {
+	is_female = yes
+	OR = {
+		scope:tm_yt4_liege.mother ?= this
+		scope:tm_yt4_liege.mother.mother ?= this
+		scope:tm_yt4_liege.father.mother ?= this
+		scope:tm_yt4_liege.father ?= { any_spouse = { this = scope:tm_yt4_regent } }
+		scope:tm_yt4_liege.father ?= { any_former_spouse = { this = scope:tm_yt4_regent } }
+	}
+}
+
+# The regency concerns the Way: the regent or the ruler is of it. The rules are for the mod's own people, not a
+# rewrite of every Chinese court. Scope: the ruler; scope:tm_yt4_regent = the diarch.
+tm_yt4_way_regency_trigger = {
+	OR = {
+		faith = faith:tm_yutai
+		scope:tm_yt4_regent = { faith = faith:tm_yutai }
+	}
+}
+
+# Khitan and Mongol courts: the regent sits face to face and commands (WSNR 261, 272; CW 59, 62). The Jin had no
+# women regents (CW 43–45), so Jurchen courts are left out. Scope: the ruler.
+tm_yt4_face_to_face_court_trigger = {
+	culture ?= { has_cultural_pillar = heritage_mongolic }
+}
+
+# A Chinese throne: celestial government, or a ruler of Chinese heritage. Scope: the ruler.
+tm_yt4_curtain_court_trigger = {
+	NOT = { tm_yt4_face_to_face_court_trigger = yes }
+	OR = {
+		has_government = celestial_government
+		culture ?= { has_cultural_pillar = heritage_chinese }
+	}
+}

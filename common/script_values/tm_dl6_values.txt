@@ -1,0 +1,14 @@
+﻿# Crusader Dolls — Adelphai Dorleyaiou, wave 14 (docs/wave14/adelphai.md).
+
+# Piety for the next stage of the Founding Rule: 150, then 250, then 350.
+tm_dl6_rule_cost = {
+	value = 150
+	if = {
+		limit = { tm_dl6_rule_stage_trigger = { STAGE = 1 } }
+		add = 100
+	}
+	if = {
+		limit = { tm_dl6_rule_stage_trigger = { STAGE = 2 } }
+		add = 100
+	}
+}

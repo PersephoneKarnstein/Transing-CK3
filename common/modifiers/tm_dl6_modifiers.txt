@@ -1,0 +1,43 @@
+﻿# Crusader Dolls — Adelphai Dorleyaiou, wave 14 (docs/wave14/adelphai.md).
+
+# The second and third years of the Dorley programme: the sponsor's ward, above ground (tm_dl6_begin_ward_years_effect).
+tm_dl6_ward_modifier = {
+	icon = learning_positive
+	monthly_lifestyle_xp_gain_mult = 0.25
+	stress_loss_mult = 0.2
+}
+
+# Her history written in the House's book at the end of the third year (tm_dl6.0030). Permanent.
+tm_dl6_house_book_modifier = {
+	icon = social_positive
+	diplomacy = 1
+	monthly_prestige = 0.1
+}
+
+# A washout given to an order of the faith (tm_dl6_give_to_order_effect). Permanent.
+tm_dl6_given_to_order_modifier = {
+	icon = piety_positive
+	monthly_piety = 0.2
+	stress_gain_mult = -0.1
+}
+
+# The Founding Rule, stage 1: the rule is read aloud in the House each month. County modifier.
+tm_dl6_rule_read_modifier = {
+	icon = county_modifier_opinion_positive
+	county_opinion_add = 5
+	development_growth_factor = 0.05
+}
+
+# The Founding Rule, stage 2: the Protectress keeps the House's copy of the rule.
+tm_dl6_copy_keeper_modifier = {
+	icon = social_positive
+	diplomacy = 1
+	monthly_prestige = 0.2
+}
+
+# The Founding Rule, stage 3: the rule sealed, in the Mother of Mothers' keeping.
+tm_dl6_rule_sealed_modifier = {
+	icon = piety_positive
+	monthly_piety = 0.5
+	same_faith_opinion = 5
+}

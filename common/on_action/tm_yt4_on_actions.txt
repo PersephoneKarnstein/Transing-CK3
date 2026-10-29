@@ -1,0 +1,76 @@
+﻿# Crusader Dolls — Yutai Dao, wave 13 (events/tm_yt4_events.txt; docs/wave13/yutai.md). Appended to vanilla.
+# The palace levers for daughters in office run from tm_yt2_yearly_effect (tm_yt4_palace_year_effect). Here: the House
+# keepers' year, the daughters' year (the women's chains), and the regency rules on vanilla's diarchy on_actions.
+
+yearly_playable_pulse = {
+	on_actions = { tm_yt4_yearly }
+}
+
+on_entered_diarchy = {
+	on_actions = { tm_yt4_regency_entered }
+}
+
+on_diarch_change = {
+	on_actions = { tm_yt4_regency_changed }
+}
+
+on_left_diarchy = {
+	on_actions = { tm_yt4_regency_left }
+}
+
+tm_yt4_yearly = {
+	effect = {
+		save_scope_as = tm_yt4_host
+		# A House keeper of the Way: the Boy from Min, the Commissioner's levy, the three routes.
+		if = {
+			limit = {
+				faith = faith:tm_yutai
+				tm_holds_sisters_house_trigger = yes
+			}
+			tm_yt4_house_year_effect = yes
+		}
+		# The daughters of the Way at this court, and a ruling daughter herself: the women's chains.
+		if = {
+			limit = { tm_yt4_way_daughter_trigger = yes }
+			tm_yt4_daughter_year_effect = yes
+		}
+		every_courtier = {
+			limit = { tm_yt4_way_daughter_trigger = yes }
+			tm_yt4_daughter_year_effect = yes
+		}
+	}
+}
+
+# Root = the ruler who has just entered a diarchy.
+tm_yt4_regency_entered = {
+	effect = {
+		tm_yt4_regency_apply_effect = yes
+	}
+}
+
+# Root = the ruler whose diarch changed; scope:old_diarch = the one before.
+tm_yt4_regency_changed = {
+	effect = {
+		scope:old_diarch ?= { tm_yt4_regency_clear_effect = yes }
+		tm_yt4_regency_apply_effect = yes
+	}
+}
+
+# Root = the ruler who has just left the diarchy; scope:old_diarch = the regent. Under the curtain, the curtain comes
+# down (CW 16); the other rules simply end.
+tm_yt4_regency_left = {
+	effect = {
+		save_scope_as = tm_yt4_liege
+		scope:old_diarch ?= {
+			if = {
+				limit = {
+					has_character_modifier = tm_yt4_curtain_modifier
+					is_alive = yes
+					scope:tm_yt4_liege = { is_alive = yes }
+				}
+				trigger_event = { id = tm_yt4.0041 days = 1 }
+			}
+			tm_yt4_regency_clear_effect = yes
+		}
+	}
+}

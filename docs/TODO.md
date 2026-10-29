@@ -17,7 +17,7 @@ In-game test scenarios for playtesters are in [TO-TEST.md](TO-TEST.md); the "unt
 - [x] Religious head title: d_tm_mother_house, given to Theia Beatrike at game start (tm_on_game_start). Test: she appears as head of faith; her landless government is sensible.
 - [x] `name_list_kybeline` (86 female, 148 male, 22 dynasties; attested names cited per report).
 - [x] New Personal History rename event (untested in-game).
-- [x] Dorley path: prisoner interaction, intake trigger, sponsor chain, levers, washout (untested in-game).
+- [x] Dorley path: prisoner interaction, intake trigger, sponsor chain, levers, washout; the disclosure, ward years and washouts given to an order (wave 14, tm_dl6; untested in-game).
 - [x] Sister-Making relation + interaction; Rescue the Daughters CB (untested in-game).
 - [x] Flavour "achievement" events (`tm_ach`, docs/wave3/achievements.md). The two-line hook in `tm_take_the_knife_effect` is in; untested in game.
 - [ ] Compatibility note for the README: the mod overrides vanilla `allowed_to_marry_same_sex_trigger` (zz_tm_marriage_override.txt).
@@ -96,8 +96,8 @@ Built: shared daughter trigger and per-faith daughter traits; Bæddel faith (Got
 
 ## Stage 2 inputs from the China reading
 - [ ] Palace faction: Shence commanders and Commissioners of Military Affairs (Northern Office) vs scholar-officials (Southern Office); Yang Fugong's adopted sons; the 903 massacre; Song adoption licences and quotas. Built as a small version in wave 3 (`tm_yt2`); tick when tested.
-- [ ] Event chains: Xue Xuantong (874–883), Wang Fengxian (d. 886), the abbess of Mo-shan; three routes into the abbeys; Liao Empress Chengtian
-- [ ] Regency rules by culture (Song curtain; Liao/Yuan command)
+- [x] Event chains: Xue Xuantong (874–883), Wang Fengxian (d. 886), the abbess of Mo-shan; three routes into the abbeys; Liao Empress Chengtian (built in wave 13, tm_yt4; tick when tested: docs/wave13/yutai.md)
+- [x] Regency rules by culture: curtain, face to face, without the curtain after 1368, for regencies of the Way (wave 13, tm_yt4; untested)
 
 ## Ha-Nehpakhot (added 2026-10-19, untested in-game)
 - [ ] The Adar window (`tm_is_adar_trigger`, `current_month`), and AI seekers catching it (ai_check_interval 20)
@@ -194,7 +194,7 @@ Tied to the 1178 bookmark, which waits until after the Silk & Silver DLC (17 Nov
 - [x] **Spring the Cell** (user: build with the Bæddel stage-2 work; built in wave 3 as `tm_bae2_spring_cell`, open to all six faiths). Hostile scheme, any adult of the four faiths, landed or not; target a ruler imprisoning a daughter, Marked woman or declared sister. Agents: Marked guards, faithful servants, friends of the House. Success: prisoner walks to the nearest House (else the plotter's court), plotter possibly unknown. Discovery and failure as vanilla hostile schemes. Template: vanilla abduct. The non-war counterpart of Rescue the Daughters and the planned Bæddel raids.
 - [x] Bæddel: níð insult duels; landless war-band play; Rescue the Daughters as a raid; Christian outlawry pressure. (Flyting in stage 1; outlawry, Answer the Hall's Call and Rescue the Daughters for bands in wave 3.)
 - [ ] Jade Embryo: daughter faction against scholar-officials in celestial and meritocratic governments; temple societies keep estates from crown confiscation; omen events. (Faction built small in wave 3, `tm_yt2`.)
-- [ ] Adelphai Dorleyaiou: daughters in court offices; era decay of tolerance after 1066; Aristotelian and Galenic council fight; the founding charter as a house legacy. (The Galenic rite and the Mother's answer are built in wave 3; no council fight.)
+- [ ] Adelphai Dorleyaiou: daughters in court offices; era decay of tolerance after 1066; Aristotelian and Galenic council fight; the founding charter as a house legacy. (The Galenic rite and the Mother's answer are built in wave 3; no council fight.) The founding charter is built as the Mother House's Rule (wave 14, tm_dl6), a title variable, not a dynasty legacy.
 
 ## Stage 2, first pass (added 2026-10-20, untested in-game)
 One feature per faith, each in its own files; scenarios in TO-TEST.md §J.
@@ -242,7 +242,7 @@ Design notes: docs/stage2/ha-nehpakhot.md, worn-garland.md, badenya.md. Scenario
 - [x] Lead: Rescue the Daughters for adventurers? declared sisters in `tm_captive_daughter_trigger`? (docs/wave3/baedling.md §4). Both done by the lead (user decision, 2026-10-21): bands may wage it and land on victory; declared sisters count.
 
 ## Yutai Dao palace faction (added 2026-10-21, untested in-game)
-- [ ] Yutai palace faction (`tm_yt2`): the balance on the throne's title, *Work the Inner Offices*, the Clerk of Ceremonies (971+), the Censor's Brush (celestial thrones only), the licences option at month 3. Not built: Liao and Ming levers ("Seal the Ledgers", Grass 2024), Cui Yin's 902 proposal (So row 9), the Boy from Min (Rideout row 3), the Commissioner of Merit's repair levy (Rideout row 6).
+- [ ] Yutai palace faction (`tm_yt2`): the balance on the throne's title, *Work the Inner Offices*, the Clerk of Ceremonies (971+), the Censor's Brush (celestial thrones only), the licences option at month 3. Built in wave 13 (`tm_yt4`): Cui Yin's 902 proposal, the Boy from Min, the Commissioner of Merit's repair levy, and Grass's Ming 'Seal the Ledgers' (1403–1449). Still not built: Liao, Jin and Yuan levers (no source on their eunuchs).
 
 ## Adelphai Dorleyaiou stage 2 (wave 3, untested in-game)
 - [ ] Galenic rite: name, colour and icon after create_rite_from_type; knife doctrine copied; tenets shown on the new rite
@@ -364,3 +364,13 @@ In-game checks for everything built on 2026-10-21 in wave 4. Scenarios are in TO
 ## Wave 12: how the surrounding religious authorities react (added 2026-10-27, untested in-game; docs/wave12/reactions.md)
 - [x] Six voices (`tm_rx`): the bishop's court (Huguccio, Hostiensis), the Paris master, the Perugia consilium, Ibn Ḥazm at an Andalusi court, istiḥlāl at a Mamluk court, the Slavic penance ladder in place of the Byzantine ladder
 - [ ] Open questions (docs/wave12/reactions.md §10): opinions by House from the bishop's court; the whole Byzantine ladder swapped for Slavic lieges, not only The Wills; the dates; Ha-Nehpakhot kept out of the Latin events; the witness frame; the Masarra line
+
+## Yutai Dao, wave 13 (added 2026-10-28, untested in-game; docs/wave13/yutai.md)
+- [ ] Yutai wave 13 (`tm_yt4`): the levers (0001–0004), Lady Xue (0010–0011), Wang Fengxian (0020–0021), Mo-shan (0025), the three routes into the abbeys (0030–0032), Chengtian (0035), regency rules by culture and the curtain's end (0041)
+- [ ] Not built from wave 13's notes: Liao, Jin and Yuan levers; Swords of the Women's Bureau; the Severed Hand; Tumu; month-3 variants from the Liao boys or Southern Han; Rideout's other levers
+- [x] Decide wave 13's open questions (docs/wave13/yutai.md §6): accepted as built; Chengtian's rite checked against Wittfogel and Feng and Liaoshi 53 (2026-10-28)
+
+## Wave 14: the Founding Rule and the rest of the Dorley precedent (added 2026-10-28, untested in-game; docs/wave14/adelphai.md)
+- [x] Adelphai wave 14 (`tm_dl6`): the Rule of the Mother House in three stages (read aloud, three copies, sealed); the disclosure at month 7; the ward years (the upper rooms, keeper to sister, the House's book); washouts given to a holy order of the faith or the Mother House's lay order at the gate, with word from the order years later (built, not yet tested in game)
+- [x] Decide (docs/wave14/adelphai.md §7): execution option kept; lay-order fall-back kept; no 1120 gate; daughters stay at the captor's court; sizes accepted; README table reworded (user, 2026-10-28)
+- [ ] Not built: protectress succession sealed to the line (shared tm_house effect); copy-holding Houses harder to close (two AI lines in tm_house.0050); charistike era events; graduates preferred as sponsors

@@ -308,6 +308,25 @@ def main(path):
           'or taken back; shepherds: robbers taken on as herders.')
     print()
 
+    # Adelphai, wave 14 (tm_dl6_tally_effect): the Founding Rule, and the rest of the Dorley precedent.
+    print('== Adelphai: wave 14 ==')
+    dsteps = ('rule_1', 'rule_2', 'rule_3', 'copy_city_kept', 'copy_city_returned', 'intakes', 'disclosed',
+              'disclosed_turned', 'disclosed_shaken', 'disclosure_waited', 'disclosure_shown', 'wards', 'ward_letters',
+              'ward_accounts', 'ward_hall', 'ward_lapsed', 'sisters_made', 'sisters_declined', 'sponsor_gone', 'graduated',
+              'book_her_word', 'book_all_of_it', 'stepped_back', 'order_holy', 'order_gate', 'word_kept', 'word_asks',
+              'word_left', 'order_friend')
+    print('  '.join(f'{s} {int(gvars.get(f"tm_dl6_n_{s}") or 0)}' for s in dsteps))
+    print('rule_*: stages of the Mother House\'s rule written (read aloud, three copies, sealed); copy_city_*: the second\n'
+          'copy lodged in the City or sent back; intakes: men taken into the Dorley cells; disclosed / _turned / _shaken:\n'
+          'told that the sponsors were under the knife, and how he took it; disclosure_waited / _shown: not yet, or an evening\n'
+          'at the House\'s table; wards: daughters raised from the cells into their ward years; ward_letters / _accounts /\n'
+          '_hall: the second year\'s schooling; ward_lapsed: chains that ended early; sisters_made / _declined / sponsor_gone:\n'
+          'the third year\'s answer; graduated (book_her_word / book_all_of_it): written into the House\'s book;\n'
+          'stepped_back: left the House at the end; order_holy / _gate: washouts given to a holy order of the faith, or to\n'
+          'the lay order at the Mother House; word_*: the letter years later (keeps the hours, asks for the door, left);\n'
+          'order_friend: given the House\'s friendship.')
+    print()
+
     # Badenya, wave 9 (tm_bd3_tally_effect): the Rock at Koulikoro and the fall of the associate.
     print('== Badenya: the Rock and the associate ==')
     bsteps = ('rock_came', 'rock_asked', 'rock_kept', 'rock_given', 'rock_joins', 'quarrels', 'raised', 'dust', 'ashes',
@@ -365,6 +384,27 @@ def main(path):
               'refusals; borne / refused: rungs borne or refused; excluded: rulers who ended the ladder barred from the chalice.')
     else:
         print('No counts (the save predates wave 12, or no voice has spoken yet).')
+    print()
+
+    # Yutai Dao, wave 13 (tm_yt4_tally_effect): the levers, the women's chains and the regency rules.
+    print('== Yutai Dao: wave 13 ==')
+    ysteps = ('cui_took', 'cui_refused', 'cui_listened', 'cui_aside', 'boy_kept', 'boy_ransomed', 'boy_home',
+              'levy_paid', 'levy_hidden', 'levy_found', 'levy_patron', 'ledgers_sealed', 'ledgers_audited',
+              'ledgers_grain', 'ledgers_opened', 'ledgers_declined', 'xue_read', 'xue_wrote', 'xue_declined',
+              'xue_altar', 'xue_record', 'xue_kept', 'wang_names', 'wang_levy', 'wang_listened', 'wang_saint',
+              'wang_oracle', 'wang_both', 'moshan_fox', 'moshan_form', 'moshan_bowed', 'anteroom_kept',
+              'anteroom_complied', 'anteroom_refused', 'consort_kept', 'consort_honoured', 'consort_sent',
+              'widow_vows', 'widow_household', 'widow_refused', 'chengtian_answered', 'chengtian_asked',
+              'chengtian_silent', 'regent_face', 'regent_curtain', 'regent_no_curtain', 'curtain_stepped',
+              'curtain_robes', 'curtain_minister')
+    print('  '.join(f'{s} {int(gvars.get(f"tm_yt4_n_{s}") or 0)}' for s in ysteps))
+    print('cui_*: Cui Yin\'s memorial, 901-902 (took the palace women\'s seal, refused, listened for the inner offices,\n'
+          'stood aside); boy_*: a tribute boy at the House gate before 907 (kept, the year\'s boys ransomed, sent home);\n'
+          'levy_*: the Commissioner of Merit\'s repair levy (paid, hidden in the society store or found, a palace patron);\n'
+          'ledgers_*: Seal the Ledgers, 1403-1449; xue_*: Lady Xue at Hezhong 874-881 and the news of 882-885; wang_*:\n'
+          'Wang Fengxian heard, and which account the House wrote; moshan_*: the answer at Mo-shan; anteroom_* / consort_* /\n'
+          'widow_*: the three routes into the abbeys; chengtian_*: the hut of rebirth, 982-1009; regent_*: Way regencies\n'
+          'by rule (face to face, curtain, without the curtain); curtain_*: how a curtain regency ended.')
     print()
 
     # The Women's Chamber (tm_dl3_tally_effect): run-wide counts of each step.

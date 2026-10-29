@@ -1,0 +1,283 @@
+﻿# Crusader Dolls — Adelphai Dorleyaiou, wave 14: the Founding Rule of the Mother House, and the rest of the Dorley
+# precedent (events/tm_dl6_events.txt; docs/wave14/adelphai.md).
+
+# Count for the census (run-wide globals tm_dl6_n_<what>; printed by tools/census_report.py once it has the wave 14 lines).
+tm_dl6_tally_effect = {
+	if = {
+		limit = { NOT = { has_global_variable = tm_dl6_n_$WHAT$ } }
+		set_global_variable = { name = tm_dl6_n_$WHAT$ value = 0 }
+	}
+	change_global_variable = { name = tm_dl6_n_$WHAT$ add = 1 }
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The Dorley path
+# ---------------------------------------------------------------------------------------------------
+
+# Intake. Called from tm_begin_programme_effect (tm_dorley_effects.txt), after the novice has his trait and sponsor.
+# Scope: the novice; scope:tm_captor, scope:tm_sponsor and scope:tm_novice are saved.
+# The cells are a crime to everyone outside the faith (docs/dorley_precedent.md, last section): his kin of another faith
+# hold it against the captor for twenty years, and the captor's name carries a little more dread. The vanilla
+# imprisonment opinion ends when he leaves the cell; this one does not.
+tm_dl6_intake_effect = {
+	every_close_family_member = {
+		limit = {
+			is_alive = yes
+			NOT = { faith = scope:tm_captor.faith }
+		}
+		add_opinion = { target = scope:tm_captor modifier = tm_dl6_kin_in_the_cells_opinion }
+	}
+	scope:tm_captor = { add_dread = 5 }
+	tm_dl6_tally_effect = { WHAT = intakes }
+	# The disclosure comes between the second and third levers (tm_dorley.0010 fires at 3, 6 and 9 months).
+	scope:tm_captor = {
+		trigger_event = { id = tm_dl6.0001 months = 7 }
+	}
+}
+
+# The second and third years. Called from tm_dorley.0100 (both options) after tm_dorley_sponsor_reward_effect, which
+# saves scope:tm_risen (the body that survived the knife). Root = the captor. scope:tm_sponsor may be the captor.
+# The programme's second and third years are spent above ground, as the sponsor's ward (dorley_precedent.md, "Three
+# years"); Lips gave outsiders a three-year novitiate (research/byz_thomas_hero_typika.md §1.1, p. xxi).
+tm_dl6_begin_ward_years_effect = {
+	scope:tm_risen = { save_scope_as = tm_dl6_ward }
+	scope:tm_dl6_ward = {
+		# A released prisoner goes back to her old court; the ward stays in the House's.
+		if = {
+			limit = {
+				is_ruler = no
+				NOT = { this = root }
+				NOT = { is_courtier_of = root }
+			}
+			root = { add_courtier = scope:tm_dl6_ward }
+		}
+		if = {
+			limit = {
+				exists = scope:tm_sponsor
+				scope:tm_sponsor = { is_alive = yes }
+				NOT = { scope:tm_sponsor = scope:tm_dl6_ward }
+			}
+			set_variable = { name = tm_dl6_sponsor value = scope:tm_sponsor years = 4 }
+		}
+		else = {
+			set_variable = { name = tm_dl6_sponsor value = root years = 4 }
+		}
+		set_variable = { name = tm_dl6_ward value = root years = 4 }
+		add_character_modifier = { modifier = tm_dl6_ward_modifier years = 2 }
+	}
+	tm_dl6_tally_effect = { WHAT = wards }
+	trigger_event = { id = tm_dl6.0010 months = 12 }
+}
+
+# The ward years end: clear the markers. Scope: the ward.
+tm_dl6_end_ward_years_effect = {
+	remove_variable = tm_dl6_ward
+	remove_variable = tm_dl6_sponsor
+	if = {
+		limit = { has_character_modifier = tm_dl6_ward_modifier }
+		remove_character_modifier = tm_dl6_ward_modifier
+	}
+}
+
+# A year's schooling. Scope: root (the captor). SKILL = learning / stewardship / diplomacy. The sponsor learns by
+# teaching, as the sponsor in the serial turns from keeper to teacher.
+tm_dl6_school_effect = {
+	scope:tm_dl6_ward = {
+		add_$SKILL$_skill = 1
+		add_$SKILL$_lifestyle_xp = 150
+		add_stress = -10
+	}
+	scope:tm_dl6_sponsor ?= {
+		if = {
+			limit = {
+				is_alive = yes
+				NOT = { this = scope:tm_dl6_ward }
+			}
+			add_$SKILL$_lifestyle_xp = 75
+		}
+	}
+}
+
+# Washout, given to the order. Scope: the washout; root = the captor (tm_dorley.0200). Anything for the captor goes
+# through `root = { }`.
+# A holy order of the faith takes him if one stands (a monastic one first). Failing that, the faith's lay order at the
+# Mother House: men who serve its estates and roads "around the convent", never inside, as the Kecharitomene kept
+# its eunuch steward and priests at the gate ([14], [15], [80]; research/byz_thomas_hero_typika.md §1.4). Entering
+# religion was "a second baptism" (Constable, p. xv), and Byzantium tonsured rivals instead of killing them
+# (research/hist_tougher_eunuch_byzantine.md, "Exile to Prote"). He is not killed, maimed or watched; he is sent away.
+tm_dl6_give_to_order_effect = {
+	save_scope_as = tm_dl6_brother
+	release_from_prison = yes
+	root.faith = {
+		random_faith_holy_order = {
+			limit = { leader ?= { is_alive = yes } }
+			weight = {
+				base = 1
+				modifier = {
+					add = 10
+					leader ?= { government_has_flag = government_is_monastic_holy_order }
+				}
+			}
+			save_scope_as = tm_dl6_order
+		}
+	}
+	if = {
+		limit = { exists = scope:tm_dl6_order }
+		scope:tm_dl6_order.leader = { add_courtier = scope:tm_dl6_brother }
+		scope:tm_dl6_brother = { set_variable = { name = tm_dl6_order_kind value = flag:holy_order } }
+		tm_dl6_tally_effect = { WHAT = order_holy }
+	}
+	else_if = {
+		limit = {
+			title:d_tm_mother_house.holder ?= {
+				is_alive = yes
+				faith = faith:transbian_maximalism
+				NOT = { this = scope:tm_dl6_brother }
+			}
+		}
+		title:d_tm_mother_house.holder = { add_courtier = scope:tm_dl6_brother }
+		scope:tm_dl6_brother = { set_variable = { name = tm_dl6_order_kind value = flag:gate } }
+		tm_dl6_tally_effect = { WHAT = order_gate }
+	}
+	else = {
+		root = { add_courtier = scope:tm_dl6_brother }
+		scope:tm_dl6_brother = { set_variable = { name = tm_dl6_order_kind value = flag:gate } }
+		tm_dl6_tally_effect = { WHAT = order_gate }
+	}
+	scope:tm_dl6_brother = {
+		if = {
+			limit = { NOT = { has_character_modifier = tm_dl6_given_to_order_modifier } }
+			add_character_modifier = { modifier = tm_dl6_given_to_order_modifier }
+		}
+		set_variable = { name = tm_dl6_given_by value = root }
+	}
+	root = {
+		add_piety = 15
+		trigger_event = { id = tm_dl6.0210 days = { 1095 1825 } }
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The Founding Rule of the Mother House
+# ---------------------------------------------------------------------------------------------------
+# A title variable on d_tm_mother_house, not a dynasty legacy: the rule belongs to the House, and passes with the House
+# from Mother to Mother, whatever her family (docs/wave14/adelphai.md §1). Three stages, after the typikon's own
+# provisions (research/byz_thomas_hero_typika.md row 12):
+#   tm_dl6_rule = 1   the rule read aloud: every House of the faith hears it (county modifier)
+#   tm_dl6_rule = 2   three copies: one with each House's Protectress (character modifier)
+#   tm_dl6_rule = 3   not to be amended "not even at a critical moment": the Mother of Mothers (character modifier)
+#   tm_dl6_rule_cd    ten years between stages
+#   tm_dl6_rule_clause    the opening clause chosen at stage 1 (flag), read by later text
+#   tm_dl6_rule_mother    who holds the sealed-rule modifier (moved when the Mother changes)
+
+# Set the next stage. Scope: the Mother of Mothers.
+tm_dl6_rule_advance_effect = {
+	title:d_tm_mother_house = {
+		if = {
+			limit = { NOT = { has_variable = tm_dl6_rule } }
+			set_variable = { name = tm_dl6_rule value = 1 }
+		}
+		else = {
+			change_variable = { name = tm_dl6_rule add = 1 }
+		}
+		set_variable = { name = tm_dl6_rule_cd value = yes years = 10 }
+	}
+	tm_dl6_rule_upkeep_effect = yes
+}
+
+# Keep the rule's modifiers where they belong. Called yearly (tm_dl6_on_actions.txt) and at each stage. Any scope.
+tm_dl6_rule_upkeep_effect = {
+	# Stage 1: every House of the faith hears the rule. Houses that close, or leave the faith, lose it.
+	every_county = {
+		limit = {
+			OR = {
+				has_county_modifier = tm_dl6_rule_read_modifier
+				tm_dl6_adelphai_house_trigger = yes
+			}
+		}
+		if = {
+			limit = {
+				tm_dl6_adelphai_house_trigger = yes
+				tm_dl6_rule_stage_trigger = { STAGE = 1 }
+			}
+			if = {
+				limit = { NOT = { has_county_modifier = tm_dl6_rule_read_modifier } }
+				add_county_modifier = { modifier = tm_dl6_rule_read_modifier }
+			}
+		}
+		else_if = {
+			limit = { has_county_modifier = tm_dl6_rule_read_modifier }
+			remove_county_modifier = tm_dl6_rule_read_modifier
+		}
+		# Stage 2: the third copy with the House's Protectress. Moved when the office passes.
+		if = {
+			limit = {
+				has_variable = tm_dl6_copy_keeper
+				NOR = {
+					AND = {
+						tm_dl6_adelphai_house_trigger = yes
+						tm_dl6_rule_stage_trigger = { STAGE = 2 }
+						var:tm_house_protectress ?= var:tm_dl6_copy_keeper
+					}
+				}
+			}
+			var:tm_dl6_copy_keeper ?= {
+				if = {
+					limit = { has_character_modifier = tm_dl6_copy_keeper_modifier }
+					remove_character_modifier = tm_dl6_copy_keeper_modifier
+				}
+			}
+			remove_variable = tm_dl6_copy_keeper
+		}
+		if = {
+			limit = {
+				tm_dl6_adelphai_house_trigger = yes
+				tm_dl6_rule_stage_trigger = { STAGE = 2 }
+				NOT = { has_variable = tm_dl6_copy_keeper }
+				var:tm_house_protectress ?= { is_alive = yes }
+			}
+			set_variable = { name = tm_dl6_copy_keeper value = var:tm_house_protectress }
+			var:tm_dl6_copy_keeper = {
+				if = {
+					limit = { NOT = { has_character_modifier = tm_dl6_copy_keeper_modifier } }
+					add_character_modifier = { modifier = tm_dl6_copy_keeper_modifier }
+				}
+			}
+		}
+	}
+	# Stage 3: the sealed rule rests with whoever is Mother of Mothers.
+	title:d_tm_mother_house = {
+		if = {
+			limit = {
+				has_variable = tm_dl6_rule_mother
+				NOT = {
+					AND = {
+						tm_dl6_rule_stage_trigger = { STAGE = 3 }
+						holder ?= var:tm_dl6_rule_mother
+					}
+				}
+			}
+			var:tm_dl6_rule_mother ?= {
+				if = {
+					limit = { has_character_modifier = tm_dl6_rule_sealed_modifier }
+					remove_character_modifier = tm_dl6_rule_sealed_modifier
+				}
+			}
+			remove_variable = tm_dl6_rule_mother
+		}
+		if = {
+			limit = {
+				tm_dl6_rule_stage_trigger = { STAGE = 3 }
+				NOT = { has_variable = tm_dl6_rule_mother }
+				holder ?= { faith = faith:transbian_maximalism }
+			}
+			set_variable = { name = tm_dl6_rule_mother value = holder }
+			holder = {
+				if = {
+					limit = { NOT = { has_character_modifier = tm_dl6_rule_sealed_modifier } }
+					add_character_modifier = { modifier = tm_dl6_rule_sealed_modifier }
+				}
+			}
+		}
+	}
+}

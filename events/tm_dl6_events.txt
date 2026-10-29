@@ -1,0 +1,500 @@
+﻿namespace = tm_dl6
+
+# Crusader Dolls — Adelphai Dorleyaiou, wave 14 (docs/wave14/adelphai.md).
+#   0001  the disclosure: the sponsors were once in the cells themselves (month 7 of the Dorley programme)
+#   0010  the second year: above ground, the sponsor's ward; a year's schooling
+#   0020  the third year: the sponsor becomes her sister, or stays her teacher (her choice, both honoured)
+#   0030  the end of the third year: her history written in the House's book, or she leaves the House
+#   0100  the Founding Rule, stage 1: the rule written and read aloud in every House
+#   0101  the Founding Rule, stage 2: three copies
+#   0102  the Founding Rule, stage 3: sealed against amendment
+#   0210  word from the order that took a washout (three to five years on)
+# The Dorley path is coercive and stays so: every event that touches the cells says so, and none of them shows violence.
+
+# ---------------------------------------------------------------------------------------------------
+# The disclosure. Root = the captor; scope:tm_novice, scope:tm_sponsor (from tm_dl6_intake_effect).
+# In the serial the sponsor chooses when to tell him that the sponsors are graduates (dorley_precedent.md, "Sponsors").
+tm_dl6.0001 = {
+	type = character_event
+	title = tm_dl6.0001.t
+	desc = {
+		desc = tm_dl6.0001.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:tm_sponsor = root }
+				desc = tm_dl6.0001.desc_self
+			}
+			desc = tm_dl6.0001.desc_sponsor
+		}
+		triggered_desc = {
+			trigger = { scope:tm_sponsor = { has_variable = tm_dl6_graduate } }
+			desc = tm_dl6.0001.desc_graduate
+		}
+		desc = tm_dl6.0001.desc_end
+	}
+	theme = prison
+	left_portrait = { character = scope:tm_sponsor animation = personality_rational }
+	right_portrait = { character = scope:tm_novice animation = stress }
+
+	trigger = {
+		scope:tm_novice ?= {
+			is_alive = yes
+			is_imprisoned_by = root
+			has_trait = tm_novice
+		}
+		scope:tm_sponsor ?= {
+			is_alive = yes
+			tm_is_daughter_trigger = yes
+		}
+	}
+
+	option = {	# Tell him
+		name = tm_dl6.0001.a
+		tm_dl6_tally_effect = { WHAT = disclosed }
+		scope:tm_novice = {
+			random_list = {
+				60 = {
+					modifier = { add = 15 has_trait = tm_transgender }
+					modifier = { add = 10 scope:tm_sponsor = { diplomacy >= 12 } }
+					change_variable = { name = tm_progress add = 2 }
+					tm_dl6_tally_effect = { WHAT = disclosed_turned }
+				}
+				40 = {
+					modifier = { add = 20 has_trait = stubborn }
+					change_variable = { name = tm_progress add = -1 }
+					add_stress = 25
+					tm_dl6_tally_effect = { WHAT = disclosed_shaken }
+				}
+			}
+		}
+		scope:tm_sponsor = { add_stress = -10 }
+		ai_chance = { base = 50 }
+	}
+	option = {	# Not yet
+		name = tm_dl6.0001.b
+		tm_dl6_tally_effect = { WHAT = disclosure_waited }
+		scope:tm_sponsor = { add_stress = 10 }
+		ai_chance = { base = 30 }
+	}
+	option = {	# Let him see them, for one evening
+		name = tm_dl6.0001.c
+		trigger = { tm_holds_sisters_house_trigger = yes }
+		tm_dl6_tally_effect = { WHAT = disclosure_shown }
+		scope:tm_novice = { change_variable = { name = tm_progress add = 1 } }
+		ai_chance = { base = 20 }
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The second year. Root = the captor; scope:tm_dl6_ward (from tm_dl6_begin_ward_years_effect).
+tm_dl6.0010 = {
+	type = character_event
+	title = tm_dl6.0010.t
+	desc = {
+		desc = tm_dl6.0010.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:tm_dl6_sponsor }
+				desc = tm_dl6.0010.desc_sponsor
+			}
+			desc = tm_dl6.0010.desc_nosponsor
+		}
+	}
+	theme = learning
+	left_portrait = { character = scope:tm_dl6_ward animation = personality_rational }
+	right_portrait = { character = scope:tm_dl6_sponsor trigger = { exists = scope:tm_dl6_sponsor } animation = happiness }
+
+	trigger = {
+		scope:tm_dl6_ward ?= {
+			is_alive = yes
+			is_imprisoned = no
+			has_variable = tm_dl6_ward
+			is_courtier_of = root
+		}
+	}
+	on_trigger_fail = {
+		scope:tm_dl6_ward ?= { tm_dl6_end_ward_years_effect = yes }
+		tm_dl6_tally_effect = { WHAT = ward_lapsed }
+	}
+
+	immediate = {
+		scope:tm_dl6_ward.var:tm_dl6_sponsor ?= {
+			if = {
+				limit = { is_alive = yes }
+				save_scope_as = tm_dl6_sponsor
+			}
+		}
+	}
+
+	option = {	# Letters and the Psalter
+		name = tm_dl6.0010.a
+		tm_dl6_school_effect = { SKILL = learning }
+		tm_dl6_tally_effect = { WHAT = ward_letters }
+		ai_chance = {
+			base = 10
+			modifier = { add = scope:tm_dl6_ward.learning }
+		}
+	}
+	option = {	# The House's accounts
+		name = tm_dl6.0010.b
+		tm_dl6_school_effect = { SKILL = stewardship }
+		tm_dl6_tally_effect = { WHAT = ward_accounts }
+		ai_chance = {
+			base = 10
+			modifier = { add = scope:tm_dl6_ward.stewardship }
+		}
+	}
+	option = {	# The courtesies of the hall
+		name = tm_dl6.0010.c
+		tm_dl6_school_effect = { SKILL = diplomacy }
+		tm_dl6_tally_effect = { WHAT = ward_hall }
+		ai_chance = {
+			base = 10
+			modifier = { add = scope:tm_dl6_ward.diplomacy }
+		}
+	}
+
+	after = {
+		trigger_event = { id = tm_dl6.0020 months = 12 }
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The third year. Root = the captor; scope:tm_dl6_ward. The sponsor's role turns from keeper to teacher to sister
+# (dorley_precedent.md, "Sponsors"). Whether she becomes a sister is the daughter's answer, and either answer stands.
+tm_dl6.0020 = {
+	type = character_event
+	title = tm_dl6.0020.t
+	desc = {
+		desc = tm_dl6.0020.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:tm_dl6_sponsor }
+				desc = tm_dl6.0020.desc_sponsor
+			}
+			desc = tm_dl6.0020.desc_gone
+		}
+	}
+	theme = friendly
+	left_portrait = { character = scope:tm_dl6_ward animation = happiness }
+	right_portrait = { character = scope:tm_dl6_sponsor trigger = { exists = scope:tm_dl6_sponsor } animation = personality_rational }
+
+	trigger = {
+		scope:tm_dl6_ward ?= {
+			is_alive = yes
+			is_imprisoned = no
+			has_variable = tm_dl6_ward
+			is_courtier_of = root
+		}
+	}
+	on_trigger_fail = {
+		scope:tm_dl6_ward ?= { tm_dl6_end_ward_years_effect = yes }
+		tm_dl6_tally_effect = { WHAT = ward_lapsed }
+	}
+
+	immediate = {
+		clear_saved_scope = tm_dl6_sponsor		# saved a year ago in 0010; she may have died since
+		scope:tm_dl6_ward.var:tm_dl6_sponsor ?= {
+			if = {
+				limit = {
+					is_alive = yes
+					NOT = { this = scope:tm_dl6_ward }
+				}
+				save_scope_as = tm_dl6_sponsor
+			}
+		}
+	}
+
+	option = {	# She asks her sponsor to be her sister
+		name = tm_dl6.0020.a
+		trigger = {
+			exists = scope:tm_dl6_sponsor
+			scope:tm_dl6_ward = { NOT = { has_relation_tm_sister = scope:tm_dl6_sponsor } }
+		}
+		scope:tm_dl6_ward = { set_relation_tm_sister = scope:tm_dl6_sponsor }
+		tm_dl6_tally_effect = { WHAT = sisters_made }
+		ai_chance = {
+			base = 60
+			modifier = { add = 20 scope:tm_dl6_ward = { opinion = { target = scope:tm_dl6_sponsor value >= 30 } } }
+		}
+	}
+	option = {	# She keeps her as her teacher
+		name = tm_dl6.0020.b
+		trigger = { exists = scope:tm_dl6_sponsor }
+		scope:tm_dl6_ward = { add_opinion = { target = scope:tm_dl6_sponsor modifier = tm_dl6_my_teacher_opinion } }
+		scope:tm_dl6_sponsor = { add_opinion = { target = scope:tm_dl6_ward modifier = tm_dl6_my_teacher_opinion } }
+		tm_dl6_tally_effect = { WHAT = sisters_declined }
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 scope:tm_dl6_ward = { opinion = { target = scope:tm_dl6_sponsor value < 0 } } }
+		}
+	}
+	option = {	# Her sponsor did not live to hear it
+		name = tm_dl6.0020.c
+		trigger = { NOT = { exists = scope:tm_dl6_sponsor } }
+		scope:tm_dl6_ward = { add_piety = 10 }
+		tm_dl6_tally_effect = { WHAT = sponsor_gone }
+	}
+
+	after = {
+		trigger_event = { id = tm_dl6.0030 months = 12 }
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The end of the third year. Root = the captor; scope:tm_dl6_ward. The rename already happened at the knife
+# (tm_knife.0002, "A New Personal History"); this is the written history the House keeps. She may also leave the House
+# (faith_design.md rule 23: stepping back is honoured equally with going ahead).
+tm_dl6.0030 = {
+	type = character_event
+	title = tm_dl6.0030.t
+	desc = tm_dl6.0030.desc
+	theme = faith
+	left_portrait = { character = scope:tm_dl6_ward animation = personality_rational }
+
+	trigger = {
+		scope:tm_dl6_ward ?= {
+			is_alive = yes
+			is_imprisoned = no
+			has_variable = tm_dl6_ward
+			is_courtier_of = root
+		}
+	}
+	on_trigger_fail = {
+		scope:tm_dl6_ward ?= { tm_dl6_end_ward_years_effect = yes }
+		tm_dl6_tally_effect = { WHAT = ward_lapsed }
+	}
+
+	option = {	# As she tells it
+		name = tm_dl6.0030.a
+		scope:tm_dl6_ward = {
+			tm_dl6_end_ward_years_effect = yes
+			add_character_modifier = { modifier = tm_dl6_house_book_modifier }
+			set_variable = tm_dl6_graduate
+			add_prestige = 50
+		}
+		tm_dl6_tally_effect = { WHAT = graduated }
+		tm_dl6_tally_effect = { WHAT = book_her_word }
+		ai_chance = { base = 50 }
+	}
+	option = {	# All of it, the cells too
+		name = tm_dl6.0030.b
+		scope:tm_dl6_ward = {
+			tm_dl6_end_ward_years_effect = yes
+			add_character_modifier = { modifier = tm_dl6_house_book_modifier }
+			set_variable = tm_dl6_graduate
+			add_piety = 50
+		}
+		add_piety = 25
+		tm_dl6_tally_effect = { WHAT = graduated }
+		tm_dl6_tally_effect = { WHAT = book_all_of_it }
+		ai_chance = { base = 35 }
+	}
+	option = {	# She asks to leave the House
+		name = tm_dl6.0030.c
+		trigger = { scope:tm_dl6_ward = { is_ruler = no } }
+		custom_tooltip = tm_dl6.0030.c.tt
+		scope:tm_dl6_ward = {
+			tm_dl6_end_ward_years_effect = yes
+			add_opinion = { target = root modifier = tm_dl6_let_me_go_opinion }
+			tm_send_on_effect = { EXCLUDE = root }
+		}
+		tm_dl6_tally_effect = { WHAT = stepped_back }
+		ai_chance = {
+			base = 15
+			modifier = { add = 30 scope:tm_dl6_ward = { opinion = { target = root value < -20 } } }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The Founding Rule (tm_dl6_rule_decision). Root = the Mother of Mothers. The rule's clauses follow the typikon's own
+# provisions (research/byz_thomas_hero_typika.md §1.3 and §3); the Sisters do not name the empress whose rule they echo.
+
+# Stage 1: the rule written, and read aloud in every House.
+tm_dl6.0100 = {
+	type = character_event
+	title = tm_dl6.0100.t
+	desc = tm_dl6.0100.desc
+	theme = faith
+	left_portrait = { character = root animation = personality_rational }
+
+	option = {	# Every daughter is meant
+		name = tm_dl6.0100.a
+		title:d_tm_mother_house = { set_variable = { name = tm_dl6_rule_clause value = flag:every } }
+		add_piety = 25
+		tm_dl6_rule_advance_effect = yes
+		tm_dl6_tally_effect = { WHAT = rule_1 }
+		ai_chance = { base = 40 }
+	}
+	option = {	# No one is bought in
+		name = tm_dl6.0100.b
+		title:d_tm_mother_house = { set_variable = { name = tm_dl6_rule_clause value = flag:gift } }
+		add_prestige = 50
+		tm_dl6_rule_advance_effect = yes
+		tm_dl6_tally_effect = { WHAT = rule_1 }
+		ai_chance = { base = 30 }
+	}
+	option = {	# Keep the House, not own it
+		name = tm_dl6.0100.c
+		title:d_tm_mother_house = { set_variable = { name = tm_dl6_rule_clause value = flag:keep } }
+		add_learning_lifestyle_xp = 100
+		add_stress = -20
+		tm_dl6_rule_advance_effect = yes
+		tm_dl6_tally_effect = { WHAT = rule_1 }
+		ai_chance = { base = 30 }
+	}
+}
+
+# Stage 2: three copies: the Mother House's chest, a church away from Phrygia, and every House's Protectress.
+tm_dl6.0101 = {
+	type = character_event
+	title = tm_dl6.0101.t
+	desc = tm_dl6.0101.desc
+	theme = faith
+	left_portrait = { character = root animation = personality_rational }
+
+	option = {	# Send the second copy to the City
+		name = tm_dl6.0101.a
+		random_list = {
+			50 = {
+				add_prestige = 75
+				send_interface_toast = {
+					type = event_toast_effect_good
+					title = tm_dl6.0101.a.lodged
+				}
+				tm_dl6_tally_effect = { WHAT = copy_city_kept }
+			}
+			50 = {
+				add_prestige = 10
+				send_interface_toast = {
+					type = event_toast_effect_neutral
+					title = tm_dl6.0101.a.returned
+				}
+				tm_dl6_tally_effect = { WHAT = copy_city_returned }
+			}
+		}
+		tm_dl6_rule_advance_effect = yes
+		tm_dl6_tally_effect = { WHAT = rule_2 }
+		ai_chance = { base = 50 }
+	}
+	option = {	# Keep it at Pessinus
+		name = tm_dl6.0101.b
+		add_piety = 50
+		tm_dl6_rule_advance_effect = yes
+		tm_dl6_tally_effect = { WHAT = rule_2 }
+		ai_chance = { base = 50 }
+	}
+}
+
+# Stage 3: sealed. The typikon cannot be amended "not even at a critical moment" ([3]).
+tm_dl6.0102 = {
+	type = character_event
+	title = tm_dl6.0102.t
+	desc = {
+		desc = tm_dl6.0102.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { title:d_tm_mother_house.var:tm_dl6_rule_clause ?= flag:every }
+				desc = tm_dl6.0102.desc_every
+			}
+			triggered_desc = {
+				trigger = { title:d_tm_mother_house.var:tm_dl6_rule_clause ?= flag:gift }
+				desc = tm_dl6.0102.desc_gift
+			}
+			desc = tm_dl6.0102.desc_keep
+		}
+		desc = tm_dl6.0102.desc_end
+	}
+	theme = faith
+	left_portrait = { character = root animation = happiness }
+
+	option = {	# Seal it as it stands
+		name = tm_dl6.0102.a
+		add_piety = 50
+		tm_dl6_rule_advance_effect = yes
+		tm_dl6_tally_effect = { WHAT = rule_3 }
+		ai_chance = { base = 50 }
+	}
+	option = {	# One clause first: when the line fails, the sisters choose
+		name = tm_dl6.0102.b
+		add_prestige = 50
+		tm_dl6_rule_advance_effect = yes
+		tm_dl6_tally_effect = { WHAT = rule_3 }
+		ai_chance = { base = 50 }
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Word from the order. Root = the captor who gave him; scope:tm_dl6_brother (tm_dl6_give_to_order_effect).
+# The flavour budget applies. The narrator does not say he has changed; he may also simply leave, and no one follows.
+tm_dl6.0210 = {
+	type = character_event
+	title = tm_dl6.0210.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:tm_dl6_word = flag:asks }
+				desc = tm_dl6.0210.desc_asks
+			}
+			triggered_desc = {
+				trigger = { scope:tm_dl6_word = flag:left }
+				desc = tm_dl6.0210.desc_left
+			}
+			desc = tm_dl6.0210.desc_kept
+		}
+	}
+	theme = faith
+	left_portrait = { character = scope:tm_dl6_brother animation = personality_rational }
+
+	trigger = {
+		tm_flavour_ready_trigger = yes
+		scope:tm_dl6_brother ?= {
+			is_alive = yes
+			is_imprisoned = no
+			has_variable = tm_dl6_order_kind
+		}
+	}
+
+	immediate = {
+		tm_flavour_spent_effect = yes
+		random_list = {
+			60 = {
+				save_scope_value_as = { name = tm_dl6_word value = flag:kept }
+				tm_dl6_tally_effect = { WHAT = word_kept }
+			}
+			25 = {
+				save_scope_value_as = { name = tm_dl6_word value = flag:asks }
+				tm_dl6_tally_effect = { WHAT = word_asks }
+			}
+			15 = {
+				save_scope_value_as = { name = tm_dl6_word value = flag:left }
+				tm_dl6_tally_effect = { WHAT = word_left }
+				scope:tm_dl6_brother = {
+					if = {
+						limit = {
+							is_courtier = yes
+							is_ruler = no
+						}
+						move_to_pool = yes
+					}
+				}
+			}
+		}
+	}
+
+	option = {	# Let him be
+		name = tm_dl6.0210.a
+	}
+	option = {	# He may come to a House's door as a friend
+		name = tm_dl6.0210.b
+		trigger = { scope:tm_dl6_word = flag:asks }
+		scope:tm_dl6_brother = {
+			if = {
+				limit = { NOT = { has_character_modifier = tm_house_friend_modifier } }
+				add_character_modifier = { modifier = tm_house_friend_modifier }
+			}
+		}
+		tm_dl6_tally_effect = { WHAT = order_friend }
+	}
+}

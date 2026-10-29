@@ -22,6 +22,7 @@ tm_begin_programme_effect = {
 	set_variable = { name = tm_progress value = 0 }
 	set_variable = { name = tm_levers value = 0 }
 	scope:tm_sponsor = { set_relation_guardian = scope:tm_novice }		# guardian <-> ward, vanilla relation
+	tm_dl6_intake_effect = yes			# wave 14: the kin's grievance, dread, and the disclosure at month 7 (tm_dl6_effects.txt)
 
 	scope:tm_captor = {
 		trigger_event = {

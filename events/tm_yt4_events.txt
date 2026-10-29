@@ -1,0 +1,894 @@
+﻿namespace = tm_yt4
+
+# Crusader Dolls — Yutai Dao, wave 13: the levers, the women's chains and the regency rules (docs/wave13/yutai.md).
+# Every gate is a date in a cited note; an inferred date says so. The narrator never claims a historical figure:
+# Cui Yin, Lady Xue, Wang Fengxian, the abbess Liaoran and the Empress Chengtian are people a daughter of the Way meets,
+# reads with, hears of or is compared with. None of them is of the Way, and no text says any of them was trans. A
+# daughter's own answers are about herself. Eunuchs default to men, as in tm_yt2: the boy from Min is a boy, and what he
+# becomes is his to say (research/cn_rideout_tang_eunuchs.md §1.7, design row 3).
+#   0001  Cui Yin's proposal: palace women to keep the inner offices, 901–902 (So 2000, pp. 160–161)
+#   0002  the Boy from Min: a tribute boy left at the House's gate, Tang (Rideout 1949, p. 55 and nn. 6–7)
+#   0003  the Commissioner of Merit's repair levy, Tang (Rideout 1949, p. 56; 1953, pp. 46–47)
+#   0004  Seal the Ledgers: the Directorate of Imperial Horses' books, 1403–1449 (Grass 2024)
+#   0010  Lady Xue at Hezhong, 874–881 (Cahill 2006, pp. 189–190)
+#   0011  her empty burial garments and the rescript, 882–885 (Cahill 2006, pp. 191–193)
+#   0020  Wang Fengxian preaching between the Huai and the Zhe, to 885 (Cahill 2006, pp. 180–185)
+#   0021  two accounts of Wang Fengxian, 887–900 (Jia 2018, pp. 201–203; Cahill 2006, p. 185)
+#   0025  half a ladle at Mo-shan, to 895 (Levering 1982, pp. 25, 27–29)
+#   0030  the first route into the abbeys: registered in the guan to be taken later (McMahon WSNR 217)
+#   0031  the second: a consort set aside (WSNR 188; CW 91; Jia 2018, p. 31)
+#   0032  the third: a widow's refuge from the levirate (CW 44, 62)
+#   0035  the Empress Chengtian and the hut of rebirth, 982–1009 (McMahon WSNR 260–262)
+#   0041  the curtain comes down: the end of a Song-style regency (CW 11–16)
+# Saved scopes: tm_palace_throne, tm_palace_seat (0001, 0004); tm_yt4_house_county (0002, 0003, 0030–0032);
+# tm_yt4_lord (0030–0032); tm_yt4_liege (0041).
+
+# ---------------------------------------------------------------------------------------------------
+# Cui Yin's proposal. Root = a daughter of the Way under a celestial throne, 901–902.
+# In 901 the chief minister Cui Yin asked to give the Shence armies to ministers, and the generals answered "we have
+# never heard of a scholar commanding an army"; he then asked the throne "to kill all eunuchs and let palace women run
+# the inner offices", and the inner offices answered by placing literate women around the emperor as informers (So
+# 2000, pp. 160–161; design row 9). The purge followed in the first month of 903 (p. 161; tm_palace.0003). Nothing is
+# shown: the minister's plan is reported, and the daughter's choice is whether to keep a seal it would pay for.
+tm_yt4.0001 = {
+	type = character_event
+	title = tm_yt4.0001.t
+	desc = {
+		desc = tm_yt4.0001.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { has_variable = tm_palace_office }
+				desc = tm_yt4.0001.desc_office
+			}
+			desc = tm_yt4.0001.desc_outside
+		}
+	}
+	theme = intrigue
+	left_portrait = { character = root animation = worry }
+	right_portrait = { character = scope:tm_palace_throne animation = personality_rational }
+
+	trigger = {
+		exists = scope:tm_palace_throne
+		exists = scope:tm_palace_seat
+		is_imprisoned = no
+	}
+
+	option = {	# Keep a seal for the palace women
+		name = tm_yt4.0001.a
+		if = {
+			limit = { has_variable = tm_palace_office }
+			tm_palace_lose_office_effect = yes
+		}
+		add_character_modifier = { modifier = tm_yt4_palace_women_modifier years = 5 }
+		add_prestige = 50
+		scope:tm_palace_seat = { tm_yt2_south_effect = yes }
+		tm_yt4_tally_effect = { WHAT = cui_took }
+		ai_chance = {
+			base = 25
+			modifier = { add = 20 has_trait = ambitious }
+			modifier = { add = -15 has_trait = compassionate }
+		}
+	}
+	option = {	# Refuse a seal paid for that way
+		name = tm_yt4.0001.b
+		add_piety = 50
+		add_stress = -10
+		tm_yt4_tally_effect = { WHAT = cui_refused }
+		ai_chance = {
+			base = 35
+			modifier = { add = 20 has_trait = compassionate }
+			modifier = { add = 10 has_trait = just }
+		}
+	}
+	option = {	# Sit by the throne and listen, as the inner offices ask
+		name = tm_yt4.0001.c
+		trigger = { has_variable = tm_palace_office }
+		add_character_modifier = { modifier = tm_yt4_listener_modifier years = 5 }
+		scope:tm_palace_seat = { tm_yt2_north_effect = { AMOUNT = 1 } }
+		random_list = {
+			70 = { desc = tm_yt4.0001.c.quiet }
+			30 = {
+				desc = tm_yt4.0001.c.noticed
+				scope:tm_palace_throne = {
+					add_opinion = { target = root modifier = suspicion_opinion opinion = -15 }
+				}
+			}
+		}
+		tm_yt4_tally_effect = { WHAT = cui_listened }
+		ai_chance = {
+			base = 25
+			modifier = { add = 20 has_trait = schemer }
+			modifier = { add = 10 has_trait = deceitful }
+		}
+	}
+	option = {	# The court's quarrel, not the society's
+		name = tm_yt4.0001.d
+		add_stress = -5
+		tm_yt4_tally_effect = { WHAT = cui_aside }
+		ai_chance = {
+			base = 15
+			modifier = { add = 20 has_trait = content }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The Boy from Min. Root = a ruler of the Way who keeps a House under a celestial throne, before 907.
+# By 846–859 every circuit sent the palace a yearly tribute of boys, "known as Szu Pai", mostly from Lingnan and Min
+# (Rideout 1949, p. 55 and n. 7); most had been sold by their parents (p. 55). Liu Zongyuan, Han Yu and others redeemed
+# slaves at their own cost (p. 55 n. 6). Gu Kuang's poem of a son of Min and his father's parting (n. 7) is the "song
+# of Min", told only as a song about a father and a son. What was done to him is in the past and off the page; the
+# event is the House's choice about a child in its gate. He is a boy; nobody assumes what he will be (design row 3).
+# He was brought up Buddhist, as palace boys were (Rideout 1949, p. 56).
+tm_yt4.0002 = {
+	type = character_event
+	title = tm_yt4.0002.t
+	desc = tm_yt4.0002.desc
+	theme = faith
+	left_portrait = { character = root animation = worry }
+	right_portrait = { character = scope:tm_yt4_boy animation = sadness }
+
+	trigger = {
+		exists = scope:tm_yt4_house_county
+		scope:tm_yt4_house_county = { holder ?= root }
+	}
+
+	immediate = {
+		create_character = {
+			gender = male
+			age = { 9 12 }
+			culture = scope:tm_yt4_house_county.culture
+			faith = faith:mahayana_faith
+			location = scope:tm_yt4_house_county.title_province
+			trait = eunuch_1
+			save_scope_as = tm_yt4_boy
+		}
+	}
+
+	option = {	# He stays, as a son of the House
+		name = tm_yt4.0002.a
+		add_courtier = scope:tm_yt4_boy
+		scope:tm_yt4_boy = {
+			add_opinion = { target = root modifier = grateful_opinion opinion = 30 }
+		}
+		custom_tooltip = tm_yt4_boy_as_he_is_tt
+		add_piety = 25
+		tm_yt4_tally_effect = { WHAT = boy_kept }
+		ai_chance = { base = 40 }
+	}
+	option = {	# Buy back the rest of the year's boys from the road
+		name = tm_yt4.0002.b
+		trigger = { gold >= 100 }
+		remove_short_term_gold = 100
+		add_courtier = scope:tm_yt4_boy
+		scope:tm_yt4_boy = {
+			add_opinion = { target = root modifier = grateful_opinion opinion = 30 }
+		}
+		custom_tooltip = tm_yt4_boys_ransomed_tt
+		add_piety = 60
+		tm_yt4_tally_effect = { WHAT = boy_ransomed }
+		ai_chance = {
+			base = 25
+			modifier = { add = 20 has_trait = generous }
+			modifier = { add = 15 has_trait = compassionate }
+			modifier = { factor = 0 has_trait = greedy }
+		}
+	}
+	option = {	# Send him home to Min
+		name = tm_yt4.0002.c
+		trigger = { gold >= 25 }
+		remove_short_term_gold = 25
+		custom_tooltip = tm_yt4_boy_home_tt
+		add_piety = 20
+		tm_yt4_tally_effect = { WHAT = boy_home }
+		ai_chance = { base = 25 }
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The Commissioner of Merit's levy. Root = a ruler of the Way who keeps a House under a celestial throne, before 907.
+# Eunuch Commissioners of Merit and Works (gongde shi) exercised "an almost complete official control" over both
+# clergies and took commissions on enforced monastery repairs; such missions paid "never less than one thousand string
+# of cash" (Rideout 1949, p. 56; 1953, pp. 46–47; design row 6). Rideout dates the control loosely to Xuanzong; the
+# office is usually dated to the 780s, so the 867 start is well inside it. Gao Lishi founded a Daoist monastery of
+# "unexampled magnificence" (1949, p. 68 n. 13): the palace could be a patron too.
+tm_yt4.0003 = {
+	type = character_event
+	title = tm_yt4.0003.t
+	desc = tm_yt4.0003.desc
+	theme = stewardship
+	left_portrait = { character = root animation = personality_rational }
+
+	trigger = {
+		exists = scope:tm_yt4_house_county
+		scope:tm_yt4_house_county = { holder ?= root }
+	}
+
+	option = {	# Pay the levy
+		name = tm_yt4.0003.a
+		trigger = { gold >= 50 }
+		remove_short_term_gold = 50
+		add_prestige = 10
+		tm_yt4_tally_effect = { WHAT = levy_paid }
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = craven }
+		}
+	}
+	option = {	# Put the House's goods in the burial society's store
+		name = tm_yt4.0003.b
+		random_list = {
+			60 = {
+				modifier = { add = { value = stewardship multiply = 2 } }
+				desc = tm_yt4.0003.b.kept
+				add_piety = 25
+				tm_yt4_tally_effect = { WHAT = levy_hidden }
+			}
+			40 = {
+				desc = tm_yt4.0003.b.found
+				add_prestige = -50
+				scope:tm_yt4_house_county = { change_variable = { name = tm_house_strain add = 1 } }
+				tm_yt4_tally_effect = { WHAT = levy_found }
+			}
+		}
+		ai_chance = {
+			base = 30
+			modifier = { add = 15 has_trait = deceitful }
+			modifier = { add = 10 stewardship >= 12 }
+		}
+	}
+	option = {	# Ask a patron in the inner offices
+		name = tm_yt4.0003.c
+		trigger = { tm_yt2_balance_at_least_trigger = { VALUE = 1 } }
+		top_liege.primary_title = { tm_yt2_spend_effect = yes }
+		add_prestige = 10
+		tm_yt4_tally_effect = { WHAT = levy_patron }
+		ai_chance = { base = 40 }
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Seal the Ledgers. Root = a daughter of the Way in the inner offices under a celestial throne, 1403–1449.
+# The eunuch Directorate of Imperial Horses and its Braves "took orders only from their eunuch commanders and the emperor
+# himself" (Grass 2024, p. 14), outside the Ministry of War (p. 13). In 1444 its eunuchs were accused of seizing land
+# and running "a temple and a kiln" on it; the emperor pardoned them, granted the land, and ordered a yearly inspection
+# by a scrutiny official and a censor (p. 20). "The few became many, and the dead were made alive" (p. 21). Tumu, 1449,
+# ends the window (p. 22). Grass design rows 1–2. The Way's House on the stables' land is design.
+tm_yt4.0004 = {
+	type = character_event
+	title = tm_yt4.0004.t
+	desc = {
+		desc = tm_yt4.0004.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { tm_holds_sisters_house_trigger = yes }
+				desc = tm_yt4.0004.desc_house
+			}
+			desc = tm_yt4.0004.desc_nohouse
+		}
+	}
+	theme = intrigue
+	left_portrait = { character = root animation = scheme }
+	right_portrait = { character = scope:tm_palace_throne animation = personality_rational }
+
+	trigger = {
+		has_variable = tm_palace_office
+		exists = scope:tm_palace_seat
+	}
+
+	option = {	# Put the House's land on the Directorate's books
+		name = tm_yt4.0004.a
+		trigger = { tm_holds_sisters_house_trigger = yes }
+		custom_tooltip = tm_yt4_ledgers_named_tt
+		every_held_title = {
+			limit = { tier = tier_county has_variable = tm_house }
+			set_variable = tm_house_named
+		}
+		random_list = {
+			70 = {
+				desc = tm_yt4.0004.a.quiet
+				scope:tm_palace_seat = { tm_yt2_north_effect = { AMOUNT = 1 } }
+				tm_yt4_tally_effect = { WHAT = ledgers_sealed }
+			}
+			30 = {
+				desc = tm_yt4.0004.a.audited
+				add_prestige = -50
+				scope:tm_palace_seat = { tm_yt2_south_effect = yes }
+				tm_yt4_tally_effect = { WHAT = ledgers_audited }
+			}
+		}
+		ai_chance = {
+			base = 40
+			modifier = { add = 15 has_trait = schemer }
+		}
+	}
+	option = {	# Draw on the stables' grain
+		name = tm_yt4.0004.b
+		add_gold = 100
+		random_list = {
+			75 = { desc = tm_yt4.0004.b.quiet }
+			25 = {
+				desc = tm_yt4.0004.b.found
+				add_prestige = -50
+			}
+		}
+		tm_yt4_tally_effect = { WHAT = ledgers_grain }
+		ai_chance = {
+			base = 25
+			modifier = { add = 20 has_trait = greedy }
+			modifier = { factor = 0 has_trait = honest }
+		}
+	}
+	option = {	# Open the ledgers to the ministries
+		name = tm_yt4.0004.c
+		add_prestige = 25
+		add_piety = 25
+		scope:tm_palace_seat = { tm_yt2_south_effect = yes }
+		tm_yt4_tally_effect = { WHAT = ledgers_opened }
+		ai_chance = {
+			base = 20
+			modifier = { add = 25 has_trait = honest }
+			modifier = { add = 10 has_trait = just }
+		}
+	}
+	option = {	# Not this year
+		name = tm_yt4.0004.d
+		tm_yt4_tally_effect = { WHAT = ledgers_declined }
+		ai_chance = { base = 10 }
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Lady Xue at Hezhong. Root = a daughter of the Way under a celestial throne, 874–881.
+# Xue Xuantong (c. 828–882), wife of Feng Hui, Lesser Governor of Hezhong: after twenty years of marriage she lived
+# chastely "and used illness as her pretext for dwelling alone", chanting the Huangting jing daily; in 874 Lady Wei
+# Huacun came down and taught her; her husband "regularly slandered and ridiculed her" (Cahill 2006, pp. 189–190;
+# Cheng 2021, p. 135). The letter inviting a woman of the Way to read with her is design. Lady Xue is a lay adept of
+# the record; the House reads with her and does not claim her.
+tm_yt4.0010 = {
+	type = character_event
+	title = tm_yt4.0010.t
+	desc = tm_yt4.0010.desc
+	theme = learning
+	left_portrait = { character = root animation = personality_rational }
+
+	trigger = {
+		tm_yt4_way_daughter_trigger = yes
+	}
+
+	option = {	# Go to Hezhong and read with her through the winter
+		name = tm_yt4.0010.a
+		add_character_flag = tm_yt4_xue_met
+		add_character_modifier = { modifier = tm_yt4_yellow_court_modifier years = 10 }
+		add_piety = 20
+		tm_yt4_tally_effect = { WHAT = xue_read }
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = zealous }
+			modifier = { add = 10 learning >= 12 }
+		}
+	}
+	option = {	# Send a copy in my own hand
+		name = tm_yt4.0010.b
+		add_character_flag = tm_yt4_xue_met
+		add_piety = 10
+		add_stress = -10
+		tm_yt4_tally_effect = { WHAT = xue_wrote }
+		ai_chance = { base = 30 }
+	}
+	option = {	# Not between a wife and her husband
+		name = tm_yt4.0010.c
+		tm_yt4_tally_effect = { WHAT = xue_declined }
+		ai_chance = {
+			base = 10
+			modifier = { add = 20 has_trait = shy }
+		}
+	}
+}
+
+# The empty burial garments. Root = a daughter of the Way who read with Lady Xue, 882–885.
+# In 881, amid the Huang Chao war, an escort met her boat: "Not yet! I will only depart next spring from my private
+# residence. Don't rush me!" In 882 she washed her own hair and face; her coffin later held only "her empty burial
+# garments and quilt". In 883 a memorial from Governor Zhou Bao reached the court at Chengdu, whose rescript ordered
+# history officials to record her and money for "repairing Daoist altars" where she dwelt (Cahill 2006, pp. 191–193).
+# Cahill names the emperor Yizong; in 883 it was Xizong (her own p. 12). The text names no emperor. The elixir she
+# took is left out (no-suicide rule): the household's account is told as they would tell it.
+tm_yt4.0011 = {
+	type = character_event
+	title = tm_yt4.0011.t
+	desc = tm_yt4.0011.desc
+	theme = faith
+	left_portrait = { character = root animation = sadness }
+
+	trigger = {
+		has_character_flag = tm_yt4_xue_met
+		is_imprisoned = no
+	}
+
+	option = {	# Gold for her altars, and a sister to keep them
+		name = tm_yt4.0011.a
+		trigger = { gold >= 25 }
+		remove_short_term_gold = 25
+		add_piety = 40
+		tm_yt4_tally_effect = { WHAT = xue_altar }
+		ai_chance = { base = 40 }
+	}
+	option = {	# Write down her winter for the history officials
+		name = tm_yt4.0011.b
+		add_prestige = 30
+		add_learning_lifestyle_xp = 200
+		tm_yt4_tally_effect = { WHAT = xue_record }
+		ai_chance = { base = 30 }
+	}
+	option = {	# Keep what she said
+		name = tm_yt4.0011.c
+		add_stress = -15
+		tm_yt4_tally_effect = { WHAT = xue_kept }
+		ai_chance = { base = 30 }
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Wang Fengxian. Root = a daughter of the Way under a celestial throne, to 885.
+# A weavers' daughter of Dangtu whose hair, cut to the neck by divine girls, never grew back; people called her
+# Guanyin. To an official: the common folk "flatter me with the name of Guanyin"; Du's comment, "there is no obstacle
+# between names and the Way", and the ox and the horse. When the governor Du Shenquan meant to send her "as tribute for
+# the consorts' apartments", she used "the excuse of having short hair" and hid in a Buddhist temple for years. From 860
+# to 888 she preached loyalty, filial piety and self-cultivation in Huai and Zhe; warlords who came "with white swords"
+# knelt as disciples (Cahill 2006, pp. 180–185; design row 7, the debate with Rectified Names). The House hears her;
+# it does not claim her (Jia 2018 design row 18).
+tm_yt4.0020 = {
+	type = character_event
+	title = tm_yt4.0020.t
+	desc = tm_yt4.0020.desc
+	theme = learning
+	left_portrait = { character = root animation = personality_rational }
+
+	trigger = {
+		tm_yt4_way_daughter_trigger = yes
+	}
+
+	option = {	# The register decides, so I keep mine right
+		name = tm_yt4.0020.a
+		add_character_flag = tm_yt4_wang_met
+		add_piety = 30
+		tm_yt4_tally_effect = { WHAT = wang_names }
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = zealous }
+			modifier = { add = 10 has_trait = stubborn }
+		}
+	}
+	option = {	# Ask how she kept out of the consorts' apartments
+		name = tm_yt4.0020.b
+		add_character_flag = tm_yt4_wang_met
+		custom_tooltip = tm_yt4.0020.b.tt
+		add_intrigue_lifestyle_xp = 200
+		add_prestige = 10
+		tm_yt4_tally_effect = { WHAT = wang_levy }
+		ai_chance = {
+			base = 30
+			modifier = { add = 15 has_trait = schemer }
+		}
+	}
+	option = {	# Listen, and go home
+		name = tm_yt4.0020.c
+		add_character_flag = tm_yt4_wang_met
+		add_stress = -10
+		tm_yt4_tally_effect = { WHAT = wang_listened }
+		ai_chance = { base = 30 }
+	}
+}
+
+# Two accounts. Root = a daughter of the Way who heard Wang Fengxian, 887–900.
+# The histories call her a "sorceress" and "evil nun": in Yangzhou in 887 she told the rebel generals that "a great man
+# must die", Gao Pian and his kin were killed, and "all rewards and punishments … were decided by her". Du Guangting
+# rewrote her as a saint who died on Mount Qianqing in 886, aged 48 (Jia 2018, pp. 201–203; Cahill 2006, p. 185;
+# Despeux and Kohn 2003, p. 125 give only the hagiography). Du's book is of c. 913, so in this window the saint's
+# account is her disciples' word. The killing is reported, never shown. The House writes; it does not claim her.
+tm_yt4.0021 = {
+	type = character_event
+	title = tm_yt4.0021.t
+	desc = tm_yt4.0021.desc
+	theme = learning
+	left_portrait = { character = root animation = personality_rational }
+
+	trigger = {
+		has_character_flag = tm_yt4_wang_met
+		is_imprisoned = no
+	}
+
+	option = {	# Her disciples' account
+		name = tm_yt4.0021.a
+		add_piety = 20
+		tm_yt4_tally_effect = { WHAT = wang_saint }
+		ai_chance = {
+			base = 30
+			modifier = { add = 15 has_trait = zealous }
+		}
+	}
+	option = {	# The court's account, and who gives it
+		name = tm_yt4.0021.b
+		add_prestige = 20
+		tm_yt4_tally_effect = { WHAT = wang_oracle }
+		ai_chance = {
+			base = 30
+			modifier = { add = 15 has_trait = cynical }
+		}
+	}
+	option = {	# Both, and say we do not know
+		name = tm_yt4.0021.c
+		add_learning_lifestyle_xp = 300
+		tm_yt4_tally_effect = { WHAT = wang_both }
+		ai_chance = {
+			base = 30
+			modifier = { add = 15 learning >= 12 }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Half a ladle at Mo-shan. Root = a daughter of the Way under a celestial throne, to 895.
+# The abbess Moshan Liaoran and the monk Guanxi Zhixian, who came to overturn her platform: "Why didn't you cover it?";
+# "(S)he has neither male nor female form"; "Why doesn't she transform herself?"; "She is not a spirit, nor a ghost.
+# What would you have her become?" He served three years as her gardener and spoke of "another half-ladle" from
+# Mo-shan (Levering 1982, pp. 27–29). The nun before Tankong: "Even if I were to change, I would still be a fox spirit!"
+# (p. 25). The dates (Zhixian d. 895; Liaoran active in the 860s–880s) are reference dates the note marks unverified.
+# Rules: the abbess's "no form" is the Chan mind's, not the daughter's identity and not a third thing (Levering note,
+# row 6; Bhatt). The daughter borrows the refusal to prove, and answers for herself. The monk's demand is the hostile
+# voice; he does not name what she is.
+tm_yt4.0025 = {
+	type = character_event
+	title = tm_yt4.0025.t
+	desc = tm_yt4.0025.desc
+	theme = learning
+	left_portrait = { character = root animation = personality_rational }
+
+	trigger = {
+		tm_yt4_way_daughter_trigger = yes
+	}
+
+	option = {	# If I changed for you, you would call me a fox
+		name = tm_yt4.0025.a
+		add_character_modifier = { modifier = tm_yt4_half_ladle_modifier years = 10 }
+		add_prestige = 25
+		tm_yt4_tally_effect = { WHAT = moshan_fox }
+		ai_chance = {
+			base = 30
+			modifier = { add = 15 has_trait = arrogant }
+		}
+	}
+	option = {	# I have a form, and I chose it
+		name = tm_yt4.0025.b
+		add_character_modifier = { modifier = tm_yt4_half_ladle_modifier years = 10 }
+		add_piety = 30
+		tm_yt4_tally_effect = { WHAT = moshan_form }
+		ai_chance = {
+			base = 40
+			modifier = { add = 15 has_trait = zealous }
+		}
+	}
+	option = {	# Bow to the abbess, not to him
+		name = tm_yt4.0025.c
+		add_character_modifier = { modifier = tm_yt4_half_ladle_modifier years = 10 }
+		add_stress = -10
+		tm_yt4_tally_effect = { WHAT = moshan_bowed }
+		ai_chance = {
+			base = 30
+			modifier = { add = 15 has_trait = humble }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The three routes into the abbeys (McMahon design row 6). Root = a ruler of the Way who keeps a House under a lord of
+# a Chinese or Korean-style throne; scope:tm_yt4_lord = her top liege; scope:tm_yt4_house_county. The woman who comes
+# keeps her own faith (the House gives a roof, not a name), unless the county is already of the Way.
+
+# The first route: registered in the guan to be taken later. Xuanzong had his son's wife "registered as a Daoist nun in
+# 741" and took her into the harem in 745 (WSNR 217; Despeux and Kohn 2003, p. 123). Line: "The guan is not your
+# anteroom" (McMahon note, in-world lines).
+tm_yt4.0030 = {
+	type = character_event
+	title = tm_yt4.0030.t
+	desc = tm_yt4.0030.desc
+	theme = faith
+	left_portrait = { character = root animation = personality_rational }
+	right_portrait = { character = scope:tm_yt4_woman animation = worry }
+
+	trigger = {
+		exists = scope:tm_yt4_house_county
+		exists = scope:tm_yt4_lord
+		scope:tm_yt4_house_county = { holder ?= root }
+	}
+
+	immediate = {
+		tm_yt4_create_woman_effect = { COUNTY = scope:tm_yt4_house_county AGE_MIN = 17 AGE_MAX = 26 }
+	}
+
+	option = {	# Register her, and the guan is no one's anteroom
+		name = tm_yt4.0030.a
+		add_courtier = scope:tm_yt4_woman
+		scope:tm_yt4_woman = {
+			add_opinion = { target = root modifier = grateful_opinion opinion = 25 }
+		}
+		scope:tm_yt4_lord = {
+			add_opinion = { target = root modifier = disappointed_opinion opinion = -15 }
+		}
+		add_piety = 20
+		tm_yt4_tally_effect = { WHAT = anteroom_kept }
+		ai_chance = {
+			base = 35
+			modifier = { add = 15 has_trait = brave }
+		}
+	}
+	option = {	# Register her as he asks
+		name = tm_yt4.0030.b
+		scope:tm_yt4_lord = {
+			add_courtier = scope:tm_yt4_woman
+			add_opinion = { target = root modifier = pleased_opinion opinion = 15 }
+		}
+		add_piety = -20
+		tm_yt4_tally_effect = { WHAT = anteroom_complied }
+		ai_chance = {
+			base = 30
+			modifier = { add = 20 has_trait = craven }
+		}
+	}
+	option = {	# Refuse to register her for him
+		name = tm_yt4.0030.c
+		custom_tooltip = tm_yt4_woman_home_tt
+		scope:tm_yt4_lord = {
+			add_opinion = { target = root modifier = disappointed_opinion opinion = -10 }
+		}
+		add_piety = 10
+		tm_yt4_tally_effect = { WHAT = anteroom_refused }
+		ai_chance = { base = 20 }
+	}
+}
+
+# The second route: a consort set aside. After Taizong died, Wu "and other sonless consorts were placed in a nunnery"
+# (WSNR 188); in 1429 the Xuande emperor made Empress Hu step down with the Daoist title "Tranquil and Loving Master of
+# Immortality" (CW 91); aging palace women were released into convents (Jia 2018, p. 31). Mutual aid, not pity
+# (Jia design row 10).
+tm_yt4.0031 = {
+	type = character_event
+	title = tm_yt4.0031.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { current_date >= 1368.1.1 }
+				desc = tm_yt4.0031.desc_ming
+			}
+			desc = tm_yt4.0031.desc
+		}
+	}
+	theme = faith
+	left_portrait = { character = root animation = personality_rational }
+	right_portrait = { character = scope:tm_yt4_woman animation = sadness }
+
+	trigger = {
+		exists = scope:tm_yt4_house_county
+		exists = scope:tm_yt4_lord
+		scope:tm_yt4_house_county = { holder ?= root }
+	}
+
+	immediate = {
+		tm_yt4_create_woman_effect = { COUNTY = scope:tm_yt4_house_county AGE_MIN = 35 AGE_MAX = 55 }
+	}
+
+	option = {	# A room and the House's work, as any sister has
+		name = tm_yt4.0031.a
+		add_courtier = scope:tm_yt4_woman
+		scope:tm_yt4_woman = {
+			add_opinion = { target = root modifier = grateful_opinion opinion = 20 }
+		}
+		scope:tm_yt4_house_county = { change_variable = { name = tm_house_strain add = 1 } }
+		add_piety = 25
+		tm_yt4_tally_effect = { WHAT = consort_kept }
+		ai_chance = { base = 40 }
+	}
+	option = {	# The best room, and her own counsel
+		name = tm_yt4.0031.b
+		trigger = { gold >= 25 }
+		remove_short_term_gold = 25
+		add_courtier = scope:tm_yt4_woman
+		scope:tm_yt4_woman = {
+			add_opinion = { target = root modifier = grateful_opinion opinion = 30 }
+		}
+		scope:tm_yt4_lord = {
+			add_opinion = { target = root modifier = pleased_opinion opinion = 10 }
+		}
+		add_prestige = 20
+		tm_yt4_tally_effect = { WHAT = consort_honoured }
+		ai_chance = {
+			base = 30
+			modifier = { add = 15 has_trait = generous }
+		}
+	}
+	option = {	# The House cannot feed another this year
+		name = tm_yt4.0031.c
+		custom_tooltip = tm_yt4_woman_elsewhere_tt
+		add_piety = -10
+		tm_yt4_tally_effect = { WHAT = consort_sent }
+		ai_chance = {
+			base = 10
+			modifier = { add = 20 has_trait = greedy }
+		}
+	}
+}
+
+# The third route: a widow's refuge from the levirate. The Jurchen mother of Jin Shizong "avoided marriage to her
+# husband's younger brother by shaving her head and becoming a nun"; the choice "became common among widows" (CW 44).
+# Sorghaghtani refused the levirate and asked for her own domain (CW 62). For a House in a Khitan, Mongol or Jurchen
+# county. Line: "My husband's brother may have his horses. He will not have me." (McMahon note, in-world lines.)
+tm_yt4.0032 = {
+	type = character_event
+	title = tm_yt4.0032.t
+	desc = tm_yt4.0032.desc
+	theme = faith
+	left_portrait = { character = root animation = personality_rational }
+	right_portrait = { character = scope:tm_yt4_woman animation = worry }
+
+	trigger = {
+		exists = scope:tm_yt4_lord
+		exists = capital_county
+	}
+
+	immediate = {
+		tm_yt4_create_woman_effect = { COUNTY = root.capital_county AGE_MIN = 24 AGE_MAX = 40 }
+	}
+
+	option = {	# Take her vows at the House
+		name = tm_yt4.0032.a
+		add_courtier = scope:tm_yt4_woman
+		scope:tm_yt4_woman = {
+			add_opinion = { target = root modifier = grateful_opinion opinion = 30 }
+		}
+		add_piety = 30
+		add_prestige = -15
+		tm_yt4_tally_effect = { WHAT = widow_vows }
+		ai_chance = { base = 40 }
+	}
+	option = {	# Write for her: a household of her own
+		name = tm_yt4.0032.b
+		custom_tooltip = tm_yt4_widow_household_tt
+		add_prestige = 20
+		tm_yt4_tally_effect = { WHAT = widow_household }
+		ai_chance = {
+			base = 30
+			modifier = { add = 15 diplomacy >= 12 }
+		}
+	}
+	option = {	# The House cannot stand against her husband's clan
+		name = tm_yt4.0032.c
+		custom_tooltip = tm_yt4_woman_home_tt
+		add_piety = -15
+		tm_yt4_tally_effect = { WHAT = widow_refused }
+		ai_chance = {
+			base = 10
+			modifier = { add = 20 has_trait = craven }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The Empress Chengtian and the hut of rebirth. Root = a daughter of the Way at a Khitan court, 982–1009.
+# Chengtian (954–1009) was regent from 982 for her son Shengzong; Jingzong's edict let her use the imperial "I" (zhen);
+# she "performed a rite normally limited to emperors when assuming the throne, the ritual of rebirth (zaisheng yi)", in
+# a special building the ruler entered "in order to be reborn"; she rode with the army that routed the Song in 986
+# (McMahon WSNR 260–262; CW 9). Khitan regents used no curtain (WSNR 272). Wittfogel and Feng confirm it: a "magical
+# rebirth normally reserved for the emperor alone", which she obtained in 984 and twice in 986, the year she led the
+# army against the Song (1949, pp. 202–203). The rite (Liaoshi 53; trans. Wittfogel and Feng, pp. 273–274): every twelve
+# years, before the emperor's birth-year; a rebirth building and one for the emperor's mother, north of the Forbidden
+# Gate; three forked timbers passed under; a boy and an old midwife; swaddling clothes; a new name chosen from seven
+# offered by old men. Not used: the old man's cry at the end ("A boy is born"). Neither source says what was cried for
+# her, and McMahon warns against giving her rite a gender meaning; the text gives it none. The officer's question
+# compares; the daughter's answer is about herself. Not used: the captive boys of 986 (WSNR 261–262).
+tm_yt4.0035 = {
+	type = character_event
+	title = tm_yt4.0035.t
+	desc = {
+		desc = tm_yt4.0035.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { current_date >= 987.1.1 }
+				desc = tm_yt4.0035.desc_986
+			}
+			desc = tm_yt4.0035.desc_early
+		}
+		desc = tm_yt4.0035.desc_question
+	}
+	theme = learning
+	left_portrait = { character = root animation = personality_rational }
+
+	trigger = {
+		tm_yt4_way_daughter_trigger = yes
+	}
+
+	option = {	# Hers made her a ruler; mine made me myself
+		name = tm_yt4.0035.a
+		add_prestige = 30
+		tm_yt4_tally_effect = { WHAT = chengtian_answered }
+		ai_chance = {
+			base = 40
+			modifier = { add = 15 has_trait = gregarious }
+		}
+	}
+	option = {	# Ask how the rite is kept
+		name = tm_yt4.0035.b
+		add_learning_lifestyle_xp = 300
+		custom_tooltip = tm_yt4.0035.b.tt
+		tm_yt4_tally_effect = { WHAT = chengtian_asked }
+		ai_chance = {
+			base = 30
+			modifier = { add = 15 learning >= 12 }
+		}
+	}
+	option = {	# Say nothing; it is her day
+		name = tm_yt4.0035.c
+		add_stress = -10
+		tm_yt4_tally_effect = { WHAT = chengtian_silent }
+		ai_chance = {
+			base = 30
+			modifier = { add = 15 has_trait = shy }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The curtain comes down. Root = a regent of the Way's regency (or of a ruler of the Way) who sat behind the curtain;
+# scope:tm_yt4_liege = the ruler, now ruling alone.
+# The Song curtain: temporary (quan), court every five days, never alone, no zhen (CW 11–12). In 1065 Han Qi "ordered
+# [it] immediately removed, thus signaling the end of her regency" for Dowager Cao (CW 16). In 1033 Empress Liu wore
+# "the emperor's robes and crown for sacrifices at the imperial ancestral temple" despite opposition (CW 13). The hens
+# dictum is the ministers' (WSNR 15–16), a hostile voice. Stepping down is honoured as much as the robes (rule 23).
+tm_yt4.0041 = {
+	type = character_event
+	title = tm_yt4.0041.t
+	desc = tm_yt4.0041.desc
+	theme = diplomacy
+	left_portrait = { character = root animation = personality_rational }
+	right_portrait = { character = scope:tm_yt4_liege animation = personality_honorable }
+
+	trigger = {
+		exists = scope:tm_yt4_liege
+		scope:tm_yt4_liege = { is_alive = yes }
+	}
+
+	option = {	# Take it down myself, before they ask
+		name = tm_yt4.0041.a
+		add_piety = 25
+		add_prestige = 25
+		add_stress = -20
+		scope:tm_yt4_liege = {
+			add_opinion = { target = root modifier = grateful_opinion opinion = 20 }
+		}
+		tm_yt4_tally_effect = { WHAT = curtain_stepped }
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 has_trait = content }
+			modifier = { add = 10 has_trait = humble }
+		}
+	}
+	option = {	# One rite first, in the emperor's robes
+		name = tm_yt4.0041.b
+		add_prestige = 100
+		scope:tm_yt4_liege = {
+			add_opinion = { target = root modifier = disappointed_opinion opinion = -15 }
+		}
+		tm_yt4_tally_effect = { WHAT = curtain_robes }
+		ai_chance = {
+			base = 25
+			modifier = { add = 20 has_trait = ambitious }
+			modifier = { add = 10 has_trait = arrogant }
+		}
+	}
+	option = {	# Let the minister take it down
+		name = tm_yt4.0041.c
+		add_prestige = 10
+		add_stress = -10
+		tm_yt4_tally_effect = { WHAT = curtain_minister }
+		ai_chance = { base = 30 }
+	}
+}

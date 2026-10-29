@@ -68,7 +68,7 @@ The six faiths answer the same three questions in different ways:
 
 | Faith | How one becomes a daughter | How the line continues | How it meets the world | Home |
 |---|---|---|---|---|
-| **Adelphai Dorleyaiou** | The knife, as a sacrament with a sponsor | A founding charter passes land to adopted daughters | Refuge, intake and church politics | Dorylaion, Phrygia |
+| **Adelphai Dorleyaiou** | The knife, as a sacrament with a sponsor | A founding rule the House keeps, not owns | Refuge, intake and church politics | Dorylaion, Phrygia |
 | **Bædling** | Seiðr: a völva goes into trance for the seeker | The hall's fostered, sworn and adopted daughters | Outlawry, raiding and insult duels | Gotland |
 | **Yutai Dao** (the Way of the Jade Embryo) | Ten months' inner gestation of one's own body | Adopted heirs, and temple societies that hold property in common | Palace factions against the scholar-officials | Dunhuang, at the Mogao caves |
 | **Ha-Nehpakhot** | The Turning: a prayer said aloud at Purim | The women of the lamp, and the three women's commandments | The street's licence or its shunning; patronage by translating or medicine | The Jewish street of Arles |
@@ -155,6 +155,8 @@ Daughters are chosen, not born. A woman of the House may foster a girl or adopt 
 
 What sets the Sisters apart is that they refuse an honour: Byzantium made its eunuchs a useful, owned estate, and the Sisters will not be one. No source attests such a sect, and their five foremothers, Stephania the First Mother among them, are invented.
 
+The Mother of Mothers may write the Mother House's Rule in three stages, years apart: read aloud in every House, kept in three copies, then sealed. Under Aunt Bea's House the cells run their full three years: the novice learns that every woman keeping him was once under the knife he fears, a new daughter spends two years as her sponsor's ward, and those who wash out are given to a holy order of the faith, neither killed nor watched. Kin of another faith do not forgive the cells.
+
 **Read more:** [the full overview of Adelphai Dorleyaiou](docs/faiths/adelphai-dorleyaiou.md), with its history, sources and mechanics, cited to the page.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -182,6 +184,8 @@ Its gate is inner alchemy. Daoist masters taught that an adept carries an embryo
 It endures through women's societies modelled on real ones at Dunhuang, which paid dues at births and deaths and lent from a common "righteous store"; a bylaw of 959 makes members sisters. The faith joins them to Song law, under which a daughter, born or adopted, keeps a sonless house from the magistrate, and to the throne's name-panels that shielded houses from confiscation. Its story darkens as the law tightens under the Yuan from 1264 and the Ming from 1369. At court a daughter may take office on the eunuchs' side of the palace against the scholar-officials, at the price of her houses' protection and the danger of the purge of 903.
 
 What sets it apart is that it treats womanhood as something carried and born, and defends it with dues and petitions, not conquest. In its own voice it claims foremothers such as Xue Xuantong, who told a divine escort "Not yet! Don't rush me!", and a bearded woman the Song court ordained a nüguan in 1124. Those claims are the faith's alone: nothing in the sources makes either woman trans.
+
+Its daughters meet the women of their century without claiming them: Lady Xue at Hezhong, the preacher Wang Fengxian, the abbess of Mo-shan, Empress Chengtian's rite of rebirth. Women reach the Houses by the old routes into the abbeys. The palace offers levers of its own, from Cui Yin's plan of 902 to the Ming stables' sealed ledgers. A regent of the Way rules as her court's custom decides: behind a curtain, face to face, or without the curtain under the Ming.
 
 **Read more:** [the full overview of Yutai Dao](docs/faiths/yutai-dao.md), with its history, sources and mechanics, cited to the page.
 
@@ -248,8 +252,9 @@ Everything in the faith sections above is built. Most of the newer content has n
 <details>
 <summary>Done</summary>
 
-- [x] Adelphai Dorleyaiou: the Galenic rite and school, the Council of the Two Schools, the Tower on the Condition, decaying tolerance from 1050
+- [x] Adelphai Dorleyaiou: the Galenic rite and school, the Council of the Two Schools, the Tower on the Condition, decaying tolerance from 1050; the Mother House's Rule; the Dorley precedent's disclosure, ward years, and washouts given to an order
 - [x] Bædling: the níð-pole, the first cup and the bragarfull, Wulfstan's sermon; the sorcery-law arc; the rest of the feud and of outlawry; the Norse lore events
+- [x] Yutai Dao: Cui Yin's 902 proposal, the Boy from Min, the repair levy, the Ming ledgers; the women's chains; regency rules by culture (Liao, Jin and Yuan levers not built)
 - [x] Ha-Nehpakhot: the Two Parties decree, the bailiff's variants, a household of the street
 - [x] Worn Garland: the Tai vow, bands sworn with the merchants, the hall of the Five Hundred, the Pepper Merchant's Vow; the world after 1178 as era events in every start
 - [x] Badenya: Makuria's *ngonnen*, a kingdom taken hot, the jelimuso, the refuge at Koulikoro, the fall of the associate in rule
@@ -260,10 +265,8 @@ Everything in the faith sections above is built. Most of the newer content has n
 ### Still to do
 
 - [ ] Schisms from the design notes: "cis is not a caste" against the estates of the Touched; call-outs as scapegoat rituals; whether eunuchs who seek the Bædling faith count as sisters
-- [ ] Adelphai Dorleyaiou: the founding charter as a house legacy; the Dorley precedent's disclosure, ward schooling, and washouts sent to a holy order
 - [ ] Bædling: raising a níð-pole oneself (a scheme with a proxy carver), the Níð of the Land, vows over the cup kept or broken
 - [ ] Bædling bands: the Vigla, flight to a petty coastal lord, The Sword Is My Patent, the darker Companions
-- [ ] Yutai Dao: the Liao and Ming levers, Cui Yin's 902 proposal, the Boy from Min, the repair levy; the women's chains; regency rules by culture
 - [ ] Yutai Dao: the Sogdian rows (Master of the Caravan, Sabao to Office, the Network's Post, the Town of the Grape, the Rallied Township)
 - [ ] More reactions: the Abbasid court (the jester, the plucked beard, the barber); Walther's "Under the Linden"
 - [ ] Survival balance, tuned after each observe run

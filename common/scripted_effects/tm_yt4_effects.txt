@@ -1,0 +1,287 @@
+﻿# Crusader Dolls — Yutai Dao, wave 13: the levers, the women's chains and the regency rules (events/tm_yt4_events.txt;
+# docs/wave13/yutai.md).
+
+# Count for the census (run-wide; printed by tools/census_report.py once it has the wave 13 line).
+tm_yt4_tally_effect = {
+	if = {
+		limit = { NOT = { has_global_variable = tm_yt4_n_$WHAT$ } }
+		set_global_variable = { name = tm_yt4_n_$WHAT$ value = 0 }
+	}
+	change_global_variable = { name = tm_yt4_n_$WHAT$ add = 1 }
+}
+
+# --- The levers, for a daughter of the Way in the inner offices (called once a year from tm_yt2_yearly_effect) ---
+# Scope: the daughter. scope:tm_palace_throne, scope:tm_palace_seat are saved.
+tm_yt4_palace_year_effect = {
+	# Cui Yin's proposal (0001): 901–902, a celestial throne. In 901 the chief minister asked for the Shence armies,
+	# and then that palace women run the inner offices (So 2000, pp. 160–161). The purge came in the first month of
+	# 903 (p. 161), so the window is short and the chance high.
+	if = {
+		limit = {
+			current_date >= 901.1.1
+			current_date < 903.1.1
+			scope:tm_palace_throne = { has_government = celestial_government }
+			NOT = { has_character_flag = tm_yt4_cui_asked }
+			tm_flavour_ready_trigger = yes
+		}
+		random = {
+			chance = 40
+			add_character_flag = tm_yt4_cui_asked
+			tm_flavour_spent_effect = yes
+			trigger_event = { id = tm_yt4.0001 days = { 1 200 } }
+		}
+	}
+	# Seal the Ledgers (0004): 1403–1449, a celestial throne, a daughter in office. The Directorate of Imperial Horses
+	# kept its own books (Grass 2024, pp. 13–14, 19–21); Tumu, 1449, ends the window (p. 22).
+	if = {
+		limit = {
+			current_date >= 1403.1.1
+			current_date < 1450.1.1
+			has_variable = tm_palace_office
+			scope:tm_palace_throne = { has_government = celestial_government }
+			NOT = { has_variable = tm_yt4_ledgers_cd }
+			tm_flavour_ready_trigger = yes
+		}
+		random = {
+			chance = 5
+			set_variable = { name = tm_yt4_ledgers_cd value = yes years = 20 }
+			tm_flavour_spent_effect = yes
+			trigger_event = { id = tm_yt4.0004 days = { 1 300 } }
+		}
+	}
+}
+
+# --- A House keeper's year (from tm_yt4_yearly). Scope: a ruler of the Way who keeps a House. ---
+tm_yt4_house_year_effect = {
+	random_held_title = {
+		limit = { tier = tier_county has_variable = tm_house }
+		save_scope_as = tm_yt4_house_county
+	}
+	# The Boy from Min (0002): Tang, a circuit's tribute of palace boys (Rideout 1949, p. 55 and n. 7).
+	if = {
+		limit = {
+			current_date < 907.1.1
+			tm_yt4_house_keeper_trigger = yes
+			NOT = { has_variable = tm_yt4_boy_cd }
+			tm_flavour_ready_trigger = yes
+		}
+		random = {
+			chance = 3
+			set_variable = { name = tm_yt4_boy_cd value = yes years = 25 }
+			tm_flavour_spent_effect = yes
+			trigger_event = { id = tm_yt4.0002 days = { 1 300 } }
+		}
+	}
+	# The Commissioner of Merit's levy (0003): Tang, eunuch commissioners over both clergies (Rideout 1949, p. 56;
+	# 1953, pp. 46–47).
+	if = {
+		limit = {
+			current_date < 907.1.1
+			tm_yt4_house_keeper_trigger = yes
+			NOT = { has_variable = tm_yt4_levy_cd }
+			tm_flavour_ready_trigger = yes
+		}
+		random = {
+			chance = 3
+			set_variable = { name = tm_yt4_levy_cd value = yes years = 20 }
+			tm_flavour_spent_effect = yes
+			trigger_event = { id = tm_yt4.0003 days = { 1 300 } }
+		}
+	}
+	# The three routes into the abbeys (0030–0032; McMahon WSNR 188, 217; CW 44, 62, 91; Jia 2018, p. 31).
+	if = {
+		limit = {
+			tm_yt4_house_under_lord_trigger = yes
+			NOT = { has_variable = tm_yt4_route_cd }
+			tm_flavour_ready_trigger = yes
+		}
+		random = {
+			chance = 4
+			set_variable = { name = tm_yt4_route_cd value = yes years = 15 }
+			tm_flavour_spent_effect = yes
+			top_liege = { save_scope_as = tm_yt4_lord }
+			random_list = {
+				10 = { trigger_event = { id = tm_yt4.0030 days = { 1 300 } } }
+				10 = { trigger_event = { id = tm_yt4.0031 days = { 1 300 } } }
+				20 = {
+					trigger = { tm_yt4_steppe_house_trigger = yes }
+					trigger_event = { id = tm_yt4.0032 days = { 1 300 } }
+				}
+			}
+		}
+	}
+}
+
+# --- A daughter's year (from tm_yt4_yearly): the women's chains. Scope: a daughter of the Way; scope:tm_yt4_host =
+# the ruler whose court she is at (or herself). At most one a year, through the flavour budget. ---
+tm_yt4_daughter_year_effect = {
+	# Lady Xue at Hezhong (0010), 874–881 (Cahill 2006, pp. 189–191).
+	if = {
+		limit = {
+			current_date >= 874.1.1
+			current_date < 882.1.1
+			tm_yt4_under_celestial_trigger = yes
+			NOT = { has_character_flag = tm_yt4_xue_asked }
+			tm_flavour_ready_trigger = yes
+		}
+		random = {
+			chance = 6
+			add_character_flag = tm_yt4_xue_asked
+			tm_flavour_spent_effect = yes
+			trigger_event = { id = tm_yt4.0010 days = { 1 200 } }
+		}
+	}
+	# Her empty burial garments and the rescript (0011), 882–885, for a daughter who read with her (Cahill 2006,
+	# pp. 191–193). A chain under way: no flavour budget.
+	if = {
+		limit = {
+			current_date >= 882.1.1
+			current_date < 886.1.1
+			has_character_flag = tm_yt4_xue_met
+			NOT = { has_character_flag = tm_yt4_xue_news }
+		}
+		random = {
+			chance = 50
+			add_character_flag = tm_yt4_xue_news
+			trigger_event = { id = tm_yt4.0011 days = { 1 200 } }
+		}
+	}
+	# Two accounts of Wang Fengxian (0021), 887–900, for a daughter who heard her (Jia 2018, pp. 201–203). A chain.
+	if = {
+		limit = {
+			current_date >= 887.1.1
+			current_date < 901.1.1
+			has_character_flag = tm_yt4_wang_met
+			NOT = { has_character_flag = tm_yt4_wang_news }
+		}
+		random = {
+			chance = 30
+			add_character_flag = tm_yt4_wang_news
+			trigger_event = { id = tm_yt4.0021 days = { 1 200 } }
+		}
+	}
+	# Wang Fengxian preaching in Huai and Zhe (0020), 867–885 (Cahill 2006, pp. 182–185).
+	if = {
+		limit = {
+			current_date < 886.1.1
+			tm_yt4_under_celestial_trigger = yes
+			NOT = { has_character_flag = tm_yt4_wang_asked }
+			tm_flavour_ready_trigger = yes
+		}
+		random = {
+			chance = 4
+			add_character_flag = tm_yt4_wang_asked
+			tm_flavour_spent_effect = yes
+			trigger_event = { id = tm_yt4.0020 days = { 1 200 } }
+		}
+	}
+	# The abbess of Mo-shan (0025), 867–895 (Levering 1982, pp. 27–29; dates unverified, see the note).
+	if = {
+		limit = {
+			current_date < 896.1.1
+			tm_yt4_under_celestial_trigger = yes
+			NOT = { has_character_flag = tm_yt4_moshan_asked }
+			tm_flavour_ready_trigger = yes
+		}
+		random = {
+			chance = 3
+			add_character_flag = tm_yt4_moshan_asked
+			tm_flavour_spent_effect = yes
+			trigger_event = { id = tm_yt4.0025 days = { 1 200 } }
+		}
+	}
+	# Empress Chengtian and the hut of rebirth (0035), 982–1009, at a Khitan court (McMahon WSNR 260–262).
+	if = {
+		limit = {
+			current_date >= 982.1.1
+			current_date < 1010.1.1
+			top_liege ?= { culture = culture:khitan }
+			NOT = { has_character_flag = tm_yt4_chengtian_asked }
+			tm_flavour_ready_trigger = yes
+		}
+		random = {
+			chance = 8
+			add_character_flag = tm_yt4_chengtian_asked
+			tm_flavour_spent_effect = yes
+			trigger_event = { id = tm_yt4.0035 days = { 1 200 } }
+		}
+	}
+}
+
+# A woman who comes to the House by one of the three routes. She keeps her own faith; the House gives her a roof.
+# Saves scope:tm_yt4_woman. Scope: the House keeper. $COUNTY$ = the county whose people she is of.
+tm_yt4_create_woman_effect = {
+	create_character = {
+		gender = female
+		age = { $AGE_MIN$ $AGE_MAX$ }
+		culture = $COUNTY$.culture
+		faith = $COUNTY$.faith
+		location = $COUNTY$.title_province
+		learning = { 6 14 }
+		save_scope_as = tm_yt4_woman
+	}
+}
+
+# --- Regency rules (McMahon). Scope: the ruler (the liege of the diarchy). ---
+
+# Clear the rule from a (former) regent. Scope: the regent.
+tm_yt4_regency_clear_effect = {
+	if = {
+		limit = { has_character_modifier = tm_yt4_curtain_modifier }
+		remove_character_modifier = tm_yt4_curtain_modifier
+	}
+	if = {
+		limit = { has_character_modifier = tm_yt4_face_to_face_modifier }
+		remove_character_modifier = tm_yt4_face_to_face_modifier
+	}
+	if = {
+		limit = { has_character_modifier = tm_yt4_no_curtain_modifier }
+		remove_character_modifier = tm_yt4_no_curtain_modifier
+	}
+}
+
+# Give the regent her court's rule, if the regency concerns the Way and she is the dowager. Scope: the ruler.
+tm_yt4_regency_apply_effect = {
+	if = {
+		limit = {
+			has_active_diarchy = yes
+			has_diarchy_active_parameter = diarchy_is_regency
+			exists = diarch
+		}
+		save_scope_as = tm_yt4_liege
+		diarch = { save_scope_as = tm_yt4_regent }
+		if = {
+			limit = {
+				tm_yt4_way_regency_trigger = yes
+				scope:tm_yt4_regent = { tm_yt4_dowager_regent_trigger = yes }
+			}
+			scope:tm_yt4_regent = { tm_yt4_regency_clear_effect = yes }
+			# Liao and Yuan: no curtain, the imperial "I", the army (WSNR 261, 272; CW 59, 62).
+			if = {
+				limit = { tm_yt4_face_to_face_court_trigger = yes }
+				scope:tm_yt4_regent = { add_character_modifier = { modifier = tm_yt4_face_to_face_modifier } }
+				tm_yt4_tally_effect = { WHAT = regent_face }
+			}
+			# The Song curtain, made law for Empress Liu (1022–1033): temporary, every five days, never alone, no "I"
+			# (CW 11–12). Earlier courts had the curtain too (Chu Suanzi, WSNR 147; Wu, WSNR 190).
+			else_if = {
+				limit = {
+					tm_yt4_curtain_court_trigger = yes
+					current_date < 1368.1.1
+				}
+				scope:tm_yt4_regent = { add_character_modifier = { modifier = tm_yt4_curtain_modifier } }
+				tm_yt4_tally_effect = { WHAT = regent_curtain }
+			}
+			# The Ming: women "never to involve themselves in politics" (CW 78); Dowager Zhang ruled without the
+			# curtain, informally (CW 93).
+			else_if = {
+				limit = {
+					tm_yt4_curtain_court_trigger = yes
+					current_date >= 1368.1.1
+				}
+				scope:tm_yt4_regent = { add_character_modifier = { modifier = tm_yt4_no_curtain_modifier } }
+				tm_yt4_tally_effect = { WHAT = regent_no_curtain }
+			}
+		}
+	}
+}

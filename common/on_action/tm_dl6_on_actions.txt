@@ -1,0 +1,15 @@
+﻿# Crusader Dolls — Adelphai Dorleyaiou, wave 14 (docs/wave14/adelphai.md). Appended to vanilla.
+yearly_global_pulse = {
+	on_actions = { tm_dl6_yearly_rule }
+}
+
+# The Founding Rule's modifiers follow the Houses, their Protectresses and the Mother of Mothers. Nothing happens until
+# a Mother has written the rule (tm_dl6_rule_decision).
+tm_dl6_yearly_rule = {
+	trigger = {
+		title:d_tm_mother_house = { has_variable = tm_dl6_rule }
+	}
+	effect = {
+		tm_dl6_rule_upkeep_effect = yes
+	}
+}

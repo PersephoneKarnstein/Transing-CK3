@@ -1,0 +1,63 @@
+﻿# Crusader Dolls — Yutai Dao, wave 13 (events/tm_yt4_events.txt; docs/wave13/yutai.md).
+
+# --- Regency rules (McMahon 2013, 2016) ---
+
+# Behind the curtain: the Song law of Empress Liu's regency (1022–1033). She held court every five days, never alone,
+# the boy beside her, behind a curtained divide; her rule was "temporary" and she did not say the imperial "I"
+# (CW 11–12). She governs; she does not take the field. While the regency lasts.
+tm_yt4_curtain_modifier = {
+	icon = diplomacy_positive
+	diplomacy = 1
+	stewardship = 1
+	martial = -2
+	monthly_prestige = 0.2
+}
+
+# Face to face: Khitan and Mongol regents used no curtain (WSNR 272; CW 59). Chengtian was allowed the imperial "I"
+# (WSNR 261) and rode with the army in 986 (WSNR 261; CW 9). While the regency lasts.
+tm_yt4_face_to_face_modifier = {
+	icon = martial_positive
+	martial = 2
+	diplomacy = 1
+	monthly_prestige = 0.3
+}
+
+# Without the curtain: the Ming founder's rule kept women out of politics (CW 78), and Dowager Zhang (1435–1442) refused
+# the curtain as against the ancestral mandate and ruled informally (CW 93). While the regency lasts.
+tm_yt4_no_curtain_modifier = {
+	icon = intrigue_positive
+	intrigue = 2
+	diplomacy = 1
+}
+
+# --- The levers ---
+
+# She sat at the throne's side for the inner offices and listened (So 2000, p. 161). 5 years.
+tm_yt4_listener_modifier = {
+	icon = intrigue_positive
+	intrigue = 2
+	monthly_prestige = 0.1
+}
+
+# She kept the inner offices' seals for the palace women while the minister's plan held (So 2000, pp. 160–161). 5 years.
+tm_yt4_palace_women_modifier = {
+	icon = stewardship_positive
+	stewardship = 2
+	monthly_prestige = 0.2
+}
+
+# --- The women's chains ---
+
+# She read the Yellow Court with Lady Xue at Hezhong (Cahill 2006, p. 189). 10 years.
+tm_yt4_yellow_court_modifier = {
+	icon = learning_positive
+	learning = 1
+	monthly_piety = 0.2
+}
+
+# Half a ladle at Mo-shan: what she brought home from the abbess's hall (Levering 1982, p. 28). 10 years.
+tm_yt4_half_ladle_modifier = {
+	icon = learning_positive
+	learning = 2
+	stress_gain_mult = -0.05
+}

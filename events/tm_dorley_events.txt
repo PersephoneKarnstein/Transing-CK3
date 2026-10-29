@@ -88,6 +88,7 @@ tm_dorley.0100 = {
 			tm_take_the_knife_effect = yes
 		}
 		tm_dorley_sponsor_reward_effect = { RISEN = scope:tm_novice }
+		tm_dl6_begin_ward_years_effect = yes	# wave 14: the second and third years as the sponsor's ward
 	}
 	option = {	# ...and adopt her
 		name = tm_dorley.0100.b
@@ -99,6 +100,7 @@ tm_dorley.0100 = {
 		adopt_effect = { CHILD = scope:tm_adoptee ADOPTER = root }
 		scope:tm_adoptee = { tm_take_the_knife_effect = yes }
 		tm_dorley_sponsor_reward_effect = { RISEN = scope:tm_adoptee }
+		tm_dl6_begin_ward_years_effect = yes	# wave 14: the second and third years as the sponsor's ward
 	}
 }
 
@@ -141,6 +143,18 @@ tm_dorley.0200 = {
 				limit = { NOT = { has_character_modifier = tm_house_friend_modifier } }
 				add_character_modifier = { modifier = tm_house_friend_modifier }
 			}
+		}
+	}
+	# Wave 14 (docs/wave14/adelphai.md §4): given to an order of the faith, or, failing one, to the Mother House's lay order
+	# at the gate. Not killed, not watched: sent away into religion, as Byzantium tonsured rivals instead of killing them.
+	option = {	# Give him to the order
+		name = tm_dl6.0200.order
+		custom_tooltip = tm_dl6.0200.order.tt
+		scope:tm_novice = { tm_dl6_give_to_order_effect = yes }
+		ai_chance = {
+			base = 100
+			modifier = { add = 50 has_trait = compassionate }
+			modifier = { add = 50 tm_dl6_faith_has_order_trigger = yes }
 		}
 	}
 	option = {	# There is nothing left to save: Grandmother's House only (Serano row 7)

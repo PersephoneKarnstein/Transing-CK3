@@ -1,0 +1,28 @@
+﻿# Crusader Dolls — Adelphai Dorleyaiou, wave 14 (docs/wave14/adelphai.md).
+
+# The Founding Rule has reached at least $STAGE$. Any scope.
+tm_dl6_rule_stage_trigger = {
+	title:d_tm_mother_house = {
+		has_variable = tm_dl6_rule
+		var:tm_dl6_rule >= $STAGE$
+	}
+}
+
+# A Sisters' House of the Adelphai: the House's county, its lord, or its Elder Sister keeps the faith. Scope: a county.
+tm_dl6_adelphai_house_trigger = {
+	has_variable = tm_house
+	OR = {
+		faith = faith:transbian_maximalism
+		holder ?= { faith = faith:transbian_maximalism }
+		var:tm_elder_sister ?= { faith = faith:transbian_maximalism }
+	}
+}
+
+# The faith has a holy order that could take a washout. Scope: a character of the faith.
+tm_dl6_faith_has_order_trigger = {
+	faith = {
+		any_faith_holy_order = {
+			leader ?= { is_alive = yes }
+		}
+	}
+}
