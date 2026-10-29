@@ -180,9 +180,43 @@ So the house is a draper's and an apothecary's company, plus a scriptorium. Its 
 
   Each faith takes its parent's position unless a source gives a reason to differ.
 
+## Dev Diary 8, "Trade in Practice" (read 2026-10-28)
+
+The technical diary, posted about three weeks before release. Every number in it is a define or script value still being balanced. What it settles, and what that means for us:
+
+**Markets and their owners.** One Market per de jure duchy (922), fixed for the whole game: a county that drifts to another duchy keeps its baronies in the old Market. The Market Owner is whoever holds the county of the Market Capital barony, usually the duchy's capital, sometimes moved to the coast in history. The owner sets tolls, grants monopolies and issues Commission Routes.
+- *For Ha-N:* the patron who matters is the owner of the Market that the street's county sits in, not necessarily the street's own lord. Check which duchy the Venaissin falls in and who holds its Market Capital at each start.
+
+**Goods.** 44 goods in 20 Need Categories, among them *Fabric*, *Clothes*, *Books* and *Medicaments*. Nine goods, including textiles and books, are never produced by a county, only by buildings that refine other goods (a Weavers' Guild turns Fabric into Textiles).
+- *For Ha-N:* the three documented trades (drapery, physic, books) are all real categories, and two of them are refined goods, so the street's house needs a Guild District or a supplier. That fits a craft house better than a long-distance trader, as the guardrails already want.
+
+**Prices.** Prices move with Market Prosperity and modifiers, not with supply and demand; scarcity limits how much trades, not what it costs.
+
+**Three kinds of route; no government gets both of the first two.**
+- *Profit Routes* (Merchants, Republics, Patricians) must touch a home Market.
+- *Distribution Routes* (feudal, clan, tribal and administrative dukes and above) link two Markets in the ruler's realm and carry only basic goods. They earn nothing and are served before any merchant.
+- *Commission Routes:* a landed patron hires one of their merchant clients to deliver one good to one of the patron's Markets for 10 years. AI dukes commission yearly (50%, up to 80% for a hegemon) and prefer food.
+- *For the Garland:* a Commission Route is the vanilla shape of our caravan contract (`tm_ml3_caravan_contract`), but it needs a merchant client, and our bands are adventurers. Keep our contract. If a Garland merchant house is ever built, a temple council commissioning it is the natural later step for the council's guard.
+
+**Tolls.** Six levels from 0% to 5%, starting at 3%, taken only on Profit Route sales. The owner's direct vassals and merchant clients pay nothing. A merchant can ask for a *Toll Exception* for 10 years. The data keeps separate rates for what the merchant pays and what the owner earns, and AI toll behaviour is script values.
+- *For Ha-N:* a ten-year Toll Exception has the same shape as the Gordes privilege (ten years, renewable). If we use it, ground it in service, never in purchase (guardrail table above).
+
+**Monopolies.** Normal ones lock out competitors; Exploitative ones also take from local production before buildings eat. They never expire, survive inheritance and a change of owner, and the AI grants them reluctantly. The guardrail stands: no events of ours celebrate a monopoly.
+
+**Roads.** 4,119 road links between provinces, some already built at the start (the Via Appia; a Late Tang road between south and north China). Roads rise a tier with traffic and lose one every 24 months unused. A single route takes a dirt road to the top tier in about eight years.
+- *For the Adelphai:* any steady route through Phrygia paves the Mother House's road, so the idea in the faith section needs no road script of ours, only a reason for routes to pass there.
+- *For Yutai:* check whether the Late Tang road reaches the Hexi corridor and Shazhou.
+
+**Holdings.** Control now trends to a baseline set mainly by stationed troops and fortifications, with penalties below 50 (confirms compatibility check 7). Popular opinion has a baseline from buildings. Settlement Size (1–10) unlocks district slots and brings food needs; a hungry holding loses size and opinion. Holding taxes are split by type (agricultural, mining, hinterland, maritime, artisan, commerce, urban, religious...), and **general holding tax multipliers are gone**, so check 4 (`domain_tax_mult`, `monthly_income_mult`) will almost certainly need new modifiers.
+- *Religious taxes* come from religious buildings and holy sites. Our six faiths' holy sites will start paying them, and the Garland's temple gifts and the Mālai inscriptions have a tax to work with.
+- *Food by faith:* a Jain holding needs Comforts instead of Meat for food. Food needs can follow faith, so check whether it is a faith or religion parameter we could set (Badenya, the Garland and the Mālai are the candidates; only with a source).
+- *Districts:* one Resource District per county capital (3–5 possible goods, changeable at the cost of its buildings), up to six regular districts (Rural, Housing, Guild, Market, Walls, Entertainment, Military and more), duchy districts, special buildings. About 300 new buildings, unlocked by new innovations in each era. Care for the Garland: the Entertainment District is not the temple women's frame.
+
+**Game start.** About 430 historical merchant companies are scripted for each start date, and the AI seeds trade routes before the player picks a character. If that includes 867, the first open question below is answered yes. Check on release.
+
 ## Open questions for after release
 
-- **Merchants at 867.** Can a merchant (landless, with a domicile) exist at the 867 start in history files? This decides whether Ha-N gets its unlanded bookmark start through S&S.
+- **Merchants at 867.** Can a merchant (landless, with a domicile) exist at the 867 start in history files? DD8 says merchant companies are scripted "for each start date", which suggests yes. This decides whether Ha-N gets its unlanded bookmark start through S&S.
 - **The decision gate.** Is *Become Merchant* gated only by culture tradition? Ha-N takes the county's culture, so we may need our own faith-gated decision rather than an override of the vanilla one. Overriding risks breaking compatibility.
 - **The trigger name.** What is the DLC-feature trigger for Silk & Silver content?
 - **Where Expertise lives.** Can company Expertise sit on a title we create (a "house in the street" title), as vanilla merchants' does?

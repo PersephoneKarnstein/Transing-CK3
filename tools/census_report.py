@@ -381,10 +381,11 @@ def main(path):
 
     # Ha-Nehpakhot, wave 6 (tm_hn4_tally_effect): run-wide.
     print('== Ha-Nehpakhot: households and falls ==')
-    hsteps = ('households', 'household_joins', 'falls')
+    hsteps = ('households', 'household_joins', 'falls', 'relit')
     if any(f'tm_hn4_n_{s}' in gvars for s in hsteps):
         print('  '.join(f'{s} {int(gvars.get(f"tm_hn4_n_{s}") or 0)}' for s in hsteps))
         print('households: households of the street sent for; household_joins: members of those households the kahal took in;\n'
+              'relit: times the women of the lamp came back to the Venaissin when no house of the sect stood;\n'
               'falls: patrons of the sect who died while holding the translation patronage.')
     else:
         print('No counts (the save predates wave 6, or nothing has happened yet).')

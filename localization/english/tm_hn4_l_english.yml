@@ -29,3 +29,5 @@
  tm_hn4_send_for_household_decision_confirm:0 "Send for them"
  tm_hn4_send_for_household_decision_effect_tt:0 "A Jewish household (a man, his wife and their child) settles at your court. They keep their own faith, and the kahal may take them in later."
  tm_hn4_send_for_household_decision_cooldown_tt:0 "You have sent for a household in the last ten years"
+ tm_hn4_relit_toast:0 "Lamps in the Street Again"
+ tm_hn4_relit_toast_desc:0 "Women of the lamp have come back to the Jewish street of [GetTitleByKey('c_venaissin').GetNameNoTier] from another town of their sect, with an elder, a physician's household and a young man to be taken in."

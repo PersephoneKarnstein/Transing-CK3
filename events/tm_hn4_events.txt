@@ -61,3 +61,14 @@ tm_hn4.0001 = {
 		ai_chance = { base = 50 }
 	}
 }
+
+# The lamp relit (tm_hn4_relight_effect; tm_yearly_growth in tm_on_actions.txt): women of the lamp come back to the
+# street of the Venaissin when no house of the sect stands. Hidden; root is the lord of the Venaissin.
+tm_hn4.0010 = {
+	type = character_event
+	hidden = yes
+
+	immediate = {
+		tm_hn4_relight_effect = yes
+	}
+}

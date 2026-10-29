@@ -1050,6 +1050,37 @@ tm_yearly_growth = {
 			}
 			tm_surv_kahal_draw_effect = yes
 		}
+		# The lamp relit (tm_hn4_relight_effect): when the sect is small and no house of it stands (no ruler of it and no
+		# court where three of it live), or when it is down to a handful, women of the lamp come back to the street of the
+		# Venaissin. Runs 24-25: 6-25 members for most of six centuries, and none from the 1410s.
+		if = {
+			limit = {
+				current_year >= 880
+				NOT = { has_global_variable = tm_hn4_relit_recently }
+				NOT = { any_living_character = { faith = faith:tm_nehpakhot count >= 40 } }
+				OR = {
+					NOT = { any_living_character = { faith = faith:tm_nehpakhot count >= 12 } }
+					AND = {
+						NOT = {
+							any_living_character = {
+								faith = faith:tm_nehpakhot
+								is_ruler = yes
+							}
+						}
+						NOT = {
+							any_living_character = {
+								faith = faith:tm_nehpakhot
+								employer ?= { any_courtier = { count >= 3 faith = faith:tm_nehpakhot } }
+							}
+						}
+					}
+				}
+			}
+			random = {
+				chance = 4
+				title:c_venaissin.holder ?= { trigger_event = tm_hn4.0010 }
+			}
+		}
 		# The Mother House never forgets Phrygia: if the county leaves the faith, the Mother of Mothers holds a claim.
 		if = {
 			limit = {

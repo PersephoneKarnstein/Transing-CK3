@@ -58,3 +58,19 @@ Her county is afraid for a year (`tm_hn4_after_fall`): the hearing's two learned
 1. Should imprisonment or the loss of his title also count as the patron's fall?
 2. Is 50 gold right? The decision is cheap so that a landless camp can afford it.
 3. A Jewish bailiff before 1260 (Abba Mari at Saint-Gilles, c. 1165) is still not built: the Jewish officer would be the one who fines her.
+
+## 7. The lamp relit (added 2026-10-28, untested in game)
+
+**Why.** Ha-Nehpakhot died out in observe run 25 (0 members from the 1410s). In runs 24 and 25 it held 6–25 members for most of six centuries with no ruler of the sect, so the household decision (which needs a ruler) and the kahal's draw (which needs a landed one) never fired. In run 23 it reached 294. The swing is too wide for a small faith that should grow slowly but last.
+
+**What.** `tm_hn4_relight_effect` (`tm_hn4_effects.txt`), fired by the hidden event `tm_hn4.0010` on the lord of the Venaissin from `tm_yearly_growth` (`tm_on_actions.txt`).
+- **When:** from 880, while the sect has fewer than 40 living members and either no house of it stands (no ruler of the sect, a camp counting, and no court where three of it live) or it is down to fewer than 12. 4% a year, then not again for 40 years.
+- **Who comes:** an elder daughter of the Turning (45–60, learning), a physician of the sect with his wife and two children, and a Marked young man to be taken in. Six people, of the Venaissin's culture.
+- **Where:** with Roads to Power the elder keeps a scholars' camp at the Venaissin, as Bonadonna does from 867, and the others are of her camp. Without it, all six join the court of the Venaissin's lord, as at a later start's seed.
+- **Why the Venaissin:** the seed's street, and a papal land from 1274 that kept its Jews when France (1306) and Provence (1501) expelled theirs.
+- **Player:** if the Venaissin's lord is a player, a toast, "Lamps in the Street Again".
+- **Census:** `relit` in "Ha-Nehpakhot: households and falls".
+
+Not a cap: it adds six people at most once in 40 years, only when the sect has no house, and the sect must keep them by its own means.
+
+**Decisions (user, 2026-10-28).** 4% a year with a 40-year pause, for now (about once in 65 years in a run like 25). The condition looks at numbers too: never at 40 or more, always eligible under 12. Without Roads to Power the six go to the lord's court, accepting the AI's conversion asks.

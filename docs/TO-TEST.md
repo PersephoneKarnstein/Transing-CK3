@@ -1225,3 +1225,9 @@ See `docs/wave9/badenya.md`.
 - [ ] **AN7.** 0030 penance ladder: a Dorleyite count under a Slavic Orthodox liege (Kyiv): rung 1 applies the House opinions from the liege's chaplain; rung 2 the dry fast; rung 3 ends the ladder; alms commute and pause 10 years; the House option needs a House.
 - [ ] **AN8.** The Byzantine ladder (tm_byz.0010-0012) no longer fires under a Slavic Orthodox liege, and still fires under a Byzantine one.
 - [ ] **AN9.** Observe run 867-1450: tm_rx_n_* counts appear in the census; no voice fires twice on one daughter within three years; no error.log lines from tm_rx files.
+
+## AO. Ha-Nehpakhot: the lamp relit (added 2026-10-28, untested in-game; docs/wave6/ha-nehpakhot.md §7)
+- [ ] **AO1.** Debug: with no ruler of the sect, `title:c_venaissin.holder = { trigger_event = tm_hn4.0010 }`. With Roads to Power: a new camp at the Venaissin held by an elder daughter of the Turning, scholars' purpose, with a physician, his wife, two children and a Marked youth of the sect. Without it: all six at the lord's court.
+- [ ] **AO2.** As the Venaissin's lord (player): the toast "Lamps in the Street Again" with the county's name.
+- [ ] **AO3.** It does not fire at 40 or more members, within 40 years of the last time, or (at 12–39 members) while a ruler of the sect lives or a court has three of it; under 12 it can fire even with a house standing.
+- [ ] **AO4.** Observe run: `relit` in the census; Ha-Nehpakhot never stays at 0 for more than a few decades; no error.log lines from tm_hn4.
