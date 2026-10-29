@@ -129,6 +129,8 @@ Evans and Hancock row 4: law treats níð against kings as its own category, and
 
 ## 7. Open questions for the user
 
+**Decided (user, 2026-10-29): every default below is accepted.**
+
 1. **Is carved níð heavier or lighter?** Mitchell (row 9) has the pole "a heavier insult and a heavier crime than spoken níð". Evans and Hancock (row 3) have it drawing a *lower* legal penalty than verse. **Default (built):** heavier as an insult, lighter as a crime. The pole costs the target medium prestige where the spoken word costs minor, and a requital by a pole pays off two wrongs. At law it brings only lesser outlawry, where the three words bring full outlawry.
 2. **Men only?** The pole and the verses are misogyny aimed at a man, so the target of a pole and the king sung against must be men, and never daughters, Marked or declared women. A woman who wronged her house cannot be poled, and a queen cannot be sung against. **Default:** keep it so. The sources' níð against women is a different insult (sexual slander), which the mod does not want as a mechanic.
 3. **Where Sverrir's law applies.** Built for de jure Norway, Iceland included, from 1270 (`tm_bae6_sverrir_law_trigger`). Danish and Swedish courts use the "older northern law" branch (lesser outlawry) at every date. **Default:** keep. Add Sweden from 1350 (Magnus Eriksson) only if a source names the pole there.

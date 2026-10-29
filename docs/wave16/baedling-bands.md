@@ -151,6 +151,8 @@ Nothing here adds members or changes conversion. The Vigla gives a band gold, pr
 
 ## 8. Open questions for the user
 
+**Decided (user, 2026-10-29): every default below is accepted.**
+
 1. **Who may keep the road?** Built: the bands of all six faiths (wave 4's bands are all six; the research row names the Dorleyaian band too). Default: keep all six. Alternative: Bædling only, as the roadmap line reads.
 2. **The Watch on the Coast.** The Négre row (a coastal post contract for Badenya and Ha-Nehpakhot bands under Muslim lords, cancelled when the realm centralises) has the same shape. Default: not in this wave; a second contract type on the same chain later.
 3. **The garrison.** Built: a clean term makes the lord remember the band's service, so wave 4's Patent and the Robe may offer a county. Default: keep. Alternative: an immediate settlement offer at the term's end (closer to the row's "on completion").

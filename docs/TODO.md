@@ -377,10 +377,10 @@ In-game checks for everything built on 2026-10-21 in wave 4. Scenarios are in TO
 
 ## Wave 15: Bædling, the níð-pole raised oneself, the Níð of the Land, vows over the cup (added 2026-10-29, untested in-game; docs/wave15/baedling.md)
 - [x] Bædling wave 15 (`tm_bae6`): Raise the Níð-Pole (scheme with a proxy carver; carved níð pays off two wrongs in the Account; the carver at law: Christian law of Norway from 1270, or lesser outlawry under the old law); the Níð of the Land (decision against a king whose house owes hers); vows over the cup at the bragarfull and after a flyting, kept or broken after five years (built, not yet tested in game)
-- [ ] Decide (docs/wave15/baedling.md §7): carved níð heavier insult, lighter crime; men only as targets; Sverrir's law in Norway and Iceland only; the crime on the poet alone; the doors to the vow; settlement keeps a requital vow; any land gain keeps the land vow; male raisers; AI frequency
+- [x] Decide (docs/wave15/baedling.md §7), all defaults accepted (user, 2026-10-29): carved níð heavier insult, lighter crime; men only as targets; Sverrir's law in Norway and Iceland only; the crime on the poet alone; the doors to the vow; settlement keeps a requital vow; any land gain keeps the land vow; male raisers; AI frequency
 - [ ] Not built: Provoke the Words (Miller row 13); the rescue vow; the Níð of the Land's faction discontent; −10 opinion of the raiser from neutral same-culture characters
 
 ## Wave 16: Bædling bands (added 2026-10-29, untested in-game; docs/wave16/baedling-bands.md)
 - [ ] Bands wave 16 (`tm_bae7`): Keep the Road, a new task contract for the bands of the six faiths (0001–0021: the thief, the toll, the guards' habit from 1327; a clean term counts as service for the Patent and the Robe); a harbour with a petty coastal lord for a landed Bædling band losing its land (0030–0033, no land-to-camp scripting); The Sword Is My Patent, a decision after a refusal that follows patience, with the lord's last letter (0040) (built, not yet tested in game)
 - [ ] Not built: the darker Companions (*The Plot Discovered*) and Dirham's road; the Watch on the Coast (Négre row 3)
-- [ ] Decide wave 16's open questions (docs/wave16/baedling-bands.md §8)
+- [x] Decide wave 16's open questions (docs/wave16/baedling-bands.md §8): all defaults accepted, the darker Companions wait for §U6 (user, 2026-10-29)
