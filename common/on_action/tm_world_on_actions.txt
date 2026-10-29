@@ -453,7 +453,7 @@ tm_world_yearly = {
 							trigger = {
 								scope:tm_world_daughter = {
 									tm_world_nehpakhot_daughter_trigger = no
-									location.county = { NOT = { has_variable = tm_world_women_hour_open } }
+									location.county ?= { NOT = { has_variable = tm_world_women_hour_open } }
 								}
 								scope:tm_world_court = {
 									OR = {

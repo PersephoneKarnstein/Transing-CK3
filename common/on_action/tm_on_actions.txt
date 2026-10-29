@@ -169,6 +169,9 @@ tm_on_game_start = {
 				limit = { exists = scope:tm_huijing }
 				character:304191 = { save_scope_as = tm_xun }
 				tm_hand_over_realm_effect = { FROM = scope:tm_xun TO = scope:tm_huijing }
+				# Xun's realm is men-only; the game makes women to hold the baronies she grants out, and under that law
+				# every grant failed, daily, until she died (run 26: 1,176 "could not grant title b_baizhang" errors).
+				scope:tm_huijing = { add_realm_law_skip_effects = equal_law }
 				character:han_40016 ?= {
 					if = {
 						limit = { is_alive = yes }

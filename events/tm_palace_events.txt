@@ -90,7 +90,7 @@ tm_palace.0002 = {
 			60 = {
 				desc = tm_palace.0002.a.kept
 				add_prestige = 25
-				top_liege ?= { primary_title = { tm_yt2_north_effect = { AMOUNT = 1 } } }	# stage 2 (tm_yt2_effects.txt)
+				top_liege ?= { primary_title ?= { tm_yt2_north_effect = { AMOUNT = 1 } } }	# stage 2 (tm_yt2_effects.txt)
 			}
 			40 = {
 				desc = tm_palace.0002.a.lost

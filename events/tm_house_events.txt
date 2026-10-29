@@ -286,7 +286,7 @@ tm_house.0050 = {
 			if = {
 				limit = {
 					has_variable = tm_house_protectress
-					var:tm_house_protectress ?= { is_alive = yes }
+					var:tm_house_protectress ?= { is_alive = yes NOT = { this = root } }
 				}
 				var:tm_house_protectress = {
 					add_opinion = { target = root modifier = angry_opinion opinion = -40 }

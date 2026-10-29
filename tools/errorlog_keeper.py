@@ -19,11 +19,13 @@ Usage (start it after the game is running; it stops by itself when the game quit
     python3 tools/errorlog_keeper.py [--auto-clear] [--console-key '`'] [--threshold 95000]
 
 Output, outside the repo: <logs>/archive/ours_<date>_<time>.log (the mod's errors) and, at the end,
-<logs>/archive/vanilla_<date>_<time>.txt (the game's own errors counted by source file). With --all, also
-<logs>/archive/error_<date>_<time>.log (everything).
+<logs>/archive/summary_<date>_<time>.txt: the mod's errors counted by where they were raised, the mod's known
+harmless errors counted by kind (KNOWN below; not kept in the log), and the game's own errors counted by source
+file. With --all, also <logs>/archive/error_<date>_<time>.log (everything).
 
-Vanilla errors raised inside one of our hooks (a tm_ on_action only in the call stack) are counted in the vanilla
-file, marked "[inside our hook]", so they stay visible without crowding the mod's log.
+The game's own errors that only touch the mod are counted with the game's, marked: "[inside our hook]" (a tm_
+on_action or effect only in the call stack) or "[names our faith or a character of ours]" (our faith's name only in
+the error's tooltip text, e.g. a vanilla conversion refused).
 """
 
 import argparse
@@ -42,6 +44,16 @@ OURS = re.compile(rb'(?<![A-Za-z0-9_])tm_')                  # our files, keys, 
 LOC = re.compile(rb'Script location: file: (\S+)')
 CPP = re.compile(rb'\]\[(\w+\.cpp):')
 STACK = re.compile(rb'^\s+file: ')                          # call-stack lines under "Script location"
+MARKUP = re.compile(rb'(?:TOOLTIP|ONCLICK):\w+,[^ !]*')       # loc markup: a vanilla error that only shows our faith's name
+# The mod's errors known to be harmless, counted in the summary instead of kept.
+KNOWN = [
+    (re.compile(rb"left was 'faith', right was 'rite'"),
+     'tenet is_shown checked on a rite (1.20 asks it of both; tm_tenet_types.txt)'),
+    (re.compile(rb"Variable 'tm_\w+' is set but is never used"),
+     "variable set but never read by script (census counters, read from the save by census_report.py)"),
+    (re.compile(rb"Variable 'tm_\w+' is used but is never set"),
+     'variable used but never set (made by change_variable or kept from old saves)'),
+]
 
 
 def game_running():
@@ -88,6 +100,25 @@ end tell
     return ok
 
 
+def classify(text):
+    """('ours', location), ('known', label) or ('vanilla', source file) for one log entry."""
+    lines = text.splitlines(keepends=True)
+    own = b''.join(l for l in lines if not STACK.match(l))     # the entry without its call stack
+    m = LOC.search(text) or CPP.search(text)
+    where = m.group(1).decode(errors='replace') if m else '(unknown)'
+    if OURS.search(MARKUP.sub(b'', own)):
+        for pat, label in KNOWN:
+            if pat.search(own):
+                return 'known', label
+        m = re.search(rb'Script location: file: (\S+) line: \d+ \(([^)]*)\)', text)
+        return 'ours', (f'{m.group(1).decode()} ({m.group(2).decode()})' if m else where)
+    if OURS.search(own):
+        where += '   [names our faith or a character of ours]'
+    elif OURS.search(text):
+        where += '   [inside our hook]'
+    return 'vanilla', where
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--logs', default=LOGS, help='the game\'s logs folder')
@@ -103,7 +134,7 @@ def main():
     stamp = datetime.datetime.now().strftime('%Y%m%d_%H%M%S')
     ours_path = os.path.join(args.logs, 'archive', f'ours_{stamp}.log')
     all_path = os.path.join(args.logs, 'archive', f'error_{stamp}.log')
-    vanilla_path = os.path.join(args.logs, 'archive', f'vanilla_{stamp}.txt')
+    summary_path = os.path.join(args.logs, 'archive', f'summary_{stamp}.txt')
     if not game_running():
         sys.exit('CK3 is not running. Start the game first, then this script.')
     if args.auto_clear:
@@ -116,6 +147,8 @@ def main():
           + '\nStops when the game quits. Ctrl-C to stop early.', flush=True)
 
     vanilla = {}        # the game's own errors by source file
+    ours = {}           # the mod's errors kept, by where they were raised
+    known = {}          # the mod's harmless errors, by kind
     kept = [0]          # the mod's errors kept
     entry = []          # lines of the entry being read
 
@@ -123,17 +156,16 @@ def main():
         if not entry:
             return
         text = b''.join(entry)
-        own = b''.join(l for l in entry if not STACK.match(l))     # the entry without its call stack
-        if OURS.search(own):
+        entry.clear()
+        kind, key = classify(text)
+        if kind == 'ours':
             out_ours.write(text)
             kept[0] += 1
+            ours[key] = ours.get(key, 0) + 1
+        elif kind == 'known':
+            known[key] = known.get(key, 0) + 1
         else:
-            m = LOC.search(text) or CPP.search(text)
-            key = m.group(1).decode(errors='replace') if m else '(unknown)'
-            if OURS.search(text):                               # a vanilla error raised inside one of our hooks
-                key += '   [inside our hook]'
             vanilla[key] = vanilla.get(key, 0) + 1
-        entry.clear()
 
     offset = 0          # bytes of error.log already read
     count = 0           # errors in error.log since the game last cleared it
@@ -202,13 +234,17 @@ def main():
         close_entry(out_ours)
     if out_all:
         out_all.close()
-    with open(vanilla_path, 'w', encoding='utf-8') as v:
-        v.write(f'The game\'s own errors this run, by source ({sum(vanilla.values()):,} in all):\n')
-        for k, n in sorted(vanilla.items(), key=lambda kv: -kv[1]):
-            v.write(f'{n:9,}  {k}\n')
+    with open(summary_path, 'w', encoding='utf-8') as v:
+        def section(title, d):
+            v.write(f'{title} ({sum(d.values()):,} in all):\n')
+            for k, n in sorted(d.items(), key=lambda kv: -kv[1]):
+                v.write(f'{n:9,}  {k}\n')
+            v.write('\n')
+        section(f"The mod's errors kept in {os.path.basename(ours_path)}, by where they were raised", ours)
+        section("The mod's errors known to be harmless, counted only", known)
+        section("The game's own errors, by source", vanilla)
     print(f'Done. {total:,} errors read ({clears} clears): {kept[0]:,} of the mod\'s kept in {ours_path}; '
-          f'the game\'s own counted in {vanilla_path}.', flush=True)
-
+          f'{sum(known.values()):,} known harmless and the game\'s own counted in {summary_path}.', flush=True)
 
 if __name__ == '__main__':
     main()

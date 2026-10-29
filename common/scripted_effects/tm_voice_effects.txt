@@ -17,6 +17,7 @@ tm_voice_companions_back_daughter_effect = {
 			has_variable = tm_voice_backed
 			OR = {
 				NOT = { var:tm_voice_backed_for ?= scope:tm_voice_mother }
+				NOT = { exists = var:tm_voice_backed }		# dead and pruned from the save
 				var:tm_voice_backed ?= { NOT = { tm_voice_backable_daughter_trigger = yes } }
 			}
 		}

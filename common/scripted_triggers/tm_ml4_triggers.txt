@@ -87,6 +87,6 @@ tm_ml4_kanchi_road_trigger = {
 	NOT = { has_variable = tm_ml4_pepper_vow }
 	NOT = { has_variable = tm_ml4_pepper_cooldown }
 	exists = current_travel_plan
-	current_travel_plan.final_destination_province ?= { county = title:c_kanchipuram }
+	current_travel_plan.final_destination_province ?= { county ?= title:c_kanchipuram }
 	NOT = { location.county ?= title:c_kanchipuram }
 }

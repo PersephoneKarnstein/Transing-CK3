@@ -1119,6 +1119,261 @@ tm_census_log_effect = {
 			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1450_pool_deaths value = var:tm_n_pool_deaths } }
 			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1450_pilgrims value = var:tm_n_pilgrims } }
 		}
+		else_if = {
+			limit = { current_year < 1470 }
+			set_variable = { name = tm_c1460_members value = var:tm_t_members }
+			set_variable = { name = tm_c1460_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1460_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1460_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1460_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1460_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1460_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1460_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1460_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1460_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1460_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1460_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1460_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1460_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1480 }
+			set_variable = { name = tm_c1470_members value = var:tm_t_members }
+			set_variable = { name = tm_c1470_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1470_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1470_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1470_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1470_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1470_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1470_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1470_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1470_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1470_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1470_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1470_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1470_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1490 }
+			set_variable = { name = tm_c1480_members value = var:tm_t_members }
+			set_variable = { name = tm_c1480_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1480_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1480_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1480_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1480_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1480_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1480_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1480_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1480_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1480_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1480_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1480_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1480_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1500 }
+			set_variable = { name = tm_c1490_members value = var:tm_t_members }
+			set_variable = { name = tm_c1490_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1490_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1490_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1490_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1490_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1490_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1490_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1490_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1490_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1490_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1490_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1490_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1490_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1510 }
+			set_variable = { name = tm_c1500_members value = var:tm_t_members }
+			set_variable = { name = tm_c1500_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1500_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1500_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1500_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1500_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1500_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1500_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1500_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1500_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1500_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1500_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1500_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1500_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1520 }
+			set_variable = { name = tm_c1510_members value = var:tm_t_members }
+			set_variable = { name = tm_c1510_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1510_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1510_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1510_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1510_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1510_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1510_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1510_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1510_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1510_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1510_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1510_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1510_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1530 }
+			set_variable = { name = tm_c1520_members value = var:tm_t_members }
+			set_variable = { name = tm_c1520_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1520_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1520_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1520_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1520_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1520_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1520_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1520_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1520_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1520_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1520_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1520_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1520_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1540 }
+			set_variable = { name = tm_c1530_members value = var:tm_t_members }
+			set_variable = { name = tm_c1530_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1530_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1530_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1530_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1530_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1530_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1530_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1530_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1530_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1530_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1530_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1530_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1530_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1550 }
+			set_variable = { name = tm_c1540_members value = var:tm_t_members }
+			set_variable = { name = tm_c1540_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1540_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1540_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1540_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1540_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1540_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1540_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1540_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1540_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1540_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1540_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1540_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1540_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1560 }
+			set_variable = { name = tm_c1550_members value = var:tm_t_members }
+			set_variable = { name = tm_c1550_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1550_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1550_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1550_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1550_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1550_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1550_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1550_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1550_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1550_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1550_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1550_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1550_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1570 }
+			set_variable = { name = tm_c1560_members value = var:tm_t_members }
+			set_variable = { name = tm_c1560_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1560_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1560_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1560_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1560_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1560_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1560_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1560_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1560_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1560_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1560_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1560_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1560_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1580 }
+			set_variable = { name = tm_c1570_members value = var:tm_t_members }
+			set_variable = { name = tm_c1570_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1570_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1570_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1570_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1570_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1570_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1570_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1570_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1570_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1570_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1570_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1570_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1570_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1590 }
+			set_variable = { name = tm_c1580_members value = var:tm_t_members }
+			set_variable = { name = tm_c1580_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1580_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1580_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1580_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1580_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1580_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1580_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1580_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1580_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1580_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1580_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1580_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1580_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1600 }
+			set_variable = { name = tm_c1590_members value = var:tm_t_members }
+			set_variable = { name = tm_c1590_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1590_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1590_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1590_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1590_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1590_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1590_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1590_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1590_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1590_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1590_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1590_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1590_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1610 }
+			set_variable = { name = tm_c1600_members value = var:tm_t_members }
+			set_variable = { name = tm_c1600_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1600_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1600_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1600_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1600_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1600_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1600_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1600_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1600_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1600_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1600_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1600_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1600_pilgrims value = var:tm_n_pilgrims } }
+		}
 	}
 	faith:tm_baeddel = {
 		if = {
@@ -2140,6 +2395,261 @@ tm_census_log_effect = {
 			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1450_deaths value = var:tm_n_deaths } }
 			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1450_pool_deaths value = var:tm_n_pool_deaths } }
 			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1450_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1470 }
+			set_variable = { name = tm_c1460_members value = var:tm_t_members }
+			set_variable = { name = tm_c1460_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1460_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1460_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1460_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1460_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1460_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1460_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1460_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1460_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1460_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1460_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1460_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1460_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1480 }
+			set_variable = { name = tm_c1470_members value = var:tm_t_members }
+			set_variable = { name = tm_c1470_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1470_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1470_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1470_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1470_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1470_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1470_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1470_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1470_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1470_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1470_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1470_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1470_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1490 }
+			set_variable = { name = tm_c1480_members value = var:tm_t_members }
+			set_variable = { name = tm_c1480_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1480_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1480_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1480_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1480_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1480_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1480_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1480_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1480_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1480_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1480_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1480_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1480_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1500 }
+			set_variable = { name = tm_c1490_members value = var:tm_t_members }
+			set_variable = { name = tm_c1490_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1490_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1490_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1490_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1490_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1490_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1490_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1490_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1490_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1490_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1490_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1490_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1490_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1510 }
+			set_variable = { name = tm_c1500_members value = var:tm_t_members }
+			set_variable = { name = tm_c1500_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1500_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1500_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1500_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1500_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1500_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1500_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1500_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1500_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1500_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1500_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1500_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1500_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1520 }
+			set_variable = { name = tm_c1510_members value = var:tm_t_members }
+			set_variable = { name = tm_c1510_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1510_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1510_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1510_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1510_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1510_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1510_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1510_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1510_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1510_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1510_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1510_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1510_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1530 }
+			set_variable = { name = tm_c1520_members value = var:tm_t_members }
+			set_variable = { name = tm_c1520_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1520_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1520_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1520_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1520_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1520_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1520_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1520_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1520_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1520_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1520_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1520_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1520_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1540 }
+			set_variable = { name = tm_c1530_members value = var:tm_t_members }
+			set_variable = { name = tm_c1530_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1530_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1530_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1530_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1530_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1530_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1530_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1530_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1530_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1530_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1530_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1530_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1530_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1550 }
+			set_variable = { name = tm_c1540_members value = var:tm_t_members }
+			set_variable = { name = tm_c1540_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1540_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1540_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1540_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1540_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1540_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1540_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1540_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1540_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1540_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1540_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1540_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1540_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1560 }
+			set_variable = { name = tm_c1550_members value = var:tm_t_members }
+			set_variable = { name = tm_c1550_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1550_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1550_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1550_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1550_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1550_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1550_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1550_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1550_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1550_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1550_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1550_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1550_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1570 }
+			set_variable = { name = tm_c1560_members value = var:tm_t_members }
+			set_variable = { name = tm_c1560_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1560_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1560_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1560_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1560_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1560_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1560_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1560_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1560_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1560_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1560_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1560_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1560_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1580 }
+			set_variable = { name = tm_c1570_members value = var:tm_t_members }
+			set_variable = { name = tm_c1570_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1570_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1570_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1570_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1570_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1570_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1570_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1570_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1570_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1570_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1570_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1570_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1570_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1590 }
+			set_variable = { name = tm_c1580_members value = var:tm_t_members }
+			set_variable = { name = tm_c1580_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1580_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1580_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1580_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1580_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1580_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1580_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1580_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1580_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1580_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1580_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1580_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1580_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1600 }
+			set_variable = { name = tm_c1590_members value = var:tm_t_members }
+			set_variable = { name = tm_c1590_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1590_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1590_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1590_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1590_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1590_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1590_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1590_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1590_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1590_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1590_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1590_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1590_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1610 }
+			set_variable = { name = tm_c1600_members value = var:tm_t_members }
+			set_variable = { name = tm_c1600_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1600_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1600_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1600_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1600_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1600_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1600_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1600_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1600_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1600_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1600_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1600_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1600_pilgrims value = var:tm_n_pilgrims } }
 		}
 	}
 	faith:tm_yutai = {
@@ -3163,6 +3673,261 @@ tm_census_log_effect = {
 			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1450_pool_deaths value = var:tm_n_pool_deaths } }
 			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1450_pilgrims value = var:tm_n_pilgrims } }
 		}
+		else_if = {
+			limit = { current_year < 1470 }
+			set_variable = { name = tm_c1460_members value = var:tm_t_members }
+			set_variable = { name = tm_c1460_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1460_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1460_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1460_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1460_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1460_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1460_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1460_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1460_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1460_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1460_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1460_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1460_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1480 }
+			set_variable = { name = tm_c1470_members value = var:tm_t_members }
+			set_variable = { name = tm_c1470_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1470_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1470_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1470_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1470_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1470_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1470_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1470_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1470_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1470_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1470_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1470_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1470_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1490 }
+			set_variable = { name = tm_c1480_members value = var:tm_t_members }
+			set_variable = { name = tm_c1480_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1480_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1480_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1480_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1480_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1480_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1480_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1480_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1480_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1480_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1480_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1480_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1480_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1500 }
+			set_variable = { name = tm_c1490_members value = var:tm_t_members }
+			set_variable = { name = tm_c1490_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1490_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1490_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1490_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1490_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1490_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1490_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1490_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1490_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1490_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1490_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1490_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1490_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1510 }
+			set_variable = { name = tm_c1500_members value = var:tm_t_members }
+			set_variable = { name = tm_c1500_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1500_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1500_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1500_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1500_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1500_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1500_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1500_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1500_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1500_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1500_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1500_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1500_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1520 }
+			set_variable = { name = tm_c1510_members value = var:tm_t_members }
+			set_variable = { name = tm_c1510_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1510_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1510_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1510_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1510_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1510_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1510_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1510_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1510_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1510_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1510_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1510_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1510_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1530 }
+			set_variable = { name = tm_c1520_members value = var:tm_t_members }
+			set_variable = { name = tm_c1520_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1520_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1520_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1520_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1520_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1520_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1520_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1520_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1520_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1520_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1520_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1520_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1520_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1540 }
+			set_variable = { name = tm_c1530_members value = var:tm_t_members }
+			set_variable = { name = tm_c1530_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1530_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1530_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1530_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1530_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1530_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1530_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1530_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1530_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1530_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1530_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1530_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1530_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1550 }
+			set_variable = { name = tm_c1540_members value = var:tm_t_members }
+			set_variable = { name = tm_c1540_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1540_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1540_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1540_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1540_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1540_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1540_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1540_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1540_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1540_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1540_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1540_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1540_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1560 }
+			set_variable = { name = tm_c1550_members value = var:tm_t_members }
+			set_variable = { name = tm_c1550_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1550_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1550_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1550_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1550_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1550_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1550_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1550_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1550_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1550_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1550_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1550_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1550_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1570 }
+			set_variable = { name = tm_c1560_members value = var:tm_t_members }
+			set_variable = { name = tm_c1560_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1560_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1560_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1560_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1560_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1560_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1560_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1560_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1560_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1560_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1560_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1560_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1560_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1580 }
+			set_variable = { name = tm_c1570_members value = var:tm_t_members }
+			set_variable = { name = tm_c1570_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1570_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1570_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1570_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1570_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1570_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1570_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1570_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1570_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1570_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1570_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1570_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1570_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1590 }
+			set_variable = { name = tm_c1580_members value = var:tm_t_members }
+			set_variable = { name = tm_c1580_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1580_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1580_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1580_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1580_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1580_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1580_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1580_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1580_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1580_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1580_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1580_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1580_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1600 }
+			set_variable = { name = tm_c1590_members value = var:tm_t_members }
+			set_variable = { name = tm_c1590_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1590_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1590_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1590_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1590_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1590_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1590_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1590_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1590_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1590_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1590_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1590_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1590_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1610 }
+			set_variable = { name = tm_c1600_members value = var:tm_t_members }
+			set_variable = { name = tm_c1600_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1600_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1600_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1600_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1600_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1600_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1600_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1600_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1600_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1600_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1600_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1600_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1600_pilgrims value = var:tm_n_pilgrims } }
+		}
 	}
 	faith:tm_nehpakhot = {
 		if = {
@@ -4184,6 +4949,261 @@ tm_census_log_effect = {
 			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1450_deaths value = var:tm_n_deaths } }
 			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1450_pool_deaths value = var:tm_n_pool_deaths } }
 			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1450_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1470 }
+			set_variable = { name = tm_c1460_members value = var:tm_t_members }
+			set_variable = { name = tm_c1460_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1460_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1460_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1460_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1460_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1460_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1460_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1460_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1460_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1460_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1460_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1460_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1460_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1480 }
+			set_variable = { name = tm_c1470_members value = var:tm_t_members }
+			set_variable = { name = tm_c1470_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1470_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1470_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1470_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1470_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1470_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1470_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1470_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1470_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1470_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1470_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1470_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1470_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1490 }
+			set_variable = { name = tm_c1480_members value = var:tm_t_members }
+			set_variable = { name = tm_c1480_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1480_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1480_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1480_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1480_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1480_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1480_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1480_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1480_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1480_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1480_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1480_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1480_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1500 }
+			set_variable = { name = tm_c1490_members value = var:tm_t_members }
+			set_variable = { name = tm_c1490_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1490_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1490_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1490_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1490_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1490_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1490_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1490_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1490_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1490_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1490_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1490_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1490_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1510 }
+			set_variable = { name = tm_c1500_members value = var:tm_t_members }
+			set_variable = { name = tm_c1500_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1500_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1500_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1500_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1500_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1500_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1500_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1500_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1500_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1500_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1500_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1500_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1500_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1520 }
+			set_variable = { name = tm_c1510_members value = var:tm_t_members }
+			set_variable = { name = tm_c1510_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1510_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1510_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1510_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1510_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1510_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1510_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1510_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1510_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1510_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1510_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1510_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1510_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1530 }
+			set_variable = { name = tm_c1520_members value = var:tm_t_members }
+			set_variable = { name = tm_c1520_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1520_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1520_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1520_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1520_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1520_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1520_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1520_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1520_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1520_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1520_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1520_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1520_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1540 }
+			set_variable = { name = tm_c1530_members value = var:tm_t_members }
+			set_variable = { name = tm_c1530_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1530_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1530_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1530_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1530_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1530_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1530_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1530_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1530_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1530_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1530_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1530_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1530_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1550 }
+			set_variable = { name = tm_c1540_members value = var:tm_t_members }
+			set_variable = { name = tm_c1540_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1540_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1540_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1540_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1540_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1540_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1540_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1540_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1540_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1540_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1540_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1540_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1540_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1560 }
+			set_variable = { name = tm_c1550_members value = var:tm_t_members }
+			set_variable = { name = tm_c1550_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1550_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1550_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1550_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1550_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1550_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1550_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1550_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1550_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1550_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1550_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1550_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1550_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1570 }
+			set_variable = { name = tm_c1560_members value = var:tm_t_members }
+			set_variable = { name = tm_c1560_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1560_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1560_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1560_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1560_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1560_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1560_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1560_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1560_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1560_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1560_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1560_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1560_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1580 }
+			set_variable = { name = tm_c1570_members value = var:tm_t_members }
+			set_variable = { name = tm_c1570_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1570_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1570_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1570_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1570_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1570_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1570_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1570_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1570_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1570_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1570_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1570_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1570_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1590 }
+			set_variable = { name = tm_c1580_members value = var:tm_t_members }
+			set_variable = { name = tm_c1580_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1580_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1580_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1580_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1580_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1580_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1580_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1580_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1580_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1580_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1580_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1580_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1580_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1600 }
+			set_variable = { name = tm_c1590_members value = var:tm_t_members }
+			set_variable = { name = tm_c1590_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1590_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1590_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1590_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1590_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1590_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1590_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1590_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1590_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1590_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1590_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1590_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1590_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1610 }
+			set_variable = { name = tm_c1600_members value = var:tm_t_members }
+			set_variable = { name = tm_c1600_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1600_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1600_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1600_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1600_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1600_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1600_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1600_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1600_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1600_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1600_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1600_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1600_pilgrims value = var:tm_n_pilgrims } }
 		}
 	}
 	faith:tm_garland = {
@@ -5207,6 +6227,261 @@ tm_census_log_effect = {
 			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1450_pool_deaths value = var:tm_n_pool_deaths } }
 			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1450_pilgrims value = var:tm_n_pilgrims } }
 		}
+		else_if = {
+			limit = { current_year < 1470 }
+			set_variable = { name = tm_c1460_members value = var:tm_t_members }
+			set_variable = { name = tm_c1460_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1460_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1460_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1460_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1460_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1460_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1460_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1460_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1460_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1460_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1460_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1460_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1460_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1480 }
+			set_variable = { name = tm_c1470_members value = var:tm_t_members }
+			set_variable = { name = tm_c1470_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1470_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1470_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1470_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1470_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1470_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1470_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1470_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1470_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1470_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1470_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1470_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1470_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1490 }
+			set_variable = { name = tm_c1480_members value = var:tm_t_members }
+			set_variable = { name = tm_c1480_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1480_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1480_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1480_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1480_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1480_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1480_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1480_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1480_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1480_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1480_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1480_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1480_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1500 }
+			set_variable = { name = tm_c1490_members value = var:tm_t_members }
+			set_variable = { name = tm_c1490_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1490_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1490_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1490_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1490_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1490_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1490_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1490_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1490_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1490_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1490_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1490_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1490_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1510 }
+			set_variable = { name = tm_c1500_members value = var:tm_t_members }
+			set_variable = { name = tm_c1500_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1500_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1500_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1500_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1500_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1500_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1500_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1500_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1500_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1500_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1500_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1500_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1500_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1520 }
+			set_variable = { name = tm_c1510_members value = var:tm_t_members }
+			set_variable = { name = tm_c1510_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1510_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1510_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1510_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1510_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1510_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1510_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1510_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1510_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1510_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1510_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1510_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1510_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1530 }
+			set_variable = { name = tm_c1520_members value = var:tm_t_members }
+			set_variable = { name = tm_c1520_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1520_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1520_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1520_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1520_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1520_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1520_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1520_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1520_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1520_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1520_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1520_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1520_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1540 }
+			set_variable = { name = tm_c1530_members value = var:tm_t_members }
+			set_variable = { name = tm_c1530_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1530_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1530_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1530_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1530_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1530_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1530_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1530_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1530_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1530_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1530_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1530_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1530_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1550 }
+			set_variable = { name = tm_c1540_members value = var:tm_t_members }
+			set_variable = { name = tm_c1540_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1540_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1540_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1540_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1540_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1540_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1540_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1540_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1540_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1540_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1540_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1540_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1540_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1560 }
+			set_variable = { name = tm_c1550_members value = var:tm_t_members }
+			set_variable = { name = tm_c1550_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1550_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1550_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1550_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1550_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1550_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1550_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1550_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1550_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1550_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1550_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1550_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1550_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1570 }
+			set_variable = { name = tm_c1560_members value = var:tm_t_members }
+			set_variable = { name = tm_c1560_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1560_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1560_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1560_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1560_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1560_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1560_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1560_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1560_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1560_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1560_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1560_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1560_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1580 }
+			set_variable = { name = tm_c1570_members value = var:tm_t_members }
+			set_variable = { name = tm_c1570_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1570_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1570_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1570_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1570_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1570_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1570_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1570_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1570_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1570_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1570_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1570_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1570_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1590 }
+			set_variable = { name = tm_c1580_members value = var:tm_t_members }
+			set_variable = { name = tm_c1580_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1580_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1580_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1580_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1580_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1580_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1580_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1580_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1580_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1580_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1580_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1580_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1580_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1600 }
+			set_variable = { name = tm_c1590_members value = var:tm_t_members }
+			set_variable = { name = tm_c1590_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1590_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1590_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1590_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1590_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1590_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1590_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1590_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1590_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1590_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1590_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1590_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1590_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1610 }
+			set_variable = { name = tm_c1600_members value = var:tm_t_members }
+			set_variable = { name = tm_c1600_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1600_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1600_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1600_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1600_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1600_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1600_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1600_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1600_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1600_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1600_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1600_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1600_pilgrims value = var:tm_n_pilgrims } }
+		}
 	}
 	faith:tm_badenya = {
 		if = {
@@ -6229,6 +7504,261 @@ tm_census_log_effect = {
 			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1450_pool_deaths value = var:tm_n_pool_deaths } }
 			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1450_pilgrims value = var:tm_n_pilgrims } }
 		}
+		else_if = {
+			limit = { current_year < 1470 }
+			set_variable = { name = tm_c1460_members value = var:tm_t_members }
+			set_variable = { name = tm_c1460_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1460_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1460_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1460_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1460_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1460_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1460_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1460_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1460_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1460_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1460_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1460_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1460_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1480 }
+			set_variable = { name = tm_c1470_members value = var:tm_t_members }
+			set_variable = { name = tm_c1470_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1470_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1470_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1470_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1470_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1470_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1470_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1470_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1470_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1470_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1470_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1470_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1470_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1490 }
+			set_variable = { name = tm_c1480_members value = var:tm_t_members }
+			set_variable = { name = tm_c1480_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1480_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1480_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1480_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1480_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1480_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1480_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1480_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1480_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1480_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1480_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1480_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1480_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1500 }
+			set_variable = { name = tm_c1490_members value = var:tm_t_members }
+			set_variable = { name = tm_c1490_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1490_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1490_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1490_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1490_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1490_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1490_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1490_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1490_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1490_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1490_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1490_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1490_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1510 }
+			set_variable = { name = tm_c1500_members value = var:tm_t_members }
+			set_variable = { name = tm_c1500_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1500_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1500_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1500_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1500_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1500_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1500_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1500_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1500_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1500_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1500_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1500_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1500_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1520 }
+			set_variable = { name = tm_c1510_members value = var:tm_t_members }
+			set_variable = { name = tm_c1510_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1510_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1510_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1510_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1510_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1510_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1510_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1510_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1510_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1510_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1510_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1510_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1510_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1530 }
+			set_variable = { name = tm_c1520_members value = var:tm_t_members }
+			set_variable = { name = tm_c1520_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1520_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1520_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1520_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1520_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1520_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1520_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1520_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1520_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1520_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1520_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1520_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1520_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1540 }
+			set_variable = { name = tm_c1530_members value = var:tm_t_members }
+			set_variable = { name = tm_c1530_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1530_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1530_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1530_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1530_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1530_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1530_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1530_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1530_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1530_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1530_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1530_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1530_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1550 }
+			set_variable = { name = tm_c1540_members value = var:tm_t_members }
+			set_variable = { name = tm_c1540_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1540_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1540_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1540_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1540_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1540_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1540_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1540_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1540_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1540_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1540_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1540_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1540_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1560 }
+			set_variable = { name = tm_c1550_members value = var:tm_t_members }
+			set_variable = { name = tm_c1550_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1550_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1550_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1550_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1550_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1550_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1550_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1550_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1550_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1550_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1550_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1550_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1550_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1570 }
+			set_variable = { name = tm_c1560_members value = var:tm_t_members }
+			set_variable = { name = tm_c1560_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1560_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1560_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1560_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1560_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1560_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1560_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1560_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1560_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1560_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1560_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1560_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1560_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1580 }
+			set_variable = { name = tm_c1570_members value = var:tm_t_members }
+			set_variable = { name = tm_c1570_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1570_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1570_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1570_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1570_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1570_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1570_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1570_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1570_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1570_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1570_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1570_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1570_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1590 }
+			set_variable = { name = tm_c1580_members value = var:tm_t_members }
+			set_variable = { name = tm_c1580_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1580_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1580_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1580_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1580_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1580_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1580_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1580_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1580_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1580_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1580_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1580_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1580_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1600 }
+			set_variable = { name = tm_c1590_members value = var:tm_t_members }
+			set_variable = { name = tm_c1590_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1590_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1590_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1590_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1590_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1590_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1590_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1590_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1590_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1590_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1590_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1590_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1590_pilgrims value = var:tm_n_pilgrims } }
+		}
+		else_if = {
+			limit = { current_year < 1610 }
+			set_variable = { name = tm_c1600_members value = var:tm_t_members }
+			set_variable = { name = tm_c1600_daughters value = var:tm_t_daughters }
+			set_variable = { name = tm_c1600_marked value = var:tm_t_marked }
+			set_variable = { name = tm_c1600_rulers value = var:tm_t_rulers }
+			set_variable = { name = tm_c1600_counties value = var:tm_t_counties }
+			if = { limit = { has_variable = tm_n_joins } set_variable = { name = tm_c1600_joins value = var:tm_n_joins } }
+			if = { limit = { has_variable = tm_n_ruler_joins } set_variable = { name = tm_c1600_ruler_joins value = var:tm_n_ruler_joins } }
+			if = { limit = { has_variable = tm_n_kahal_joins } set_variable = { name = tm_c1600_kahal_joins value = var:tm_n_kahal_joins } }
+			if = { limit = { has_variable = tm_n_matches } set_variable = { name = tm_c1600_matches value = var:tm_n_matches } }
+			if = { limit = { has_variable = tm_n_offers } set_variable = { name = tm_c1600_offers value = var:tm_n_offers } }
+			if = { limit = { has_variable = tm_n_rises } set_variable = { name = tm_c1600_rises value = var:tm_n_rises } }
+			if = { limit = { has_variable = tm_n_deaths } set_variable = { name = tm_c1600_deaths value = var:tm_n_deaths } }
+			if = { limit = { has_variable = tm_n_pool_deaths } set_variable = { name = tm_c1600_pool_deaths value = var:tm_n_pool_deaths } }
+			if = { limit = { has_variable = tm_n_pilgrims } set_variable = { name = tm_c1600_pilgrims value = var:tm_n_pilgrims } }
+		}
 	}
 	if = {
 		limit = { current_year < 870 }
@@ -6529,5 +8059,80 @@ tm_census_log_effect = {
 		limit = { current_year < 1460 }
 		set_global_variable = { name = tm_c1450_marked value = scope:tm_w_marked }
 		set_global_variable = { name = tm_c1450_daughters value = scope:tm_w_daughters }
+	}
+	else_if = {
+		limit = { current_year < 1470 }
+		set_global_variable = { name = tm_c1460_marked value = scope:tm_w_marked }
+		set_global_variable = { name = tm_c1460_daughters value = scope:tm_w_daughters }
+	}
+	else_if = {
+		limit = { current_year < 1480 }
+		set_global_variable = { name = tm_c1470_marked value = scope:tm_w_marked }
+		set_global_variable = { name = tm_c1470_daughters value = scope:tm_w_daughters }
+	}
+	else_if = {
+		limit = { current_year < 1490 }
+		set_global_variable = { name = tm_c1480_marked value = scope:tm_w_marked }
+		set_global_variable = { name = tm_c1480_daughters value = scope:tm_w_daughters }
+	}
+	else_if = {
+		limit = { current_year < 1500 }
+		set_global_variable = { name = tm_c1490_marked value = scope:tm_w_marked }
+		set_global_variable = { name = tm_c1490_daughters value = scope:tm_w_daughters }
+	}
+	else_if = {
+		limit = { current_year < 1510 }
+		set_global_variable = { name = tm_c1500_marked value = scope:tm_w_marked }
+		set_global_variable = { name = tm_c1500_daughters value = scope:tm_w_daughters }
+	}
+	else_if = {
+		limit = { current_year < 1520 }
+		set_global_variable = { name = tm_c1510_marked value = scope:tm_w_marked }
+		set_global_variable = { name = tm_c1510_daughters value = scope:tm_w_daughters }
+	}
+	else_if = {
+		limit = { current_year < 1530 }
+		set_global_variable = { name = tm_c1520_marked value = scope:tm_w_marked }
+		set_global_variable = { name = tm_c1520_daughters value = scope:tm_w_daughters }
+	}
+	else_if = {
+		limit = { current_year < 1540 }
+		set_global_variable = { name = tm_c1530_marked value = scope:tm_w_marked }
+		set_global_variable = { name = tm_c1530_daughters value = scope:tm_w_daughters }
+	}
+	else_if = {
+		limit = { current_year < 1550 }
+		set_global_variable = { name = tm_c1540_marked value = scope:tm_w_marked }
+		set_global_variable = { name = tm_c1540_daughters value = scope:tm_w_daughters }
+	}
+	else_if = {
+		limit = { current_year < 1560 }
+		set_global_variable = { name = tm_c1550_marked value = scope:tm_w_marked }
+		set_global_variable = { name = tm_c1550_daughters value = scope:tm_w_daughters }
+	}
+	else_if = {
+		limit = { current_year < 1570 }
+		set_global_variable = { name = tm_c1560_marked value = scope:tm_w_marked }
+		set_global_variable = { name = tm_c1560_daughters value = scope:tm_w_daughters }
+	}
+	else_if = {
+		limit = { current_year < 1580 }
+		set_global_variable = { name = tm_c1570_marked value = scope:tm_w_marked }
+		set_global_variable = { name = tm_c1570_daughters value = scope:tm_w_daughters }
+	}
+	else_if = {
+		limit = { current_year < 1590 }
+		set_global_variable = { name = tm_c1580_marked value = scope:tm_w_marked }
+		set_global_variable = { name = tm_c1580_daughters value = scope:tm_w_daughters }
+	}
+	else_if = {
+		limit = { current_year < 1600 }
+		set_global_variable = { name = tm_c1590_marked value = scope:tm_w_marked }
+		set_global_variable = { name = tm_c1590_daughters value = scope:tm_w_daughters }
+	}
+	else_if = {
+		limit = { current_year < 1610 }
+		set_global_variable = { name = tm_c1600_marked value = scope:tm_w_marked }
+		set_global_variable = { name = tm_c1600_daughters value = scope:tm_w_daughters }
 	}
 }
