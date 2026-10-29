@@ -353,7 +353,7 @@ In-game checks for everything built on 2026-10-21 in wave 4. Scenarios are in TO
 - [ ] **Muslim lords and the terms.** No Service in the Prince's Wars is open to any lord of another faith except Jewish lords. Keep Muslim lords, or limit it to Christian lords as in the Smolensk precedent?
 - [ ] **A vassal of the sect.** Should a ruler of Ha-Nehpakhot who is a vassal of another faith be able to ask her liege for the terms? There is no clean per-vassal war exemption; it would need a levy or contract change.
 - [ ] **The Companions Choose fallback.** If the camp does not follow `change_title_holder` (§U6), limit the event to a companion who is the leader's child or heir?
-- [ ] **The Sword Is My Patent.** Build the decision (Tor proposal 2's last step), or leave it to the stored claim and vanilla CBs?
+- [x] **The Sword Is My Patent.** Build the decision (Tor proposal 2's last step), or leave it to the stored claim and vanilla CBs? Built in wave 16 (docs/wave16/baedling-bands.md §3)
 - [ ] **The companion strikes first / the deposed leader's return.** Build the darker branch (the plot discovered) or Dirham's road (pilgrimage, then a lord's envoy)?
 
 ## Wave 11: the Worn Garland after 1178 (added 2026-10-27, untested in-game; docs/wave11/garland.md)
@@ -379,3 +379,8 @@ In-game checks for everything built on 2026-10-21 in wave 4. Scenarios are in TO
 - [x] Bædling wave 15 (`tm_bae6`): Raise the Níð-Pole (scheme with a proxy carver; carved níð pays off two wrongs in the Account; the carver at law: Christian law of Norway from 1270, or lesser outlawry under the old law); the Níð of the Land (decision against a king whose house owes hers); vows over the cup at the bragarfull and after a flyting, kept or broken after five years (built, not yet tested in game)
 - [ ] Decide (docs/wave15/baedling.md §7): carved níð heavier insult, lighter crime; men only as targets; Sverrir's law in Norway and Iceland only; the crime on the poet alone; the doors to the vow; settlement keeps a requital vow; any land gain keeps the land vow; male raisers; AI frequency
 - [ ] Not built: Provoke the Words (Miller row 13); the rescue vow; the Níð of the Land's faction discontent; −10 opinion of the raiser from neutral same-culture characters
+
+## Wave 16: Bædling bands (added 2026-10-29, untested in-game; docs/wave16/baedling-bands.md)
+- [ ] Bands wave 16 (`tm_bae7`): Keep the Road, a new task contract for the bands of the six faiths (0001–0021: the thief, the toll, the guards' habit from 1327; a clean term counts as service for the Patent and the Robe); a harbour with a petty coastal lord for a landed Bædling band losing its land (0030–0033, no land-to-camp scripting); The Sword Is My Patent, a decision after a refusal that follows patience, with the lord's last letter (0040) (built, not yet tested in game)
+- [ ] Not built: the darker Companions (*The Plot Discovered*) and Dirham's road; the Watch on the Coast (Négre row 3)
+- [ ] Decide wave 16's open questions (docs/wave16/baedling-bands.md §8)

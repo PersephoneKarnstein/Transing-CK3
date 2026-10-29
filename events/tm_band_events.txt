@@ -228,6 +228,7 @@ tm_band.0001 = {
 		}
 		custom_tooltip = tm_band.0001.b.tt
 		scope:tm_band_band = { trigger_event = tm_band.0020 }
+		tm_bae7_patent_refused_effect = yes	# wave 16: a refusal after patience is the wrong of The Sword Is My Patent
 		ai_chance = {
 			base = 10
 			modifier = {
@@ -246,6 +247,7 @@ tm_band.0001 = {
 	}
 	option = {	# Let them be
 		name = tm_band.0001.c
+		tm_bae7_patent_refused_effect = yes	# wave 16 (tm_bae7_effects.txt)
 		ai_chance = {
 			base = 40
 			modifier = { add = 20 has_trait = content }
@@ -392,6 +394,7 @@ tm_band.0020 = {
 		tm_band_move_on_effect = yes
 		add_prestige = medium_prestige_gain
 		add_unpressed_claim = scope:tm_band_county
+		set_variable = { name = tm_bae7_claim_county value = scope:tm_band_county years = 20 }	# wave 16: the stored claim, for The Sword Is My Patent
 		set_variable = { name = tm_band_patient_with value = scope:tm_band_lord years = 20 }
 		scope:tm_band_lord = {
 			add_opinion = { target = root modifier = tm_band_left_when_asked_opinion }

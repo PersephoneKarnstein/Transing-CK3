@@ -1,0 +1,11 @@
+﻿# Crusader Dolls — bands, wave 16 (docs/wave16/baedling-bands.md).
+
+# Keep the Road: a band of the six faiths keeps the watch on this county's road for its term. The roads are safer and
+# the lord's hold firmer; the county pays the watch's tax (the vigla and its vigliatikon, Sophoulis pp. 105-112).
+# County modifier, for the contract's term (removed early if the watch is abandoned).
+tm_bae7_vigla_county_modifier = {
+	icon = county_modifier_control_positive
+	monthly_county_control_growth_add = 0.3
+	travel_danger = -10
+	tax_mult = -0.05
+}

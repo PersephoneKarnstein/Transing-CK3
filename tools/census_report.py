@@ -386,6 +386,22 @@ def main(path):
           '(kept both, of which slowed; through the market; one); council_guard / _declined: bands hired by a temple council.')
     print()
 
+    # Baedling bands, wave 16 (tm_bae7_tally_effect): the Vigla, the harbour, the Sword Is My Patent.
+    print('== Bædling bands: wave 16 ==')
+    bsteps = ('vigla_offered', 'vigla_taken', 'vigla_done', 'vigla_failed', 'robber_court', 'robber_home', 'toll_waived',
+              'toll_kept', 'toll_double', 'habit_kept', 'habit_took', 'habit_found', 'harbour_offered', 'harbour_promised',
+              'harbour_refused', 'harbour_camp', 'harbour_court', 'harbour_stayed', 'patent_refused', 'sword_drawn',
+              'sword_granted', 'sword_war')
+    print('  '.join(f'{s} {int(gvars.get(f"tm_bae7_n_{s}") or 0)}' for s in bsteps))
+    print('vigla_offered: Keep the Road contracts given to AI bands; vigla_taken / _done / _failed: contracts taken by any band\n'
+          '(players too), terms served, watches ended early; robber_*: a road thief sent to the lord\'s court or home;\n'
+          'toll_*: the toll quarrel (waived, as the letter says, doubled); habit_*: the guards\' habit from 1327 (kept faith,\n'
+          'robbed the road, found out); harbour_*: a landed Baedling band losing its land offered a harbour by a petty coastal\n'
+          'lord (promised or refused), then, with the land gone, to his coast with the camp, to his court, or her own way;\n'
+          'patent_refused: bands wronged after their patience; sword_*: The Sword Is My Patent sent, answered with the county,\n'
+          'or with the claim war.')
+    print()
+
     # Reactions, wave 12 (tm_rx_tally_effect): how the surrounding religious authorities react.
     print('== Reactions: wave 12 ==')
     rsteps = ('counted', 'weighed_refused', 'sworn', 'oath_refused', 'not_today',

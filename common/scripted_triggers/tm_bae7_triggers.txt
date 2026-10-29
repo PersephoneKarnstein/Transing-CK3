@@ -1,0 +1,127 @@
+﻿# Crusader Dolls — bands, wave 16 (docs/wave16/baedling-bands.md): the Vigla, the harbour of a petty coastal lord,
+# and the Sword Is My Patent. Builds on wave 3 (tm_bae2_faith_band_trigger) and wave 4 (tm_band_, tm_got_).
+# Parameters are always saved scopes, never prev.
+
+# ---------------------------------------------------------------------------------------------------
+# The Vigla (Sophoulis pp. 60, 100-101, 105-112)
+
+# A lord (scope) who could hire a band to keep a road: landed, free and able, not a camp or a herders' realm, with
+# gold for a contract.
+tm_bae7_vigla_employer_trigger = {
+	is_landed = yes
+	is_adult = yes
+	is_imprisoned = no
+	is_incapable = no
+	NOR = {
+		government_has_flag = government_is_landless_adventurer
+		government_has_flag = government_is_nomadic
+	}
+}
+
+# A county (scope) $LORD$ could ask $BAND$ to keep: one he holds himself, where the band camps or next to it, and a
+# road worth watching (a border with another realm, or a hold that is not yet firm).
+tm_bae7_vigla_county_trigger = {
+	tier = tier_county
+	holder ?= $LORD$
+	exists = $BAND$.domicile.domicile_location.county
+	OR = {
+		this = $BAND$.domicile.domicile_location.county
+		any_neighboring_county = { this = $BAND$.domicile.domicile_location.county }
+	}
+	OR = {
+		county_control < 90
+		any_neighboring_county = {
+			exists = holder.top_liege
+			NOT = { holder.top_liege = $LORD$.top_liege }
+		}
+	}
+}
+
+# The band (scope) still keeps the road for its contract: a band of the six faiths, not at war with the lord, camped
+# in the county or next to it, and the lord still holds it. Reads var:tm_bae7_vigla_county and var:tm_bae7_vigla_lord.
+tm_bae7_vigla_holding_trigger = {
+	tm_bae2_faith_band_trigger = yes
+	exists = var:tm_bae7_vigla_county
+	exists = var:tm_bae7_vigla_lord
+	var:tm_bae7_vigla_lord = { is_alive = yes }
+	NOT = { is_at_war_with = var:tm_bae7_vigla_lord }
+	var:tm_bae7_vigla_county.holder ?= var:tm_bae7_vigla_lord
+	exists = domicile.domicile_location.county
+	OR = {
+		domicile.domicile_location.county = var:tm_bae7_vigla_county
+		var:tm_bae7_vigla_county = {
+			any_neighboring_county = { this = root.domicile.domicile_location.county }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# A harbour with a petty coastal lord (Dollinger p. 80)
+
+# A landed Baedling band (scope): a Baedling ruler of one or two counties who came to land as a band (marked when she
+# took a county, tm_bae7_title_gain), or who held letters to raid by sea (wave 4's Open Ports).
+tm_bae7_landed_band_trigger = {
+	faith = faith:tm_baeddel
+	is_landed = yes
+	NOT = { government_has_flag = government_is_landless_adventurer }
+	any_held_county = { count <= 2 }
+	OR = {
+		has_variable = tm_bae7_landed_band
+		has_variable = tm_got_licence
+		has_variable = tm_got_lapsed
+	}
+}
+
+# She (scope) is losing a war fought over her land: the primary defender, with the war score at -30 or worse.
+tm_bae7_losing_her_land_trigger = {
+	any_character_war = {
+		primary_defender = root
+		defender_war_score <= -30
+	}
+}
+
+# A petty coastal lord (scope) who might take in $BAND$: a count or duke with a coastal capital, an AI, free and at
+# peace (so on no side of her war), not her liege or her vassal, whose faith does not count hers as evil (the lords
+# who received the Victual Brothers asked no one's faith: Dollinger p. 80).
+tm_bae7_harbour_lord_trigger = {
+	is_ai = yes
+	is_landed = yes
+	is_adult = yes
+	is_imprisoned = no
+	is_at_war = no
+	highest_held_title_tier <= tier_duchy
+	NOR = {
+		this = $BAND$
+		government_has_flag = government_is_landless_adventurer
+		government_has_flag = government_is_nomadic
+		has_relation_rival = $BAND$
+		is_vassal_or_below_of = $BAND$
+	}
+	save_temporary_scope_as = tm_bae7_lord_tmp
+	$BAND$ = { NOT = { is_vassal_or_below_of = scope:tm_bae7_lord_tmp } }
+	capital_county ?= { is_coastal_county = yes }
+	in_diplomatic_range = $BAND$
+	faith = {
+		faith_hostility_level = {
+			target = $BAND$.faith
+			value < faith_evil_level
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The Sword Is My Patent (Tor pp. 122, 150-151)
+
+# The county (scope) a wronged band (root) may press: the one she moved on from, on which she still has her claim,
+# held by someone who is not her and not her ally.
+tm_bae7_sword_county_trigger = {
+	tier = tier_county
+	exists = holder
+	NOT = { holder = root }
+	save_temporary_scope_as = tm_bae7_sword_tmp
+	root = {
+		has_claim_on = scope:tm_bae7_sword_tmp
+		NOT = { is_allied_to = scope:tm_bae7_sword_tmp.holder }
+		NOT = { is_at_war_with = scope:tm_bae7_sword_tmp.holder }
+	}
+}

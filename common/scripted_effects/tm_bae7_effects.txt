@@ -1,0 +1,148 @@
+﻿# Crusader Dolls — bands, wave 16 (docs/wave16/baedling-bands.md): the Vigla, the harbour of a petty coastal lord,
+# and the Sword Is My Patent.
+
+# Run-wide counts for tools/census_report.py ("Baedling bands: wave 16").
+tm_bae7_tally_effect = {
+	if = {
+		limit = { NOT = { has_global_variable = tm_bae7_n_$WHAT$ } }
+		set_global_variable = { name = tm_bae7_n_$WHAT$ value = 0 }
+	}
+	change_global_variable = { name = tm_bae7_n_$WHAT$ add = 1 }
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The Vigla
+
+# The watch is set (tm_bae7.0001). Scope: the band's leader; scope:employer, scope:task_contract. Picks the county
+# (where the band camps, else the nearest of his that qualifies, else his capital), a term of three to five years,
+# and marks the county.
+tm_bae7_vigla_begin_effect = {
+	scope:employer = {
+		ordered_held_county = {
+			limit = { tm_bae7_vigla_county_trigger = { LORD = scope:employer BAND = root } }
+			order_by = {
+				value = 0
+				subtract = "title_province.squared_distance(root.domicile.domicile_location)"
+			}
+			save_scope_as = tm_bae7_vigla_county
+		}
+		if = {
+			limit = { NOT = { exists = scope:tm_bae7_vigla_county } }
+			capital_county ?= { save_scope_as = tm_bae7_vigla_county }
+		}
+	}
+	if = {
+		limit = { exists = scope:tm_bae7_vigla_county }
+		set_variable = { name = tm_bae7_vigla_county value = scope:tm_bae7_vigla_county }
+		set_variable = { name = tm_bae7_vigla_lord value = scope:employer }
+		set_variable = { name = tm_bae7_vigla_served value = 0 }
+		random_list = {
+			1 = { set_variable = { name = tm_bae7_vigla_term value = 3 } }
+			1 = { set_variable = { name = tm_bae7_vigla_term value = 4 } }
+			1 = { set_variable = { name = tm_bae7_vigla_term value = 5 } }
+		}
+		scope:tm_bae7_vigla_county = {
+			add_county_modifier = { modifier = tm_bae7_vigla_county_modifier years = 6 }
+		}
+	}
+}
+
+# The watch ends, for whatever reason. Scope: the band's leader.
+tm_bae7_vigla_end_effect = {
+	var:tm_bae7_vigla_county ?= {
+		if = {
+			limit = { has_county_modifier = tm_bae7_vigla_county_modifier }
+			remove_county_modifier = tm_bae7_vigla_county_modifier
+		}
+	}
+	remove_variable = tm_bae7_vigla_county
+	remove_variable = tm_bae7_vigla_lord
+	remove_variable = tm_bae7_vigla_served
+	remove_variable = tm_bae7_vigla_term
+	remove_variable = tm_bae7_vigla_robbed
+	remove_variable = tm_bae7_vigla_habit_asked
+	set_variable = { name = tm_bae7_vigla_rest value = yes years = 3 }
+}
+
+# ---------------------------------------------------------------------------------------------------
+# A harbour with a petty coastal lord
+
+# The band (root) takes its camp to the harbour lord's coast. As tm_band_move_on_effect: provisions topped up for
+# the distance, then a travel plan with the domicile. Reads scope:tm_bae7_harbour_lord.
+tm_bae7_camp_to_harbour_effect = {
+	if = {
+		limit = {
+			exists = domicile.domicile_location
+			exists = scope:tm_bae7_harbour_lord.capital_province
+		}
+		domicile.domicile_location = { save_scope_as = tm_bae7_old_camp }
+		save_scope_value_as = {
+			name = tm_bae7_provisions
+			value = {
+				value = "scope:tm_bae7_old_camp.squared_distance(scope:tm_bae7_harbour_lord.capital_province)"
+				divide = 300
+			}
+		}
+		domicile = {
+			if = {
+				limit = { provisions < scope:tm_bae7_provisions }
+				change_provisions = scope:tm_bae7_provisions
+			}
+		}
+		start_travel_plan = {
+			destination = scope:tm_bae7_harbour_lord.capital_province
+			travel_with_domicile = yes
+			players_use_planner = no
+			return_trip = no
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The Sword Is My Patent
+
+# Called from tm_band.0001's refusals (options b and c). Root = the lord; scope:tm_band_band, scope:tm_band_reason.
+# Only a refusal after patience is a wrong: she moved on when he asked, and he would not give when she was due.
+tm_bae7_patent_refused_effect = {
+	if = {
+		limit = { scope:tm_band_reason ?= flag:patient }
+		scope:tm_band_band = {
+			set_variable = { name = tm_bae7_wronged_by value = root years = 20 }
+			add_opinion = { target = root modifier = tm_bae7_patent_refused_opinion }
+			if = {
+				limit = { is_ai = no }
+				send_interface_toast = {
+					type = event_toast_effect_bad
+					title = tm_bae7_patent_refused.toast
+					left_icon = root
+				}
+			}
+		}
+		tm_bae7_tally_effect = { WHAT = patent_refused }
+	}
+}
+
+# The county the wronged band (root) may press: the stored one (tm_band.0020), else the nearest county she has a claim
+# on that the lord who wronged her holds. Saves scope:tm_bae7_sword_county.
+tm_bae7_find_sword_county_effect = {
+	if = {
+		limit = {
+			exists = var:tm_bae7_claim_county
+			var:tm_bae7_claim_county = { tm_bae7_sword_county_trigger = yes }
+		}
+		var:tm_bae7_claim_county = { save_scope_as = tm_bae7_sword_county }
+	}
+	else_if = {
+		limit = { exists = var:tm_bae7_wronged_by }
+		var:tm_bae7_wronged_by = {
+			ordered_held_county = {
+				limit = { tm_bae7_sword_county_trigger = yes }
+				order_by = {
+					value = 0
+					subtract = "title_province.squared_distance(root.domicile.domicile_location)"
+				}
+				save_scope_as = tm_bae7_sword_county
+			}
+		}
+	}
+}

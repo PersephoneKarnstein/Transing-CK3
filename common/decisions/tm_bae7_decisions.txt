@@ -1,0 +1,76 @@
+﻿# Crusader Dolls — bands, wave 16 (docs/wave16/baedling-bands.md).
+
+# The Sword Is My Patent (Tor proposal 2's last step; pp. 122, 150-151). Open only to a band of the six faiths that
+# moved on when a lord asked (tm_band.0020, "She Was Patient": an unpressed claim on the county) and was then refused
+# when the lord's own search brought her case back to him (tm_band.0001, reason patient, answered "ask her to move on"
+# or "let them be": tm_bae7_patent_refused_effect). She sends the holder of that county her last letter (tm_bae7.0040):
+# he gives her the county through vanilla settlement, or the claim war follows. The stored claim alone could start
+# the same war; what this adds is the lord's last chance, the AI's reason to press that one claim, and the wrong
+# remembered for twenty years.
+tm_bae7_sword_patent_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/fp2_decision_struggle_hostility.dds"
+	}
+	decision_group_type = adventurer
+	sort_order = 393
+	desc = tm_bae7_sword_patent_decision_desc
+	selection_tooltip = tm_bae7_sword_patent_decision_tooltip
+
+	is_shown = {
+		tm_bae2_faith_band_trigger = yes
+		has_variable = tm_bae7_wronged_by
+	}
+
+	is_valid = {
+		is_at_war = no
+		custom_description = {
+			text = tm_bae7_sword_county_tt
+			OR = {
+				AND = {
+					exists = var:tm_bae7_claim_county
+					var:tm_bae7_claim_county = { tm_bae7_sword_county_trigger = yes }
+				}
+				AND = {
+					exists = var:tm_bae7_wronged_by
+					var:tm_bae7_wronged_by = {
+						any_held_county = { tm_bae7_sword_county_trigger = yes }
+					}
+				}
+			}
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+		is_incapable = no
+	}
+
+	cost = {
+		prestige = 100
+	}
+
+	effect = {
+		save_scope_as = tm_bae7_band
+		tm_bae7_find_sword_county_effect = yes
+		custom_tooltip = tm_bae7_sword_patent_decision.tt
+		scope:tm_bae7_sword_county ?= {
+			holder = { trigger_event = tm_bae7.0040 }
+		}
+		tm_bae7_tally_effect = { WHAT = sword_drawn }
+	}
+
+	ai_check_interval = 24
+	ai_potential = {
+		tm_bae2_faith_band_trigger = yes
+		has_variable = tm_bae7_wronged_by
+	}
+	ai_will_do = {
+		base = 30
+		modifier = { add = 20 has_trait = ambitious }
+		modifier = { add = 20 has_trait = wrathful }
+		modifier = { add = 10 has_trait = vengeful }
+		modifier = { factor = 0.5 has_trait = patient }
+		modifier = { factor = 0.5 has_trait = craven }
+		modifier = { factor = 0 current_military_strength < 300 }
+	}
+}

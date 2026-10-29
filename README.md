@@ -173,6 +173,8 @@ The law closes in over the centuries. From 1100 a daughter under a Christian Nor
 
 A Bædling ruler may answer a wrong with a níð-pole of her own. A man of her court carves it and raises it by night, facing the hall of the man who wronged her house. If his name comes out, the carver answers for it at law: three winters abroad under the old law, or forfeiture and confession or exile under the Christian law of Norway after 1270. Against a king whose house has wronged hers she can raise the Níð of the Land: every Bædling in his land makes a verse, as the Icelanders once made one for every nose in theirs. At the bragarfull, and at the cup that ends a flyting, she may swear a vow for five winters. The hall remembers whether she kept it.
 
+The bands also hire out. A lord may pay a band of any of the six faiths to keep the road through one of his counties for three to five years, as the Byzantine and Serbian watch kept the roads on its own tax; a band that serves its term cleanly may later be offered land, and one that robs the road it was paid to keep may be found out. A Bædling band that came to land and is losing it may be offered a harbour by a small coastal lord, as the Baltic crews driven off Gotland in 1398 found one on the North Sea; when the land is gone, her camp may sail to his coast or she to his court. A band that moved on when a lord asked and was later refused may send him a sword with her last letter: *this is my patent*. He may give her the county, or the claim war follows.
+
 **Read more:** [the full overview of Bædling](docs/faiths/baedling.md), with its history, sources and mechanics, cited to the page.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -257,6 +259,7 @@ Everything in the faith sections above is built. Most of the newer content has n
 - [x] Adelphai Dorleyaiou: the Galenic rite and school, the Council of the Two Schools, the Tower on the Condition, decaying tolerance from 1050; the Mother House's Rule; the Dorley precedent's disclosure, ward years, and washouts given to an order
 - [x] Bædling: the níð-pole, the first cup and the bragarfull, Wulfstan's sermon; the sorcery-law arc; the rest of the feud and of outlawry; the Norse lore events
 - [x] Bædling: raising a níð-pole oneself (a scheme with a proxy carver), the Níð of the Land, vows over the cup kept or broken
+- [x] Bædling bands: the Vigla (a road-guard contract for the bands of all six faiths), flight to a petty coastal lord, The Sword Is My Patent (the darker Companions left as an open question)
 - [x] Yutai Dao: Cui Yin's 902 proposal, the Boy from Min, the repair levy, the Ming ledgers; the women's chains; regency rules by culture (Liao, Jin and Yuan levers not built)
 - [x] Ha-Nehpakhot: the Two Parties decree, the bailiff's variants, a household of the street
 - [x] Worn Garland: the Tai vow, bands sworn with the merchants, the hall of the Five Hundred, the Pepper Merchant's Vow; the world after 1178 as era events in every start
@@ -268,7 +271,6 @@ Everything in the faith sections above is built. Most of the newer content has n
 ### Still to do
 
 - [ ] Schisms from the design notes: "cis is not a caste" against the estates of the Touched; call-outs as scapegoat rituals; whether eunuchs who seek the Bædling faith count as sisters
-- [ ] Bædling bands: the Vigla, flight to a petty coastal lord, The Sword Is My Patent, the darker Companions
 - [ ] Yutai Dao: the Sogdian rows (Master of the Caravan, Sabao to Office, the Network's Post, the Town of the Grape, the Rallied Township)
 - [ ] More reactions: the Abbasid court (the jester, the plucked beard, the barber); Walther's "Under the Linden"
 - [ ] Survival balance, tuned after each observe run

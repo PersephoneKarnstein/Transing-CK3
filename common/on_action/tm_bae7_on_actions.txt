@@ -1,0 +1,145 @@
+﻿# Crusader Dolls — bands, wave 16 (docs/wave16/baedling-bands.md). Appended to vanilla on_actions.
+
+yearly_playable_pulse = {
+	on_actions = {
+		tm_bae7_yearly
+	}
+}
+
+quarterly_playable_pulse = {
+	on_actions = {
+		tm_bae7_quarterly
+	}
+}
+
+on_title_gain = {
+	on_actions = {
+		tm_bae7_title_gain
+	}
+}
+
+on_title_lost = {
+	on_actions = {
+		tm_bae7_title_lost
+	}
+}
+
+# Keep the Road: an AI band of the six faiths with no contract under way, at peace and not just out of a term, may be
+# hired by the lord of the county it camps in, or by his liege. Players find the same contract on the contract map.
+tm_bae7_yearly = {
+	trigger = {
+		is_ai = yes
+		tm_bae2_faith_band_trigger = yes
+		is_at_war = no
+		is_adult = yes
+		is_imprisoned = no
+		num_taken_task_contracts = 0
+		NOR = {
+			has_variable = tm_bae7_vigla_county
+			has_variable = tm_bae7_vigla_rest
+		}
+		exists = domicile.domicile_location.county.holder
+	}
+	effect = {
+		random = {
+			chance = 10
+			domicile.domicile_location.county.holder = {
+				if = {
+					limit = {
+						tm_bae7_vigla_employer_trigger = yes
+						root = {
+							can_create_task_contract = {
+								type_name = tm_bae7_vigla_contract
+								employer = prev
+							}
+						}
+					}
+					save_scope_as = tm_bae7_hirer
+				}
+				else_if = {
+					limit = {
+						exists = liege
+						NOT = { liege = this }
+						liege = { tm_bae7_vigla_employer_trigger = yes }
+						root = {
+							can_create_task_contract = {
+								type_name = tm_bae7_vigla_contract
+								employer = prev.liege
+							}
+						}
+					}
+					liege = { save_scope_as = tm_bae7_hirer }
+				}
+			}
+			if = {
+				limit = { exists = scope:tm_bae7_hirer }
+				create_task_contract = {
+					task_contract_type = tm_bae7_vigla_contract
+					task_contract_tier = scope:tm_bae7_hirer.task_contract_tier_value
+					location = scope:tm_bae7_hirer.capital_province
+					task_contract_employer = scope:tm_bae7_hirer
+					save_scope_as = tm_bae7_new_contract
+				}
+				if = {
+					limit = { exists = scope:tm_bae7_new_contract }
+					accept_task_contract = scope:tm_bae7_new_contract
+					tm_bae7_tally_effect = { WHAT = vigla_offered }
+				}
+			}
+		}
+	}
+}
+
+# A harbour: a landed Baedling band losing a war over her land, once in ten years, within the flavour budget for a
+# player. Half the quarters it is noticed.
+tm_bae7_quarterly = {
+	trigger = {
+		tm_bae7_landed_band_trigger = yes
+		is_imprisoned = no
+		NOR = {
+			has_variable = tm_bae7_harbour
+			has_variable = tm_bae7_harbour_asked
+		}
+		tm_bae7_losing_her_land_trigger = yes
+		trigger_if = {
+			limit = { is_ai = no }
+			tm_flavour_ready_trigger = yes
+		}
+	}
+	effect = {
+		random = {
+			chance = 50
+			trigger_event = tm_bae7.0030
+		}
+	}
+}
+
+# A Baedling band that comes to land, however it comes, is remembered as a landed band (for the harbour).
+tm_bae7_title_gain = {
+	trigger = {
+		scope:title = { tier = tier_county }
+		is_landed = yes
+		faith = faith:tm_baeddel
+		OR = {
+			has_variable = tm_bae2_was_band
+			has_character_modifier = tm_bae2_settling_modifier
+		}
+	}
+	effect = {
+		set_variable = { name = tm_bae7_landed_band value = yes }
+	}
+}
+
+# A band promised a harbour has lost a county: look again in a few days, after vanilla has offered her the road
+# (ep3_laamps.0002), whether all her land is gone.
+tm_bae7_title_lost = {
+	trigger = {
+		has_variable = tm_bae7_harbour
+		NOT = { has_variable = tm_bae7_harbour_pending }
+		scope:title = { tier = tier_county }
+	}
+	effect = {
+		set_variable = { name = tm_bae7_harbour_pending value = yes days = 30 }
+		trigger_event = { id = tm_bae7.0032 days = 7 }
+	}
+}
