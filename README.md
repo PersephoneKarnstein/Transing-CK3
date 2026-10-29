@@ -171,6 +171,8 @@ It is a martial faith with fighting clergy, all women. The Bædlings say the All
 
 The law closes in over the centuries. From 1100 a daughter under a Christian Norse lord may be sued for sorcery or for wearing women's dress; unless (in Norway) six housewives swear for her, she goes abroad for three winters or is outlawed in full, and may lead a band of her own. From 1300 a bishop may send her on the pilgrim roads instead, and where sorcery became a capital crime (Norway from 1300, Scania 1328, Sweden 1350) a woman who comes before a court again is handed to her lord's keeping, though trials stay rare. Later, a lord at war may open his ports to anyone who will harm his enemy, as the Mecklenburg lords did after 1389, and a Bædling band that takes his letters may seize an island seat.
 
+A Bædling ruler may answer a wrong with a níð-pole of her own. A man of her court carves it and raises it by night, facing the hall of the man who wronged her house. If his name comes out, the carver answers for it at law: three winters abroad under the old law, or forfeiture and confession or exile under the Christian law of Norway after 1270. Against a king whose house has wronged hers she can raise the Níð of the Land: every Bædling in his land makes a verse, as the Icelanders once made one for every nose in theirs. At the bragarfull, and at the cup that ends a flyting, she may swear a vow for five winters. The hall remembers whether she kept it.
+
 **Read more:** [the full overview of Bædling](docs/faiths/baedling.md), with its history, sources and mechanics, cited to the page.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -254,6 +256,7 @@ Everything in the faith sections above is built. Most of the newer content has n
 
 - [x] Adelphai Dorleyaiou: the Galenic rite and school, the Council of the Two Schools, the Tower on the Condition, decaying tolerance from 1050; the Mother House's Rule; the Dorley precedent's disclosure, ward years, and washouts given to an order
 - [x] Bædling: the níð-pole, the first cup and the bragarfull, Wulfstan's sermon; the sorcery-law arc; the rest of the feud and of outlawry; the Norse lore events
+- [x] Bædling: raising a níð-pole oneself (a scheme with a proxy carver), the Níð of the Land, vows over the cup kept or broken
 - [x] Yutai Dao: Cui Yin's 902 proposal, the Boy from Min, the repair levy, the Ming ledgers; the women's chains; regency rules by culture (Liao, Jin and Yuan levers not built)
 - [x] Ha-Nehpakhot: the Two Parties decree, the bailiff's variants, a household of the street
 - [x] Worn Garland: the Tai vow, bands sworn with the merchants, the hall of the Five Hundred, the Pepper Merchant's Vow; the world after 1178 as era events in every start
@@ -265,7 +268,6 @@ Everything in the faith sections above is built. Most of the newer content has n
 ### Still to do
 
 - [ ] Schisms from the design notes: "cis is not a caste" against the estates of the Touched; call-outs as scapegoat rituals; whether eunuchs who seek the Bædling faith count as sisters
-- [ ] Bædling: raising a níð-pole oneself (a scheme with a proxy carver), the Níð of the Land, vows over the cup kept or broken
 - [ ] Bædling bands: the Vigla, flight to a petty coastal lord, The Sword Is My Patent, the darker Companions
 - [ ] Yutai Dao: the Sogdian rows (Master of the Caravan, Sabao to Office, the Network's Post, the Town of the Grape, the Rallied Township)
 - [ ] More reactions: the Abbasid court (the jester, the plucked beard, the barber); Walther's "Under the Linden"

@@ -1,0 +1,31 @@
+﻿# Crusader Dolls — Bædling, wave 15 (events/tm_bae6_events.txt; docs/wave15/baedling.md).
+
+# She paid for a pole. It shames the one who raises it too, but a lord who had it carved bears half the cost
+# (Evans and Hancock pp. 168-69, 181; the raiser's own pole is tm_bae5_nid_raised_modifier). Character, 5 years.
+tm_bae6_pole_paid_modifier = {
+	icon = social_negative
+	monthly_prestige_gain_mult = -0.05
+}
+
+# The carver confessed, as Sverrir's Christian law asks with the forfeiture (Mitchell p. 164). Character, 3 years.
+tm_bae6_confessed_modifier = {
+	icon = social_negative
+	monthly_prestige_gain_mult = -0.1
+	stress_gain_mult = 0.1
+}
+
+# The Níð of the Land: a verse for every nose in it, and the king hears them in every hall (Evans and Hancock
+# pp. 176-78). Character, 10 years; a king who turns it with humility is rid of it.
+tm_bae6_nid_of_land_modifier = {
+	icon = social_negative
+	monthly_prestige_gain_mult = -0.15
+	vassal_opinion = -5
+	dread_baseline_add = -10
+}
+
+# She vowed over the cup and did not do it (Damico row 4: the broken bragarfull). Character, 5 years.
+tm_bae6_vow_broken_modifier = {
+	icon = social_negative
+	monthly_prestige_gain_mult = -0.15
+	general_opinion = -5
+}

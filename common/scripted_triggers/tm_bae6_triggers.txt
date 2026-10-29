@@ -1,0 +1,146 @@
+﻿# Crusader Dolls — Bædling, wave 15: raising a níð-pole oneself, the Níð of the Land, vows over the cup
+# (events/tm_bae6_events.txt; docs/wave15/baedling.md).
+
+# ---------------------------------------------------------------------------------------------------
+# The Account, read from the debtor's side. True when this character's house owes $CREDITOR$'s house a wrong (tm_acc_1,
+# the first of the three lists on the wronged house: tm_feud_effects.txt). Scope: a character.
+tm_bae6_owes_trigger = {
+	exists = house
+	$CREDITOR$ = { exists = house }
+	$CREDITOR$.house = { is_target_in_variable_list = { name = tm_acc_1 target = prev.house } }
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Raise the Níð-Pole (common/schemes/scheme_types/tm_bae6_schemes.txt).
+
+# A man, as the world and he himself count it: never a daughter, a Marked woman or a declared sister, whom the
+# game may still code as male. The pole's and the verses' insult is aimed at a man. Scope: a character.
+tm_bae6_a_man_trigger = {
+	is_male = yes
+	NOT = { tm_is_daughter_trigger = yes }
+	NOT = { has_trait = tm_transgender }
+	NOT = { has_variable = tm_declared }
+}
+
+# Who may pay for a pole: a ruler of the Bædling rite, grown and free. Scope: the raiser.
+tm_bae6_pole_raiser_trigger = {
+	is_adult = yes
+	is_imprisoned = no
+	is_ruler = yes
+	rite ?= { rite_has_parameter = tm_seidr_gate }
+}
+
+# Who may carve it for $RAISER$: a man of her court, grown and free, not a ruler. The lord does not carve: a poet or a
+# craftsman does, and the charge at law falls on him (Evans and Hancock p. 181, research/
+# norse_evans_hancock_masculinities.md row 3). Scope: the carver.
+tm_bae6_carver_trigger = {
+	tm_bae6_a_man_trigger = yes
+	is_adult = yes
+	is_imprisoned = no
+	is_ruler = no
+	is_courtier_of = $RAISER$
+	NOT = { this = $RAISER$ }
+	NOT = { has_variable = tm_bae6_carved_once }	# a carver caught or sentenced is not sent again for five years
+}
+
+# Whom the pole may name: a man who wronged her house and has not answered for it (the Account), or her rival. Not
+# her own house; one pole a target in five years. Scope: the target.
+tm_bae6_pole_target_trigger = {
+	is_adult = yes
+	tm_bae6_a_man_trigger = yes		# the pole's insult is aimed at a man (docs/wave15/baedling.md, open question 2)
+	exists = house
+	NOT = { this = $RAISER$ }
+	NOT = { house = $RAISER$.house }
+	NOT = { has_variable = tm_bae6_pole_cd }
+	OR = {
+		tm_bae6_owes_trigger = { CREDITOR = $RAISER$ }
+		has_relation_rival = $RAISER$
+	}
+}
+
+# The law where the pole stood. Sverrir's Christian law punishes raising a "scald-pole" with forfeiture and
+# confession, or exile (Mitchell p. 164, research/norse_mitchell_witchcraft_magic.md row 9): a Christian realm under
+# Norwegian law, Iceland included (under the crown from 1262-64), after c. 1270. Scope: the lord whose court hears it.
+tm_bae6_sverrir_law_trigger = {
+	current_year >= 1270
+	religion = religion:christianity_religion
+	OR = {
+		capital_county ?= { target_is_de_jure_liege_or_above = title:k_norway }
+		AND = {
+			NOT = { exists = capital_county }
+			location ?= { county ?= { target_is_de_jure_liege_or_above = title:k_norway } }
+		}
+	}
+}
+
+# Any court of the north that knows carved níð (tréníð) as a wrong at law: the Gulaþing law treats it apart from
+# spoken níð (Mitchell p. 71), and Grágás gives the raiser lesser outlawry (Meulengracht Sørensen p. 17). Elsewhere
+# no law the mod sources names the pole. Scope: the lord.
+tm_bae6_pole_law_trigger = {
+	OR = {
+		tm_bae6_sverrir_law_trigger = yes
+		culture = { has_cultural_pillar = heritage_north_germanic }
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The Níð of the Land (common/decisions/tm_bae6_decisions.txt). Níð against a king is its own category at law, and the
+# Icelanders made a verse "for each nose" in the land against Haraldr Gormsson (Evans and Hancock pp. 176-78,
+# research/norse_evans_hancock_masculinities.md row 4).
+
+# A king who may be sung against by $POET$: a king or emperor, not of the Bædling rite, whose house owes hers a wrong,
+# and who has not been sung against in ten years. Scope: the king.
+tm_bae6_land_king_trigger = {
+	is_alive = yes
+	highest_held_title_tier >= tier_kingdom
+	tm_bae6_a_man_trigger = yes		# the verses are aimed at a king's manhood (open question 2)
+	NOT = { this = $POET$ }
+	NOT = { rite ?= { rite_has_parameter = tm_seidr_gate } }
+	NOT = { has_variable = tm_bae6_land_nid_cd }
+	tm_bae6_owes_trigger = { CREDITOR = $POET$ }
+}
+
+# The poet has such a king: her own top liege, or a king beside her realm. Scope: the poet.
+tm_bae6_has_land_king_trigger = {
+	OR = {
+		top_liege = { tm_bae6_land_king_trigger = { POET = root } }
+		any_neighboring_and_across_water_top_liege_realm_owner = { tm_bae6_land_king_trigger = { POET = root } }
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# Vows over the cup (heitstrenging; Damico p. 55, research/norse_damico_wealhtheow_valkyrie.md rows 4-5).
+
+# She has a wrong owed to her house that a vow could promise to answer. Scope: the vower.
+tm_bae6_can_vow_requital_trigger = {
+	exists = house
+	house = { any_in_list = { variable = tm_acc_1 } }
+}
+
+# She could vow to raise a Sisters' House: landed, and holds none yet. Scope: the vower.
+tm_bae6_can_vow_house_trigger = {
+	is_landed = yes
+	NOT = { tm_holds_sisters_house_trigger = yes }
+}
+
+# The vow is kept. Scope: the vower, with var tm_bae6_vow (flag:requital, flag:house or flag:land).
+tm_bae6_vow_kept_trigger = {
+	OR = {
+		AND = {
+			var:tm_bae6_vow = flag:requital
+			has_variable = tm_bae6_vow_house
+			house ?= {
+				NOT = { is_target_in_variable_list = { name = tm_acc_1 target = prev.var:tm_bae6_vow_house } }
+			}
+		}
+		AND = {
+			var:tm_bae6_vow = flag:house
+			tm_holds_sisters_house_trigger = yes
+		}
+		AND = {
+			var:tm_bae6_vow = flag:land
+			is_landed = yes
+			sub_realm_size > var:tm_bae6_vow_base
+		}
+	}
+}

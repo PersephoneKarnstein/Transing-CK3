@@ -280,6 +280,27 @@ def main(path):
           "seidmenn_charge: They Say He Keeps Seiðmenn; site_story: holy-site stories; calling_herself: the Rykener echo;\n"
           'warding_shirt: shirts woven.')
 
+    # Bædling, wave 15 (tm_feud_tally_effect, bae6_*): raising a níð-pole oneself, the Níð of the Land, vows over the cup.
+    print('== Bædling: wave 15 ==')
+    w15 = ('poles_begun', 'poles_raised', 'poles_weighed_two', 'poles_failed', 'carver_named', 'pole_burned',
+           'pole_turned', 'pole_humility', 'pole_suit', 'pole_law', 'carver_outlawed', 'sverrir_forfeit',
+           'sverrir_exile', 'carver_sent_home', 'land_nid', 'land_noses', 'land_humility', 'land_crime', 'land_borne',
+           'vows', 'vow_requital', 'vow_house', 'vow_land', 'vow_none', 'vow_kept', 'vow_broken', 'vow_owned',
+           'vow_shout')
+    if any(f'tm_feud_n_bae6_{s}' in gvars for s in w15):
+        print('  '.join(f'{s} {int(gvars.get(f"tm_feud_n_bae6_{s}") or 0)}' for s in w15))
+        print('poles_begun / _raised / _failed: Raise the Níð-Pole schemes started, poles that stood, nights that went wrong;\n'
+              'poles_weighed_two: requitals by a pole that paid off two wrongs; carver_named: the carver\'s name came out;\n'
+              'pole_burned / _turned / _humility / _suit / _law: how the one named answered (burned it, the hat is Óðinn\'s,\n'
+              'Christian humility, a wrong in the Account, the carver to law); carver_outlawed: lesser outlawry under the old\n'
+              'law; sverrir_forfeit / _exile: under the Christian law of Norway from 1270; carver_sent_home: caught and sent\n'
+              'back; land_nid / land_noses: Níð of the Land made, and the verses (noses) in all; land_humility / _crime /\n'
+              '_borne: the king\'s answer; vows / vow_requital / _house / _land / _none: vows over the cup and which;\n'
+              'vow_kept / _broken: after five years; vow_owned: broken and said before the benches; vow_shout: flytings opened.')
+    else:
+        print('No counts (the save predates wave 15, or nothing has happened yet).')
+    print()
+
     # The Council of the Two Schools (tm_dl4_tally_effect): Adelphai Dorleyaiou, run-wide.
     print('== Council of the Two Schools ==')
     gy = gvars.get('tm_dl2_galenic_year')

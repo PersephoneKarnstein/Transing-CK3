@@ -1,0 +1,75 @@
+﻿# Crusader Dolls — The Níð of the Land (docs/wave15/baedling.md §2). Law treats níð against a king as its own category,
+# and the Icelanders, wronged by Haraldr Gormsson, made a níðvísa "for each nose" in the land (Evans and Hancock
+# pp. 176-78; research/norse_evans_hancock_masculinities.md row 4). A ruler of the Bædling rite whose house is owed a
+# wrong by a king's house (the Account, tm_feud_effects.txt), her own top liege or a king beside her realm, has every
+# Bædling in the land make a verse against him. Each pays a little prestige; the king loses prestige and legitimacy by
+# the number of noses, and his halls hear the verses for ten years. It is collective, so no one is outlawed for it,
+# but a liege may count it a crime against the crown (tm_bae6.0101). Twenty years between, and ten for each king.
+tm_bae6_nid_of_land_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"
+	}
+	sort_order = 60
+	desc = tm_bae6_nid_of_land_decision_desc
+	selection_tooltip = tm_bae6_nid_of_land_decision_tooltip
+	cooldown = { years = 20 }
+
+	is_shown = {
+		is_ruler = yes
+		is_landed = yes
+		rite ?= { rite_has_parameter = tm_seidr_gate }
+	}
+
+	is_valid = {
+		is_adult = yes
+		prestige_level >= 2
+		custom_description = {
+			text = tm_bae6_nid_of_land_king_tt
+			tm_bae6_has_land_king_trigger = yes
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+		is_incapable = no
+	}
+
+	cost = {
+		prestige = 150
+	}
+
+	effect = {
+		if = {
+			limit = {
+				top_liege = { tm_bae6_land_king_trigger = { POET = root } }
+			}
+			top_liege = { save_scope_as = tm_bae6_king }
+		}
+		else = {
+			random_neighboring_and_across_water_top_liege_realm_owner = {
+				limit = { tm_bae6_land_king_trigger = { POET = root } }
+				save_scope_as = tm_bae6_king
+			}
+		}
+		custom_tooltip = tm_bae6_nid_of_land_decision.tt
+		hidden_effect = {
+			trigger_event = tm_bae6.0100
+		}
+	}
+
+	ai_check_interval = 36
+	ai_potential = {
+		is_ruler = yes
+		is_landed = yes
+		rite ?= { rite_has_parameter = tm_seidr_gate }
+	}
+	ai_will_do = {
+		base = 10
+		modifier = { add = 20 has_trait = vengeful }
+		modifier = { add = 15 has_trait = wrathful }
+		modifier = { add = 10 has_trait = arrogant }
+		modifier = { factor = 0.5 has_trait = craven }
+		modifier = { factor = 0.5 has_trait = forgiving }
+		modifier = { factor = 0.5 has_trait = calm }
+	}
+}

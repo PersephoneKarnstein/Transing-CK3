@@ -1,0 +1,77 @@
+﻿# Crusader Dolls — agents for Raise the Níð-Pole (common/schemes/scheme_types/tm_bae6_schemes.txt).
+# Format: _agent_types.info; skill weights from vanilla agent_scribe and agent_footpad (1.20), as in tm_bae2.
+
+# The carver: a man of her court who cuts the figures and the runes. The lord pays; he carves, and if he is named the
+# charge at law is his (Evans and Hancock pp. 176, 181; research/norse_evans_hancock_masculinities.md row 3).
+tm_bae6_agent_carver = {
+	valid_agent_for_slot = {
+		tm_bae6_carver_trigger = { RAISER = scope:owner }
+	}
+	contribution_type = success_chance
+	contribution = {
+		value = scheme_agent_general_bonuses_contribution_score_value
+		add = {
+			value = learning
+			multiply = agent_3to1_3_skill_mult_value
+			ceiling = yes
+			max = agent_max_skill_value
+			desc = scheme_agent_aptitude.skill.learning
+		}
+		add = {
+			value = intrigue
+			multiply = agent_3to1_1_skill_mult_value
+			ceiling = yes
+			max = agent_max_skill_value
+			desc = scheme_agent_aptitude.skill.intrigue
+		}
+		# A poet knows how a verse cuts; the runes are a verse (Egill's pole, Mitchell pp. 68-69).
+		if = {
+			limit = { has_trait = lifestyle_poet }
+			add = {
+				value = agent_trait_bonus_t2_value
+				desc = tm_bae6_agent_poet
+			}
+		}
+		max = agent_scheme_contributor_max
+		min = agent_scheme_contributor_min
+	}
+}
+
+# The night-men: who carry the pole to the headland and set it up facing his hall, unseen.
+tm_bae6_agent_nightman = {
+	valid_agent_for_slot = {
+		is_adult = yes
+		OR = {
+			is_courtier_of = scope:owner
+			is_courtier_of = scope:target
+		}
+	}
+	contribution_type = secrecy
+	contribution = {
+		value = scheme_agent_general_bonuses_contribution_score_value
+		add = {
+			value = intrigue
+			multiply = agent_3to1_3_skill_mult_value
+			ceiling = yes
+			max = agent_max_skill_value
+			desc = scheme_agent_aptitude.skill.intrigue
+		}
+		add = {
+			value = prowess
+			multiply = agent_3to1_1_skill_mult_value
+			ceiling = yes
+			max = agent_max_skill_value
+			desc = scheme_agent_aptitude.skill.prowess
+		}
+		# One of his own household knows the coast and the hour.
+		if = {
+			limit = { is_courtier_of = scope:target }
+			add = {
+				value = agent_trait_bonus_t2_value
+				desc = tm_bae6_agent_his_household
+			}
+		}
+		max = agent_scheme_contributor_max
+		min = agent_scheme_contributor_min
+	}
+}

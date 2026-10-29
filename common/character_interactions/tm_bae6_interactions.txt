@@ -1,0 +1,55 @@
+﻿# Crusader Dolls — Raise the Níð-Pole, started by a player (common/schemes/scheme_types/tm_bae6_schemes.txt).
+# Template: tm_bae2_spring_cell_interaction (vanilla start_abduct, 1.20). The AI starts the scheme from its own yearly
+# pulse instead (tm_bae6_on_actions.txt), so this interaction has no AI weights.
+tm_bae6_raise_pole_interaction = {
+	icon = icon_scheme_fabricate_hook
+	interface_priority = 60
+	category = interaction_category_hostile
+	send_name = START_SCHEME
+	scheme = tm_bae6_raise_pole
+	ignores_pending_interaction_block = yes
+
+	is_shown = {
+		NOT = { scope:recipient = scope:actor }
+		scope:actor = { tm_bae6_pole_raiser_trigger = yes }
+		scope:recipient = { tm_bae6_pole_target_trigger = { RAISER = scope:actor } }
+	}
+
+	is_valid_showing_failures_only = {
+		scope:actor = {
+			custom_description = {
+				text = tm_bae6_raise_pole_no_carver
+				any_courtier = { tm_bae6_carver_trigger = { RAISER = scope:actor } }
+			}
+			can_start_scheme = {
+				type = tm_bae6_raise_pole
+				target_character = scope:recipient
+			}
+		}
+	}
+
+	desc = tm_bae6_raise_pole_interaction_desc
+
+	on_accept = {
+		scope:actor = {
+			send_interface_toast = {
+				type = event_toast_effect_neutral
+				title = tm_bae6_raise_pole_notification
+				left_icon = scope:actor
+				right_icon = scope:recipient
+				begin_scheme_with_agents_effect = {
+					SCHEME_TYPE = tm_bae6_raise_pole
+					TARGET_TYPE = target_character
+					TARGET_SCOPE = scope:recipient
+					AGENT_1 = tm_bae6_agent_carver
+					AGENT_2 = tm_bae6_agent_nightman
+					AGENT_3 = tm_bae6_agent_nightman
+					AGENT_4 = agent_lookout
+					AGENT_5 = agent_lookout
+				}
+			}
+		}
+	}
+
+	auto_accept = yes
+}

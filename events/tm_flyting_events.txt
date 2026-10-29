@@ -425,6 +425,7 @@ tm_flyting.0020 = {
 			add_opinion = { target = root modifier = respect_opinion opinion = 10 }
 		}
 		scope:tm_cup_lady = { add_prestige = 25 }
+		tm_bae6_to_the_vow_effect = { DOOR = flag:flyting }	# the cup turns the flyting into a vow (wave 15, tm_bae6.0200)
 		ai_chance = {
 			base = 20
 			modifier = { add = 100 var:tm_flyt_me < var:tm_flyt_them }

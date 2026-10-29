@@ -1,0 +1,49 @@
+﻿# Crusader Dolls — Bædling, wave 15 (events/tm_bae6_events.txt). Appended to the vanilla yearly pulse; the effects are
+# our own on_action, so vanilla's is untouched. The global pulse has no character root, so each character's work runs
+# in a hidden event of its own (tm_bae6.0002, tm_bae6.0209).
+yearly_global_pulse = {
+	on_actions = { tm_bae6_yearly }
+}
+
+tm_bae6_yearly = {
+	effect = {
+		# Raise the Níð-Pole, for the AI: a ruler of the rite with a carver at court may have a pole raised against
+		# someone who owes her house a wrong, or her rival. A few in a hundred a year; five years between attempts.
+		every_living_character = {
+			limit = {
+				is_ai = yes
+				tm_bae6_pole_raiser_trigger = yes
+				NOT = { has_variable = tm_bae6_pole_ai_cd }
+				any_courtier = { tm_bae6_carver_trigger = { RAISER = prev } }
+			}
+			random = {
+				chance = 4
+				modifier = { add = 4 has_trait = vengeful }
+				modifier = { add = 2 has_trait = wrathful }
+				modifier = { add = 2 has_trait = arrogant }
+				modifier = { add = -2 has_trait = forgiving }
+				set_variable = { name = tm_bae6_pole_ai_cd value = yes years = 5 }
+				trigger_event = tm_bae6.0002
+			}
+		}
+		# Vows over the cup: each vower is looked at once a year (tm_bae6.0209). The dead and the done leave the list.
+		every_in_global_list = {
+			variable = tm_bae6_vowers
+			limit = {
+				OR = {
+					is_alive = no
+					NOT = { has_variable = tm_bae6_vow }
+				}
+			}
+			add_to_list = tm_bae6_vowers_gone
+		}
+		every_in_list = {
+			list = tm_bae6_vowers_gone
+			remove_list_global_variable = { name = tm_bae6_vowers target = this }
+		}
+		every_in_global_list = {
+			variable = tm_bae6_vowers
+			trigger_event = { id = tm_bae6.0209 days = { 1 60 } }
+		}
+	}
+}
