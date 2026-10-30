@@ -32,7 +32,16 @@ So appointment was not the problem: revocation was. Two levers follow from that.
 - What: she spends silver (50 gold, a major investment) or writes letters (a medium investment) toward her own appointment to Phrygia, through vanilla's `change_appointment_investment`. It counts when the logothete next names a governor. Nothing is taken from the sitting one. She may also let Dorylaion go.
 - Untested: whether the engine treats her as a valid candidate. TO-TEST AT3.
 
+**Changed after run 29.** The lobbying never fired: from 1008 to 1034 Phrygia was back under the throne with governors of another faith, but each Mother held only the Mother House's title, with no land, and so had no yearly pulse of her own. The check now runs from the global yearly pulse and reaches the Mother through the title (`tm_dl7_yearly_global`), as does the lost/returned count.
+
 The old fallback stays: when Phrygia is out of the faith, the Mother House holder keeps a pressed claim on it (`tm_on_actions.txt`).
+
+## Run 29 (867 start, to 1465)
+
+- Asked 12 times: 5 with a gift, 1 through the chamber, 4 in the House's name. Granted 6, refused 4.
+- Beatrike died in 902. From then until 997, appointment again kept Phrygia in the faith, and no emperor revoked it.
+- In 997 it was lost by **conquest**, then passed through revolts and a holy war before the throne appointed it again in 1008. Lost 2, returned 1.
+- War is outside what a chrysobull or the next appointment can answer; the pressed claim remains for that.
 
 ## Files
 

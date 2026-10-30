@@ -211,3 +211,19 @@ tm_mech.0041 = {
 		}
 	}
 }
+
+# Hidden. A barony the game would give a woman who may not hold it under the law above her goes to a new man instead
+# (tm_barony_for_a_man, tm_on_actions.txt). Root = its holder; scope:tm_barony_gained = the barony.
+tm_mech.0050 = {
+	hidden = yes
+	trigger = {
+		exists = scope:tm_barony_gained
+		scope:tm_barony_gained = {
+			holder ?= root
+			is_capital_barony = no
+		}
+	}
+	immediate = {
+		scope:tm_barony_gained = { tm_barony_to_a_man_effect = yes }
+	}
+}

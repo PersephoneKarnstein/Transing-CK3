@@ -215,7 +215,7 @@ tm_world_yearly = {
 				current_date >= 1312.1.1
 				OR = {
 					faith = faith:catholic
-					top_liege = { faith = faith:catholic }
+					top_liege ?= { faith = faith:catholic }		# none for a ruler without a realm (run 29)
 				}
 				any_held_title = {
 					tier = tier_county
@@ -226,8 +226,8 @@ tm_world_yearly = {
 			}
 			random = {
 				chance = 2
-				modifier = { add = 1 top_liege.faith = { tm_world_strained_faith_trigger = yes } }
-				modifier = { factor = 0.5 top_liege.faith = { tm_world_secure_faith_trigger = yes } }
+				modifier = { add = 1 top_liege ?= { faith = { tm_world_strained_faith_trigger = yes } } }
+				modifier = { factor = 0.5 top_liege ?= { faith = { tm_world_secure_faith_trigger = yes } } }
 				tm_flavour_spent_effect = yes
 				random_held_title = {
 					limit = {

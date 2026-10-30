@@ -4,12 +4,15 @@ yearly_playable_pulse = {
 	on_actions = { tm_dl7_yearly }
 }
 
-# The holder of Phrygia asks the throne for a chrysobull; or, Phrygia lost, the Mother of Mothers works the City for
-# the next appointment. Not on the flavour budget: it decides whether the faith keeps its seat.
+yearly_global_pulse = {
+	on_actions = { tm_dl7_yearly_global }
+}
+
+# The holder of Phrygia asks the throne for a chrysobull. Not on the flavour budget: it decides whether the faith keeps
+# its seat.
 tm_dl7_yearly = {
 	trigger = { faith = faith:transbian_maximalism }
 	effect = {
-		tm_dl7_watch_effect = yes
 		if = {
 			limit = {
 				tm_dl7_unprotected_holder_trigger = yes
@@ -22,16 +25,29 @@ tm_dl7_yearly = {
 				trigger_event = { id = tm_dl7.0001 days = { 1 200 } }
 			}
 		}
-		else_if = {
-			limit = {
-				tm_dl7_mother_without_phrygia_trigger = yes
-				NOT = { has_variable = tm_dl7_lobby_cd }
-			}
-			random = {
-				chance = 30
-				set_variable = { name = tm_dl7_lobby_cd value = yes years = 10 }
-				title:c_phrygia.holder = { save_scope_as = tm_dl7_governor }
-				trigger_event = { id = tm_dl7.0010 days = { 1 200 } }
+	}
+}
+
+# Phrygia lost: the Mother of Mothers works the City for the next appointment. From the global pulse, as a Mother who
+# holds only the Mother House's title has no land and no yearly pulse of her own (run 29: Phrygia lost in 997, and in
+# the years it was back under the throne, 1008-1034, no Mother was asked).
+tm_dl7_yearly_global = {
+	effect = {
+		tm_dl7_watch_effect = yes
+		title:d_tm_mother_house.holder ?= {
+			save_scope_as = tm_dl7_mother
+			if = {
+				limit = {
+					faith = faith:transbian_maximalism
+					tm_dl7_mother_without_phrygia_trigger = yes
+					NOT = { has_variable = tm_dl7_lobby_cd }
+				}
+				random = {
+					chance = 30
+					set_variable = { name = tm_dl7_lobby_cd value = yes years = 10 }
+					title:c_phrygia.holder = { save_scope_as = tm_dl7_governor }
+					trigger_event = { id = tm_dl7.0010 days = { 1 200 } }
+				}
 			}
 		}
 	}

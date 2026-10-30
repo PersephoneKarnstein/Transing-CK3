@@ -9,8 +9,7 @@ tm_dl7_tally_effect = {
 	change_global_variable = { name = tm_dl7_n_$WHAT$ add = 1 }
 }
 
-# Notes when Phrygia leaves the faith and when it comes back. Run from every ruler of the faith's year, so it is
-# counted once a year at most by the flag on the county. Scope: any.
+# Notes when Phrygia leaves the faith and when it comes back (the global yearly pulse). Scope: any.
 tm_dl7_watch_effect = {
 	title:c_phrygia = {
 		if = {

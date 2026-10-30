@@ -17,7 +17,7 @@ tm_dl7_unprotected_holder_trigger = {
 }
 
 # The Mother of Mothers, with Phrygia in another faith's hands inside her own throne's realm: the next appointment is
-# hers to work for. Scope: a character of the faith.
+# hers to work for. Scope: the Mother, saved as scope:tm_dl7_mother.
 tm_dl7_mother_without_phrygia_trigger = {
 	is_adult = yes
 	is_imprisoned = no
@@ -25,8 +25,8 @@ tm_dl7_mother_without_phrygia_trigger = {
 	exists = top_liege
 	title:c_phrygia.holder ?= {
 		NOT = { faith = faith:transbian_maximalism }
-		NOT = { this = root }
-		top_liege ?= root.top_liege
+		NOT = { this = scope:tm_dl7_mother }
+		top_liege ?= scope:tm_dl7_mother.top_liege
 	}
 }
 
