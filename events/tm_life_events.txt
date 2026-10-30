@@ -182,6 +182,7 @@ tm_life.0011 = {
 
 	trigger = {
 		any_close_family_member = {
+			NOT = { this = root }
 			is_alive = yes
 			is_adult = yes
 			NOT = { rite ?= { rite_has_parameter = tm_sisters_faith } }
@@ -191,6 +192,7 @@ tm_life.0011 = {
 	immediate = {
 		random_close_family_member = {
 			limit = {
+				NOT = { this = root }		# run 28: the list can hold root herself
 				is_alive = yes
 				is_adult = yes
 				NOT = { rite ?= { rite_has_parameter = tm_sisters_faith } }

@@ -1,0 +1,129 @@
+﻿namespace = tm_dl7
+
+# Crusader Dolls — Adelphai Dorleyaiou: Phrygia after Beatrike (docs/wave17/phrygia.md).
+#   0001  the gold seal: the holder of Phrygia asks the throne to take the House's protection on itself
+#   0010  the next appointment: Phrygia lost, the Mother of Mothers works the City for it
+# In the tenth and eleventh centuries emperors gave monasteries to lay lords to hold (the charistike: research/
+# byz_thomas_hero_typika.md §1.2, p. xxviii); the reformers' answer was an independent house with a powerful protector
+# (p. 446), and Lips gave its ephoreia to the emperor "in perpetuity" (p. 1266). Basil II's Novel of 996 shows that a
+# chrysobull could be annulled (hist_tougher_eunuch_byzantine.md): the seal is for a reign or so, not for ever.
+
+# ---------------------------------------------------------------------------------------------------
+# The gold seal. Root = the holder of Phrygia, of the faith; scope:tm_dl7_emperor = her top liege.
+tm_dl7.0001 = {
+	type = character_event
+	title = tm_dl7.0001.t
+	desc = tm_dl7.0001.desc
+	theme = diplomacy
+	left_portrait = { character = root animation = personality_rational }
+	right_portrait = { character = scope:tm_dl7_emperor animation = disapproval }
+
+	trigger = {
+		exists = scope:tm_dl7_emperor
+		tm_dl7_unprotected_holder_trigger = yes
+		top_liege = scope:tm_dl7_emperor
+	}
+
+	immediate = {
+		tm_dl7_tally_effect = { WHAT = asked }
+	}
+
+	option = {	# Send the House's gift to the City
+		name = tm_dl7.0001.a
+		trigger = { gold >= 75 }
+		remove_short_term_gold = 75
+		tm_dl7_tally_effect = { WHAT = by_gift }
+		random_list = {
+			50 = {
+				modifier = { add = 20 scope:tm_dl7_emperor = { opinion = { target = root value >= 25 } } }
+				modifier = { add = -20 scope:tm_dl7_emperor = { opinion = { target = root value <= -25 } } }
+				desc = tm_dl7.0001.granted
+				tm_dl7_grant_effect = yes
+			}
+			50 = {
+				modifier = { add = 15 scope:tm_dl7_emperor = { has_trait = zealous } }
+				desc = tm_dl7.0001.refused
+				tm_dl7_tally_effect = { WHAT = refused }
+			}
+		}
+		ai_chance = { base = 60 }
+	}
+	option = {	# Ask through the empress's chamber
+		name = tm_dl7.0001.b
+		trigger = { scope:tm_dl7_emperor = { tm_dl7_chamber_open_trigger = yes } }
+		tm_dl7_tally_effect = { WHAT = by_chamber }
+		random_list = {
+			70 = {
+				modifier = { add = 15 scope:tm_dl7_emperor = { opinion = { target = root value >= 25 } } }
+				desc = tm_dl7.0001.granted
+				tm_dl7_grant_effect = yes
+			}
+			30 = {
+				modifier = { add = 15 scope:tm_dl7_emperor = { has_trait = zealous } }
+				desc = tm_dl7.0001.refused
+				tm_dl7_tally_effect = { WHAT = refused }
+			}
+		}
+		ai_chance = { base = 80 }
+	}
+	option = {	# Ask in the House's name alone
+		name = tm_dl7.0001.c
+		tm_dl7_tally_effect = { WHAT = by_name }
+		random_list = {
+			25 = {
+				modifier = { add = 20 scope:tm_dl7_emperor = { opinion = { target = root value >= 25 } } }
+				desc = tm_dl7.0001.granted
+				tm_dl7_grant_effect = yes
+			}
+			75 = {
+				modifier = { add = 15 scope:tm_dl7_emperor = { has_trait = zealous } }
+				desc = tm_dl7.0001.refused
+				tm_dl7_tally_effect = { WHAT = refused }
+			}
+		}
+		ai_chance = { base = 30 }
+	}
+	option = {	# Ask nothing of him
+		name = tm_dl7.0001.d
+		add_prestige = 10
+		ai_chance = { base = 5 }
+	}
+}
+
+# ---------------------------------------------------------------------------------------------------
+# The next appointment. Root = the Mother of Mothers, without Phrygia; scope:tm_dl7_governor = its holder, of another faith,
+# under the same throne. Nothing is taken from him: the investment counts when the logothete next names a governor.
+tm_dl7.0010 = {
+	type = character_event
+	title = tm_dl7.0010.t
+	desc = tm_dl7.0010.desc
+	theme = diplomacy
+	left_portrait = { character = root animation = scheme }
+	right_portrait = { character = scope:tm_dl7_governor animation = personality_rational }
+
+	trigger = {
+		exists = scope:tm_dl7_governor
+		tm_dl7_mother_without_phrygia_trigger = yes
+	}
+
+	option = {	# Spend the House's silver on the logothete's friends
+		name = tm_dl7.0010.a
+		trigger = { gold >= 50 }
+		remove_short_term_gold = 50
+		tm_dl7_lobby_effect = { VALUE = appointment_score_major_value }
+		tm_dl7_tally_effect = { WHAT = lobbied_silver }
+		ai_chance = { base = 60 }
+	}
+	option = {	# Write to the House's friends
+		name = tm_dl7.0010.b
+		tm_dl7_lobby_effect = { VALUE = appointment_score_medium_value }
+		tm_dl7_tally_effect = { WHAT = lobbied_letters }
+		ai_chance = { base = 40 }
+	}
+	option = {	# Let Dorylaion go
+		name = tm_dl7.0010.c
+		add_piety = 10
+		tm_dl7_tally_effect = { WHAT = let_go }
+		ai_chance = { base = 5 }
+	}
+}

@@ -1,0 +1,57 @@
+﻿# Crusader Dolls — Adelphai Dorleyaiou: Phrygia after Beatrike (events/tm_dl7_events.txt; docs/wave17/phrygia.md).
+
+# Count for the census (run-wide globals tm_dl7_n_<what>; printed by tools/census_report.py).
+tm_dl7_tally_effect = {
+	if = {
+		limit = { NOT = { has_global_variable = tm_dl7_n_$WHAT$ } }
+		set_global_variable = { name = tm_dl7_n_$WHAT$ value = 0 }
+	}
+	change_global_variable = { name = tm_dl7_n_$WHAT$ add = 1 }
+}
+
+# Notes when Phrygia leaves the faith and when it comes back. Run from every ruler of the faith's year, so it is
+# counted once a year at most by the flag on the county. Scope: any.
+tm_dl7_watch_effect = {
+	title:c_phrygia = {
+		if = {
+			limit = {
+				holder ?= { NOT = { faith = faith:transbian_maximalism } }
+				NOT = { has_variable = tm_dl7_lost }
+			}
+			set_variable = tm_dl7_lost
+			tm_dl7_tally_effect = { WHAT = lost }
+		}
+		else_if = {
+			limit = {
+				holder ?= { faith = faith:transbian_maximalism }
+				has_variable = tm_dl7_lost
+			}
+			remove_variable = tm_dl7_lost
+			tm_dl7_tally_effect = { WHAT = returned }
+		}
+	}
+}
+
+# The gold seal: the throne takes the House's protection on itself, and Dorylaion cannot be revoked while it stands.
+# titles_protected is vanilla's flag for this (00_revoke_title_interaction.txt; vanilla grants it for 10 or 25 years
+# in the coronation and hold-court events). It is the holder's, so each new appointee asks again. Scope: the holder.
+tm_dl7_grant_effect = {
+	custom_tooltip = tm_dl7_chrysobull_tt
+	hidden_effect = {
+		add_character_flag = { flag = titles_protected years = 25 }
+		set_variable = { name = tm_dl7_chrysobull value = yes years = 25 }
+	}
+	tm_dl7_tally_effect = { WHAT = granted }
+}
+
+# The House's friends in the City put the Mother's name before the logothete for the next appointment to Phrygia.
+# Scope: the Mother of Mothers. $VALUE$ an appointment score value (vanilla 07_appointment_values.txt).
+tm_dl7_lobby_effect = {
+	title:c_phrygia = {
+		change_appointment_investment = {
+			target = root
+			investor = root
+			value = $VALUE$
+		}
+	}
+}

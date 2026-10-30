@@ -1,0 +1,39 @@
+﻿# Crusader Dolls — Adelphai Dorleyaiou: Phrygia after Beatrike (docs/wave17/phrygia.md).
+
+# Holds Phrygia for the faith, as a vassal of a throne of another faith, with no protection from revocation. In run 28
+# the county passed by appointment from one woman of the House to the next for 120 years, until the emperor revoked it
+# in 990 and gave it to a man of his own. Scope: a character of the faith.
+tm_dl7_unprotected_holder_trigger = {
+	is_adult = yes
+	is_imprisoned = no
+	has_title = title:c_phrygia
+	exists = top_liege
+	NOT = { this = top_liege }
+	top_liege = {
+		is_alive = yes
+		NOT = { faith = faith:transbian_maximalism }
+	}
+	NOT = { has_character_flag = titles_protected }
+}
+
+# The Mother of Mothers, with Phrygia in another faith's hands inside her own throne's realm: the next appointment is
+# hers to work for. Scope: a character of the faith.
+tm_dl7_mother_without_phrygia_trigger = {
+	is_adult = yes
+	is_imprisoned = no
+	has_title = title:d_tm_mother_house
+	exists = top_liege
+	title:c_phrygia.holder ?= {
+		NOT = { faith = faith:transbian_maximalism }
+		NOT = { this = root }
+		top_liege ?= root.top_liege
+	}
+}
+
+# The empress's chamber has the throne's ear (wave 10: tm_dl3_balance on the throne's primary title). Scope: the throne.
+tm_dl7_chamber_open_trigger = {
+	primary_title ?= {
+		has_variable = tm_dl3_balance
+		var:tm_dl3_balance >= 1
+	}
+}

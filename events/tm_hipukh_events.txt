@@ -488,8 +488,11 @@ tm_hipukh.0030 = {
 		remove_short_term_gold = 50
 		add_character_modifier = { modifier = tm_translation_patron_modifier years = 10 }
 		scope:tm_translator = {
-			add_prestige = 50
-			add_opinion = { target = root modifier = respect_opinion opinion = 20 }
+			if = {
+				limit = { is_alive = yes }		# may die before the answer (run 28)
+				add_prestige = 50
+				add_opinion = { target = root modifier = respect_opinion opinion = 20 }
+			}
 		}
 		capital_county ?= { set_variable = { name = tm_worthies_licence value = yes years = 10 } }
 	}

@@ -1,0 +1,38 @@
+﻿# Crusader Dolls — Adelphai Dorleyaiou: Phrygia after Beatrike (events/tm_dl7_events.txt; docs/wave17/phrygia.md).
+# Appended to vanilla.
+yearly_playable_pulse = {
+	on_actions = { tm_dl7_yearly }
+}
+
+# The holder of Phrygia asks the throne for a chrysobull; or, Phrygia lost, the Mother of Mothers works the City for
+# the next appointment. Not on the flavour budget: it decides whether the faith keeps its seat.
+tm_dl7_yearly = {
+	trigger = { faith = faith:transbian_maximalism }
+	effect = {
+		tm_dl7_watch_effect = yes
+		if = {
+			limit = {
+				tm_dl7_unprotected_holder_trigger = yes
+				NOT = { has_variable = tm_dl7_ask_cd }
+			}
+			random = {
+				chance = 40
+				set_variable = { name = tm_dl7_ask_cd value = yes years = 5 }
+				top_liege = { save_scope_as = tm_dl7_emperor }
+				trigger_event = { id = tm_dl7.0001 days = { 1 200 } }
+			}
+		}
+		else_if = {
+			limit = {
+				tm_dl7_mother_without_phrygia_trigger = yes
+				NOT = { has_variable = tm_dl7_lobby_cd }
+			}
+			random = {
+				chance = 30
+				set_variable = { name = tm_dl7_lobby_cd value = yes years = 10 }
+				title:c_phrygia.holder = { save_scope_as = tm_dl7_governor }
+				trigger_event = { id = tm_dl7.0010 days = { 1 200 } }
+			}
+		}
+	}
+}

@@ -154,17 +154,19 @@ Not built from row 1: blocking army command outright (no modifier does it; the m
 | Event | Who | Window | Chance a year | Cooldown | Budget |
 |---|---|---|---|---|---|
 | 0001 | daughter of the Way, celestial throne | 901–902 | 40% | once | yes |
-| 0002 | House keeper, celestial | to 906 | 3% | 25 years | yes |
-| 0003 | House keeper, celestial | to 906 | 3% | 20 years | yes |
+| 0002 | House keeper, celestial or meritocratic | to 906 | 6% | 25 years | yes |
+| 0003 | House keeper, celestial or meritocratic | to 906 | 6% | 20 years | yes |
 | 0004 | daughter in office, celestial | 1403–1449 | 5% | 20 years | yes |
-| 0010 | daughter of the Way, celestial | 874–881 | 6% | once | yes |
+| 0010 | daughter of the Way, celestial or meritocratic | 874–881 | 15% | once | yes |
 | 0011 | after 0010 a/b | 882–885 | 50% | once | no (chain) |
-| 0020 | daughter of the Way, celestial | to 885 | 4% | once | yes |
+| 0020 | daughter of the Way, celestial or meritocratic | to 885 | 10% | once | yes |
 | 0021 | after 0020 | 887–900 | 30% | once | no (chain) |
-| 0025 | daughter of the Way, celestial | to 895 | 3% | once | yes |
+| 0025 | daughter of the Way, celestial or meritocratic | to 895 | 8% | once | yes |
 | 0030–0032 | House keeper under a lord | any | 4% | 15 years | yes |
 | 0035 | daughter at a Khitan court | 982–1009 | 8% | once | yes |
 | 0041 | former curtain regent | on regency's end | — | — | no |
+
+Changed after observe runs 27 and 28, where none of 0002, 0003, 0010, 0020 or 0025 fired: at 867 the Way's seat (Shazhou) lies in the kingdom of Hexi, the Guiyi circuit, whose government is meritocratic, so the gate is now a celestial or meritocratic throne (`tm_yt4_under_celestial_trigger`), as the palace levers already had; and the chances above were raised (from 3%, 3%, 6%, 4%, 3%), since the Way had two to twelve daughters in those decades.
 
 "Daughter of the Way" here is `tm_world_daughter_trigger` (a daughter of any gate, or a declared sister) of faith `tm_yutai`. Courtiers are reached from their ruler's `yearly_playable_pulse`, as wave 11 does.
 

@@ -74,7 +74,7 @@ tm_byz.0010 = {
 			}
 			40 = {
 				desc = tm_byz.0010.b.found
-				liege ?= { add_opinion = { target = root modifier = angry_opinion opinion = -20 } }
+				liege ?= { if = { limit = { NOT = { this = root } } add_opinion = { target = root modifier = angry_opinion opinion = -20 } } }
 			}
 		}
 	}
@@ -89,7 +89,7 @@ tm_byz.0010 = {
 		name = tm_byz.0010.e
 		trigger = { rite ?= { rite_has_parameter = tm_castrates_third_kind } }
 		add_piety = -25
-		liege ?= { add_opinion = { target = root modifier = respect_opinion opinion = 10 } }
+		liege ?= { if = { limit = { NOT = { this = root } } add_opinion = { target = root modifier = respect_opinion opinion = 10 } } }
 	}
 }
 
@@ -121,7 +121,7 @@ tm_byz.0011 = {
 	option = {	# Meet in the open and let them come
 		name = tm_byz.0011.b
 		add_piety = 75
-		liege ?= { add_opinion = { target = root modifier = angry_opinion opinion = -30 } }
+		liege ?= { if = { limit = { NOT = { this = root } } add_opinion = { target = root modifier = angry_opinion opinion = -30 } } }
 	}
 	option = {	# Obey
 		name = tm_byz.0011.c
@@ -161,7 +161,7 @@ tm_byz.0012 = {
 	option = {	# Defy them
 		name = tm_byz.0012.c
 		add_prestige = 50
-		liege ?= { add_opinion = { target = root modifier = angry_opinion opinion = -40 } }
+		liege ?= { if = { limit = { NOT = { this = root } } add_opinion = { target = root modifier = angry_opinion opinion = -40 } } }
 		every_child = {
 			limit = { is_alive = yes tm_is_daughter_trigger = yes }
 			add_character_modifier = { modifier = tm_contested_inheritance_modifier years = 10 }

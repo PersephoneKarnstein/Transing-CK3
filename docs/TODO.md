@@ -384,3 +384,6 @@ In-game checks for everything built on 2026-10-21 in wave 4. Scenarios are in TO
 - [ ] Bands wave 16 (`tm_bae7`): Keep the Road, a new task contract for the bands of the six faiths (0001–0021: the thief, the toll, the guards' habit from 1327; a clean term counts as service for the Patent and the Robe); a harbour with a petty coastal lord for a landed Bædling band losing its land (0030–0033, no land-to-camp scripting); The Sword Is My Patent, a decision after a refusal that follows patience, with the lord's last letter (0040) (built, not yet tested in game)
 - [ ] Not built: the darker Companions (*The Plot Discovered*) and Dirham's road; the Watch on the Coast (Négre row 3)
 - [x] Decide wave 16's open questions (docs/wave16/baedling-bands.md §8): all defaults accepted, the darker Companions wait for §U6 (user, 2026-10-29)
+
+## Wave 17: Phrygia after Beatrike (added 2026-10-30, untested in-game; docs/wave17/phrygia.md)
+- [ ] Adelphai wave 17 (`tm_dl7`): the holder of Phrygia asks the throne for a chrysobull that protects Dorylaion from revocation for 25 years (0001; vanilla `titles_protected`); with Phrygia lost inside the empire, the Mother of Mothers invests in her own appointment to it (0010) (built, not yet tested in game)

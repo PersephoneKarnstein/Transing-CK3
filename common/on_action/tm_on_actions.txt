@@ -177,6 +177,33 @@ tm_on_game_start = {
 				scope:tm_huijing.primary_title = {
 					set_variable = { name = can_keep_realm_law value = flag:equal_law }
 				}
+				# Even so the grants failed (run 28: b_changle, 1,221 times): the game makes a woman, as Huijing is,
+				# for each spare barony of Xun's counties, and Hexi's law above her refuses her. The baronies go
+				# out now, to men, as they would have under Xun.
+				scope:tm_huijing = {
+					every_held_title = {
+						limit = { tier = tier_barony is_capital_barony = no }
+						save_scope_as = tm_huijing_barony
+						create_character = {
+							gender = male
+							age = { 25 50 }
+							culture = scope:tm_huijing_barony.title_province.culture
+							faith = scope:tm_huijing_barony.title_province.faith
+							location = scope:tm_huijing_barony.title_province
+							save_scope_as = tm_huijing_baron
+						}
+						create_title_and_vassal_change = {
+							type = granted
+							save_scope_as = tm_huijing_barony_change
+							add_claim_on_loss = no
+						}
+						change_title_holder = {
+							holder = scope:tm_huijing_baron
+							change = scope:tm_huijing_barony_change
+						}
+						resolve_title_and_vassal_change = scope:tm_huijing_barony_change
+					}
+				}
 				character:han_40016 ?= {
 					if = {
 						limit = { is_alive = yes }
@@ -215,9 +242,8 @@ tm_on_game_start = {
 					limit = { exists = scope:tm_chengxun }
 					scope:tm_huijing = {
 						add_courtier = scope:tm_chengxun
-						adopt = scope:tm_chengxun
+						adopt = scope:tm_chengxun		# her heir by law as her son: set_designated_heir was refused (runs 27, 28)
 						set_relation_ward = scope:tm_chengxun
-						set_designated_heir = scope:tm_chengxun
 					}
 					scope:tm_chengxun = { set_variable = { name = tm_conv_ours value = yes days = 1 } set_character_faith = faith:tm_yutai }
 				}

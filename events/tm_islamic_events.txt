@@ -18,8 +18,11 @@ tm_isl.0001 = {
 	option = {	# Trust her with the household
 		name = tm_isl.0001.a
 		scope:tm_isl_daughter = {
-			add_opinion = { target = root modifier = grateful_opinion opinion = 20 }
-			add_prestige = 25
+			if = {
+				limit = { is_alive = yes }		# may die before the answer (run 28)
+				add_opinion = { target = root modifier = grateful_opinion opinion = 20 }
+				add_prestige = 25
+			}
 		}
 		add_stress = -10
 	}

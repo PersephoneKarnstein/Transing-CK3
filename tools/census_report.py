@@ -348,6 +348,17 @@ def main(path):
           'order_friend: given the House\'s friendship.')
     print()
 
+    # Adelphai, wave 17 (tm_dl7_tally_effect): Phrygia after Beatrike.
+    print('== Adelphai: Phrygia (wave 17) ==')
+    psteps = ('asked', 'by_gift', 'by_chamber', 'by_name', 'granted', 'refused', 'lost', 'returned', 'lobbied_silver',
+              'lobbied_letters', 'let_go')
+    print('  '.join(f'{s} {int(gvars.get(f"tm_dl7_n_{s}") or 0)}' for s in psteps))
+    print('asked: holders of Phrygia who weighed a petition for the gold seal; by_gift / _chamber / _name: how they asked\n'
+          '(an unanswered petition is asked but none of these); granted / refused: the throne\'s answer (granted: 25 years safe\n'
+          'from revocation); lost / returned: Phrygia left the faith, and came back; lobbied_silver / _letters / let_go: the\n'
+          'Mother of Mothers, without Phrygia, worked the City for the next appointment, or let it go.')
+    print()
+
     # Badenya, wave 9 (tm_bd3_tally_effect): the Rock at Koulikoro and the fall of the associate.
     print('== Badenya: the Rock and the associate ==')
     bsteps = ('rock_came', 'rock_asked', 'rock_kept', 'rock_given', 'rock_joins', 'quarrels', 'raised', 'dust', 'ashes',

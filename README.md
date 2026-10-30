@@ -155,7 +155,7 @@ Daughters are chosen, not born. A woman of the House may foster a girl or adopt 
 
 What sets the Sisters apart is that they refuse an honour: Byzantium made its eunuchs a useful, owned estate, and the Sisters will not be one. No source attests such a sect, and their five foremothers, Stephania the First Mother among them, are invented.
 
-The Mother of Mothers may write the Mother House's Rule in three stages, years apart: read aloud in every House, kept in three copies, then sealed. Under Aunt Bea's House the cells run their full three years: the novice learns that every woman keeping him was once under the knife he fears, a new daughter spends two years as her sponsor's ward, and those who wash out are given to a holy order of the faith, neither killed nor watched. Kin of another faith do not forgive the cells.
+The Mother of Mothers may write the Mother House's Rule in three stages, years apart: read aloud in every House, kept in three copies, then sealed. Under Aunt Bea's House the cells run their full three years: the novice learns that every woman keeping him was once under the knife he fears, a new daughter spends two years as her sponsor's ward, and those who wash out are given to a holy order of the faith, neither killed nor watched. Kin of another faith do not forgive the cells. Phrygia is the emperor's to give, as emperors of the time gave houses of prayer to lay lords to hold; whoever keeps it for the faith may ask him for a chrysobull under the gold seal, which keeps it from being revoked for a generation, and if it is lost, the Mother of Mothers may work the City for the next appointment.
 
 **Read more:** [the full overview of Adelphai Dorleyaiou](docs/faiths/adelphai-dorleyaiou.md), with its history, sources and mechanics, cited to the page.
 
@@ -256,7 +256,7 @@ Everything in the faith sections above is built. Most of the newer content has n
 <details>
 <summary>Done</summary>
 
-- [x] Adelphai Dorleyaiou: the Galenic rite and school, the Council of the Two Schools, the Tower on the Condition, decaying tolerance from 1050; the Mother House's Rule; the Dorley precedent's disclosure, ward years, and washouts given to an order
+- [x] Adelphai Dorleyaiou: the Galenic rite and school, the Council of the Two Schools, the Tower on the Condition, decaying tolerance from 1050; the Mother House's Rule; the Dorley precedent's disclosure, ward years, and washouts given to an order; Phrygia's gold seal against revocation, and the next appointment
 - [x] Bædling: the níð-pole, the first cup and the bragarfull, Wulfstan's sermon; the sorcery-law arc; the rest of the feud and of outlawry; the Norse lore events
 - [x] Bædling: raising a níð-pole oneself (a scheme with a proxy carver), the Níð of the Land, vows over the cup kept or broken
 - [x] Bædling bands: the Vigla (a road-guard contract for the bands of all six faiths), flight to a petty coastal lord, The Sword Is My Patent (the darker Companions left as an open question)

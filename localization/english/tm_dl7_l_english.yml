@@ -1,0 +1,20 @@
+﻿l_english:
+ # Adelphai Dorleyaiou: Phrygia after Beatrike (docs/wave17/phrygia.md).
+
+ ### The gold seal ###
+ tm_dl7.0001.t:0 "The Gold Seal"
+ tm_dl7.0001.desc:0 "A clerk of the logothete has been at Dorylaion again, counting hearths and asking whose the mills are. In the City the emperor gives houses of prayer to lay lords to hold, as he might give a cloak, and the lord takes the rents and leaves the sisters the prayers.\n\nThe House could ask [tm_dl7_emperor.GetTitledFirstName] to take its protection on himself, under the gold seal, as other founders have asked his fathers. A chrysobull would not make Dorylaion free. It would make it his, and so nobody else's."
+ tm_dl7.0001.a:0 "Send the House's gift to the City with the petition."
+ tm_dl7.0001.b:0 "Ask through the empress's chamber."
+ tm_dl7.0001.c:0 "Ask in the House's name, and nothing more."
+ tm_dl7.0001.d:0 "Ask nothing of him."
+ tm_dl7.0001.granted:0 "The chrysobull comes back under the gold seal"
+ tm_dl7.0001.refused:0 "The petition is read, and filed"
+ tm_dl7_chrysobull_tt:0 "#P The throne has taken the House's protection on itself#!: for 25 years Dorylaion cannot be revoked from you."
+
+ ### The next appointment ###
+ tm_dl7.0010.t:0 "The Next Appointment"
+ tm_dl7.0010.desc:0 "[tm_dl7_governor.GetTitledFirstName] keeps Dorylaion now, and the House's mills pay his clerks. He will not keep it for ever. When he goes, the logothete will name another governor, and names reach the logothete through friends.\n\nThe House has friends in the City still: women who were once at its table, a notary who owes it a kindness, a eunuch of the chamber who likes its honey."
+ tm_dl7.0010.a:0 "Spend the House's silver on the logothete's friends."
+ tm_dl7.0010.b:0 "Write to the House's friends, and wait."
+ tm_dl7.0010.c:0 "Let Dorylaion go. The House is its women, not its mills."

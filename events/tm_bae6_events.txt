@@ -59,7 +59,7 @@ tm_bae6.0001 = {
 				}
 				save_scope_value_as = { name = tm_bae6_discovered value = yes }
 			}
-			scope:tm_bae6_target.top_liege = { save_scope_as = tm_bae6_law_lord }
+			scope:tm_bae6_target ?= { top_liege ?= { save_scope_as = tm_bae6_law_lord } }	# the target may be gone (run 28)
 			if = {
 				limit = { exists = scope:tm_bae6_success }
 				trigger_event = tm_bae6.0010

@@ -66,7 +66,7 @@ tm_yt4_house_year_effect = {
 			tm_flavour_ready_trigger = yes
 		}
 		random = {
-			chance = 3
+			chance = 6
 			set_variable = { name = tm_yt4_boy_cd value = yes years = 25 }
 			tm_flavour_spent_effect = yes
 			trigger_event = { id = tm_yt4.0002 days = { 1 300 } }
@@ -82,7 +82,7 @@ tm_yt4_house_year_effect = {
 			tm_flavour_ready_trigger = yes
 		}
 		random = {
-			chance = 3
+			chance = 6
 			set_variable = { name = tm_yt4_levy_cd value = yes years = 20 }
 			tm_flavour_spent_effect = yes
 			trigger_event = { id = tm_yt4.0003 days = { 1 300 } }
@@ -112,6 +112,8 @@ tm_yt4_house_year_effect = {
 	}
 }
 
+# The Tang-era chances (0002, 0003, 0010, 0020, 0025) were raised after runs 27 and 28: the Way had two to twelve
+# daughters in those decades, and none of these fired.
 # --- A daughter's year (from tm_yt4_yearly): the women's chains. Scope: a daughter of the Way; scope:tm_yt4_host =
 # the ruler whose court she is at (or herself). At most one a year, through the flavour budget. ---
 tm_yt4_daughter_year_effect = {
@@ -125,7 +127,7 @@ tm_yt4_daughter_year_effect = {
 			tm_flavour_ready_trigger = yes
 		}
 		random = {
-			chance = 6
+			chance = 15
 			add_character_flag = tm_yt4_xue_asked
 			tm_flavour_spent_effect = yes
 			trigger_event = { id = tm_yt4.0010 days = { 1 200 } }
@@ -169,7 +171,7 @@ tm_yt4_daughter_year_effect = {
 			tm_flavour_ready_trigger = yes
 		}
 		random = {
-			chance = 4
+			chance = 10
 			add_character_flag = tm_yt4_wang_asked
 			tm_flavour_spent_effect = yes
 			trigger_event = { id = tm_yt4.0020 days = { 1 200 } }
@@ -184,7 +186,7 @@ tm_yt4_daughter_year_effect = {
 			tm_flavour_ready_trigger = yes
 		}
 		random = {
-			chance = 3
+			chance = 8
 			add_character_flag = tm_yt4_moshan_asked
 			tm_flavour_spent_effect = yes
 			trigger_event = { id = tm_yt4.0025 days = { 1 200 } }

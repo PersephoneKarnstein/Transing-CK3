@@ -8,11 +8,20 @@ tm_yt4_way_daughter_trigger = {
 	tm_world_daughter_trigger = yes
 }
 
-# Lives under a Chinese throne: her top liege (or she herself) keeps a celestial government. Scope: a character.
+# Lives under a Chinese throne: her top liege (or she herself) keeps a celestial or a meritocratic government. The
+# meritocratic takes in the Guiyi circuit (the kingdom of Hexi at 867), a Tang circuit in name, where the Way's seat at
+# Shazhou lies; with the celestial alone, no daughter of the Way met the Tang-era chains in two runs (27, 28), as the
+# palace levers already allow (tm_yt2). Scope: a character.
 tm_yt4_under_celestial_trigger = {
 	OR = {
 		has_government = celestial_government
-		top_liege ?= { has_government = celestial_government }
+		has_government = meritocratic_government
+		top_liege ?= {
+			OR = {
+				has_government = celestial_government
+				has_government = meritocratic_government
+			}
+		}
 	}
 }
 

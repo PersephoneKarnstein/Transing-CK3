@@ -93,7 +93,7 @@ tm_yutai.0010 = {
 					limit = { tier = tier_county has_variable = tm_house }
 					change_variable = { name = tm_house_strain add = 2 }
 				}
-				liege ?= { add_opinion = { target = root modifier = angry_opinion opinion = -20 } }
+				liege ?= { if = { limit = { NOT = { this = root } } add_opinion = { target = root modifier = angry_opinion opinion = -20 } } }
 			}
 		}
 	}
